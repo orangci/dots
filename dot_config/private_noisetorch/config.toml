@@ -1,0 +1,7 @@
+Threshold = 95
+DisplayMonitorSources = false
+EnableUpdates = true
+FilterInput = true
+FilterOutput = false
+LastUsedInput = "alsa_input.usb-Logi_USB_Headset_Logi_USB_Headset-00.mono-fallback"
+LastUsedOutput = ""

@@ -1,0 +1,22 @@
+[Desktop Entry]
+Name=Simple Weather
+Comment=Show current temp/forecast and today's min/max temp.
+
+Type=Service
+Icon=weather-clear
+X-KDE-ServiceTypes=Plasma/Applet
+
+X-Plasma-API=declarativeappletscript
+X-Plasma-MainScript=ui/main.qml
+
+X-KDE-PluginInfo-Author=Chris Holland
+X-KDE-PluginInfo-Email=zrenfire@gmail.com
+X-KDE-PluginInfo-Name=com.github.zren.simpleweather
+X-KDE-PluginInfo-Version=8
+X-KDE-PluginInfo-Website=https://github.com/Zren/plasma-applet-simpleweather
+X-KDE-PluginInfo-Category=Environment and Weather
+
+Name[hr]=Jednostavno Vrijeme
+Name[sl]=Preprosto vreme
+Comment[hr]=Prikaži trenutnu temperaturu/prognozu i današnju min/max temperaturu.
+Comment[sl]=Prikaži trenutno temp./napoved in današnjo min./max. temperaturo.

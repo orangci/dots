@@ -1,0 +1,16 @@
+{
+    "workbench.colorTheme": "Andromeda Colorizer",
+    "explorer.confirmDelete": false,
+    "git.confirmSync": false,
+    "git.autofetch": true,
+    "git.enableSmartCommit": true,
+    "vscord.app.name": "VSCodium",
+    "vscord.status.idle.timeout": 1800,
+    "[html]": {
+        "editor.defaultFormatter": "lonefy.vscode-JS-CSS-HTML-formatter"
+    },
+    "editor.minimap.enabled": false,
+    "[css]": {
+        "editor.defaultFormatter": "lonefy.vscode-JS-CSS-HTML-formatter"
+    }
+}

@@ -1,0 +1,74 @@
+# Translation of simpleweather in zh_CN
+# Copyright (C) 2019
+# This file is distributed under the same license as the simpleweather package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: simpleweather\n"
+"Report-Msgid-Bugs-To: https://github.com/Zren/plasma-applet-simpleweather\n"
+"POT-Creation-Date: 2022-02-10 19:27-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../metadata.desktop
+msgid "Simple Weather"
+msgstr ""
+
+#: ../metadata.desktop
+msgid "Show current temp/forecast and today's min/max temp."
+msgstr ""
+
+#: ../contents/config/config.qml
+msgid "General"
+msgstr "一般"
+
+#: ../contents/ui/config/ConfigGeneral.qml
+msgid "Show weather warnings"
+msgstr ""
+
+#: ../contents/ui/config/ConfigGeneral.qml
+msgid "Desktop Widget: Show background"
+msgstr "桌面小部件: 显示背景"
+
+#: ../contents/ui/config/ConfigGeneral.qml
+msgid "Font Family:"
+msgstr ""
+
+#: ../contents/ui/config/ConfigGeneral.qml
+msgid "Min/Max Temp:"
+msgstr ""
+
+#: ../contents/ui/config/ConfigGeneral.qml
+msgctxt "font size suffix"
+msgid "pt"
+msgstr ""
+
+#: ../contents/ui/config/ConfigGeneral.qml
+msgid "Condition:"
+msgstr ""
+
+#: ../contents/ui/config/ConfigGeneral.qml
+msgid "Text:"
+msgstr ""
+
+#: ../contents/ui/config/ConfigGeneral.qml
+msgid "Outline:"
+msgstr ""
+
+#: ../contents/ui/libconfig/FontFamily.qml
+msgctxt "Use default font"
+msgid "Default"
+msgstr "默认"
+
+#: ../contents/ui/libweather/WeatherData.qml
+msgid "Wind:"
+msgstr ""
+
+#: ../contents/ui/main.qml
+msgid "Refresh"
+msgstr "刷新"

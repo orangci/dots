@@ -1,0 +1,76 @@
+# Translation of simpleweather in Slovenian
+# Copyright (C) 2020
+# This file is distributed under the same license as the simpleweather package.
+# Ugo Ugowsky <ugowsky@gmail.com>, 2021.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: simpleweather\n"
+"Report-Msgid-Bugs-To: https://github.com/Zren/plasma-applet-simpleweather\n"
+"POT-Creation-Date: 2022-02-10 19:27-0500\n"
+"PO-Revision-Date: 2021-07-29 15:06+0200\n"
+"Last-Translator: Ugo Ugowsky <ugowsky@gmail.com>\n"
+"Language-Team: Slovenian <lugos-slo@lugos.si>\n"
+"Language: sl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.0\n"
+
+#: ../metadata.desktop
+msgid "Simple Weather"
+msgstr "Preprosto vreme"
+
+#: ../metadata.desktop
+msgid "Show current temp/forecast and today's min/max temp."
+msgstr "Prikaži trenutno temp./napoved in današnjo min./max. temperaturo."
+
+#: ../contents/config/config.qml
+msgid "General"
+msgstr "Splošno"
+
+#: ../contents/ui/config/ConfigGeneral.qml
+msgid "Show weather warnings"
+msgstr "Prikaži vremenska opozorila"
+
+#: ../contents/ui/config/ConfigGeneral.qml
+msgid "Desktop Widget: Show background"
+msgstr "Namizni gradnik: prikaži ozadje"
+
+#: ../contents/ui/config/ConfigGeneral.qml
+msgid "Font Family:"
+msgstr "Družina pisav"
+
+#: ../contents/ui/config/ConfigGeneral.qml
+msgid "Min/Max Temp:"
+msgstr "min/max temperatura:"
+
+#: ../contents/ui/config/ConfigGeneral.qml
+msgctxt "font size suffix"
+msgid "pt"
+msgstr "točk"
+
+#: ../contents/ui/config/ConfigGeneral.qml
+msgid "Condition:"
+msgstr "Stanje:"
+
+#: ../contents/ui/config/ConfigGeneral.qml
+msgid "Text:"
+msgstr "Besedilo:"
+
+#: ../contents/ui/config/ConfigGeneral.qml
+msgid "Outline:"
+msgstr "Obroba:"
+
+#: ../contents/ui/libconfig/FontFamily.qml
+msgctxt "Use default font"
+msgid "Default"
+msgstr "Ponastavi"
+
+#: ../contents/ui/libweather/WeatherData.qml
+msgid "Wind:"
+msgstr "Veter:"
+
+#: ../contents/ui/main.qml
+msgid "Refresh"
+msgstr "Osveži"

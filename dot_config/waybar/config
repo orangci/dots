@@ -1,0 +1,121 @@
+{
+	"layer": "top",
+	"modules-left": ["cpu","memory","temperature","network","sbluetooth","disk","tray"],
+	"modules-center": ["custom/weather"],
+	"modules-right": ["custom/updates","custom/wallpaper","backlight","pulseaudio","clock", "battery","custom/power"],
+
+
+
+	"pulseaudio": {
+		"tooltip": true,
+    "tooltip-format": "Scroll up or down to change volume",
+		"scroll-step": 2,
+		"format": "{icon} {volume}%",
+		"format-muted": "{icon} {volume}%",
+    "on-click": "pavucontrol",
+		"on-click-right":"pactl set-sink-mute @DEFAULT_SINK@ toggle",
+    "format-icons": {
+        "headphone": "",
+        "hands-free": "",
+        "headset": "",
+        "phone": "",
+        "portable": "",
+        "car": "",
+        "default": ["", ""]
+    },
+	},
+
+
+"custom/weather": {
+    "exec": "~/.config/waybar/get_weather.sh Riyadh+Saudi Arabia",
+    "return-type": "json",
+    "format": "{}",
+    "tooltip": true,
+    "interval": 3600
+},
+
+
+
+
+    "river/tags": {
+		"num-tags": 6
+    },
+"network": {
+    "format-wifi": "{essid} ({signalStrength}%) ",
+    "format": " {essid}",
+    "format-ethernet": "{ipaddr}/{cidr} ",
+    "tooltip-format": "{ifname} via {gwaddr} ",
+    "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+    "tooltip-format-ethernet": "{ifname} ",
+    "tooltip-format-disconnected": "Disconnected",
+    "max-length": 50
+},
+
+
+"backlight": {
+		"tooltip-format": "Change the brightness by scrolling up or down",
+		"format": " {}%",
+		"interval":1,
+        "on-scroll-up": "light -A 5",
+		"on-scroll-down": "light -U 5"
+	},
+    "battery": {
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 20
+        },
+        "format": "{icon}  {capacity}%",
+        "tooltip-format": "{time} until full / empty",
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-alt": "{time} {icon}",
+        "format-icons": ["", "", "", "", ""]
+    },
+	"tray":{
+    "show-passive-items": true,
+		"icon-size":18,
+		"spacing": 10
+	},
+
+    "clock": {
+        "format": "{: %H:%M}",
+         "tooltip-format": "{: %A, %B %d, %Y}",
+},
+
+    "cpu": {
+        "interval": 30,
+        "format": " {usage}%",
+        "max-length": 10
+    },
+
+"disk": {
+    "format": "󰋊 {percentage_used}%",
+    "interval": 30,
+    "tooltip-format": "{free} / {total}",
+    "path": "/"
+},
+
+
+"bluetooth": {
+	"format": " {status}",
+	"format-connected": " {device_alias}",
+	"format-connected-battery": " {device_alias} {device_battery_percentage}%",
+	// "format-device-preference": [ "device1", "device2" ], // preference list deciding the displayed device
+	"tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+	"tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+	"tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+	"tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%"
+},
+    "memory": {
+        "interval": 30,
+        "format": " {}%",
+        "max-length": 10
+    },
+
+    "custom/power":{
+        "tooltip-format": "logout options",
+        "format": " ",
+        "on-click": "bash ~/.config/wlogout/launch.sh",
+    },
+}

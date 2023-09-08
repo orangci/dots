@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kcfg xmlns="http://www.kde.org/standards/kcfg/1.0"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0
+      http://www.kde.org/standards/kcfg/1.0/kcfg.xsd" >
+<kcfgfile name=""/>
+
+  <group name="Appearance">
+
+      <!-- Clock Display Settings -->
+    <entry name="clockUse24hFormat" type="Bool">
+      <label>Forces the clock to use 12/24 hour time, instead of following the user locale.</label>
+      <default>true</default>
+    </entry>
+    <entry name="clockShowSeconds" type="Bool">
+      <label>Makes the clock show seconds after minutes.</label>
+      <default>false</default>
+    </entry>
+    <entry name="clockSeparator" type="string">
+      <label>Sets the clock separator.</label>
+      <default>.</default>
+    </entry>
+    <entry name="clockFontColor" type="Color">
+      <label>Color of text.</label>
+      <default>#ffffff</default>
+    </entry>
+    <entry name="clockFontFamily" type="string">
+      <label>Sets the clock font family.</label>
+      <default>ccdefault</default>
+    </entry>
+    <entry name="clockBoldText" type="Bool">
+      <label>Sets the clock font to bold.</label>
+      <default>true</default>
+    </entry>
+    <entry name="clockItalicText" type="Bool">
+      <label>Sets the clock font to italic.</label>
+      <default>false</default>
+    </entry>
+    <entry name="clockFontSize" type="int">
+      <label>Sets the size of the day font in pixels.</label>
+      <default>220</default>
+    </entry>
+    <entry name="clockShadowEnabled" type="Bool">
+      <label>Whether the drop shadow should be shown behind the clock label.</label>
+      <default>false</default>
+    </entry>
+    <entry name="clockShadowColor" type="Color">
+      <label>Color of shadow.</label>
+      <default>#80000000</default>
+    </entry>
+    <entry name="clockShadowRadius" type="int">
+      <label>Sets the radius of the shadow.</label>
+      <default>10</default>
+    </entry>
+    <entry name="clockShadowXOffset" type="int">
+      <label>Sets the x offset of the shadow.</label>
+      <default>0</default>
+    </entry>
+    <entry name="clockShadowYOffset" type="int">
+      <label>Sets the y offset of the shadow.</label>
+      <default>0</default>
+    </entry>
+
+    <!-- Day Display Settings -->
+    <entry name="showDayDisplay" type="Bool">
+      <label>Whether the day should be shown in the clock.</label>
+      <default>true</default>
+    </entry>
+    <entry name="dayFontColor" type="Color">
+      <label>Color of text</label>
+      <default>#5e4573</default>
+    </entry>
+    <entry name="dayFontFamily" type="string">
+      <label>Sets the day font family.</label>
+      <default>ccdefault</default>
+    </entry>
+    <entry name="dayBoldText" type="Bool">
+      <label>Sets the day font to bold.</label>
+      <default>false</default>
+    </entry>
+    <entry name="dayItalicText" type="Bool">
+      <label>Sets the day font to italic.</label>
+      <default>false</default>
+    </entry>
+    <entry name="dayFontSize" type="int">
+      <label>Sets the size of the day font in pixels.</label>
+      <default>100</default>
+    </entry>
+    <entry name="dayShadowEnabled" type="Bool">
+      <label>Whether the drop shadow should be shown behind the clock label.</label>
+      <default>false</default>
+    </entry>
+    <entry name="dayShadowColor" type="Color">
+      <label>Color of shadow.</label>
+      <default>#80000000</default>
+    </entry>
+    <entry name="dayShadowRadius" type="int">
+      <label>Sets the radius of the shadow.</label>
+      <default>10</default>
+    </entry>
+    <entry name="dayShadowXOffset" type="int">
+      <label>Sets the x offset of the shadow.</label>
+      <default>0</default>
+    </entry>
+    <entry name="dayShadowYOffset" type="int">
+      <label>Sets the y offset of the shadow.</label>
+      <default>0</default>
+    </entry>
+
+    <!-- Date Display Settings -->
+    <entry name="showDateDisplay" type="Bool">
+      <label>Whether the date should be shown below the clock.</label>
+      <default>true</default>
+    </entry>
+    <entry name="dateCustomDateFormat" type="string">
+      <label>Custom date format string.</label>
+      <default>d MMMM yyyy</default>
+    </entry>
+    <entry name="dateFontColor" type="Color">
+      <label>Color of text</label>
+      <default>#ffffff</default>
+    </entry>
+    <entry name="dateFontFamily" type="string">
+      <label>Sets the date font family.</label>
+      <default>ccdefault</default>
+    </entry>
+    <entry name="dateBoldText" type="Bool">
+      <label>Sets the date font to bold.</label>
+      <default>false</default>
+    </entry>
+    <entry name="dateItalicText" type="Bool">
+      <label>Sets the date font to italic.</label>
+      <default>false</default>
+    </entry>
+    <entry name="dateFontSize" type="int">
+      <label>Sets the size of the date font in pixels.</label>
+      <default>24</default>
+    </entry>
+    <entry name="dateLetterSpacing" type="int">
+      <label>Sets the letter spacing of the date font.</label>
+      <default>2</default>
+    </entry>
+    <entry name="dateShadowEnabled" type="Bool">
+      <label>Whether the drop shadow should be shown behind the clock label.</label>
+      <default>false</default>
+    </entry>
+    <entry name="dateShadowColor" type="Color">
+      <label>Color of shadow.</label>
+      <default>#80000000</default>
+    </entry>
+    <entry name="dateShadowRadius" type="int">
+      <label>Sets the radius of the shadow.</label>
+      <default>10</default>
+    </entry>
+    <entry name="dateShadowXOffset" type="int">
+      <label>Sets the x offset of the shadow.</label>
+      <default>0</default>
+    </entry>
+    <entry name="dateShadowYOffset" type="int">
+      <label>Sets the y offset of the shadow.</label>
+      <default>0</default>
+    </entry>
+
+  </group>
+</kcfg>
