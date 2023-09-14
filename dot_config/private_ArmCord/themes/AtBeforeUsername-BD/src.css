@@ -1,10 +1,9 @@
 /**
- * @name AtBeforeUsername
- * @author guliveer
- * @version 1.2
- * @description Shows "@" sign before username on Discord, after the update regarding removal of discriminators. Discord apparently decided that not including those is a "much better" choice...
- * @source https://github.com/Guliveer/AtBeforeUsername
- * @invite PGMyEVY
+ * @name OrangesTweaks
+ * @author i0rangish
+ * @version 1.0
+ * @description i0rangish's various tweaks and personal Discord theme :D
+ * @source https://github.com/sahmed011/dots
  */
 
 .userTagUsernameBase-267ALn,
@@ -25,4 +24,147 @@
 
 .username-3JLfHz.discriminator-hnHkyt ~ .discriminator-hnHkyt::before {
   content: none !important;
+}
+
+
+/* Add danger colours to dangerous user actions */
+#user-context-close-dm, #user-context-remove-friend, #user-context-block { color: var(--status-danger) }
+#user-context-close-dm:active, #user-context-remove-friend:active, #user-context-block:active {
+    background-color: var(--red-500)!important;
+    color: var(--white-500)!important;    
+}
+#user-context-close-dm[class*="focused-"], #user-context-remove-friend[class*="focused-"], #user-context-block[class*="focused-"] {
+    background-color: var(--button-danger-background);
+    color: var(--white-500);   
+}
+
+/* Make Forum Action Bar Sticky */
+.scrollerInner-2PPAp2 {
+  overflow: unset;
+}
+
+/*DIE, DUMB DISCORD BUTTONS!!!!! */
+*[aria-label="Family Center"] {
+  display: none;
+}
+
+button[aria-label="Open GIF picker"],
+button[aria-label="Open sticker picker"]
+{ display: none; }
+.emojiButton-3FRTuj{
+    /* emoji button */
+    display: none;
+}
+
+/*Hiding Useless Discoverable Badge*/
+.communityInfo-3YsNIn{
+  display: none;
+  }
+
+.buttons-uaqb-5>.button-ejjZWC:first-child,
+.link-39sEB3[href="/store"],
+[class*="badgeContainer-"]:has([class*="bogoTrialBadge-"]),
+[class*="giftCodeContainer-"]:first-child,
+[aria-label="Customize your own profile theme, banner, animated avatar, and more with Nitro!"],
+.containerWithMargin-1CVXAM {
+  display: none;
+}
+
+[class*=premiumIconWrapper] {
+  display: none;
+  }
+
+[class*=gifTag] {
+  display: none;
+}
+
+/* Radial Status */
+:root {
+  --rs-online-color: #43b581; /* default: #43b581 */
+  --rs-idle-color: #faa61a; /* default: #faa61a */
+  --rs-dnd-color: #f04747; /* default: #f04747 */
+  --rs-offline-color: #636b75; /* default: #636b75 */
+  --rs-streaming-color: #643da7; /* default: #643da7 */
+  --rs-bot-color: #5865f2; /* default: #5865f2 */
+  --rs-spacer-color: transparent; /* default: transparent*/
+  --rs-show-platformindicators: none; /* default: none */
+  --rs-small-size: 0.85; /* default: 0.85 */
+  --rs-small-roundness: 100%; /* default: 100% */
+  --rs-small-thickness: 2.5px; /* default: 2.5px */
+  --rs-small-glow: 1px; /* default: 0px */
+  --rs-small-spacing: 1px; /* default: 4px */
+  --rs-medium-size: 1; /* default: 1 */
+  --rs-medium-roundness: 100%; /* default: 100% */
+  --rs-medium-thickness: 2.5px; /* default: 2.5px */
+  --rs-medium-glow: 1px; /* default: 0px */
+  --rs-medium-spacing: 1px; /* default: 4px */
+  --rs-large-size: 1; /* default: 1 */
+  --rs-large-roundness: 100%; /* default: 100% */
+  --rs-large-thickness: 2.5px; /* default: 2.5px */
+  --rs-large-glow: 1px; /* default: 0px */
+  --rs-large-spacing: 1px; /* default: 4px */
+}
+
+/* Lock jangle when attempting to open locked channels */
+
+@keyframes lockjangle {
+  from { transform: rotate(0deg) }
+  33% { transform: rotate(-20deg) }
+  66% { transform: rotate(20deg) }
+  to { transform: rotate(0deg) }
+}
+.containerDefault-YUSmu3.selected-2TbFuo [aria-label="Text (Limited)"] svg {
+  animation: lockjangle .3s;
+  animation-iteration-count: 2;
+}
+
+/* Animated Vencord Toolbox oneko icon */
+[src="https://raw.githubusercontent.com/Vencord/Website/main/public/assets/favicon.png"] {
+  content: url(https://i.ibb.co/NjdTQxq/ambient.gif);
+  width: 24px;
+  height: 24px;
+}
+[src="https://raw.githubusercontent.com/Vencord/Website/main/public/assets/favicon.png"]:hover {
+  content: url(https://i.ibb.co/RzMdYJp/hover2.gif);
+  width: 24px;
+  height: 24px;
+}
+
+/* smol member list platform indicators to fit longer names */
+
+[class^="nameAndDecorator"] .vc-platform-indicator {
+  flex-direction: column;
+  margin-left: 2px !important;
+  margin-right: -2px;
+  max-height: 20px;
+}
+[class^="nameAndDecorator"] .vc-platform-indicator svg {
+  width: 12px;
+}
+[class^="nameAndDecorator"] .vc-platform-indicator :only-child {
+  height: 10px;
+}
+[class^="nameAndDecorator"] .vc-platform-indicator :nth-child(3) {
+  position: absolute;
+  height: 10px;
+  margin-left: 20px;
+}
+[class^="nameAndDecorator"]:has(> .vc-platform-indicator :nth-child(3)) [class^="botTag"] {
+  margin-left: 12px;
+}
+
+/* Centered usernames */
+.usernameSection-3FppkT,
+.container-3g15px {
+    text-align: center;
+}
+
+.customStatus-19KW6v {
+    display: flex;
+}
+
+.nameTag-35jqbZ,
+.customStatus-19KW6v,
+.tabBar-2hXqzU {
+    justify-content: center;
 }

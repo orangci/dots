@@ -1,0 +1,30 @@
+{
+    "KPlugin": {
+        "Authors": [
+            {
+                "Email": "hein@kde.org",
+                "Name": "Eike Hein"
+            },
+            {
+                "Email": "himprakashd@gmail.com",
+                "Name": "Himprakash Deka"
+            }
+        ],
+        "Category": "Application Launchers",
+        "Description": "An improved fork of Kicker Application Menu which is a launcher based on cascading popup menus",
+        "EnabledByDefault": true,
+        "Icon": "start-here-kde",
+        "Id": "org.kde.plasma.betterkicker",
+        "License": "GPL-2.0+",
+        "Name": "Better Application Menu",
+        "ServiceTypes": [
+            "Plasma/Applet"
+        ],
+        "Version": "2.1"
+    },
+    "X-Plasma-API": "declarativeappletscript",
+    "X-Plasma-MainScript": "ui/main.qml",
+    "X-Plasma-Provides": [
+        "org.kde.plasma.launchermenu"
+    ]
+}

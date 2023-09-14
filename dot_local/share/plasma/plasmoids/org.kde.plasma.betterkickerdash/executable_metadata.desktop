@@ -1,0 +1,22 @@
+[Desktop Entry]
+Name=Better Application Dashboard
+Comment=An improved fork of Kicker Dash which is a fullscreen application launcher
+
+Type=Service
+Icon=start-here-kde
+X-KDE-ServiceTypes=Plasma/Applet
+
+X-Plasma-API=declarativeappletscript
+X-Plasma-MainScript=ui/main.qml
+X-Plasma-Provides=org.kde.plasma.launchermenu
+X-Plasma-RootPath=org.kde.plasma.betterkicker
+X-Plasma-RequiredExtensions=LaunchApp
+
+X-KDE-PluginInfo-Author=various
+X-KDE-PluginInfo-Name=org.kde.plasma.betterkickerdash
+X-KDE-PluginInfo-Version=2.2
+X-KDE-PluginInfo-Category=Application Launchers
+X-KDE-PluginInfo-License=GPL-2.0+
+X-KDE-PluginInfo-EnabledByDefault=true
+
+X-KPackage-Dependencies=kns://plasmoids.knsrc/api.kde-look.org/1897850

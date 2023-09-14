@@ -1,0 +1,19 @@
+[Desktop Entry]
+Name=Simple Application Launcher
+Comment=A Simplified fork of Kickoff Application Launcher Menu
+
+Type=Service
+Icon=start-here-kde
+X-KDE-ServiceTypes=Plasma/Applet
+
+X-Plasma-API=declarativeappletscript
+X-Plasma-MainScript=ui/Kickoff.qml
+X-Plasma-Provides=org.kde.plasma.launchermenu
+X-Plasma-RequiredExtensions=LaunchApp
+
+X-KDE-PluginInfo-Author=various
+X-KDE-PluginInfo-Name=org.kde.plasma.simplekickoff
+X-KDE-PluginInfo-Version=2.5
+X-KDE-PluginInfo-Category=Application Launchers
+X-KDE-PluginInfo-License=GPL-2.0+
+X-KDE-PluginInfo-EnabledByDefault=true

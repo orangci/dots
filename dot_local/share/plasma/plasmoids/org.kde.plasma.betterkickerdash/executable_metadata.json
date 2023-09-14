@@ -1,0 +1,34 @@
+{
+    "KPlugin": {
+        "Authors": [
+            {
+                "Email": "hein@kde.org",
+                "Name": "Eike Hein"
+            },
+            {
+                "Email": "himprakashd@gmail.com",
+                "Name": "Himprakash Deka"
+            }
+        ],
+        "Category": "Application Launchers",
+        "Description": "An improved fork of Kicker Dash which is a fullscreen application launcher",
+        "EnabledByDefault": true,
+        "FormFactors": [
+            "desktop"
+        ],
+        "Icon": "start-here-kde",
+        "Id": "org.kde.plasma.betterkickerdash",
+        "License": "GPL-2.0+",
+        "Name": "Better Application Dashboard",
+        "ServiceTypes": [
+            "Plasma/Applet"
+        ],
+        "Version": "2.2"
+    },
+    "X-Plasma-API": "declarativeappletscript",
+    "X-Plasma-MainScript": "ui/main.qml",
+    "X-Plasma-Provides": [
+        "org.kde.plasma.launchermenu"
+    ],
+    "X-Plasma-RootPath": "org.kde.plasma.betterkicker"
+}
