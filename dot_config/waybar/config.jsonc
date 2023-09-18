@@ -1,8 +1,8 @@
 {
     "layer": "top",
-    "modules-left": ["cpu", "memory", "temperature", "network", "sbluetooth", "disk", "tray"],
-    "modules-center": [],
-    "modules-right": ["backlight", "pulseaudio", "clock", "battery"],
+    "modules-left": ["cpu", "memory", "temperature", "network", "disk"],
+    "modules-center": ["clock"],
+    "modules-right": ["tray", "pulseaudio"],
 
 
 
@@ -12,8 +12,6 @@
         "scroll-step": 2,
         "format": "{icon} {volume}%",
         "format-muted": "{icon} {volume}%",
-        "on-click": "pavucontrol",
-        "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
         "format-icons": {
             "headphone": "",
             "hands-free": "",
@@ -29,7 +27,7 @@
     "network": {
         "format-wifi": "{essid} ({signalStrength}%) ",
         "format": " {essid}",
-        "format-ethernet": "{ipaddr}/{cidr} ",
+        "format-ethernet": "{ipaddr}/{cidr}  ",
         "tooltip-format": "{ifname} via {gwaddr} ",
         "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
         "tooltip-format-ethernet": "{ifname} ",
@@ -37,19 +35,6 @@
         "max-length": 50
     },
 
-    "battery": {
-        "states": {
-            "good": 95,
-            "warning": 30,
-            "critical": 20
-        },
-        "format": "{icon}  {capacity}%",
-        "tooltip-format": "{time} until full / empty",
-        "format-charging": " {capacity}%",
-        "format-plugged": " {capacity}%",
-        "format-alt": "{time} {icon}",
-        "format-icons": ["", "", "", "", ""]
-    },
     "tray": {
         "show-passive-items": true,
         "icon-size": 18,
@@ -57,8 +42,8 @@
     },
 
     "clock": {
-        "format": "{: %H:%M}",
-        "tooltip-format": "{: %A, %B %d, %Y}",
+        "format": "{: %H:%M 󰃭 %a %d}",
+        "tooltip-format": "<tt><big>{calendar}</big></tt>"
     },
 
     "cpu": {
@@ -85,9 +70,19 @@
         "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
         "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%"
     },
+
     "memory": {
         "interval": 30,
-        "format": " {}%",
-        "max-length": 10
+        "format": "󰾆 {percentage}%",
+        "format-alt": "󰾅 {used}GB",
+        "max-length": 30,
+        "tooltip": true,
+        "tooltip-format": " {used:0.1f}GB/{total:0.1f}GB"
+    },
+
+    "battery": {
+        "format": "{capacity}%",
+        "interval": 60,
+        "tooltip": false,
     },
 }
