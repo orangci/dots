@@ -9,14 +9,16 @@ Hi there! You've stumbled on my dotfiles :D. I run NixOS 23.11 unstable and KDE 
 + **OS**							• [`NixOS`](https://nixos.org/)
 + **DE**							• [`KDE`](https://swaywm.org/)
 + **Bar**							• [`waybar`](https://github.com/Alexays/Waybar)
-+ **Launcher**						• [`Krun`](https://man.archlinux.org/man/wofi.1.en)
-+ **Theme**							• [`catppuccin`](https://catppuccin.com/)
++ **Cursor**						• [`Oreo Orange Spark`](https://github.com/varlesh/oreo-cursors)
++ **Icons**							• [`Tela`](https://github.com/vinceliuice/Tela-icon-theme)
++ **Colors**							• [`Revontuli`](https://codeberg.org/akselmo/Revontuli/src/branch/main)
 + **Font**							• [`Maple Mono/Jetbrains Mono(Nerd)`](https://github.com/ryanoasis/nerd-fonts)
 + **Shell**							• [`bash`](https://www.gnu.org/software/bash/)
 + **Terminal**						• [`Konsole`](https://konsole.kde.org/)
++ **Editor**						• [`Nano`](https://www.nano-editor.org/)
 + **File Manager**							• [`Dolphin`](https://github.com/KDE/dolphin)
 + **Browser**						• [`firefox`](https://www.mozilla.org/en-US/firefox/new/)
-+ **Wallpapers**						• [`Here`](https://www.github.com/sahmed011/dots/Pictures/Wallpapers)
++ **Wallpapers**						• [`Here`](https://github.com/sahmed011/dots/tree/main/Pictures/Wallpapers)
 
 ----------
 
