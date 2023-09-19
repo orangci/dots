@@ -1,14 +1,13 @@
 # orange's dots
 Hi there! You've stumbled on my dotfiles :D. I run NixOS 23.11 unstable and KDE Plasma 5.27.7 (Wayland). [Here is the NixOS config file](https://github.com/sahmed011/dots/blob/main/configuration.nix).
 ## Pictures :D
-![desktop](/Pictures/ Desktop Pics/emptyDesktopJupiter.png)
-![workflow](/Pictures/ Desktop Pics/workflow.mp4)
+![desktop](https://raw.githubusercontent.com/sahmed011/dots/main/Pictures/Desktop%20Pics/emptyDesktopJupiter.png)
 ----------
 
 ## Configuration :computer:
 
 + **OS**							• [`NixOS`](https://nixos.org/)
-+ **DE**							• [`Kwin`](https://swaywm.org/)
++ **DE**							• [`KDE`](https://swaywm.org/)
 + **Bar**							• [`waybar`](https://github.com/Alexays/Waybar)
 + **Launcher**						• [`Krun`](https://man.archlinux.org/man/wofi.1.en)
 + **Theme**							• [`catppuccin`](https://catppuccin.com/)
