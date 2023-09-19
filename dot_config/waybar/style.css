@@ -63,4 +63,7 @@ window#waybar {
     border-radius: 100px;
     transition: none;
     border: solid #ffaa00;
+    border-style: solid;
+    border-color: #ffaa00;
+    border-width: 1px;
 }
