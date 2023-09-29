@@ -993,6 +993,10 @@ TriggersCount=1
 GesturePointData=0,0.0625,-0.5,0.5,1,0.0625,0.0625,-0.5,0.5,0.875,0.125,0.0625,-0.5,0.5,0.75,0.1875,0.0625,-0.5,0.5,0.625,0.25,0.0625,-0.5,0.5,0.5,0.3125,0.0625,-0.5,0.5,0.375,0.375,0.0625,-0.5,0.5,0.25,0.4375,0.0625,-0.5,0.5,0.125,0.5,0.0625,0.5,0.5,0,0.5625,0.0625,0.5,0.5,0.125,0.625,0.0625,0.5,0.5,0.25,0.6875,0.0625,0.5,0.5,0.375,0.75,0.0625,0.5,0.5,0.5,0.8125,0.0625,0.5,0.5,0.625,0.875,0.0625,0.5,0.5,0.75,0.9375,0.0625,0.5,0.5,0.875,1,0,0,0.5,1
 Type=GESTURE
 
+[DirSelect Dialog]
+DirSelectDialog Size[$d]
+History Items[$d]
+
 [General]
 AccentColor[$d]
 ColorScheme[$d]
@@ -1019,6 +1023,7 @@ WindowsCount=0
 Theme[$d]
 
 [KDE]
+AnimationDurationFactor[$d]
 LookAndFeelPackage[$d]
 ScrollbarLeftClickNavigatesByPage[$d]
 SingleClick[$d]
@@ -1048,6 +1053,12 @@ View Style[$d]
 AlreadyImported=defaults,kde32b1,konqueror_gestures_kde321
 Disabled=false
 Version=2
+
+[PreviewSettings]
+MaximumRemoteSize[$d]
+
+[Shortcuts]
+DeleteFile[$d]
 
 [Voice]
 Shortcut=

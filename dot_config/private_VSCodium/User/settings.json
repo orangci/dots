@@ -12,5 +12,6 @@
     "editor.minimap.enabled": false,
     "[css]": {
         "editor.defaultFormatter": "lonefy.vscode-JS-CSS-HTML-formatter"
-    }
+    },
+    "liveServer.settings.donotShowInfoMsg": true
 }

@@ -9,6 +9,7 @@ Hi there! You've stumbled on my dotfiles :D. I run NixOS 23.11 unstable and KDE 
 + **OS**							• [`NixOS`](https://nixos.org/)
 + **DE**							• [`KDE`](https://swaywm.org/)
 + **Bar**							• [`waybar`](https://github.com/Alexays/Waybar)
++ **Dock**							• [`Latte`](https://github.com/KDE/latte-dock)
 + **Cursor**						• [`Oreo Orange Spark`](https://github.com/varlesh/oreo-cursors)
 + **Icons**							• [`Tela`](https://github.com/vinceliuice/Tela-icon-theme)
 + **Colors**							• [`Revontuli`](https://codeberg.org/akselmo/Revontuli/src/branch/main)

@@ -10,15 +10,20 @@ sortOrder=0
 [Notification Messages]
 klipperClearHistoryAskAgain=false
 
+[PlasmaThemeExtended]
+outlineWidth=1
+
 [ScreenConnectors]
 10=HDMI-A-1:::0,0 1920x1080
 11=:::0,0 0x0
+12=DP-1:::0,0 2194x1234
+13=HDMI-1:::0,0 1920x1080
 
 [UniversalSettings]
 badges3DStyle=false
 canDisableBorders=false
 contextMenuActionsAlwaysShown=_layouts,_preferences,_quit_latte,_separator1,_add_latte_widgets,_add_view
-inAdvancedModeForEditSettings=false
+inAdvancedModeForEditSettings=true
 inConfigureAppletsMode=false
 isAvailableGeometryBroadcastedToPlasma=true
 launchers=

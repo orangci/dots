@@ -55,15 +55,15 @@ window#waybar {
 #pulseaudio,
 #temperature,
 #disk {
-    background: #1a1a1a;
-    color: #ffbb00;
+/*    background: #1a1a1a; */
+    color: /* #ffbb00*/ #000000;
     font-size: 15px;
     margin: 3px 8px;
     padding: 5px 10px;
     border-radius: 100px;
     transition: none;
-    border: solid #ffaa00;
+/*    border: solid #ffaa00;
     border-style: solid;
     border-color: #ffaa00;
-    border-width: 1px;
+    border-width: 1px; */
 }
