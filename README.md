@@ -92,4 +92,3 @@ you can pull and apply the latest changes from this repo with:
 ```console
 $ chezmoi update -v
 ```
-README borrowed from @i4pg shukran!, and it says in the licence I have to put this here: Copyright (c) 2023 Abdullah Alattas.
