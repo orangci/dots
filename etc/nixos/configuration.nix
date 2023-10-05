@@ -82,6 +82,11 @@
       youtube-dl
       zfxtop
       neofetch
+      bfg-repo-cleaner
+      traceroute
+      alejandra
+      cava
+      cmus
       neovim
       curl
       wget
@@ -91,6 +96,7 @@
       gparted
       waybar
       unzip
+      tuifeed
       vlc
       kate
       speedtest-cli
@@ -100,11 +106,13 @@
       ffmpeg
       bat
       prismlauncher
+      gh
       zoom-us
       unzip
       lsd
       fd
       github-desktop
+      catimg
       gnumake
       krename
       armcord
@@ -159,5 +167,9 @@ nixpkgs.config.allowUnfree = true;
 
 # Enable experimental nix features
 nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+# auto store optimization
+nix.settings.auto-optimise-store = true;
+
 
 }
