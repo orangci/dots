@@ -1,6 +1,0 @@
-[Desktop Entry]
-Exec=/home/sahmed011/Data/Dotfiles/startup.sh
-Icon=dialog-scripts
-Name=startup.sh
-Type=Application
-X-KDE-AutostartScript=true
