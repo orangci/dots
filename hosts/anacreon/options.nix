@@ -1,6 +1,7 @@
 # PLEASE READ THE WIKI FOR DETERMINING
-# WHAT TO PUT HERE AS OPTIONS.
+# WHAT TO PUT HERE AS OPTIONS. 
 # https://gitlab.com/Zaney/zaneyos/-/wikis/Setting-Options
+
 let
   setUsername = "orangc";
   setHostname = "anacreon";
@@ -9,12 +10,12 @@ in {
   username = "${setUsername}";
   hostname = "${setHostname}";
   userHome = "/home/${setUsername}";
-  flakeDir = "/home/${setUsername}/dots";
+  flakeDir = "/home/${setUsername}/zaneyos";
   wallpaperGit = "https://github.com/orxngc/walls.git"; # Can be changed IF you know what your doing
   wallpaperDir = "/home/${setUsername}/Pictures/walls";
   screenshotDir = "/home/${setUsername}/Pictures/Screenshots";
-  flakePrev = "/home/${setUsername}/.anacreon-previous";
-  flakeBackup = "/home/${setUsername}/.anacreon-backup";
+  flakePrev = "/home/${setUsername}/.zaneyos-previous";
+  flakeBackup = "/home/${setUsername}/.zaneyos-backup";
 
   # Git Configuration ( For Pulling Software Repos )
   gitUsername = "orxngc";
@@ -47,7 +48,7 @@ in {
   cpuType = "intel";
   gpuType = "intel";
 
-  # Nvidia Hybrid Devices ONLY NEEDED FOR HYBRID SYSTEMS!
+  # Nvidia Hybrid Devices ONLY NEEDED FOR HYBRID SYSTEMS! 
   intel-bus-id = "PCI:1:0:0";
   nvidia-bus-id = "PCI:0:2:0";
 
@@ -65,7 +66,7 @@ in {
 
   # Program Options
   browser = "firefox"; # Install & Set Default Browser
-  terminal = "kitty"; # Set Default System Terminal
+  terminal = "kitty";  # Set Default System Terminal
   distrobox = false;
   flatpak = true;
   kdenlive = false;
@@ -83,7 +84,8 @@ in {
 
   # Enable Python & PyCharm
   python = false;
-
+  
   # Enable SyncThing
   syncthing = false;
+
 }
