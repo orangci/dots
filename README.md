@@ -19,7 +19,8 @@ What I use:
 - **Prompt** • [`Starship`](https://starship.rs/)
 - **Image Viwer** • [`qimgv`](https://github.com/easymodo/qimgv)
 - **Notification Daemon** • [`swaync`](https://github.com/ErikReider/SwayNotificationCenter)
-ALl my wallpapers are available [here](https://github.com/orxngc/dots).
+
+All my wallpapers are available [here](https://github.com/orxngc/dots).
 
 ## Screenshots:
 
