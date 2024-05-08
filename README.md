@@ -25,14 +25,14 @@ ALl my wallpapers are available [here](https://github.com/orxngc/dots).
 
 ## Installation
 Because this is a flake, it's quite easy to install. Make sure to start in your $HOME.
-First clone this repository. \n
+First clone this repository.
 `git clone https://github.com/orxngc/dots` 
-Enter it. \n
+Enter it.
 `cd dots`
-Make sure to generate your hardware config. \n
+Make sure to generate your hardware config.
 `nixos-generate-config --show-hardware-config > hosts/anacreon/hardware.nix`
-Enable flakes:\n
+Enable flakes:
 `NIX_CONFIG="experimental-features = nix-command flakes"`
-Finally, running this command will install my system.\n
-`sudo nixos-rebuild switch --flake .#anacreon`\n
+Finally, running this command will install my system.
+`sudo nixos-rebuild switch --flake .#anacreon`
 Feel free to take these dots and modify them however you want.
