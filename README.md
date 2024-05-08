@@ -21,18 +21,18 @@ What I use:
 - **Notification Daemon** • [`swaync`](https://github.com/ErikReider/SwayNotificationCenter)
 ALl my wallpapers are available [here](https://github.com/orxngc/dots).
 
-Screenshots:
+## Screenshots:
 
 ## Installation
 Because this is a flake, it's quite easy to install. Make sure to start in your $HOME.
-First clone this repository.
-`git clone https://github.com/orxngc/dots`
-Enter it.
+First clone this repository. \n
+`git clone https://github.com/orxngc/dots` 
+Enter it. \n
 `cd dots`
-Make sure to generate your hardware config.
+Make sure to generate your hardware config. \n
 `nixos-generate-config --show-hardware-config > hosts/anacreon/hardware.nix`
-Enable flakes:
+Enable flakes:\n
 `NIX_CONFIG="experimental-features = nix-command flakes"`
-Finally, running this command will install my system.
-`sudo nixos-rebuild switch --flake .#anacreon`
+Finally, running this command will install my system.\n
+`sudo nixos-rebuild switch --flake .#anacreon`\n
 Feel free to take these dots and modify them however you want.
