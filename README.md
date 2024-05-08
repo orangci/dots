@@ -13,12 +13,13 @@ What I use:
 - **DM** • [`SDDM`](https://github.com/sddm/sddm)
 - **Wallpaper Daemon** • [`swww`](https://github.com/LGFae/swww)
 - **File Manager** • `Thunar`
-- **Screenshots** • `grim` and `slurp`
-- **Clipboard** • `cliphist` with `wl-clipboard`
+- **Screenshots** • [`grim`](https://github.com/emersion/grim)
+- **Clipboard** • [`cliphist`](https://github.com/sentriz/cliphist)
 - **Discord Client** • [`Vesktop`](https://vencord.dev)
 - **Prompt** • [`Starship`](https://starship.rs/)
 - **Image Viwer** • [`qimgv`](https://github.com/easymodo/qimgv)
 - **Notification Daemon** • [`swaync`](https://github.com/ErikReider/SwayNotificationCenter)
+- **Fetch** • [`fastfetch`](https://github.com/fastfetch-cli/fastfetch)
 
 All my wallpapers are available [here](https://github.com/orxngc/dots).
 
