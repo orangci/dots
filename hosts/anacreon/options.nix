@@ -1,10 +1,10 @@
 # PLEASE READ THE WIKI FOR DETERMINING
-# WHAT TO PUT HERE AS OPTIONS. 
+# WHAT TO PUT HERE AS OPTIONS.
 # https://gitlab.com/Zaney/zaneyos/-/wikis/Setting-Options
-
 let
   setUsername = "orangc";
   setHostname = "anacreon";
+  currentWallpaper = "$(swww query | grep -o '/[^[:space:]]*')";
 in {
   # No Change Needed Below
   username = "${setUsername}";
@@ -48,7 +48,7 @@ in {
   cpuType = "intel";
   gpuType = "intel";
 
-  # Nvidia Hybrid Devices ONLY NEEDED FOR HYBRID SYSTEMS! 
+  # Nvidia Hybrid Devices ONLY NEEDED FOR HYBRID SYSTEMS!
   intel-bus-id = "PCI:1:0:0";
   nvidia-bus-id = "PCI:0:2:0";
 
@@ -66,9 +66,9 @@ in {
 
   # Program Options
   browser = "firefox"; # Install & Set Default Browser
-  terminal = "kitty";  # Set Default System Terminal
+  terminal = "kitty"; # Set Default System Terminal
   distrobox = false;
-  flatpak = true;
+  flatpak = false;
   kdenlive = false;
   blender = false;
   enableZeroAD = false;
@@ -84,8 +84,7 @@ in {
 
   # Enable Python & PyCharm
   python = false;
-  
+
   # Enable SyncThing
   syncthing = false;
-
 }

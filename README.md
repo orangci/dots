@@ -1,9 +1,38 @@
 # orangc's dots
-My dotfiles are a slightly modified version of [zaneyos by zaney](https://gitlab.com/Zaney/zaneyos). They are meant for my own personal use, but if you run the install script you can use them as well.
+This is a NixOS flake. Thus you can only use this on NixOS.
+It is originally built off of Zaney's [flake](https://gitlab.com/zaney/zaneyos).
 
-## A few differences/modifications that I've added ontop of zaney's configs
-- Keybinds are different. I updated the bindings button on the waybar to reflect these changes.
-- Discord now comes with vencord out of the box (vesktop instead of the official client.)
-- The waybar is reordered, and I added a custom module that interfaces with playerctl controls.
-- I fixed a problem where there wasn't really a way to lock the screen. The exit menu in the waybar had a lock button which didn't work, I fixed this (w/ swaylock.)
-- And of course my own personal styling and configs, like for example this uses my [wallpaper repo](https://github.com/orxngc/walls).
+What I use:
+- **OS** • [`NixOS`](https://nixos.org/)
+- **WM** • [`Hyprland`](https://hyprland.org)
+- **Theme** • [`Catppuccin Mocha`](https://catppuccin.com/)
+- **Terminal** • [`Kitty`](https://github.com/kovidgoyal/kitty)
+- **Editor** • [`Neovim`](https://neovim.io/) with [`nixvim`](https://github.com/nix-community/nixvim)
+- **Browser** • [`Firefox`](https://www.mozilla.org/en-US/firefox/)
+- **Lockscreen** • [`Hyprlock`](https://github.com/hyprwm/hyprlock)
+- **DM** • [`SDDM`](https://github.com/sddm/sddm)
+- **Wallpaper Daemon** • [`swww`](https://github.com/LGFae/swww)
+- **File Manager** • `Thunar`
+- **Screenshots** • `grim` and `slurp`
+- **Clipboard** • `cliphist` with `wl-clipboard`
+- **Discord Client** • [`Vesktop`](https://vencord.dev)
+- **Prompt** • [`Starship`](https://starship.rs/)
+- **Image Viwer** • [`qimgv`](https://github.com/easymodo/qimgv)
+- **Notification Daemon** • [`swaync`](https://github.com/ErikReider/SwayNotificationCenter)
+ALl my wallpapers are available [here](https://github.com/orxngc/dots).
+
+Screenshots:
+
+## Installation
+Because this is a flake, it's quite easy to install. Make sure to start in your $HOME.
+First clone this repository.
+`git clone https://github.com/orxngc/dots`
+Enter it.
+`cd dots`
+Make sure to generate your hardware config.
+`nixos-generate-config --show-hardware-config > hosts/anacreon/hardware.nix`
+Enable flakes:
+`NIX_CONFIG="experimental-features = nix-command flakes"`
+Finally, running this command will install my system.
+`sudo nixos-rebuild switch --flake .#anacreon`
+Feel free to take these dots and modify them however you want.
