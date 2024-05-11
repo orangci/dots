@@ -10,12 +10,12 @@ in {
   username = "${setUsername}";
   hostname = "${setHostname}";
   userHome = "/home/${setUsername}";
-  flakeDir = "/home/${setUsername}/zaneyos";
+  flakeDir = "/home/${setUsername}/dots";
   wallpaperGit = "https://github.com/orxngc/walls.git"; # Can be changed IF you know what your doing
   wallpaperDir = "/home/${setUsername}/Pictures/walls";
   screenshotDir = "/home/${setUsername}/Pictures/Screenshots";
-  flakePrev = "/home/${setUsername}/.zaneyos-previous";
-  flakeBackup = "/home/${setUsername}/.zaneyos-backup";
+  flakePrev = "/home/${setUsername}/.dots-previous";
+  flakeBackup = "/home/${setUsername}/.dots-backup";
 
   # Git Configuration ( For Pulling Software Repos )
   gitUsername = "orxngc";

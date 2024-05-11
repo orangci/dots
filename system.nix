@@ -1,19 +1,31 @@
-{ inputs, config, pkgs,
-  username, hostname, host, ... }:
-
-let 
-  inherit (import ./hosts/${host}/options.nix) 
-    theLocale theTimezone gitUsername
-    theShell wallpaperDir wallpaperGit
-    theLCVariables theKBDLayout flakeDir
-    theme;
+{
+  inputs,
+  config,
+  pkgs,
+  username,
+  hostname,
+  host,
+  ...
+}: let
+  inherit
+    (import ./hosts/${host}/options.nix)
+    theLocale
+    theTimezone
+    gitUsername
+    theShell
+    wallpaperDir
+    wallpaperGit
+    theLCVariables
+    theKBDLayout
+    flakeDir
+    theme
+    ;
 in {
-  imports =
-    [
-      ./hosts/${host}/hardware.nix
-      ./config/system
-      ./users/users.nix
-    ];
+  imports = [
+    ./hosts/${host}/hardware.nix
+    ./config/system
+    ./users/users.nix
+  ];
 
   # Enable networking
   networking.hostName = "${hostname}"; # Define your hostname
@@ -45,7 +57,7 @@ in {
 
   environment.variables = {
     FLAKE = "${flakeDir}";
-    ZANEYOS_VERSION="1.0";
+    ZANEYOS_VERSION = "1.0";
     POLKIT_BIN = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
   };
 
@@ -53,7 +65,7 @@ in {
   nix = {
     settings = {
       auto-optimise-store = true;
-      experimental-features = [ "nix-command" "flakes" ];
+      experimental-features = ["nix-command" "flakes"];
       substituters = ["https://hyprland.cachix.org"];
       trusted-public-keys = [
         "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
