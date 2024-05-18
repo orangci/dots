@@ -1,10 +1,6 @@
-# PLEASE READ THE WIKI FOR DETERMINING
-# WHAT TO PUT HERE AS OPTIONS.
-# https://gitlab.com/Zaney/zaneyos/-/wikis/Setting-Options
 let
   setUsername = "orangc";
   setHostname = "anacreon";
-  currentWallpaper = "$(swww query | grep -o '/[^[:space:]]*')";
 in {
   # No Change Needed Below
   username = "${setUsername}";
@@ -29,7 +25,6 @@ in {
   extraMonitorSettings = "";
 
   # Waybar Settings
-  waybarAnim = true; # Enable / Disable Waybar Animation CSS
   bar-number = true; # Enable / Disable Workspace Numbers In Waybar
 
   # System Settings
@@ -68,7 +63,7 @@ in {
   browser = "firefox"; # Install & Set Default Browser
   terminal = "kitty"; # Set Default System Terminal
   distrobox = false;
-  flatpak = false;
+  flatpak = true;
   kdenlive = false;
   blender = false;
   enableZeroAD = false;
