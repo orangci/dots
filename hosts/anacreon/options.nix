@@ -21,7 +21,6 @@ in {
   theme = "catppuccin-mocha";
 
   # Hyprland Settings
-  borderAnim = true; # Enable / Disable Hyprland Border Animation
   extraMonitorSettings = "";
 
   # Waybar Settings
@@ -31,8 +30,8 @@ in {
   clock24h = true;
   theLocale = "en_US.UTF-8";
   theKBDLayout = "us";
-  theSecondKBDLayout = "de";
-  theKBDVariant = "";
+  theSecondKBDLayout = "ara";
+  theKBDVariant = "qwerty";
   theLCVariables = "en_US.UTF-8";
   theTimezone = "Asia/Riyadh";
   theShell = "bash"; # Possible options: bash, zsh
