@@ -25,10 +25,12 @@ All my wallpapers are available [here](https://github.com/orxngc/dots).
 
 <details>
   <summary>Screenshots:</summary>
-  [![yes](https://raw.githubusercontent.com/orxngc/dots/anacreon/config/home/files/desktopPics/tiledGalaxy.png)]
-  [![yes](https://raw.githubusercontent.com/orxngc/dots/anacreon/config/home/files/desktopPics/blank.png)]
-  [![yes](https://raw.githubusercontent.com/orxngc/dots/anacreon/config/home/files/desktopPics/floating.png)]
-</details>
+
+  ![yes](https://raw.githubusercontent.com/orxngc/dots/anacreon/config/home/files/desktopPics/tiledGalaxy.png)
+  
+  ![yes](https://raw.githubusercontent.com/orxngc/dots/anacreon/config/home/files/desktopPics/blank.png)
+
+  ![yes](https://raw.githubusercontent.com/orxngc/dots/anacreon/config/home/files/desktopPics/floating.png)
 ## Installation
 Because this is a flake, it's quite easy to install. Make sure to start in your $HOME.
 First clone this repository.
