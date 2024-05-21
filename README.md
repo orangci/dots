@@ -23,8 +23,12 @@ What I use:
 
 All my wallpapers are available [here](https://github.com/orxngc/dots).
 
-## Screenshots:
-
+<details>
+  <summary>## Screenshots:</summary>
+  ![yes](https://github.com/orxngc/dots/blob/anacreon/config/home/files/desktopPics/tiledGalaxy.png)
+  ![yes](https://github.com/orxngc/dots/blob/anacreon/config/home/files/desktopPics/blank.png)
+  ![yes](https://github.com/orxngc/dots/blob/anacreon/config/home/files/desktopPics/floating.png)
+</details>
 ## Installation
 Because this is a flake, it's quite easy to install. Make sure to start in your $HOME.
 First clone this repository.
