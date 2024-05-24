@@ -72,8 +72,8 @@ in {
     zip
     qimgv
     hyprlock
+    wttrbar
     google-chrome
-    wf-recorder
     obsidian
     (nerdfonts.override {fonts = ["JetBrainsMono"];})
     # Import Scripts

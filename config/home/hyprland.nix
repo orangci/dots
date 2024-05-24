@@ -133,16 +133,16 @@ in
               drop_shadow = false
               blur {
                   enabled = true
-                  size = 10
+                  size = 6
                   passes = 3
                   ignore_opacity = true
                   popups = true
                   new_optimizations = true
                   xray = true
               }
-              inactive_opacity = 0.8
-              active_opacity = 0.9
-              fullscreen_opacity = 0.9
+              inactive_opacity = 0.85
+              active_opacity = 0.925
+              fullscreen_opacity = 0.925
             }
             plugin {
               hyprtrails {
