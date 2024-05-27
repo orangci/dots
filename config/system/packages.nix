@@ -54,6 +54,7 @@
     dconf.enable = true;
     seahorse.enable = true;
     starship.enable = true;
+    noisetorch.enable = true;
     hyprland = {
       enable = true;
       package = inputs.hyprland.packages.${pkgs.system}.hyprland;
@@ -70,9 +71,8 @@
 
   virtualisation.libvirtd.enable = true;
   programs.steam = {
-    enable = true;
+    enable = false;
     remotePlay.openFirewall = true;
     dedicatedServer.openFirewall = true;
   };
-  programs.noisetorch.enable = true;
 }

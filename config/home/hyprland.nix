@@ -178,7 +178,7 @@ in
 
             # >>> KEYBINDINDS <<<
             bind = ${modifier},Return,exec,${terminal}
-            bind = ALT,SPACE,exec,rofi-launcher
+            bind = ALT,SPACE,exec,rofi -show drun -theme launcher.rasi
             bind = ${modifier}SHIFT,W,exec,web-search
             bind = ${modifier}SHIFT,N,exec,swaync-client -rs
             ${
@@ -200,6 +200,7 @@ in
             bind = ${modifier},A,exec,task-waybar
             bind = ${modifier},G,exec,google-chrome-stable
             bind = ${modifier},E,exec,thunar
+            bind = ${modifier},M,exec,rofi-prism-exec
             bind = ${modifier},Q,killactive
             bind = ${modifier},SEMICOLON,pseudo
             bind = ${modifier}SHIFT,I,togglesplit

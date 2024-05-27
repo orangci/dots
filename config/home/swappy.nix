@@ -9,7 +9,7 @@ in {
   home.file.".config/swappy/config".text = ''
     [Default]
     save_dir=${screenshotDir}
-    save_filename_format=screenshot-%Y.%m.%d-%H.%M.png
+    save_filename_format=%M.%d.%Y-%H.%M.png
     show_panel=false
     line_size=5
     text_size=20

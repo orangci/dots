@@ -11,6 +11,7 @@
   home.file.".config/rofi/rofi.jpg".source = ./files/rofi.jpg;
   home.file.".config/starship.toml".source = ./files/starship.toml;
   home.file.".config/swaylock-bg.jpg".source = ./files/media/swaylock-bg.jpg;
+  home.file.".config/rofi/rofi-prism.sh".source = ./files/rofi-prism.sh;
   home.file.".local/share/fonts" = {
     source = ./files/fonts;
     recursive = true;
