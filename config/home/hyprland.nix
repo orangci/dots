@@ -98,9 +98,9 @@ in
 
 
             # >>> WINDOW RULES <<<
-            windowrule = opacity 1.0 override 1.0 override 1.0 override,^(Zoom)$
-            windowrule = noblur,^(Zoom)$
-            windowrule = opacity 1.0 override 1.0 override 1.0 override,^(Minecraft)$
+            windowrule = opacity:1.0 override,title:^Zoom*
+            windowrule = opacity:1.0 override,title:^Minecraft*
+            windowrule = noblur,title:^Zoom*
 
 
 

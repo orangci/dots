@@ -36,6 +36,7 @@ in {
         display-window:             "";
     	drun-display-format:        "{name} [<span weight='light' size='small'><i>({generic})</i></span>]";
     	window-format:              "{w} · {c} · {t}";
+        no-fading-openclose:        true;
     }
     * {
         border-colour:               #${palette.base0E};
@@ -305,6 +306,7 @@ in {
         display-window:             "";
     	drun-display-format:        "{name} [<span weight='light' size='small'><i>({generic})</i></span>]";
     	window-format:              "{w} · {c} · {t}";
+        no-fading-openclose:        true;
     }
     * {
         border-colour:               #${palette.base0E};
@@ -550,6 +552,7 @@ in {
          show-icons:                 true;
          display-drun:               " Applications";
      	drun-display-format:        "{name}";
+        no-fading-openclose:        true;
      }
 
      /*****----- Main Window -----*****/
@@ -746,6 +749,7 @@ in {
         display-window:             "";
     	drun-display-format:        "{name} [<span weight='light' size='small'><i>({generic})</i></span>]";
     	window-format:              "{w} · {c} · {t}";
+        no-fading-openclose:        true;
     }
     * {
         border-colour:               #${palette.base0E};
@@ -1014,6 +1018,7 @@ in {
         display-window:             "";
     	drun-display-format:        "{name} [<span weight='light' size='small'><i>({generic})</i></span>]";
     	window-format:              "{w} · {c} · {t}";
+        no-fading-openclose:        true;
     }
     * {
         border-colour:               #${palette.base0E};
@@ -1282,6 +1287,7 @@ in {
         display-window:             "";
     	drun-display-format:        "{name} [<span weight='light' size='small'><i>({generic})</i></span>]";
     	window-format:              "{w} · {c} · {t}";
+        no-fading-openclose:        true;
     }
     * {
         border-colour:               #${palette.base0E};
@@ -1533,6 +1539,7 @@ in {
     /*****----- Configuration -----*****/
     configuration {
         show-icons:                 false;
+        no-fading-openclose:        true;
     }
 
     /*****----- Global Properties -----*****/
@@ -1669,6 +1676,7 @@ in {
     /*****----- Configuration -----*****/
     configuration {
         show-icons:                 false;
+        no-fading-openclose:        true;
     }
 
     /*****----- Main Window -----*****/
