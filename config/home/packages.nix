@@ -21,12 +21,14 @@ in {
     grim
     slurp
     gnome.file-roller
+    wf-recorder
     swaynotificationcenter
     rofi-wayland
     arrpc
     transmission-gtk
     wl-clipboard
     krita
+    ripgrep
     obs-studio
     dig
     time
@@ -47,7 +49,6 @@ in {
     vscodium
     youtube-dl
     traceroute
-    ferium
     alejandra
     cava
     speedtest-cli
@@ -66,12 +67,15 @@ in {
     catimg
     otpclient
     mpv
-    ani-cli
+    ripgrep
     nwg-look
     mya
     zip
     qimgv
     hyprlock
+    betterbird
+    zfxtop
+    protonvpn-gui
     wttrbar
     google-chrome
     obsidian
@@ -91,11 +95,14 @@ in {
       inherit flakeDir;
       inherit host;
     })
+    (import ./../scripts/ceaseRecording.nix {inherit pkgs;})
+    (import ./../scripts/startRecording.nix {inherit pkgs;})
+    (import ./../scripts/clipRecording.nix {inherit pkgs;})
     (import ./../scripts/theme-selector.nix {inherit pkgs;})
     (import ./../scripts/nvidia-offload.nix {inherit pkgs;})
     (import ./../scripts/web-search.nix {inherit pkgs;})
     (import ./../scripts/rofi-launcher.nix {inherit pkgs;})
-
+    (import ./../scripts/rofi-powermenu.nix {inherit pkgs;})
     (import ./../scripts/screenshootin.nix {inherit pkgs;})
     (import ./../scripts/list-hypr-bindings.nix {
       inherit pkgs;

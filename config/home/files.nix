@@ -15,10 +15,6 @@
     source = ./files/fonts;
     recursive = true;
   };
-  home.file.".config/wlogout/icons" = {
-    source = ./files/wlogout;
-    recursive = true;
-  };
   home.file.".config/obs-studio" = {
     source = ./files/obs-studio;
     recursive = true;

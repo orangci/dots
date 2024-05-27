@@ -121,7 +121,7 @@ img[class*="avatar"][src^="https://cdn.discordapp.com/avatar-decoration-presets/
   --chat-bubble-replying: #94e2d5;
   --chat-bubble-mentioned: #fab387;
   --chat-bubble-automod: #f38ba8;
-  --enable-chat-bubble-border: 1; /* 0 to turn off, default is on or 1 */
+  --enable-chat-bubble-border: 0; /* 0 to turn off, default is on or 1 */
 }
 
 :root {
@@ -305,5 +305,18 @@ img[class*="avatar"][src^="https://cdn.discordapp.com/avatar-decoration-presets/
 }
 .backdrop__1a911:has(+ .layer_c14d31 .quickswitcher_b5bb0a) {
   opacity: 0;
+}
+
+/* [[Move VC Hang Status To The Left]] */
+[class*=iconGroup]:has([class*=hangStatusIcon], [d*='M13 3a1'], [class*=gameIcon]) {
+  display: flex;
+  position: absolute;
+  right: 101%;
+}
+
+/* [[Dim Muted Servers]] */
+[aria-label="Mute"] [aria-hidden="true"],
+[aria-label="Deafen"] [aria-hidden="true"]{
+  opacity: 0.4;
 }
 

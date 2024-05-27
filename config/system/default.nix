@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   imports = [
     ./amd-gpu.nix
     ./appimages.nix
@@ -23,7 +25,6 @@
     ./python.nix
     ./printer.nix
     ./services.nix
-    ./steam.nix
     ./syncthing.nix
     ./vm.nix
   ];

@@ -33,17 +33,15 @@
     pkg-config
     meson
     gnumake
-    ninja
-    go
     nodejs
     symbola
     noto-fonts-color-emoji
+    maple-mono
     material-icons
     brightnessctl
     toybox
     virt-viewer
     swappy
-    ripgrep
     appimage-run
     networkmanagerapplet
     yad
@@ -55,6 +53,7 @@
     steam.gamescopeSession.enable = true;
     dconf.enable = true;
     seahorse.enable = true;
+    starship.enable = true;
     hyprland = {
       enable = true;
       package = inputs.hyprland.packages.${pkgs.system}.hyprland;
@@ -70,4 +69,10 @@
   };
 
   virtualisation.libvirtd.enable = true;
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true;
+    dedicatedServer.openFirewall = true;
+  };
+  programs.noisetorch.enable = true;
 }

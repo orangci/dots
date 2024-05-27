@@ -21,7 +21,7 @@ in
 
           modules-center = ["hyprland/window" "clock"];
           modules-left = ["hyprland/workspaces" "custom/previouspls" "custom/nextpls" "cpu" "memory"];
-          modules-right = ["custom/exit" "idle_inhibitor" "pulseaudio" "custom/weather" "network" "tray" "custom/notification"];
+          modules-right = ["custom/exit" "idle_inhibitor" "pulseaudio" "custom/weather" "custom/recorder" "tray" "custom/notification"];
 
           "hyprland/workspaces" = {
             format =
@@ -80,6 +80,13 @@ in
             format-disconnected = "󰤮";
             tooltip = false;
           };
+          "custom/recorder" = {
+            format = "⏺R";
+            on-click = "start-recording";
+            on-click-right = "cease-recording";
+            on-click-middle = "clip-recording";
+            tooltip = false;
+          };
           "tray" = {
             spacing = 12;
           };
@@ -104,7 +111,7 @@ in
           "custom/exit" = {
             tooltip = false;
             format = "";
-            on-click = "wlogout -b 2";
+            on-click = "rofi-powermenu";
           };
           "idle_inhibitor" = {
             format = "{icon}";
@@ -170,9 +177,39 @@ in
             }
             window#waybar {
               background-color: rgba(255,0,0,0);
-              border-radius: 0px;
               color: #${palette.base0F};
             }
+            tooltip {
+              background: #${palette.base00};
+              border: 1px solid #${palette.base0E};
+              border-radius: 15px;
+            }
+            tooltip label {
+              color: #${palette.base05};
+            }
+            #custom-previouspls, #cpu, #custom-exit, #custom-recorder, #network { /* Stuff that needs to be rounded left. */
+              border-radius: 15px 0px 0px 15px;
+              margin: 4px 0px 4px 2px;
+              padding: 2px 5px 2px 15px;
+
+            }
+            #custom-nextpls, #memory, #pulseaudio, #custom-notification { /* Stuff that needs to be rounded right. */
+              border-radius: 0px 15px 15px 0px;
+              margin: 4px 2px 4px 0px;
+              padding: 2px 10px 2px 5px;
+
+            }
+            #window, #clock, #custom-weather { /* Stuff that's rounded both left and right, i.e. standalone pills. */
+              border-radius: 15px;
+              margin: 4px;
+              padding: 2px 10px;
+            }
+          #idle_inhibitor, #tray { /* Stuff that aren't rounded in either direction, i.e. sandwiched pills. */
+              border-radius: 0px;
+              margin: 4px 0px;
+              padding: 2px 14px;
+          }
+
 
 
 
@@ -182,15 +219,12 @@ in
               margin: 2px;
               padding: 0px 1px;
               border-radius: 15px;
-              border: 0px;
-              font-style: normal;
               color: #${palette.base05}; /* Ensure this rule applies */
             }
             #workspaces button {
               padding: 0px 5px;
               margin: 4px 3px;
               border-radius: 15px;
-              border: 0px;
               color: #${palette.base05}; /* Ensure this rule applies */
               background: #${palette.base00};
               background-size: 300% 300%;
@@ -202,7 +236,6 @@ in
               padding: 0px 5px;
               margin: 4px 3px;
               border-radius: 15px;
-              border: 0px;
               color: #${palette.base00};
               background: #${palette.base0E};
               background-size: 300% 300%;
@@ -239,67 +272,34 @@ in
                 background-position: 200% 200%;
               }
             }
-            tooltip {
-              background: #${palette.base00};
-              border: 1px solid #${palette.base0E};
-              border-radius: 15px;
-            }
-            tooltip label {
-              color: #${palette.base07};
-            }
-
 
             #custom-previouspls {
               background: #${palette.base0E};
-              border-radius: 15px 0px 0px 15px;
-              margin: 4px 0px 4px 2px;
-              padding: 2px 5px 2px 15px;
             }
             #custom-nextpls {
               background: #${palette.base0E};
-              margin: 4px 2px 4px 0px;
-              padding: 2px 10px 2px 5px;
-              border-radius: 0px 15px 15px 0px;
             }
             #cpu {
               background: #${palette.base0D};
-              border-radius: 15px 0px 0px 15px;
-              margin: 4px 0px 4px 2px;
-              padding: 2px 5px 2px 15px;
             }
             #memory {
               background: #${palette.base0D};
-              margin: 4px 2px 4px 0px;
-              padding: 2px 10px 2px 5px;
-              border-radius: 0px 15px 15px 0px;
             }
             #disk {
               background: #${palette.base03};
-              margin: 4px;
-              padding: 2px 10px;
-              border-radius: 15px;
             }
             #battery {
               background: #${palette.base08};
-              margin: 4px;
-              padding: 2px 10px;
-              border-radius: 15px;
             }
 
 
 
             /* >>> CENTER MODULES <<< */
             #window {
-              margin: 4px;
-              padding: 2px 10px;
               background: #${palette.base0C};
-              border-radius: 15px;
             }
             #clock {
               background: #${palette.base0B};
-              margin: 4px;
-              padding: 2px 10px;
-              border-radius: 15px;
             }
 
 
@@ -307,45 +307,27 @@ in
             /* >>> RIGHT MODULES <<< */
             #custom-exit {
               background: #${palette.base0A};
-              border-radius: 15px 0px 0px 15px;
-              margin: 4px 0px;
-              padding: 2px 5px 2px 15px;
             }
             #idle_inhibitor {
               background: #${palette.base0A};
-              margin: 4px 0px;
-              padding: 2px 14px;
-              border-radius: 0px;
             }
             #pulseaudio {
               background: #${palette.base0A};
-              margin: 4px 0px;
-              padding: 2px 10px 2px 5px;
-              border-radius: 0px 15px 15px 0px;
             }
             #custom-weather {
               background: #${palette.base09};
-              margin: 4px;
-              padding: 2px 10px;
-              border-radius: 15px;
             }
             #network {
               background: #${palette.base08};
-              border-radius: 15px 0px 0px 15px;
-              margin: 4px 0px;
-              padding: 2px 5px 2px 15px;
+            }
+            #custom-recorder {
+              background: #${palette.base08};
             }
             #tray {
               background: #${palette.base08};
-              margin: 4px 0px;
-              padding: 2px 14px;
-              border-radius: 0px;
             }
             #custom-notification {
               background: #${palette.base08};
-              margin: 4px 2px 4px 0px;
-              padding: 2px 10px 2px 5px;
-              border-radius: 0px 15px 15px 0px;
             }
         ''
       ];

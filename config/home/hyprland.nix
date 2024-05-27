@@ -98,8 +98,9 @@ in
 
 
             # >>> WINDOW RULES <<<
-
-
+            windowrule = opacity 1.0 override 1.0 override 1.0 override,^(Zoom)$
+            windowrule = noblur,^(Zoom)$
+            windowrule = opacity 1.0 override 1.0 override 1.0 override,^(Minecraft)$
 
 
 
@@ -164,6 +165,7 @@ in
             exec-once = wl-paste --type text --watch cliphist store #Stores only text data
             exec-once = wl-paste --type image --watch cliphist store #Stores only image data
             exec-once = arrpc
+            exec-once = noisetorch -i
             dwindle {
               pseudotile = true
               preserve_split = true
@@ -192,7 +194,7 @@ in
             bind = ${modifier},S,exec,screenshootin
             bind = ${modifier},D,exec,vesktop
             bind = ${modifier},P,exec,playerctl play-pause
-            bind = ${modifier},R,exec,rofi -show run
+            bind = ${modifier},R,exec,rofi -show run -theme run.rasi
             bind = ${modifier},C,exec,codium
             bind = ${modifier},O,exec,obsidian
             bind = ${modifier},A,exec,task-waybar
@@ -214,7 +216,7 @@ in
             bind = ${modifier},up,movefocus,u
             bind = ${modifier},down,movefocus,d
             bind = ${modifier},l,exec,hyprlock
-            bind = ${modifier},BACKSLASH,exec,blur-wlogout
+            bind = ${modifier},BACKSLASH,exec,rofi-powermenu
             bind = ${modifier},1,workspace,1
             bind = ${modifier},2,workspace,2
             bind = ${modifier},3,workspace,3
@@ -252,7 +254,7 @@ in
             bind = ,XF86AudioPrev, exec, playerctl previous
             bind = ,XF86MonBrightnessDown,exec,brightnessctl set 5%-
             bind = ,XF86MonBrightnessUp,exec,brightnessctl set +5%
-            bind = SUPER, V, exec, cliphist list | rofi -dmenu | cliphist decode | wl-copy
+            bind = SUPER, V, exec, cliphist list | rofi -dmenu -theme clipboard.rasi | cliphist decode | wl-copy
           ''
         ];
     };

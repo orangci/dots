@@ -50,7 +50,9 @@ in
         tr = "trash";
         ".." = "cd ..";
         neofetch = "fastfetch";
-        zip = "zip -r";
+        gcrec = "rm -rf ~/Videos/snapshots/*";
+        find = "fd";
+        ztop = "zfxtop";
       };
     };
   }
