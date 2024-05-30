@@ -154,6 +154,7 @@
       nh
       nixfmt-rfc-style
       libvirt
+      gvfs
       swww
       grim
       slurp
