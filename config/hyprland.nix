@@ -47,7 +47,6 @@ in
 
 
 
-
                  # >>> STARTUP COMMANDS <<<
                 exec-once = $POLKIT_BIN
                 exec-once = dbus-update-activation-environment --systemd --all
@@ -62,6 +61,7 @@ in
                 exec-once = wl-paste --type image --watch cliphist store #Stores only image data
                 exec-once = arrpc
                 exec-once = noisetorch -i
+                exec-once = nix-shell $HOME/zaneyos/scripts/prayertimes.nix
 
 
                 monitor=,preferred,auto,1
@@ -156,7 +156,7 @@ in
             bind = ${modifier}SHIFT,W,exec,web-search
             bind = ${modifier}SHIFT,N,exec,swaync-client -rs
             bind = ${modifier},W,exec,${browser}
-            bind = ${modifier},PERIOD,exec,emopicker9000
+            bind = ${modifier},PERIOD,exec,bemoji -t
             bind = ${modifier},S,exec,screenshootin
             bind = ${modifier},D,exec,vesktop
             bind = ${modifier},P,exec,playerctl play-pause

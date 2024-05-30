@@ -154,7 +154,6 @@
       nh
       nixfmt-rfc-style
       libvirt
-      gvfs
       swww
       grim
       slurp
@@ -171,6 +170,7 @@
       protonup-qt
       font-awesome
       neovide
+      gvfs
       (nerdfonts.override {fonts = ["JetBrainsMono"];})
       sugar.sddm-sugar-dark # Name: sugar-dark
       tokyo-night # Name: tokyo-night-sddm
@@ -225,6 +225,10 @@
       modrinth-app
       bemoji
       wtype
+      python3
+      python312Packages.requests
+      uwuify
+      owofetch
     ];
 
   environment.variables = {
