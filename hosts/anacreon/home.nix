@@ -209,7 +209,7 @@ in {
         size = 120
         position = 0, 45
 
-        path = ~/zaneyos/files/face.jpg
+        path = ~/dots/files/face.jpg
         halign = center
         valign = center
 
@@ -2276,7 +2276,7 @@ in {
       '';
       shellAliases = {
         sv = "sudo nvim";
-        flake-rebuild = "cd $HOME/zaneyos; sudo nixos-rebuild switch --flake .#anacreon";
+        flake-rebuild = "cd $HOME/dots; sudo nixos-rebuild switch --flake .#anacreon";
         flake-update = "nh os switch --hostname ${host} --update";
         gcnix = "nix-collect-garbage --delete-old && sudo nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration boot";
         v = "nvim";

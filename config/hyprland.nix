@@ -61,7 +61,7 @@ in
                 exec-once = wl-paste --type image --watch cliphist store #Stores only image data
                 exec-once = arrpc
                 exec-once = noisetorch -i
-                exec-once = nix-shell $HOME/zaneyos/scripts/prayertimes.nix
+                exec-once = nix-shell $HOME/dots/scripts/prayertimes.nix
 
 
                 monitor=,preferred,auto,1

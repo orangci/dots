@@ -231,10 +231,8 @@
       owofetch
     ];
 
-  environment.variables = {
-    ZANEYOS_VERSION = "2.1";
-    ZANEYOS = "true";
-  };
+  # environment.variables = {
+  # };
 
   # Services to start
   services = {
