@@ -229,6 +229,7 @@
       python312Packages.requests
       uwuify
       owofetch
+      jq
     ];
 
   # environment.variables = {
