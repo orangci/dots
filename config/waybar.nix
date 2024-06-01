@@ -21,7 +21,7 @@ in
           position = "top";
 
           modules-center = ["hyprland/window" "clock"];
-          modules-left = ["hyprland/workspaces" "custom/previouspls" "custom/nextpls" "cpu" "memory"];
+          modules-left = ["hyprland/workspaces" "cpu" "memory"];
           modules-right = ["custom/exit" "idle_inhibitor" "pulseaudio" "custom/weather" "custom/recorder" "tray" "custom/notification"];
 
           "hyprland/workspaces" = {

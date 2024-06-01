@@ -152,7 +152,7 @@ in
 
             # >>> KEYBINDINDS <<<
             bind = ${modifier},Return,exec,${terminal}
-            bind = ALT,SPACE,exec,rofi -show drun -theme launcher.rasi
+            bind = ${modifier},K,exec,rofi -show drun -theme launcher.rasi
             bind = ${modifier}SHIFT,W,exec,web-search
             bind = ${modifier}SHIFT,N,exec,swaync-client -rs
             bind = ${modifier},W,exec,${browser}
@@ -160,9 +160,12 @@ in
             bind = ${modifier},S,exec,screenshootin
             bind = ${modifier},D,exec,vesktop
             bind = ${modifier},P,exec,playerctl play-pause
+            bind = ${modifier}SHIFT,P,exec,playerctl next
+            bind = ${modifier}ALT,P,exec,playerctl previous
             bind = ${modifier},R,exec,rofi -show run -theme run.rasi
             bind = ${modifier},C,exec,codium
-            bind = ${modifier},O,exec,obsidian
+            bind = ${modifier},O,exec,obs-studio
+            bind = ${modifier}SHIFT,O,exec,obsidian
             bind = ${modifier},A,exec,task-waybar
             bind = ${modifier},G,exec,google-chrome-stable
             bind = ${modifier},E,exec,thunar
