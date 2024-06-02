@@ -26,13 +26,13 @@ All my wallpapers are available [here](https://github.com/orxngc/dots).
 <details>
   <summary>Screenshots:</summary>
 
-  ![yes](https://raw.githubusercontent.com/orxngc/dots/anacreon/config/home/files/desktopPics/tiledGalaxy.png)
+  ![Tiled](https://raw.githubusercontent.com/orxngc/dots/anacreon/config/home/files/desktopPics/tiledGalaxy.png)
   
-  ![yes](https://raw.githubusercontent.com/orxngc/dots/anacreon/config/home/files/desktopPics/blank.png)
+  ![Blank](https://raw.githubusercontent.com/orxngc/dots/anacreon/config/home/files/desktopPics/blank.png)
 
-  ![yes](https://raw.githubusercontent.com/orxngc/dots/anacreon/config/home/files/desktopPics/floating.png)
+  ![Sakura](https://raw.githubusercontent.com/orxngc/dots/anacreon/config/home/files/desktopPics/floating.png)
 
-  ![Boxy/flat style](https://raw.githubusercontent.com/orxngc/dots/anacreon/config/home/files/desktopPics/boxyStyle.png)
+  ![Boxy](https://raw.githubusercontent.com/orxngc/dots/anacreon/config/home/files/desktopPics/boxyStyle.png)
 
 </details>
 
