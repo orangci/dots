@@ -7,7 +7,7 @@ What I use:
 - **WM** • [`Hyprland`](https://hyprland.org)
 - **Theme** • [`Catppuccin Mocha`](https://catppuccin.com/)
 - **Terminal** • [`Kitty`](https://github.com/kovidgoyal/kitty)
-- **Editor** • [`Neovim`](https://neovim.io/) with [`nixvim`](https://github.com/nix-community/nixvim)
+- **Editor** • [`Neovim`](https://neovim.io/)
 - **Browser** • [`Firefox`](https://www.mozilla.org/en-US/firefox/)
 - **Lockscreen** • [`Hyprlock`](https://github.com/hyprwm/hyprlock)
 - **DM** • [`SDDM`](https://github.com/sddm/sddm)
@@ -26,13 +26,13 @@ All my wallpapers are available [here](https://github.com/orxngc/dots).
 <details>
   <summary>Screenshots:</summary>
 
-  ![Tiled](https://raw.githubusercontent.com/orxngc/dots/anacreon/config/home/files/desktopPics/tiledGalaxy.png)
+  ![Tiled](https://raw.githubusercontent.com/orxngc/dots/anacreon/config/desktopPics/tiledGalaxy.png)
   
-  ![Blank](https://raw.githubusercontent.com/orxngc/dots/anacreon/config/home/files/desktopPics/blank.png)
+  ![Blank](https://raw.githubusercontent.com/orxngc/dots/anacreon/config/desktopPics/blank.png)
 
-  ![Sakura](https://raw.githubusercontent.com/orxngc/dots/anacreon/config/home/files/desktopPics/floating.png)
+  ![Sakura](https://raw.githubusercontent.com/orxngc/dots/anacreon/config/desktopPics/floating.png)
 
-  ![Boxy](https://raw.githubusercontent.com/orxngc/dots/anacreon/config/home/files/desktopPics/boxyStyle.png)
+  ![Boxy](https://raw.githubusercontent.com/orxngc/dots/anacreon/config/desktopPics/boxyStyle.png)
 
 </details>
 
