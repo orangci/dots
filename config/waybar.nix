@@ -340,60 +340,124 @@ in
             }
 
             #custom-previouspls {
-              background: #${palette.base0E};
+              ${
+            if boxyStyle == true
+            then ''color: #${palette.base0E}; background: #${palette.base00};''
+            else ''background: #${palette.base0E};''
+          }
             }
             #custom-nextpls {
-              background: #${palette.base0E};
+              ${
+            if boxyStyle == true
+            then ''color: #${palette.base0E}; background: #${palette.base00};''
+            else ''background: #${palette.base0E};''
+          }
             }
             #cpu {
-              background: #${palette.base0D};
+              ${
+            if boxyStyle == true
+            then ''color: #${palette.base0D}; background: #${palette.base00};''
+            else ''background: #${palette.base0D};''
+          }
             }
             #memory {
-              background: #${palette.base0D};
+              ${
+            if boxyStyle == true
+            then ''color: #${palette.base0D}; background: #${palette.base00};''
+            else ''background: #${palette.base0D};''
+          }
             }
             #disk {
-              background: #${palette.base03};
+              ${
+            if boxyStyle == true
+            then ''color: #${palette.base03}; background: #${palette.base00};''
+            else ''background: #${palette.base03};''
+          }
             }
             #battery {
-              background: #${palette.base08};
+              ${
+            if boxyStyle == true
+            then ''color: #${palette.base08}; background: #${palette.base00};''
+            else ''background: #${palette.base08};''
+          }
             }
 
 
 
             /* >>> CENTER MODULES <<< */
             #window {
-              background: #${palette.base0C};
+              ${
+            if boxyStyle == true
+            then ''color: #${palette.base0C}; background: #${palette.base00};''
+            else ''background: #${palette.base0C};''
+          }
             }
             #clock {
-              background: #${palette.base0B};
+              ${
+            if boxyStyle == true
+            then ''color: #${palette.base0B}; background: #${palette.base00};''
+            else ''background: #${palette.base0B};''
+          }
             }
 
 
 
             /* >>> RIGHT MODULES <<< */
             #custom-exit {
-              background: #${palette.base0A};
+              ${
+            if boxyStyle == true
+            then ''color: #${palette.base0A}; background: #${palette.base00};''
+            else ''background: #${palette.base0A};''
+          }
             }
             #idle_inhibitor {
-              background: #${palette.base0A};
+              ${
+            if boxyStyle == true
+            then ''color: #${palette.base0A}; background: #${palette.base00};''
+            else ''background: #${palette.base0A};''
+          }
             }
             #pulseaudio {
-              background: #${palette.base0A};
+              ${
+            if boxyStyle == true
+            then ''color: #${palette.base0A}; background: #${palette.base00};''
+            else ''background: #${palette.base0A};''
+          }
             }
             #custom-weather {
-              background: #${palette.base09};
+              ${
+            if boxyStyle == true
+            then ''color: #${palette.base09}; background: #${palette.base00};''
+            else ''background: #${palette.base09};''
+          }
             }
             #network {
-              background: #${palette.base08};
+              ${
+            if boxyStyle == true
+            then ''color: #${palette.base08}; background: #${palette.base00};''
+            else ''background: #${palette.base08};''
+          }
             }
             #custom-recorder {
-              background: #${palette.base08};
+              ${
+            if boxyStyle == true
+            then ''color: #${palette.base08}; background: #${palette.base00};''
+            else ''background: #${palette.base08};''
+          }
             }
             #tray {
-              background: #${palette.base08};
+              ${
+            if boxyStyle == true
+            then ''color: #${palette.base08}; background: #${palette.base00};''
+            else ''background: #${palette.base08};''
+          }
             }
             #custom-notification {
-              background: #${palette.base08};
+              ${
+            if boxyStyle == true
+            then ''color: #${palette.base08}; background: #${palette.base00};''
+            else ''background: #${palette.base08};''
+          }
             }
         ''
       ];
