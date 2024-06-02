@@ -1,4 +1,4 @@
-{pkgs}:
+{ pkgs }:
 pkgs.writeShellScriptBin "clip-recording" ''
   PID=$(cat /tmp/wf-recorder.pid)
   kill $PID

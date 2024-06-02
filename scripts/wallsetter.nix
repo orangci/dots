@@ -1,8 +1,4 @@
-{
-  pkgs,
-  username,
-  ...
-}:
+{ pkgs, username, ... }:
 pkgs.writeShellScriptBin "wallsetter" ''
   WALLPAPER=$(find /home/${username}/Pictures/walls-catppuccin-mocha -name '*' | awk '!/.git/' | tail -n +2 | shuf -n 1)
   PREVIOUS=$WALLPAPER

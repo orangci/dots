@@ -1,4 +1,4 @@
-{pkgs}:
+{ pkgs }:
 pkgs.writeShellScriptBin "prayer-times-daemon" ''
   #!/bin/bash
 

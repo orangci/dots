@@ -1,10 +1,8 @@
-{
-  pkgs,
-  config,
-  ...
-}: let
+{ pkgs, config, ... }:
+let
   palette = config.colorScheme.palette;
-in {
+in
+{
   # Default rofi
   home.file.".config/rofi/config.rasi".text = ''
       /**

@@ -1,4 +1,4 @@
-{pkgs}:
+{ pkgs }:
 pkgs.writeShellScriptBin "cease-recording" ''
   PID=$(cat /tmp/wf-recorder.pid)
   kill $PID
