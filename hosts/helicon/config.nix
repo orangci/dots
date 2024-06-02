@@ -6,8 +6,7 @@
   username,
   options,
   ...
-}:
-{
+}: {
   imports = [
     ./hardware.nix
     ./users.nix
@@ -41,8 +40,8 @@
   };
 
   # This is for OBS Virtual Cam Support - v4l2loopback setup
-  boot.kernelModules = [ "v4l2loopback" ];
-  boot.extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];
+  boot.kernelModules = ["v4l2loopback"];
+  boot.extraModulePackages = [config.boot.kernelPackages.v4l2loopback];
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -51,10 +50,10 @@
   # Enable networking
   networking.networkmanager.enable = true;
   networking.hostName = "${host}";
-  networking.timeServers = options.networking.timeServers.default ++ [ "pool.ntp.org" ];
+  networking.timeServers = options.networking.timeServers.default ++ ["pool.ntp.org"];
 
   # Set your time zone.
-  time.timeZone = "America/New_York";
+  time.timeZone = "Asia/Riyadh";
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
@@ -103,9 +102,11 @@
     };
   };
   nixpkgs.config.packageOverrides = pkgs: {
-    xfce = pkgs.xfce // {
-      gvfs = pkgs.gvfs;
-    };
+    xfce =
+      pkgs.xfce
+      // {
+        gvfs = pkgs.gvfs;
+      };
   };
   nixpkgs.config.allowUnfree = true;
 
@@ -113,13 +114,11 @@
     mutableUsers = true;
   };
 
-  environment.systemPackages =
-    let
-      sugar = pkgs.callPackage ../../pkgs/sddm-sugar-dark.nix { };
-      tokyo-night = pkgs.libsForQt5.callPackage ../../pkgs/sddm-tokyo-night.nix { };
-    in
-    with pkgs;
-    [
+  environment.systemPackages = let
+    sugar = pkgs.callPackage ../../pkgs/sddm-sugar-dark.nix {};
+    tokyo-night = pkgs.libsForQt5.callPackage ../../pkgs/sddm-tokyo-night.nix {};
+  in
+    with pkgs; [
       vim
       wget
       killall
@@ -179,7 +178,7 @@
       protonup-qt
       font-awesome
       neovide
-      (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+      (nerdfonts.override {fonts = ["JetBrainsMono"];})
       sugar.sddm-sugar-dark # Name: sugar-dark
       tokyo-night # Name: tokyo-night-sddm
       pkgs.libsForQt5.qt5.qtgraphicaleffects
@@ -190,7 +189,7 @@
       nitch
       openjdk
       swayidle
-      (vesktop.override { withSystemVencord = false; })
+      (vesktop.override {withSystemVencord = false;})
       tldr
       vscodium
       youtube-dl
@@ -234,6 +233,7 @@
       uwuify
       owofetch
       jq
+      catppuccin-sddm-corners
     ];
 
   # environment.variables = {
@@ -247,7 +247,7 @@
         enable = true;
         autoNumlock = true;
         wayland.enable = true;
-        theme = "tokyo-night-sddm";
+        theme = "catppuccin-sddm-corners";
       };
       desktopManager.cinnamon.enable = false;
       xkb = {
@@ -288,16 +288,16 @@
     nfs.server.enable = true;
   };
   systemd.services.flatpak-repo = {
-    wantedBy = [ "multi-user.target" ];
-    path = [ pkgs.flatpak ];
+    wantedBy = ["multi-user.target"];
+    path = [pkgs.flatpak];
     script = ''
       flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
     '';
   };
   hardware.sane = {
     enable = true;
-    extraBackends = [ pkgs.sane-airscan ];
-    disabledDefaultBackends = [ "escl" ];
+    extraBackends = [pkgs.sane-airscan];
+    disabledDefaultBackends = ["escl"];
   };
   hardware.logitech.wireless.enable = true;
   hardware.logitech.wireless.enableGraphical = true;
@@ -333,8 +333,8 @@
         "nix-command"
         "flakes"
       ];
-      substituters = [ "https://hyprland.cachix.org" ];
-      trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
+      substituters = ["https://hyprland.cachix.org"];
+      trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
     };
     gc = {
       automatic = true;
