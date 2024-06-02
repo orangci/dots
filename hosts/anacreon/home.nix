@@ -347,7 +347,6 @@ in {
     (import ../../scripts/rofi-powermenu.nix {inherit pkgs;})
     (import ../../scripts/rofi-prism-exec.nix {inherit pkgs;})
     (import ../../scripts/prayertimes.nix {inherit pkgs;})
-    (import ../../scripts/walls-update.nix {inherit pkgs;})
     (import ../../scripts/themechange.nix {
       inherit pkgs;
       inherit host;
