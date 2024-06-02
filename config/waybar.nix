@@ -8,9 +8,7 @@
 }: let
   palette = config.colorScheme.palette;
   betterTransition = "all 0.3s cubic-bezier(.55,-0.68,.48,1.682)";
-  inherit (import ../hosts/${host}/variables.nix) clock24h;
-  boxyStyle = true;
-  backgroundEnabled = true;
+  inherit (import ../hosts/${host}/variables.nix) clock24h boxyStyle;
 in
   with lib; {
     # Configure & Theme Waybar
@@ -215,7 +213,7 @@ in
             }
             window#waybar {
               ${
-            if backgroundEnabled == false
+            if boxyStyle == false
             then ''background-color: rgba(255,0,0,0);''
             else ''background-color: #${palette.base00};''
           }
@@ -284,7 +282,7 @@ in
               ${
             if boxyStyle == true
             then ''border-radius: 0px; margin: 0px;''
-            else ''border-radius: 15px; margin: 4px 3pxpx;''
+            else ''border-radius: 15px; margin: 4px 3px;''
           }
               color: #${palette.base05};
               background: #${palette.base00};
@@ -298,7 +296,7 @@ in
               ${
             if boxyStyle == true
             then ''border-radius: 0px; margin: 0px;''
-            else ''border-radius: 15px; margin: 4px 3pxpx;''
+            else ''border-radius: 15px; margin: 4px 3px;''
           }
               color: #${palette.base00};
               background: #${palette.base0E};

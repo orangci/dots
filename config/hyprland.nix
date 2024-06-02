@@ -15,6 +15,7 @@
     borderAnim
     terminal
     extraMonitorSettings
+    boxyStyle
     ;
 in
   with lib; {
@@ -68,10 +69,23 @@ in
                 ${extraMonitorSettings}
                 general {
                   gaps_in = 6
-                  gaps_out = 8
+                  ${
+              if boxyStyle == true
+              then ''gaps_out = 0''
+              else ''gaps_out = 8''
+            }
                   border_size = 2
-                  col.active_border = rgba(${theme.base0E}ff) rgba(${theme.base0E}ff) rgba(${theme.base0E}ff) rgba(${theme.base0E}ff) 45deg
-                  col.inactive_border = rgba(${theme.base00}cc) rgba(${theme.base01}cc) 45deg
+                  ${
+              if boxyStyle == true
+              then ''
+                col.active_border = rgba(${theme.base00}ff) rgba(${theme.base00}ff) rgba(${theme.base00}ff) rgba(${theme.base00}ff) 45deg
+                col.inactive_border = rgba(${theme.base00}cc) rgba(${theme.base00}cc) 45deg
+              ''
+              else ''
+                col.active_border = rgba(${theme.base0E}ff) rgba(${theme.base0E}ff) rgba(${theme.base0E}ff) rgba(${theme.base0E}ff) 45deg
+                col.inactive_border = rgba(${theme.base00}cc) rgba(${theme.base01}cc) 45deg
+              ''
+            }
                   layout = dwindle
                   resize_on_border = true
                 }
@@ -117,10 +131,18 @@ in
                   animation = workspaces, 1, 5, wind
                 }
                 decoration {
-                  rounding = 15
+                  ${
+              if boxyStyle == true
+              then ''rounding = 0''
+              else ''rounding = 15''
+            }
                   drop_shadow = false
                   blur {
-                      enabled = true
+                      ${
+              if boxyStyle == true
+              then ''enabled = false''
+              else ''enabled = true''
+            }
                       size = 6
                       passes = 3
                       ignore_opacity = true
@@ -128,9 +150,16 @@ in
                       new_optimizations = true
                       xray = true
                   }
-                  inactive_opacity = 0.85
-                  active_opacity = 0.925
-                  fullscreen_opacity = 0.925
+                  ${
+              if boxyStyle == true
+              then ''''
+              else ''
+                inactive_opacity = 0.85
+                active_opacity = 0.925
+                fullscreen_opacity = 0.925
+              ''
+            }
+
                 }
                 plugin {
                   hyprtrails {

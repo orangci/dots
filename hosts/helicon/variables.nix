@@ -9,12 +9,12 @@
   # Hyprland Settings
   borderAnim = true; # Enable / Disable Hyprland Border Animation
   extraMonitorSettings = "";
+  boxyStyle = true; # this disables blur, transparency, and border radius on all programs and makes waybar have a background as well. It will change how *everything* looks.
 
   # Waybar Settings
   clock24h = true;
-  waybarAnimations = false;
 
   # Program Options
-  browser = "firefox"; # Set Default Browser (google-chrome-stable for google-chrome)
-  terminal = "kitty"; # Set Default System Terminal
+  browser = "firefox";
+  terminal = "kitty";
 }
