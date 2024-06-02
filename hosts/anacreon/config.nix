@@ -233,6 +233,7 @@
       uwuify
       owofetch
       jq
+      catppuccin-sddm-corners
     ];
 
   # environment.variables = {
@@ -246,7 +247,7 @@
         enable = true;
         autoNumlock = true;
         wayland.enable = true;
-        theme = "tokyo-night-sddm";
+        theme = "catppuccin-sddm-corners";
       };
       desktopManager.cinnamon.enable = false;
       xkb = {
