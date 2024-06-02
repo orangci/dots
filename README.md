@@ -21,7 +21,7 @@ What I use:
 - **Notification Daemon** • [`swaync`](https://github.com/ErikReider/SwayNotificationCenter)
 - **Fetch** • [`fastfetch`](https://github.com/fastfetch-cli/fastfetch)
 
-All my wallpapers are available [here](https://github.com/orxngc/dots).
+All my wallpapers are available [here](https://github.com/orxngc/walls-catppuccin-mocha).
 
 <details>
   <summary>Screenshots:</summary>
