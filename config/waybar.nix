@@ -10,6 +10,7 @@
   betterTransition = "all 0.3s cubic-bezier(.55,-0.68,.48,1.682)";
   inherit (import ../hosts/${host}/variables.nix) clock24h;
   boxyStyle = true;
+  backgroundEnabled = true;
 in
   with lib; {
     # Configure & Theme Waybar
@@ -214,7 +215,7 @@ in
             }
             window#waybar {
               ${
-            if boxyStyle == false
+            if backgroundEnabled == false
             then ''background-color: rgba(255,0,0,0);''
             else ''background-color: #${palette.base00};''
           }
@@ -270,15 +271,21 @@ in
           /* >>> LEFT MODULES <<< */
             #workspaces {
               background: #${palette.base00};
-              margin: 2px;
               padding: 0px 1px;
-              border-radius: 15px;
+              ${
+            if boxyStyle == true
+            then ''border-radius: 0px; margin: 0px;''
+            else ''border-radius: 15px; margin: 2px;''
+          }
               color: #${palette.base05};
             }
             #workspaces button {
               padding: 0px 5px;
-              margin: 4px 3px;
-              border-radius: 15px;
+              ${
+            if boxyStyle == true
+            then ''border-radius: 0px; margin: 0px;''
+            else ''border-radius: 15px; margin: 4px 3pxpx;''
+          }
               color: #${palette.base05};
               background: #${palette.base00};
               background-size: 300% 300%;
@@ -288,8 +295,11 @@ in
             }
             #workspaces button.active {
               padding: 0px 5px;
-              margin: 4px 3px;
-              border-radius: 15px;
+              ${
+            if boxyStyle == true
+            then ''border-radius: 0px; margin: 0px;''
+            else ''border-radius: 15px; margin: 4px 3pxpx;''
+          }
               color: #${palette.base00};
               background: #${palette.base0E};
               background-size: 300% 300%;
@@ -299,7 +309,11 @@ in
               min-width: 40px;
             }
             #workspaces button:hover {
-              border-radius: 15px;
+              ${
+            if boxyStyle == true
+            then ''border-radius: 0px;''
+            else ''border-radius: 15px;''
+          }
               color: #${palette.base05};
               background: #${palette.base03};
               background-size: 300% 300%;
