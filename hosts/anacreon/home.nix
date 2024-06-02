@@ -411,8 +411,8 @@ in {
         comment-nvim
         nvim-ts-context-commentstring
         {
-          plugin = dracula-nvim;
-          config = "colorscheme dracula";
+          plugin = catppuccin-nvim;
+          config = "colorscheme catppuccin";
         }
         plenary-nvim
         neodev-nvim

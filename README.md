@@ -32,6 +32,8 @@ All my wallpapers are available [here](https://github.com/orxngc/dots).
 
   ![yes](https://raw.githubusercontent.com/orxngc/dots/anacreon/config/home/files/desktopPics/floating.png)
 
+  ![Boxy/flat style](https://raw.githubusercontent.com/orxngc/dots/anacreon/config/home/files/desktopPics/boxyStyle.png)
+
 </details>
 
 ## Installation
