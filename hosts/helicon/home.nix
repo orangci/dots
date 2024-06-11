@@ -43,7 +43,7 @@ in {
   home.file.".face.icon".source = ../../config/face.jpg;
   home.file.".config/vesktop/themes/orangetweaks.css".source = ../../configs/Configs/vencordthemes/orangetweaks.css;
   home.file.".config/vesktop/themes/catppuccin.css".source = ../../configs/Configs/vencordthemes/catppuccin.css;
-  home.file.".config/rofi/rofi-prism.sh".source = ../../config/rofi-prism.sh;
+  home.file.".config/rofi/rofi-prism.sh".source = ../../scripts/rofi-prism.sh;
   home.file.".config/fastfetch/config.jsonc".text = ''
     {
         "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
