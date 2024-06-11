@@ -57,7 +57,6 @@ in
                 exec-once = swaync
                 exec-once = wallsetter
                 exec-once = nm-applet --indicator
-                exec-once = swayidle -w timeout 720 'hyprlock' timeout 800 'hyprctl dispatch dpms off' resume 'hyprctl dispatch dpms on' before-sleep 'hyprlock'
                 exec-once = wl-paste --type text --watch cliphist store #Stores only text data
                 exec-once = wl-paste --type image --watch cliphist store #Stores only image data
                 exec-once = arrpc
