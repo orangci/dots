@@ -320,3 +320,22 @@ img[class*="avatar"][src^="https://cdn.discordapp.com/avatar-decoration-presets/
   opacity: 0.4;
 }
 
+/* [[Hide chatbox if one doesn't have send message perms]] */
+[class*=channelTextAreaDisabled] {
+  display: none!important;
+}
+
+/* or if it doesn't work like because of themes: */
+[class*=channelTextAreaDisabled] {
+  opacity: 0!important;
+  position: absolute!important;
+  height: 0px!important;
+  width: 0px!important;
+  z-index: 0!important;
+}
+
+/* [[make profiles round again]] */
+[class*=userPopoutOuter_] {
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}

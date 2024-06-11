@@ -53,7 +53,7 @@
   networking.timeServers = options.networking.timeServers.default ++ ["pool.ntp.org"];
 
   # Set your time zone.
-  time.timeZone = "Asia/Riyadh";
+  services.automatic-timezoned.enable = true;
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
@@ -192,7 +192,8 @@
       (vesktop.override {withSystemVencord = false;})
       tldr
       vscodium
-      youtube-dl
+      yt-dlp
+      calibre
       traceroute
       alejandra
       cava

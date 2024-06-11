@@ -17,7 +17,7 @@
     inputs@{ nixpkgs, home-manager, ... }:
     let
       system = "x86_64-linux";
-      host = "anacreon";
+      host = "helicon";
       username = "orangc";
 
       pkgs = import nixpkgs {

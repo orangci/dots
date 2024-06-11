@@ -542,6 +542,7 @@ in {
         ztop = "zfxtop";
         nixpf = "nix-prefetch";
         nixpfu = "nix-prefetch-url";
+        spinmal = "bash $HOME/Documents/spinPTW.sh";
       };
     };
     home-manager.enable = true;
