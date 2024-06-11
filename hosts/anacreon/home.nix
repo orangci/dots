@@ -175,103 +175,6 @@ in {
     early_exit=true
     fill_shape=false
   '';
-  home.file.".config/hypr/hyprlock.conf".text = ''
-    # $text_color = rgba(F6DECEFF)
-    # $entry_background_color = rgba(1C110811)
-    # $entry_border_color = rgba(A48C7B55)
-    # $entry_color = rgba(DDC1AEFF)
-    $text_color = rgba(FFFFFFFF)
-    $entry_background_color = rgba(33333311)
-    $entry_border_color = rgba(3B3B3B55)
-    $entry_color = rgba(FFFFFFFF)
-    $font_family = JetBrainsMono NFM
-    $font_family_clock = JetBrainsMono NFM
-    $font_material_symbols = Material Symbols Rounded
-
-    general {
-        disable_loading_bar = true
-        hide_cursor = true
-        grace = 0
-        no_fade_in = false
-    }
-    background {
-        monitor =
-        path = screenshot
-        blur_passes = 3
-        blur_size = 10
-    }
-    # Profile picture
-    image {
-        monitor =
-        size = 120
-        position = 0, 45
-
-        path = ~/dots/files/face.jpg
-        halign = center
-        valign = center
-
-        shadow_passes = 1
-    }
-    input-field {
-        monitor =
-        size = 250, 50
-        outline_thickness = 2
-        dots_size = 0.1
-        dots_spacing = 0.3
-        outer_color = $entry_border_color
-        inner_color = $entry_background_color
-        font_color = $entry_color
-        # fade_on_empty = true
-
-        position = 0, -80
-        halign = center
-        valign = center
-    }
-
-    label { # Clock
-        monitor =
-        text = $TIME
-        shadow_passes = 1
-        shadow_boost = 0.5
-        color = $text_color
-        font_size = 65
-        font_family = $font_family_clock
-
-        position = 0, 300
-        halign = center
-        valign = center
-    }
-    # Username
-    label {
-        monitor =
-        position = 10, 0
-
-        text =  $USER
-        color = $text_color
-        font_size = 16
-        font_family = $font_family
-
-        valign = top
-        halign = left
-
-        shadow_passes = 1
-    }
-    # Date
-    label {
-        monitor =
-        position = 0, 200
-
-        text = cmd[update:120000] echo "$(date +'%a %d %B')"
-        color = $text_color
-        font_size = 30
-        font_family = $font_family
-
-        valign = center
-        halign = center
-
-        shadow_passes = 1
-    }
-  '';
 
   # Install & Configure Git
   programs.git = {
@@ -571,6 +474,51 @@ in {
         nixpf = "nix-prefetch";
         nixpfu = "nix-prefetch-url";
         spinmal = "bash $HOME/Documents/spinPTW.sh";
+      };
+    };
+    hyprlock = {
+      enable = true;
+      settings = {
+        general = {
+          disable_loading_bar = true;
+          grace = 10;
+          hide_cursor = true;
+          no_fade_in = false;
+        };
+        background = [
+          {
+            path = "/home/${username}/Pictures/walls-catppuccin-mocha/sakuraGate.jpg";
+            blur_passes = 3;
+            blur_size = 8;
+          }
+        ];
+        image = [
+          {
+            path = "/home/${username}/.config/face.jpg";
+            size = 150;
+            border_size = 4;
+            border_color = "rgb(0C96F9)";
+            rounding = -1; # Negative means circle
+            position = "0, 200";
+            halign = "center";
+            valign = "center";
+          }
+        ];
+        input-field = [
+          {
+            size = "200, 50";
+            position = "0, -80";
+            monitor = "";
+            dots_center = true;
+            fade_on_empty = false;
+            font_color = "rgb(CFE6F4)";
+            inner_color = "rgb(657DC2)";
+            outer_color = "rgb(0D0E15)";
+            outline_thickness = 5;
+            placeholder_text = "Password...";
+            shadow_passes = 2;
+          }
+        ];
       };
     };
     home-manager.enable = true;

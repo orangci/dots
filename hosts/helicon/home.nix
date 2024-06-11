@@ -195,8 +195,7 @@ in {
         no_fade_in = false
     }
     background {
-        monitor =
-        path = screenshot
+        path = /home/${username}/Pictures/walls-catppuccin-mocha/sakuraGate.jpg
         blur_passes = 3
         blur_size = 10
     }
@@ -206,7 +205,7 @@ in {
         size = 120
         position = 0, 45
 
-        path = ~/dots/files/face.jpg
+        path = /home/${username}/.config/face.jpg
         halign = center
         valign = center
 
@@ -256,7 +255,7 @@ in {
 
         shadow_passes = 1
     }
-    # Date
+    # Date  };
     label {
         monitor =
         position = 0, 200
