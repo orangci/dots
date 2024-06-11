@@ -444,7 +444,7 @@ in {
         require("bufferline").setup{}
         require("lualine").setup({
           icons_enabled = true,
-          theme = 'dracula',
+          theme = 'catppuccin-mocha',
         })
       '';
     };
