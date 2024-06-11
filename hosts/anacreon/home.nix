@@ -525,8 +525,8 @@ in {
       '';
       shellAliases = {
         sv = "sudo nvim";
-        flake-rebuild = "cd $HOME/dots; sudo nixos-rebuild switch --flake .#${host}";
-        flake-update = "nh os switch --hostname ${host} --update";
+        flake-rebuild = "nh os switch --hostname ${host} /home/${username}/dots";
+        flake-update = "nh os switch --hostname ${host} --update /home/${username}/dots";
         gcnix = "nix-collect-garbage --delete-old && sudo nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration boot";
         v = "nvim";
         ls = "lsd";
