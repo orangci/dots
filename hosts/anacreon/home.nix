@@ -42,6 +42,8 @@ in {
   home.file.".base16-themes".source = ../../config/base16-themes;
   home.file.".emoji".source = ../../config/emoji;
   home.file.".face.icon".source = ../../config/face.jpg;
+  home.file.".config/vesktop/themes/orangetweaks.css".source = ../../configs/Configs/vencordthemes/orangetweaks.css;
+  home.file.".config/vesktop/themes/catppuccin.css".source = ../../configs/Configs/vencordthemes/catppuccin.css;
   home.file.".config/rofi/rofi-prism.sh".source = ../../config/rofi-prism.sh;
   home.file.".config/fastfetch/config.jsonc".text = ''
     {
