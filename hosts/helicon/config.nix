@@ -2,8 +2,8 @@
   config,
   pkgs,
   host,
-  inputs,
   username,
+  inputs,
   options,
   ...
 }: {
@@ -18,34 +18,47 @@
     ../../modules/local-hardware-clock.nix
   ];
 
-  # Kernel
-  boot.kernelPackages = pkgs.linuxPackages;
-  # boot.kernelPackages = pkgs.linuxPackages_zen;
-
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernel.sysctl = {
-    "vm.max_map_count" = 2147483642;
+  boot = {
+    # Kernel
+    kernelPackages = pkgs.linuxPackages_zen;
+    # This is for OBS Virtual Cam Support
+    kernelModules = ["v4l2loopback"];
+    extraModulePackages = [config.boot.kernelPackages.v4l2loopback];
+    # Needed For Some Steam Games
+    kernel.sysctl = {
+      "vm.max_map_count" = 2147483642;
+    };
+    # Bootloader.
+    loader.systemd-boot.enable = true;
+    loader.efi.canTouchEfiVariables = true;
+    # Make /tmp a tmpfs
+    tmp = {
+      useTmpfs = false;
+      tmpfsSize = "30%";
+    };
+    # Appimage Support
+    binfmt.registrations.appimage = {
+      wrapInterpreterInShell = false;
+      interpreter = "${pkgs.appimage-run}/bin/appimage-run";
+      recognitionType = "magic";
+      offset = 0;
+      mask = ''\xff\xff\xff\xff\x00\x00\x00\x00\xff\xff\xff'';
+      magicOrExtension = ''\x7fELF....AI\x02'';
+    };
+    plymouth.enable = true;
   };
-  boot.tmp.useTmpfs = false;
-  boot.tmp.tmpfsSize = "30%";
-  boot.binfmt.registrations.appimage = {
-    wrapInterpreterInShell = false;
-    interpreter = "${pkgs.appimage-run}/bin/appimage-run";
-    recognitionType = "magic";
-    offset = 0;
-    mask = ''\xff\xff\xff\xff\x00\x00\x00\x00\xff\xff\xff'';
-    magicOrExtension = ''\x7fELF....AI\x02'';
+
+  # Extra Module Options
+  drivers.amdgpu.enable = true;
+  drivers.nvidia.enable = false;
+  drivers.nvidia-prime = {
+    enable = false;
+    intelBusID = "";
+    nvidiaBusID = "";
   };
-
-  # This is for OBS Virtual Cam Support - v4l2loopback setup
-  boot.kernelModules = ["v4l2loopback"];
-  boot.extraModulePackages = [config.boot.kernelPackages.v4l2loopback];
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+  drivers.intel.enable = false;
+  vm.guest-services.enable = false;
+  local.hardware-clock.enable = false;
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -53,7 +66,8 @@
   networking.timeServers = options.networking.timeServers.default ++ ["pool.ntp.org"];
 
   # Set your time zone.
-  services.automatic-timezoned.enable = true;
+  # services.automatic-timezoned.enable = true;
+  time.timeZone = "America/New_York";
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
@@ -86,7 +100,6 @@
       enable = true;
       enableSSHSupport = true;
     };
-    virt-manager.enable = true;
     steam = {
       enable = false;
       gamescopeSession.enable = true;
@@ -124,20 +137,15 @@
     fastfetch
     htop
     btop
-    libvirt
     lxqt.lxqt-policykit
-    mangohud
     unzip
     unrar
     libnotify
-    eza
     v4l-utils
     ydotool
     wl-clipboard
-    lm_sensors
     pciutils
     socat
-    cowsay
     ripgrep
     lsd
     lshw
@@ -145,11 +153,7 @@
     meson
     gnumake
     ninja
-    symbola
-    noto-fonts-color-emoji
-    material-icons
     brightnessctl
-    virt-viewer
     swappy
     appimage-run
     networkmanagerapplet
@@ -157,24 +161,20 @@
     playerctl
     nh
     nixfmt-rfc-style
-    libvirt
     swww
     grim
     slurp
     gnome.file-roller
     swaynotificationcenter
     transmission-gtk
-    distrobox
     mpv
-    krita
+    gimp
     obs-studio
     rustup
     pavucontrol
     tree
-    protonup-qt
     font-awesome
     neovide
-    (nerdfonts.override {fonts = ["JetBrainsMono"];})
     pkgs.libsForQt5.qt5.qtgraphicaleffects
     arrpc
     ripgrep
@@ -183,12 +183,10 @@
     nitch
     openjdk
     (vesktop.override {withSystemVencord = false;})
-    tldr
     vscodium
     yt-dlp
     calibre
     traceroute
-    alejandra
     cava
     speedtest-cli
     cmus
@@ -212,9 +210,7 @@
     zip
     qimgv
     hyprlock
-    zfxtop
     protonvpn-gui
-    yazi
     wttrbar
     google-chrome
     obsidian
@@ -223,36 +219,70 @@
     bemoji
     wtype
     python3
-    python312Packages.requests
     uwuify
     owofetch
     jq
     catppuccin-sddm-corners
+    greetd.tuigreet
   ];
+
+  fonts = {
+    packages = with pkgs; [
+      noto-fonts-emoji
+      noto-fonts-cjk
+      font-awesome
+      symbola
+      material-icons
+      (nerdfonts.override {fonts = ["JetBrainsMono"];})
+    ];
+  };
 
   # environment.variables = {
   # };
 
+  # Extra Portal Configuration
+  xdg.portal = {
+    enable = true;
+    wlr.enable = true;
+    extraPortals = [
+      pkgs.xdg-desktop-portal-gtk
+      pkgs.xdg-desktop-portal
+    ];
+    configPackages = [
+      pkgs.xdg-desktop-portal-gtk
+      pkgs.xdg-desktop-portal-hyprland
+      pkgs.xdg-desktop-portal
+    ];
+  };
+
   # Services to start
   services = {
     xserver = {
-      enable = true;
-      displayManager.sddm = {
-        enable = true;
-        autoNumlock = true;
-        wayland.enable = true;
-        theme = "catppuccin-sddm-corners";
-      };
-      desktopManager.cinnamon.enable = false;
+      enable = false;
       xkb = {
         layout = "us";
         variant = "";
       };
     };
-    smartd = {
+    greetd = {
       enable = true;
+      vt = 3;
+      settings = {
+        default_session = {
+          # Wayland Desktop Manager is installed only for user ryan via home-manager!
+          user = "${username}";
+          # .wayland-session is a script generated by home-manager, which links to the current wayland compositor(sway/hyprland or others).
+          # with such a vendor-no-locking script, we can switch to another wayland compositor without modifying greetd's config here.
+          # command = "$HOME/.wayland-session"; # start a wayland session directly without a login manager
+          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd Hyprland"; # start Hyprland with a TUI login manager
+        };
+      };
+    };
+    smartd = {
+      enable = false;
       autodetect = true;
     };
+
     libinput.enable = true;
     gvfs.enable = true;
     samba.enable = true;
@@ -266,12 +296,6 @@
       openFirewall = true;
     };
     ipp-usb.enable = true;
-    syncthing = {
-      enable = false;
-      user = "${username}";
-      dataDir = "/home/${username}";
-      configDir = "/home/${username}/.config/syncthing";
-    };
     pipewire = {
       enable = true;
       alsa.enable = true;
@@ -298,6 +322,10 @@
   # Enable sound with pipewire.
   sound.enable = true;
   hardware.pulseaudio.enable = false;
+  # Bluetooth Support
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
+  services.blueman.enable = true;
 
   # Security / Polkit
   security.rtkit.enable = true;
@@ -337,14 +365,6 @@
     };
   };
 
-  # Virtualization / Containers
-  virtualisation.libvirtd.enable = true;
-  virtualisation.podman = {
-    enable = true;
-    dockerCompat = true;
-    defaultNetwork.settings.dns_enabled = true;
-  };
-
   # OpenGL
   hardware.opengl = {
     enable = true;
@@ -352,23 +372,6 @@
     driSupport32Bit = true;
   };
 
-  # Extra Module Options
-  drivers.amdgpu.enable = true;
-  drivers.nvidia.enable = false;
-  drivers.nvidia-prime = {
-    enable = false;
-    intelBusID = "";
-    nvidiaBusID = "";
-  };
-  drivers.intel.enable = false;
-  vm.guest-services.enable = false;
-  local.hardware-clock.enable = false;
-  boot.loader.grub.theme = pkgs.fetchFromGitHub {
-    owner = "shvchk";
-    repo = "fallout-grub-theme";
-    rev = "80734103d0b48d724f0928e8082b6755bd3b2078";
-    sha256 = "sha256-7kvLfD6Nz4cEMrmCA9yq4enyqVyqiTkVZV5y4RyUatU=";
-  };
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];

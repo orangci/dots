@@ -6,10 +6,17 @@
   host,
   gtkThemeFromScheme,
   ...
-}: let
+}:
+let
   palette = config.colorScheme.palette;
-  inherit (import ./variables.nix) gitUsername gitEmail theme boxyStyle;
-in {
+  inherit (import ./variables.nix)
+    gitUsername
+    gitEmail
+    theme
+    boxyStyle
+    ;
+in
+{
   # Home Manager Settings
   home.username = "${username}";
   home.homeDirectory = "/home/${username}";
@@ -193,8 +200,8 @@ in {
 
   dconf.settings = {
     "org/virt-manager/virt-manager/connections" = {
-      autoconnect = ["qemu:///system"];
-      uris = ["qemu:///system"];
+      autoconnect = [ "qemu:///system" ];
+      uris = [ "qemu:///system" ];
     };
   };
 
@@ -217,7 +224,7 @@ in {
     };
     theme = {
       name = "${config.colorScheme.slug}";
-      package = gtkThemeFromScheme {scheme = config.colorScheme;};
+      package = gtkThemeFromScheme { scheme = config.colorScheme; };
     };
     iconTheme = {
       name = "Papirus-Dark";
@@ -243,28 +250,28 @@ in {
 
   # Scripts
   home.packages = [
-    (import ../../scripts/task-waybar.nix {inherit pkgs;})
-    (import ../../scripts/squirtle.nix {inherit pkgs;})
-    (import ../../scripts/ceaseRecording.nix {inherit pkgs;})
-    (import ../../scripts/startRecording.nix {inherit pkgs;})
-    (import ../../scripts/clipRecording.nix {inherit pkgs;})
-    (import ../../scripts/rofi-powermenu.nix {inherit pkgs;})
-    (import ../../scripts/rofi-prism-exec.nix {inherit pkgs;})
-    (import ../../scripts/prayertimes.nix {inherit pkgs;})
+    (import ../../scripts/task-waybar.nix { inherit pkgs; })
+    (import ../../scripts/squirtle.nix { inherit pkgs; })
+    (import ../../scripts/ceaseRecording.nix { inherit pkgs; })
+    (import ../../scripts/startRecording.nix { inherit pkgs; })
+    (import ../../scripts/clipRecording.nix { inherit pkgs; })
+    (import ../../scripts/rofi-powermenu.nix { inherit pkgs; })
+    (import ../../scripts/rofi-prism-exec.nix { inherit pkgs; })
+    (import ../../scripts/prayertimes.nix { inherit pkgs; })
     (import ../../scripts/themechange.nix {
       inherit pkgs;
       inherit host;
       inherit username;
     })
-    (import ../../scripts/theme-selector.nix {inherit pkgs;})
-    (import ../../scripts/nvidia-offload.nix {inherit pkgs;})
+    (import ../../scripts/theme-selector.nix { inherit pkgs; })
+    (import ../../scripts/nvidia-offload.nix { inherit pkgs; })
     (import ../../scripts/wallsetter.nix {
       inherit pkgs;
       inherit username;
     })
-    (import ../../scripts/web-search.nix {inherit pkgs;})
-    (import ../../scripts/rofi-launcher.nix {inherit pkgs;})
-    (import ../../scripts/screenshootin.nix {inherit pkgs;})
+    (import ../../scripts/web-search.nix { inherit pkgs; })
+    (import ../../scripts/rofi-launcher.nix { inherit pkgs; })
+    (import ../../scripts/screenshootin.nix { inherit pkgs; })
     (import ../../scripts/list-hypr-bindings.nix {
       inherit pkgs;
       inherit host;

@@ -34,7 +34,6 @@ in
             "idle_inhibitor"
             "pulseaudio"
             "custom/weather"
-            "custom/recorder"
             "tray"
             "custom/notification"
           ];
@@ -99,13 +98,6 @@ in
             format-ethernet = " {bandwidthDownOctets}";
             format-wifi = "{icon} {signalStrength}%";
             format-disconnected = "󰤮";
-            tooltip = false;
-          };
-          "custom/recorder" = {
-            format = "⏺R";
-            on-click = "start-recording";
-            on-click-right = "cease-recording";
-            on-click-middle = "clip-recording";
             tooltip = false;
           };
           "tray" = {
@@ -227,7 +219,7 @@ in
             tooltip label {
               color: #${palette.base05};
             }
-            #custom-previouspls, #cpu, #custom-exit, #custom-recorder, #network { /* Stuff that needs to be rounded left. */
+            #custom-previouspls, #cpu, #custom-exit, #tray, #network { /* Stuff that needs to be rounded left. */
               ${
             if boxyStyle == true
             then ''border-radius: 0px; margin: 0px;''
@@ -253,7 +245,7 @@ in
           }
             padding: 2px 10px;
             }
-          #idle_inhibitor, #tray { /* Stuff that aren't rounded in either direction, i.e. sandwiched pills. */
+          #idle_inhibitor { /* Stuff that aren't rounded in either direction, i.e. sandwiched pills. */
               border-radius: 0px;
               ${
             if boxyStyle == true
@@ -432,13 +424,6 @@ in
           }
             }
             #network {
-              ${
-            if boxyStyle == true
-            then ''color: #${palette.base08}; background: #${palette.base00};''
-            else ''background: #${palette.base08};''
-          }
-            }
-            #custom-recorder {
               ${
             if boxyStyle == true
             then ''color: #${palette.base08}; background: #${palette.base00};''
