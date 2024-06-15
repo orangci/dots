@@ -4,12 +4,14 @@
   username,
   host,
   ...
-}: let
+}:
+let
   finecmdline = pkgs.vimUtils.buildVimPlugin {
     name = "fine-cmdline";
     src = inputs.fine-cmdline;
   };
-in {
+in
+{
   programs = {
     neovim = {
       enable = true;

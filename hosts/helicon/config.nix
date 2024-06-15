@@ -6,7 +6,8 @@
   inputs,
   options,
   ...
-}: {
+}:
+{
   imports = [
     ./hardware.nix
     ./users.nix
@@ -22,8 +23,8 @@
     # Kernel
     kernelPackages = pkgs.linuxPackages_zen;
     # This is for OBS Virtual Cam Support
-    kernelModules = ["v4l2loopback"];
-    extraModulePackages = [config.boot.kernelPackages.v4l2loopback];
+    kernelModules = [ "v4l2loopback" ];
+    extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];
     # Needed For Some Steam Games
     kernel.sysctl = {
       "vm.max_map_count" = 2147483642;
@@ -63,7 +64,7 @@
   # Enable networking
   networking.networkmanager.enable = true;
   networking.hostName = "${host}";
-  networking.timeServers = options.networking.timeServers.default ++ ["pool.ntp.org"];
+  networking.timeServers = options.networking.timeServers.default ++ [ "pool.ntp.org" ];
 
   # Set your time zone.
   # services.automatic-timezoned.enable = true;
@@ -115,11 +116,9 @@
     };
   };
   nixpkgs.config.packageOverrides = pkgs: {
-    xfce =
-      pkgs.xfce
-      // {
-        gvfs = pkgs.gvfs;
-      };
+    xfce = pkgs.xfce // {
+      gvfs = pkgs.gvfs;
+    };
   };
   nixpkgs.config.allowUnfree = true;
 
@@ -128,7 +127,6 @@
   };
 
   environment.systemPackages = with pkgs; [
-    vim
     wget
     killall
     git
@@ -174,7 +172,6 @@
     pavucontrol
     tree
     font-awesome
-    neovide
     pkgs.libsForQt5.qt5.qtgraphicaleffects
     arrpc
     ripgrep
@@ -182,7 +179,7 @@
     dig
     nitch
     openjdk
-    (vesktop.override {withSystemVencord = false;})
+    (vesktop.override { withSystemVencord = false; })
     vscodium
     yt-dlp
     calibre
@@ -233,7 +230,7 @@
       font-awesome
       symbola
       material-icons
-      (nerdfonts.override {fonts = ["JetBrainsMono"];})
+      (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
     ];
   };
 
@@ -243,7 +240,6 @@
   # Extra Portal Configuration
   xdg.portal = {
     enable = true;
-    wlr.enable = true;
     extraPortals = [
       pkgs.xdg-desktop-portal-gtk
       pkgs.xdg-desktop-portal
@@ -287,7 +283,6 @@
     gvfs.enable = true;
     samba.enable = true;
     openssh.enable = true;
-    flatpak.enable = false;
     printing.enable = true;
     gnome.gnome-keyring.enable = true;
     avahi = {
@@ -305,17 +300,10 @@
     rpcbind.enable = true;
     nfs.server.enable = true;
   };
-  systemd.services.flatpak-repo = {
-    wantedBy = ["multi-user.target"];
-    path = [pkgs.flatpak];
-    script = ''
-      flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-    '';
-  };
   hardware.sane = {
     enable = true;
-    extraBackends = [pkgs.sane-airscan];
-    disabledDefaultBackends = ["escl"];
+    extraBackends = [ pkgs.sane-airscan ];
+    disabledDefaultBackends = [ "escl" ];
   };
   hardware.logitech.wireless.enable = true;
   hardware.logitech.wireless.enableGraphical = true;
@@ -355,8 +343,8 @@
         "nix-command"
         "flakes"
       ];
-      substituters = ["https://hyprland.cachix.org"];
-      trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
+      substituters = [ "https://hyprland.cachix.org" ];
+      trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
     };
     gc = {
       automatic = true;
