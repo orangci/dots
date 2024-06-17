@@ -10,7 +10,7 @@ What I use:
 - **Editor** • [`Neovim`](https://neovim.io/)
 - **Browser** • [`Firefox`](https://www.mozilla.org/en-US/firefox/)
 - **Lockscreen** • [`Hyprlock`](https://github.com/hyprwm/hyprlock)
-- **DM** • [`SDDM`](https://github.com/sddm/sddm)
+- **DM** • [`tuigreet`](https://github.com/apognu/tuigreet)
 - **Wallpaper Daemon** • [`swww`](https://github.com/LGFae/swww)
 - **File Manager** • `Thunar`
 - **Screenshots** • [`grim`](https://github.com/emersion/grim)
