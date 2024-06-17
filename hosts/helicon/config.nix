@@ -182,13 +182,13 @@
     (vesktop.override { withSystemVencord = false; })
     vscodium
     yt-dlp
-    calibre
+    calibre # ebooks
     traceroute
     cava
     speedtest-cli
     cmus
     trashy
-    glow
+    glow # markdown viwer
     cliphist
     ffmpeg
     bat
@@ -200,27 +200,29 @@
     imagemagick
     catimg
     otpclient
-    mpv
-    nwg-look
-    mya
+    mpv # media player
+    nwg-look # gtk settings
+    mya # myanimelist owo
     nix-prefetch
     zip
-    qimgv
+    qimgv # image viewer
     hyprlock
     protonvpn-gui
-    wttrbar
+    wttrbar # for waybar
     google-chrome
     obsidian
     zfxtop
     rofi-wayland
-    bemoji
-    wtype
+    bemoji # for emoji picker
+    wtype # for emoji picker
     python3
     uwuify
     owofetch
     jq
-    catppuccin-sddm-corners
     greetd.tuigreet
+    xfce.tumbler # for image thumbnails in thunar
+    variety
+    hyprpaper
   ];
 
   fonts = {

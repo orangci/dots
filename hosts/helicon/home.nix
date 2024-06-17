@@ -20,7 +20,7 @@ in
   # Home Manager Settings
   home.username = "${username}";
   home.homeDirectory = "/home/${username}";
-  home.stateVersion = "23.11";
+  home.stateVersion = "24.11";
 
   # Set The Colorscheme
   colorScheme = inputs.nix-colors.colorSchemes."${theme}";
@@ -132,7 +132,7 @@ in
     (import ../../scripts/squirtle.nix { inherit pkgs; })
     (import ../../scripts/rofi-powermenu.nix { inherit pkgs; })
     (import ../../scripts/rofi-prism-exec.nix { inherit pkgs; })
-    (import ../../scripts/prayertimes.nix { inherit pkgs; })
+    (import ../../scripts/walls.nix { inherit pkgs; })
     (import ../../scripts/themechange.nix {
       inherit pkgs;
       inherit host;
@@ -140,10 +140,6 @@ in
     })
     (import ../../scripts/theme-selector.nix { inherit pkgs; })
     (import ../../scripts/nvidia-offload.nix { inherit pkgs; })
-    (import ../../scripts/wallsetter.nix {
-      inherit pkgs;
-      inherit username;
-    })
     (import ../../scripts/web-search.nix { inherit pkgs; })
     (import ../../scripts/rofi-launcher.nix { inherit pkgs; })
     (import ../../scripts/screenshootin.nix { inherit pkgs; })

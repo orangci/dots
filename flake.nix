@@ -1,5 +1,5 @@
 {
-  description = "ZaneyOS";
+  description = "orangc's dots";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
