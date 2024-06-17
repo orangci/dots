@@ -54,14 +54,14 @@ with lib;
                # >>> STARTUP COMMANDS <<<
               exec-once = dbus-update-activation-environment --systemd --all
               exec-once = systemctl --user import-environment QT_QPA_PLATFORMTHEME WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-              exec-once = killall -q waybar;sleep .5 && waybar
-              exec-once = killall -q swaync;sleep .5 && swaync
+              exec-once = killall -q waybar;waybar
+              exec-once = killall -q swaync;swaync
               exec-once = nm-applet --indicator
               exec-once = lxqt-policykit-agent
               exec-once = wl-paste --type text --watch cliphist store #Stores only text data
               exec-once = wl-paste --type image --watch cliphist store #Stores only image data
               exec-once = arrpc
-              exec-once = killall -q swww;sleep .5 && swww-daemon
+              exec-once = swww kill;swww-daemon
               exec-once = wallset
               exec-once = blueman-applet
 
