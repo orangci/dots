@@ -3,7 +3,7 @@ pkgs.writeShellScriptBin "wallset" ''
   cd ~/Pictures/walls-catppuccin-mocha
   while : ; do
      export CURRENT_WALLPAPER="$(ls *.jpg *.png *.jpeg | sort -R | tail -1)"
-     swww img $CURRENT_WALLPAPER --transition-type grow --transition-duration 0.75 --transition-fps 60
+     swww img $CURRENT_WALLPAPER --transition-type random --transition-fps 60
      export WALLPAPER=$HOME/Pictures/walls-catppuccin-mocha/$CURRENT_WALLPAPER
      sleep 300
   done
