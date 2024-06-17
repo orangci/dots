@@ -20,7 +20,7 @@ in
   # Home Manager Settings
   home.username = "${username}";
   home.homeDirectory = "/home/${username}";
-  home.stateVersion = "23.11";
+  home.stateVersion = "24.11";
 
   # Set The Colorscheme
   colorScheme = inputs.nix-colors.colorSchemes."${theme}";
@@ -30,9 +30,12 @@ in
     inputs.nix-colors.homeManagerModules.default
     inputs.hyprland.homeManagerModules.default
     ../../config/hyprland.nix
+    # ../../config/nvim/neovim.nix
     ../../config/swaync.nix
     ../../config/waybar.nix
     ../../config/rofi.nix
+    ../../config/kitty.nix
+    ../../config/fastfetch.nix
   ];
 
   # Define Settings For Xresources
@@ -46,130 +49,10 @@ in
   };
   home.file.".config/starship.toml".source = ../../config/starship.toml;
   home.file.".base16-themes".source = ../../config/base16-themes;
-  home.file.".emoji".source = ../../config/emoji;
   home.file.".face.icon".source = ../../config/face.jpg;
   home.file.".config/vesktop/themes/orangetweaks.css".source = ../../config/Configs/vencordthemes/orangetweaks.css;
   home.file.".config/vesktop/themes/catppuccin.css".source = ../../config/Configs/vencordthemes/catppuccin.css;
   home.file.".config/rofi/rofi-prism.sh".source = ../../scripts/rofi-prism.sh;
-  home.file.".config/fastfetch/config.jsonc".text = ''
-    {
-        "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
-        "logo": {
-            "padding": {
-                "top": 2
-            }
-        },
-        "display": {
-            "separator": " -> "
-        },
-        "modules": [
-            {
-                "type": "custom",
-                "format": "\u001b[90m┌────────────────────────────────────────────────────────────┐"
-            },
-            {
-                "type": "title",
-                "keyWidth": 10
-            },
-            {
-                "type": "custom",
-                "format": "\u001b[90m└────────────────────────────────────────────────────────────┘"
-            },
-            {
-                "type": "custom",
-                "format": " \u001b[90m  \u001b[31m  \u001b[32m  \u001b[33m  \u001b[34m  \u001b[35m  \u001b[36m  \u001b[37m  \u001b[38m  \u001b[39m       \u001b[38m  \u001b[37m  \u001b[36m  \u001b[35m  \u001b[34m  \u001b[33m  \u001b[32m  \u001b[31m  \u001b[90m"
-            },
-            {
-                "type": "custom",
-                "format": "\u001b[90m┌────────────────────────────────────────────────────────────┐"
-            },
-            {
-                "type": "os",
-                "key": " OS",
-                "keyColor": "yellow"
-            },
-            {
-                "type": "packages",
-                "key": "│ ├󰏖",
-                "keyColor": "yellow"
-            },
-            {
-                "type": "shell",
-                "key": "│ └",
-                "keyColor": "yellow"
-            },
-            {
-                "type": "wm",
-                "key": " DE/WM",
-                "keyColor": "blue"
-            },
-            {
-                "type": "lm",
-                "key": "│ ├󰧨",
-                "keyColor": "blue"
-            },
-            {
-                "type": "wmtheme",
-                "key": "│ ├󰉼",
-                "keyColor": "blue"
-            },
-            {
-                "type": "icons",
-                "key": "│ ├󰀻",
-                "keyColor": "blue"
-            },
-            {
-                "type": "terminal",
-                "key": "│ ├",
-                "keyColor": "blue"
-            },
-            {
-                "type": "host",
-                "key": "󰌢 PC",
-                "keyColor": "green"
-            },
-            {
-                "type": "cpu",
-                "key": "│ ├󰻠",
-                "keyColor": "green"
-            },
-            {
-                "type": "gpu",
-                "key": "│ ├󰍛",
-                "keyColor": "green"
-            },
-            {
-                "type": "disk",
-                "key": "│ ├",
-                "keyColor": "green"
-            },
-            {
-                "type": "memory",
-                "key": "│ ├󰑭",
-                "keyColor": "green"
-            },
-            {
-                "type": "uptime",
-                "key": "│ ├󰅐",
-                "keyColor": "green"
-            },
-            {
-                "type": "display",
-                "key": "│ └󰍹",
-                "keyColor": "green"
-            },
-            {
-                "type": "custom",
-                "format": "\u001b[90m└────────────────────────────────────────────────────────────┘"
-            },
-            "break",
-            {
-                "type": "custom",
-                "format": " \u001b[90m  \u001b[31m  \u001b[32m  \u001b[33m  \u001b[34m  \u001b[35m  \u001b[36m  \u001b[37m  \u001b[38m  \u001b[39m       \u001b[38m  \u001b[37m  \u001b[36m  \u001b[35m  \u001b[34m  \u001b[33m  \u001b[32m  \u001b[31m  \u001b[90m"
-            }
-        ]
-    }
-  '';
   home.file.".config/swappy/config".text = ''
     [Default]
     save_dir=/home/${username}/Pictures/Screenshots
@@ -237,27 +120,19 @@ in
       gtk-application-prefer-dark-theme = 1;
     };
   };
-
-  # Theme QT -> GTK
   qt = {
     enable = true;
-    platformTheme = "gtk";
-    style = {
-      name = "adwaita-dark";
-      package = pkgs.adwaita-qt;
-    };
+    style.name = "adwaita-dark";
+    platformTheme = "gtk3";
   };
 
   # Scripts
   home.packages = [
-    (import ../../scripts/task-waybar.nix { inherit pkgs; })
     (import ../../scripts/squirtle.nix { inherit pkgs; })
-    (import ../../scripts/ceaseRecording.nix { inherit pkgs; })
-    (import ../../scripts/startRecording.nix { inherit pkgs; })
-    (import ../../scripts/clipRecording.nix { inherit pkgs; })
     (import ../../scripts/rofi-powermenu.nix { inherit pkgs; })
+    (import ../../scripts/rofi-launcher.nix { inherit pkgs; })
     (import ../../scripts/rofi-prism-exec.nix { inherit pkgs; })
-    (import ../../scripts/prayertimes.nix { inherit pkgs; })
+    (import ../../scripts/walls.nix { inherit pkgs; })
     (import ../../scripts/themechange.nix {
       inherit pkgs;
       inherit host;
@@ -265,17 +140,8 @@ in
     })
     (import ../../scripts/theme-selector.nix { inherit pkgs; })
     (import ../../scripts/nvidia-offload.nix { inherit pkgs; })
-    (import ../../scripts/wallsetter.nix {
-      inherit pkgs;
-      inherit username;
-    })
     (import ../../scripts/web-search.nix { inherit pkgs; })
-    (import ../../scripts/rofi-launcher.nix { inherit pkgs; })
     (import ../../scripts/screenshootin.nix { inherit pkgs; })
-    (import ../../scripts/list-hypr-bindings.nix {
-      inherit pkgs;
-      inherit host;
-    })
   ];
 
   services = {
@@ -307,141 +173,6 @@ in
 
   programs = {
     gh.enable = true;
-    neovim = {
-      enable = true;
-      defaultEditor = true;
-      viAlias = true;
-      vimAlias = true;
-      vimdiffAlias = true;
-      withNodeJs = true;
-      extraPackages = with pkgs; [
-        lua-language-server
-        gopls
-        xclip
-        wl-clipboard
-        luajitPackages.lua-lsp
-        nil
-        rust-analyzer
-        nodePackages.bash-language-server
-        yaml-language-server
-        pyright
-        marksman
-      ];
-      plugins = with pkgs.vimPlugins; [
-        alpha-nvim
-        auto-session
-        bufferline-nvim
-        dressing-nvim
-        indent-blankline-nvim
-        nvim-treesitter.withAllGrammars
-        lualine-nvim
-        nvim-autopairs
-        nvim-web-devicons
-        nvim-cmp
-        nvim-surround
-        nvim-lspconfig
-        cmp-nvim-lsp
-        cmp-buffer
-        luasnip
-        cmp_luasnip
-        friendly-snippets
-        lspkind-nvim
-        comment-nvim
-        nvim-ts-context-commentstring
-        {
-          plugin = catppuccin-nvim;
-          config = "colorscheme catppuccin";
-        }
-        plenary-nvim
-        neodev-nvim
-        luasnip
-        telescope-nvim
-        todo-comments-nvim
-        nvim-tree-lua
-        telescope-fzf-native-nvim
-        vim-tmux-navigator
-      ];
-      extraConfig = ''
-        set noemoji
-      '';
-      extraLuaConfig = ''
-        ${builtins.readFile ../../config/nvim/options.lua}
-        ${builtins.readFile ../../config/nvim/keymaps.lua}
-        ${builtins.readFile ../../config/nvim/plugins/alpha.lua}
-        ${builtins.readFile ../../config/nvim/plugins/autopairs.lua}
-        ${builtins.readFile ../../config/nvim/plugins/auto-session.lua}
-        ${builtins.readFile ../../config/nvim/plugins/comment.lua}
-        ${builtins.readFile ../../config/nvim/plugins/cmp.lua}
-        ${builtins.readFile ../../config/nvim/plugins/lsp.lua}
-        ${builtins.readFile ../../config/nvim/plugins/nvim-tree.lua}
-        ${builtins.readFile ../../config/nvim/plugins/telescope.lua}
-        ${builtins.readFile ../../config/nvim/plugins/todo-comments.lua}
-        ${builtins.readFile ../../config/nvim/plugins/treesitter.lua}
-        require("ibl").setup()
-        require("bufferline").setup{}
-        require("lualine").setup({
-          icons_enabled = true,
-          theme = 'catppuccin-mocha',
-        })
-      '';
-    };
-    kitty = {
-      enable = true;
-      package = pkgs.kitty;
-      font.name = "JetBrainsMono NFM";
-      font.size = 16;
-      settings = {
-        scrollback_lines = 2000;
-        wheel_scroll_min_lines = 1;
-        window_padding_width = 4;
-        confirm_os_window_close = 0;
-      };
-      extraConfig = ''
-        foreground #${palette.base05}
-        background #${palette.base00}
-        color0  #${palette.base03}
-        color1  #${palette.base08}
-        color2  #${palette.base0B}
-        color3  #${palette.base09}
-        color4  #${palette.base0D}
-        color5  #${palette.base0E}
-        color6  #${palette.base0C}
-        color7  #${palette.base06}
-        color8  #${palette.base04}
-        color9  #${palette.base08}
-        color10 #${palette.base0B}
-        color11 #${palette.base0A}
-        color12 #${palette.base0C}
-        color13 #${palette.base0E}
-        color14 #${palette.base0C}
-        color15 #${palette.base07}
-        color16 #${palette.base00}
-        color17 #${palette.base0F}
-        color18 #${palette.base0B}
-        color19 #${palette.base09}
-        color20 #${palette.base0D}
-        color21 #${palette.base0E}
-        color22 #${palette.base0C}
-        color23 #${palette.base06}
-        cursor  #${palette.base07}
-        cursor_text_color #${palette.base00}
-        selection_foreground #${palette.base01}
-        selection_background #${palette.base0D}
-        url_color #${palette.base0C}
-        active_border_color #${palette.base04}
-        inactive_border_color #${palette.base00}
-        bell_border_color #${palette.base03}
-        tab_bar_style fade
-        tab_fade 1
-        active_tab_foreground   #${palette.base04}
-        active_tab_background   #${palette.base00}
-        active_tab_font_style   bold
-        inactive_tab_foreground #${palette.base07}
-        inactive_tab_background #${palette.base08}
-        inactive_tab_font_style bold
-        tab_bar_background #${palette.base00}
-      '';
-    };
     starship = {
       enable = true;
       package = pkgs.starship;

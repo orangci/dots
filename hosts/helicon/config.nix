@@ -221,8 +221,6 @@
     jq
     greetd.tuigreet
     xfce.tumbler # for image thumbnails in thunar
-    variety
-    hyprpaper
   ];
 
   fonts = {

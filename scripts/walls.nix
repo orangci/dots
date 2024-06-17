@@ -1,24 +1,10 @@
 { pkgs }:
 pkgs.writeShellScriptBin "wallset" ''
-# Directory containing wallpapers
-WALLPAPER_DIR="$HOME/Pictures/walls-catppuccin-mocha"
-
-# Function to select and set a random wallpaper
-set_random_wallpaper() {
-  # Select a random file from the wallpaper directory
-  RANDOM_WALLPAPER=$(find "$WALLPAPER_DIR" -type f | shuf -n 1)
-  
-  # Set the wallpaper using hyprpaper
-  hyprpaper --wallpaper "$RANDOM_WALLPAPER"
-}
-
-# Set an initial wallpaper
-set_random_wallpaper
-
-# Loop to change the wallpaper every 5 minutes
-while true; do
-  sleep 300 # 300 seconds = 5 minutes
-  set_random_wallpaper
-done
-
+  cd ~/Pictures/walls-catppuccin-mocha
+  while : ; do
+     export CURRENT_WALLPAPER="$(ls *.jpg *.png *.jpeg | sort -R | tail -1)"
+     swww img "$CURRENT_WALLPAPER" --transition-type grow --transition-duration 0.75 --transition-fps 60
+     export CURRENT_WALLPAPER=$HOME/Pictures/walls-catppuccin-mocha/$CURRENT_WALLPAPER
+     sleep 300
+  done
 ''
