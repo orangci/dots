@@ -30,7 +30,7 @@ in
     inputs.nix-colors.homeManagerModules.default
     inputs.hyprland.homeManagerModules.default
     ../../config/hyprland.nix
-    ../../config/nvim/neovim.nix
+    # ../../config/nvim/neovim.nix
     ../../config/swaync.nix
     ../../config/waybar.nix
     ../../config/rofi.nix

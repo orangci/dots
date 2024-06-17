@@ -6,10 +6,7 @@
   ...
 }:
 let
-  finecmdline = pkgs.vimUtils.buildVimPlugin {
-    name = "fine-cmdline";
-    src = inputs.fine-cmdline;
-  };
+ owo = 1;
 in
 {
   programs = {
@@ -40,7 +37,6 @@ in
         dressing-nvim
         indent-blankline-nvim
         nui-nvim
-        finecmdline
         nvim-treesitter.withAllGrammars
         lualine-nvim
         nvim-autopairs
@@ -71,7 +67,6 @@ in
       ];
       extraConfig = ''
         set noemoji
-        nnoremap : <cmd>FineCmdline<CR>
       '';
       extraLuaConfig = ''
         ${builtins.readFile ./nvim/options.lua}
