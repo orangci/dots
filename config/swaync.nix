@@ -64,7 +64,7 @@ in
     .control-center .notification-row:focus,
     .control-center .notification-row:hover {
         opacity: 0.9;
-        background: #${palette.base00}
+        background: #${palette.base00};
     }
 
     .notification-row {
@@ -82,15 +82,15 @@ in
     .notification-content {
         background: #${palette.base00};
         padding: 10px;
-        border-radius: 5px;
-        border: 2px solid #${palette.base0D};
+        border-radius: 15px;
+        border: 1px solid #${palette.base01};
         margin: 0;
     }
 
     .notification-default-action {
         margin: 0;
         padding: 0;
-        border-radius: 5px;
+        border-radius: 15px;
     }
 
     .close-button {
@@ -98,54 +98,54 @@ in
         color: #${palette.base00};
         text-shadow: none;
         padding: 0;
-        border-radius: 5px;
+        border-radius: 15px;
         margin-top: 5px;
         margin-right: 5px;
     }
 
     .close-button:hover {
         box-shadow: none;
-        background: #${palette.base0D};
+        background: #${palette.base0E};
         transition: all .15s ease-in-out;
-        border: none
+        border: none;
     }
 
 
     .notification-action {
-        border: 2px solid #${palette.base0D};
         border-top: none;
-        border-radius: 5px;
+        border-radius: 15px;
     }
 
 
     .notification-default-action:hover,
     .notification-action:hover {
-        color: #${palette.base0B};
-        background: #${palette.base0B}
+        color: #${palette.base0E};
+        background: #${palette.base0E};
     }
 
     .notification-default-action {
-        border-radius: 5px;
+        border-bottom-left-radius: 15px;
+        border-bottom-right-radius: 15px;
         margin: 0px;
     }
 
     .notification-default-action:not(:only-child) {
-        border-bottom-left-radius: 7px;
-        border-bottom-right-radius: 7px
+        border-bottom-left-radius: 15px;
+        border-bottom-right-radius: 15px;
     }
 
     .notification-action:first-child {
-        border-bottom-left-radius: 10px;
-        background: #${palette.base00}
+        border-bottom-left-radius: 15px;
+        background: #${palette.base00};
     }
 
     .notification-action:last-child {
-        border-bottom-right-radius: 10px;
-        background: #${palette.base00}
+        border-bottom-right-radius: 15px;
+        background: #${palette.base00};
     }
 
     .inline-reply {
-        margin-top: 8px
+        margin-top: 8px;
     }
 
     .inline-reply-entry {
@@ -153,31 +153,31 @@ in
         color: #${palette.base05};
         caret-color: #${palette.base05};
         border: 1px solid #${palette.base09};
-        border-radius: 5px
+        border-radius: 15px;
     }
 
     .inline-reply-button {
         margin-left: 4px;
         background: #${palette.base00};
         border: 1px solid #${palette.base09};
-        border-radius: 5px;
-        color: #${palette.base05}
+        border-radius: 15px;
+        color: #${palette.base05};
     }
 
     .inline-reply-button:disabled {
         background: initial;
         color: #${palette.base03};
-        border: 1px solid transparent
+        border: 1px solid transparent;
     }
 
     .inline-reply-button:hover {
-        background: #${palette.base00}
+        background: #${palette.base00};
     }
 
     .body-image {
         margin-top: 6px;
         background-color: #${palette.base05};
-        border-radius: 5px
+        border-radius: 5px;
     }
 
     .summary {
@@ -185,7 +185,7 @@ in
         font-weight: 700;
         background: transparent;
         color: rgba(158, 206, 106, 1);
-        text-shadow: none
+        text-shadow: none;
     }
 
     .time {
@@ -194,7 +194,7 @@ in
         background: transparent;
         color: #${palette.base05};
         text-shadow: none;
-        margin-right: 18px
+        margin-right: 18px;
     }
 
     .body {
@@ -202,39 +202,37 @@ in
         font-weight: 400;
         background: transparent;
         color: #${palette.base05};
-        text-shadow: none
+        text-shadow: none;
     }
 
     .control-center {
         background: #${palette.base00};
         border-radius: 15px;
-        padding: 14px;
-        border: 2px solid #${palette.base01};
     }
 
     .control-center-list {
-        background: transparent
+        background: transparent;
     }
 
     .control-center-list-placeholder {
-        opacity: .5
+        opacity: .5;
     }
 
     .floating-notifications {
-        background: transparent
+        background: transparent;
     }
 
     .blank-window {
-        background: alpha(black, 0)
+        background: alpha(black, 0);
     }
 
     .widget-title {
-        color: #${palette.base0B};
+        color: #${palette.base0E};
         background: #${palette.base00};
         padding: 5px 10px;
         margin: 10px 10px 5px 10px;
         font-size: 1.5rem;
-        border-radius: 5px;
+        border-radius: 15px;
     }
 
     .widget-title>button {
@@ -243,7 +241,7 @@ in
         text-shadow: none;
         background: #${palette.base00};
         box-shadow: none;
-        border-radius: 5px;
+        border-radius: 15px;
     }
 
     .widget-title>button:hover {
@@ -255,15 +253,15 @@ in
         background: #${palette.base00};
         padding: 5px 10px;
         margin: 10px 10px 5px 10px;
-        border-radius: 5px;
+        border-radius: 15px;
         font-size: large;
-        color: #${palette.base0B};
+        color: #${palette.base0E};
     }
 
     .widget-dnd>switch {
-        border-radius: 5px;
-        /* border: 1px solid #${palette.base0B}; */
-        background: #${palette.base0B};
+        border-radius: 15px;
+        /* border: 1px solid #${palette.base0E}; */
+        background: #${palette.base0E};
     }
 
     .widget-dnd>switch:checked {
@@ -273,12 +271,12 @@ in
 
     .widget-dnd>switch slider {
         background: #${palette.base00};
-        border-radius: 5px
+        border-radius: 15px;
     }
 
     .widget-dnd>switch:checked slider {
         background: #${palette.base00};
-        border-radius: 5px
+        border-radius: 15px;
     }
 
     .widget-label {
@@ -295,39 +293,39 @@ in
         background: #${palette.base00};
         padding: 5px 10px;
         margin: 10px 10px 5px 10px;
-        border-radius: 5px;
+        border-radius: 15px;
     }
 
     .widget-mpris > box > button {
-        border-radius: 5px;
+        border-radius: 15px;
     }
 
     .widget-mpris-player {
         padding: 5px 10px;
-        margin: 10px
+        margin: 10px;
     }
 
     .widget-mpris-title {
         font-weight: 700;
-        font-size: 1.25rem
+        font-size: 1.25rem;
     }
 
     .widget-mpris-subtitle {
-        font-size: 1.1rem
+        font-size: 1.1rem;
     }
 
-    .widget-buttons-grid {
+        .widget-buttons-grid {
         font-size: x-large;
         padding: 5px;
         margin: 10px 10px 5px 10px;
-        border-radius: 5px;
+        border-radius: 15px;
         background: #${palette.base01};
     }
 
     .widget-buttons-grid>flowbox>flowboxchild>button {
         margin: 3px;
         background: #${palette.base00};
-        border-radius: 5px;
+        border-radius: 15px;
         color: #${palette.base05};
     }
 
@@ -338,40 +336,40 @@ in
 
     .widget-menubar>box>.menu-button-bar>button {
         border: none;
-        background: transparent
+        background: transparent;
     }
 
     .topbar-buttons>button {
         border: none;
-        background: transparent
+        background: transparent;
     }
 
-    .widget-volume {
+        .widget-volume {
         background: #${palette.base01};
         padding: 5px;
         margin: 10px 10px 5px 10px;
-        border-radius: 5px;
+        border-radius: 15px;
         font-size: x-large;
         color: #${palette.base05};
     }
 
     .widget-volume>box>button {
         background: #${palette.base0B};
-        border: none
+        border: none;
     }
 
     .per-app-volume {
         background-color: #${palette.base00};
         padding: 4px 8px 8px;
         margin: 0 8px 8px;
-        border-radius: 5px;
+        border-radius: 15px;
     }
 
     .widget-backlight {
         background: #${palette.base01};
         padding: 5px;
         margin: 10px 10px 5px 10px;
-        border-radius: 5px;
+        border-radius: 15px;
         font-size: x-large;
         color: #${palette.base05}
     }
