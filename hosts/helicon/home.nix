@@ -88,7 +88,7 @@ in
       placeholder_text=Password...
       position=0, -80
     }
-'';
+  '';
   home.file.".config/swappy/config".text = ''
     [Default]
     save_dir=/home/${username}/Pictures/Screenshots
@@ -252,8 +252,7 @@ in
         spinmal = "bash $HOME/Documents/spinPTW.sh";
       };
     };
-    hyprlock = {
-      enable = true;
     home-manager.enable = true;
+    hyprlock.enable = true;
   };
 }
