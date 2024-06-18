@@ -123,8 +123,8 @@ in
       uris = [ "qemu:///system" ];
     };
   };
-  
-    # Styling Options
+
+  # Styling Options
   # stylix.targets.waybar.enable = false;
   # stylix.targets.rofi.enable = false;
   # stylix.targets.hyprland.enable = false;

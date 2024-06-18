@@ -24,7 +24,7 @@ with lib;
     xwayland.enable = true;
     systemd.enable = true;
     # plugins = [
-      # hyprplugins.hyprtrailss
+    # hyprplugins.hyprtrailss
     # ];
     extraConfig =
       let

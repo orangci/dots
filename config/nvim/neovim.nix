@@ -6,7 +6,7 @@
   ...
 }:
 let
- owo = 1;
+  owo = 1;
 in
 {
   programs = {
