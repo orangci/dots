@@ -4,9 +4,9 @@ pkgs.writeShellScriptBin "wallset" ''
   while : ; do
      export CURRENT_WALLPAPER="$(ls *.jpg *.png *.jpeg | sort -R | tail -1)"
      swww img $CURRENT_WALLPAPER --transition-type random --transition-fps 60
-     echo "\$WALLPAPER=~/Pictures/walls-catppuccin-mocha/$CURRENT_WALLPAPER" > ~/dots/config/.current_wallpaper_path_hyprlock
+     echo "\$WALLPAPER=~/Pictures/walls-catppuccin-mocha/$CURRENT_WALLPAPER" > /tmp/.current_wallpaper_path_hyprlock
      export WALLPAPER=$HOME/Pictures/walls-catppuccin-mocha/$CURRENT_WALLPAPER
-     echo "$WALLPAPER" > ~/dots/config/.current_wallpaper_path
+     echo "$WALLPAPER" > /tmp/.current_wallpaper_path
      sleep 120
   done
 ''

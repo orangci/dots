@@ -53,7 +53,7 @@ in
   home.file.".config/vesktop/themes/catppuccin.css".source = ../../config/Configs/vencordthemes/catppuccin.css;
   home.file.".config/rofi/rofi-prism.sh".source = ../../scripts/rofi-prism.sh;
   home.file.".config/hypr/hyprlock.conf".text = ''
-      source=~/dots/config/.current_wallpaper_path_hyprlock
+      source=/tmp/.current_wallpaper_path_hyprlock
       background {
       path=$WALLPAPER
     }
@@ -225,8 +225,8 @@ in
         if [ -f $HOME/.bashrc-personal ]; then
           source $HOME/.bashrc-personal
         fi
-        if [ -f ~/.current_wallpaper_path ]; then
-          export WALLPAPER=$(cat ~/dots/config/.current_wallpaper_path)
+        if [ -f /tmp/.current_wallpaper_path ]; then
+          export WALLPAPER=$(cat /tmp/.current_wallpaper_path)
         fi
       '';
       shellAliases = {
