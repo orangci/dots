@@ -28,7 +28,6 @@ in
   # Import Program Configurations
   imports = [
     inputs.nix-colors.homeManagerModules.default
-    inputs.hyprland.homeManagerModules.default
     ../../config/hyprland.nix
     # ../../config/nvim/neovim.nix
     ../../config/swaync.nix
@@ -49,10 +48,47 @@ in
   };
   home.file.".config/starship.toml".source = ../../config/starship.toml;
   home.file.".base16-themes".source = ../../config/base16-themes;
-  home.file.".face.icon".source = ../../config/face.jpg;
+  home.file.".face.icon".source = ../../config/face.png;
   home.file.".config/vesktop/themes/orangetweaks.css".source = ../../config/Configs/vencordthemes/orangetweaks.css;
   home.file.".config/vesktop/themes/catppuccin.css".source = ../../config/Configs/vencordthemes/catppuccin.css;
   home.file.".config/rofi/rofi-prism.sh".source = ../../scripts/rofi-prism.sh;
+  home.file.".config/hypr/hyprlock.conf".text = ''
+      source=~/dots/config/.current_wallpaper_path_hyprlock
+      background {
+      path=$WALLPAPER
+    }
+
+    general {
+      disable_loading_bar=true
+      grace=0
+      hide_cursor=true
+      no_fade_in=false
+    }
+
+    image {
+      size=200
+      border_color=rgba(12, 150, 249,0)
+      border_size=1
+      halign=center
+      path=/home/orangc/dots/config/face.png
+      position=0, 200
+      rounding=-1
+      valign=center
+    }
+
+    input-field {
+      monitor=
+      size=200, 50
+      dots_center=true
+      fade_on_empty=true
+      font_color=rgb(cdd6f4)
+      inner_color=rgb(1e1e2e)
+      outer_color=rgb(181825)
+      outline_thickness=2
+      placeholder_text=Password...
+      position=0, -80
+    }
+'';
   home.file.".config/swappy/config".text = ''
     [Default]
     save_dir=/home/${username}/Pictures/Screenshots
@@ -87,6 +123,11 @@ in
       uris = [ "qemu:///system" ];
     };
   };
+  
+    # Styling Options
+  # stylix.targets.waybar.enable = false;
+  # stylix.targets.rofi.enable = false;
+  # stylix.targets.hyprland.enable = false;
 
   # Configure Cursor Theme
   home.pointerCursor = {
@@ -133,12 +174,6 @@ in
     (import ../../scripts/rofi-launcher.nix { inherit pkgs; })
     (import ../../scripts/rofi-prism-exec.nix { inherit pkgs; })
     (import ../../scripts/walls.nix { inherit pkgs; })
-    (import ../../scripts/themechange.nix {
-      inherit pkgs;
-      inherit host;
-      inherit username;
-    })
-    (import ../../scripts/theme-selector.nix { inherit pkgs; })
     (import ../../scripts/nvidia-offload.nix { inherit pkgs; })
     (import ../../scripts/web-search.nix { inherit pkgs; })
     (import ../../scripts/screenshootin.nix { inherit pkgs; })
@@ -190,6 +225,9 @@ in
         if [ -f $HOME/.bashrc-personal ]; then
           source $HOME/.bashrc-personal
         fi
+        if [ -f ~/.current_wallpaper_path ]; then
+          export WALLPAPER=$(cat ~/dots/config/.current_wallpaper_path)
+        fi
       '';
       shellAliases = {
         sv = "sudo nvim";
@@ -216,48 +254,6 @@ in
     };
     hyprlock = {
       enable = true;
-      settings = {
-        general = {
-          disable_loading_bar = true;
-          grace = 0;
-          hide_cursor = true;
-          no_fade_in = false;
-        };
-        background = [
-          {
-            path = "/home/${username}/Pictures/walls-catppuccin-mocha/sakuraGate.jpg";
-            # blur_passes = 3;
-            # blur_size = 8;
-          }
-        ];
-        image = [
-          {
-            path = "/home/${username}/Pictures/Profile\ Pictures/leaf.png";
-            size = 200;
-            border_size = 1;
-            border_color = "rgba(12, 150, 249,0)";
-            rounding = -1; # Negative means circle
-            position = "0, 200";
-            halign = "center";
-            valign = "center";
-          }
-        ];
-        input-field = [
-          {
-            size = "200, 50";
-            position = "0, -80";
-            monitor = "";
-            dots_center = true;
-            fade_on_empty = true;
-            font_color = "rgb(${palette.base05})";
-            inner_color = "rgb(${palette.base00})";
-            outer_color = "rgb(${palette.base01})";
-            outline_thickness = 2;
-            placeholder_text = "Password...";
-          }
-        ];
-      };
-    };
     home-manager.enable = true;
   };
 }

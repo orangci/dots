@@ -9,7 +9,6 @@
 }:
 let
   theme = config.colorScheme.palette;
-  hyprplugins = inputs.hyprland-plugins.packages.${pkgs.system};
   inherit (import ../hosts/${host}/variables.nix)
     browser
     borderAnim
@@ -24,9 +23,9 @@ with lib;
     enable = true;
     xwayland.enable = true;
     systemd.enable = true;
-    plugins = [
-      # hyprplugins.hyprtrails
-    ];
+    # plugins = [
+      # hyprplugins.hyprtrailss
+    # ];
     extraConfig =
       let
         modifier = "SUPER";
@@ -153,11 +152,6 @@ with lib;
                 }
 
               }
-              plugin {
-                hyprtrails {
-                  color = rgba(${theme.base0A}ff)
-                }
-              }
               dwindle {
                 pseudotile = true
                 preserve_split = true
@@ -206,7 +200,7 @@ with lib;
           bind = ${modifier},right,movefocus,r
           bind = ${modifier},up,movefocus,u
           bind = ${modifier},down,movefocus,d
-          bind = ${modifier},l,exec,hyprlock
+          bind = ${modifier},l,exec,killall hyprlock; hyprlock
           bind = ${modifier},BACKSLASH,exec,rofi-powermenu
           bind = ${modifier},APOSTROPHE,exec,killall -q wallset;wallset
           bind = ${modifier},1,workspace,1
