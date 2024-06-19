@@ -1,6 +1,12 @@
-{ pkgs, config, ... }:
+{
+  pkgs,
+  config,
+  host,
+  ...
+}:
 let
   palette = config.colorScheme.palette;
+  inherit (import ../hosts/${host}/variables.nix) boxyStyle;
 in
 {
   home.file.".config/swaync/config.json".text = ''
@@ -63,7 +69,7 @@ in
 
     .control-center .notification-row:focus,
     .control-center .notification-row:hover {
-        opacity: 0.9;
+    ${if boxyStyle == true then ''opacity: 1;'' else ''opacity: 0.9;''}
         background: #${palette.base00};
     }
 
@@ -82,7 +88,7 @@ in
     .notification-content {
         background: #${palette.base00};
         padding: 10px;
-        border-radius: 15px;
+        ${if boxyStyle == true then ''border-radius: 0px;'' else ''border-radius: 15px;''}
         border: 1px solid #${palette.base01};
         margin: 0;
     }
@@ -90,7 +96,7 @@ in
     .notification-default-action {
         margin: 0;
         padding: 0;
-        border-radius: 15px;
+        ${if boxyStyle == true then ''border-radius: 0px;'' else ''border-radius: 15px;''}
     }
 
     .close-button {
@@ -98,7 +104,7 @@ in
         color: #${palette.base00};
         text-shadow: none;
         padding: 0;
-        border-radius: 15px;
+        ${if boxyStyle == true then ''border-radius: 0px;'' else ''border-radius: 15px;''}
         margin-top: 5px;
         margin-right: 5px;
     }
@@ -113,7 +119,7 @@ in
 
     .notification-action {
         border-top: none;
-        border-radius: 15px;
+        ${if boxyStyle == true then ''border-radius: 0px;'' else ''border-radius: 15px;''}
     }
 
 
@@ -153,14 +159,14 @@ in
         color: #${palette.base05};
         caret-color: #${palette.base05};
         border: 1px solid #${palette.base09};
-        border-radius: 15px;
+        ${if boxyStyle == true then ''border-radius: 0px;'' else ''border-radius: 15px;''}
     }
 
     .inline-reply-button {
         margin-left: 4px;
         background: #${palette.base00};
         border: 1px solid #${palette.base09};
-        border-radius: 15px;
+        ${if boxyStyle == true then ''border-radius: 0px;'' else ''border-radius: 15px;''}
         color: #${palette.base05};
     }
 
@@ -177,7 +183,7 @@ in
     .body-image {
         margin-top: 6px;
         background-color: #${palette.base05};
-        border-radius: 5px;
+        ${if boxyStyle == true then ''border-radius: 0px;'' else ''border-radius: 5px;''}
     }
 
     .summary {
@@ -207,7 +213,7 @@ in
 
     .control-center {
         background: #${palette.base00};
-        border-radius: 15px;
+        ${if boxyStyle == true then ''border-radius: 0px;'' else ''border-radius: 15px;''}
     }
 
     .control-center-list {
@@ -232,7 +238,7 @@ in
         padding: 5px 10px;
         margin: 10px 10px 5px 10px;
         font-size: 1.5rem;
-        border-radius: 15px;
+        ${if boxyStyle == true then ''border-radius: 0px;'' else ''border-radius: 15px;''}
     }
 
     .widget-title>button {
@@ -241,7 +247,7 @@ in
         text-shadow: none;
         background: #${palette.base00};
         box-shadow: none;
-        border-radius: 15px;
+        ${if boxyStyle == true then ''border-radius: 0px;'' else ''border-radius: 15px;''}
     }
 
     .widget-title>button:hover {
@@ -253,13 +259,13 @@ in
         background: #${palette.base00};
         padding: 5px 10px;
         margin: 10px 10px 5px 10px;
-        border-radius: 15px;
+        ${if boxyStyle == true then ''border-radius: 0px;'' else ''border-radius: 15px;''}
         font-size: large;
         color: #${palette.base0E};
     }
 
     .widget-dnd>switch {
-        border-radius: 15px;
+        ${if boxyStyle == true then ''border-radius: 0px;'' else ''border-radius: 15px;''}
         /* border: 1px solid #${palette.base0E}; */
         background: #${palette.base0E};
     }
@@ -271,12 +277,12 @@ in
 
     .widget-dnd>switch slider {
         background: #${palette.base00};
-        border-radius: 15px;
+        ${if boxyStyle == true then ''border-radius: 0px;'' else ''border-radius: 15px;''}
     }
 
     .widget-dnd>switch:checked slider {
         background: #${palette.base00};
-        border-radius: 15px;
+        ${if boxyStyle == true then ''border-radius: 0px;'' else ''border-radius: 15px;''}
     }
 
     .widget-label {
@@ -293,11 +299,11 @@ in
         background: #${palette.base00};
         padding: 5px 10px;
         margin: 10px 10px 5px 10px;
-        border-radius: 15px;
+        ${if boxyStyle == true then ''border-radius: 0px;'' else ''border-radius: 15px;''}
     }
 
     .widget-mpris > box > button {
-        border-radius: 15px;
+        ${if boxyStyle == true then ''border-radius: 0px;'' else ''border-radius: 15px;''}
     }
 
     .widget-mpris-player {
@@ -318,14 +324,14 @@ in
         font-size: x-large;
         padding: 5px;
         margin: 10px 10px 5px 10px;
-        border-radius: 15px;
+        ${if boxyStyle == true then ''border-radius: 0px;'' else ''border-radius: 15px;''}
         background: #${palette.base01};
     }
 
     .widget-buttons-grid>flowbox>flowboxchild>button {
         margin: 3px;
         background: #${palette.base00};
-        border-radius: 15px;
+        ${if boxyStyle == true then ''border-radius: 0px;'' else ''border-radius: 15px;''}
         color: #${palette.base05};
     }
 
@@ -348,7 +354,7 @@ in
         background: #${palette.base01};
         padding: 5px;
         margin: 10px 10px 5px 10px;
-        border-radius: 15px;
+        ${if boxyStyle == true then ''border-radius: 0px;'' else ''border-radius: 15px;''}
         font-size: x-large;
         color: #${palette.base05};
     }
@@ -362,14 +368,14 @@ in
         background-color: #${palette.base00};
         padding: 4px 8px 8px;
         margin: 0 8px 8px;
-        border-radius: 15px;
+        ${if boxyStyle == true then ''border-radius: 0px;'' else ''border-radius: 15px;''}
     }
 
     .widget-backlight {
         background: #${palette.base01};
         padding: 5px;
         margin: 10px 10px 5px 10px;
-        border-radius: 15px;
+        ${if boxyStyle == true then ''border-radius: 0px;'' else ''border-radius: 15px;''}
         font-size: x-large;
         color: #${palette.base05}
     }
