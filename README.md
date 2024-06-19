@@ -13,13 +13,13 @@ What I use:
 - **DM** • [`tuigreet`](https://github.com/apognu/tuigreet)
 - **Wallpaper Daemon** • [`swww`](https://github.com/LGFae/swww)
 - **File Manager** • `Thunar`
-- **Screenshots** • [`grim`](https://github.com/emersion/grim)
+- **Screenshots** • [`hyprshot`](https://github.com/Gustash/Hyprshots)
 - **Clipboard** • [`cliphist`](https://github.com/sentriz/cliphist)
 - **Discord Client** • [`Vesktop`](https://vencord.dev)
 - **Prompt** • [`Starship`](https://starship.rs/)
 - **Image Viwer** • [`qimgv`](https://github.com/easymodo/qimgv)
 - **Notification Daemon** • [`swaync`](https://github.com/ErikReider/SwayNotificationCenter)
-- **Fetch** • [`fastfetch`](https://github.com/fastfetch-cli/fastfetch)
+- **Fetch** • [`nitch`](https://github.com/ssleert/nitch)
 
 All my wallpapers are available [here](https://github.com/orxngc/walls-catppuccin-mocha).
 
