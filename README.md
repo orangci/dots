@@ -13,7 +13,7 @@ What I use:
 - **DM** • [`tuigreet`](https://github.com/apognu/tuigreet)
 - **Wallpaper Daemon** • [`swww`](https://github.com/LGFae/swww)
 - **File Manager** • `Thunar`
-- **Screenshots** • [`hyprshot`](https://github.com/Gustash/Hyprshots)
+- **Screenshots** • [`grimblast`](https://github.com/hyprwm/contrib)
 - **Clipboard** • [`cliphist`](https://github.com/sentriz/cliphist)
 - **Discord Client** • [`Vesktop`](https://vencord.dev)
 - **Prompt** • [`Starship`](https://starship.rs/)
