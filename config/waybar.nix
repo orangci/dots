@@ -229,7 +229,7 @@ with lib;
           padding: 2px 5px 2px 15px;
 
           }
-          #custom-nextpls, #memory, #pulseaudio { /* Stuff that needs to be rounded right. */
+          #custom-nextpls, #memory, #pulseaudio, #custom-notification { /* Stuff that needs to be rounded right. */
             ${
               if boxyStyle == true then
                 ''border-radius: 0px; margin: 0px;''
@@ -239,7 +239,7 @@ with lib;
           padding: 2px 10px 2px 5px;
 
           }
-          #window, #clock, #custom-weather { /* Stuff that's rounded both left and right, i.e. standalone pills. */
+          #window, #clock, #custom-weather, #workspaces { /* Stuff that's rounded both left and right, i.e. standalone pills. */
             ${
               if boxyStyle == true then
                 ''border-radius: 0px; margin: 0px;''
@@ -248,7 +248,7 @@ with lib;
             }
           padding: 2px 10px;
           }
-        #idle_inhibitor, #custom-notification { /* Stuff that aren't rounded in either direction, i.e. sandwiched pills. */
+        #idle_inhibitor { /* Stuff that aren't rounded in either direction, i.e. sandwiched pills. */
             border-radius: 0px;
             ${if boxyStyle == true then ''margin: 0px;'' else ''margin: 4px 0px;''}
             padding: 2px 14px;
@@ -261,12 +261,6 @@ with lib;
           #workspaces {
             background: #${palette.base00};
             padding: 0px 1px;
-            ${
-              if boxyStyle == true then
-                ''border-radius: 0px; margin: 0px;''
-              else
-                ''border-radius: 0px 15px 15px 0px; margin: 4px 2px 4px 0px;''
-            }
             color: #${palette.base05};
           }
           #workspaces button {
