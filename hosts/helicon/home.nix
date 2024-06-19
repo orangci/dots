@@ -29,7 +29,6 @@ in
   imports = [
     inputs.nix-colors.homeManagerModules.default
     ../../config/hyprland.nix
-    # ../../config/nvim/neovim.nix
     ../../config/swaync.nix
     ../../config/waybar.nix
     ../../config/rofi.nix
@@ -212,6 +211,7 @@ in
       enable = true;
       package = pkgs.starship;
     };
+    neovim.enable = true;
     bash = {
       enable = true;
       enableCompletion = true;
