@@ -194,7 +194,7 @@ in
       ecmel-vscode-html-css
       ms-python-python
     ];
-    }
+    };
     gh.enable = true;
     starship = {
       enable = true;
