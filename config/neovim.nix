@@ -26,7 +26,6 @@ with lib;
         dressing-nvim
         indent-blankline-nvim
         nui-nvim
-        finecmdline
         nvim-treesitter.withAllGrammars
         lualine-nvim
         nvim-autopairs
@@ -53,5 +52,5 @@ with lib;
         presence-nvim
       ];
 
-  }
+  };
 }
