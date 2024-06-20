@@ -9,7 +9,7 @@ let
 in
 with lib;
 {
-  programs.neovim {
+  programs.neovim = {
     enable = true;
     coc.enable = true;
     defaultEditor = true;
