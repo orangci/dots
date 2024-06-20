@@ -32,7 +32,7 @@ in
     ../../config/waybar.nix
     ../../config/rofi.nix
     ../../config/fastfetch.nix
-    ../../config/nvim/neovim.nix
+    ../../config/neovim.nix
   ];
 
   # Define Settings For Xresources
