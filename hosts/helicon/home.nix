@@ -8,7 +8,7 @@
   ...
 }:
 let
-  palette = config.colorScheme.palette;
+  palette = config.stylix.base16Scheme;
   inherit (import ./variables.nix)
     gitUsername
     gitEmail
@@ -23,17 +23,16 @@ in
   home.stateVersion = "24.11";
 
   # Set The Colorscheme
-  colorScheme = inputs.nix-colors.colorSchemes."${theme}";
+  # colorScheme = inputs.nix-colors.colorSchemes."${theme}";
 
   # Import Program Configurations
   imports = [
-    inputs.nix-colors.homeManagerModules.default
     ../../config/hyprland.nix
     ../../config/swaync.nix
     ../../config/waybar.nix
     ../../config/rofi.nix
-    ../../config/kitty.nix
     ../../config/fastfetch.nix
+    ../../config/firefox.nix
   ];
 
   # Define Settings For Xresources
@@ -46,7 +45,6 @@ in
     recursive = true;
   };
   home.file.".config/starship.toml".source = ../../config/starship.toml;
-  home.file.".base16-themes".source = ../../config/base16-themes;
   home.file.".face.icon".source = ../../config/face.png;
   home.file.".config/vesktop/themes/orangetweaks.css".source = ../../config/Configs/vencordthemes/orangetweaks.css;
   home.file.".config/vesktop/themes/catppuccin.css".source = ../../config/Configs/vencordthemes/catppuccin.css;
@@ -124,31 +122,14 @@ in
   };
 
   # Styling Options
-  # stylix.targets.waybar.enable = false;
-  # stylix.targets.rofi.enable = false;
-  # stylix.targets.hyprland.enable = false;
+  stylix.targets.waybar.enable = false;
+  stylix.targets.rofi.enable = false;
+  stylix.targets.hyprland.enable = false;
+  stylix.targets.chromium.enable = false;
 
-  # Configure Cursor Theme
-  home.pointerCursor = {
-    gtk.enable = true;
-    x11.enable = true;
-    package = pkgs.bibata-cursors;
-    name = "Bibata-Modern-Ice";
-    size = 24;
-  };
 
   # Theme GTK
   gtk = {
-    enable = true;
-    font = {
-      name = "Ubuntu";
-      size = 12;
-      package = pkgs.ubuntu_font_family;
-    };
-    theme = {
-      name = "${config.colorScheme.slug}";
-      package = gtkThemeFromScheme { scheme = config.colorScheme; };
-    };
     iconTheme = {
       name = "Papirus-Dark";
       package = pkgs.papirus-icon-theme;
@@ -185,10 +166,6 @@ in
           after_sleep_cmd = "hyprctl dispatch dpms on";
           ignore_dbus_inhibit = false;
           lock_cmd = "hyprlock";
-          starship = {
-            enable = true;
-            package = pkgs.starship;
-          };
         };
         listener = [
           {
@@ -210,6 +187,15 @@ in
     starship = {
       enable = true;
       package = pkgs.starship;
+    };
+    programs.kitty = {
+    enable = true;
+    package = pkgs.kitty;
+    settings = {
+      scrollback_lines = 2000;
+      wheel_scroll_min_lines = 1;
+      window_padding_width = 4;
+      confirm_os_window_close = 0;
     };
     neovim.enable = true;
     bash = {

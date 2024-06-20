@@ -1,6 +1,6 @@
 { pkgs, config, ... }:
 let
-  palette = config.colorScheme.palette;
+  palette = config.stylix.base16Scheme;
 in
 {
   # Default rofi

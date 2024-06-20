@@ -5,7 +5,7 @@
   ...
 }:
 let
-  palette = config.colorScheme.palette;
+  palette = config.stylix.base16Scheme;
   inherit (import ../hosts/${host}/variables.nix) boxyStyle;
 in
 {

@@ -8,7 +8,7 @@
   ...
 }:
 let
-  theme = config.colorScheme.palette;
+  theme = config.stylix.base16Scheme;
   inherit (import ../hosts/${host}/variables.nix)
     browser
     borderAnim
