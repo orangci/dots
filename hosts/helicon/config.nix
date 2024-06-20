@@ -226,7 +226,7 @@
     dig
     nitch
     openjdk
-    codium
+    vscodium
     (vesktop.override { withSystemVencord = false; })
     yt-dlp
     calibre # ebooks
