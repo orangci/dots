@@ -45,6 +45,7 @@ with lib;
               env = QT_AUTO_SCREEN_SCALE_FACTOR, 1
               env = SDL_VIDEODRIVER, x11
               env = MOZ_ENABLE_WAYLAND, 1
+              env = NIXPKGS_ALLOW_UNFREE, 1
 
 
 

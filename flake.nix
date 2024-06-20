@@ -7,6 +7,10 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     # nix-colors.url = "github:misterio77/nix-colors";
     stylix.url = "github:danth/stylix";
+    # firefox-addons = {
+    #   url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
   };
 
   outputs =

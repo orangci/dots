@@ -32,7 +32,6 @@ in
     ../../config/waybar.nix
     ../../config/rofi.nix
     ../../config/fastfetch.nix
-    ../../config/firefox.nix
   ];
 
   # Define Settings For Xresources
@@ -125,8 +124,6 @@ in
   stylix.targets.waybar.enable = false;
   stylix.targets.rofi.enable = false;
   stylix.targets.hyprland.enable = false;
-  stylix.targets.chromium.enable = false;
-
 
   # Theme GTK
   gtk = {
@@ -188,14 +185,15 @@ in
       enable = true;
       package = pkgs.starship;
     };
-    programs.kitty = {
-    enable = true;
-    package = pkgs.kitty;
-    settings = {
-      scrollback_lines = 2000;
-      wheel_scroll_min_lines = 1;
-      window_padding_width = 4;
-      confirm_os_window_close = 0;
+    kitty = {
+      enable = true;
+      package = pkgs.kitty;
+      settings = {
+        scrollback_lines = 2000;
+        wheel_scroll_min_lines = 1;
+        window_padding_width = 4;
+        confirm_os_window_close = 0;
+      };
     };
     neovim.enable = true;
     bash = {
