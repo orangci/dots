@@ -227,7 +227,6 @@
     nitch
     openjdk
     (vesktop.override { withSystemVencord = false; })
-    vscodium
     yt-dlp
     calibre # ebooks
     traceroute

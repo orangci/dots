@@ -32,6 +32,7 @@ in
     ../../config/waybar.nix
     ../../config/rofi.nix
     ../../config/fastfetch.nix
+    ../../config/nvim/neovim.nix
   ];
 
   # Define Settings For Xresources
@@ -180,6 +181,20 @@ in
   };
 
   programs = {
+    vscode.enable = {
+      enable = true;
+      package = pkgs.vscodium;
+      extensions = with pkgs.vscode-extensions; [
+      kamadorueda.alejandra
+      catppuccin-catppuccin-vsc-icons
+      catppuccin-catppuccin-vsc
+      jnoortheen-nix-ide
+      yzhang-markdown-all-in-one
+      ms-vscode-live-server
+      ecmel-vscode-html-css
+      ms-python-python
+    ];
+    }
     gh.enable = true;
     starship = {
       enable = true;
@@ -195,7 +210,6 @@ in
         confirm_os_window_close = 0;
       };
     };
-    neovim.enable = true;
     bash = {
       enable = true;
       enableCompletion = true;
