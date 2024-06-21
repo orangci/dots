@@ -270,6 +270,7 @@
     xfce.tumbler # for image thumbnails in thunar
     grimblast # for screenshots
     nurl
+    inputs.nixvim.packages.${pkgs.system}.default
   ];
 
   fonts = {
