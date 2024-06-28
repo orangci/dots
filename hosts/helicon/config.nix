@@ -6,7 +6,8 @@
   inputs,
   options,
   ...
-}: {
+}:
+{
   imports = [
     ./hardware.nix
     ./users.nix
@@ -22,8 +23,8 @@
     # Kernel
     kernelPackages = pkgs.linuxPackages_zen;
     # This is for OBS Virtual Cam Support
-    kernelModules = ["v4l2loopback"];
-    extraModulePackages = [config.boot.kernelPackages.v4l2loopback];
+    kernelModules = [ "v4l2loopback" ];
+    extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];
     # Needed For Some Steam Games
     kernel.sysctl = {
       "vm.max_map_count" = 2147483642;
@@ -78,7 +79,7 @@
     };
     fonts = {
       monospace = {
-        package = pkgs.nerdfonts.override {fonts = ["JetBrainsMono"];};
+        package = pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; };
         name = "JetBrainsMono Nerd Font Mono";
       };
       sansSerif = {
@@ -116,7 +117,7 @@
     # Enable networking
     networkmanager.enable = true;
     hostName = "${host}";
-    timeServers = options.networking.timeServers.default ++ ["pool.ntp.org"];
+    timeServers = options.networking.timeServers.default ++ [ "pool.ntp.org" ];
   };
 
   # Set your time zone.
@@ -169,11 +170,9 @@
     };
   };
   nixpkgs.config.packageOverrides = pkgs: {
-    xfce =
-      pkgs.xfce
-      // {
-        inherit (pkgs) gvfs;
-      };
+    xfce = pkgs.xfce // {
+      inherit (pkgs) gvfs;
+    };
   };
   nixpkgs.config.allowUnfree = true;
 
@@ -296,7 +295,7 @@
       font-awesome
       symbola
       material-icons
-      (nerdfonts.override {fonts = ["JetBrainsMono"];})
+      (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
     ];
   };
 
@@ -367,8 +366,8 @@
   hardware = {
     sane = {
       enable = true;
-      extraBackends = [pkgs.sane-airscan];
-      disabledDefaultBackends = ["escl"];
+      extraBackends = [ pkgs.sane-airscan ];
+      disabledDefaultBackends = [ "escl" ];
     };
     logitech.wireless.enable = true;
     logitech.wireless.enableGraphical = true;
@@ -415,8 +414,8 @@
         "nix-command"
         "flakes"
       ];
-      substituters = ["https://hyprland.cachix.org"];
-      trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
+      substituters = [ "https://hyprland.cachix.org" ];
+      trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
     };
     gc = {
       automatic = true;

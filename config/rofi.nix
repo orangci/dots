@@ -1,6 +1,8 @@
-{config, ...}: let
+{ config, ... }:
+let
   palette = config.stylix.base16Scheme;
-in {
+in
+{
   home = {
     file = {
       # Default rofi

@@ -50,70 +50,75 @@
   };
 
   # Styling Options
-  # stylix = {
-  #   enable = true;
-  #   image = ../../config/face.png;
-  #   base16Scheme = {
-  #     base00 = "1e1e2e";
-  #     base01 = "181825";
-  #     base02 = "313244";
-  #     base03 = "45475a";
-  #     base04 = "585b70";
-  #     base05 = "cdd6f4";
-  #     base06 = "f5e0dc";
-  #     base07 = "b4befe";
-  #     base08 = "f38ba8";
-  #     base09 = "fab387";
-  #     base0A = "f9e2af";
-  #     base0B = "a6e3a1";
-  #     base0C = "94e2d5";
-  #     base0D = "89b4fa";
-  #     base0E = "cba6f7";
-  #     base0F = "f2cdcd";
-  #   };
-  #   polarity = "dark";
-  #   opacity.terminal = 0.8;
-  #   cursor.package = pkgs.bibata-cursors;
-  #   cursor.name = "Bibata-Modern-Ice";
-  #   cursor.size = 24;
-  #   fonts = {
-  #     monospace = {
-  #       package = pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; };
-  #       name = "JetBrainsMono Nerd Font Mono";
-  #     };
-  #     sansSerif = {
-  #       package = pkgs.montserrat;
-  #       name = "Montserrat";
-  #     };
-  #     serif = {
-  #       package = pkgs.montserrat;
-  #       name = "Montserrat";
-  #     };
-  #     sizes = {
-  #       applications = 12;
-  #       terminal = 15;
-  #       desktop = 11;
-  #       popups = 12;
-  #     };
-  #   };
-  # };
+  stylix = {
+    enable = true;
+    image = ../../config/face.png;
+    base16Scheme = {
+      base00 = "1e1e2e";
+      base01 = "181825";
+      base02 = "313244";
+      base03 = "45475a";
+      base04 = "585b70";
+      base05 = "cdd6f4";
+      base06 = "f5e0dc";
+      base07 = "b4befe";
+      base08 = "f38ba8";
+      base09 = "fab387";
+      base0A = "f9e2af";
+      base0B = "a6e3a1";
+      base0C = "94e2d5";
+      base0D = "89b4fa";
+      base0E = "cba6f7";
+      base0F = "f2cdcd";
+    };
+    polarity = "dark";
+    cursor = {
+      package = pkgs.oreo-cursors-plus;
+      name = "oreo_spark_orange_cursors";
+      size = 24;
+    };
+    fonts = {
+      monospace = {
+        package = pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; };
+        name = "JetBrainsMono Nerd Font Mono";
+      };
+      sansSerif = {
+        package = pkgs.montserrat;
+        name = "Montserrat";
+      };
+      serif = {
+        package = pkgs.merriweather;
+        name = "Merriweather";
+      };
+      sizes = {
+        applications = 12;
+        terminal = 16;
+        desktop = 12;
+        popups = 12;
+      };
+    };
+  };
 
   # Extra Module Options
-  drivers.amdgpu.enable = true;
-  drivers.nvidia.enable = false;
-  drivers.nvidia-prime = {
-    enable = false;
-    intelBusID = "";
-    nvidiaBusID = "";
+  drivers = {
+    amdgpu.enable = true;
+    nvidia.enable = false;
+    nvidia-prime = {
+      enable = false;
+      intelBusID = "";
+      nvidiaBusID = "";
+    };
+    intel.enable = false;
   };
-  drivers.intel.enable = false;
   vm.guest-services.enable = false;
   local.hardware-clock.enable = false;
 
-  # Enable networking
-  networking.networkmanager.enable = true;
-  networking.hostName = "${host}";
-  networking.timeServers = options.networking.timeServers.default ++ [ "pool.ntp.org" ];
+  networking = {
+    # Enable networking
+    networkmanager.enable = true;
+    hostName = "${host}";
+    timeServers = options.networking.timeServers.default ++ [ "pool.ntp.org" ];
+  };
 
   # Set your time zone.
   # services.automatic-timezoned.enable = true;
@@ -139,7 +144,7 @@
       enable = true;
       xwayland.enable = true;
     };
-    firefox.enable = true;
+    # firefox.enable = true;
     dconf.enable = true;
     seahorse.enable = true;
     fuse.userAllowOther = true;
@@ -160,12 +165,13 @@
       plugins = with pkgs.xfce; [
         thunar-archive-plugin
         thunar-volman
+        thunar-media-tags-plugin
       ];
     };
   };
   nixpkgs.config.packageOverrides = pkgs: {
     xfce = pkgs.xfce // {
-      gvfs = pkgs.gvfs;
+      inherit (pkgs) gvfs;
     };
   };
   nixpkgs.config.allowUnfree = true;
@@ -191,6 +197,7 @@
     ydotool
     wl-clipboard
     pciutils
+    whatsapp-for-linux
     socat
     ripgrep
     lsd
@@ -215,19 +222,18 @@
     transmission-gtk
     mpv
     gimp
+    hakuneko
     obs-studio
     rustup
     pavucontrol
     tree
     font-awesome
     pkgs.libsForQt5.qt5.qtgraphicaleffects
-    arrpc
     ripgrep
     time
     dig
     nitch
     openjdk
-    (vesktop.override { withSystemVencord = false; })
     vscodium
     yt-dlp
     calibre # ebooks
@@ -258,17 +264,28 @@
     protonvpn-gui
     wttrbar # for waybar
     google-chrome
-    obsidian
     zfxtop
     rofi-wayland
     bemoji # for emoji picker
     wtype # for emoji picker
     python3
     uwuify
+    wev
     owofetch
     jq
+    vencord
     greetd.tuigreet
     xfce.tumbler # for image thumbnails in thunar
+    arrpc
+    grimblast # for screenshots
+    nurl
+    (pkgs.discord.override {
+      withOpenASAR = true;
+      withTTS = true;
+      withVencord = true;
+    })
+    armcord
+    inputs.nixvim.packages.${pkgs.system}.default
   ];
 
   fonts = {
@@ -318,7 +335,7 @@
           # .wayland-session is a script generated by home-manager, which links to the current wayland compositor(sway/hyprland or others).
           # with such a vendor-no-locking script, we can switch to another wayland compositor without modifying greetd's config here.
           # command = "$HOME/.wayland-session"; # start a wayland session directly without a login manager
-          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd Hyprland"; # start Hyprland with a TUI login manager
+          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --remember-session --cmd Hyprland"; # start Hyprland with a TUI login manager
         };
       };
     };
@@ -346,40 +363,48 @@
       pulse.enable = true;
     };
   };
-  hardware.sane = {
-    enable = true;
-    extraBackends = [ pkgs.sane-airscan ];
-    disabledDefaultBackends = [ "escl" ];
+  hardware = {
+    sane = {
+      enable = true;
+      extraBackends = [ pkgs.sane-airscan ];
+      disabledDefaultBackends = [ "escl" ];
+    };
+    logitech.wireless.enable = true;
+    logitech.wireless.enableGraphical = true;
+    pulseaudio.enable = false;
+    # Bluetooth Support
+    bluetooth.enable = true;
+    bluetooth.powerOnBoot = true;
+
+    # OpenGL
+    opengl = {
+      enable = true;
+    };
   };
-  hardware.logitech.wireless.enable = true;
-  hardware.logitech.wireless.enableGraphical = true;
   # Enable sound with pipewire.
   sound.enable = true;
-  hardware.pulseaudio.enable = false;
-  # Bluetooth Support
-  hardware.bluetooth.enable = true;
-  hardware.bluetooth.powerOnBoot = true;
   services.blueman.enable = true;
-
-  # Security / Polkit
-  security.rtkit.enable = true;
-  security.polkit.enable = true;
-  security.polkit.extraConfig = ''
-    polkit.addRule(function(action, subject) {
-      if (
-        subject.isInGroup("users")
-          && (
-            action.id == "org.freedesktop.login1.reboot" ||
-            action.id == "org.freedesktop.login1.reboot-multiple-sessions" ||
-            action.id == "org.freedesktop.login1.power-off" ||
-            action.id == "org.freedesktop.login1.power-off-multiple-sessions"
+  security = {
+    # Security / Polkit
+    rtkit.enable = true;
+    polkit.enable = true;
+    polkit.extraConfig = ''
+      polkit.addRule(function(action, subject) {
+        if (
+          subject.isInGroup("users")
+            && (
+              action.id == "org.freedesktop.login1.reboot" ||
+              action.id == "org.freedesktop.login1.reboot-multiple-sessions" ||
+              action.id == "org.freedesktop.login1.power-off" ||
+              action.id == "org.freedesktop.login1.power-off-multiple-sessions"
+            )
           )
-        )
-      {
-        return polkit.Result.YES;
-      }
-    })
-  '';
+        {
+          return polkit.Result.YES;
+        }
+      })
+    '';
+  };
 
   # Optimization settings and garbage collection automation
   nix = {
@@ -397,13 +422,6 @@
       dates = "weekly";
       options = "--delete-older-than 7d";
     };
-  };
-
-  # OpenGL
-  hardware.opengl = {
-    enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
   };
 
   # Open ports in the firewall.

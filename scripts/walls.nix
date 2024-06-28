@@ -1,4 +1,4 @@
-{pkgs}:
+{ pkgs }:
 pkgs.writeShellScriptBin "wallset" ''
   cd ~/Pictures/walls
   while : ; do

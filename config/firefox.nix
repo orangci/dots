@@ -3,7 +3,8 @@
   host,
   username,
   ...
-}: {
+}:
+{
   programs.firefox = {
     enable = true;
 
