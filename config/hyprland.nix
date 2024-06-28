@@ -1,9 +1,6 @@
 {
-  pkgs,
   config,
   lib,
-  inputs,
-  username,
   host,
   ...
 }: let
@@ -61,6 +58,7 @@ in
                 exec-once = swww kill;swww-daemon
                 exec-once = wallset
                 exec-once = blueman-applet
+                exec-once = armcord
 
 
                 monitor=,preferred,auto,1
@@ -68,13 +66,13 @@ in
                 general {
                   gaps_in = 6
                   ${
-              if boxyStyle == true
+              if boxyStyle
               then ''gaps_out = 0''
               else ''gaps_out = 8''
             }
                   border_size = 2
                   ${
-              if boxyStyle == true
+              if boxyStyle
               then ''
                 col.active_border = rgba(${theme.base00}ff) rgba(${theme.base00}ff) rgba(${theme.base00}ff) rgba(${theme.base00}ff) 45deg
                 col.inactive_border = rgba(${theme.base00}cc) rgba(${theme.base00}cc) 45deg
@@ -119,7 +117,7 @@ in
                   animation = windowsMove, 1, 5, wind, slide
                   animation = border, 1, 1, liner
                   ${
-              if borderAnim == true
+              if borderAnim
               then ''
                 animation = borderangle, 1, 30, liner, loop
               ''
@@ -130,14 +128,14 @@ in
                 }
                 decoration {
                   ${
-              if boxyStyle == true
+              if boxyStyle
               then ''rounding = 0''
               else ''rounding = 15''
             }
                   drop_shadow = false
                   blur {
                       ${
-              if boxyStyle == true
+              if boxyStyle
               then ''enabled = false''
               else ''enabled = true''
             }
@@ -149,7 +147,7 @@ in
                       xray = true
                   }
                   ${
-              if boxyStyle == true
+              if boxyStyle
               then ''''
               else ''
                 inactive_opacity = 0.85
@@ -180,7 +178,7 @@ in
             bind = ${modifier},W,exec,${browser}
             bind = ${modifier},PERIOD,exec,bemoji -t
             bind = ${modifier},S,exec,grimblast --freeze save area - | swappy -f -
-            bind = ${modifier},D,exec,discord
+            bind = ${modifier},D,exec,armcord
             bind = ${modifier},P,exec,playerctl play-pause
             bind = ${modifier}SHIFT,P,exec,playerctl next
             bind = ${modifier}ALT,P,exec,playerctl previous
@@ -189,6 +187,7 @@ in
             bind = ${modifier},O,exec,obs
             bind = ${modifier}SHIFT,O,exec,obsidian
             bind = ${modifier},A,exec,swaync-client -t
+            bind = ${modifier},SHIFT,A,exec,swaync-client -C
             bind = ${modifier},G,exec,google-chrome-stable
             bind = ${modifier},E,exec,thunar
             bind = ${modifier},M,exec,rofi-prism-exec
