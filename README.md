@@ -1,8 +1,10 @@
 # orangc's dots
+
 This is a NixOS flake. Thus you can only use this on NixOS.
 It is originally built off of Zaney's [flake](https://gitlab.com/zaney/zaneyos).
 
 What I use:
+
 - **OS** • [`NixOS`](https://nixos.org/)
 - **WM** • [`Hyprland`](https://hyprland.org)
 - **Theme** • [`Catppuccin Mocha`](https://catppuccin.com/)
@@ -15,7 +17,6 @@ What I use:
 - **File Manager** • `Thunar`
 - **Screenshots** • [`grimblast`](https://github.com/hyprwm/contrib)
 - **Clipboard** • [`cliphist`](https://github.com/sentriz/cliphist)
-- **Discord Client** • [`Vesktop`](https://vencord.dev)
 - **Prompt** • [`Starship`](https://starship.rs/)
 - **Image Viwer** • [`qimgv`](https://github.com/easymodo/qimgv)
 - **Notification Daemon** • [`swaync`](https://github.com/ErikReider/SwayNotificationCenter)
@@ -26,21 +27,22 @@ All my wallpapers are available [here](https://github.com/orxngc/walls-catppucci
 <details>
   <summary>Screenshots:</summary>
 
-  ![Tiled](https://raw.githubusercontent.com/orxngc/dots/anacreon/config/desktopPics/tiledGalaxy.png)
-  
-  ![Blank](https://raw.githubusercontent.com/orxngc/dots/anacreon/config/desktopPics/blank.png)
+![Tiled](https://raw.githubusercontent.com/orxngc/dots/anacreon/config/desktopPics/tiledGalaxy.png)
 
-  ![Sakura](https://raw.githubusercontent.com/orxngc/dots/anacreon/config/desktopPics/floating.png)
+![Blank](https://raw.githubusercontent.com/orxngc/dots/anacreon/config/desktopPics/blank.png)
 
-  ![Boxy](https://raw.githubusercontent.com/orxngc/dots/anacreon/config/desktopPics/boxyStyle.png)
+![Sakura](https://raw.githubusercontent.com/orxngc/dots/anacreon/config/desktopPics/floating.png)
+
+![Boxy](https://raw.githubusercontent.com/orxngc/dots/anacreon/config/desktopPics/boxyStyle.png)
 
 </details>
 
 ## Installation
+
 Because this is a flake, it's quite easy to install. Make sure to start in your $HOME.
 First clone this repository.
 
-`git clone https://github.com/orxngc/dots` 
+`git clone https://github.com/orxngc/dots`
 
 Enter it.
 
@@ -59,3 +61,4 @@ Finally, running this command will install my system.
 `sudo nixos-rebuild switch --flake .#anacreon`
 
 Feel free to take these dots and modify them however you want.
+

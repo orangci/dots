@@ -6,8 +6,7 @@
   inputs,
   options,
   ...
-}:
-{
+}: {
   imports = [
     ./hardware.nix
     ./users.nix
@@ -23,8 +22,8 @@
     # Kernel
     kernelPackages = pkgs.linuxPackages_zen;
     # This is for OBS Virtual Cam Support
-    kernelModules = [ "v4l2loopback" ];
-    extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];
+    kernelModules = ["v4l2loopback"];
+    extraModulePackages = [config.boot.kernelPackages.v4l2loopback];
     # Needed For Some Steam Games
     kernel.sysctl = {
       "vm.max_map_count" = 2147483642;
@@ -72,12 +71,14 @@
       base0F = "f2cdcd";
     };
     polarity = "dark";
-    cursor.package = pkgs.oreo-cursors-plus;
-    cursor.name = "oreo_spark_orange_cursors";
-    cursor.size = 24;
+    cursor = {
+      package = pkgs.oreo-cursors-plus;
+      name = "oreo_spark_orange_cursors";
+      size = 24;
+    };
     fonts = {
       monospace = {
-        package = pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; };
+        package = pkgs.nerdfonts.override {fonts = ["JetBrainsMono"];};
         name = "JetBrainsMono Nerd Font Mono";
       };
       sansSerif = {
@@ -98,21 +99,25 @@
   };
 
   # Extra Module Options
-  drivers.amdgpu.enable = true;
-  drivers.nvidia.enable = false;
-  drivers.nvidia-prime = {
-    enable = false;
-    intelBusID = "";
-    nvidiaBusID = "";
+  drivers = {
+    amdgpu.enable = true;
+    nvidia.enable = false;
+    nvidia-prime = {
+      enable = false;
+      intelBusID = "";
+      nvidiaBusID = "";
+    };
+    intel.enable = false;
   };
-  drivers.intel.enable = false;
   vm.guest-services.enable = false;
   local.hardware-clock.enable = false;
 
-  # Enable networking
-  networking.networkmanager.enable = true;
-  networking.hostName = "${host}";
-  networking.timeServers = options.networking.timeServers.default ++ [ "pool.ntp.org" ];
+  networking = {
+    # Enable networking
+    networkmanager.enable = true;
+    hostName = "${host}";
+    timeServers = options.networking.timeServers.default ++ ["pool.ntp.org"];
+  };
 
   # Set your time zone.
   # services.automatic-timezoned.enable = true;
@@ -138,7 +143,7 @@
       enable = true;
       xwayland.enable = true;
     };
-    firefox.enable = true;
+    # firefox.enable = true;
     dconf.enable = true;
     seahorse.enable = true;
     fuse.userAllowOther = true;
@@ -159,13 +164,16 @@
       plugins = with pkgs.xfce; [
         thunar-archive-plugin
         thunar-volman
+        thunar-media-tags-plugin
       ];
     };
   };
   nixpkgs.config.packageOverrides = pkgs: {
-    xfce = pkgs.xfce // {
-      gvfs = pkgs.gvfs;
-    };
+    xfce =
+      pkgs.xfce
+      // {
+        inherit (pkgs) gvfs;
+      };
   };
   nixpkgs.config.allowUnfree = true;
 
@@ -190,6 +198,7 @@
     ydotool
     wl-clipboard
     pciutils
+    whatsapp-for-linux
     socat
     ripgrep
     lsd
@@ -214,20 +223,19 @@
     transmission-gtk
     mpv
     gimp
+    hakuneko
     obs-studio
     rustup
     pavucontrol
     tree
     font-awesome
     pkgs.libsForQt5.qt5.qtgraphicaleffects
-    arrpc
     ripgrep
     time
     dig
     nitch
     openjdk
     vscodium
-    (vesktop.override { withSystemVencord = false; })
     yt-dlp
     calibre # ebooks
     traceroute
@@ -257,19 +265,26 @@
     protonvpn-gui
     wttrbar # for waybar
     google-chrome
-    obsidian
     zfxtop
     rofi-wayland
     bemoji # for emoji picker
     wtype # for emoji picker
     python3
     uwuify
+    wev
     owofetch
     jq
+    vencord
     greetd.tuigreet
     xfce.tumbler # for image thumbnails in thunar
     grimblast # for screenshots
     nurl
+    (pkgs.discord.override {
+      withOpenASAR = true;
+      withTTS = true;
+      withVencord = true;
+    })
+    armcord
     inputs.nixvim.packages.${pkgs.system}.default
   ];
 
@@ -280,7 +295,7 @@
       font-awesome
       symbola
       material-icons
-      (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+      (nerdfonts.override {fonts = ["JetBrainsMono"];})
     ];
   };
 
@@ -348,40 +363,48 @@
       pulse.enable = true;
     };
   };
-  hardware.sane = {
-    enable = true;
-    extraBackends = [ pkgs.sane-airscan ];
-    disabledDefaultBackends = [ "escl" ];
+  hardware = {
+    sane = {
+      enable = true;
+      extraBackends = [pkgs.sane-airscan];
+      disabledDefaultBackends = ["escl"];
+    };
+    logitech.wireless.enable = true;
+    logitech.wireless.enableGraphical = true;
+    pulseaudio.enable = false;
+    # Bluetooth Support
+    bluetooth.enable = true;
+    bluetooth.powerOnBoot = true;
+
+    # OpenGL
+    opengl = {
+      enable = true;
+    };
   };
-  hardware.logitech.wireless.enable = true;
-  hardware.logitech.wireless.enableGraphical = true;
   # Enable sound with pipewire.
   sound.enable = true;
-  hardware.pulseaudio.enable = false;
-  # Bluetooth Support
-  hardware.bluetooth.enable = true;
-  hardware.bluetooth.powerOnBoot = true;
   services.blueman.enable = true;
-
-  # Security / Polkit
-  security.rtkit.enable = true;
-  security.polkit.enable = true;
-  security.polkit.extraConfig = ''
-    polkit.addRule(function(action, subject) {
-      if (
-        subject.isInGroup("users")
-          && (
-            action.id == "org.freedesktop.login1.reboot" ||
-            action.id == "org.freedesktop.login1.reboot-multiple-sessions" ||
-            action.id == "org.freedesktop.login1.power-off" ||
-            action.id == "org.freedesktop.login1.power-off-multiple-sessions"
+  security = {
+    # Security / Polkit
+    rtkit.enable = true;
+    polkit.enable = true;
+    polkit.extraConfig = ''
+      polkit.addRule(function(action, subject) {
+        if (
+          subject.isInGroup("users")
+            && (
+              action.id == "org.freedesktop.login1.reboot" ||
+              action.id == "org.freedesktop.login1.reboot-multiple-sessions" ||
+              action.id == "org.freedesktop.login1.power-off" ||
+              action.id == "org.freedesktop.login1.power-off-multiple-sessions"
+            )
           )
-        )
-      {
-        return polkit.Result.YES;
-      }
-    })
-  '';
+        {
+          return polkit.Result.YES;
+        }
+      })
+    '';
+  };
 
   # Optimization settings and garbage collection automation
   nix = {
@@ -391,21 +414,14 @@
         "nix-command"
         "flakes"
       ];
-      substituters = [ "https://hyprland.cachix.org" ];
-      trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
+      substituters = ["https://hyprland.cachix.org"];
+      trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
     };
     gc = {
       automatic = true;
       dates = "weekly";
       options = "--delete-older-than 7d";
     };
-  };
-
-  # OpenGL
-  hardware.opengl = {
-    enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
   };
 
   # Open ports in the firewall.
