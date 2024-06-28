@@ -59,6 +59,7 @@ in
                 exec-once = wallset
                 exec-once = blueman-applet
                 exec-once = armcord
+                exec-once = arrpc
 
 
                 monitor=,preferred,auto,1
@@ -187,7 +188,7 @@ in
             bind = ${modifier},O,exec,obs
             bind = ${modifier}SHIFT,O,exec,obsidian
             bind = ${modifier},A,exec,swaync-client -t
-            bind = ${modifier},SHIFT,A,exec,swaync-client -C
+            bind = ${modifier}SHIFT,A,exec,swaync-client -C
             bind = ${modifier},G,exec,google-chrome-stable
             bind = ${modifier},E,exec,thunar
             bind = ${modifier},M,exec,rofi-prism-exec

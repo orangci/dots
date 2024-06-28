@@ -277,6 +277,7 @@
     vencord
     greetd.tuigreet
     xfce.tumbler # for image thumbnails in thunar
+    arrpc
     grimblast # for screenshots
     nurl
     (pkgs.discord.override {
