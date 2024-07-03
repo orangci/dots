@@ -7,12 +7,12 @@
   theme = "catppuccin-mocha";
 
   # Hyprland Settings
-  borderAnim = true; # Enable / Disable Hyprland Border Animation
   extraMonitorSettings = "";
   boxyStyle = false; # this disables blur, transparency, and border radius on all programs and makes waybar have a background as well. It will change how *everything* looks.
 
   # Waybar Settings
-  clock24h = true;
+  opacityBar = true;
+  waybarStyle = "bottom-long"; # Different styles for the waybar at the top of the screen. Currently available options: pills-round, colourful-pills-round, boxyStyle, boxyStyle-bottom, bottom-long, and long
 
   # Program Options
   browser = "firefox";

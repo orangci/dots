@@ -29,9 +29,12 @@
     kernel.sysctl = {
       "vm.max_map_count" = 2147483642;
     };
-    # Bootloader.
-    loader.systemd-boot.enable = true;
-    loader.efi.canTouchEfiVariables = true;
+    loader = {
+      # Bootloader.
+      systemd-boot.enable = true;
+      efi.canTouchEfiVariables = true;
+    };
+
     # Make /tmp a tmpfs
     tmp = {
       useTmpfs = false;
@@ -225,6 +228,7 @@
     hakuneko
     obs-studio
     rustup
+    fzf
     pavucontrol
     tree
     font-awesome

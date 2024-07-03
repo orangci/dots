@@ -8,7 +8,6 @@ let
   theme = config.stylix.base16Scheme;
   inherit (import ../hosts/${host}/variables.nix)
     browser
-    borderAnim
     terminal
     extraMonitorSettings
     boxyStyle
@@ -60,7 +59,6 @@ with lib;
               exec-once = swww kill;swww-daemon
               exec-once = wallset
               exec-once = blueman-applet
-              exec-once = armcord
               exec-once = arrpc
 
 
@@ -106,26 +104,19 @@ with lib;
                 key_press_enables_dpms = false
               }
               animations {
-                enabled = yes
-                bezier = wind, 0.05, 0.9, 0.1, 1.05
-                bezier = winIn, 0.1, 1.1, 0.1, 1.1
-                bezier = winOut, 0.3, -0.3, 0, 1
-                bezier = liner, 1, 1, 1, 1
-                animation = windows, 1, 6, wind, slide
-                animation = windowsIn, 1, 6, winIn, slide
-                animation = windowsOut, 1, 5, winOut, slide
-                animation = windowsMove, 1, 5, wind, slide
-                animation = border, 1, 1, liner
-                ${
-                  if borderAnim then
-                    ''
-                      animation = borderangle, 1, 30, liner, loop
-                    ''
-                  else
-                    ''''
-                }
-                animation = fade, 1, 10, default
-                animation = workspaces, 1, 5, wind
+                  enabled = yes
+                  bezier = wind, 0.05, 0.9, 0.1, 1.05
+                  bezier = winIn, 0.1, 1.1, 0.1, 1.1
+                  bezier = winOut, 0.3, -0.3, 0, 1
+                  bezier = liner, 1, 1, 1, 1
+                  animation = windows, 1, 6, wind, slide
+                  animation = windowsIn, 1, 6, winIn, slide
+                  animation = windowsOut, 1, 5, winOut, slide
+                  animation = windowsMove, 1, 5, wind, slide
+                  animation = border, 1, 1, liner
+                  animation = borderangle, 1, 30, liner, loop
+                  animation = fade, 1, 10, default
+                  animation = workspaces, 1, 5, wind
               }
               decoration {
                 ${if boxyStyle then ''rounding = 0'' else ''rounding = 15''}
@@ -162,6 +153,10 @@ with lib;
 
 
           # >>> WINDOW RULES <<<
+          windowrulev2 = opacity 1.00 1.00,class:^(Minecraft)$
+          windowrulev2 = opacity 1.00 1.00,class:^(Zoom)$
+          windowrulev2 = opacity 0.85 0.85,class:^(waybar)$
+          layerrule = blur,waybar
 
 
           # >>> KEYBINDINDS <<<
