@@ -17,30 +17,36 @@
   aspect-ratio: var(--expression-picker-aspect-ratio);
 }
 
- /* [[Pinged Servers to Top]] */
- [data-list-id="guildsnav"] > [class^=scroller_] > [aria-label],
-[id^=folder-items-]
- { display: flex; flex-direction: column; }
-[data-list-id="guildsnav"] > [class^=scroller_] > [aria-label] :is([class^=listItem_],[class^=wrapper_]):has([class^=numberBadge_])
- { order: -1 }
+/* [[Pinged Servers to Top]] */
+[data-list-id="guildsnav"] > [class^="scroller_"] > [aria-label],
+[id^="folder-items-"] {
+  display: flex;
+  flex-direction: column;
+}
+[data-list-id="guildsnav"]
+  > [class^="scroller_"]
+  > [aria-label]
+  :is([class^="listItem_"], [class^="wrapper_"]):has([class^="numberBadge_"]) {
+  order: -1;
+}
 
 /* Pretty Folder Icons */
-.expandedFolderBackground_b1385f ~ .listItem__48528:nth-child(2)>div:before {
+.expandedFolderBackground_b1385f ~ .listItem__48528:nth-child(2) > div:before {
   content: attr(data-dnd-name);
   position: absolute;
-  bottom: 8px; 
-  left: 50%; 
+  bottom: 8px;
+  left: 50%;
   transform: translateX(-50%);
-  padding: 1px 1.5px; 
-  font-size: 10px; 
-  color: #ffffff; 
-  z-index: 1; 
-  pointer-events: none; 
+  padding: 1px 1.5px;
+  font-size: 10px;
+  color: #ffffff;
+  z-index: 1;
+  pointer-events: none;
   width: 38px;
   max-height: 27px;
-  text-align: center; 
+  text-align: center;
   margin-left: -0.7px;
-  overflow:hidden;
+  overflow: hidden;
   letter-spacing: -0.2px;
   line-height: 0.9;
 }
@@ -48,9 +54,10 @@
   width: 48px;
   height: 48px;
 }
-.folderIconWrapper__11165, .folder__17546,
+.folderIconWrapper__11165,
+.folder__17546,
 .collapsed__98ad5 {
-    background: none!important;
+  background: none !important;
 }
 
 /* [[Fix Weird Looking Commands]] */
@@ -60,7 +67,7 @@
 }
 
 .appsIcon_ed21e9 {
-display: none;
+  display: none;
 }
 
 .executedCommand__4fb1a .appLauncherOnboardingCommandName_bf880c:hover {
@@ -68,52 +75,55 @@ display: none;
 }
 
 /* [[Yeet Clown Avatar Decorations]] */
-img[class*="avatar"][src^="https://cdn.discordapp.com/avatar-decoration-presets/a_5e1210779d99ece1c0b4f438a5bc6e72.png"] {
+img[class*="avatar"][src^="https://cdn.discordapp.com/avatar-decoration-presets/a_5e1210779d99ece1c0b4f438a5bc6e72.png"]
+{
   display: none;
 }
 
 /* [[Yeet Clan/Guild Tgags]] */
-[class*=clanTagChiplet__], [class*=clanTag_] {display: none;}
+[class*="clanTagChiplet__"],
+[class*="clanTag_"] {
+  display: none;
+}
 
 /* [[Role Pills]] */
 .pill__8445d,
 .role_d81130 {
-    transform: translate(0);
-    border: 0;
+  transform: translate(0);
+  border: 0;
 }
 
 .role__18ec9 .roleRemoveIcon_c3913a,
 .role_d81130 .roleRemoveIcon_c3913a {
-    margin: 0;
-    left: unset;
-    transform: translate(50%, -50%);
+  margin: 0;
+  left: unset;
+  transform: translate(50%, -50%);
 }
 
 .roleRemoveButton_d2c56e,
 .role_d81130 .roleRemoveButton__20c70 {
-    position: static;
+  position: static;
 }
 
 .role__18ec9 .roleCircle__61ad8:before,
 .role_d81130 .roleCircle__61ad8:before {
-    content: '';
-    top: 0;
-    left: 0;
-    z-index: -1;
-    width: 100%;
-    height: 100%;
-    box-sizing: border-box;
-    position: absolute;
-    background: inherit;
-    border: 2px solid transparent;
-    opacity: .4;
-    border-radius: 4px;
+  content: "";
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  position: absolute;
+  background: inherit;
+  border: 2px solid transparent;
+  opacity: 0.4;
+  border-radius: 4px;
 }
 
 .roles__74a2b {
-    color: var(--text-normal);
+  color: var(--text-normal);
 }
-
 
 /* [[ Chat Bubbles ]] */
 :root {
@@ -274,7 +284,6 @@ img[class*="avatar"][src^="https://cdn.discordapp.com/avatar-decoration-presets/
   }
 }
 
-
 /* [[Quickswitcher Revamp]] */
 
 .layer_c14d31:has(.quickswitcher_b5bb0a) {
@@ -308,7 +317,11 @@ img[class*="avatar"][src^="https://cdn.discordapp.com/avatar-decoration-presets/
 }
 
 /* [[Move VC Hang Status To The Left]] */
-[class*=iconGroup]:has([class*=hangStatusIcon], [d*='M13 3a1'], [class*=gameIcon]) {
+[class*="iconGroup"]:has(
+    [class*="hangStatusIcon"],
+    [d*="M13 3a1"],
+    [class*="gameIcon"]
+  ) {
   display: flex;
   position: absolute;
   right: 101%;
@@ -316,26 +329,58 @@ img[class*="avatar"][src^="https://cdn.discordapp.com/avatar-decoration-presets/
 
 /* [[Dim Muted Servers]] */
 [aria-label="Mute"] [aria-hidden="true"],
-[aria-label="Deafen"] [aria-hidden="true"]{
+[aria-label="Deafen"] [aria-hidden="true"] {
   opacity: 0.4;
 }
 
 /* [[Hide chatbox if one doesn't have send message perms]] */
-[class*=channelTextAreaDisabled] {
-  display: none!important;
+[class*="channelTextAreaDisabled"] {
+  display: none !important;
 }
 
 /* or if it doesn't work like because of themes: */
-[class*=channelTextAreaDisabled] {
-  opacity: 0!important;
-  position: absolute!important;
-  height: 0px!important;
-  width: 0px!important;
-  z-index: 0!important;
+[class*="channelTextAreaDisabled"] {
+  opacity: 0 !important;
+  position: absolute !important;
+  height: 0px !important;
+  width: 0px !important;
+  z-index: 0 !important;
 }
 
 /* [[make profiles round again]] */
-[class*=userPopoutOuter_] {
+[class*="userPopoutOuter_"] {
   border-radius: var(--radius-sm);
   overflow: hidden;
 }
+
+@font-face {
+  font-family: "Twemoji Mozilla";
+  src: url("https://vendicated.github.io/random-files/Twemoji.Mozilla.ttf")
+    format("truetype");
+  unicode-range: U+1F1E6-1F1FF;
+}
+@font-face {
+  font-family: "dashless";
+  size-adjust: 100%;
+  src: url("https://vendicated.github.io/random-files/Dashless.woff2")
+    format("woff2");
+  unicode-range: U+002D;
+}
+[data-list-item-id^="channels___"]:not([role="button"]),
+[class^="titleWrapper"] > h1,
+[id^=":r"] > h1,
+[class^="resultChannel"],
+[class^="channelNameContainer_"],
+[class^="searchAnswer_"],
+.channelWithIcon,
+[class^="emptyChannelIcon_"] + h3,
+[class^="emptyChannelIcon_"] ~ [class*="description_"],
+[class^="browser_"] [class*="channelText_"],
+[class^="returnButton_"] [class^="text-"],
+[class^="placeholder"][class*="slateTextArea"],
+[class^="auditLog_"] [class^="overflowEllipsis_"] strong,
+.vc-permviewer-perms-title,
+[class^="headerChannelContainer_"] > div {
+  font-family: "Twemoji Mozilla", "dashless", var(--font-primary);
+}
+

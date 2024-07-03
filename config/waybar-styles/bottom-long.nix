@@ -193,11 +193,12 @@ with lib;
             font-family: JetBrainsMono NFM, Font Awesome, sans-serif;
             font-weight: bold;
             padding: 1px 2px;
-            margin: 0px;
+            margin: 0px 2px;
             background-color: #${palette.base00};
           }
           tooltip label {color: #${palette.base05};}
           window#waybar {
+          background: transparent;
           border-radius: 0px 15px;
           }
 
