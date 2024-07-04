@@ -158,10 +158,9 @@ in
 
 
             # >>> WINDOW RULES <<<
-            windowrulev2 = opacity 1.00 1.00,class:^(Minecraft)$
-            windowrulev2 = opacity 1.00 1.00,class:^(Zoom)$
-            windowrulev2 = opacity 0.85 0.85,class:^(waybar)$
-            layerrule = blur,waybar
+            windowrulev2 = opacity 1,class:^(Minecraft)$
+            windowrulev2 = opacity 1,class:^(zoom)$
+            windowrulev2 = noblur,class:^(zoom)$
 
 
             # >>> KEYBINDINDS <<<

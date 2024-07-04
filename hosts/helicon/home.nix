@@ -24,43 +24,6 @@ in
       ".config/Vencord/themes/orangetweaks.css".source = ../../config/Configs/vencordthemes/orangetweaks.css;
       ".config/Vencord/themes/catppuccin.css".source = ../../config/Configs/vencordthemes/catppuccin.css;
       ".config/rofi/rofi-prism.sh".source = ../../scripts/rofi-prism.sh;
-      ".config/hypr/hyprlock.conf".text = ''
-          source=/tmp/.current_wallpaper_path_hyprlock
-          background {
-          path=$WALLPAPER
-        }
-
-        general {
-          disable_loading_bar=true
-          grace=0
-          hide_cursor=true
-          no_fade_in=false
-        }
-
-        image {
-          size=200
-          border_color=rgba(12, 150, 249,0)
-          border_size=1
-          halign=center
-          path=/home/orangc/dots/config/face.png
-          position=0, 200
-          rounding=-1
-          valign=center
-        }
-
-        input-field {
-          monitor=
-          size=200, 50
-          dots_center=true
-          fade_on_empty=true
-          font_color=rgb(cdd6f4)
-          inner_color=rgb(1e1e2e)
-          outer_color=rgb(181825)
-          outline_thickness=2
-          placeholder_text=Password...
-          position=0, -80
-        }
-      '';
       ".config/swappy/config".text = ''
         [Default]
         save_dir=/home/${username}/Pictures/Screenshots
@@ -96,6 +59,7 @@ in
     ../../config/rofi.nix
     ../../config/fastfetch.nix
     # ../../config/firefox.nix
+    ../../config/hyprlock.nix
   ];
 
   # Define Settings For Xresources
