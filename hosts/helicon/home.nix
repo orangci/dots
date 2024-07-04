@@ -4,11 +4,9 @@
   username,
   host,
   ...
-}:
-let
+}: let
   inherit (import ./variables.nix) gitUsername gitEmail;
-in
-{
+in {
   home = {
     # Home Manager Settings
     username = "${username}";
@@ -40,14 +38,14 @@ in
 
     # Scripts
     packages = [
-      (import ../../scripts/squirtle.nix { inherit pkgs; })
-      (import ../../scripts/rofi-powermenu.nix { inherit pkgs; })
-      (import ../../scripts/rofi-launcher.nix { inherit pkgs; })
-      (import ../../scripts/rofi-prism-exec.nix { inherit pkgs; })
-      (import ../../scripts/walls.nix { inherit pkgs; })
-      (import ../../scripts/nvidia-offload.nix { inherit pkgs; })
-      (import ../../scripts/web-search.nix { inherit pkgs; })
-      (import ../../scripts/screenshootin.nix { inherit pkgs; })
+      (import ../../scripts/squirtle.nix {inherit pkgs;})
+      (import ../../scripts/rofi-powermenu.nix {inherit pkgs;})
+      (import ../../scripts/rofi-launcher.nix {inherit pkgs;})
+      (import ../../scripts/rofi-prism-exec.nix {inherit pkgs;})
+      (import ../../scripts/walls.nix {inherit pkgs;})
+      (import ../../scripts/nvidia-offload.nix {inherit pkgs;})
+      (import ../../scripts/web-search.nix {inherit pkgs;})
+      (import ../../scripts/screenshootin.nix {inherit pkgs;})
     ];
   };
 
@@ -56,7 +54,7 @@ in
     ../../config/hyprland.nix
     ../../config/swaync.nix
     ../../config/waybar.nix
-    ../../config/rofi.nix
+    ../../config/rofi-styles
     ../../config/fastfetch.nix
     # ../../config/firefox.nix
     ../../config/hyprlock.nix
@@ -84,8 +82,8 @@ in
 
   dconf.settings = {
     "org/virt-manager/virt-manager/connections" = {
-      autoconnect = [ "qemu:///system" ];
-      uris = [ "qemu:///system" ];
+      autoconnect = ["qemu:///system"];
+      uris = ["qemu:///system"];
     };
   };
 

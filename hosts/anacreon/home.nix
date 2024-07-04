@@ -93,7 +93,7 @@ in
     ../../config/hyprland.nix
     ../../config/swaync.nix
     ../../config/waybar.nix
-    ../../config/rofi.nix
+    ../../config/rofi-styles
     ../../config/fastfetch.nix
     # ../../config/firefox.nix
   ];

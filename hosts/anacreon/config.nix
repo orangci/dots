@@ -225,7 +225,6 @@
     transmission-gtk
     mpv
     gimp
-    hakuneko
     obs-studio
     rustup
     fzf
