@@ -14,27 +14,47 @@ in
             "$schema": "/etc/xdg/swaync/configSchema.json",
             "positionX": "right",
             "positionY": "top",
-            "control-center-margin-top": 10,
-            "control-center-margin-bottom": 10,
-            "control-center-margin-right": 13,
-            "control-center-margin-left": 10,
-            "notification-icon-size": 64,
-            "notification-body-image-height": 100,
+                "cssPriority": "user",
+
+            "control-center-width": 380,
+            "control-center-height": 860, 
+            "control-center-margin-top": 2,
+            "control-center-margin-bottom": 2,
+            "control-center-margin-right": 1,
+            "control-center-margin-left": 0,
+
+            "notification-window-width": 400,
+            "notification-icon-size": 48,
+            "notification-body-image-height": 160,
             "notification-body-image-width": 200,
-            "timeout": 10,
-            "timeout-low": 5,
-            "timeout-critical": 0,
+
+            "timeout": 4,
+            "timeout-low": 2,
+            "timeout-critical": 6,
+            
             "fit-to-screen": false,
-            "control-center-width": 500,
-            "control-center-height": 1025,
-            "notification-window-width": 500,
             "keyboard-shortcuts": true,
             "image-visibility": "when-available",
             "transition-time": 200,
-            "hide-on-clear": true,
-            "hide-on-action": true,
+            "hide-on-clear": false,
+            "hide-on-action": false,
             "script-fail-notify": true,
+            "scripts": {
+                "example-script": {
+                "exec": "echo 'Do something...'",
+                "urgency": "Normal"
+                }
+            },
+            "notification-visibility": {
+                "example-name": {
+                "state": "muted",
+                "urgency": "Low",
+                "app-name": "Spotify"
+                }
+            },
             "widgets": [
+                "label",
+                "buttons-grid",
                 "mpris",
                 "title",
                 "dnd",
@@ -42,341 +62,405 @@ in
             ],
             "widget-config": {
                 "title": {
-                    "text": "Notifications",
-                    "clear-all-button": true,
-                    "button-text": "󰆴 Clear All"
+                "text": "Notifications",
+                "clear-all-button": true,
+                "button-text": " 󰎟 "
                 },
                 "dnd": {
-                    "text": "Do Not Disturb"
+                "text": "Do not disturb"
                 },
                 "label": {
-                    "max-lines": 1,
-                    "text": "Notifications"
+                "max-lines": 1,
+                "text": " "
                 },
                 "mpris": {
-                    "image-size": 96,
-                    "image-radius": 15
+                "image-size": 96,
+                "image-radius": 12
+                },
+                "volume": {
+                "label": "󰕾",
+                    "show-per-app": true
+                },
+                "buttons-grid": {
+                "actions": [
+                    {
+                    "label": " ",
+                    "command": "amixer set Master toggle"
+                    },
+                    {
+                    "label": "",
+                    "command": "amixer set Capture toggle"
+                    },
+                    {
+                    "label": " ",
+                    "command": "nm-connection-editor"
+                    },
+                    {
+                    "label": "󰂯",
+                    "command": "blueman-manager"
+                    },
+                    {
+                    "label": "󰏘",
+                    "command": "nwg-look"
+                    }
+                    
+                ]
                 }
-        }
-    }
+            }
+            }
   '';
 
   home.file.".config/swaync/style.css".text = ''
+    @define-color text            #cdd6f4;
+    @define-color background-alt  rgba(24, 24, 37, .4);
+    @define-color selected        #cba6f7;
+    @define-color hover           rgba(203, 166, 247, .4);
+    @define-color urgent          #f38ba8;
+    @define-color background      #1e1e2e;
+
     * {
-        font-family: Maple Mono;
-        font-weight: bolder;
+    color: @text;
+
+    all: unset;
+    font-size: 14px;
+    font-family: "Maple Mono";
+    transition: 200ms;
+
     }
 
-    .control-center .notification-row:focus,
-    .control-center .notification-row:hover {
-    ${if boxyStyle == true then ''background: #${palette.base00};'' else ''background: rgba(30, 30, 46, 0.7);''}
+    /* Avoid 'annoying' backgroud */
+    .blank-window {  
+    background: transparent;  
     }
-
-    .notification-row {
-        outline: none;
-        margin: 10px;
-        padding: 0;
-    }
-
-    .notification {
-        background: transparent;
-        padding: 0;
-        margin: 0px;
-    }
-
-    .notification-content {
-        background: #${palette.base00};
-        padding: 10px;
-        ${if boxyStyle == true then ''border-radius: 0px;'' else ''border-radius: 15px;''}
-        border: 1px solid #${palette.base01};
-        margin: 0;
-    }
-
-    .notification-default-action {
-        margin: 0;
-        padding: 0;
-        ${if boxyStyle == true then ''border-radius: 0px;'' else ''border-radius: 15px;''}
-    }
-
-    .close-button {
-        background: #${palette.base08};
-        color: #${palette.base00};
-        text-shadow: none;
-        padding: 0;
-        ${if boxyStyle == true then ''border-radius: 0px;'' else ''border-radius: 15px;''}
-        margin-top: 5px;
-        margin-right: 5px;
-    }
-
-    .close-button:hover {
-        box-shadow: none;
-        background: #${palette.base0E};
-        transition: all .15s ease-in-out;
-        border: none;
-    }
-
-
-    .notification-action {
-        border-top: none;
-        ${if boxyStyle == true then ''border-radius: 0px;'' else ''border-radius: 15px;''}
-    }
-
-
-    .notification-default-action:hover,
-    .notification-action:hover {
-        color: #${palette.base0E};
-        background: #${palette.base0E};
-    }
-
-    .notification-default-action {
-        border-bottom-left-radius: 15px;
-        border-bottom-right-radius: 15px;
-        margin: 0px;
-    }
-
-    .notification-default-action:not(:only-child) {
-        border-bottom-left-radius: 15px;
-        border-bottom-right-radius: 15px;
-    }
-
-    .notification-action:first-child {
-        border-bottom-left-radius: 15px;
-        background: #${palette.base00};
-    }
-
-    .notification-action:last-child {
-        border-bottom-right-radius: 15px;
-        background: #${palette.base00};
-    }
-
-    .inline-reply {
-        margin-top: 8px;
-    }
-
-    .inline-reply-entry {
-        background: #${palette.base00};
-        color: #${palette.base05};
-        caret-color: #${palette.base05};
-        border: 1px solid #${palette.base09};
-        ${if boxyStyle == true then ''border-radius: 0px;'' else ''border-radius: 15px;''}
-    }
-
-    .inline-reply-button {
-        margin-left: 4px;
-        background: #${palette.base00};
-        border: 1px solid #${palette.base09};
-        ${if boxyStyle == true then ''border-radius: 0px;'' else ''border-radius: 15px;''}
-        color: #${palette.base05};
-    }
-
-    .inline-reply-button:disabled {
-        background: initial;
-        color: #${palette.base03};
-        border: 1px solid transparent;
-    }
-
-    .inline-reply-button:hover {
-        background: #${palette.base00};
-    }
-
-    .body-image {
-        margin-top: 6px;
-        background-color: #${palette.base05};
-        ${if boxyStyle == true then ''border-radius: 0px;'' else ''border-radius: 5px;''}
-    }
-
-    .summary {
-        font-size: 16px;
-        font-weight: 700;
-        background: transparent;
-        color: rgba(158, 206, 106, 1);
-        text-shadow: none;
-    }
-
-    .time {
-        font-size: 16px;
-        font-weight: 700;
-        background: transparent;
-        color: #${palette.base05};
-        text-shadow: none;
-        margin-right: 18px;
-    }
-
-    .body {
-        font-size: 15px;
-        font-weight: 400;
-        background: transparent;
-        color: #${palette.base05};
-        text-shadow: none;
-    }
+    
+    /* CONTROL CENTER ------------------------------------------------------------------------ */
 
     .control-center {
-        background: #${palette.base00};
-        ${if boxyStyle == true then ''border-radius: 0px;'' else ''border-radius: 15px;''}
+    background: alpha(@background, .85);
+    border-radius: 15px;
+    border: 0px solid @selected;
+    box-shadow: 0 0 10px 0 rgba(0,0,0,.6);
+    margin: 18px;
+    padding: 12px;
     }
 
-    .control-center-list {
-        background: transparent;
+    /* Notifications  */
+    .control-center .notification-row .notification-background,
+    .control-center .notification-row .notification-background .notification.critical {
+    background-color: @background-alt;
+    border-radius: 16px;
+    margin: 4px 0px;
+    padding: 4px;
     }
 
-    .control-center-list-placeholder {
-        opacity: .5;
+    .control-center .notification-row .notification-background .notification.critical {
+    color: @urgent;
     }
 
-    .floating-notifications {
-        background: transparent;
+    .control-center .notification-row .notification-background .notification .notification-content {
+    margin: 6px;
+    padding: 8px 6px 2px 2px;
     }
 
-    .blank-window {
-        background: alpha(black, 0);
+    .control-center .notification-row .notification-background .notification > *:last-child > * {
+    min-height: 3.4em;
     }
 
+    .control-center .notification-row .notification-background .notification > *:last-child > * .notification-action {
+    background: alpha(@selected, .6);
+    color: @text;
+    border-radius: 12px;
+    margin: 6px;
+    }
+
+    .control-center .notification-row .notification-background .notification > *:last-child > * .notification-action:hover {
+    background: @selected;
+    }
+
+    .control-center .notification-row .notification-background .notification > *:last-child > * .notification-action:active {
+    background-color: @selected;
+    }
+
+    /* Buttons */
+
+    .control-center .notification-row .notification-background .close-button {
+    background: transparent;
+    border-radius: 6px;
+    color: @text;
+    margin: 0px;
+    padding: 4px;
+    }
+
+    .control-center .notification-row .notification-background .close-button:hover {
+    background-color: @selected;
+    }
+
+    .control-center .notification-row .notification-background .close-button:active {
+    background-color: @selected;
+    }
+
+    progressbar,
+    progress,
+    trough {
+    border-radius: 12px;
+    }
+
+    progressbar {
+    background-color: rgba(255,255,255,.1);
+    }
+
+    /* Notifications expanded-group */
+
+    .notification-group {
+    margin: 2px 8px 2px 8px;
+
+    }
+    .notification-group-headers {
+    font-weight: bold;
+    font-size: 1.25rem;
+    color: @text;
+    letter-spacing: 2px;
+    }
+
+    .notification-group-icon {
+    color: @text;
+    }
+
+    .notification-group-collapse-button,
+    .notification-group-close-all-button {
+    background: transparent;
+    color: @text;
+    margin: 4px; 
+    border-radius: 6px;
+    padding: 4px;
+    }
+
+    .notification-group-collapse-button:hover,
+    .notification-group-close-all-button:hover {
+    background: @hover;
+    }  
+
+    /* WIDGETS --------------------------------------------------------------------------- */
+
+    /* Notification clear button */
     .widget-title {
-        color: #${palette.base0E};
-        background: #${palette.base00};
-        padding: 5px 10px;
-        margin: 10px 10px 5px 10px;
-        font-size: 1.5rem;
-        ${if boxyStyle == true then ''border-radius: 0px;'' else ''border-radius: 15px;''}
+    font-size: 1.2em;
+    margin: 6px;
     }
 
-    .widget-title>button {
-        font-size: 1rem;
-        color: #${palette.base05};
-        text-shadow: none;
-        background: #${palette.base00};
-        box-shadow: none;
-        ${if boxyStyle == true then ''border-radius: 0px;'' else ''border-radius: 15px;''}
+    .widget-title button {
+    background: @background-alt;
+    border-radius: 6px;
+    padding: 4px 16px;
     }
 
-    .widget-title>button:hover {
-        background: #${palette.base08};
-        color: #${palette.base00};
+    .widget-title button:hover {
+    background-color: @hover;
     }
 
+    .widget-title button:active {
+    background-color: @selected;
+    }
+
+    /* Do not disturb */
     .widget-dnd {
-        background: #${palette.base00};
-        padding: 5px 10px;
-        margin: 10px 10px 5px 10px;
-        ${if boxyStyle == true then ''border-radius: 0px;'' else ''border-radius: 15px;''}
-        font-size: large;
-        color: #${palette.base0E};
+    margin: 6px;
+    font-size: 1.2rem;
     }
 
-    .widget-dnd>switch {
-        ${if boxyStyle == true then ''border-radius: 0px;'' else ''border-radius: 15px;''}
-        /* border: 1px solid #${palette.base0E}; */
-        background: #${palette.base0E};
+    .widget-dnd > switch {
+    background: @background-alt;
+    font-size: initial;
+    border-radius: 8px;
+    box-shadow: none;
+    padding: 2px;
     }
 
-    .widget-dnd>switch:checked {
-        background: #${palette.base08};
-        border: 1px solid #${palette.base08};
+    .widget-dnd > switch:hover {
+    background: @hover;
     }
 
-    .widget-dnd>switch slider {
-        background: #${palette.base00};
-        ${if boxyStyle == true then ''border-radius: 0px;'' else ''border-radius: 15px;''}
+    .widget-dnd > switch:checked {
+    background: @selected;
     }
 
-    .widget-dnd>switch:checked slider {
-        background: #${palette.base00};
-        ${if boxyStyle == true then ''border-radius: 0px;'' else ''border-radius: 15px;''}
+    .widget-dnd > switch:checked:hover {
+    background: @hover;
     }
 
-    .widget-label {
-        margin: 10px 10px 5px 10px;
+    .widget-dnd > switch slider {
+    background: @hover;
+    border-radius: 6px;
     }
 
-    .widget-label>label {
-        font-size: 1rem;
-        color: #${palette.base05};
-    }
-
-    .widget-mpris {
-        color: #${palette.base05};
-        background: #${palette.base00};
-        padding: 5px 10px;
-        margin: 10px 10px 5px 10px;
-        ${if boxyStyle == true then ''border-radius: 0px;'' else ''border-radius: 15px;''}
-    }
-
-    .widget-mpris > box > button {
-        ${if boxyStyle == true then ''border-radius: 0px;'' else ''border-radius: 15px;''}
-    }
-
-    .widget-mpris-player {
-        padding: 5px 10px;
-        margin: 10px;
-    }
-
-    .widget-mpris-title {
-        font-weight: 700;
-        font-size: 1.25rem;
-    }
-
-    .widget-mpris-subtitle {
-        font-size: 1.1rem;
-    }
-
-        .widget-buttons-grid {
-        font-size: x-large;
-        padding: 5px;
-        margin: 10px 10px 5px 10px;
-        ${if boxyStyle == true then ''border-radius: 0px;'' else ''border-radius: 15px;''}
-        background: #${palette.base01};
+    /* Buttons menu */
+    .widget-buttons-grid {
+    font-size: 25px;
+    padding: 6px 2px;
+    margin: 6px;
+    border-radius: 12px;
+    background: @background-alt;
     }
 
     .widget-buttons-grid>flowbox>flowboxchild>button {
-        margin: 3px;
-        background: #${palette.base00};
-        ${if boxyStyle == true then ''border-radius: 0px;'' else ''border-radius: 15px;''}
-        color: #${palette.base05};
+    margin: 4px 10px;
+    padding: 6px 12px;
+    background: transparent;
+    border-radius: 8px;
     }
 
     .widget-buttons-grid>flowbox>flowboxchild>button:hover {
-        background: rgba(122, 162, 247, 1);
-        color: #${palette.base00};
+    background: @hover;
     }
 
-    .widget-menubar>box>.menu-button-bar>button {
-        border: none;
-        background: transparent;
+
+    /* Music player */
+    .widget-mpris {
+        background: @background-alt;
+        border-radius: 16px;
+        color: @text;
+        margin:  20px 6px;
     }
 
-    .topbar-buttons>button {
-        border: none;
-        background: transparent;
+    /* NOTE: Background need *opacity 1* otherwise will turn into the album art blurred  */
+    .widget-mpris-player {
+        background-color: @background;
+        border-radius: 15px;
+        padding: 6px 14px;
+        opacity: 1;
+        margin: 6px;
     }
 
-        .widget-volume {
-        background: #${palette.base01};
-        padding: 5px;
-        margin: 10px 10px 5px 10px;
-        ${if boxyStyle == true then ''border-radius: 0px;'' else ''border-radius: 15px;''}
-        font-size: x-large;
-        color: #${palette.base05};
+    .widget-mpris > box > button {
+    color: @text;
+    border-radius: 15px;
+    }
+    
+    .widget-mpris button {
+    color: alpha(@text, .6);
     }
 
-    .widget-volume>box>button {
-        background: #${palette.base0B};
-        border: none;
+    .widget-mpris button:hover {
+    color: @text;
     }
 
-    .per-app-volume {
-        background-color: #${palette.base00};
-        padding: 4px 8px 8px;
-        margin: 0 8px 8px;
-        ${if boxyStyle == true then ''border-radius: 0px;'' else ''border-radius: 15px;''}
+    .widget-mpris-album-art {
+    border-radius: 16px;
+    }
+    
+    .widget-mpris-title {
+        font-weight: 700;
+        font-size: 1rem;
+    }
+    
+    .widget-mpris-subtitle {
+        font-weight: 500;
+        font-size: 0.8rem;
     }
 
-    .widget-backlight {
-        background: #${palette.base01};
-        padding: 5px;
-        margin: 10px 10px 5px 10px;
-        ${if boxyStyle == true then ''border-radius: 0px;'' else ''border-radius: 15px;''}
-        font-size: x-large;
-        color: #${palette.base05}
+    /* Volume */
+    .widget-volume {
+    background: @background-sec;
+    color: @background;
+    padding: 4px;
+    margin: 6px;
+    border-radius: 6px;
+    }
+
+    * {
+    color: @text;
+    all: unset;
+    font-size: 16px;
+    font-family: "Maple Mono";
+    transition: 200ms;
+    }
+
+    .notification-row {
+    outline: none;
+    margin: 0;
+    padding: 0px;
+    }
+
+    .floating-notifications.background .notification-row .notification-background {
+    background: alpha(@background, .55);
+    box-shadow: 0 0 8px 0 rgba(0,0,0,.6);
+    border: 1px solid @selected;
+    border-radius: 15px;
+    margin: 16px;
+    padding: 0;
+    }
+
+    .floating-notifications.background .notification-row .notification-background .notification {
+    padding: 6px;
+    border-radius: 12px;
+    }
+
+    .floating-notifications.background .notification-row .notification-background .notification.critical {
+    border: 2px solid @urgent;
+    }
+
+    .floating-notifications.background .notification-row .notification-background .notification .notification-content {
+    margin: 14px;
+    }
+
+    .floating-notifications.background .notification-row .notification-background .notification > *:last-child > * {
+    min-height: 3.4em;
+    }
+
+    .floating-notifications.background .notification-row .notification-background .notification > *:last-child > * .notification-action {
+    border-radius: 8px;
+    background-color: @background-alt ;
+    margin: 6px;
+    border: 1px solid transparent;
+    }
+
+    .floating-notifications.background .notification-row .notification-background .notification > *:last-child > * .notification-action:hover {
+    background-color: @hover;
+    border: 1px solid @selected;
+    }
+
+    .floating-notifications.background .notification-row .notification-background .notification > *:last-child > * .notification-action:active {
+    background-color: @selected;
+    color: @background;
+    }
+
+    .image {
+    margin: 10px 20px 10px 0px;
+    }
+
+    .summary {
+    font-weight: 800;
+    font-size: 1rem;
+    }
+
+    .body {
+    font-size: 0.8rem;
+    }
+
+    .floating-notifications.background .notification-row .notification-background .close-button {
+    margin: 6px;
+    padding: 2px;
+    border-radius: 6px;
+    background-color: transparent;
+    border: 1px solid transparent;
+    }
+
+    .floating-notifications.background .notification-row .notification-background .close-button:hover {
+    background-color: @selected;
+    }
+
+    .floating-notifications.background .notification-row .notification-background .close-button:active {
+    background-color: @selected;
+    color: @background;
+    }
+
+    .notification.critical progress {
+    background-color: @selected;
+    }
+
+    .notification.low progress,
+    .notification.normal progress {
+    background-color: @selected;
     }
   '';
 }

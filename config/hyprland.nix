@@ -166,8 +166,8 @@ in
             layerrule = blur, swaync-notification-window
             layerrule = ignorezero, swaync-control-center
             layerrule = ignorezero, swaync-notification-window
-            layerrule = ignorealpha 0.5, swaync-control-center
-            layerrule = ignorealpha 0.5, swaync-notification-window
+            layerrule = ignorealpha 0.8, swaync-control-center
+            layerrule = ignorealpha 0.8, swaync-notification-window
 
 
             # >>> KEYBINDINDS <<<
