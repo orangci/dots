@@ -24,7 +24,7 @@ button:focus {
     border: 0px solid;
 }
 
-button:hover {
+button:hover, button:focus {
     background-size: 50%;
     box-shadow: 0 0 10px 3px rgba(0,0,0,.4);
     background-color: rgb(203, 166, 247);
