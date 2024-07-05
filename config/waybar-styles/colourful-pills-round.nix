@@ -9,6 +9,7 @@
 let
   palette = config.stylix.base16Scheme;
   betterTransition = "all 0.3s cubic-bezier(.55,-0.68,.48,1.682)";
+  inherit (import ../../hosts/${host}/variables.nix) waybarBottom;
 in
 with lib;
 {
@@ -18,8 +19,8 @@ with lib;
     package = pkgs.waybar;
     settings = [
       {
-        layer = "top";
-        position = "top";
+        layer = if waybarBottom then "bottom" else "top";
+        position = if waybarBottom then "bottom" else "top";
 
         modules-center = [
           "hyprland/window"
@@ -192,31 +193,12 @@ with lib;
             color: #${palette.base00};
           }
           window#waybar {background-color: rgba(255,0,0,0);}
-          tooltip {
-            background: #${palette.base00};
-            border-radius: 15px;
-          }
+          tooltip {background: #${palette.base00}; border-radius: 15px;}
           tooltip label {color: #${palette.base05};}
-          #cpu, #custom-exit, #tray, #network { /* Stuff that needs to be rounded left. */
-            border-radius: 15px 0px 0px 15px; margin: 3px 0px 3px 2px;
-          padding: 0px 5px 0px 15px;
-
-          }
-          #memory, #pulseaudio, #custom-notification { /* Stuff that needs to be rounded right. */
-          border-radius: 0px 15px 15px 0px; margin: 3px 2px 3px 0px;
-          padding: 0px 10px 0px 5px;
-
-          }
-          #window, #clock, #custom-weather, #workspaces { /* Stuff that's rounded both left and right, i.e. standalone pills. */
-          border-radius: 15px; margin: 3px 4px;
-          padding: 0px 10px;
-          }
-        #idle_inhibitor { /* Stuff that aren't rounded in either direction, i.e. sandwiched pills. */
-            border-radius: 0px;
-            margin: 3px 0px;
-            padding: 0px 14px;
-        }
-
+          #cpu, #custom-exit, #tray, #network {border-radius: 15px 0px 0px 15px; margin: 3px 0px 3px 2px; padding: 0px 5px 0px 15px;} /* Stuff that needs to be rounded left. */
+          #memory, #pulseaudio, #custom-notification {border-radius: 0px 15px 15px 0px; margin: 3px 2px 3px 0px; padding: 0px 10px 0px 5px;} /* Stuff that needs to be rounded right. */
+          #window, #clock, #custom-weather, #workspaces {border-radius: 15px; margin: 3px 4px; padding: 0px 10px;} /* Stuff that's rounded both left and right, i.e. standalone pills. */
+          #idle_inhibitor {border-radius: 0px; margin: 3px 0px; padding: 0px 14px;} /* Stuff that aren't rounded in either direction, i.e. sandwiched pills. */
 
         /* >>> LEFT MODULES <<< */
           #workspaces {

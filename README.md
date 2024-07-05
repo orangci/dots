@@ -1,7 +1,6 @@
-# orangc's dots
+# orangc's flake
 
-This is a NixOS flake. Thus you can only use this on NixOS.
-It is originally built off of Zaney's [flake](https://gitlab.com/zaney/zaneyos).
+An important note: many of the configurations here are taken from *many* other opensource dotfile repositories. Without those, this wouldn't be possible!
 
 What I use:
 

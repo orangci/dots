@@ -9,6 +9,7 @@
 let
   palette = config.stylix.base16Scheme;
   betterTransition = "all 0.3s cubic-bezier(.55,-0.68,.48,1.682)";
+  inherit (import ../../hosts/${host}/variables.nix) waybarBottom;
 in
 with lib;
 {
@@ -18,8 +19,8 @@ with lib;
     package = pkgs.waybar;
     settings = [
       {
-        layer = "top";
-        position = "top";
+        layer = if waybarBottom then "bottom" else "top";
+        position = if waybarBottom then "bottom" else "top";
 
         modules-center = [
           "hyprland/window"

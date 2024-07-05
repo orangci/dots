@@ -68,11 +68,11 @@ in {
       # Day
       label {
           monitor =
-          text = cmd[update:1000] echo "<span>$(date '+%A,')</span>"
+          text = cmd[update:1000] echo "$(date '+%A,')"
           color = rgba(205, 214, 244, .75)
           font_size = 30
           font_family = Maple Mono
-          position = -550, -80
+          position = -580, -80
           halign = center
           valign = center
       }
@@ -80,11 +80,11 @@ in {
       # Month-Date
       label {
           monitor =
-          text = cmd[update:1000] echo "<span>$(date '+%d %B')</span>"
+          text = cmd[update:1000] echo "$(date '+%d %B')"
           color = rgba(250, 179, 135, .75)
           font_size = 30
           font_family = Maple Mono
-          position = -350, -82
+          position = -400, -81.5
           halign = center
           valign = center
       }

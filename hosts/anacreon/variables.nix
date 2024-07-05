@@ -13,8 +13,8 @@
 
   # Waybar Settings
   opacityBar = true;
-  waybarStyle = "pills-round"; # Different styles for the waybar at the top of the screen. Currently available options: pills-round, colourful-pills-round, boxyStyle, boxyStyle-bottom, bottom-long, and long
-
+  waybarStyle = "boxyStyle"; # Different styles for the waybar at the top of the screen. Currently available options: pills-round, colourful-pills-round, boxyStyle,and long
+  waybarBottom = true; # If the waybar should be at the bottom of the screen instead of the top
   # Program Options
   browser = "firefox";
   terminal = "kitty";

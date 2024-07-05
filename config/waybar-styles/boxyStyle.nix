@@ -8,7 +8,7 @@
 }:
 let
   palette = config.stylix.base16Scheme;
-  betterTransition = "all 0.3s cubic-bezier(.55,-0.68,.48,1.682)";
+  inherit (import ../../hosts/${host}/variables.nix) waybarBottom;
 in
 with lib;
 {
@@ -18,8 +18,8 @@ with lib;
     package = pkgs.waybar;
     settings = [
       {
-        layer = "top";
-        position = "top";
+        layer = if waybarBottom then "bottom" else "top";
+        position = if waybarBottom then "bottom" else "top";
 
         modules-center = [
           "hyprland/window"
@@ -202,25 +202,20 @@ with lib;
             background-size: 300% 300%;
             animation: gradient_horizontal 15s ease infinite;
             opacity: 0.5;
-            transition: ${betterTransition};
           }
           #workspaces button.active {
             color: #${palette.base00};
             background-size: 300% 300%;
             animation: gradient_horizontal 15s ease infinite;
-            transition: ${betterTransition};
             opacity: 1.0;
-            min-width: 40px;
+            min-width: 30px;
           }
           #workspaces button:hover {
             color: #${palette.base05};
             background-size: 300% 300%;
             animation: gradient_horizontal 15s ease infinite;
             opacity: 1.0;
-            transition: ${betterTransition};
           }
-          @keyframes gradient_horizontal {0% {background-position: 0% 50%;} 50% {background-position: 100% 50%;} 100% {background-position: 0% 50%;}}
-          @keyframes swiping {0% {background-position: 0% 200%;} 00% {background-position: 200% 200%;}}
 
           #cpu {color: #${palette.base0D};}
           #memory {color: #${palette.base0D};}

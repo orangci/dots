@@ -171,6 +171,8 @@ in
             layerrule = blur,rofi
             layerrule = ignorezero, rofi
             layerrule = ignorealpha 0.8, rofi
+            layerrule = blur,waybar
+            layerrule = ignorezero, waybar
 
 
             # >>> KEYBINDINDS <<<
