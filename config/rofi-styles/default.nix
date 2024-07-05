@@ -5,6 +5,5 @@
     ./run.nix
     ./clipboard.nix
     ./web-search.nix
-    ./powermenu.nix
   ];
 }

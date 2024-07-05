@@ -17,6 +17,10 @@ in {
         source = ../../config/fonts;
         recursive = true;
       };
+      ".config/wlogout" = {
+        source = ../../config/wlogout;
+        recursive = true;
+      };
       ".config/starship.toml".source = ../../config/starship.toml;
       ".face.icon".source = ../../config/face.png;
       ".config/Vencord/themes/orangetweaks.css".source = ../../config/Configs/vencordthemes/orangetweaks.css;
@@ -39,13 +43,13 @@ in {
     # Scripts
     packages = [
       (import ../../scripts/squirtle.nix {inherit pkgs;})
-      (import ../../scripts/rofi-powermenu.nix {inherit pkgs;})
       (import ../../scripts/rofi-launcher.nix {inherit pkgs;})
       (import ../../scripts/rofi-prism-exec.nix {inherit pkgs;})
       (import ../../scripts/walls.nix {inherit pkgs;})
       (import ../../scripts/nvidia-offload.nix {inherit pkgs;})
       (import ../../scripts/web-search.nix {inherit pkgs;})
       (import ../../scripts/screenshootin.nix {inherit pkgs;})
+      (import ../../scripts/logout.nix {inherit pkgs;})
     ];
   };
 

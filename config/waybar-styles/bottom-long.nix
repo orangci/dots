@@ -119,7 +119,7 @@ with lib;
         "custom/exit" = {
           tooltip = false;
           format = "";
-          on-click = "rofi-powermenu";
+          on-click = "logout";
         };
         "idle_inhibitor" = {
           format = "{icon}";

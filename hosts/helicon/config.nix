@@ -232,6 +232,7 @@
     obs-studio
     rustup
     fzf
+    wlogout
     pavucontrol
     tree
     font-awesome

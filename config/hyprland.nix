@@ -158,9 +158,10 @@ in
 
 
             # >>> WINDOW RULES <<<
-            windowrulev2 = opacity 1,class:^(Minecraft)$
-            windowrulev2 = opacity 1,class:^(zoom)$
+            windowrulev2 = opacity 1 override,class:^(Minecraft)$
+            windowrulev2 = opacity 1 override,class:^(zoom)$
             windowrulev2 = noblur,class:^(zoom)$
+            layerrule = blur,logout_dialog
 
 
             # >>> KEYBINDINDS <<<
@@ -200,7 +201,7 @@ in
             bind = ${modifier},up,movefocus,u
             bind = ${modifier},down,movefocus,d
             bind = ${modifier},l,exec,killall hyprlock; hyprlock
-            bind = ${modifier},BACKSLASH,exec,rofi-powermenu
+            bind = ${modifier},BACKSLASH,exec,logout
             bind = ${modifier},APOSTROPHE,exec,killall -q wallset;wallset
             bind = ${modifier},1,workspace,1
             bind = ${modifier},2,workspace,2
