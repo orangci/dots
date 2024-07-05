@@ -3,8 +3,8 @@ let
   palette = config.stylix.base16Scheme;
 in
 {
-    # For running quick commands
-  home.file.".config/rofi/run.rasi".text = ''       
+    # For running quick bash commands
+  home.file.".config/rofi/selector.rasi".text = ''       
     // Config //
     configuration {
         modi:                        "drun";
