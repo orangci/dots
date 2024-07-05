@@ -5,5 +5,6 @@
     ./run.nix
     ./clipboard.nix
     ./web-search.nix
+    ./selector.nix
   ];
 }
