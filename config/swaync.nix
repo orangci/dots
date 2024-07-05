@@ -112,9 +112,9 @@ in
 
   home.file.".config/swaync/style.css".text = ''
     @define-color text            #${palette.base05};
-    @define-color background-alt  rgba(24, 24, 37, .4);
+    @define-color background-alt  rgba(24, 24, 37, .85);
     @define-color selected        #cba6f7;
-    @define-color hover           rgba(203, 166, 247, .4);
+    @define-color hover           rgba(203, 166, 247, .85);
     @define-color urgent          #f38ba8;
     @define-color background      #${palette.base00};
 
