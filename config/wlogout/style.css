@@ -67,24 +67,24 @@ button:focus#reboot {
 
 #lock {
     background-image: image(url("icons/lock_white.png"));
-    border-radius: 50px 0px 0px 0px;
+    border-radius: 50px 0px 0px 50px;
     margin : 30px 0px 0px 30px;
 }
 
 #logout {
     background-image: image(url("icons/logout_white.png"));
-    border-radius: 0px 0px 0px 50px;
+    border-radius: 50px 50px 0px 0px;
     margin : 0px 0px 30px 30px;
 }
 
 #shutdown {
     background-image: image(url("icons/shutdown_white.png"));
-    border-radius: 0px 50px 0px 0px;
+    border-radius: 0px 0px 50px 50px;
     margin : 30px 30px 0px 0px;
 }
 
 #reboot {
     background-image: image(url("icons/reboot_white.png"));
-    border-radius: 0px 0px 50px 0px;
+    border-radius: 0px 50px 50px 0px;
     margin : 0px 30px 30px 0px;
 }
