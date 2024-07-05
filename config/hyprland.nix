@@ -201,7 +201,7 @@ in
             bind = ${modifier},up,movefocus,u
             bind = ${modifier},down,movefocus,d
             bind = ${modifier},l,exec,killall hyprlock; hyprlock
-            bind = ${modifier},BACKSLASH,exec,logout
+            bind = ${modifier},BACKSLASH,exec,logout-exit
             bind = ${modifier},APOSTROPHE,exec,killall -q wallset;wallset
             bind = ${modifier},1,workspace,1
             bind = ${modifier},2,workspace,2

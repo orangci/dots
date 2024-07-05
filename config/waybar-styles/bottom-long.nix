@@ -119,7 +119,7 @@ with lib;
         "custom/exit" = {
           tooltip = false;
           format = "";
-          on-click = "logout";
+          on-click = "logout-exit";
         };
         "idle_inhibitor" = {
           format = "{icon}";
