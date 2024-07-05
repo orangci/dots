@@ -172,6 +172,7 @@ in
             bind = ${modifier},W,exec,${browser}
             bind = ${modifier},PERIOD,exec,bemoji -t
             bind = ${modifier},S,exec,grimblast --freeze save area - | swappy -f -
+            bind = ${modifier},Print,exec,grimblast --freeze save screen - | swappy -f -
             bind = ${modifier},D,exec,armcord
             bind = ${modifier},P,exec,playerctl play-pause
             bind = ${modifier}SHIFT,P,exec,playerctl next
