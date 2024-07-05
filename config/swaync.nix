@@ -55,7 +55,7 @@ in
                 },
                 "mpris": {
                     "image-size": 96,
-                    "image-radius": 7
+                    "image-radius": 15
                 }
         }
     }
@@ -63,14 +63,13 @@ in
 
   home.file.".config/swaync/style.css".text = ''
     * {
-        font-family: Ubuntu;
+        font-family: Maple Mono;
         font-weight: bolder;
     }
 
     .control-center .notification-row:focus,
     .control-center .notification-row:hover {
-    ${if boxyStyle == true then ''opacity: 1;'' else ''opacity: 0.9;''}
-        background: #${palette.base00};
+    ${if boxyStyle == true then ''background: #${palette.base00};'' else ''background: rgba(30, 30, 46, 0.7);''}
     }
 
     .notification-row {
