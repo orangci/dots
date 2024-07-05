@@ -49,7 +49,7 @@ in {
       (import ../../scripts/nvidia-offload.nix {inherit pkgs;})
       (import ../../scripts/web-search.nix {inherit pkgs;})
       (import ../../scripts/screenshootin.nix {inherit pkgs;})
-      (import ../../scripts/logout.nix {inherit pkgs;})
+      (import ../../scripts/logout-exit.nix {inherit pkgs;})
     ];
   };
 
