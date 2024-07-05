@@ -1,14 +1,15 @@
 {
-  # Git Configuration ( For Pulling Software Repos )
+  # Git configuration for pulling software repos
   gitUsername = "orxngc";
   gitEmail = "orangc@proton.me";
 
-  # Base16 Theme
+  # Theme
   theme = "catppuccin-mocha";
 
   # Hyprland Settings
   extraMonitorSettings = "";
-  boxyStyle = false; # this disables blur, transparency, and border radius on all programs and makes waybar have a background as well. It will change how *everything* looks.
+  boxyStyle = false; # this disables blur, transparency, and border radius on most programs. It will change how *everything* looks.
+  wlogout_horizontal = true;
 
   # Waybar Settings
   opacityBar = true;
