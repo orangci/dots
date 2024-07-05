@@ -111,12 +111,12 @@ in
   '';
 
   home.file.".config/swaync/style.css".text = ''
-    @define-color text            #cdd6f4;
+    @define-color text            #${palette.base05};
     @define-color background-alt  rgba(24, 24, 37, .4);
     @define-color selected        #cba6f7;
     @define-color hover           rgba(203, 166, 247, .4);
     @define-color urgent          #f38ba8;
-    @define-color background      #1e1e2e;
+    @define-color background      #${palette.base00};
 
     * {
     color: @text;
@@ -139,7 +139,7 @@ in
     background: alpha(@background, .85);
     border-radius: 15px;
     border: 0px solid @selected;
-    box-shadow: 0 0 10px 0 rgba(0,0,0,.6);
+    box-shadow: 0 0 10px 0 rgba(0,0,0,.85);
     margin: 18px;
     padding: 12px;
     }
@@ -167,7 +167,7 @@ in
     }
 
     .control-center .notification-row .notification-background .notification > *:last-child > * .notification-action {
-    background: alpha(@selected, .6);
+    background: alpha(@selected, .85);
     color: @text;
     border-radius: 12px;
     margin: 6px;
@@ -337,7 +337,7 @@ in
     }
     
     .widget-mpris button {
-    color: alpha(@text, .6);
+    color: alpha(@text, .85);
     }
 
     .widget-mpris button:hover {
@@ -382,8 +382,8 @@ in
     }
 
     .floating-notifications.background .notification-row .notification-background {
-    background: alpha(@background, .55);
-    box-shadow: 0 0 8px 0 rgba(0,0,0,.6);
+    background: alpha(@background, .85);
+    box-shadow: 0 0 8px 0 rgba(0,0,0,.85);
     border: 1px solid @selected;
     border-radius: 15px;
     margin: 16px;
