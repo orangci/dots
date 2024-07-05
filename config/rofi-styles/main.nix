@@ -18,18 +18,18 @@ in
             no-fading-openclose:        true;
         }
         * {
-            border-colour:               #${palette.base0E};
-            handle-colour:               #${palette.base0E};
-            background-colour:           #${palette.base00};
+            border-colour:               rgba(203, 166, 247, 85%);
+            handle-colour:               rgba(203, 166, 247, 85%);
+            background-colour:           rgba(30, 30, 46, 85%);
             foreground-colour:           #${palette.base05};
-            normal-background:           #${palette.base00};
+            normal-background:           rgba(30, 30, 46, 85%);
             normal-foreground:           #${palette.base05};
-            urgent-foreground:           #${palette.base00};
-            active-foreground:           #${palette.base00};
-            selected-normal-background:  #${palette.base0E};
-            selected-normal-foreground:  #${palette.base00};
-            selected-urgent-foreground:  #${palette.base00};
-            selected-active-foreground:  #${palette.base00};
+            urgent-foreground:           rgba(30, 30, 46, 85%);
+            active-foreground:           rgba(30, 30, 46, 85%);
+            selected-normal-background:  rgba(203, 166, 247, 85%);
+            selected-normal-foreground:  rgba(30, 30, 46, 85%);
+            selected-urgent-foreground:  rgba(30, 30, 46, 85%);
+            selected-active-foreground:  rgba(30, 30, 46, 85%);
         }
 
         /*****----- Main Window -----*****/
@@ -50,7 +50,7 @@ in
             padding:                     0px;
             border:                      0px solid;
             border-radius:               0px;
-            border-color:                #${palette.base0E};
+            border-color:                rgba(203, 166, 247, 85%);
             cursor:                      "default";
             background-color:            transparent;
         }
@@ -63,7 +63,7 @@ in
             padding:                     25% 35%;
             border:                      0px solid;
             border-radius:               0px 0px 0px 0px;
-            border-color:                #${palette.base0E};
+            border-color:                rgba(203, 166, 247, 85%);
             background-color:            transparent;
             children:                    [ "inputbar", "listview" ];
         }
@@ -76,8 +76,8 @@ in
             padding:                     20px;
             border:                      0px;
             border-radius:               20px;
-            border-color:                #${palette.base0E};
-            background-color:            #${palette.base02};
+            border-color:                rgba(203, 166, 247, 85%);
+            background-color:            rgba(30, 30, 46, 85%);
             text-color:                  #${palette.base05};
             children:                    [ "entry" ];
         }
@@ -123,16 +123,16 @@ in
             padding:                     30px;
             border:                      0px solid;
             border-radius:               20px;
-            border-color:                #${palette.base0E};
-            background-color:            #${palette.base02};
+            border-color:                rgba(203, 166, 247, 85%);
+            background-color:            rgba(30, 30, 46, 85%);
             text-color:                  #${palette.base05};
             cursor:                      "default";
         }
         scrollbar {
             handle-width:                5px ;
-            handle-color:                #${palette.base0E};
+            handle-color:                rgba(203, 166, 247, 85%);
             border-radius:               0px;
-            background-color:            #${palette.base02};
+            background-color:            rgba(69, 71, 90, 85%);
         }
 
         /*****----- Elements -----*****/
@@ -143,7 +143,7 @@ in
             padding:                     8px;
             border:                      0px solid;
             border-radius:               12px;
-            border-color:                #${palette.base0E};
+            border-color:                rgba(203, 166, 247, 85%);
             background-color:            transparent;
             text-color:                  #${palette.base05};
             cursor:                      pointer;
@@ -196,7 +196,7 @@ in
             padding:                     0px;
             border:                      0px solid;
             border-radius:               0px;
-            border-color:                #${palette.base0E};
+            border-color:                rgba(203, 166, 247, 85%);
             background-color:            transparent;
             text-color:                  #${palette.base05};
         }
@@ -204,14 +204,14 @@ in
             padding:                     10px;
             border:                      0px solid;
             border-radius:               0px;
-            border-color:                #${palette.base0E};
-            background-color:            #${palette.base02};
+            border-color:                rgba(203, 166, 247, 85%);
+            background-color:            rgba(69, 71, 90, 85%);
             text-color:                  inherit;
             cursor:                      pointer;
         }
         button selected {
-            background-color:            #${palette.base0E};
-            text-color:                  #${palette.base00};
+            background-color:            rgba(203, 166, 247, 85%);
+            text-color:                  rgba(30, 30, 46, 85%);
         }
 
         /*****----- Message -----*****/
@@ -221,7 +221,7 @@ in
             padding:                     0px;
             border:                      0px solid;
             border-radius:               0px 0px 0px 0px;
-            border-color:                #${palette.base0E};
+            border-color:                rgba(203, 166, 247, 85%);
             background-color:            transparent;
             text-color:                  #${palette.base05};
         }
@@ -229,8 +229,8 @@ in
             padding:                     100px;
             border:                      0px solid;
             border-radius:               0px;
-            border-color:                #${palette.base0E};
-            background-color:            #${palette.base02};
+            border-color:                rgba(203, 166, 247, 85%);
+            background-color:            rgba(69, 71, 90, 85%);
             text-color:                  #${palette.base05};
             vertical-align:              0.5;
             horizontal-align:            0.0;
@@ -243,12 +243,12 @@ in
             padding:                     0px;
             border:                      0px solid;
             border-radius:               0px;
-            border-color:                #${palette.base0E};
-            background-color:            #${palette.base00};
+            border-color:                rgba(203, 166, 247, 85%);
+            background-color:            rgba(30, 30, 46, 85%);
             text-color:                  #${palette.base05};
         }
          element.alternate.normal {
-            background-color: #${palette.base02};
+            background-color: transparent;
             text-color:       #${palette.base05};
          }
 

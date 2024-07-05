@@ -168,6 +168,9 @@ in
             layerrule = ignorezero, swaync-notification-window
             layerrule = ignorealpha 0.8, swaync-control-center
             layerrule = ignorealpha 0.8, swaync-notification-window
+            layerrule = blur,rofi
+            layerrule = ignorezero, rofi
+            layerrule = ignorealpha 0.8, rofi
 
 
             # >>> KEYBINDINDS <<<
