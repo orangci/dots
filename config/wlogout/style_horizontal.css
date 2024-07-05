@@ -21,6 +21,7 @@ button {
 button:focus {
     box-shadow: none;
     background-size : 20%;
+    border: 0px solid;
 }
 
 button:hover {
@@ -32,10 +33,10 @@ button:hover {
 }
 
 #shutdown {
-    background-image: image(url("icons/power_white.png"));
+    background-image: image(url("icons/shutdown_white.png"));
 }
 #shutdown:hover {
-  background-image: image(url("icons/power_black.png"));
+  background-image: image(url("icons/shutdown_black.png"));
 }
 
 #logout {
@@ -47,10 +48,10 @@ button:hover {
 }
 
 #reboot {
-    background-image: image(url("icons/restart_white.png"));
+    background-image: image(url("icons/reboot_white.png"));
 }
 #reboot:hover {
-  background-image: image(url("icons/restart_black.png"));
+  background-image: image(url("icons/reboot_black.png"));
 }
 
 #lock {
