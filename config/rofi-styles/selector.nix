@@ -1,10 +1,8 @@
-{ config, ... }:
-let
+{config, ...}: let
   palette = config.stylix.base16Scheme;
-in
-{
-    # For running quick bash commands
-  home.file.".config/rofi/selector.rasi".text = ''       
+in {
+  # For running quick bash commands
+  home.file.".config/rofi/selector.rasi".text = ''
     // Config //
     configuration {
         modi:                        "drun";
@@ -13,10 +11,10 @@ in
     }
 
     * {
-        main-bg:            #${palette.base00}cc;
-        main-fg:            #${palette.base05}ff;
-        select-bg:          #${palette.base0E}cc;
-        select-fg:          #${palette.base01}ff;
+        main-bg:            #${palette.base00}d9;
+        main-fg:            #${palette.base05}d9;
+        select-bg:          #${palette.base0E}d9;
+        select-fg:          #${palette.base01}d9;
         separatorcolor:     transparent;
         border-color:       transparent;
     }
@@ -99,5 +97,5 @@ in
         background-color:            transparent;
         text-color:                  inherit;
     }
-      '';
+  '';
 }
