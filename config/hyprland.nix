@@ -158,21 +158,19 @@ in
 
 
             # >>> WINDOW RULES <<<
-            windowrulev2 = opacity 1 override,class:^(Minecraft)$
+            windowrulev2 = opacity 1 override,title:^Minecraft
             windowrulev2 = opacity 1 override,class:^(zoom)$
             windowrulev2 = noblur,class:^(zoom)$
             layerrule = blur,logout_dialog
-            layerrule = blur, swaync-control-center
-            layerrule = blur, swaync-notification-window
-            layerrule = ignorezero, swaync-control-center
-            layerrule = ignorezero, swaync-notification-window
-            layerrule = ignorealpha 0.8, swaync-control-center
-            layerrule = ignorealpha 0.8, swaync-notification-window
+            layerrule = blur,swaync-control-center
+            layerrule = blur,swaync-notification-window
+            layerrule = ignorezero,swaync-control-center
+            layerrule = ignorezero,swaync-notification-window
+            layerrule = ignorealpha 0.8,swaync-control-center
+            layerrule = ignorealpha 0.8,swaync-notification-window
             layerrule = blur,rofi
-            layerrule = ignorezero, rofi
-            layerrule = ignorealpha 0.8, rofi
-            layerrule = blur,waybar
-            layerrule = ignorezero, waybar
+            layerrule = ignorezero,rofi
+            layerrule = ignorealpha 0.8,rofi
 
 
             # >>> KEYBINDINDS <<<
@@ -184,6 +182,7 @@ in
             bind = ${modifier},PERIOD,exec,bemoji -t
             bind = ${modifier},S,exec,grimblast --freeze save area - | swappy -f -
             bindl = ,Print,exec,grimblast --freeze save screen - | swappy -f -
+            bind = ${modifier}SHIFT,M,exec,wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
             bind = ${modifier},D,exec,armcord
             bind = ${modifier},P,exec,playerctl play-pause
             bind = ${modifier}SHIFT,P,exec,playerctl next

@@ -84,7 +84,7 @@ in {
           color = rgba(250, 179, 135, .75)
           font_size = 30
           font_family = Maple Mono
-          position = -400, -81.5
+          position = -410, -81.5
           halign = center
           valign = center
       }

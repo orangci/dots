@@ -51,7 +51,7 @@ with lib;
           on-scroll-down = "hyprctl dispatch workspace e-1";
         };
         "clock" = {
-          format = " {:L%I:%M %p}";
+          format = " {:%H:%M}";
           tooltip = true;
           tooltip-format = "<big>{:%A, %d.%b.%Y }</big>";
         };
