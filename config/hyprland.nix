@@ -179,6 +179,7 @@ in
             bind = ${modifier}SHIFT,W,exec,web-search
             bind = ${modifier}SHIFT,N,exec,swaync-client -rs
             bind = ${modifier},W,exec,${browser}
+            bind = ${modifier},X,exec,rofi -show calc -modi calc -no-show-match -no-sort -theme calc.rasi
             bind = ${modifier},PERIOD,exec,bemoji -t
             bind = ${modifier},S,exec,grimblast --freeze save area - | swappy -f -
             bindl = ,Print,exec,grimblast --freeze save screen - | swappy -f -

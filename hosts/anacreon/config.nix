@@ -287,6 +287,7 @@
     arrpc
     grimblast # for screenshots
     nurl
+    rofi-calc
     (pkgs.discord.override {
       withOpenASAR = true;
       withTTS = true;

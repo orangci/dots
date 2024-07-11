@@ -1,3 +1,38 @@
+/* [[Add "@" before Usernames]] */
+/* User Area */
+[aria-label="User area"] [class^=nameTag_] [class^=hovered_]::before,
+/* Switch Accounts */
+[class^=submenu_] [class^=userMenuUsername] [class^=defaultColor_]::before,
+[class^=accountCard_] [class^=userDetails_] [class^=username_]::before,
+/* Profiles - Credits to Skye */
+:where([class^=userPopoutInner_], [class^=fullSizeOuter_], [class^=userPanelInner_]) [class^=userTagUsername_]::before,
+/* Mod View */
+[class^=guildSidebar_] [class^=memberNameContainer_] [class="text-md/medium_dc00ef"]::before,
+[class^=userProfileModalOuter_] [class^=memberNameContainer_] [class="text-md/medium_dc00ef"]::before,
+/* Members List */
+[class^=roundedRow_] [class="text-xs/normal_dc00ef"]::before,
+/* Roles/Add Member */
+[class^=addMemberRow_] [class*=rowLabelSubText_]::before,
+/* Roles/Members */
+[class^=memberRow_] [class*=userTag_]::before,
+/* Emoji */
+[class^=emojiRow_] [class^=colorStandard_]::before,
+/* Stickers */
+[class^=tiers_] [class^=user_] [class="text-xs/normal_dc00ef"]::before,
+/* Soundboard */
+[class^=soundTable_] [class^=uploader_] [class^=defaultColor_]::before,
+/* Audit Log */
+[class^=auditLog_] [class^=title_] [class^=defaultColor_]::before,
+/* Ban List */
+[class^=bannedUser_] [class^=username_]::before,
+/* Friends list */
+[class^=peopleListItem_] [class^=infoSpacing_]::before,
+/* Settings/My Account */
+[class^=accountProfileCard_] [class^=field_]:nth-last-child(3) [class^=usernameInnerRow_]::before {
+    color: var(--text-muted);
+    content: "@";
+}
+
 /* [[Automatically resizing GIF picker]] */
 :root {
   --expression-picker-aspect-ratio: 1.125 / 1;
@@ -121,46 +156,6 @@
 .vc-permviewer-perms-title,
 [class^="headerChannelContainer_"]>div {
   font-family: "Twemoji Mozilla", "dashless", var(--font-primary);
-}
-
-/* [[make toolbar icons collapsity]] */
-[class="toolbar_e44302"]::before {
-  content: "∙∙∙";
-  /* Change this to anything you like [Default: ∙∙∙] */
-  font-size: 110%;
-  margin: 0 8px;
-  color: var(--text-muted);
-}
-
-/* decrease width to hide everything but menu icon */
-[class="toolbar_e44302"] {
-  width: var(--bartender-width);
-  /* Adjust this based on design requirements */
-  /* If you pick a new icon, instead of "∙∙∙", you may need to adjust this value */
-}
-
-[class="toolbar_e44302"]:hover,
-/* expand toobar on hover */
-[class="toolbar_e44302"]:has(.open_a46bef, .selected_e44302:not([aria-label="Hide Member List"]))
-
-/* keep the toolbar open if an item (e.g., search) is active */
-  {
-  width: unset;
-  /* Adjust the width to show the whole section if necessary [default: 21%] */
-  /* If you pick a new marker, instead of "∙∙∙", you may need to adjust this value as well */
-}
-
-.searchBar_a46bef {
-  height: 30px !important;
-  width: 30px;
-  padding: 3px 5px;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-.icon_a46bef.iconLayout_effbe2.small_effbe2 {
-  cursor: pointer;
-  scale: 1.2;
 }
 
 /* [[make the emoji picker custom emoji]] */
@@ -458,4 +453,44 @@ button[aria-label="Send a gift"],
 svg:has(>[d="M19.73 4.87a18.2 18.2 0 0 0-4.6-1.44c-.21.4-.4.8-.58 1.21-1.69-.25-3.4-.25-5.1 0-.18-.41-.37-.82-.59-1.2-1.6.27-3.14.75-4.6 1.43A19.04 19.04 0 0 0 .96 17.7a18.43 18.43 0 0 0 5.63 2.87c.46-.62.86-1.28 1.2-1.98-.65-.25-1.29-.55-1.9-.92.17-.12.32-.24.47-.37 3.58 1.7 7.7 1.7 11.28 0l.46.37c-.6.36-1.25.67-1.9.92.35.7.75 1.35 1.2 1.98 2.03-.63 3.94-1.6 5.64-2.87.47-4.87-.78-9.09-3.3-12.83ZM8.3 15.12c-1.1 0-2-1.02-2-2.27 0-1.24.88-2.26 2-2.26s2.02 1.02 2 2.26c0 1.25-.89 2.27-2 2.27Zm7.4 0c-1.1 0-2-1.02-2-2.27 0-1.24.88-2.26 2-2.26s2.02 1.02 2 2.26c0 1.25-.88 2.27-2 2.27Z"]) path {
   d: path("M7.516 16.7C7.8784 16.7 8.1694 16.3791 8.1838 16.0171 8.1906 15.8462 8.2 15.674 8.2 15.5 8.2 10.1984 11.7683 5.9 17.3338 5.9 19.3811 5.9 21.3254 6.6288 22.9281 7.6747 23.3211 7.9312 23.8106 7.6966 23.8014 7.2274 23.8005 7.1825 23.8 7.1398 23.8 7.1 23.8 1.8068 19.0527-2.5 13.219-2.5 7.3854-2.5 2.638 1.8068 2.638 7.1 2.638 8.59 3.0076 10.0228 3.7183 11.3276 3.9932 11.8323 3.9466 12.4664 3.5445 12.8769L1.7978 14.6604C1.0539 15.4198 1.592 16.7 2.6551 16.7H7.516ZM25.0161 18.9078C24.8039 18.5696 24.7806 18.1502 24.909 17.7722 25.1568 17.0422 25.2845 16.2741 25.2845 15.5 25.2845 11.5292 21.9897 8.3 17.9399 8.3 13.8903 8.3 10.5953 11.5292 10.5953 15.5 10.5953 19.4708 13.8903 22.7 17.9399 22.7H25.2258C26.1693 22.7 26.7437 21.6614 26.2424 20.8622L25.0161 18.9078Z") !important;
   transform: scale(.8) translate(1px, 5px);
+}
+
+/* [[make toolbar icons collapsity]] */
+[class="toolbar_e44302"]::before {
+  content: "∙∙∙";
+  /* Change this to anything you like [Default: ∙∙∙] */
+  font-size: 110%;
+  margin: 0 8px;
+  color: var(--text-muted);
+}
+
+/* decrease width to hide everything but menu icon */
+[class="toolbar_e44302"] {
+  width: var(--bartender-width);
+  /* Adjust this based on design requirements */
+  /* If you pick a new icon, instead of "∙∙∙", you may need to adjust this value */
+}
+
+[class="toolbar_e44302"]:hover,
+/* expand toobar on hover */
+[class="toolbar_e44302"]:has(.open_a46bef, .selected_e44302:not([aria-label="Hide Member List"]))
+
+/* keep the toolbar open if an item (e.g., search) is active */
+  {
+  width: unset;
+  /* Adjust the width to show the whole section if necessary [default: 21%] */
+  /* If you pick a new marker, instead of "∙∙∙", you may need to adjust this value as well */
+}
+
+.searchBar_a46bef {
+  height: 30px !important;
+  width: 30px;
+  padding: 3px 5px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.icon_a46bef.iconLayout_effbe2.small_effbe2 {
+  cursor: pointer;
+  scale: 1.2;
 }
