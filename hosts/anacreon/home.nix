@@ -50,6 +50,7 @@ in {
       (import ../../scripts/web-search.nix {inherit pkgs;})
       (import ../../scripts/screenshootin.nix {inherit pkgs;})
       (import ../../scripts/logout-exit.nix {inherit pkgs;})
+      (import ../../scripts/screenrec.nix {inherit pkgs;})
     ];
   };
 
@@ -168,7 +169,6 @@ in {
         #fi
       '';
       initExtra = ''
-        nitch
         if [ -f $HOME/.bashrc-personal ]; then
           source $HOME/.bashrc-personal
         fi
@@ -178,7 +178,7 @@ in {
       '';
       shellAliases = {
         sv = "sudo nvim";
-        flake-rebuild = "nh os switch --hostname ${host} /home/${username}/dots";
+        fr = "nh os switch --hostname ${host} /home/${username}/dots";
         flake-update = "nh os switch --hostname ${host} --update /home/${username}/dots";
         gcnix = "nix-collect-garbage --delete-old && sudo nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration boot";
         v = "nvim";
@@ -194,9 +194,10 @@ in {
         gcrec = "rm -rf ~/Videos/snapshots/*";
         find = "fd";
         ztop = "zfxtop";
-        nixpf = "nix-prefetch";
-        nixpfu = "nix-prefetch-url";
         spinmal = "bash $HOME/Documents/spinPTW.sh";
+        ga = "git add .";
+        cm = "git commit -am --verbose";
+        push = "git push";
       };
     };
     home-manager.enable = true;

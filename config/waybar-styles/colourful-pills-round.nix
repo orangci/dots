@@ -1,188 +1,16 @@
 {
-  pkgs,
   config,
   lib,
-  host,
-  username,
   ...
 }:
 let
   palette = config.stylix.base16Scheme;
   betterTransition = "all 0.3s cubic-bezier(.55,-0.68,.48,1.682)";
-  inherit (import ../../hosts/${host}/variables.nix) waybarBottom;
 in
 with lib;
 {
   # Configure & Theme Waybar
   programs.waybar = {
-    enable = true;
-    package = pkgs.waybar;
-    settings = [
-      {
-        layer = if waybarBottom then "bottom" else "top";
-        position = if waybarBottom then "bottom" else "top";
-
-        modules-center = [
-          "hyprland/window"
-          "clock"
-        ];
-        modules-left = [
-          "hyprland/workspaces"
-          "cpu"
-          "memory"
-        ];
-        modules-right = [
-          "custom/exit"
-          "idle_inhibitor"
-          "pulseaudio"
-          "custom/weather"
-          "tray"
-          "custom/notification"
-        ];
-
-        "hyprland/workspaces" = {
-          format = "{name}";
-          format-icons = {
-            default = " ";
-            active = " ";
-            urgent = " ";
-          };
-          on-scroll-up = "hyprctl dispatch workspace e+1";
-          on-scroll-down = "hyprctl dispatch workspace e-1";
-        };
-        "clock" = {
-          format = " {:%H:%M}";
-          tooltip = true;
-          tooltip-format = "<big>{:%A, %d.%b.%Y }</big>";
-        };
-        "hyprland/window" = {
-          max-length = 25;
-          separate-outputs = false;
-          rewrite = {
-            "" = "${username}@${host}";
-          };
-        };
-        "memory" = {
-          interval = 5;
-          format = " {}%";
-          tooltip = true;
-        };
-        "cpu" = {
-          interval = 5;
-          format = " {usage:2}%";
-          tooltip = true;
-        };
-        "disk" = {
-          format = " {free}";
-          tooltip = true;
-        };
-        "network" = {
-          format-icons = [
-            "󰤯"
-            "󰤟"
-            "󰤢"
-            "󰤥"
-            "󰤨"
-          ];
-          format-ethernet = " {bandwidthDownOctets}";
-          format-wifi = "{icon} {signalStrength}%";
-          format-disconnected = "󰤮";
-          tooltip = false;
-        };
-        "tray" = {
-          spacing = 12;
-        };
-        "pulseaudio" = {
-          format = "{icon} {volume}% {format_source}";
-          format-bluetooth = "{volume}% {icon} {format_source}";
-          format-bluetooth-muted = " {icon} {format_source}";
-          format-muted = " {format_source}";
-          format-source = "";
-          format-source-muted = "";
-          format-icons = {
-            headphone = "";
-            hands-free = "";
-            headset = "";
-            phone = "";
-            portable = "";
-            car = "";
-            default = [
-              ""
-              ""
-              ""
-            ];
-          };
-          on-click = "pavucontrol";
-        };
-        "custom/exit" = {
-          tooltip = false;
-          format = "";
-          on-click = "logout-exit";
-        };
-        "idle_inhibitor" = {
-          format = "{icon}";
-          format-icons = {
-            activated = "";
-            deactivated = "";
-          };
-          tooltip = "true";
-        };
-        "custom/notification" = {
-          tooltip = false;
-          format = "{icon} {}";
-          format-icons = {
-            notification = "<span foreground='red'><sup></sup></span>";
-            none = "";
-            dnd-notification = "<span foreground='red'><sup></sup></span>";
-            dnd-none = "";
-            inhibited-notification = "<span foreground='red'><sup></sup></span>";
-            inhibited-none = "";
-            dnd-inhibited-notification = "<span foreground='red'><sup></sup></span>";
-            dnd-inhibited-none = "";
-          };
-          return-type = "json";
-          exec-if = "which swaync-client";
-          exec = "swaync-client -swb";
-          on-click = "swaync-client -t";
-          escape = true;
-        };
-        "battery" = {
-          states = {
-            warning = 30;
-            critical = 15;
-          };
-          format = "{icon} {capacity}%";
-          format-charging = "󰂄 {capacity}%";
-          format-plugged = "󱘖 {capacity}%";
-          format-icons = [
-            "󰁺"
-            "󰁻"
-            "󰁼"
-            "󰁽"
-            "󰁾"
-            "󰁿"
-            "󰂀"
-            "󰂁"
-            "󰂂"
-            "󰁹"
-          ];
-          on-click = "";
-          tooltip = false;
-        };
-        "custom/weather" = {
-          interval = 3600;
-          exec = "wttrbar";
-          format = "{}℃";
-          format-alt = "{on-click-right}℉";
-          format-alt-click = "click-right";
-          on-click = "exec";
-          on-click-middle = "xdg-open https://wttr.in/";
-          on-click-right = "exec wttrbar --fahrenheit";
-          return-type = "json";
-          tooltip = true;
-        };
-      }
-    ];
     style = concatStrings [
       ''
         /* >>> ALL MODULES <<< */
@@ -198,7 +26,7 @@ with lib;
           #cpu, #custom-exit, #tray, #network {border-radius: 15px 0px 0px 15px; margin: 3px 0px 3px 2px; padding: 0px 5px 0px 15px;} /* Stuff that needs to be rounded left. */
           #memory, #pulseaudio, #custom-notification {border-radius: 0px 15px 15px 0px; margin: 3px 2px 3px 0px; padding: 0px 10px 0px 5px;} /* Stuff that needs to be rounded right. */
           #window, #clock, #custom-weather, #workspaces {border-radius: 15px; margin: 3px 4px; padding: 0px 10px;} /* Stuff that's rounded both left and right, i.e. standalone pills. */
-          #idle_inhibitor {border-radius: 0px; margin: 3px 0px; padding: 0px 14px;} /* Stuff that aren't rounded in either direction, i.e. sandwiched pills. */
+          #idle_inhibitor, #custom-recorder {border-radius: 0px; margin: 3px 0px; padding: 0px 14px;} /* Stuff that aren't rounded in either direction, i.e. sandwiched pills. */
 
         /* >>> LEFT MODULES <<< */
           #workspaces {
@@ -248,6 +76,7 @@ with lib;
 
           /* >>> RIGHT MODULES <<< */
           #custom-exit {background: #${palette.base0A};}
+          #custom-recorder {background: #${palette.base0A};}
           #idle_inhibitor {background: #${palette.base0A};}
           #pulseaudio {background: #${palette.base0A};}
           #custom-weather {background: #${palette.base09};}

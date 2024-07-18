@@ -50,6 +50,7 @@ in {
       (import ../../scripts/web-search.nix {inherit pkgs;})
       (import ../../scripts/screenshootin.nix {inherit pkgs;})
       (import ../../scripts/logout-exit.nix {inherit pkgs;})
+      (import ../../scripts/screenrec.nix {inherit pkgs;})
     ];
   };
 
@@ -168,7 +169,6 @@ in {
         #fi
       '';
       initExtra = ''
-        nitch
         if [ -f $HOME/.bashrc-personal ]; then
           source $HOME/.bashrc-personal
         fi

@@ -36,7 +36,7 @@ in {
           font_family = Maple Mono
           placeholder_text = <i><span foreground="##ffffff99">Hi, $USER</span></i>
           hide_input = false
-          position = 550, -320
+          position = 0, -320
           halign = center
           valign = center
       }
@@ -48,7 +48,7 @@ in {
           color = rgba(250, 179, 135, .75)
           font_size = 180
           font_family = Maple Mono
-          position = -550, 160
+          position = 0, 300
           halign = center
           valign = center
       }
@@ -60,38 +60,38 @@ in {
           color = rgba(205, 214, 244, .75)
           font_size = 180
           font_family = Maple Mono
-          position = -550, -70
+          position = 0, 80
           halign = center
           valign = center
       }
 
-      # Day
-      label {
-          monitor =
-          text = cmd[update:1000] echo "$(date '+%A,')"
-          color = rgba(205, 214, 244, .75)
-          font_size = 30
-          font_family = Maple Mono
-          position = -580, -80
-          halign = center
-          valign = center
-      }
+    #   # Day
+    #   label {
+    #       monitor =
+    #       text = cmd[update:1000] echo "$(date '+%A,')"
+    #       color = rgba(205, 214, 244, .75)
+    #       font_size = 30
+    #       font_family = Maple Mono
+    #       position = -580, -80
+    #       halign = center
+    #       valign = center
+    #   }
 
-      # Month-Date
-      label {
-          monitor =
-          text = cmd[update:1000] echo "$(date '+%d %B')"
-          color = rgba(250, 179, 135, .75)
-          font_size = 30
-          font_family = Maple Mono
-          position = -410, -81.5
-          halign = center
-          valign = center
-      }
+    #   # Month-Date
+    #   label {
+    #       monitor =
+    #       text = cmd[update:1000] echo "$(date '+%d %B')"
+    #       color = rgba(250, 179, 135, .75)
+    #       font_size = 30
+    #       font_family = Maple Mono
+    #       position = -400, -81.5
+    #       halign = center
+    #       valign = center
+    #   }
 
       # USER
       image {
-          position = 550, -180
+          position = 0, -180
           size=200
           border_color=rgba(12, 550, 249,0)
           border_size=1

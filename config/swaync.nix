@@ -327,7 +327,7 @@ in
         background-color: @background;
         border-radius: 15px;
         padding: 6px 14px;
-        opacity: 1;
+        opacity: 0.85;
         margin: 6px;
     }
 

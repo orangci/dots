@@ -29,8 +29,8 @@
 [class^=peopleListItem_] [class^=infoSpacing_]::before,
 /* Settings/My Account */
 [class^=accountProfileCard_] [class^=field_]:nth-last-child(3) [class^=usernameInnerRow_]::before {
-    color: var(--text-muted);
-    content: "@";
+  color: var(--text-muted);
+  content: "@";
 }
 
 /* [[Automatically resizing GIF picker]] */
@@ -50,18 +50,21 @@
 }
 
 /* [[Pinged Servers to Top]] */
-[data-list-id="guildsnav"]>[class^="scroller_"]>[aria-label],
+[data-list-id="guildsnav"] > [class^="scroller_"] > [aria-label],
 [id^="folder-items-"] {
   display: flex;
   flex-direction: column;
 }
 
-[data-list-id="guildsnav"]>[class^="scroller_"]>[aria-label] :is([class^="listItem_"], [class^="wrapper_"]):has([class^="numberBadge_"]) {
+[data-list-id="guildsnav"]
+  > [class^="scroller_"]
+  > [aria-label]
+  :is([class^="listItem_"], [class^="wrapper_"]):has([class^="numberBadge_"]) {
   order: -1;
 }
 
 /* Pretty Folder Icons */
-.expandedFolderBackground_b1385f~.listItem__48528:nth-child(2)>div:before {
+.expandedFolderBackground_b1385f ~ .listItem__48528:nth-child(2) > div:before {
   content: attr(data-dnd-name);
   position: absolute;
   bottom: 8px;
@@ -93,9 +96,11 @@
 }
 
 /* [[Move VC Hang Status To The Left]] */
-[class*="iconGroup"]:has([class*="hangStatusIcon"],
-  [d*="M13 3a1"],
-  [class*="gameIcon"]) {
+[class*="iconGroup"]:has(
+    [class*="hangStatusIcon"],
+    [d*="M13 3a1"],
+    [class*="gameIcon"]
+  ) {
   display: flex;
   position: absolute;
   right: 101%;
@@ -129,32 +134,34 @@
 /* [[dashless channels]] */
 @font-face {
   font-family: "Twemoji Mozilla";
-  src: url("https://vendicated.github.io/random-files/Twemoji.Mozilla.ttf") format("truetype");
+  src: url("https://vendicated.github.io/random-files/Twemoji.Mozilla.ttf")
+    format("truetype");
   unicode-range: U+1F1E6-1F1FF;
 }
 
 @font-face {
   font-family: "dashless";
   size-adjust: 100%;
-  src: url("https://vendicated.github.io/random-files/Dashless.woff2") format("woff2");
+  src: url("https://vendicated.github.io/random-files/Dashless.woff2")
+    format("woff2");
   unicode-range: U+002D;
 }
 
 [data-list-item-id^="channels___"]:not([role="button"]),
-[class^="titleWrapper"]>h1,
-[id^=":r"]>h1,
+[class^="titleWrapper"] > h1,
+[id^=":r"] > h1,
 [class^="resultChannel"],
 [class^="channelNameContainer_"],
 [class^="searchAnswer_"],
 .channelWithIcon,
-[class^="emptyChannelIcon_"]+h3,
-[class^="emptyChannelIcon_"]~[class*="description_"],
+[class^="emptyChannelIcon_"] + h3,
+[class^="emptyChannelIcon_"] ~ [class*="description_"],
 [class^="browser_"] [class*="channelText_"],
 [class^="returnButton_"] [class^="text-"],
 [class^="placeholder"][class*="slateTextArea"],
 [class^="auditLog_"] [class^="overflowEllipsis_"] strong,
 .vc-permviewer-perms-title,
-[class^="headerChannelContainer_"]>div {
+[class^="headerChannelContainer_"] > div {
   font-family: "Twemoji Mozilla", "dashless", var(--font-primary);
 }
 
@@ -188,7 +195,7 @@
 }
 
 /* shrink all channel icons */
-[class="iconContainer_d8bfb3"]>svg[role="img"] {
+[class="iconContainer_d8bfb3"] > svg[role="img"] {
   scale: 0.8;
 }
 
@@ -207,7 +214,7 @@
   left: 16px;
 }
 
-.containerDefault_f6f816>svg {
+.containerDefault_f6f816 > svg {
   top: 5px;
   left: 16px;
 }
@@ -229,7 +236,7 @@
 }
 
 /* hide category dropdown arrows, instead dim label when collapsed */
-[class="mainContent_a08117"]>[class="icon_a08117"] {
+[class="mainContent_a08117"] > [class="icon_a08117"] {
   display: none;
 }
 
@@ -243,7 +250,10 @@
 }
 
 /* channel outlines and highlighted icons */
-#app-mount .containerDefault_f6f816.selected_f6f816 .wrapper_d8bfb3 .link_d8bfb3 {
+#app-mount
+  .containerDefault_f6f816.selected_f6f816
+  .wrapper_d8bfb3
+  .link_d8bfb3 {
   background: var(--highlight-select);
   border-radius: 12px;
   margin-left: 5px;
@@ -268,7 +278,10 @@
 }
 
 .modeUnreadImportant_d8bfb3 .icon_d8bfb3,
-#app-mount .containerDefault_f6f816.selected_f6f816 .wrapper_d8bfb3 .icon_d8bfb3,
+#app-mount
+  .containerDefault_f6f816.selected_f6f816
+  .wrapper_d8bfb3
+  .icon_d8bfb3,
 #app-mount .containerDefault_f6f816:hover .wrapper_d8bfb3 .icon_d8bfb3 {
   color: var(--highlight-icon) !important;
 }
@@ -276,7 +289,7 @@
 /* [[role pills]] */
 .role_e4010c,
 .role_f9575e {
-  --transparency: .4;
+  --transparency: 0.4;
   --roles-roundness: 5px;
   transform: translate(0);
   overflow: hidden;
@@ -289,23 +302,23 @@
 }
 
 .role_e4010c .roleRemoveIcon_e4010c {
-  left: 14px
+  left: 14px;
 }
 
 .role_e4010c:has(.roleFlowerStar_e4010c) .roleRemoveIcon_e4010c {
-  left: 15px
+  left: 15px;
 }
 
 .role_f9575e .roleRemoveButton_f9575e,
 .role_e4010c .roleRemoveButton_e4010c {
-  position: static
+  position: static;
 }
 
 .role_e4010c .roleCircle_a26d7b:after,
 .role_e4010c .roleFlowerStar_e4010c:after,
 .role_f9575e .roleCircle_a26d7b:after,
 .role_f9575e .roleFlowerStar_f9575e:after {
-  content: '';
+  content: "";
   top: 0;
   left: 0;
   z-index: -1;
@@ -353,10 +366,8 @@
 
 /* [[yeet useless things]] */
 .panelSubtextContainer_b2ca13,
-img[class*="avatar"][src^="https://cdn.discordapp.com/avatar-decoration-presets/a_5e1210779d99ece1c0b4f438a5bc6e72.png"], /* yeet clown avatar decoration */
 /* Hide status/username viewer near mic button */
-[class^=newMemberBadge_],
-/* No "New member" badge */
+img[class*="avatar"][src^="https://cdn.discordapp.com/avatar-decoration-presets/a_5e1210779d99ece1c0b4f438a5bc6e72.png"], /* yeet clown avatar decoration */
 div[class*="listItem"]:has(div[aria-label="Explore Discoverable Servers"]),
 /* Hide 'Explore Discoverable Servers' in server page */
 .text_e40c16,
@@ -377,8 +388,7 @@ button[aria-label="Open sticker picker"],
 /* Removes "Support" question mark button */
 .divider_d2b491.divider_ae36e5
 
-/* Remove dividing line in profile */
-  {
+/* Remove dividing line in profile */ {
   display: none !important;
 }
 
@@ -412,47 +422,52 @@ button[aria-label="Send a gift"],
 }
 
 /* [[better quickswitcher]] */
-[class^=layer_]:has([class^=quickswitcher_]) {
+[class^="layer_"]:has([class^="quickswitcher_"]) {
   justify-content: start;
 }
 
-[class^=quickswitcher_] {
+[class^="quickswitcher_"] {
   background: none;
   padding: 0;
 }
 
-[class^=quickswitcher_] .scroller_f4e139 {
+[class^="quickswitcher_"] .scroller_f4e139 {
   margin: 0;
   border-radius: 0 0 8px 8px;
   scrollbar-width: none;
   padding: 8px !important;
 }
 
-[class^=quickswitcher_] .input_f4e139 {
+[class^="quickswitcher_"] .input_f4e139 {
   height: 50px;
 }
 
-[class^=quickswitcher_] .input_f4e139[value=""] {
+[class^="quickswitcher_"] .input_f4e139[value=""] {
   border-radius: 8px;
 }
 
-[class^=quickswitcher_] .input_f4e139:not([value=""]) {
+[class^="quickswitcher_"] .input_f4e139:not([value=""]) {
   border-radius: 8px 8px 0 0;
 }
 
-[class^=quickswitcher_] .input_f4e139[value=""]+.scroller_f4e139,
-[class^=quickswitcher_] .protip_f4e139 {
+[class^="quickswitcher_"] .input_f4e139[value=""] + .scroller_f4e139,
+[class^="quickswitcher_"] .protip_f4e139 {
   display: none;
 }
 
-.backdrop__1a911:has(+ .layer_c9e2da [class^=quickswitcher_]) {
+.backdrop__1a911:has(+ .layer_c9e2da [class^="quickswitcher_"]) {
   opacity: 0;
 }
 
 /* [[tabs v2 icon]] */
-svg:has(>[d="M19.73 4.87a18.2 18.2 0 0 0-4.6-1.44c-.21.4-.4.8-.58 1.21-1.69-.25-3.4-.25-5.1 0-.18-.41-.37-.82-.59-1.2-1.6.27-3.14.75-4.6 1.43A19.04 19.04 0 0 0 .96 17.7a18.43 18.43 0 0 0 5.63 2.87c.46-.62.86-1.28 1.2-1.98-.65-.25-1.29-.55-1.9-.92.17-.12.32-.24.47-.37 3.58 1.7 7.7 1.7 11.28 0l.46.37c-.6.36-1.25.67-1.9.92.35.7.75 1.35 1.2 1.98 2.03-.63 3.94-1.6 5.64-2.87.47-4.87-.78-9.09-3.3-12.83ZM8.3 15.12c-1.1 0-2-1.02-2-2.27 0-1.24.88-2.26 2-2.26s2.02 1.02 2 2.26c0 1.25-.89 2.27-2 2.27Zm7.4 0c-1.1 0-2-1.02-2-2.27 0-1.24.88-2.26 2-2.26s2.02 1.02 2 2.26c0 1.25-.88 2.27-2 2.27Z"]) path {
-  d: path("M7.516 16.7C7.8784 16.7 8.1694 16.3791 8.1838 16.0171 8.1906 15.8462 8.2 15.674 8.2 15.5 8.2 10.1984 11.7683 5.9 17.3338 5.9 19.3811 5.9 21.3254 6.6288 22.9281 7.6747 23.3211 7.9312 23.8106 7.6966 23.8014 7.2274 23.8005 7.1825 23.8 7.1398 23.8 7.1 23.8 1.8068 19.0527-2.5 13.219-2.5 7.3854-2.5 2.638 1.8068 2.638 7.1 2.638 8.59 3.0076 10.0228 3.7183 11.3276 3.9932 11.8323 3.9466 12.4664 3.5445 12.8769L1.7978 14.6604C1.0539 15.4198 1.592 16.7 2.6551 16.7H7.516ZM25.0161 18.9078C24.8039 18.5696 24.7806 18.1502 24.909 17.7722 25.1568 17.0422 25.2845 16.2741 25.2845 15.5 25.2845 11.5292 21.9897 8.3 17.9399 8.3 13.8903 8.3 10.5953 11.5292 10.5953 15.5 10.5953 19.4708 13.8903 22.7 17.9399 22.7H25.2258C26.1693 22.7 26.7437 21.6614 26.2424 20.8622L25.0161 18.9078Z") !important;
-  transform: scale(.8) translate(1px, 5px);
+svg:has(
+    > [d="M19.73 4.87a18.2 18.2 0 0 0-4.6-1.44c-.21.4-.4.8-.58 1.21-1.69-.25-3.4-.25-5.1 0-.18-.41-.37-.82-.59-1.2-1.6.27-3.14.75-4.6 1.43A19.04 19.04 0 0 0 .96 17.7a18.43 18.43 0 0 0 5.63 2.87c.46-.62.86-1.28 1.2-1.98-.65-.25-1.29-.55-1.9-.92.17-.12.32-.24.47-.37 3.58 1.7 7.7 1.7 11.28 0l.46.37c-.6.36-1.25.67-1.9.92.35.7.75 1.35 1.2 1.98 2.03-.63 3.94-1.6 5.64-2.87.47-4.87-.78-9.09-3.3-12.83ZM8.3 15.12c-1.1 0-2-1.02-2-2.27 0-1.24.88-2.26 2-2.26s2.02 1.02 2 2.26c0 1.25-.89 2.27-2 2.27Zm7.4 0c-1.1 0-2-1.02-2-2.27 0-1.24.88-2.26 2-2.26s2.02 1.02 2 2.26c0 1.25-.88 2.27-2 2.27Z"]
+  )
+  path {
+  d: path(
+    "M7.516 16.7C7.8784 16.7 8.1694 16.3791 8.1838 16.0171 8.1906 15.8462 8.2 15.674 8.2 15.5 8.2 10.1984 11.7683 5.9 17.3338 5.9 19.3811 5.9 21.3254 6.6288 22.9281 7.6747 23.3211 7.9312 23.8106 7.6966 23.8014 7.2274 23.8005 7.1825 23.8 7.1398 23.8 7.1 23.8 1.8068 19.0527-2.5 13.219-2.5 7.3854-2.5 2.638 1.8068 2.638 7.1 2.638 8.59 3.0076 10.0228 3.7183 11.3276 3.9932 11.8323 3.9466 12.4664 3.5445 12.8769L1.7978 14.6604C1.0539 15.4198 1.592 16.7 2.6551 16.7H7.516ZM25.0161 18.9078C24.8039 18.5696 24.7806 18.1502 24.909 17.7722 25.1568 17.0422 25.2845 16.2741 25.2845 15.5 25.2845 11.5292 21.9897 8.3 17.9399 8.3 13.8903 8.3 10.5953 11.5292 10.5953 15.5 10.5953 19.4708 13.8903 22.7 17.9399 22.7H25.2258C26.1693 22.7 26.7437 21.6614 26.2424 20.8622L25.0161 18.9078Z"
+  ) !important;
+  transform: scale(0.8) translate(1px, 5px);
 }
 
 /* [[make toolbar icons collapsity]] */
@@ -475,8 +490,7 @@ svg:has(>[d="M19.73 4.87a18.2 18.2 0 0 0-4.6-1.44c-.21.4-.4.8-.58 1.21-1.69-.25-
 /* expand toobar on hover */
 [class="toolbar_e44302"]:has(.open_a46bef, .selected_e44302:not([aria-label="Hide Member List"]))
 
-/* keep the toolbar open if an item (e.g., search) is active */
-  {
+/* keep the toolbar open if an item (e.g., search) is active */ {
   width: unset;
   /* Adjust the width to show the whole section if necessary [default: 21%] */
   /* If you pick a new marker, instead of "∙∙∙", you may need to adjust this value as well */
@@ -494,3 +508,4 @@ svg:has(>[d="M19.73 4.87a18.2 18.2 0 0 0-4.6-1.44c-.21.4-.4.8-.58 1.21-1.69-.25-
   cursor: pointer;
   scale: 1.2;
 }
+

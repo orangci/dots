@@ -179,10 +179,10 @@ in
             bind = ${modifier}SHIFT,W,exec,web-search
             bind = ${modifier}SHIFT,N,exec,swaync-client -rs
             bind = ${modifier},W,exec,${browser}
-            bind = ${modifier},X,exec,rofi -show calc -modi calc -no-show-match -no-sort -theme calc.rasi
             bind = ${modifier},PERIOD,exec,bemoji -t
             bind = ${modifier},S,exec,grimblast --freeze save area - | swappy -f -
             bindl = ,Print,exec,grimblast --freeze save screen - | swappy -f -
+            bind = ${modifier},SPACE,exec,rofi -show window
             bind = ${modifier}SHIFT,M,exec,wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
             bind = ${modifier},D,exec,armcord
             bind = ${modifier},P,exec,playerctl play-pause
@@ -202,6 +202,13 @@ in
             bind = ${modifier}SHIFT,I,togglesplit
             bind = ${modifier}SHIFT,V,exec,cliphist wipe
             bind = ${modifier}SHIFT,C,exec,grim -g "$(slurp -p)" -t ppm - | convert - -format '%[pixel:p{0,0}]' txt:- | tail -n 1 | cut -d ' ' -f 4 | wl-copy
+            bind = ${modifier},l,exec,killall hyprlock; hyprlock
+            bind = ${modifier},BACKSLASH,exec,logout-exit
+            bind = ${modifier},APOSTROPHE,exec,killall -q wallset;wallset
+            bind = SUPER, V, exec, cliphist list | rofi -dmenu -theme clipboard.rasi | cliphist decode | wl-copy
+            bind = ${modifier}SHIFT,R,exec,screenrec
+
+            # window control binds
             bind = ${modifier},F,fullscreen,
             bind = ${modifier}SHIFT,F,togglefloating
             bind = ${modifier}SHIFT,left,movewindow,l
@@ -212,9 +219,6 @@ in
             bind = ${modifier},right,movefocus,r
             bind = ${modifier},up,movefocus,u
             bind = ${modifier},down,movefocus,d
-            bind = ${modifier},l,exec,killall hyprlock; hyprlock
-            bind = ${modifier},BACKSLASH,exec,logout-exit
-            bind = ${modifier},APOSTROPHE,exec,killall -q wallset;wallset
             bind = ${modifier},1,workspace,1
             bind = ${modifier},2,workspace,2
             bind = ${modifier},3,workspace,3
@@ -245,6 +249,7 @@ in
             bind = ,mouse:276,workspace, e-1
             bind = ALT,Tab,cyclenext
             bind = ALT,Tab,bringactivetotop
+            # nothing to touch here
             binde = ,XF86AudioRaiseVolume,exec,wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
             binde = ,XF86AudioLowerVolume,exec,wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
             bind = ,XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
@@ -254,7 +259,6 @@ in
             bind = ,XF86AudioPrev, exec, playerctl previous
             binde = ,XF86MonBrightnessDown,exec,brightnessctl set 5%-
             binde = ,XF86MonBrightnessUp,exec,brightnessctl set +5%
-            bind = SUPER, V, exec, cliphist list | rofi -dmenu -theme clipboard.rasi | cliphist decode | wl-copy
           ''
         ];
     };

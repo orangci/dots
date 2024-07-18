@@ -273,7 +273,6 @@
     wttrbar # for waybar
     google-chrome
     zfxtop
-    rofi-wayland
     bemoji # for emoji picker
     wtype # for emoji picker
     python3
@@ -282,12 +281,14 @@
     owofetch
     jq
     vencord
+    figlet
+    wf-recorder
     greetd.tuigreet
     xfce.tumbler # for image thumbnails in thunar
     arrpc
+    rofi-wayland
     grimblast # for screenshots
     nurl
-    rofi-calc
     (pkgs.discord.override {
       withOpenASAR = true;
       withTTS = true;
@@ -390,8 +391,6 @@
       enable = true;
     };
   };
-  # Enable sound with pipewire.
-  sound.enable = true;
   services.blueman.enable = true;
   security = {
     # Security / Polkit
