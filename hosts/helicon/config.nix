@@ -101,6 +101,9 @@
     };
   };
 
+  # Android on linux
+  virtualisation.waydroid.enable = true;
+
   # Extra Module Options
   drivers = {
     amdgpu.enable = true;
@@ -214,6 +217,7 @@
     gnumake
     ninja
     brightnessctl
+    speedcrunch
     swappy
     appimage-run
     networkmanagerapplet
@@ -228,7 +232,6 @@
     swaynotificationcenter
     transmission-gtk
     mpv
-    gimp
     obs-studio
     rustup
     fzf
@@ -262,7 +265,7 @@
     imagemagick
     catimg
     otpclient
-    mpv # media player
+    ani-cli
     nwg-look # gtk settings
     mya # myanimelist owo
     nix-prefetch
@@ -274,6 +277,7 @@
     google-chrome
     zfxtop
     bemoji # for emoji picker
+    pinta
     wtype # for emoji picker
     python3
     uwuify

@@ -324,10 +324,9 @@ in
 
     /* NOTE: Background need *opacity 1* otherwise will turn into the album art blurred  */
     .widget-mpris-player {
-        background-color: @background;
+        background: alpha(@background, .85);
         border-radius: 15px;
         padding: 6px 14px;
-        opacity: 0.85;
         margin: 6px;
     }
 

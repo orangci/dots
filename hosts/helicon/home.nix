@@ -1,5 +1,5 @@
 {
-  config,
+  lib,
   pkgs,
   username,
   host,
@@ -50,7 +50,6 @@ in {
       (import ../../scripts/web-search.nix {inherit pkgs;})
       (import ../../scripts/screenshootin.nix {inherit pkgs;})
       (import ../../scripts/logout-exit.nix {inherit pkgs;})
-      (import ../../scripts/screenrec.nix {inherit pkgs;})
     ];
   };
 
@@ -116,8 +115,8 @@ in {
   };
   qt = {
     enable = true;
-    style.name = "adwaita-dark";
-    platformTheme = "gtk3";
+    #    style.name = lib.mkForce "adwaita-dark";
+    #    platformTheme = lib.mkForce "gtk3";
   };
 
   services = {
@@ -146,6 +145,15 @@ in {
   programs = {
     gh.enable = true;
     firefox.enable = true;
+    mpv = {
+      enable = true;
+      scripts = [
+        pkgs.mpvScripts.mpris
+        pkgs.mpvScripts.uosc
+        pkgs.mpvScripts.videoclip
+        pkgs.mpvScripts.mpv-cheatsheet
+      ];
+    };
     starship = {
       enable = true;
       package = pkgs.starship;
@@ -179,6 +187,7 @@ in {
       shellAliases = {
         sv = "sudo nvim";
         fr = "nh os switch --hostname ${host} /home/${username}/dots";
+        frr = "nh os switch --hostname ${host} /home/${username}/dots;nix-collect-garbage --delete-old && sudo nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration boot;notify-send Rebuilt;exit";
         flake-update = "nh os switch --hostname ${host} --update /home/${username}/dots";
         gcnix = "nix-collect-garbage --delete-old && sudo nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration boot";
         v = "nvim";

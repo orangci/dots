@@ -206,7 +206,6 @@ in
             bind = ${modifier},BACKSLASH,exec,logout-exit
             bind = ${modifier},APOSTROPHE,exec,killall -q wallset;wallset
             bind = SUPER, V, exec, cliphist list | rofi -dmenu -theme clipboard.rasi | cliphist decode | wl-copy
-            bind = ${modifier}SHIFT,R,exec,screenrec
 
             # window control binds
             bind = ${modifier},F,fullscreen,
