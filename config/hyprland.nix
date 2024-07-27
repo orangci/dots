@@ -7,8 +7,6 @@
   theme = config.stylix.base16Scheme;
   inherit
     (import ../hosts/${host}/variables.nix)
-    browser
-    terminal
     extraMonitorSettings
     boxyStyle
     ;
@@ -21,10 +19,7 @@ in
       # plugins = [
       # hyprplugins.hyprtrailss
       # ];
-      extraConfig = let
-        modifier = "SUPER";
-      in
-        concatStrings [
+      extraConfig = concatStrings [
           ''
                 # >>> ENVIRONMENT VARIABLES <<<
                 env = NIXOS_OZONE_WL, 1
@@ -48,16 +43,17 @@ in
                  # >>> STARTUP COMMANDS <<<
                 exec-once = dbus-update-activation-environment --systemd --all
                 exec-once = systemctl --user import-environment QT_QPA_PLATFORMTHEME WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-                exec-once = killall -q waybar;waybar
-                exec-once = killall -q swaync;swaync
-                exec-once = nm-applet --indicator
+                exec-once = ags &
+                # exec-once = killall -q waybar;waybar
+                # exec-once = killall -q swaync;swaync
+                # exec-once = nm-applet --indicator
                 exec-once = lxqt-policykit-agent
                 exec-once = wl-paste --type text --watch cliphist store #Stores only text data
                 exec-once = wl-paste --type image --watch cliphist store #Stores only image data
                 exec-once = swww kill;swww-daemon
                 exec-once = wallset
-                exec-once = blueman-applet
-                exec-once = arrpc
+                # exec-once = blueman-applet
+                # exec-once = arrpc
 
 
                 monitor=,preferred,auto,1
@@ -174,76 +170,78 @@ in
 
 
             # >>> KEYBINDINDS <<<
-            bind = ${modifier},Return,exec,${terminal}
-            bind = ${modifier},K,exec,rofi -show drun -theme launcher.rasi
-            bind = ${modifier}SHIFT,W,exec,web-search
-            bind = ${modifier}SHIFT,N,exec,swaync-client -rs
-            bind = ${modifier},W,exec,${browser}
-            bind = ${modifier},PERIOD,exec,bemoji -t
-            bind = ${modifier},S,exec,grimblast --freeze save area - | swappy -f -
+            bind = SUPER,Return,exec,kitty
+            bind = SUPER,K,exec,rofi -show drun -theme launcher.rasi
+            bind = SUPERSHIFT,W,exec,web-search
+            bind = SUPERSHIFT,N,exec,swaync-client -rs
+            bind = SUPER,W,exec,firefox
+            bind = SUPER,PERIOD,exec,bemoji -t
+            # bind = SUPER,S,exec,grimblast --freeze save area - | swappy -f -
+            bind = SUPERSHIFT,R,exec, ags -r 'recorder.start()'
+            bind= SUPER,S,exec, ags -r 'recorder.screenshot()'
+            bind = ,SUPERTAB,exec, ags -t overview
             bindl = ,Print,exec,grimblast --freeze save screen - | swappy -f -
-            bind = ${modifier},SPACE,exec,rofi -show window
-            bind = ${modifier}SHIFT,M,exec,wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
-            bind = ${modifier},D,exec,armcord
-            bind = ${modifier},P,exec,playerctl play-pause
-            bind = ${modifier}SHIFT,P,exec,playerctl next
-            bind = ${modifier}ALT,P,exec,playerctl previous
-            bind = ${modifier},R,exec,rofi -show run -theme run.rasi
-            bind = ${modifier},C,exec,codium
-            bind = ${modifier},O,exec,obs
-            bind = ${modifier}SHIFT,O,exec,obsidian
-            bind = ${modifier},A,exec,swaync-client -t
-            bind = ${modifier}SHIFT,A,exec,swaync-client -C
-            bind = ${modifier},G,exec,google-chrome-stable
-            bind = ${modifier},E,exec,thunar
-            bind = ${modifier},M,exec,rofi-prism-exec
-            bind = ${modifier},Q,killactive
-            bind = ${modifier},SEMICOLON,pseudo
-            bind = ${modifier}SHIFT,I,togglesplit
-            bind = ${modifier}SHIFT,V,exec,cliphist wipe
-            bind = ${modifier}SHIFT,C,exec,grim -g "$(slurp -p)" -t ppm - | convert - -format '%[pixel:p{0,0}]' txt:- | tail -n 1 | cut -d ' ' -f 4 | wl-copy
-            bind = ${modifier},l,exec,killall hyprlock; hyprlock
-            bind = ${modifier},BACKSLASH,exec,logout-exit
-            bind = ${modifier},APOSTROPHE,exec,killall -q wallset;wallset
+            bind = SUPER,SPACE,exec,rofi -show window
+            bind = SUPERSHIFT,M,exec,wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
+            bind = SUPER,D,exec,discord
+            bind = SUPER,P,exec,playerctl play-pause
+            bind = SUPERSHIFT,P,exec,playerctl next
+            bind = SUPERALT,P,exec,playerctl previous
+            bind = SUPER,R,exec,rofi -show run -theme run.rasi
+            bind = SUPER,C,exec,codium
+            bind = SUPER,O,exec,obs
+            bind = SUPERSHIFT,O,exec,obsidian
+            bind = SUPER,A,exec,swaync-client -t
+            bind = SUPERSHIFT,A,exec,swaync-client -C
+            bind = SUPER,G,exec,google-chrome-stable
+            bind = SUPER,E,exec,thunar
+            bind = SUPER,M,exec,rofi-prism-exec
+            bind = SUPER,Q,killactive
+            bind = SUPER,SEMICOLON,pseudo
+            bind = SUPERSHIFT,I,togglesplit
+            bind = SUPERSHIFT,V,exec,cliphist wipe
+            bind = SUPER,l,exec,killall hyprlock; hyprlock
+            bind = SUPER,BACKSLASH,exec,logout-exit
+            bind = SUPER,APOSTROPHE,exec,killall -q wallset;wallset
             bind = SUPER, V, exec, cliphist list | rofi -dmenu -theme clipboard.rasi | cliphist decode | wl-copy
 
             # window control binds
-            bind = ${modifier},F,fullscreen,
-            bind = ${modifier}SHIFT,F,togglefloating
-            bind = ${modifier}SHIFT,left,movewindow,l
-            bind = ${modifier}SHIFT,right,movewindow,r
-            bind = ${modifier}SHIFT,up,movewindow,u
-            bind = ${modifier}SHIFT,down,movewindow,d
-            bind = ${modifier},left,movefocus,l
-            bind = ${modifier},right,movefocus,r
-            bind = ${modifier},up,movefocus,u
-            bind = ${modifier},down,movefocus,d
-            bind = ${modifier},1,workspace,1
-            bind = ${modifier},2,workspace,2
-            bind = ${modifier},3,workspace,3
-            bind = ${modifier},4,workspace,4
-            bind = ${modifier},5,workspace,5
-            bind = ${modifier},6,workspace,6
-            bind = ${modifier},7,workspace,7
-            bind = ${modifier},8,workspace,8
-            bind = ${modifier},9,workspace,9
-            bind = ${modifier},0,workspace,10
-            bind = ${modifier}SHIFT,1,movetoworkspace,1
-            bind = ${modifier}SHIFT,2,movetoworkspace,2
-            bind = ${modifier}SHIFT,3,movetoworkspace,3
-            bind = ${modifier}SHIFT,4,movetoworkspace,4
-            bind = ${modifier}SHIFT,5,movetoworkspace,5
-            bind = ${modifier}SHIFT,6,movetoworkspace,6
-            bind = ${modifier}SHIFT,7,movetoworkspace,7
-            bind = ${modifier}SHIFT,8,movetoworkspace,8
-            bind = ${modifier}SHIFT,9,movetoworkspace,9
-            bind = ${modifier}SHIFT,0,movetoworkspace,10
-            binde = ${modifier}CONTROL,right,workspace,e+1
-            binde = ${modifier}CONTROL,left,workspace,e-1
-            binde = ${modifier},mouse_down,workspace, e+1
-            binde = ${modifier},mouse_up,workspace, e-1
-            bindm = ${modifier},mouse:272,movewindow
-            bindm = ${modifier},mouse:273,resizewindow
+            bind = SUPER,F,fullscreen,
+            bind = SUPERSHIFT,F,togglefloating
+            bind = SUPERSHIFT,left,movewindow,l
+            bind = SUPERSHIFT,right,movewindow,r
+            bind = SUPERSHIFT,up,movewindow,u
+            bind = SUPERSHIFT,down,movewindow,d
+            bind = SUPER,left,movefocus,l
+            bind = SUPER,right,movefocus,r
+            bind = SUPER,up,movefocus,u
+            bind = SUPER,down,movefocus,d
+            bind = SUPER,1,workspace,1
+            bind = SUPER,2,workspace,2
+            bind = SUPER,3,workspace,3
+            bind = SUPER,4,workspace,4
+            bind = SUPER,5,workspace,5
+            bind = SUPER,6,workspace,6
+            bind = SUPER,7,workspace,7
+            bind = SUPER,8,workspace,8
+            bind = SUPER,9,workspace,9
+            bind = SUPER,0,workspace,10
+            bind = SUPERSHIFT,1,movetoworkspace,1
+            bind = SUPERSHIFT,2,movetoworkspace,2
+            bind = SUPERSHIFT,3,movetoworkspace,3
+            bind = SUPERSHIFT,4,movetoworkspace,4
+            bind = SUPERSHIFT,5,movetoworkspace,5
+            bind = SUPERSHIFT,6,movetoworkspace,6
+            bind = SUPERSHIFT,7,movetoworkspace,7
+            bind = SUPERSHIFT,8,movetoworkspace,8
+            bind = SUPERSHIFT,9,movetoworkspace,9
+            bind = SUPERSHIFT,0,movetoworkspace,10
+            binde = SUPERCONTROL,right,workspace,e+1
+            binde = SUPERCONTROL,left,workspace,e-1
+            binde = SUPER,mouse_down,workspace, e+1
+            binde = SUPER,mouse_up,workspace, e-1
+            bindm = SUPER,mouse:272,movewindow
+            bindm = SUPER,mouse:273,resizewindow
             bind = ,mouse:275,workspace, e+1
             bind = ,mouse:276,workspace, e-1
             bind = ALT,Tab,cyclenext

@@ -1,8 +1,8 @@
 {
-  lib,
   pkgs,
   username,
   host,
+  inputs,
   ...
 }: let
   inherit (import ./variables.nix) gitUsername gitEmail;
@@ -50,6 +50,7 @@ in {
       (import ../../scripts/web-search.nix {inherit pkgs;})
       (import ../../scripts/screenshootin.nix {inherit pkgs;})
       (import ../../scripts/logout-exit.nix {inherit pkgs;})
+      inputs.nixvim.packages.${pkgs.system}.default
     ];
   };
 
@@ -62,6 +63,7 @@ in {
     ../../config/fastfetch.nix
     # ../../config/firefox.nix
     ../../config/hyprlock.nix
+    ../../config/ags.nix
   ];
 
   # Define Settings For Xresources
@@ -97,6 +99,7 @@ in {
       waybar.enable = false;
       rofi.enable = false;
       hyprland.enable = false;
+      kde.enable = false;
     };
   };
 
@@ -115,8 +118,8 @@ in {
   };
   qt = {
     enable = true;
-    #    style.name = lib.mkForce "adwaita-dark";
-    #    platformTheme = lib.mkForce "gtk3";
+    style.name = "adwaita-dark";
+    platformTheme.name = "gtk3";
   };
 
   services = {
@@ -187,7 +190,7 @@ in {
       shellAliases = {
         sv = "sudo nvim";
         fr = "nh os switch --hostname ${host} /home/${username}/dots";
-        frr = "nh os switch --hostname ${host} /home/${username}/dots;nix-collect-garbage --delete-old && sudo nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration boot;notify-send Rebuilt;exit";
+        frr = "nh os switch --hostname ${host} /home/${username}/dots;notify-send Rebuilt;nix-collect-garbage --delete-old && sudo nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration boot;notify-send Cleaned;exit";
         flake-update = "nh os switch --hostname ${host} --update /home/${username}/dots";
         gcnix = "nix-collect-garbage --delete-old && sudo nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration boot";
         v = "nvim";

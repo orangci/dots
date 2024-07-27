@@ -3,7 +3,6 @@
   pkgs,
   host,
   username,
-  inputs,
   options,
   ...
 }: {
@@ -270,6 +269,7 @@
     mya # myanimelist owo
     nix-prefetch
     zip
+    # open-interpreter
     qimgv # image viewer
     hyprlock
     protonvpn-gui
@@ -298,8 +298,7 @@
       withTTS = true;
       withVencord = true;
     })
-    armcord
-    inputs.nixvim.packages.${pkgs.system}.default
+    # armcord
   ];
 
   fonts = {

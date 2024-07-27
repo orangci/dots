@@ -3,7 +3,6 @@
   pkgs,
   host,
   username,
-  inputs,
   options,
   ...
 }: {
@@ -255,7 +254,6 @@
     trashy
     glow # markdown viwer
     cliphist
-    mangal
     ffmpeg
     bat
     prismlauncher
@@ -271,6 +269,7 @@
     mya # myanimelist owo
     nix-prefetch
     zip
+    # open-interpreter
     qimgv # image viewer
     hyprlock
     protonvpn-gui
@@ -299,8 +298,7 @@
       withTTS = true;
       withVencord = true;
     })
-    armcord
-    inputs.nixvim.packages.${pkgs.system}.default
+    # armcord
   ];
 
   fonts = {

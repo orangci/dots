@@ -7,7 +7,8 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nixvim.url = "github:orxngc/nixvim";
     stylix.url = "github:danth/stylix";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
+    # nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
+    ags.url = "github:Aylur/ags";
     # firefox-addons = {
     #   url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
     #   inputs.nixpkgs.follows = "nixpkgs";
@@ -16,7 +17,7 @@
 
   outputs = inputs @ {
     nixpkgs,
-    nixpkgs-stable,
+    # nixpkgs-stable,
     home-manager,
     ...
   }: let
@@ -36,10 +37,10 @@
           inherit inputs;
           inherit username;
           inherit host;
-          pkgs-stable = import nixpkgs-stable {
-            inherit system;
-            config.allowUnfree = true;
-          };
+          # pkgs-stable = import nixpkgs-stable {
+          #   inherit system;
+          #   config.allowUnfree = true;
+          # };
         };
         modules = [
           ./hosts/${host}/config.nix

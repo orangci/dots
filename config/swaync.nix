@@ -316,7 +316,7 @@ in
 
     /* Music player */
     .widget-mpris {
-        background: @background-alt;
+        background: alpha(@background, 0);
         border-radius: 16px;
         color: @text;
         margin:  20px 6px;

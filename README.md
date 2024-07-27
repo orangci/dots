@@ -1,6 +1,6 @@
 # orangc's flake
 
-An important note: many of the configurations here are taken from *many* other opensource dotfile repositories. Without those, this wouldn't be possible!
+An important note: many of the configurations here are taken from *many* other opensource dotfile repositories (e.g. the ags configs are just a slightly modified version of Aylur's dots; I will be modifying them even more later). Without those, this wouldn't be possible!
 
 What I use:
 
@@ -18,13 +18,13 @@ What I use:
 - **Clipboard** • [`cliphist`](https://github.com/sentriz/cliphist)
 - **Prompt** • [`Starship`](https://starship.rs/)
 - **Image Viwer** • [`qimgv`](https://github.com/easymodo/qimgv)
-- **Notification Daemon** • [`swaync`](https://github.com/ErikReider/SwayNotificationCenter)
 - **Fetch** • [`nitch`](https://github.com/ssleert/nitch)
 
 All my wallpapers are available [here](https://github.com/orxngc/walls-catppuccin-mocha).
 
 <details>
   <summary>Screenshots:</summary>
+Note — these screenshots are outdated.
 
 ![Tiled](https://raw.githubusercontent.com/orxngc/dots/anacreon/config/desktopPics/tiledGalaxy.png)
 
