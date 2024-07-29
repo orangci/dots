@@ -69,3 +69,4 @@ Feel free to take these dots and modify them however you want.
 - [ ] Switch what I can from rofi to walker/other programs & utilities
 - [ ] Implement proper Android virtualization. 
 - [ ] Create a rofi wallpaper selector thing.
+- [ ] Move back to SDDM or some other DM because I want something pretty.
