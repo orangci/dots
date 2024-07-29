@@ -22,38 +22,6 @@ with lib; {
     # ];
     extraConfig = concatStrings [
       ''
-            # >>> ENVIRONMENT VARIABLES <<<
-            env = NIXOS_OZONE_WL, 1
-            env = NIXPKGS_ALLOW_UNFREE, 1
-            env = XDG_CURRENT_DESKTOP, Hyprland
-            env = XDG_SESSION_TYPE, wayland
-            env = XDG_SESSION_DESKTOP, Hyprland
-            env = GDK_BACKEND, wayland, x11
-            env = CLUTTER_BACKEND, wayland
-            env = QT_QPA_PLATFORM=wayland;xcb
-            env = QT_WAYLAND_DISABLE_WINDOWDECORATION, 1
-            env = QT_AUTO_SCREEN_SCALE_FACTOR, 1
-            env = SDL_VIDEODRIVER, x11
-            env = MOZ_ENABLE_WAYLAND, 1
-            env = NIXPKGS_ALLOW_UNFREE, 1
-
-
-             # >>> STARTUP COMMANDS <<<
-            exec-once = dbus-update-activation-environment --systemd --all
-            exec-once = systemctl --user import-environment QT_QPA_PLATFORMTHEME WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-            exec-once = ags &
-            ${if waybarEnable then '''' else ''# ''}exec-once = killall -q waybar;waybar
-            exec-once = killall -q swaync;swaync
-            # exec-once = nm-applet --indicator
-            exec-once = lxqt-policykit-agent
-            exec-once = wl-paste --type text --watch cliphist store #Stores only text data
-            exec-once = wl-paste --type image --watch cliphist store #Stores only image data
-            exec-once = swww kill;swww-daemon
-            exec-once = wallset
-            # exec-once = blueman-applet
-            exec-once = arrpc
-
-
             monitor=,preferred,auto,1
             ${extraMonitorSettings}
             general {
@@ -130,11 +98,44 @@ with lib; {
             }
 
 
+        # >>> ENVIRONMENT VARIABLES <<<
+        env = NIXOS_OZONE_WL, 1
+        env = NIXPKGS_ALLOW_UNFREE, 1
+        env = XDG_CURRENT_DESKTOP, Hyprland
+        env = XDG_SESSION_TYPE, wayland
+        env = XDG_SESSION_DESKTOP, Hyprland
+        env = GDK_BACKEND, wayland, x11
+        env = CLUTTER_BACKEND, wayland
+        env = QT_QPA_PLATFORM=wayland;xcb
+        env = QT_WAYLAND_DISABLE_WINDOWDECORATION, 1
+        env = QT_AUTO_SCREEN_SCALE_FACTOR, 1
+        env = SDL_VIDEODRIVER, x11
+        env = MOZ_ENABLE_WAYLAND, 1
+        env = NIXPKGS_ALLOW_UNFREE, 1
+
+
+          # >>> STARTUP COMMANDS <<<
+        exec-once = dbus-update-activation-environment --systemd --all
+        exec-once = systemctl --user import-environment QT_QPA_PLATFORMTHEME WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+        exec-once = ags &
+        ${if waybarEnable then '''' else ''# ''}exec-once = killall -q waybar;waybar
+        exec-once = killall -q swaync;swaync
+        # exec-once = nm-applet --indicator
+        exec-once = lxqt-policykit-agent
+        exec-once = clipse -listen
+        exec-once = swww kill;swww-daemon
+        exec-once = wallset
+        # exec-once = blueman-applet
+        exec-once = arrpc
+
+
 
         # >>> WINDOW RULES <<<
         windowrulev2 = opacity 1 override,title:^Minecraft
         windowrulev2 = opacity 1 override,class:^(zoom)$
         windowrulev2 = noblur,class:^(zoom)$
+        windowrulev2 = float,class:(clipse) # ensure you have a floating window class set if you want this behaviour
+        windowrulev2 = size 622 700,class:(clipse) # set the size of the window as necessary
         layerrule = blur,logout_dialog
         layerrule = blur,swaync-control-center
         layerrule = blur,swaync-notification-window
@@ -171,11 +172,11 @@ with lib; {
         bind = SUPER,Q,killactive # kill active
         bind = SUPER,SEMICOLON,pseudo # idk tbh
         bind = SUPERSHIFT,I,togglesplit # again idk
-        bind = SUPERSHIFT,V,exec,cliphist wipe # clear clipboard
         bind = SUPER,l,exec,killall hyprlock; hyprlock # lock screen
         bind = SUPER,BACKSLASH,exec,logout-exit # wlogout
         bind = SUPER,APOSTROPHE,exec,killall -q wallset;wallset # set random wallpaper
-        bind = SUPER, V, exec, cliphist list | rofi -dmenu -theme clipboard.rasi | cliphist decode | wl-copy # open clipboard
+        bind = SUPER,V, exec,kitty --class clipse -e 'clipse' # open clipboard
+        bind = SUPERSHIFT,V, exec,clipse -clear # clear clipboard
 
         # window control binds
         bind = SUPER,F,fullscreen,

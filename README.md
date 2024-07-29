@@ -17,10 +17,10 @@ What I use:
 - **Wallpaper Daemon** • [`swww`](https://github.com/LGFae/swww)
 - **File Manager** • `Thunar`
 - **Screenshots** • [`grimblast`](https://github.com/hyprwm/contrib)
-- **Clipboard** • [`cliphist`](https://github.com/sentriz/cliphist)
+- **Clipboard** • [`clipse`](https://github.com/savedra1/clipse)
 - **Prompt** • [`Starship`](https://starship.rs/)
 - **Image Viwer** • [`qimgv`](https://github.com/easymodo/qimgv)
-- **Fetch** • [`nitch`](https://github.com/ssleert/nitch)
+- **Fetch** • [`nitch`](https://github.com/ssleert/nitch) & [`fastfetch`](https://github.com/fastfetch-cli/fastfetch)
 
 All my wallpapers are available [here](https://github.com/orxngc/walls-catppuccin-mocha).
 
@@ -63,3 +63,9 @@ Finally, running this command will install my system.
 
 Feel free to take these dots and modify them however you want.
 
+## Todo
+- [ ] Write an installation script
+- [ ] Update README screenshots
+- [ ] Switch what I can from rofi to walker/other programs & utilities
+- [ ] Implement proper Android virtualization. 
+- [ ] Create a rofi wallpaper selector thing.

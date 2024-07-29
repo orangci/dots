@@ -106,8 +106,11 @@ in {
   # Theme GTK
   gtk = {
     iconTheme = {
-      name = "Tela";
-      package = pkgs.tela-icon-theme;
+      name = "Papirus-Dark";
+      package = pkgs.catppuccin-papirus-folders.override {
+      flavor = "mocha";
+      accent = "blue";
+      };
     };
     gtk3.extraConfig = {
       gtk-application-prefer-dark-theme = 1;
@@ -214,5 +217,21 @@ in {
     };
     home-manager.enable = true;
     hyprlock.enable = true;
+  };
+    xdg.mimeApps = {
+    enable = true;
+    defaultApplications = {
+      "application/pdf" = ["firefox.desktop"];
+      "image/*" = ["qimgv.desktop"];
+      "video/*" = ["mpv.desktop"];
+      "audio/*" = ["mpv.desktop"];
+      "text/*" = ["neovide.desktop"];
+      "application/gzip" = ["file-roller.desktop"];
+      "application/x-bzip" = ["file-roller.desktop"];
+      "application/x-bzip-2" = ["file-roller.desktop"];
+      "application/x-7z-compressed" = ["file-roller.desktop"];
+      "application/zip" = ["file-roller.desktop"];
+      "application/epub+zip" = ["calibre-ebook-viewer.desktop"];
+    };
   };
 }
