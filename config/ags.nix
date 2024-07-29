@@ -1,7 +1,6 @@
-{
-  inputs,
-  pkgs,
-  ...
+{ inputs
+, pkgs
+, ...
 }: {
   imports = [
     inputs.ags.homeManagerModules.default
@@ -10,23 +9,19 @@
   home.packages = with pkgs; [
     bun
     dart-sass
-    fd
-    brightnessctl
-    swww
-    slurp
-    wf-recorder
-    wl-clipboard
     wayshot
-    swappy
     hyprpicker
-    pavucontrol
     networkmanager
-    gtk3
+    # gtk3
+    bluez
+    bluez-tools
+    gpu-screen-recorder
+
   ];
 
   programs.ags = {
     enable = true;
-    configDir = ./ags;
+    # configDir = ./ags-aylur;
     extraPackages = with pkgs; [
       accountsservice
     ];

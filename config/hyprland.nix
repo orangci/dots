@@ -9,6 +9,7 @@ let
     (import ../hosts/${host}/variables.nix)
     extraMonitorSettings
     boxyStyle
+    waybarEnable
     ;
 in
 with lib; {
@@ -37,15 +38,12 @@ with lib; {
             env = NIXPKGS_ALLOW_UNFREE, 1
 
 
-
-
-
              # >>> STARTUP COMMANDS <<<
             exec-once = dbus-update-activation-environment --systemd --all
             exec-once = systemctl --user import-environment QT_QPA_PLATFORMTHEME WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
             exec-once = ags &
-            # exec-once = killall -q waybar;waybar
-            # exec-once = killall -q swaync;swaync
+            ${if waybarEnable then '''' else ''# ''}exec-once = killall -q waybar;waybar
+            exec-once = killall -q swaync;swaync
             # exec-once = nm-applet --indicator
             exec-once = lxqt-policykit-agent
             exec-once = wl-paste --type text --watch cliphist store #Stores only text data
@@ -53,30 +51,20 @@ with lib; {
             exec-once = swww kill;swww-daemon
             exec-once = wallset
             # exec-once = blueman-applet
-            # exec-once = arrpc
+            exec-once = arrpc
 
 
             monitor=,preferred,auto,1
             ${extraMonitorSettings}
             general {
               gaps_in = 6
-              ${
-          if boxyStyle
-          then ''gaps_out = 0''
-          else ''gaps_out = 8''
-        }
+              ${if boxyStyle then ''gaps_out = 0'' else ''gaps_out = 8''}
               border_size = 2
-              ${
-          if boxyStyle
-          then ''
+              ${if boxyStyle then ''
             col.active_border = rgba(${theme.base00}ff) rgba(${theme.base00}ff) rgba(${theme.base00}ff) rgba(${theme.base00}ff) 45deg
-            col.inactive_border = rgba(${theme.base00}cc) rgba(${theme.base00}cc) 45deg
-          ''
-          else ''
+            col.inactive_border = rgba(${theme.base00}cc) rgba(${theme.base00}cc) 45deg'' else ''
             col.active_border = rgba(${theme.base0E}ff) rgba(${theme.base0E}ff) rgba(${theme.base0E}ff) rgba(${theme.base0E}ff) 45deg
-            col.inactive_border = rgba(${theme.base00}cc) rgba(${theme.base01}cc) 45deg
-          ''
-        }
+            col.inactive_border = rgba(${theme.base00}cc) rgba(${theme.base01}cc) 45deg''}
               layout = dwindle
               resize_on_border = true
             }
@@ -116,18 +104,10 @@ with lib; {
                 animation = workspaces, 1, 5, wind
             }
             decoration {
-              ${
-          if boxyStyle
-          then ''rounding = 0''
-          else ''rounding = 15''
-        }
+              ${if boxyStyle then ''rounding = 0'' else ''rounding = 15''}
               drop_shadow = false
               blur {
-                  ${
-          if boxyStyle
-          then ''enabled = false''
-          else ''enabled = true''
-        }
+                  ${if boxyStyle then ''enabled = false'' else ''enabled = true''}
                   size = 6
                   passes = 3
                   ignore_opacity = true
@@ -136,9 +116,7 @@ with lib; {
                   xray = true
               }
               ${
-          if boxyStyle
-          then ''''
-          else ''
+          if boxyStyle then '''' else ''
             inactive_opacity = 0.85
             active_opacity = 0.925
             fullscreen_opacity = 0.925
@@ -173,15 +151,10 @@ with lib; {
         bind = SUPER,Return,exec,kitty # launch kitty
         bind = SUPER,K,exec,rofi -show drun -theme launcher.rasi # application launcher rofi
         bind = SUPERSHIFT,W,exec,web-search # use various search engines with rofi
-        # bind = SUPERSHIFT,N,exec,swaync-client -rs # clear swaync notifiactions
+        bind = SUPERSHIFT,N,exec,swaync-client -rs # clear swaync notifiactions
         bind = SUPER,W,exec,firefox # launch firefox
         bind = SUPER,PERIOD,exec,bemoji -t # emoji picker w/ rofi
-        # bind = SUPER,S,exec,grimblast --freeze save area - | swappy -f - # screenshot an area
-        bind = SUPERSHIFT,R,exec, ags -r 'recorder.start()' # screenrecord w/ ags
-        bind= SUPER,S,exec, ags -r 'recorder.screenshot()' # screenshot area w/ ags
-        bind = ,SUPER,TAB,exec, ags -t overview # launch ags workspace overview
-        bindl = ,Print,exec,ags -r 'recorder.screenshot(true)' # screenshot whole screen, ags
-        bind = SUPER,SPACE,exec,ags -t launcher # ags application launcher
+        bind = SUPER,S,exec,grimblast --freeze save area - | swappy -f - # screenshot an area
         bind = SUPERSHIFT,M,exec,wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle # mute microphone
         bind = SUPER,D,exec,discord # launch discord
         bind = SUPER,P,exec,playerctl play-pause # pause playerctl
@@ -190,8 +163,8 @@ with lib; {
         bind = SUPER,R,exec,rofi -show run -theme run.rasi # run individual commands with rofi
         bind = SUPER,C,exec,codium # vscode
         bind = SUPER,O,exec,obs # obs
-        # bind = SUPER,A,exec,swaync-client -t # swaync keybind idk
-        # bind = SUPERSHIFT,A,exec,swaync-client -C # another swaync keybind idk
+        bind = SUPER,A,exec,swaync-client -t # swaync keybind idk
+        bind = SUPERSHIFT,A,exec,swaync-client -C # another swaync keybind idk
         bind = SUPER,G,exec,google-chrome-stable # chrome
         bind = SUPER,E,exec,thunar # file browser
         bind = SUPER,M,exec,rofi-prism-exec # minecraft launcher powered by prism and rofi

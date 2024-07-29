@@ -1,6 +1,7 @@
 # orangc's flake
 
-An important note: many of the configurations here are taken from *many* other opensource dotfile repositories (e.g. the ags configs are just a slightly modified version of Aylur's dots; I will be modifying them even more later). Without those, this wouldn't be possible!
+An important note: many of the configurations here are taken from *many* other opensource dotfile repositories I will be modifying them even more later). Without those, this wouldn't be possible!
+Another note, less important note; if you want to use my dotfiles, note that the nice waybar settings you see in the screenshots aren't something you'll see immediately; I have waybar disabled at startup. You change this by `waybarEnable = true;` in /hosts/anacreon/variables.nix. This is because I actually use ags, with [this](https://github.com/Jas-SinghFSU/HyprPanel) amazing configuration.
 
 What I use:
 
