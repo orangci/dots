@@ -54,7 +54,6 @@ in
             },
             "widgets": [
                 "label",
-                "buttons-grid",
                 "mpris",
                 "title",
                 "dnd",
@@ -64,7 +63,7 @@ in
                 "title": {
                 "text": "Notifications",
                 "clear-all-button": true,
-                "button-text": " 󰎟 "
+                "button-text": "  "
                 },
                 "dnd": {
                 "text": "Do not disturb"
@@ -383,8 +382,8 @@ in
     .floating-notifications.background .notification-row .notification-background {
     background: alpha(@background, .85);
     box-shadow: 0 0 8px 0 rgba(0,0,0,.85);
-    border: 1px solid @selected;
-    border-radius: 15px;
+    border: 0px solid @selected;
+    border-radius: 20px;
     margin: 16px;
     padding: 0;
     }
@@ -410,12 +409,12 @@ in
     border-radius: 8px;
     background-color: @background-alt ;
     margin: 6px;
-    border: 1px solid transparent;
+    border: 0px solid @selected;
     }
 
     .floating-notifications.background .notification-row .notification-background .notification > *:last-child > * .notification-action:hover {
     background-color: @hover;
-    border: 1px solid @selected;
+    border: 0px solid @selected;
     }
 
     .floating-notifications.background .notification-row .notification-background .notification > *:last-child > * .notification-action:active {
@@ -441,7 +440,7 @@ in
     padding: 2px;
     border-radius: 6px;
     background-color: transparent;
-    border: 1px solid transparent;
+    border: 0px solid @selected;
     }
 
     .floating-notifications.background .notification-row .notification-background .close-button:hover {
