@@ -216,7 +216,7 @@
     gnumake
     ninja
     brightnessctl
-    speedcrunch
+    rink
     swappy
     appimage-run
     networkmanagerapplet

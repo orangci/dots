@@ -152,8 +152,12 @@ with lib; {
         # >>> KEYBINDINDS <<<
         bind = SUPER,Return,exec,kitty # launch kitty
         bind = SUPER,K,exec,rofi -show drun -theme launcher.rasi # application launcher rofi
+        bind = SUPER,R,exec,rofi -show run -theme run.rasi # run individual commands with rofi
+        bind = SUPER,M,exec,rofi-prism-exec # minecraft launcher powered by prism and rofi
+        bind = SUPER,C,exec,rofi-calc # calculator with rofi
         bind = SUPERSHIFT,W,exec,web-search # use various search engines with rofi
-        bind = SUPERSHIFT,N,exec,swaync-client -rs # clear swaync notifiactions
+        bind = SUPER,A,exec,swaync-client -t # open swaync
+        bind = SUPERSHIFT,A,exec,swaync-client -C # clear swaync notifs
         bind = SUPER,W,exec,firefox # launch firefox
         bind = SUPER,PERIOD,exec,bemoji -t # emoji picker w/ rofi
         bind = SUPER,S,exec,grimblast --freeze save area - | swappy -f - # screenshot an area
@@ -162,17 +166,10 @@ with lib; {
         bind = SUPER,P,exec,playerctl play-pause # pause playerctl
         bind = SUPERSHIFT,P,exec,playerctl next # playerctl next
         bind = SUPERALT,P,exec,playerctl previous # playerctl previous
-        bind = SUPER,R,exec,rofi -show run -theme run.rasi # run individual commands with rofi
-        bind = SUPER,C,exec,codium # vscode
+        bind = SUPERSHIFT,C,exec,codium # vscode
         bind = SUPER,O,exec,obs # obs
-        bind = SUPER,A,exec,swaync-client -t # swaync keybind idk
-        bind = SUPERSHIFT,A,exec,swaync-client -C # another swaync keybind idk
         bind = SUPER,G,exec,google-chrome-stable # chrome
         bind = SUPER,E,exec,thunar # file browser
-        bind = SUPER,M,exec,rofi-prism-exec # minecraft launcher powered by prism and rofi
-        bind = SUPER,Q,killactive # kill active
-        bind = SUPER,SEMICOLON,pseudo # idk tbh
-        bind = SUPERSHIFT,I,togglesplit # again idk
         bind = SUPER,l,exec,killall hyprlock; hyprlock # lock screen
         bind = SUPER,BACKSLASH,exec,logout-exit # wlogout
         bind = SUPER,APOSTROPHE,exec,killall -q wallset;wallset # set random wallpaper
@@ -180,6 +177,9 @@ with lib; {
         bind = SUPERSHIFT,V, exec,clipse -clear # clear clipboard
 
         # window control binds
+        bind = SUPER,SEMICOLON,pseudo # idk tbh
+        bind = SUPERSHIFT,I,togglesplit # again idk
+        bind = SUPER,Q,killactive # kill active
         bind = SUPER,F,fullscreen,
         bind = SUPERSHIFT,F,togglefloating
         bind = SUPERSHIFT,left,movewindow,l

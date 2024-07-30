@@ -9,5 +9,8 @@ in
        listview {
             enabled:                     false;
         }
+        entry {
+        placeholder:                 "Run a command...";
+        }
       '';
 }

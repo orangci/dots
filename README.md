@@ -60,14 +60,12 @@ Enable flakes:
 Finally, running this command will install my system.
 
 `sudo nixos-rebuild switch --flake .#anacreon`
-
 Feel free to take these dots and modify them however you want.
 
 ## Todo
 - [ ] Write an installation script
 - [ ] Update README screenshots
-- [ ] Switch what I can from rofi to walker/other programs & utilities
-- [ ] Implement proper Android virtualization. 
+- [ ] Inmplemet proper Android virtualization. 
 - [ ] Create a rofi wallpaper selector thing.
 - [ ] Move back to SDDM or some other DM because I want something pretty.
 - [x] Make swaync notifications pretty.

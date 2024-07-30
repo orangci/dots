@@ -16,6 +16,7 @@ in
         	drun-display-format:        "{name} [<span weight='light' size='small'><i>({generic})</i></span>]";
         	window-format:              "{w} · {c} · {t}";
             no-fading-openclose:        true;
+            font:                 "Raleway Regular 14";
         }
         * {
             border-colour:               rgba(203, 166, 247, 85%);
@@ -73,9 +74,9 @@ in
             enabled:                     true;
             spacing:                     10px;
             margin:                      0px;
-            padding:                     20px;
+            padding:                     12px;
             border:                      0px;
-            border-radius:               20px;
+            border-radius:               24px;
             border-color:                rgba(203, 166, 247, 85%);
             background-color:            rgba(30, 30, 46, 85%);
             text-color:                  #${palette.base05};
@@ -120,9 +121,9 @@ in
 
             spacing:                     10px;
             margin:                      0px;
-            padding:                     30px;
+            padding:                     8px;
             border:                      0px solid;
-            border-radius:               20px;
+            border-radius:               24px;
             border-color:                rgba(203, 166, 247, 85%);
             background-color:            rgba(30, 30, 46, 85%);
             text-color:                  #${palette.base05};
@@ -142,7 +143,7 @@ in
             margin:                      0px;
             padding:                     8px;
             border:                      0px solid;
-            border-radius:               12px;
+            border-radius:               24px;
             border-color:                rgba(203, 166, 247, 85%);
             background-color:            transparent;
             text-color:                  #${palette.base05};
