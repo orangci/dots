@@ -84,8 +84,8 @@
         name = "JetBrainsMono Nerd Font Mono";
       };
       sansSerif = {
-        package = pkgs.montserrat;
-        name = "Montserrat";
+        package = pkgs.raleway;
+        name = "Raleway";
       };
       serif = {
         package = pkgs.merriweather;
@@ -216,7 +216,7 @@
     gnumake
     ninja
     brightnessctl
-    speedcrunch
+    rink
     swappy
     appimage-run
     networkmanagerapplet
@@ -224,6 +224,7 @@
     playerctl
     nh
     nixfmt-rfc-style
+    catppuccinifier-gui
     swww
     grim
     slurp
@@ -237,7 +238,6 @@
     wlogout
     pavucontrol
     tree
-    font-awesome
     pkgs.libsForQt5.qt5.qtgraphicaleffects
     ripgrep
     time
@@ -253,7 +253,7 @@
     cmus
     trashy
     glow # markdown viwer
-    cliphist
+    clipse
     ffmpeg
     bat
     prismlauncher
@@ -290,6 +290,7 @@
     greetd.tuigreet
     xfce.tumbler # for image thumbnails in thunar
     arrpc
+    ipfetch
     rofi-wayland
     grimblast # for screenshots
     nurl
@@ -307,6 +308,9 @@
       noto-fonts-cjk
       font-awesome
       symbola
+      ubuntu-sans
+      merriweather-sans
+      merriweather
       material-icons
       (nerdfonts.override {fonts = ["JetBrainsMono"];})
     ];
