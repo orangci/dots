@@ -39,28 +39,7 @@ Note — these screenshots are outdated.
 </details>
 
 ## Installation
-
-Because this is a flake, it's quite easy to install. Make sure to start in your $HOME.
-First clone this repository.
-
-`git clone https://github.com/orxngc/dots`
-
-Enter it.
-
-`cd dots`
-
-Make sure to generate your hardware config.
-
-`nixos-generate-config --show-hardware-config > hosts/anacreon/hardware.nix`
-
-Enable flakes:
-
-`NIX_CONFIG="experimental-features = nix-command flakes"`
-
-Finally, running this command will install my system.
-
-`sudo nixos-rebuild switch --flake .#anacreon`
-Feel free to take these dots and modify them however you want.
+No need to clone the repository, the install script will do that for you. Just download install.sh and it'll handle the rest.
 
 ## Todo
 - [x] Write an installation script
