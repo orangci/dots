@@ -172,7 +172,7 @@ with lib; {
         bind = SUPER,E,exec,thunar # file browser
         bind = SUPER,l,exec,killall hyprlock; hyprlock # lock screen
         bind = SUPER,BACKSLASH,exec,logout-exit # wlogout
-        bind = SUPER,APOSTROPHE,exec,killall -q wallset;wallset # set random wallpaper
+        bind = SUPER,APOSTROPHE,exec,rofi-wall-select # choose a wallpaper
         bind = SUPER,V, exec,kitty --class clipse -e 'clipse' # open clipboard
         bind = SUPERSHIFT,V, exec,clipse -clear # clear clipboard
 

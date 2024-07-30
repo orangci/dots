@@ -46,6 +46,7 @@ in {
       (import ../../scripts/rofi-launcher.nix {inherit pkgs;})
       (import ../../scripts/rofi-prism-exec.nix {inherit pkgs;})
       (import ../../scripts/rofi-calc.nix {inherit pkgs;})
+      (import ../../scripts/rofi-wall-select.nix {inherit pkgs;})
       (import ../../scripts/walls.nix {inherit pkgs;})
       (import ../../scripts/nvidia-offload.nix {inherit pkgs;})
       (import ../../scripts/web-search.nix {inherit pkgs;})

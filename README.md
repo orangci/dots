@@ -66,6 +66,6 @@ Feel free to take these dots and modify them however you want.
 - [ ] Write an installation script
 - [ ] Update README screenshots
 - [ ] Inmplemet proper Android virtualization. 
-- [ ] Create a rofi wallpaper selector thing.
+- [x] Create a rofi wallpaper selector thing.
 - [ ] Move back to SDDM or some other DM because I want something pretty.
 - [x] Make swaync notifications pretty.
