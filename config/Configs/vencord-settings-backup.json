@@ -3,9 +3,7 @@
         "autoUpdate": true,
         "autoUpdateNotification": true,
         "useQuickCss": true,
-        "themeLinks": [
-            "https://raw.githubusercontent.com/SeaswimmerTheFsh/VencordThemes/main/Snippets/ModViewNitroless/Catppuccin.css"
-        ],
+        "themeLinks": [],
         "enabledThemes": [
             "src.css",
             "a.css",
@@ -83,12 +81,12 @@
             },
             "BetterFolders": {
                 "enabled": false,
-                "sidebar": true,
+                "sidebar": false,
                 "closeAllHomeButton": false,
                 "sidebarAnim": false,
                 "closeAllFolders": false,
-                "closeOthers": false,
-                "forceOpen": false,
+                "closeOthers": true,
+                "forceOpen": true,
                 "keepIcons": false,
                 "showFolderIcon": 1
             },
@@ -164,7 +162,7 @@
             },
             "FakeNitro": {
                 "enabled": true,
-                "enableEmojiBypass": true,
+                "enableEmojiBypass": false,
                 "emojiSize": 48,
                 "transformEmojis": true,
                 "enableStickerBypass": true,
@@ -193,7 +191,7 @@
                 "enabled": true
             },
             "GameActivityToggle": {
-                "enabled": false,
+                "enabled": true,
                 "oldIcon": false
             },
             "GifPaste": {
@@ -268,7 +266,9 @@
                 "ignoreChannels": "",
                 "ignoreGuilds": "",
                 "logEdits": true,
-                "logDeletes": true
+                "logDeletes": true,
+                "collapseDeleted": false,
+                "inlineEdits": true
             },
             "MessageTags": {
                 "enabled": false,
@@ -301,7 +301,7 @@
                     "MODERATOR_STAFF": {
                         "text": "Staff",
                         "showInChat": false,
-                        "showInNotChat": true
+                        "showInNotChat": false
                     },
                     "MODERATOR": {
                         "text": "Mod",
@@ -311,12 +311,12 @@
                     "VOICE_MODERATOR": {
                         "text": "VC Mod",
                         "showInChat": false,
-                        "showInNotChat": true
+                        "showInNotChat": false
                     },
                     "CHAT_MODERATOR": {
                         "text": "Chat Mod",
                         "showInChat": false,
-                        "showInNotChat": true
+                        "showInNotChat": false
                     }
                 },
                 "dontShowForBots": true
@@ -343,7 +343,7 @@
             },
             "NoPendingCount": {
                 "enabled": true,
-                "hideFriendRequestsCount": true,
+                "hideFriendRequestsCount": false,
                 "hideMessageRequestsCount": false,
                 "hidePremiumOffersCount": true
             },
@@ -352,8 +352,8 @@
             },
             "NoReplyMention": {
                 "enabled": true,
-                "userList": "856667023274541067",
-                "shouldPingListed": true,
+                "userList": "",
+                "shouldPingListed": false,
                 "inverseShiftReply": false
             },
             "NoScreensharePreview": {
@@ -363,7 +363,7 @@
                 "enabled": true
             },
             "NSFWGateBypass": {
-                "enabled": false
+                "enabled": true
             },
             "oneko": {
                 "enabled": false
@@ -380,7 +380,7 @@
                 "defaultPermissionsDropdownState": false
             },
             "petpet": {
-                "enabled": false
+                "enabled": true
             },
             "PinDMs": {
                 "enabled": false,
@@ -394,7 +394,7 @@
             "PlatformIndicators": {
                 "enabled": true,
                 "colorMobileIndicator": true,
-                "list": true,
+                "list": false,
                 "badges": false,
                 "messages": false
             },
@@ -411,7 +411,7 @@
             },
             "QuickReply": {
                 "enabled": true,
-                "shouldMention": 2
+                "shouldMention": 0
             },
             "ReactErrorDecoder": {
                 "enabled": true
@@ -511,7 +511,7 @@
             "SilentTyping": {
                 "enabled": true,
                 "showIcon": false,
-                "isEnabled": true,
+                "isEnabled": false,
                 "contextMenu": true
             },
             "SortFriendRequests": {
@@ -704,7 +704,7 @@
                 "enabled": true
             },
             "BetterGifPicker": {
-                "enabled": true
+                "enabled": false
             },
             "Decor": {
                 "enabled": false,
@@ -721,7 +721,7 @@
                 "enabled": true
             },
             "DisableCallIdle": {
-                "enabled": false
+                "enabled": true
             },
             "NewGuildSettings": {
                 "enabled": true,
@@ -853,7 +853,7 @@
                 "summaryExpiryThresholdDays": 3
             },
             "WatchTogetherAdblock": {
-                "enabled": false
+                "enabled": true
             },
             "ServerInfo": {
                 "enabled": true
@@ -879,19 +879,30 @@
             },
             "VolumeBooster": {
                 "enabled": false
+            },
+            "ShowAllRoles": {
+                "enabled": false
+            },
+            "ConsoleJanitor": {
+                "enabled": true,
+                "disableNoisyLoggers": true,
+                "disableSpotifyLogger": true
+            },
+            "MentionAvatars": {
+                "enabled": false
             }
         },
         "notifications": {
             "timeout": 0,
             "position": "top-right",
-            "useNative": "not-focused",
+            "useNative": "always",
             "logLimit": 50
         },
         "cloud": {
             "authenticated": false,
             "url": "https://api.vencord.dev/",
             "settingsSync": true,
-            "settingsSyncVersion": 1719584865592
+            "settingsSyncVersion": 1722257558689
         },
         "settings": {
             "notifyAboutUpdates": true,
@@ -1686,5 +1697,5 @@
         "notifyAboutUpdates": true,
         "macosTranslucency": false
     },
-    "quickCss": "\n/* Make usernames saturated */\n/* [class*=username_][style],\n.mention[style],\n[class*=membersGroup_] [style]\n { filter:contrast(.2) brightness(1.2) saturate(500%); } */\n\n* {\n    font-family: 'JetbrainsMono NFM';\n}\n[class*=userPopoutOverlayBackground] {\n  max-height: 60vh;\n}\n\n@import url(\"https://aushevahmad.github.io/awesome-css/modules/custom-bar-prompt.css\");\n:root {\n    --prompt-text: \"uwu :3\"; /* replace --prompt-text with your desired text if you want */\n}"
+    "quickCss": ""
 }

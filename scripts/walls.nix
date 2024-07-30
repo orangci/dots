@@ -7,6 +7,6 @@ pkgs.writeShellScriptBin "wallset" ''
      echo "\$WALLPAPER=$HOME/Pictures/walls/$CURRENT_WALLPAPER" > /tmp/.current_wallpaper_path_hyprlock
      export WALLPAPER=$HOME/Pictures/walls/$CURRENT_WALLPAPER
      echo "$WALLPAPER" > /tmp/.current_wallpaper_path
-     sleep 600
+     sleep 1200
   done
 ''

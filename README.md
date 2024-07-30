@@ -63,9 +63,10 @@ Finally, running this command will install my system.
 Feel free to take these dots and modify them however you want.
 
 ## Todo
-- [ ] Write an installation script
+- [x] Write an installation script
 - [ ] Update README screenshots
 - [ ] Inmplemet proper Android virtualization. 
 - [x] Create a rofi wallpaper selector thing.
 - [ ] Move back to SDDM or some other DM because I want something pretty.
 - [x] Make swaync notifications pretty.
+- [ ] Make those annoying folders in $HOME disappear, they aren't welcome.
