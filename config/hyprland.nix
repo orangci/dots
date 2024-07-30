@@ -136,6 +136,7 @@ with lib; {
         windowrulev2 = noblur,class:^(zoom)$
         windowrulev2 = float,class:(clipse) # ensure you have a floating window class set if you want this behaviour
         windowrulev2 = size 622 700,class:(clipse) # set the size of the window as necessary
+        windowrulev2 = stayfocused,class:(clipse) # make this silly window stay focused
         layerrule = blur,logout_dialog
         layerrule = blur,swaync-control-center
         layerrule = blur,swaync-notification-window
