@@ -150,31 +150,32 @@ with lib; {
 
 
         # >>> KEYBINDINDS <<<
-        bind = SUPER,Return,exec,kitty # launch kitty
+        bind = SUPER,Return,exec,kitty 
         bind = SUPER,K,exec,rofi -show drun -theme launcher.rasi # application launcher rofi
         bind = SUPER,R,exec,rofi -show run -theme run.rasi # run individual commands with rofi
         bind = SUPER,M,exec,rofi-prism-exec # minecraft launcher powered by prism and rofi
-        bind = SUPER,C,exec,rofi-calc # calculator with rofi
-        bind = SUPERSHIFT,W,exec,web-search # use various search engines with rofi
-        bind = SUPER,A,exec,swaync-client -t # open swaync
+        bind = SUPER,C,exec,rofi-calc
+        bind = SUPERSHIFT,W,exec,web-search
+        bind = SUPER,A,exec,swaync-client -t 
         bind = SUPERSHIFT,A,exec,swaync-client -C # clear swaync notifs
-        bind = SUPER,W,exec,firefox # launch firefox
+        bind = SUPER,W,exec,firefox
         bind = SUPER,PERIOD,exec,bemoji -t # emoji picker w/ rofi
         bind = SUPER,S,exec,grimblast --freeze save area - | swappy -f - # screenshot an area
         bind = SUPERSHIFT,M,exec,wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle # mute microphone
-        bind = SUPER,D,exec,discord # launch discord
-        bind = SUPER,P,exec,playerctl play-pause # pause playerctl
-        bind = SUPERSHIFT,P,exec,playerctl next # playerctl next
-        bind = SUPERALT,P,exec,playerctl previous # playerctl previous
-        bind = SUPERSHIFT,C,exec,codium # vscode
-        bind = SUPER,O,exec,obs # obs
-        bind = SUPER,G,exec,google-chrome-stable # chrome
-        bind = SUPER,E,exec,thunar # file browser
-        bind = SUPER,l,exec,killall hyprlock; hyprlock # lock screen
+        bind = SUPER,D,exec,discord
+        bind = SUPER,P,exec,playerctl play-pause
+        bind = SUPERSHIFT,P,exec,playerctl next
+        bind = SUPERALT,P,exec,playerctl previous 
+        bind = SUPERSHIFT,C,exec,codium
+        bind = SUPER,O,exec,obs
+        bind = SUPER,G,exec,google-chrome-stable 
+        bind = SUPER,E,exec,thunar
+        bind = SUPER,l,exec,killall hyprlock; hyprlock 
         bind = SUPER,BACKSLASH,exec,logout-exit # wlogout
         bind = SUPER,APOSTROPHE,exec,rofi-wall-select # choose a wallpaper
         bind = SUPER,V, exec,kitty --class clipse -e 'clipse' # open clipboard
         bind = SUPERSHIFT,V, exec,clipse -clear # clear clipboard
+        bind = SUPERSHIFT,code:61,exec,list-bindings
 
         # window control binds
         bind = SUPER,SEMICOLON,pseudo # idk tbh

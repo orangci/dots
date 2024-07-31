@@ -2,7 +2,7 @@
 
 An important note: many of the configurations here are modified from *many* other opensource dotfile repositories. Without those, this wouldn't be possible!
 
-Another, less important note; if you want to use my dotfiles, note that the nice waybar settings you see in the screenshots aren't something you'll see immediately; I have waybar disabled at startup. You change this by `waybarEnable = true;` in /hosts/anacreon/variables.nix. This is because I actually use ags, with [this](https://github.com/Jas-SinghFSU/HyprPanel) amazing configuration.
+Another, less important note; if you want to use my dotfiles, note that the nice waybar settings you see in the screenshots aren't something you'll see immediately; I have waybar disabled at startup. You change this by `waybarEnable = true;` in /hosts/anacreon/variables.nix, and removing the exec-once for ags in /config/hyprland.nix. This is because I actually use ags, with [this](https://github.com/Jas-SinghFSU/HyprPanel) amazing configuration.
 
 What I use:
 
@@ -22,7 +22,7 @@ What I use:
 - **Image Viwer** • [`qimgv`](https://github.com/easymodo/qimgv)
 - **Fetch** • [`nitch`](https://github.com/ssleert/nitch) & [`fastfetch`](https://github.com/fastfetch-cli/fastfetch)
 
-All my wallpapers are available [here](https://github.com/orxngc/walls-catppuccin-mocha).
+All my wallpapers are available [here](https://github.com/orxngc/walls).
 
 <details>
   <summary>Screenshots:</summary>
@@ -41,11 +41,14 @@ Note — these screenshots are outdated.
 ## Installation
 No need to clone the repository, the install script will do that for you. Just download install.sh and it'll handle the rest.
 
+Press `SUPER + ?` to open a list of all keybindings.
+ 
 ## Todo
 - [x] Write an installation script
 - [ ] Update README screenshots
-- [ ] Inmplemet proper Android virtualization. 
+- [ ] Implement proper Android virtualization. 
 - [x] Create a rofi wallpaper selector thing.
 - [ ] Move back to SDDM or some other DM because I want something pretty.
 - [x] Make swaync notifications pretty.
 - [x] Make those annoying folders in $HOME disappear, they aren't welcome.
+- [x] Add something that lists all the keybindings.

@@ -52,6 +52,7 @@ in {
       (import ../../scripts/web-search.nix {inherit pkgs;})
       (import ../../scripts/screenshootin.nix {inherit pkgs;})
       (import ../../scripts/logout-exit.nix {inherit pkgs;})
+      (import ../../scripts/list-bindings.nix {inherit pkgs;})
       inputs.nixvim.packages.${pkgs.system}.default
     ];
   };
