@@ -19,6 +19,7 @@ in {
         border-color:       transparent;
     }
 
+
     // Main //
     window {
         enabled:                     true;
@@ -53,8 +54,25 @@ in {
         cursor:                      "default";
         background-color:            transparent;
         text-color:                  @main-fg;
+        scrollbar:                   false;
+    }
+    
+    mainbox {
+        enabled:                     true;
+        orientation:                 horizontal;
+        children:                    [ "dummy", "frame", "dummy" ];
+        background-color:            transparent;
+    }
+    frame {
+        children:                    [ "listview" ];
+        background-color:            transparent;
     }
 
+    dummy {
+        width:                       2em;
+        expand:                      false;
+        background-color:            transparent;
+    }
 
     // Elements //
     element {
