@@ -11,7 +11,7 @@ folders=(
 folder_string=$(printf '%s\n' "${folders[@]}")
 
 # Select folder using rofi
-selected_folder=$(echo -e "$folder_string" | rofi -dmenu -p "Select Folder:" -theme selector-big.rasi)
+selected_folder=$(echo -e "$folder_string" | rofi -dmenu -p "Select Folder:")
 
 # Check if a folder was selected
 if [ -z "$selected_folder" ]; then

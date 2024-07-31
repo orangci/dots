@@ -19,7 +19,6 @@ in {
         border-color:       transparent;
     }
 
-
     // Main //
     window {
         enabled:                     true;
@@ -33,26 +32,21 @@ in {
         border-color:                transparent;
         background-color:            @main-bg;
         width:                       100%;
+        height: 80%;
     }
     mainbox {
         enabled:                     true;
         orientation:                 horizontal;
-        children:                    [ "dummy", "frame", "dummy" ];
         background-color:            transparent;
     }
-    frame {
-        children:                    [ "listview" ];
-        background-color:            transparent;
-    }
-
 
     // Lists //
     listview {
         enabled:                     true;
-        spacing:                     10em;
-        padding:                     4em;
+        spacing:                     1em;
+        padding:                     2em;
         columns:                     4;
-        lines:                       1;
+        lines:                       4;
         dynamic:                     false;
         fixed-height:                false;
         reverse:                     true;
@@ -60,18 +54,13 @@ in {
         background-color:            transparent;
         text-color:                  @main-fg;
     }
-    dummy {
-        width:                       2em;
-        expand:                      false;
-        background-color:            transparent;
-    }
 
 
     // Elements //
     element {
         enabled:                     true;
         spacing:                     0em;
-        padding:                     0em;
+        padding:                     1em;
         cursor:                      pointer;
         background-color:            transparent;
         text-color:                  @main-fg;
@@ -84,10 +73,10 @@ in {
     }
     element-icon {
         cursor:                      inherit;
-        size:                        30em;
+        size:                        10em;
         background-color:            transparent;
         text-color:                  inherit;
-        expand:                      false;
+        expand:                      true;
         border-radius:               15px;
     }
     element-text {
