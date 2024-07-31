@@ -48,4 +48,4 @@ No need to clone the repository, the install script will do that for you. Just d
 - [x] Create a rofi wallpaper selector thing.
 - [ ] Move back to SDDM or some other DM because I want something pretty.
 - [x] Make swaync notifications pretty.
-- [ ] Make those annoying folders in $HOME disappear, they aren't welcome.
+- [x] Make those annoying folders in $HOME disappear, they aren't welcome.
