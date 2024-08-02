@@ -225,6 +225,10 @@
     nixfmt-rfc-style
     catppuccinifier-gui
     swww
+    swappy
+    appimage-run
+    networkmanagerapplet
+    yad
     grim
     slurp
     gnome.file-roller
