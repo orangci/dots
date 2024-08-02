@@ -45,10 +45,10 @@ Press `SUPER + ?` to open a list of all keybindings.
  
 ## Todo
 - [x] Write an installation script
-- [ ] Update README screenshots
-- [ ] Implement proper Android virtualization. 
 - [x] Create a rofi wallpaper selector thing.
-- [ ] Move back to SDDM or some other DM because I want something pretty.
 - [x] Make swaync notifications pretty.
 - [x] Make those annoying folders in $HOME disappear, they aren't welcome.
 - [x] Add something that lists all the keybindings.
+- [ ] Move back to SDDM or some other DM because I want something pretty.
+- [ ] Update README screenshots
+- [ ] Implement proper Android virtualization. 
