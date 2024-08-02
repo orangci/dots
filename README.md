@@ -13,7 +13,7 @@ What I use:
 - **Editor** • [`Neovim`](https://neovim.io/)
 - **Browser** • [`Firefox`](https://www.mozilla.org/en-US/firefox/)
 - **Lockscreen** • [`Hyprlock`](https://github.com/hyprwm/hyprlock)
-- **DM** • [`tuigreet`](https://github.com/apognu/tuigreet)
+- **DM** • [`sddm`](https://github.com/sddm/sddm)
 - **Wallpaper Daemon** • [`swww`](https://github.com/LGFae/swww)
 - **File Manager** • `Thunar`
 - **Screenshots** • [`grimblast`](https://github.com/hyprwm/contrib)
@@ -49,6 +49,6 @@ Press `SUPER + ?` to open a list of all keybindings.
 - [x] Make swaync notifications pretty.
 - [x] Make those annoying folders in $HOME disappear, they aren't welcome.
 - [x] Add something that lists all the keybindings.
-- [ ] Move back to SDDM or some other DM because I want something pretty.
+- [x] Move back to SDDM or some other DM because I want something pretty.
 - [ ] Update README screenshots
 - [ ] Implement proper Android virtualization. 
