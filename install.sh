@@ -1,5 +1,19 @@
 #!/usr/bin/env bash
 
+if [ -n "$(grep -i nixos < /etc/os-release)" ]; then
+  echo "deez" > /dev/null
+else
+  echo "This is not NixOS or the distribution information is not available; this installation script only works for NixOS."
+  exit
+fi
+
+if command -v git &> /dev/null; then
+  echo "nuts" > /dev/null
+else
+  nix-shell -p git
+fi
+
+
 # Step 1: cd to $HOME
 cd $HOME || exit
 
