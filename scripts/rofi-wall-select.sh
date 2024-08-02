@@ -57,6 +57,8 @@ selected_image_file="${images[$selected_index]}"
 if [ -n "$selected_image_file" ]; then
     swww img $selected_folder/$selected_image_file --transition-type random --transition-fps 60
     echo "Wallpaper set to $selected_folder/$selected_image_file"
+    echo "\$WALLPAPER=$selected_folder/$selected_image_file" > /tmp/.current_wallpaper_path_hyprlock
+    echo $selected_folder/$selected_image_file > /tmp/.current_wallpaper_path
 else
     echo "Image not found."
     exit 1
