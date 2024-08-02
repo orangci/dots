@@ -10,34 +10,42 @@ A smol (big lie, it's not that smol.. see the todo section) n' cozy NixOS with H
 ![Wallpaper selector](https://raw.githubusercontent.com/orxngc/dots/anacreon/assets/wallpaper-selector.png)
 ![Minecraft launcher](https://raw.githubusercontent.com/orxngc/dots/anacreon/assets/minecraft-launcher.png)
 </details>
+<details>
 <summary>Hyprlock</summary>
 
 ![Lockscreen 2](https://raw.githubusercontent.com/orxngc/dots/anacreon/assets/lockscreen-2.png)
 </details>
+<details> 
 <summary>Hyprlock</summary>
 
 ![Minecraft launcher](https://raw.githubusercontent.com/orxngc/dots/anacreon/assets/minecraft-launcher.png)
 </details>
+<details> 
 <summary>Fetch</summary>
 
 ![Fetch](https://raw.githubusercontent.com/orxngc/dots/anacreon/assets/fetch.png)
 </details>
+<details> 
 <summary>nvim</summary>
 
 ![nvim](https://raw.githubusercontent.com/orxngc/dots/anacreon/assets/nvim.png)
 </details>
+<details> 
 <summary>ags & thunar</summary>
 
 ![ags & thunar](https://raw.githubusercontent.com/orxngc/dots/anacreon/assets/ags-thunar.png)
 </details>
+<details> 
 <summary>swaync</summary>
 
 ![swaync](https://raw.githubusercontent.com/orxngc/dots/anacreon/assets/swaync.png)
 </details>
+<details> 
 <summary>wlogout</summary>
 
 ![wlogout](https://raw.githubusercontent.com/orxngc/dots/anacreon/assets/wlogout.png)
 </details>
+<details> 
 <summary>clipboard</summary>
 
 ![clipse](https://raw.githubusercontent.com/orxngc/dots/anacreon/assets/clipse.png)
