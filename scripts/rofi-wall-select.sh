@@ -28,10 +28,13 @@ if [ ${#images[@]} -eq 0 ]; then
     exit 1
 fi
 
+# Shuffle the array of images
+shuffled_images=($(shuf -e "${images[@]}"))
+
 # Generate the rofi image list with previews
 image_list=""
-for i in "${!images[@]}"; do
-    image="${images[$i]}"
+for i in "${!shuffled_images[@]}"; do
+    image="${shuffled_images[$i]}"
     filename=$(basename "$image")
     filename_without_extension=$(basename "$image" | sed 's/\.[^.]*$//')
     image_path=$(realpath "$selected_folder/$filename")  # Use realpath to get the absolute path
@@ -51,14 +54,14 @@ fi
 selected_index=$selected_entry
 
 # Get the full path of the selected image
-selected_image_file="${images[$selected_index]}"
+selected_image_file="${shuffled_images[$selected_index]}"
 
 # Set the selected image as the wallpaper using swww
 if [ -n "$selected_image_file" ]; then
-    swww img $selected_folder/$selected_image_file --transition-type random --transition-fps 60
+    swww img "$selected_folder/$selected_image_file" --transition-type random --transition-fps 60
     echo "Wallpaper set to $selected_folder/$selected_image_file"
     echo "\$WALLPAPER=$selected_folder/$selected_image_file" > /tmp/.current_wallpaper_path_hyprlock
-    echo $selected_folder/$selected_image_file > /tmp/.current_wallpaper_path
+    echo "$selected_folder/$selected_image_file" > /tmp/.current_wallpaper_path
 else
     echo "Image not found."
     exit 1
