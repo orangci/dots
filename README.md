@@ -3,9 +3,9 @@ A smol (big lie, it's not that smol.. see the todo section) n' cozy NixOS with H
 
 ## Screenshots
 <details> 
-![Bindings](https://raw.githubusercontent.com/orxngc/dots/anacreon/assets/bindings.png)
 <summary>Rofi</summary>
 
+![Bindings](https://raw.githubusercontent.com/orxngc/dots/anacreon/assets/bindings.png)
 ![Application launcher](https://raw.githubusercontent.com/orxngc/dots/anacreon/assets/application-launcher.png)
 ![Wallpaper selector](https://raw.githubusercontent.com/orxngc/dots/anacreon/assets/wallpaper-selector.png)
 </details>
