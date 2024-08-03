@@ -9,13 +9,11 @@ let
     (import ../hosts/${host}/variables.nix)
     extraMonitorSettings
     boxyStyle
-    waybarEnable
     ;
 in
 with lib; {
   wayland.windowManager.hyprland = {
     enable = true;
-    xwayland.enable = true;
     systemd.enable = true;
     # plugins = [
     # hyprplugins.hyprtrailss
@@ -118,7 +116,7 @@ with lib; {
         exec-once = dbus-update-activation-environment --systemd --all
         exec-once = systemctl --user import-environment QT_QPA_PLATFORMTHEME WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
         exec-once = ags &
-        ${if waybarEnable then '''' else ''# ''}exec-once = killall -q waybar;waybar
+        # exec-once = killall -q waybar;waybar
         exec-once = killall -q swaync;swaync
         # exec-once = nm-applet --indicator
         exec-once = lxqt-policykit-agent

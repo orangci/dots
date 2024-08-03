@@ -1,12 +1,13 @@
-{
-  pkgs,
-  username,
-  host,
-  inputs,
-  ...
-}: let
+{ pkgs
+, username
+, host
+, inputs
+, ...
+}:
+let
   inherit (import ./variables.nix) gitUsername gitEmail;
-in {
+in
+{
   home = {
     # Home Manager Settings
     username = "${username}";
@@ -33,7 +34,7 @@ in {
         show_panel=false
         line_size=5
         text_size=20
-        text_font=JetBrainsMono NFM
+        text_font=Raleway
         paint_mode=brush
         early_exit=true
         fill_shape=false
@@ -42,17 +43,17 @@ in {
 
     # Scripts
     packages = [
-      (import ../../scripts/squirtle.nix {inherit pkgs;})
-      (import ../../scripts/rofi-launcher.nix {inherit pkgs;})
-      (import ../../scripts/rofi-prism-exec.nix {inherit pkgs;})
-      (import ../../scripts/rofi-calc.nix {inherit pkgs;})
-      (import ../../scripts/rofi-wall-select.nix {inherit pkgs;})
-      (import ../../scripts/walls.nix {inherit pkgs;})
-      (import ../../scripts/nvidia-offload.nix {inherit pkgs;})
-      (import ../../scripts/web-search.nix {inherit pkgs;})
-      (import ../../scripts/screenshootin.nix {inherit pkgs;})
-      (import ../../scripts/logout-exit.nix {inherit pkgs;})
-      (import ../../scripts/list-bindings.nix {inherit pkgs;})
+      (import ../../scripts/squirtle.nix { inherit pkgs; })
+      (import ../../scripts/rofi-launcher.nix { inherit pkgs; })
+      (import ../../scripts/rofi-prism-exec.nix { inherit pkgs; })
+      (import ../../scripts/rofi-calc.nix { inherit pkgs; })
+      (import ../../scripts/rofi-wall-select.nix { inherit pkgs; })
+      (import ../../scripts/walls.nix { inherit pkgs; })
+      (import ../../scripts/nvidia-offload.nix { inherit pkgs; })
+      (import ../../scripts/web-search.nix { inherit pkgs; })
+      (import ../../scripts/screenshootin.nix { inherit pkgs; })
+      (import ../../scripts/logout-exit.nix { inherit pkgs; })
+      (import ../../scripts/list-bindings.nix { inherit pkgs; })
       inputs.nixvim.packages.${pkgs.system}.default
     ];
   };
@@ -61,7 +62,7 @@ in {
   imports = [
     ../../config/hyprland.nix
     ../../config/swaync.nix
-    ../../config/waybar.nix
+    # ../../config/waybar.nix
     ../../config/rofi-styles
     ../../config/fastfetch.nix
     # ../../config/firefox.nix
@@ -83,8 +84,8 @@ in {
 
   dconf.settings = {
     "org/virt-manager/virt-manager/connections" = {
-      autoconnect = ["qemu:///system"];
-      uris = ["qemu:///system"];
+      autoconnect = [ "qemu:///system" ];
+      uris = [ "qemu:///system" ];
     };
   };
 
@@ -103,8 +104,8 @@ in {
     iconTheme = {
       name = "Papirus-Dark";
       package = pkgs.catppuccin-papirus-folders.override {
-      flavor = "mocha";
-      accent = "blue";
+        flavor = "mocha";
+        accent = "mauve";
       };
     };
     gtk3.extraConfig = {
@@ -150,7 +151,7 @@ in {
       enable = true;
       scripts = [
         pkgs.mpvScripts.mpris
-        pkgs.mpvScripts.uosc
+        # pkgs.mpvScripts.uosc
         pkgs.mpvScripts.videoclip
         pkgs.mpvScripts.mpv-cheatsheet
       ];
@@ -213,20 +214,20 @@ in {
     home-manager.enable = true;
     hyprlock.enable = true;
   };
-    xdg.mimeApps = {
+  xdg.mimeApps = {
     enable = true;
     defaultApplications = {
-      "application/pdf" = ["firefox.desktop"];
-      "image/*" = ["qimgv.desktop"];
-      "video/*" = ["mpv.desktop"];
-      "audio/*" = ["mpv.desktop"];
-      "text/*" = ["neovide.desktop"];
-      "application/gzip" = ["file-roller.desktop"];
-      "application/x-bzip" = ["file-roller.desktop"];
-      "application/x-bzip-2" = ["file-roller.desktop"];
-      "application/x-7z-compressed" = ["file-roller.desktop"];
-      "application/zip" = ["file-roller.desktop"];
-      "application/epub+zip" = ["calibre-ebook-viewer.desktop"];
+      "application/pdf" = [ "firefox.desktop" ];
+      "image/*" = [ "qimgv.desktop" ];
+      "video/*" = [ "mpv.desktop" ];
+      "audio/*" = [ "mpv.desktop" ];
+      "text/*" = [ "neovide.desktop" ];
+      "application/gzip" = [ "file-roller.desktop" ];
+      "application/x-bzip" = [ "file-roller.desktop" ];
+      "application/x-bzip-2" = [ "file-roller.desktop" ];
+      "application/x-7z-compressed" = [ "file-roller.desktop" ];
+      "application/zip" = [ "file-roller.desktop" ];
+      "application/epub+zip" = [ "calibre-ebook-viewer.desktop" ];
     };
   };
 }

@@ -105,14 +105,14 @@
 
   # Extra Module Options
   drivers = {
-    amdgpu.enable = true;
+    amdgpu.enable = false;
     nvidia.enable = false;
     nvidia-prime = {
       enable = false;
       intelBusID = "";
       nvidiaBusID = "";
     };
-    intel.enable = false;
+    intel.enable = true;
   };
   vm.guest-services.enable = false;
   local.hardware-clock.enable = false;
@@ -153,16 +153,15 @@
     seahorse.enable = true;
     fuse.userAllowOther = true;
     noisetorch.enable = true;
-    mtr.enable = true;
     gnupg.agent = {
       enable = true;
       enableSSHSupport = true;
     };
     steam = {
       enable = false;
-      gamescopeSession.enable = true;
-      remotePlay.openFirewall = true;
-      dedicatedServer.openFirewall = true;
+      # gamescopeSession.enable = true;
+      # remotePlay.openFirewall = true;
+      # dedicatedServer.openFirewall = true;
     };
     thunar = {
       enable = true;
@@ -186,19 +185,19 @@
     mutableUsers = true;
   };
 
-  environment.systemPackages = with pkgs; let 
-    sddm-themes = pkgs.callPackage ../../config/sddm.nix {};
-    in [
-    sddm-themes.sugar-dark
+  environment.systemPackages = with pkgs; let
+    sddm-themes = pkgs.callPackage ../../config/sddm.nix { };
+  in
+  [
+    # sddm-themes.sugar-dark
     sddm-themes.astronaut
-    sddm-themes.tokyo-night
+    # sddm-themes.tokyo-night
     wget
     killall
     git
     cmatrix
     lolcat
     fastfetch
-    htop
     btop
     lxqt.lxqt-policykit
     unzip
@@ -212,18 +211,15 @@
     socat
     ripgrep
     lsd
-    lshw
-    pkg-config
-    meson
+    lshw-gui
+    # pkg-config
     cmus
-    gnumake
-    ninja
+    # ninja
+    gnumake # gnumake
     brightnessctl
     rink
     playerctl
     nh
-    nixfmt-rfc-style
-    catppuccinifier-gui
     swww
     swappy
     appimage-run
@@ -231,12 +227,12 @@
     yad
     grim
     slurp
-    gnome.file-roller
+    file-roller
     swaynotificationcenter
-    transmission-gtk
+    # transmission-gtk # bittorent client
     mpv
     obs-studio
-    rustup
+    # rustup # rust toolchain installer
     fzf
     wlogout
     pavucontrol
@@ -253,9 +249,8 @@
     traceroute
     cava
     speedtest-cli
-    cmus
     trashy
-    glow # markdown viwer
+    # glow # markdown viwer
     clipse
     ffmpeg
     bat
@@ -267,7 +262,7 @@
     imagemagick
     catimg
     otpclient
-    ani-cli
+    # ani-cli
     nwg-look # gtk settings
     mya # myanimelist owo
     nix-prefetch
@@ -290,8 +285,6 @@
     vencord
     figlet
     wf-recorder
-    greetd.tuigreet
-    sddm-astronaut
     xfce.tumbler # for image thumbnails in thunar
     arrpc
     ipfetch
@@ -326,6 +319,7 @@
   # Extra Portal Configuration
   xdg.portal = {
     enable = true;
+    wlr.enable = true;
     extraPortals = [
       pkgs.xdg-desktop-portal-gtk
       pkgs.xdg-desktop-portal
@@ -340,10 +334,10 @@
   # Services to start
   services = {
     displayManager.sddm = {
-        enable = true; # Enable SDDM.
-        wayland.enable = true;
-        theme = "astronaut";
-      };
+      enable = true; # Enable SDDM.
+      wayland.enable = true;
+      theme = "astronaut";
+    };
     xserver = {
       enable = false;
       xkb = {
@@ -355,12 +349,12 @@
       enable = false;
       autodetect = true;
     };
-
     libinput.enable = true;
     gvfs.enable = true;
     samba.enable = true;
     openssh.enable = true;
     printing.enable = true;
+    blueman.enable = true;
     gnome.gnome-keyring.enable = true;
     avahi = {
       enable = true;
@@ -389,11 +383,11 @@
     bluetooth.powerOnBoot = true;
 
     # OpenGL
-    opengl = {
+    graphics = {
       enable = true;
     };
   };
-  services.blueman.enable = true;
+
   security = {
     # Security / Polkit
     rtkit.enable = true;
