@@ -83,8 +83,7 @@ Press `SUPER + ?` to open a list of all keybindings.
 
 ## Last but not least, credits!
 <details>
-<summary>Thank you to:</summary>
-*An important note: many of the configurations in my dots are modified from __many__ other opensource dotfile repositories. Without those, this wouldn't be possible!*
+<summary>*An important note: many of the configurations in my dots are modified from many other opensource dotfile repositories. Without those, this wouldn't be possible!*</summary>
 
 - https://gitlab.com/Zaney/zaneyos
 - https://github.com/Jas-SinghFSU/HyprPanel
