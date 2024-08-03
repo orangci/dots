@@ -67,6 +67,7 @@ Press `SUPER + ?` to open a list of all keybindings.
 ## Todo
 <details> 
 <summary>Completed</summary>
+
 - [x] ~~Write an installation script.~~
 - [x] ~~Create a rofi wallpaper selector thing.~~
 - [x] ~~Make swaync notifications pretty.~~
@@ -75,6 +76,7 @@ Press `SUPER + ?` to open a list of all keybindings.
 - [x] ~~Move back to SDDM or some other DM because I want something pretty.~~
 - [x] ~~Update README screenshots / add a video showcase.~~
 </details>
+
 - [ ] Cleanup/optimize the flake — try to make it take up less disk space.
 - [ ] Implement proper Android virtualization. I want to play Fate/Grand Order on the PC..!
 
