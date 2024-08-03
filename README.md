@@ -81,9 +81,11 @@ Press `SUPER + ?` to open a list of all keybindings.
 - [ ] Implement proper Android virtualization. I want to play Fate/Grand Order on the PC..!
 - [ ] Move hyprpanel to home-manager as soon as Jas-SinghFSU/HyprPanel#47 is merged.
 
+## Last but not least, credits!
 <details>
-<summary>Last but not least, credits!</summary>
+<summary>Thank you to:</summary>
 *An important note: many of the configurations in my dots are modified from __many__ other opensource dotfile repositories. Without those, this wouldn't be possible!*
+
 - https://gitlab.com/Zaney/zaneyos
 - https://github.com/Jas-SinghFSU/HyprPanel
 - https://github.com/MrVivekRajan/Hypr-Dots
