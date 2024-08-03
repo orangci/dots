@@ -77,8 +77,9 @@ Press `SUPER + ?` to open a list of all keybindings.
 - [x] ~~Update README screenshots / add a video showcase.~~
 </details>
 
-- [ ] Cleanup/optimize the flake — try to make it take up less disk space.
+- [ ] Cleanup/optimize the flake — try to make it take up less disk space. Note: partially done, but it's still kinda big. I'm going to have to think about this.
 - [ ] Implement proper Android virtualization. I want to play Fate/Grand Order on the PC..!
+- [ ] Move hyprpanel to home-manager as soon as Jas-SinghFSU/HyprPanel#47 is merged.
 
 <details>
 <summary>Last but not least, credits!</summary>
