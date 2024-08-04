@@ -4,10 +4,10 @@
   username,
   ...
 }: let
-  inherit (import ../hosts/${host}/variables.nix) waybarStyle waybarBottom;
+  inherit (import ../../hosts/${host}/variables.nix) waybarStyle waybarBottom;
 in {
   programs.waybar = {
-      enable = true;
+      enable = true; # Curious as to why waybar isn't working? Go to home.nix and uncomment the import line for this file; it should be around line 59.
       package = pkgs.waybar;
       settings = [
         {
@@ -194,5 +194,5 @@ in {
         }
       ];
     };
-  imports = [./waybar-styles/${waybarStyle}.nix];
+  imports = [./${waybarStyle}.nix];
 }

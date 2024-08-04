@@ -56,7 +56,7 @@ in
   imports = [
     ../../config/hyprland.nix
     ../../config/swaync.nix
-    # ../../config/waybar.nix
+    # ../../config/waybar
     ../../config/rofi-styles
     ../../config/fastfetch.nix
     # ../../config/firefox.nix
