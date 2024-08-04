@@ -23,9 +23,9 @@ in
         recursive = true;
       };
       ".config/starship.toml".source = ../../config/starship.toml;
-      ".face.icon".source = ../../config/face.png;
-      ".config/Vencord/themes/orangetweaks.css".source = ../../config/Configs/vencordthemes/orangetweaks.css;
-      ".config/Vencord/themes/catppuccin.css".source = ../../config/Configs/vencordthemes/catppuccin.css;
+      ".face.icon".source = ../../files/face.png;
+      ".config/Vencord/themes/orangetweaks.css".source = ../../files/vencordthemes/orangetweaks.css;
+      ".config/Vencord/themes/catppuccin.css".source = ../../files/vencordthemes/catppuccin.css;
       ".config/swappy/config".text = ''
         [Default]
         save_dir=/home/${username}/Pictures/Screenshots
