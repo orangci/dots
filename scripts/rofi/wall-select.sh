@@ -7,13 +7,21 @@ folders=(
     "$HOME/Pictures/anibg"
 )
 
-# Convert array to rofi string
-folder_string=$(printf '%s\n' "${folders[@]}")
+# Default folder for the --fast option
+default_folder="$HOME/Pictures/walls"
 
-# Select folder using rofi
-selected_folder=$(echo -e "$folder_string" | rofi -dmenu -p "Select Folder:")
+# Check if the --fast option is provided
+if [ "$1" == "--fast" ]; then
+    selected_folder="$default_folder"
+else
+    # Convert array to rofi string
+    folder_string=$(printf '%s\n' "${folders[@]}")
 
-# Check if a folder was selected
+    # Select folder using rofi
+    selected_folder=$(echo -e "$folder_string" | rofi -dmenu -p "Select Folder:")
+fi
+
+# Check if a folder was selected or default folder is used
 if [ -z "$selected_folder" ]; then
     echo "No folder selected."
     exit 1
