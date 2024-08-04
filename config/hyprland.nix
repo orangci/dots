@@ -151,10 +151,10 @@ with lib; {
         bind = SUPER,Return,exec,kitty 
         bind = SUPER,K,exec,rofi -show drun -theme launcher.rasi # application launcher rofi
         bind = SUPER,R,exec,rofi -show run -theme run.rasi # run individual commands with rofi
-        bind = SUPER,M,exec,rofi-prism-exec # minecraft launcher powered by prism and rofi
+        bind = SUPER,M,exec,rofi-prism # minecraft launcher powered by prism and rofi
         bind = SUPER,C,exec,rofi-calc
-        bind = SUPERSHIFT,W,exec,web-search
-        bind = SUPER,A,exec,swaync-client -t 
+        bind = SUPERSHIFT,W,exec,rofi-web-search
+        bind = SUPER,A,exec,swaync-cliennt -t 
         bind = SUPERSHIFT,A,exec,swaync-client -C # clear swaync notifs
         bind = SUPER,W,exec,firefox
         bind = SUPER,PERIOD,exec,bemoji -t # emoji picker w/ rofi

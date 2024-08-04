@@ -26,7 +26,6 @@ in
       ".face.icon".source = ../../config/face.png;
       ".config/Vencord/themes/orangetweaks.css".source = ../../config/Configs/vencordthemes/orangetweaks.css;
       ".config/Vencord/themes/catppuccin.css".source = ../../config/Configs/vencordthemes/catppuccin.css;
-      ".config/rofi/rofi-prism.sh".source = ../../scripts/rofi-prism.sh;
       ".config/swappy/config".text = ''
         [Default]
         save_dir=/home/${username}/Pictures/Screenshots
@@ -41,19 +40,14 @@ in
       '';
     };
 
-    # Scripts
     packages = [
-      (import ../../scripts/squirtle.nix { inherit pkgs; })
-      (import ../../scripts/rofi-launcher.nix { inherit pkgs; })
-      (import ../../scripts/rofi-prism-exec.nix { inherit pkgs; })
-      (import ../../scripts/rofi-calc.nix { inherit pkgs; })
-      (import ../../scripts/rofi-wall-select.nix { inherit pkgs; })
-      (import ../../scripts/walls.nix { inherit pkgs; })
-      (import ../../scripts/nvidia-offload.nix { inherit pkgs; })
-      (import ../../scripts/web-search.nix { inherit pkgs; })
-      (import ../../scripts/screenshootin.nix { inherit pkgs; })
+      (import ../../scripts/aliases/list-bindings.nix { inherit pkgs; })
+      (import ../../scripts/rofi/calc.nix { inherit pkgs; })
+      (import ../../scripts/aliases/rofi-prism.nix { inherit pkgs; })
+      (import ../../scripts/aliases/rofi-wall-select.nix { inherit pkgs; })
+      (import ../../scripts/aliases/rofi-web-search.nix { inherit pkgs; })
+      (import ../../scripts/aliases/wallset.nix { inherit pkgs; })
       (import ../../scripts/logout-exit.nix { inherit pkgs; })
-      (import ../../scripts/list-bindings.nix { inherit pkgs; })
       inputs.nixvim.packages.${pkgs.system}.default
     ];
   };
@@ -189,7 +183,7 @@ in
       shellAliases = {
         sv = "sudo nvim";
         fr = "nh os switch --hostname ${host} /home/${username}/dots";
-        frr = "nh os switch --hostname ${host} /home/${username}/dots;notify-send Rebuilt;nix-collect-garbage --delete-old && sudo nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration boot;notify-send Cleaned;exit";
+        frfr = "nh os switch --hostname ${host} /home/${username}/dots;notify-send Rebuilt;nix-collect-garbage --delete-old && sudo nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration boot;notify-send Cleaned;exit";
         flake-update = "nh os switch --hostname ${host} --update /home/${username}/dots";
         gcnix = "nix-collect-garbage --delete-old && sudo nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration boot";
         v = "nvim";
@@ -202,12 +196,9 @@ in
         tr = "trash";
         ".." = "cd ..";
         neofetch = "fastfetch";
-        gcrec = "rm -rf ~/Videos/snapshots/*";
         find = "fd";
-        ztop = "zfxtop";
         spinmal = "bash $HOME/Documents/spinPTW.sh";
         ga = "git add .";
-        cm = "git commit -am --verbose";
         push = "git push";
       };
     };
