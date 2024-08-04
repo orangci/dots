@@ -5,49 +5,49 @@ A smol (big lie, it's not that smol.. see the todo section) n' cozy NixOS with H
 <details> 
 <summary>Rofi</summary>
 
-![Bindings](https://raw.githubusercontent.com/orxngc/dots/anacreon/assets/bindings.png)
-![Application launcher](https://raw.githubusercontent.com/orxngc/dots/anacreon/assets/application-launcher.png)
-![Wallpaper selector](https://raw.githubusercontent.com/orxngc/dots/anacreon/assets/wallpaper-selector.png)
+![Bindings](https://raw.githubusercontent.com/orxngc/dots/anacreon/.github/bindings.png)
+![Application launcher](https://raw.githubusercontent.com/orxngc/dots/anacreon/.github/application-launcher.png)
+![Wallpaper selector](https://raw.githubusercontent.com/orxngc/dots/anacreon/.github/wallpaper-selector.png)
 </details>
 <details>
 <summary>Hyprlock</summary>
 
-![Lockscreen 2](https://raw.githubusercontent.com/orxngc/dots/anacreon/assets/lockscreen-2.png)
+![Lockscreen 2](https://raw.githubusercontent.com/orxngc/dots/anacreon/.github/lockscreen-2.png)
 </details>
 <details> 
 <summary>Minecraft launcher</summary>
 
-![Minecraft launcher](https://raw.githubusercontent.com/orxngc/dots/anacreon/assets/minecraft-launcher.png)
+![Minecraft launcher](https://raw.githubusercontent.com/orxngc/dots/anacreon/.github/minecraft-launcher.png)
 </details>
 <details> 
 <summary>Fetch</summary>
 
-![Fetch](https://raw.githubusercontent.com/orxngc/dots/anacreon/assets/fetch.png)
+![Fetch](https://raw.githubusercontent.com/orxngc/dots/anacreon/.github/fetch.png)
 </details>
 <details> 
 <summary>nvim</summary>
 
-![nvim](https://raw.githubusercontent.com/orxngc/dots/anacreon/assets/nvim.png)
+![nvim](https://raw.githubusercontent.com/orxngc/dots/anacreon/.github/nvim.png)
 </details>
 <details> 
 <summary>ags & thunar</summary>
 
-![ags & thunar](https://raw.githubusercontent.com/orxngc/dots/anacreon/assets/ags-thunar.png)
+![ags & thunar](https://raw.githubusercontent.com/orxngc/dots/anacreon/.github/ags-thunar.png)
 </details>
 <details> 
 <summary>swaync</summary>
 
-![swaync](https://raw.githubusercontent.com/orxngc/dots/anacreon/assets/swaync.png)
+![swaync](https://raw.githubusercontent.com/orxngc/dots/anacreon/.github/swaync.png)
 </details>
 <details> 
 <summary>wlogout</summary>
 
-![wlogout](https://raw.githubusercontent.com/orxngc/dots/anacreon/assets/wlogout.png)
+![wlogout](https://raw.githubusercontent.com/orxngc/dots/anacreon/.github/wlogout.png)
 </details>
 <details> 
 <summary>clipboard</summary>
 
-![clipse](https://raw.githubusercontent.com/orxngc/dots/anacreon/assets/clipse.png)
+![clipse](https://raw.githubusercontent.com/orxngc/dots/anacreon/.github/clipse.png)
 </details>
 
 ## Overview
