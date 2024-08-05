@@ -43,10 +43,6 @@ in
     packages = [
       (import ../../scripts/aliases/list-bindings.nix { inherit pkgs; })
       (import ../../scripts/rofi/calc.nix { inherit pkgs; })
-      (import ../../scripts/aliases/rofi-prism.nix { inherit pkgs; })
-      (import ../../scripts/aliases/rofi-wall-select.nix { inherit pkgs; })
-      (import ../../scripts/aliases/rofi-web-search.nix { inherit pkgs; })
-      (import ../../scripts/aliases/wallset.nix { inherit pkgs; })
       (import ../../scripts/logout-exit.nix { inherit pkgs; })
       inputs.nixvim.packages.${pkgs.system}.default
     ];
