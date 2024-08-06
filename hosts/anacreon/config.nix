@@ -4,6 +4,7 @@
 , username
 , options
 , lib
+, inputs
 , ...
 }: {
   imports = [
@@ -53,7 +54,7 @@
   # Styling Options
   stylix = {
     enable = true;
-    image = ../../config/face.png;
+    image = ../../files/face.png;
     base16Scheme = {
       base00 = "1e1e2e";
       base01 = "181825";
@@ -147,7 +148,10 @@
   };
 
   programs = {
-    hyprland.enable = true;
+    hyprland = {
+      enable = true;
+      package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+    };
     # firefox.enable = true;
     dconf.enable = true;
     seahorse.enable = true;
@@ -319,7 +323,6 @@
   # Extra Portal Configuration
   xdg.portal = {
     enable = true;
-    wlr.enable = true;
     extraPortals = [
       pkgs.xdg-desktop-portal-gtk
       pkgs.xdg-desktop-portal

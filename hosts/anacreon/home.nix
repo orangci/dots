@@ -29,7 +29,7 @@ in
       ".config/swappy/config".text = ''
         [Default]
         save_dir=/home/${username}/Pictures/Screenshots
-        save_filename_format=swappy-%Y%m%d-%H%M%S.png
+        save_filename_format=%M %d-%H.%M.%S.png
         show_panel=false
         line_size=5
         text_size=20
@@ -41,12 +41,7 @@ in
     };
 
     packages = [
-      (import ../../scripts/aliases/list-bindings.nix { inherit pkgs; })
       (import ../../scripts/rofi/calc.nix { inherit pkgs; })
-      (import ../../scripts/aliases/rofi-prism.nix { inherit pkgs; })
-      (import ../../scripts/aliases/rofi-wall-select.nix { inherit pkgs; })
-      (import ../../scripts/aliases/rofi-web-search.nix { inherit pkgs; })
-      (import ../../scripts/aliases/wallset.nix { inherit pkgs; })
       (import ../../scripts/logout-exit.nix { inherit pkgs; })
       inputs.nixvim.packages.${pkgs.system}.default
     ];
@@ -58,10 +53,10 @@ in
     ../../config/swaync.nix
     # ../../config/waybar
     ../../config/rofi-styles
+    ../../config/ags.nix
     ../../config/fastfetch.nix
     # ../../config/firefox.nix
     ../../config/hyprlock.nix
-    ../../config/ags.nix
   ];
 
   # Define Settings For Xresources
@@ -109,11 +104,11 @@ in
       gtk-application-prefer-dark-theme = 1;
     };
   };
-  # qt = {
-  #   enable = true;
-  #   style.name = "adwaita-dark";
-  #   platformTheme.name = "gtk3";
-  # };
+  qt = {
+    enable = true;
+    style.name = "adwaita-dark";
+    platformTheme.name = "gtk3";
+  };
 
   services = {
     hypridle = {
@@ -182,10 +177,10 @@ in
       '';
       shellAliases = {
         sv = "sudo nvim";
-        fr = "nh os switch --hostname ${host} /home/${username}/dots";
-        frfr = "nh os switch --hostname ${host} /home/${username}/dots;notify-send Rebuilt;nix-collect-garbage --delete-old && sudo nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration boot;notify-send Cleaned;exit";
-        flake-update = "nh os switch --hostname ${host} --update /home/${username}/dots";
-        gcnix = "nix-collect-garbage --delete-old && sudo nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration boot";
+        fr = "sudo echo Shikanoko Nokonoko Koshitantan;nh os switch --hostname ${host} /home/${username}/dots";
+        frfr = "sudo echo Shikanoko Nokonoko Koshitantan;nh os switch --hostname ${host} /home/${username}/dots;notify-send Rebuilt;nix-collect-garbage --delete-old && sudo nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration boot;notify-send Cleaned;exit";
+        flake-update = "sudo echo Shikanoko Nokonoko Koshitantan;nh os switch --hostname ${host} --update /home/${username}/dots";
+        gcnix = "sudo echo Shikanoko Nokonoko Koshitantan;nix-collect-garbage --delete-old && sudo nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration boot";
         v = "nvim";
         ls = "lsd";
         ll = "lsd -l";
