@@ -1,5 +1,5 @@
 # orangc's flake
-A smol (big lie, it's not that smol.. see the todo section) n' cozy NixOS with Hyprland flake.
+A smol n' cozy NixOS with Hyprland flake.
 
 ## Screenshots
 <details> 
@@ -76,9 +76,9 @@ Press `SUPER + ?` to open a list of all keybindings.
 - [x] ~~Move back to SDDM or some other DM because I want something pretty.~~
 - [x] ~~Update README screenshots / add a video showcase.~~
 - [x] ~~Make a screen recording script with wf-recorder.~~
+- [x] ~~Cleanup/optimize the flake — try to make it take up less disk space.~~
 </details>
 
-- [ ] Cleanup/optimize the flake — try to make it take up less disk space. Note: partially done, but it's still kinda big. I'm going to have to think about this.
 - [ ] Implement proper Android virtualization. I want to play Fate/Grand Order on the PC..!
 - [ ] Move hyprpanel to home-manager as soon as Jas-SinghFSU/HyprPanel#74 is merged.
 
