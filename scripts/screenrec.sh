@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Generate a filename based on the current date and time
-output_file="/tmp/$(date +'%B-%d-%H.%M.%S').mp4"
+output_file="/tmp/$(date +'%B-%d-%H.%M.%S').mov"
 
 # Define the audio sink (adjust this to match your system's default audio sink)
 audio_sink="alsa_output.pci-0000_00_1b.0.analog-stereo.monitor"
@@ -23,7 +23,7 @@ if [ ! -f "$output_file" ]; then
 fi
 
 # Ask the user where to save the recording using yad
-save_location=$(yad --file --save --title="Save Recording As" --filename="$(date +'%B %d %H.%M.%S').mkv")
+save_location=$(yad --file --save --title="Save Recording As" --filename="$(date +'%B %d %H.%M.%S').mov")
 
 # Check if the user canceled the save location selection
 if [ -z "$save_location" ]; then

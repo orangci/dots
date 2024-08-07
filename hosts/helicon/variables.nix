@@ -3,11 +3,7 @@
   gitUsername = "orxngc";
   gitEmail = "orangc@proton.me";
 
-  # Theme
-  theme = "catppuccin-mocha";
-
   # Hyprland Settings
-  extraMonitorSettings = "";
   boxyStyle = false; # this disables blur, transparency, and border radius on most programs. It will change how *everything* looks.
   wlogout_horizontal = true; # toggles between two styles of wlogout
 

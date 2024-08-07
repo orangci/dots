@@ -255,7 +255,7 @@
     speedtest-cli
     trashy
     # glow # markdown viwer
-    clipse
+    cliphist
     ffmpeg
     bat
     prismlauncher
@@ -280,6 +280,7 @@
     zfxtop
     bemoji # for emoji picker
     pinta
+    zathura
     wtype # for emoji picker
     python3
     uwuify
