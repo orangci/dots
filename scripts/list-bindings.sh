@@ -27,7 +27,8 @@ yad --width=550 --height=900 \
 " + SHIFT + P" "Next track" \
 " + ALT + P" "Previous track" \
 " + SHIFT + C" "Launch VSCodium" \
-" + O" "Launch OBS" \
+" + O" "Start screen recording" \
+" + SHIFT + O" "Stop screen recording" \
 " + G" "Launch Chrome" \
 " + E" "File browser" \
 " + L" "Lock screen" \
@@ -37,6 +38,7 @@ yad --width=550 --height=900 \
 " + SHIFT + V" "Clear clipboard" \
 " + ;" "Pseudo tiling" \
 " + F" "Toggle fullscreen on focused" \
+" + B" "Toggle transparency on focused" \
 " + SHIFT + F" "Toggle floating on focused" \
 " + " "Move focus to arrow key direction" \
 " + SHIFT + " "Move focused window in arrow key direction" \

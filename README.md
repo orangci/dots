@@ -74,21 +74,20 @@ Press `SUPER + ?` to open a list of all keybindings.
 - [x] ~~Make those annoying folders in $HOME disappear, they aren't welcome.~~
 - [x] ~~Add something that lists all the keybindings.~~
 - [x] ~~Move back to SDDM or some other DM because I want something pretty.~~
-- [x] ~~Update README screenshots / add a video showcase.~~
+- [x] ~~Update README screenshots.~~
 - [x] ~~Make a screen recording script with wf-recorder.~~
 - [x] ~~Cleanup/optimize the flake — try to make it take up less disk space.~~
 </details>
 
 - [ ] Implement proper Android virtualization. I want to play Fate/Grand Order on the PC..!
-- [ ] Move hyprpanel to home-manager as soon as Jas-SinghFSU/HyprPanel#74 is merged.
+- [ ] Use the hyprpanel flake instead of whatever weird thing I'm doing right now.
 
 ## Last but not least, credits!
 <details>
-<summary>An important note: many of the configurations in my dots are modified from many other opensource dotfile repositories. Without those, this wouldn't be possible!</summary>
+<summary>Thank you!</summary>
 
-- https://gitlab.com/Zaney/zaneyos
-- https://github.com/Jas-SinghFSU/HyprPanel
-- https://github.com/MrVivekRajan/Hypr-Dots
-- https://github.com/prasanthrangan/hyprdots
-- https://github.com/elythh/nixvim
+- https://gitlab.com/Zaney/zaneyos — this flake a few hundred commits ago was a fork of zaneyos; much of his code / file structure still remains here. 
+- https://github.com/Jas-SinghFSU/HyprPanel — The ags configuration that I use.
+- https://github.com/MrVivekRajan/Hypr-Dots — The hyprlock config inspiration.
+- https://github.com/elythh/nixvim — The neovim configuration I use.
 </details>
