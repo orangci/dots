@@ -27,8 +27,7 @@ yad --width=950 --height=550 \
 " + V" "Open clipboard" " + SHIFT + V" "Clear clipboard" \
 " + ;" "Pseudo tiling" " + F" "Toggle fullscreen on focused" \
 " + B" "Toggle transparency on focused" " + SHIFT + F" "Toggle floating on focused" \
-" + " "Move focus to arrow key direction" " + SHIFT + " "Move focused window in arrow key direction" \
+" +    " "Move focus to arrow key direction" " + SHIFT +    " "Move focused window in arrow key direction" \
 " + 1-0" "Move to workspace 1 - 10" " + SHIFT + 1-0" "Move focused window to workspace 1 - 10" \
-" + MOUSE_LEFT" "Drag window" " + MOUSE_RIGHT" "Resize window" \
-"ALT + TAB" "Cycle window focus"  \
-""
+" + LMB" "Drag window" " + RMB" "Resize window" \
+"ALT + TAB" "Cycle window focus" " + ALT + O" "Open recording center" \

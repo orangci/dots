@@ -23,7 +23,7 @@ if [ ! -f "$output_file" ]; then
 fi
 
 # Ask the user where to save the recording using yad
-save_location=$(yad --file --save --title="Save Recording As" --filename="$(date +'%B %d %H.%M.%S').mov")
+save_location=$(yad --file --save --title="Save Recording As" --filename="$HOME/Videos/$(date +'%B %d %H.%M.%S').mov")
 
 # Check if the user canceled the save location selection
 if [ -z "$save_location" ]; then

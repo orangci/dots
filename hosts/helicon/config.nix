@@ -277,7 +277,7 @@
     protonvpn-gui
     wttrbar # for waybar
     google-chrome
-    zfxtop
+    alsa-utils
     bemoji # for emoji picker
     pinta
     zathura
