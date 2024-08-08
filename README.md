@@ -81,6 +81,7 @@ Press `SUPER + ?` to open a list of all keybindings.
 
 - [ ] Implement proper Android virtualization. I want to play Fate/Grand Order on the PC..!
 - [ ] Use the hyprpanel flake instead of whatever weird thing I'm doing right now.
+- [ ] Fix the power button and lid switch activations.
 
 ## Last but not least, credits!
 <details>

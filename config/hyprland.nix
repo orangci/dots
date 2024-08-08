@@ -1,6 +1,7 @@
 { config
 , lib
 , host
+, pkgs
 , ...
 }:
 let
@@ -15,9 +16,9 @@ with lib; {
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = true;
-    # plugins = [
-    # hyprplugins.hyprtrailss
-    # ];
+    plugins = [
+    pkgs.hyprlandPlugins.hyprexpo
+    ];
     extraConfig = concatStrings [
       ''
         # >>> ENVIRONMENT VARIABLES <<<

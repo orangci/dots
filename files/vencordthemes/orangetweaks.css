@@ -403,8 +403,6 @@ button[aria-label="Send a gift"],
 [id^=popout]:has([class^=buttonContainerVertical]),
 /* Hide "Get Nitro" button in emoji info */
 .ctaButton_e58351.grow_dd4f85.fullWidth_dd4f85.sizeSmall_dd4f85.colorGreen_dd4f85.lookFilled_dd4f85.button_dd4f85.shinyButton_d5e126,
-/* Disable the super reaction ad pop up */
-.reaction_ec6b19[style*="background"],
 /* Hide "Get nitro" popup when clicking on custom emojj reaction without nitro */
 [class^=premiumPromo_],
 /* Hide "Get nitro" ad for too long message */

@@ -55,7 +55,6 @@ in
     ../../config/rofi-styles
     ../../config/ags.nix
     ../../config/fastfetch.nix
-    # ../../config/firefox.nix
     ../../config/hyprlock.nix
   ];
 
@@ -112,6 +111,7 @@ in
 
   services = {
     hypridle = {
+      enable = true;
       settings = {
         general = {
           after_sleep_cmd = "hyprctl dispatch dpms on";
@@ -138,20 +138,11 @@ in
     firefox.enable = true;
     mpv = {
       enable = true;
-      scripts = [
-        pkgs.mpvScripts.mpris
-        # pkgs.mpvScripts.uosc
-        pkgs.mpvScripts.videoclip
-        pkgs.mpvScripts.mpv-cheatsheet
-      ];
+      scripts = [ pkgs.mpvScripts.mpris ];
     };
-    starship = {
-      enable = true;
-      package = pkgs.starship;
-    };
+    starship.enable = true;
     kitty = {
       enable = true;
-      package = pkgs.kitty;
       settings = {
         scrollback_lines = 2000;
         wheel_scroll_min_lines = 1;
@@ -182,10 +173,10 @@ in
         flake-update = "sudo echo Shikanoko Nokonoko Koshitantan;nh os switch --hostname ${host} --update /home/${username}/dots";
         gcnix = "sudo echo Shikanoko Nokonoko Koshitantan;nix-collect-garbage --delete-old && sudo nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration boot";
         v = "nvim";
-        ls = "lsd";
-        ll = "lsd -l";
-        la = "lsd -a";
-        lal = "lsd -al";
+        ls = "eza --icons=auto";
+        lh = "eza -a --icons=auto";
+        l = "eza -l --icons=auto";
+        la = "eza -al --icons=auto";
         qq = "clear";
         cat = "bat";
         tr = "trash";
@@ -195,10 +186,13 @@ in
         spinmal = "bash $HOME/Documents/spinPTW.sh";
         ga = "git add .";
         push = "git push";
+        top = "btop";
+        mktar= "tar -czvf";
+        extar= "tar -xzvf";
+
       };
     };
     home-manager.enable = true;
-    hyprlock.enable = true;
   };
   xdg.mimeApps = {
     enable = true;
