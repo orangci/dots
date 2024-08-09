@@ -130,8 +130,8 @@
   };
 
   # Set your time zone.
-  services.automatic-timezoned.enable = true;
-  # time.timeZone = "Asia/Riyadh";
+  # services.automatic-timezoned.enable = true;
+  time.timeZone = "America/New_York";
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
@@ -332,11 +332,7 @@
     xserver = {
       enable = false;
       xkb = {
-        layout = "us";
-        variant = "";
-      };
-    };
-    smartd.enable = true; # auto monitor drives health
+        layout = "us";Cuzrives health
     libinput.enable = true;
     gvfs.enable = true;
     openssh.enable = true;

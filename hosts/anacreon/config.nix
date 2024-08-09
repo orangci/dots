@@ -16,6 +16,10 @@
     ../../modules/intel-drivers.nix
     ../../modules/vm-guest-services.nix
     ../../modules/local-hardware-clock.nix
+    ../../modules/printing.nix
+    ../../modules/bluetooth.nix
+    ../../modules/sound.nix
+    # ../../modules/android.nix
   ];
 
   boot = {
@@ -101,9 +105,6 @@
     };
   };
 
-  # Android on linux
-  virtualisation.waydroid.enable = true;
-
   # Extra Module Options
   drivers = {
     amdgpu.enable = false;
@@ -152,10 +153,11 @@
       enable = true;
       package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
     };
-    # firefox.enable = true;
+    hyprlock.enable = true;
     dconf.enable = true;
     seahorse.enable = true;
     fuse.userAllowOther = true;
+    java.enable = true;
     noisetorch.enable = true;
     gnupg.agent = {
       enable = true;
@@ -194,49 +196,34 @@
   in
   [
     # sddm-themes.sugar-dark
-    sddm-themes.astronaut
     # sddm-themes.tokyo-night
-    wget
-    killall
-    git
-    cmatrix
-    lolcat
-    fastfetch
-    btop
+    sddm-themes.astronaut
     lxqt.lxqt-policykit
-    unzip
-    unrar
-    libnotify
-    v4l-utils
     ydotool
     wl-clipboard
-    pciutils
-    whatsapp-for-linux
-    socat
-    ripgrep
-    lsd
-    lshw-gui
-    # pkg-config
-    cmus
-    # ninja
-    gnumake # gnumake
-    brightnessctl
-    rink
-    playerctl
-    nh
-    swww
-    swappy
+    libnotify
     appimage-run
     networkmanagerapplet
     yad
     grim
     slurp
-    file-roller
+    playerctl
+    nh
+    brightnessctl
+    btop
+    unzip
+    unrar
+    zip
+    eza
+    lshw
+    gnumake # gnumake
+    rink  
+    swww
+    swappy
     swaynotificationcenter
-    # transmission-gtk # bittorent client
-    mpv
-    obs-studio
-    # rustup # rust toolchain installer
+    wget
+    killall
+    git
     fzf
     wlogout
     pavucontrol
@@ -245,63 +232,65 @@
     ripgrep
     time
     dig
-    nitch
-    openjdk
-    vscodium
     yt-dlp
-    calibre # ebooks
     traceroute
-    cava
     speedtest-cli
     trashy
     # glow # markdown viwer
     cliphist
     ffmpeg
     bat
-    prismlauncher
-    filezilla
-    zoom-us
     lutgen
     fd
     imagemagick
-    catimg
-    otpclient
-    # ani-cli
     nwg-look # gtk settings
     mya # myanimelist owo
     nix-prefetch
-    zip
-    # open-interpreter
-    qimgv # image viewer
+    # open-interpreter 
     hyprlock
-    protonvpn-gui
-    wttrbar # for waybar
-    google-chrome
-    alsa-utils
-    bemoji # for emoji picker
     pinta
-    zathura
-    wtype # for emoji picker
-    python3
-    uwuify
+    python3 
     wev
-    owofetch
     jq
-    vencord
     figlet
     wf-recorder
     xfce.tumbler # for image thumbnails in thunar
     arrpc
-    ipfetch
     rofi-wayland
     grimblast # for screenshots
     nurl
+    alejandra
+
+    # big gui programs
+    file-roller
+    transmission_4-gtk # bittorent client
+    whatsapp-for-linux
+    vscodium
+    qimgv # image viewer
+    calibre # ebooks
+    otpclient
+    google-chrome
+    prismlauncher
+    filezilla
+    zoom-us
     (pkgs.discord.override {
       withOpenASAR = true;
       withTTS = true;
       withVencord = true;
     })
     # armcord
+
+    # fun stuffs
+    cmatrix
+    lolcat
+    fastfetch
+    tty-clock
+    nitch
+    cava
+    uwuify
+    owofetch
+    catimg
+    ipfetch
   ];
 
   fonts = {
@@ -317,9 +306,6 @@
       (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
     ];
   };
-
-  # environment.variables = {
-  # };
 
   # Extra Portal Configuration
   xdg.portal = {
@@ -342,54 +328,20 @@
       wayland.enable = true;
       theme = "astronaut";
     };
+    upower.enable = true;
     xserver = {
       enable = false;
       xkb = {
-        layout = "us";
-        variant = "";
-      };
-    };
-    smartd = {
-      enable = false;
-      autodetect = true;
-    };
+        layout = "us";Cuzrives health
     libinput.enable = true;
     gvfs.enable = true;
-    samba.enable = true;
     openssh.enable = true;
-    printing.enable = true;
     blueman.enable = true;
     gnome.gnome-keyring.enable = true;
-    avahi = {
-      enable = true;
-      nssmdns4 = true;
-      openFirewall = true;
-    };
-    ipp-usb.enable = true;
-    pipewire = {
-      enable = true;
-      alsa.enable = true;
-      alsa.support32Bit = true;
-      pulse.enable = true;
-    };
   };
   hardware = {
-    sane = {
-      enable = true;
-      extraBackends = [ pkgs.sane-airscan ];
-      disabledDefaultBackends = [ "escl" ];
-    };
     logitech.wireless.enable = true;
-    logitech.wireless.enableGraphical = true;
-    pulseaudio.enable = false;
-    # Bluetooth Support
-    bluetooth.enable = true;
-    bluetooth.powerOnBoot = true;
-
-    # OpenGL
-    graphics = {
-      enable = true;
-    };
+    graphics.enable = true;
   };
 
   security = {
@@ -444,5 +396,5 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "23.11"; # Did you read the comment?
+  system.stateVersion = "24.11"; # Did you read the comment?
 }
