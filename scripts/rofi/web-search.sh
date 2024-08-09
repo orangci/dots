@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 
-declare -A URLS
-
-URLS=(
+declare -A URLS=(
     ["🌎 Search"]="https://search.brave.com/search?q="
     ["❄️ Unstable Packages"]="https://search.nixos.org/packages?channel=unstable&from=0&size=50&sort=relevance&type=packages&query="
     ["🎞️ YouTube"]="https://www.youtube.com/results?search_query="
@@ -11,9 +9,9 @@ URLS=(
 
 # List for rofi
 gen_list() {
-    for i in "''${!URLS[@]}"
+    for i in "${!URLS[@]}"
     do
-    echo "$i"
+        echo "$i"
     done
 }
 
@@ -22,19 +20,17 @@ main() {
     platform=$( (gen_list) | rofi -dmenu -theme websearch.rasi)
 
     if [[ -n "$platform" ]]; then
-    query=$( (echo ) | rofi -dmenu -theme websearch.rasi)
+        query=$(rofi -dmenu -theme websearch.rasi -p "Search query:")
 
-    if [[ -n "$query" ]]; then
-url=''${URLS[$platform]}$query
-xdg-open "$url"
+        if [[ -n "$query" ]]; then
+            url="${URLS[$platform]}$query"
+            xdg-open "$url"
+        else
+            exit
+        fi
     else
-exit
-    fi
-    else
-    exit
+        exit
     fi
 }
 
 main
-
-exit 0
