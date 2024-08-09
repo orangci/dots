@@ -365,8 +365,6 @@
 }
 
 /* [[yeet useless things]] */
-.panelSubtextContainer_b2ca13,
-/* Hide status/username viewer near mic button */
 img[class*="avatar"][src^="https://cdn.discordapp.com/avatar-decoration-presets/a_5e1210779d99ece1c0b4f438a5bc6e72.png"], /* yeet clown avatar decoration */
 div[class*="listItem"]:has(div[aria-label="Explore Discoverable Servers"]),
 /* Hide 'Explore Discoverable Servers' in server page */
@@ -507,3 +505,24 @@ svg:has(
   scale: 1.2;
 }
 
+/* [[ revamped user area ]] */
+[class^=panels] > [class^=container] /* User area redesign */
+{
+    height: unset !important; /* Height being dynamic is fine */
+    align-items: unset !important; /* Don't need that */
+    padding: 6px 8px !important; /* Let those boxes breathe */
+    flex-direction: column-reverse !important; /* instead of going one next to the other, go stacked */
+    gap: 2px !important; /* Again let them breathe */
+}
+
+[class^=avatarWrapper] /* Change the user box */
+{
+    margin-right: unset !important; /* Useless */
+    margin-left: unset !important; /* Useless */
+    padding-left: 4px !important; /* Make it slightly bigger for consistency with the right side */
+}
+
+[class^=container] > [class*=buttons] /* Change the quick actions */
+{
+    justify-content: space-evenly !important; /* Let them breathe */
+}
