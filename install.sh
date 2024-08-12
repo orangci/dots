@@ -35,7 +35,7 @@ grep -rl "anacreon" "hosts/$hostname" | xargs sed -i "s/anacreon/$hostname/g"
 # Copy the hyprpanel config
 echo "Copying ags configs.."
 mkdir -p ~/.cache/ags/hyprpanel
-cp config/hyprpanel.json /tmp/ags/hyprpanel/options.json
+cp files/hyprpanel.json /tmp/ags/hyprpanel/options.json
 echo "Ags configs successfully copied."
 
 # Prompt the user for wallpaper repositories
