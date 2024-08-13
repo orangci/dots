@@ -1,11 +1,12 @@
-{ config
-, pkgs
-, host
-, username
-, options
-, lib
-, inputs
-, ...
+{
+  config,
+  pkgs,
+  host,
+  username,
+  options,
+  lib,
+  inputs,
+  ...
 }: {
   imports = [
     ./hardware.nix
@@ -24,10 +25,10 @@
 
   boot = {
     # Kernel
-    kernelPackages = pkgs.linuxPackages_zen;
+    kernelPackages = pkgs.linuxPackages_latest;
     # This is for OBS Virtual Cam Support
-    kernelModules = [ "v4l2loopback" ];
-    extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];
+    kernelModules = ["v4l2loopback"];
+    extraModulePackages = [config.boot.kernelPackages.v4l2loopback];
     # Needed For Some Steam Games
     kernel.sysctl = {
       "vm.max_map_count" = 2147483642;
@@ -85,7 +86,7 @@
     };
     fonts = {
       monospace = {
-        package = pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; };
+        package = pkgs.nerdfonts.override {fonts = ["JetBrainsMono"];};
         name = "JetBrainsMono Nerd Font Mono";
       };
       sansSerif = {
@@ -123,7 +124,7 @@
     # Enable networking
     networkmanager.enable = true;
     hostName = "${host}";
-    timeServers = options.networking.timeServers.default ++ [ "pool.ntp.org" ];
+    timeServers = options.networking.timeServers.default ++ ["pool.ntp.org"];
   };
   environment.etc = {
     "resolv.conf".text = "nameserver 1.1.1.1\n";
@@ -192,9 +193,8 @@
   };
 
   environment.systemPackages = with pkgs; let
-    sddm-themes = pkgs.callPackage ../../config/sddm.nix { };
-  in
-  [
+    sddm-themes = pkgs.callPackage ../../config/sddm.nix {};
+  in [
     # sddm-themes.sugar-dark
     # sddm-themes.tokyo-night
     sddm-themes.astronaut
@@ -217,7 +217,7 @@
     eza
     lshw
     gnumake # gnumake
-    rink  
+    rink
     swww
     swappy
     swaynotificationcenter
@@ -246,10 +246,10 @@
     nwg-look # gtk settings
     mya # myanimelist owo
     nix-prefetch
-    # open-interpreter 
+    # open-interpreter
     hyprlock
     pinta
-    python3 
+    python3
     wev
     jq
     figlet
@@ -303,7 +303,7 @@
       merriweather-sans
       merriweather
       material-icons
-      (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+      (nerdfonts.override {fonts = ["JetBrainsMono"];})
     ];
   };
 
@@ -332,11 +332,12 @@
     xserver = {
       enable = false;
       xkb = {
-        layout = "us";Cuzrives health
+        layout = "us";
+      };
+    };
     libinput.enable = true;
     gvfs.enable = true;
     openssh.enable = true;
-    blueman.enable = true;
     gnome.gnome-keyring.enable = true;
   };
   hardware = {
@@ -374,8 +375,8 @@
         "nix-command"
         "flakes"
       ];
-      substituters = [ "https://hyprland.cachix.org" ];
-      trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
+      substituters = ["https://hyprland.cachix.org"];
+      trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
     };
     gc = {
       automatic = true;

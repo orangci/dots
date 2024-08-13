@@ -1,13 +1,12 @@
-{ pkgs
-, username
-, host
-, inputs
-, ...
-}:
-let
-  inherit (import ./variables.nix) gitUsername gitEmail;
-in
 {
+  pkgs,
+  username,
+  host,
+  inputs,
+  ...
+}: let
+  inherit (import ./variables.nix) gitUsername gitEmail;
+in {
   home = {
     # Home Manager Settings
     username = "${username}";
@@ -41,8 +40,8 @@ in
     };
 
     packages = [
-      (import ../../scripts/rofi/calc.nix { inherit pkgs; })
-      (import ../../scripts/logout-exit.nix { inherit pkgs; })
+      (import ../../scripts/rofi/calc.nix {inherit pkgs;})
+      (import ../../scripts/logout-exit.nix {inherit pkgs;})
       inputs.nixvim.packages.${pkgs.system}.default
     ];
   };
@@ -72,8 +71,8 @@ in
 
   dconf.settings = {
     "org/virt-manager/virt-manager/connections" = {
-      autoconnect = [ "qemu:///system" ];
-      uris = [ "qemu:///system" ];
+      autoconnect = ["qemu:///system"];
+      uris = ["qemu:///system"];
     };
   };
 
@@ -138,7 +137,7 @@ in
     firefox.enable = true;
     mpv = {
       enable = true;
-      scripts = [ pkgs.mpvScripts.mpris ];
+      scripts = [pkgs.mpvScripts.mpris];
     };
     starship.enable = true;
     kitty = {
@@ -187,9 +186,8 @@ in
         ga = "git add .";
         push = "git push";
         top = "btop";
-        mktar= "tar -czvf";
-        extar= "tar -xzvf";
-
+        mktar = "tar -czvf";
+        extar = "tar -xzvf";
       };
     };
     home-manager.enable = true;
@@ -197,17 +195,17 @@ in
   xdg.mimeApps = {
     enable = true;
     defaultApplications = {
-      "application/pdf" = [ "firefox.desktop" ];
-      "image/*" = [ "qimgv.desktop" ];
-      "video/*" = [ "mpv.desktop" ];
-      "audio/*" = [ "mpv.desktop" ];
-      "text/*" = [ "neovide.desktop" ];
-      "application/gzip" = [ "file-roller.desktop" ];
-      "application/x-bzip" = [ "file-roller.desktop" ];
-      "application/x-bzip-2" = [ "file-roller.desktop" ];
-      "application/x-7z-compressed" = [ "file-roller.desktop" ];
-      "application/zip" = [ "file-roller.desktop" ];
-      "application/epub+zip" = [ "calibre-ebook-viewer.desktop" ];
+      "application/pdf" = ["firefox.desktop"];
+      "image/*" = ["qimgv.desktop"];
+      "video/*" = ["mpv.desktop"];
+      "audio/*" = ["mpv.desktop"];
+      "text/*" = ["neovide.desktop"];
+      "application/gzip" = ["file-roller.desktop"];
+      "application/x-bzip" = ["file-roller.desktop"];
+      "application/x-bzip-2" = ["file-roller.desktop"];
+      "application/x-7z-compressed" = ["file-roller.desktop"];
+      "application/zip" = ["file-roller.desktop"];
+      "application/epub+zip" = ["calibre-ebook-viewer.desktop"];
     };
   };
 }

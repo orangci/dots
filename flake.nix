@@ -19,7 +19,7 @@
     ...
   }: let
     system = "x86_64-linux";
-    host = "helicon";
+    host = "anacreon";
     username = "orangc";
 
     pkgs = import nixpkgs {

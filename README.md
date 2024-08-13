@@ -54,6 +54,7 @@ A smol n' cozy NixOS with Hyprland flake.
 First up, a list of most of the packages starts over [here](https://github.com/orxngc/dots/blob/main/hosts/anacreon/config.nix#L192). I'll give a quick rundown on the important stuff in case you don't want to go through that; I use Hyprland, Firefox, nvim, Hyprlock, ags, rofi, SDDM, and swaync. The file structure is simple... the configuration is in `hosts/hostname/config.nix`, the home-manager stuff in `hosts/hostname/home.nix`, scripts in `/scripts`, certain program configurations (e.g. hyprlock) in `/config`, and `/modules` for different modules. `hosts/hostname/variables.nix` is also something one may want to fool 'round with. All my wallpapers are available [here](https://github.com/orxngc/walls) and [here](https://github.com/orxngc/walls-catppuccin-mocha).
 
 ## Installation
+THIS SCRIPT IS BROKEN. WILL FIX SOON.
 Run this command in your terminal and the script will handle the rest. Note that this won't work for non NixOS users.
 
 ```sh
