@@ -108,7 +108,7 @@
       ],
       "right": [
         "network",
-        "bluetooth",
+        "media",
         "systray",
         "clock"
       ]
@@ -146,8 +146,14 @@
   "menus.clock.weather.unit": "metric",
   "menus.clock.weather.location": "Riyadh",
   "menus.clock.weather.key": "4afb0b6cb609401da30231750242807",
-  "bar.media.truncation_size": 10,
+  "bar.media.truncation_size": 30,
   "theme.bar.buttons.media.spacing": "0.5em",
   "bar.media.show_artist": false,
-  "bar.media.truncation": true
+  "bar.media.truncation": false,
+  "bar.workspaces.numbered_active_indicator": "underline",
+  "bar.media.show_label": false,
+  "bar.workspaces.scroll_speed": 5,
+  "bar.network.label": true,
+  "theme.bar.buttons.media.text": "#fab387",
+  "theme.bar.buttons.media.icon": "#fab387"
 }
