@@ -188,6 +188,8 @@ in {
         top = "btop";
         mktar = "tar -czvf";
         extar = "tar -xzvf";
+        list-big-pkgs = "nix path-info -hsr /run/current-system/ | sort -hrk2 | head -n 30";
+        list-pks = "nix-store -q --requisites /run/current-system | cut -d- -f2- | sort | uniq";
       };
     };
     home-manager.enable = true;
