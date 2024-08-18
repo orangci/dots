@@ -25,6 +25,9 @@ in {
       ".face.icon".source = ../../files/face.png;
       ".config/Vencord/themes/orangetweaks.css".source = ../../files/vencordthemes/orangetweaks.css;
       ".config/Vencord/themes/catppuccin.css".source = ../../files/vencordthemes/catppuccin.css;
+      ".config/mpv/input.conf".text = ''
+        alt+s playlist-shuffle
+      '';
       ".config/swappy/config".text = ''
         [Default]
         save_dir=/home/${username}/Pictures/Screenshots
@@ -189,7 +192,7 @@ in {
         mktar = "tar -czvf";
         extar = "tar -xzvf";
         list-big-pkgs = "nix path-info -hsr /run/current-system/ | sort -hrk2 | head -n 30";
-        list-pks = "nix-store -q --requisites /run/current-system | cut -d- -f2- | sort | uniq";
+        list-pkgs = "nix-store -q --requisites /run/current-system | cut -d- -f2- | sort | uniq";
       };
     };
     home-manager.enable = true;

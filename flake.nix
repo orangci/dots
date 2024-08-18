@@ -8,6 +8,7 @@
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
     nixvim.url = "github:orxngc/nixvim";
     stylix.url = "github:danth/stylix";
+    nixos-grub-themes.url = "github:jeslie0/nixos-grub-themes";
     # nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
     ags.url = "github:Aylur/ags";
   };
