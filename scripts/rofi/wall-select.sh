@@ -2,13 +2,13 @@
 
 # Predefined folders
 folders=(
-    "$HOME/Pictures/walls"
-    "$HOME/Pictures/walls-catppuccin-mocha"
-    "$HOME/Pictures/anibg"
+    "$HOME/media/walls"
+    "$HOME/media/walls-catppuccin-mocha"
+    "$HOME/media/anibg"
 )
 
 # Default folder for the --fast option
-default_folder="$HOME/Pictures/walls"
+default_folder="$HOME/media/walls"
 
 # Check if the --fast option is provided
 if [ "$1" == "--fast" ]; then

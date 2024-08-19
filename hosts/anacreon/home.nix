@@ -30,7 +30,7 @@ in {
       '';
       ".config/swappy/config".text = ''
         [Default]
-        save_dir=/home/${username}/Pictures/Screenshots
+        save_dir=/home/${username}/media/screenshots
         save_filename_format=%M %d-%H.%M.%S.png
         show_panel=false
         line_size=5
@@ -185,7 +185,7 @@ in {
         ".." = "cd ..";
         neofetch = "fastfetch";
         find = "fd";
-        spinmal = "bash $HOME/Documents/spinPTW.sh";
+        spinmal = "bash $HOME/docs/spinPTW.sh";
         ga = "git add .";
         push = "git push";
         top = "btop";
@@ -198,6 +198,14 @@ in {
     home-manager.enable = true;
   };
   xdg.mimeApps = {
+    userDirs = {
+      enable = true;
+      createDirectories = false;
+      documents = "docs";
+      pictures = "media";
+      music = "media/audio";
+      videos = "media/videos";
+    };
     enable = true;
     defaultApplications = {
       "application/pdf" = ["firefox.desktop"];

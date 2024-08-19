@@ -12,20 +12,9 @@
   "theme.bar.menus.border.radius": "24px",
   "bar.layouts": {
     "0": {
-      "left": [
-        "dashboard",
-        "workspaces",
-        "volume"
-      ],
-      "middle": [
-        "windowtitle"
-      ],
-      "right": [
-        "network",
-        "media",
-        "systray",
-        "clock"
-      ]
+      "left": ["dashboard", "workspaces", "volume"],
+      "middle": ["windowtitle"],
+      "right": ["network", "media", "systray", "clock"]
     }
   },
   "bar.launcher.icon": "",
@@ -45,17 +34,17 @@
   "menus.dashboard.shortcuts.left.shortcut3.tooltip": "Stop recording the screen.",
   "menus.dashboard.shortcuts.left.shortcut3.command": "pkill wf-recorder",
   "menus.dashboard.directories.left.directory1.label": "󰉍  Downloads",
-  "menus.dashboard.directories.left.directory1.command": "bash -c \"thunar $HOME/Downloads/\"",
+  "menus.dashboard.directories.left.directory1.command": "bash -c \"thunar $HOME/dl/\"",
   "menus.dashboard.directories.left.directory2.label": "󰉏  School",
-  "menus.dashboard.directories.left.directory2.command": "bash -c \"thunar $HOME/School/\"",
+  "menus.dashboard.directories.left.directory2.command": "bash -c \"thunar $HOME/school/\"",
   "menus.dashboard.directories.left.directory3.label": "󰚝  code",
   "menus.dashboard.directories.left.directory3.command": "bash -c \"thunar $HOME/code/\"",
   "menus.dashboard.directories.right.directory1.label": "󱧶  Documents",
-  "menus.dashboard.directories.right.directory1.command": "bash -c \"thunar $HOME/Documents/\"",
+  "menus.dashboard.directories.right.directory1.command": "bash -c \"thunar $HOME/docs/\"",
   "menus.dashboard.directories.right.directory2.label": "󰉏  Pictures",
-  "menus.dashboard.directories.right.directory2.command": "bash -c \"thunar $HOME/Pictures/\"",
+  "menus.dashboard.directories.right.directory2.command": "bash -c \"thunar $HOME/media/\"",
   "menus.dashboard.directories.right.directory3.label": "󰉏  Screenshots",
-  "menus.dashboard.directories.right.directory3.command": "bash -c \"thunar $HOME/Pictures/Screenshots\"",
+  "menus.dashboard.directories.right.directory3.command": "bash -c \"thunar $HOME/media/screenshots\"",
   "menus.clock.time.military": true,
   "menus.clock.weather.unit": "metric",
   "menus.clock.weather.location": "Riyadh",

@@ -47,7 +47,7 @@ echo "4) None"
 echo "Warning: You can only use one wallpaper repository at a time."
 read -p "Enter your choice (comma-separated for multiple options): " choice
 
-cd $HOME/Pictures || exit
+cd $HOME/media || exit
 IFS=',' read -ra ADDR <<< "$choice"
 for i in "${ADDR[@]}"; do
     case $i in
@@ -66,7 +66,7 @@ for i in "${ADDR[@]}"; do
             sed -i "s/walls/$repo_name/g" "$HOME/dots/scripts/walls.nix"
             ;;
         4)
-            echo "Warning: No wallpaper repository selected. Wallpapers will be broken unless you put images into $username/Pictures/walls."
+            echo "Warning: No wallpaper repository selected. Wallpapers will be broken unless you put images into $username/media/walls."
             ;;
         *)
             echo "Invalid choice: $i"
