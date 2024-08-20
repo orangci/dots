@@ -54,6 +54,8 @@ in {
     ../../config/hyprland.nix
     ../../config/swaync.nix
     # ../../config/waybar
+    ../../config/chromium.nix
+    ../../config/firefox.nix
     ../../config/rofi-styles
     ../../config/ags.nix
     ../../config/fastfetch.nix
@@ -137,7 +139,6 @@ in {
 
   programs = {
     gh.enable = true;
-    firefox.enable = true;
     mpv = {
       enable = true;
       scripts = [pkgs.mpvScripts.mpris];
@@ -199,13 +200,12 @@ in {
   };
   xdg = {
     userDirs = {
-      enable = true;
+      enable = false;
       createDirectories = false;
       documents = "docs";
       pictures = "media";
       music = "media/audio";
       videos = "media/videos";
-      downloads = "dl";
     };
     mimeApps = {
       enable = true;
