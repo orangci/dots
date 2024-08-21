@@ -26,6 +26,11 @@ A smol n' cozy NixOS with Hyprland flake.
 ![Fetch](https://raw.githubusercontent.com/orxngc/dots/anacreon/.github/fetch.png)
 </details>
 <details> 
+<summary>Discord</summary>
+
+![Fetch](https://raw.githubusercontent.com/orxngc/dots/anacreon/.github/discord.png)
+</details>
+<details> 
 <summary>nvim</summary>
 
 ![nvim](https://raw.githubusercontent.com/orxngc/dots/anacreon/.github/nvim.png)
