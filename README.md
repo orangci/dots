@@ -12,6 +12,7 @@ A smol n' cozy NixOS with Hyprland flake.
 <details>
 <summary>Hyprlock</summary>
 
+![Lockscreen 1](https://raw.githubusercontent.com/orxngc/dots/anacreon/.github/lockscreen-1.png)
 ![Lockscreen 2](https://raw.githubusercontent.com/orxngc/dots/anacreon/.github/lockscreen-2.png)
 </details>
 <details> 
@@ -45,9 +46,9 @@ A smol n' cozy NixOS with Hyprland flake.
 ![wlogout](https://raw.githubusercontent.com/orxngc/dots/anacreon/.github/wlogout.png)
 </details>
 <details> 
-<summary>clipboard</summary>
+<summary>firefox & nighttab</summary>
 
-![clipse](https://raw.githubusercontent.com/orxngc/dots/anacreon/.github/clipse.png)
+![firefox](https://raw.githubusercontent.com/orxngc/dots/anacreon/.github/firefox.png)
 </details>
 
 ## Overview
