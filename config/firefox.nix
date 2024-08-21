@@ -269,6 +269,45 @@
           display: none !important;
         }
 
+        :root {
+          --conf-border-radius: 24px;
+          --conf-toolbar-border-radius: 24px;
+          --toolbarbutton-border-radius: var(--conf-toolbar-border-radius) !important;
+          --tab-border-radius: var(--conf-border-radius) !important;
+          --tab-selected-bgcolor: #1e1e2e !important;
+          --lwt-tab-line-color: $$ !important;
+          --tab-selected-outline-color: $$ !important;
+
+          --transition: 0.25s ease-in-out;
+        }
+
+        .tab-label {
+          padding-left: 5px;
+          padding-right: 5px;
+
+          border-radius: var(--conf-border-radius) !important;
+
+          font-size: 14px;
+        }
+
+        @media (prefers-color-scheme: dark) {
+          .tab-label {
+            border-radius: var(--conf-toolbar-border-radius) !important;
+          }
+        }
+
+        .titlebar-spacer {
+          display: none;
+        }
+
+        .bookmark-item {
+          margin-right: 10px !important;
+        }
+
+        .tabbrowser-tab[selected="true"], .tabbrowser-tab[selected="true"] > * {
+          font-weight: bold !important;
+
+        }
       '';
     };
   };
