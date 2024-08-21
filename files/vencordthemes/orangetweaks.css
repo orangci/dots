@@ -523,3 +523,8 @@ svg:has(
 [class^=container] > [class*=buttons] /* Change the quick actions */ {
   justify-content: space-evenly !important; /* Let them breathe */
 }
+
+/* [[hide apps thing]] */
+button[aria-label="Apps"] {
+  display: none;
+}
