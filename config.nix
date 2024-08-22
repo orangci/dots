@@ -11,15 +11,7 @@
   imports = [
     ./hosts/${host}/hardware.nix
     ./hosts/${host}/users.nix
-    ./modules/amd-drivers.nix
-    ./modules/nvidia-drivers.nix
-    ./modules/nvidia-prime-drivers.nix
-    ./modules/intel-drivers.nix
-    ./modules/vm-guest-services.nix
-    ./modules/local-hardware-clock.nix
-    ./modules/printing.nix
-    ./modules/bluetooth.nix
-    ./modules/sound.nix
+    ./modules
   ];
 
   boot = {
@@ -48,67 +40,7 @@
       useTmpfs = false;
       tmpfsSize = "30%";
     };
-    # Appimage Support
-    # binfmt.registrations.appimage = {
-    #   wrapInterpreterInShell = false;
-    #   interpreter = "${pkgs.appimage-run}/bin/appimage-run";
-    #   recognitionType = "magic";
-    #   offset = 0;
-    #   mask = ''\xff\xff\xff\xff\x00\x00\x00\x00\xff\xff\xff'';
-    #   magicOrExtension = ''\x7fELF....AI\x02'';
-    # };
     plymouth.enable = true;
-  };
-
-  # Styling Options
-  stylix = {
-    enable = true;
-    image = ./files/face.png;
-    base16Scheme = {
-      base00 = "1e1e2e";
-      base01 = "181825";
-      base02 = "313244";
-      base03 = "45475a";
-      base04 = "585b70";
-      base05 = "cdd6f4";
-      base06 = "f5e0dc";
-      base07 = "b4befe";
-      base08 = "f38ba8";
-      base09 = "fab387";
-      base0A = "f9e2af";
-      base0B = "a6e3a1";
-      base0C = "94e2d5";
-      base0D = "89b4fa";
-      base0E = "cba6f7";
-      base0F = "f2cdcd";
-    };
-    polarity = "dark";
-    cursor = {
-      package = pkgs.oreo-cursors-plus;
-      name = "oreo_spark_orange_cursors";
-      size = 24;
-    };
-    targets.chromium.enable = false;
-    fonts = {
-      monospace = {
-        package = pkgs.nerdfonts.override {fonts = ["JetBrainsMono"];};
-        name = "JetBrainsMono Nerd Font Mono";
-      };
-      sansSerif = {
-        package = pkgs.raleway;
-        name = "Raleway";
-      };
-      serif = {
-        package = pkgs.merriweather;
-        name = "Merriweather";
-      };
-      sizes = {
-        applications = 12;
-        terminal = 16;
-        desktop = 12;
-        popups = 12;
-      };
-    };
   };
 
   # Extra Module Options
@@ -206,7 +138,6 @@
     lxqt.lxqt-policykit
     wl-clipboard
     libnotify
-    # appimage-run
     networkmanagerapplet
     yad
     grim
@@ -236,7 +167,7 @@
     ripgrep
     time
     dig
-    yt-dlp
+    nix-output-monitor
     traceroute
     speedtest-cli
     trashy

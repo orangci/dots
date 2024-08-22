@@ -194,6 +194,7 @@ in {
         top = "btop";
         mktar = "tar -czvf";
         extar = "tar -xzvf";
+        nix = "nom";
         list-big-pkgs = "nix path-info -hsr /run/current-system/ | sort -hrk2 | head -n 30";
         list-pkgs = "nix-store -q --requisites /run/current-system | cut -d- -f2- | sort | uniq";
       };

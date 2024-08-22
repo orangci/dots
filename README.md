@@ -93,7 +93,7 @@ Press `SUPER + ?` to open a list of all keybindings.
 - [ ] Make Vencord fully declarative.
 - [ ] Figure out a way to make Firefox extension *data* declarative. I've already made installing extensions declarative.
 - [ ] Update the README screenshots, *again*. They're outdated.
-- [ ] Restructure the flake and make it more.. nixy.
+- [ ] Restructure the flake and make it more.. nixy. Modularize as much as I can, for example.
 
 ## Last but not least, credits!
 <details>
