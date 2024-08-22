@@ -85,6 +85,7 @@ Press `SUPER + ?` to open a list of all keybindings.
 - [x] ~~Cleanup/optimize the flake — try to make it take up less disk space.~~
 - [x] ~~Make both browsers declarative.~~
 - [x] ~~Fix the installation script.~~
+- [x] ~~Fix MIME types.~~
 </details>
 
 - [ ] Make Hyprpanel fully declarative; also maybe make a PR that adds home-manager options to that flake.
@@ -92,12 +93,12 @@ Press `SUPER + ?` to open a list of all keybindings.
 - [ ] Make Vencord fully declarative.
 - [ ] Figure out a way to make Firefox extension *data* declarative. I've already made installing extensions declarative.
 - [ ] Update the README screenshots, *again*. They're outdated.
-- [ ] Fix MIME types.
 
 ## Last but not least, credits!
 <details>
 <summary>Thank you!</summary>
 
+- https://github.com/NotAShelf/nyx/ — teaching me how many different parts of how nix works, and many bits of code such as the xdg configuration
 - https://gitlab.com/Zaney/zaneyos — this flake a few hundred commits ago was a fork of zaneyos; much of his code / file structure still remains here. 
 - https://github.com/Jas-SinghFSU/HyprPanel — The ags configuration that I use.
 - https://github.com/MrVivekRajan/Hypr-Dots — The hyprlock config inspiration.

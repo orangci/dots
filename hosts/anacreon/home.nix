@@ -60,6 +60,7 @@ in {
     ../../config/ags.nix
     ../../config/fastfetch.nix
     ../../config/hyprlock.nix
+    ../../config/xdg.nix
   ];
 
   # Define Settings For Xresources
@@ -197,31 +198,5 @@ in {
       };
     };
     home-manager.enable = true;
-  };
-  xdg = {
-    userDirs = {
-      enable = false;
-      createDirectories = false;
-      documents = "docs";
-      pictures = "media";
-      music = "media/audio";
-      videos = "media/videos";
-    };
-    mimeApps = {
-      enable = true;
-      defaultApplications = {
-        "application/pdf" = ["firefox.desktop"];
-        "image/*" = ["qimgv.desktop"];
-        "video/*" = ["mpv.desktop"];
-        "audio/*" = ["mpv.desktop"];
-        "text/*" = ["neovide.desktop"];
-        "application/gzip" = ["file-roller.desktop"];
-        "application/x-bzip" = ["file-roller.desktop"];
-        "application/x-bzip-2" = ["file-roller.desktop"];
-        "application/x-7z-compressed" = ["file-roller.desktop"];
-        "application/zip" = ["file-roller.desktop"];
-        "application/epub+zip" = ["calibre-ebook-viewer.desktop"];
-      };
-    };
   };
 }
