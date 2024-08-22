@@ -90,7 +90,7 @@ Press `SUPER + ?` to open a list of all keybindings.
 - [ ] Make Hyprpanel fully declarative; also maybe make a PR that adds home-manager options to that flake.
 - [ ] Make VScodium declarative.
 - [ ] Make Vencord fully declarative.
-- [ ] Figure out a way to make Firefox extensions declarative.
+- [ ] Figure out a way to make Firefox extension *data* declarative. I've already made installing extensions declarative.
 - [ ] Update the README screenshots, *again*. They're outdated.
 - [ ] Fix MIME types.
 

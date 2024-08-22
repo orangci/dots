@@ -2,7 +2,6 @@
   pkgs,
   config,
   username,
-  inputs,
   ...
 }: {
   # home.file = {
@@ -16,7 +15,6 @@
     profiles.${username} = {
       id = 0;
       isDefault = true;
-      extensions = with inputs.firefox-addons.packages.${pkgs.system}; [ublock-origin mal-sync stylus proton-pass simple-translate nighttab];
       search = {
         default = "Startpage";
         force = true;
@@ -309,6 +307,73 @@
 
         }
       '';
+    };
+    policies = {
+      ExtensionSettings = {
+        # "*".installation_mode = "blocked"; # blocks all addons except the ones specified below
+        # Check about:support for extension/add-on ID strings.
+        # Valid strings for installation_mode are "allowed", "blocked",
+        # "force_installed" and "normal_installed".
+        # ublock-origin:
+        "uBlock0@raymondhill.net" = {
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";
+          installation_mode = "force_installed";
+        };
+
+        # mal-sync:
+        "{c84d89d9-a826-4015-957b-affebd9eb603}" = {
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/mal-sync/latest.xpi";
+          installation_mode = "force_installed";
+        };
+
+        # stylus:
+        "{7a7a4a92-a2a0-41d1-9fd7-1e92480d612d}" = {
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/styl-us/latest.xpi";
+          installation_mode = "force_installed";
+        };
+
+        # proton-pass:
+        "78272b6fa58f4a1abaac99321d503a20@proton.me" = {
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/proton-pass/latest.xpi";
+          installation_mode = "force_installed";
+        };
+
+        # simple-translate:
+        "simple-translate@sienori" = {
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/simple-translate/latest.xpi";
+          installation_mode = "force_installed";
+        };
+
+        # nighttab:
+        "{47bf427e-c83d-457d-9b3d-3db4118574bd}" = {
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/nighttab/latest.xpi";
+          installation_mode = "force_installed";
+        };
+
+        # search with MAL:
+        "{68a3835c-43d9-4a23-a153-9d00276a4065}" = {
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/search-with-myanimelist/latest.xpi";
+          installation_mode = "force_installed";
+        };
+
+        # tampermonkey:
+        "{bbb880ce-43c9-47ae-b746-c3e0096c5b76}" = {
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/catppuccin-gh-file-explorer/latest.xpi";
+          installation_mode = "force_installed";
+        };
+
+        # tampermonkey:
+        "firefox@tampermonkey.net" = {
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/tampermonkey/latest.xpi";
+          installation_mode = "force_installed";
+        };
+
+        # catppuccin mocha mauve:
+        "{76aabc99-c1a8-4c1e-832b-d4f2941d5a7a}" = {
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/catppuccin-mocha-mauve-git/latest.xpi";
+          installation_mode = "force_installed";
+        };
+      };
     };
   };
 }
