@@ -84,11 +84,15 @@ Press `SUPER + ?` to open a list of all keybindings.
 - [x] ~~Update README screenshots.~~
 - [x] ~~Make a screen recording script with wf-recorder.~~
 - [x] ~~Cleanup/optimize the flake — try to make it take up less disk space.~~
+- [x] ~~Make both browsers declarative.~~
 </details>
 
-- [ ] Implement proper Android virtualization. I want to play Fate/Grand Order on the PC..!
-- [ ] Use the hyprpanel flake instead of whatever weird thing I'm doing right now.
-- [ ] Fix the power button and lid switch activations.
+- [ ] Fix the installation script.
+- [ ] Make Hyprpanel fully declarative; also maybe make a PR that adds home-manager options to that flake.
+- [ ] Make VScodium declarative.
+- [ ] Make Vencord fully declarative.
+- [ ] Figure out a way to make Firefox extensions declarative.
+- [ ] Update the README screenshots, *again*. They're outdated.
 
 ## Last but not least, credits!
 <details>
