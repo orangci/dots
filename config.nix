@@ -9,18 +9,17 @@
   ...
 }: {
   imports = [
-    ./hardware.nix
-    ./users.nix
-    ../../modules/amd-drivers.nix
-    ../../modules/nvidia-drivers.nix
-    ../../modules/nvidia-prime-drivers.nix
-    ../../modules/intel-drivers.nix
-    ../../modules/vm-guest-services.nix
-    ../../modules/local-hardware-clock.nix
-    ../../modules/printing.nix
-    ../../modules/bluetooth.nix
-    ../../modules/sound.nix
-    # ../../modules/android.nix
+    ./hosts/${host}/hardware.nix
+    ./hosts/${host}/users.nix
+    ./modules/amd-drivers.nix
+    ./modules/nvidia-drivers.nix
+    ./modules/nvidia-prime-drivers.nix
+    ./modules/intel-drivers.nix
+    ./modules/vm-guest-services.nix
+    ./modules/local-hardware-clock.nix
+    ./modules/printing.nix
+    ./modules/bluetooth.nix
+    ./modules/sound.nix
   ];
 
   boot = {
@@ -64,7 +63,7 @@
   # Styling Options
   stylix = {
     enable = true;
-    image = ../../files/face.png;
+    image = ./files/face.png;
     base16Scheme = {
       base00 = "1e1e2e";
       base01 = "181825";
@@ -199,7 +198,7 @@
   };
 
   environment.systemPackages = with pkgs; let
-    sddm-themes = pkgs.callPackage ../../config/sddm.nix {};
+    sddm-themes = pkgs.callPackage ./config/sddm.nix {};
   in [
     # sddm-themes.sugar-dark
     # sddm-themes.tokyo-night

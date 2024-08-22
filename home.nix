@@ -5,7 +5,7 @@
   inputs,
   ...
 }: let
-  inherit (import ./variables.nix) gitUsername gitEmail;
+  inherit (import ./hosts/${host}/variables.nix) gitUsername gitEmail;
 in {
   home = {
     # Home Manager Settings
@@ -14,17 +14,17 @@ in {
     stateVersion = "24.11";
     file = {
       ".local/share/fonts" = {
-        source = ../../config/fonts;
+        source = ./config/fonts;
         recursive = true;
       };
       ".config/wlogout" = {
-        source = ../../config/wlogout;
+        source = ./config/wlogout;
         recursive = true;
       };
-      ".config/starship.toml".source = ../../config/starship.toml;
-      ".face.icon".source = ../../files/face.png;
-      ".config/Vencord/themes/orangetweaks.css".source = ../../files/vencordthemes/orangetweaks.css;
-      ".config/Vencord/themes/catppuccin.css".source = ../../files/vencordthemes/catppuccin.css;
+      ".config/starship.toml".source = ./config/starship.toml;
+      ".face.icon".source = ./files/face.png;
+      ".config/Vencord/themes/orangetweaks.css".source = ./files/vencordthemes/orangetweaks.css;
+      ".config/Vencord/themes/catppuccin.css".source = ./files/vencordthemes/catppuccin.css;
       ".config/mpv/input.conf".text = ''
         alt+s playlist-shuffle
       '';
@@ -43,24 +43,24 @@ in {
     };
 
     packages = [
-      (import ../../scripts/rofi/calc.nix {inherit pkgs;})
-      (import ../../scripts/logout-exit.nix {inherit pkgs;})
+      (import ./scripts/rofi/calc.nix {inherit pkgs;})
+      (import ./scripts/logout-exit.nix {inherit pkgs;})
       inputs.nixvim.packages.${pkgs.system}.default
     ];
   };
 
   # Import Program Configurations
   imports = [
-    ../../config/hyprland.nix
-    ../../config/swaync.nix
-    # ../../config/waybar
-    ../../config/chromium.nix
-    ../../config/firefox.nix
-    ../../config/rofi-styles
-    ../../config/ags.nix
-    ../../config/fastfetch.nix
-    ../../config/hyprlock.nix
-    ../../config/xdg.nix
+    ./config/hyprland.nix
+    ./config/swaync.nix
+    # ./config/waybar
+    ./config/chromium.nix
+    ./config/firefox.nix
+    ./config/rofi-styles
+    ./config/ags.nix
+    ./config/fastfetch.nix
+    ./config/hyprlock.nix
+    ./config/xdg.nix
   ];
 
   # Define Settings For Xresources
@@ -154,6 +154,7 @@ in {
         confirm_os_window_close = 0;
       };
     };
+    home-manager.enable = true;
     bash = {
       enable = true;
       enableCompletion = true;
@@ -197,6 +198,5 @@ in {
         list-pkgs = "nix-store -q --requisites /run/current-system | cut -d- -f2- | sort | uniq";
       };
     };
-    home-manager.enable = true;
   };
 }
