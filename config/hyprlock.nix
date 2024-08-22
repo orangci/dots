@@ -96,7 +96,7 @@ in {
           border_color=rgba(12, 550, 249,0)
           border_size=1
           halign=center
-          path=/home/orangc/dots/config/face.png
+          path=~/dots/config/face.png
           rounding=-1
           valign=center
       }

@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+# check if the user is on NixOS
 if [ -n "$(grep -i nixos < /etc/os-release)" ]; then
   echo "deez" > /dev/null
 else
@@ -14,28 +15,26 @@ else
 fi
 
 
-# cd to $HOME
+# clone orxngc/dots in $HOME
 cd $HOME || exit
-
-# Clone the repository
 echo "Cloning repository..."
 git clone https://github.com/orxngc/dots
-cd dots || exit
 echo "orxngc/dots cloned successfully."
 
-# Ask the user for their username and replace all instances of "orangc"
+# Ask the user for their username & hostname
 read -p "Enter your username: " username
-grep -rl "orangc" . | xargs sed -i "s/orangc/$username/g"
-
-# Ask for the hostname and replace all instances of "anacreon"
+sed -i 's/\(username = "\)[^"]*\(".*\)/\1'$username'\2/' flake.nix
 read -p "Enter your hostname: " hostname
-cp -r hosts/anacreon "hosts/$hostname"
-grep -rl "anacreon" "hosts/$hostname" | xargs sed -i "s/anacreon/$hostname/g"
+cp -r $HOME/dots/hosts/anacreon "$HOME/dots/hosts/$hostname"
+sed -i 's/\(host = "\)[^"]*\(".*\)/\1'$hostname'\2/' flake.nix
 
 # Copy the hyprpanel config
-echo "Copying ags configs.."
-mkdir -p ~/.cache/ags/hyprpanel
-cp files/hyprpanel.json /tmp/ags/hyprpanel/options.json
+echo "Installing HyperPanel.."
+cd $HOME/.config || exit
+git clone https://github.com/orxngc/HyprPanel/
+mv $HOME/.config/HyprPanel $HOME/.config/ags
+mkdir -p $HOME/.cache/ags/hyprpanel
+cp $HOME/dots/files/hyprpanel.json $HOME/.cache/ags/hyprpanel/options.json
 echo "Ags configs successfully copied."
 
 # Prompt the user for wallpaper repositories
@@ -74,17 +73,9 @@ for i in "${ADDR[@]}"; do
     esac
 done
 
-# Clone and rename HyprPanel
-echo "Cloning Jas-SinghFSU's (huge credit to this guy for his ags setup) HyprPanel.."
-cd ~/.config || exit
-git clone https://github.com/Jas-SinghFSU/HyprPanel/
-mv HyprPanel ags
-echo "Successfully cloned HyprPanel."
-
 # Generate hardware config
 echo "Generating hardware configuration..."
-cd $HOME/dots || exit
-nixos-generate-config --show-hardware-config > "hosts/$hostname/hardware.nix"
+nixos-generate-config --show-hardware-config > "$HOME/dots/hosts/$hostname/hardware.nix"
 echo "Hardware configuration successfully generated."
 
 # Set NIX_CONFIG
@@ -94,8 +85,8 @@ echo "Enabled flakes."
 # Ask for git username and email, and replace them in variables.nix
 read -p "Enter your git username: " git_username
 read -p "Enter your git email: " git_email
-sed -i "s/gitUsername = \"orxngc\";/gitUsername = \"$git_username\";/g" "hosts/$hostname/variables.nix"
-sed -i "s/gitEmail = \"orangc@proton.me\";/gitEmail = \"$git_email\";/g" "hosts/$hostname/variables.nix"
+sed -i "s/gitUsername = \"orxngc\";/gitUsername = \"$git_username\";/g" "$HOME/dots/hosts/$hostname/variables.nix"
+sed -i "s/gitEmail = \"orangc@proton.me\";/gitEmail = \"$git_email\";/g" "$HOME/dots/hosts/$hostname/variables.nix"
 
 # Rebuild the system with the specified hostname
 echo "Rebuilding system..."

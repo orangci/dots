@@ -4,17 +4,12 @@
   username,
   host,
   ...
-}:
-
-let
-  inherit (import ./variables.nix) gitUsername;
-in
-{
+}: {
   users.users = {
     "${username}" = {
       homeMode = "755";
       isNormalUser = true;
-      description = "${gitUsername}";
+      description = "${username}";
       extraGroups = [
         "networkmanager"
         "wheel"
@@ -24,7 +19,7 @@ in
       ];
       shell = pkgs.bash;
       ignoreShellProgramCheck = true;
-      packages = with pkgs; [ ];
+      packages = with pkgs; [];
     };
     # "newuser" = {
     #   homeMode = "755";

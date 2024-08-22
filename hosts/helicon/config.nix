@@ -89,6 +89,7 @@
       name = "oreo_spark_orange_cursors";
       size = 24;
     };
+    targets.chromium.enable = false;
     fonts = {
       monospace = {
         package = pkgs.nerdfonts.override {fonts = ["JetBrainsMono"];};
@@ -204,7 +205,6 @@
     # sddm-themes.tokyo-night
     sddm-themes.astronaut
     lxqt.lxqt-policykit
-    ydotool
     wl-clipboard
     libnotify
     # appimage-run
@@ -259,23 +259,23 @@
     jq
     figlet
     wf-recorder
-    wl-screenrec
     xfce.tumbler # for image thumbnails in thunar
-    arrpc
+    open-interpreter
     rofi-wayland
     grimblast # for screenshots
     nurl
+    libwebp
+    image_optim
     alejandra
 
     # big gui programs
     file-roller
-    transmission_4-gtk # bittorent client
+    # transmission_4-gtk # bittorent client
     whatsapp-for-linux
     vscodium
     qimgv # image viewer
     calibre # ebooks
     otpclient
-    google-chrome
     prismlauncher
     filezilla
     zoom-us
