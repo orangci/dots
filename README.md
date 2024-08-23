@@ -88,7 +88,7 @@ This is a very modular flake.
 
 ## Programs
 <details>
-<summary>Here's a list of the programs you'll find used here.</summary>
+<summary>Here's a list of some of the programs you'll find used here.</summary>
 
 - `hyprland`
 - `rofi`
