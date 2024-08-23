@@ -72,18 +72,18 @@ This is a very modular flake.
 
 - [`.github`](.github) The assets files for the README.
 - [`files`](files) Files which various home-manager modules utilize.
- - [`fonts`](files/fonts) This is where you can place fonts that are not available in nixpkgs.
+    - [`fonts`](files/fonts) This is where you can place fonts that are not available in nixpkgs.
 - [`hm-modules`](hm-modules) All home-manager modules are stored in here.
- - [`core`](hm-modules/core) Important things, like the hyprland module.
- - [`programs`](hm-modules/programs) The majority of program modules.
- - [`styles`](hm-modules/styles) In general it's not advised to touch this.
+    - [`core`](hm-modules/core) Important things, like the hyprland module.
+    - [`programs`](hm-modules/programs) The majority of program modules.
+    - [`styles`](hm-modules/styles) In general it's not advised to touch this.
 - [`hosts`](hosts) This is where each host's unique configurations go. You can configure/toggle the different modules and hm-modules for each host here.
 - [`modules`](modules) NixOS system modules.
- - [`core`](modules/core) There's no reason to touch this.
- - [`drivers`](modules/core) Again, no reason to touch these.
- - [`programs`](modules/programs) Honestly not a reason to touch these either.
- - [`styles`](modules/styles) Now this one you should touch. A big chunk of the system is themed here (the rest are themed in hm-modules/programs).
-- [`scrips`](scripts) This is where I store all my scripts.
+    - [`core`](modules/core) There's no reason to touch this.
+    - [`drivers`](modules/core) Again, no reason to touch these.
+    - [`programs`](modules/programs) Honestly not a reason to touch these either.
+    - [`styles`](modules/styles) Now this one you should touch. A big chunk of the system is themed here (the rest are themed in hm-modules/programs).
+- [`scripts`](scripts) This is where I store all my scripts.
 - [`flake.nix`](flake.nix) Where the flake begins, the lovely starting pont.
 
 ## Programs
