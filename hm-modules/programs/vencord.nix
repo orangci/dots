@@ -544,7 +544,7 @@ in {
                     "bgOpacity": 100
                 },
                 "ShowAllMessageButtons": {
-                    "enabled": false
+                    "enabled": true
                 },
                 "ShowAllRoles": {
                     "enabled": true
