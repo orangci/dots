@@ -93,14 +93,14 @@ Press `SUPER + ?` to open a list of all keybindings.
 - [ ] Make Vencord fully declarative.
 - [ ] Figure out a way to make Firefox extension *data* declarative. I've already made installing extensions declarative.
 - [ ] Update the README screenshots, *again*. They're outdated.
-- [ ] Restructure the flake and make it more.. nixy. Modularize as much as I can, for example.
+- [ ] Restructure the flake and make it more.. nixy. Modularize as much as I can, for example. This is, I'd say, 50% done. I still have things to do like make my Hyprland config declarative.
 
 ## Last but not least, credits!
 <details>
 <summary>Thank you!</summary>
 
-- https://github.com/NotAShelf/nyx/ — teaching me how many different parts of how nix works, and many bits of code such as the xdg configuration
-- https://gitlab.com/Zaney/zaneyos — this flake a few hundred commits ago was a fork of zaneyos; much of his code / file structure still remains here. 
+- https://github.com/NotAShelf/nyx/ — teaching me how many different parts of how nix works, and many tidbits of code
+- https://gitlab.com/Zaney/zaneyos — teaching me how many different parts of how nix works, and several tidbits of code 
 - https://github.com/Jas-SinghFSU/HyprPanel — The ags configuration that I use.
 - https://github.com/MrVivekRajan/Hypr-Dots — The hyprlock config inspiration.
 - https://github.com/elythh/nixvim — The neovim configuration I use.

@@ -1,13 +1,23 @@
 {
   pkgs,
-  host,
+  config,
   username,
+  lib,
+  host,
   ...
 }: let
-  inherit (import ../../hosts/${host}/variables.nix) waybarStyle waybarBottom;
+  inherit (lib) mkOption types;
+  inherit (import ../../../hosts/${host}/variables.nix) waybarStyle waybarBottom;
 in {
-  home.packages = [ pkgs.wttrbar ];
-  programs.waybar = {
+  imports = [./${waybarStyle}.nix];
+  options.hmModules.programs.waybar = mkOption {
+    enabled = mkOption {
+      type = types.bool;
+      default = false;
+    };
+  };
+  config = {
+    programs.waybar = {
       enable = true; # Curious as to why waybar isn't working? Go to home.nix and uncomment the import line for this file; it should be around line 59.
       package = pkgs.waybar;
       settings = [
@@ -181,7 +191,7 @@ in {
             return-type = "json";
             tooltip = true;
           };
-        "custom/recording" = {
+          "custom/recording" = {
             exec = "~/dots/scripts/recording-status.sh";
             return-type = "json";
             format = "{icon}";
@@ -191,9 +201,9 @@ in {
             };
             interval = "once";
             signal = "2";
-        };
+          };
         }
       ];
     };
-  imports = [./${waybarStyle}.nix];
+  };
 }

@@ -10,7 +10,7 @@
   };
   config = lib.mkIf config.modules.dm.sddm.enable {
     environment.systemPackages = with pkgs; let
-      sddm-themes = pkgs.callPackage ../../config/sddm.nix {};
+      sddm-themes = pkgs.callPackage ./pkgs.nix {};
     in [
       # sddm-themes.sugar-dark
       # sddm-themes.tokyo-night

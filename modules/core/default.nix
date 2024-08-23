@@ -5,5 +5,6 @@
     ./networking.nix
     ./printing.nix
     ./sound.nix
+    ./sddm
   ];
 }

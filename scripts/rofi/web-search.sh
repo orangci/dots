@@ -68,7 +68,7 @@ main() {
         if [[ "$platform" == "🎨 Catppuccin Colors" ]]; then
             catppuccin_colors
         else
-            query=$(rofi -dmenu -theme websearch.rasi -p "Search query:")
+            query=$(rofi -dmenu -p "Search query:")
 
             if [[ -n "$query" ]]; then
                 url="${URLS[$platform]}$query"
