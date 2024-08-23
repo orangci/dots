@@ -71,7 +71,7 @@ Press `SUPER + ?` to open a list of all keybindings.
 This is a very modular flake.
 
 - [`.github`](.github) The assets files for the README.
-- ['files'](files) Files which various home-manager modules utilize.
+- [`files`](files) Files which various home-manager modules utilize.
  - [`fonts`](files/fonts) This is where you can place fonts that are not available in nixpkgs.
 - [`hm-modules`](hm-modules) All home-manager modules are stored in here.
  - [`core`](hm-modules/core) Important things, like the hyprland module.
