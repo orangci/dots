@@ -85,8 +85,8 @@ echo "Enabled flakes."
 # Ask for git username and email, and replace them in variables.nix
 read -p "Enter your git username: " git_username
 read -p "Enter your git email: " git_email
-sed -i "s/gitUsername = \"orxngc\";/gitUsername = \"$git_username\";/g" "$HOME/dots/hosts/$hostname/variables.nix"
-sed -i "s/gitEmail = \"orangc@proton.me\";/gitEmail = \"$git_email\";/g" "$HOME/dots/hosts/$hostname/variables.nix"
+sed -i "s/gitUsername = \"orxngc\";/gitUsername = \"$git_username\";/g" "$HOME/dots/hm-modules/core/boilerplate.nix"
+sed -i "s/gitEmail = \"orangc@proton.me\";/gitEmail = \"$git_email\";/g" "$HOME/dots/hm-modules/core/boilerplate.nix"
 
 # Rebuild the system with the specified hostname
 echo "Rebuilding system..."

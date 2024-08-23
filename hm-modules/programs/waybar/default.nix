@@ -7,7 +7,8 @@
   ...
 }: let
   inherit (lib) mkOption types;
-  inherit (import ../../../hosts/${host}/variables.nix) waybarStyle waybarBottom;
+  waybarStyle = "pills-round"; # Different styles for the waybar at the top of the screen. Currently available options: pills-round, colourful-pills-round, boxyStyle,and long
+  waybarBottom = false; # If the waybar should be at the bottom of the screen instead of the top
 in {
   imports = [./${waybarStyle}.nix];
   options.hmModules.programs.waybar = mkOption {

@@ -5,7 +5,8 @@
   inputs,
   ...
 }: let
-  inherit (import ./hosts/${host}/variables.nix) gitUsername gitEmail;
+  gitUsername = "orxngc";
+  gitEmail = "orangc@proton.me";
 in {
   home = {
     username = "${username}";
@@ -14,15 +15,15 @@ in {
     stateVersion = "24.11";
     file = {
       ".local/share/fonts" = {
-        source = ./files/fonts;
+        source = ../../files/fonts;
         recursive = true;
       };
-      ".face.icon".source = ./files/face.png;
+      ".face.icon".source = ../../files/face.png;
     };
   };
 
   imports = [
-    ./hm-modules
+    ../.
   ];
 
   dconf.settings = {

@@ -1,8 +1,6 @@
 {
-  config,
   pkgs,
-  host,
-  lib,
+  username,
   ...
 }: {
   imports = [
@@ -49,7 +47,6 @@
   hardware.logitech.wireless.enable = true;
 
   programs = {
-    hyprlock.enable = true;
     java.enable = true;
     noisetorch.enable = true;
   };

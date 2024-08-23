@@ -7,7 +7,6 @@
 }: let
   inherit (lib) mkOption types;
   palette = config.stylix.base16Scheme;
-  inherit (import ../../../hosts/${host}/variables.nix) boxyStyle;
 in {
   options.hmModules.programs.swaync = mkOption {
     enabled = mkOption {
