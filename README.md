@@ -85,9 +85,25 @@ This is a very modular flake.
  - [`core`](modules/core) There's no reason to touch this.
  - [`drivers`](modules/core) Again, no reason to touch these.
  - [`programs`](modules/programs) Honestly not a reason to touch these either.
- - [`styles](modules/styles) Now this one you should touch. A big chunk of the system is themed here (the rest are themed in hm-modules/programs).
-- [`flake.nix`](flake.nix) Where the flake begins, the lovely starting pont. 
+ - [`styles`](modules/styles) Now this one you should touch. A big chunk of the system is themed here (the rest are themed in hm-modules/programs).
+- [`scrips`](scripts) This is where I store all my scripts.
+- [`flake.nix`](flake.nix) Where the flake begins, the lovely starting pont.
 
+## Programs
+<details>
+<summary>Here's a list of the programs you'll find used here.</summary>
+
+- `hyprland`
+- `rofi`
+- `neovim`
+- `vscodium`
+- `thunar`
+- `kitty`
+- `ags`
+- `firefox`
+- `hyprlock`
+- `swaync`
+</details>
 ## Todo
 <details> 
 <summary>Completed</summary>
