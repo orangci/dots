@@ -69,7 +69,25 @@ sh <(curl -L https://raw.githubusercontent.com/orxngc/dots/main/install.sh)
 Note: I strongly advise you to read the code of the script [here](github.com/orxngc/dots/blob/main/install.sh) before running it. Always read and thoroughly check scripts you see online for your own safety..! 
 
 Press `SUPER + ?` to open a list of all keybindings.
- 
+
+## Structure Overview
+This is a very modular flake.
+
+- [`.github`](.github) The assets files for the README.
+- ['files'](files) Files which various home-manager modules utilize.
+ - [`fonts`](files/fonts) This is where you can place fonts that are not available in nixpkgs.
+- [`hm-modules`](hm-modules) All home-manager modules are stored in here.
+ - [`core`](hm-modules/core) Important things, like the hyprland module.
+ - [`programs`](hm-modules/programs) The majority of program modules.
+ - [`styles`](hm-modules/styles) In general it's not advised to touch this.
+- [`hosts`](hosts) This is where each host's unique configurations go. You can configure/toggle the different modules and hm-modules for each host here.
+- [`modules`](modules) NixOS system modules.
+ - [`core`](modules/core) There's no reason to touch this.
+ - [`drivers`](modules/core) Again, no reason to touch these.
+ - [`programs`](modules/programs) Honestly not a reason to touch these either.
+ - [`styles](modules/styles) Now this one you should touch. A big chunk of the system is themed here (the rest are themed in hm-modules/programs).
+- [`flake.nix`](flake.nix) Where the flake begins, the lovely starting pont. 
+
 ## Todo
 <details> 
 <summary>Completed</summary>
@@ -86,14 +104,15 @@ Press `SUPER + ?` to open a list of all keybindings.
 - [x] ~~Make both browsers declarative.~~
 - [x] ~~Fix the installation script.~~
 - [x] ~~Fix MIME types.~~
+- [x] ~~Restructure the flake and make it modular.~~
+- [x] ~~Make Vencord fully declarative.~~
 </details>
 
 - [ ] Make Hyprpanel fully declarative; also maybe make a PR that adds home-manager options to that flake.
-- [ ] Make VScodium declarative.
-- [ ] Make Vencord fully declarative.
+- [ ] Use the VScodium home-manager module to its fullest extent.
+= [ ] Figure out how to deal with secrets.
 - [ ] Figure out a way to make Firefox extension *data* declarative. I've already made installing extensions declarative.
-- [ ] Update the README screenshots, *again*. They're outdated.
-- [ ] Restructure the flake and make it more.. nixy. Modularize as much as I can, for example. This is, I'd say, 50% done. I still have things to do like make my Hyprland config declarative.
+- [ ] Make the flake more.. nixy.  This is, I'd say, 70% done. I still have things to do like make my Hyprland config use the home-manager module in a nixy sort of way.
 
 ## Last but not least, credits!
 <details>
