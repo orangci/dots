@@ -38,7 +38,7 @@
           inherit host;
         };
         modules = [
-          ./config.nix
+          ./hosts/${host}/config.nix
           inputs.stylix.nixosModules.stylix
           home-manager.nixosModules.home-manager
           {

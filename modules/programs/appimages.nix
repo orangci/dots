@@ -5,11 +5,11 @@
   ...
 }: {
   options = {
-    appimages.enable =
+    modules.programs.appimages.enable =
       lib.mkEnableOption "enables appimages";
   };
-  config = lib.mkIf config.appimages.enable {
-    binfmt.registrations.appimage = {
+  config = lib.mkIf config.modules.programs.appimages.enable {
+    boot.binfmt.registrations.appimage = {
       wrapInterpreterInShell = false;
       interpreter = "${pkgs.appimage-run}/bin/appimage-run";
       recognitionType = "magic";
