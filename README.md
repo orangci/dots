@@ -101,6 +101,7 @@ This is a very modular flake.
 - `hyprlock`
 - `swaync`
 </details>
+
 ## Todo
 <details> 
 <summary>Completed</summary>
