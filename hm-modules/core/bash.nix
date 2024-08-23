@@ -8,7 +8,7 @@
 }: let
   inherit (lib) mkOption types;
 in {
-  options.hmModules.programs.bash = mkOption {
+  options.hmModules.core.bash = mkOption {
     enabled = mkOption {
       type = types.bool;
       default = true;

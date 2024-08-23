@@ -2,14 +2,15 @@
   pkgs,
   username,
   host,
+  inputs,
   ...
 }: let
   inherit (import ./hosts/${host}/variables.nix) gitUsername gitEmail;
 in {
   home = {
-    # Home Manager Settings
     username = "${username}";
     homeDirectory = "/home/${username}";
+    packages = [inputs.nixvim.packages.${pkgs.system}.default];
     stateVersion = "24.11";
     file = {
       ".local/share/fonts" = {
@@ -17,8 +18,6 @@ in {
         recursive = true;
       };
       ".face.icon".source = ./files/face.png;
-      ".config/Vencord/themes/orangetweaks.css".source = ./files/vencordthemes/orangetweaks.css;
-      ".config/Vencord/themes/catppuccin.css".source = ./files/vencordthemes/catppuccin.css;
     };
   };
 

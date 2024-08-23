@@ -1,23 +1,20 @@
 {
   imports = [
-    ./bash.nix
-    ./kitty.nix
-    ./starship
     ./rofi
-    ./wlogout
-    ./hypridle.nix
-    ./mpv.nix
-    ./hyprlock.nix
-    ./fastfetch.nix
-    ./scripts.nix
-    ./swaync.nix
-    ./codium.nix
-    ./firefox.nix
-    ./chromium.nix
+    ./starship
     ./waybar
-    ./swappy.nix
-    ./hyprland
+    ./wlogout
     ./ags.nix
-    ./xdg.nix
+    ./chromium.nix
+    ./codium.nix
+    ./fastfetch.nix
+    ./firefox.nix
+    ./hypridle.nix
+    ./hyprlock.nix
+    ./kitty.nix
+    ./mpv.nix
+    ./swappy.nix
+    ./swaync.nix
+    ./vencord.nix
   ];
 }
