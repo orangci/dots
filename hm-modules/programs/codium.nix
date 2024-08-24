@@ -18,12 +18,12 @@ in {
       package = pkgs.vscodium;
       enableUpdateCheck = false;
       enableExtensionUpdateCheck = false;
-      extensions = with pkgs; [
-        vscode-extension-leonardssh-vscord
-        vscode-extension-kamadorueda-alejandra
-        vscode-extension-bradgashler-htmltagwrap
-        vscode-extension-ecmel-vscode-html-css
-        vscode-extension-ritwickdey-liveserver
+      extensions = with pkgs.vscode-extensions; [
+        leonardssh.vscord # discord RPC
+        kamadorueda.alejandra # nix formatter
+        bradgashler.htmltagwrap # html tag wrapping
+        ecmel.vscode-html-css # html & css formatting
+        ritwickdey.liveserver # live server
       ];
     };
   };

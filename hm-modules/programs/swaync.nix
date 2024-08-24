@@ -11,12 +11,12 @@ in {
   options.hmModules.programs.swaync = mkOption {
     enabled = mkOption {
       type = types.bool;
-      default = true;
+      default = false;
     };
   };
   config = {
     services.swaync.enable = true;
-    services.swaync.settings = ''
+    home.file.".config/swanyc/config.json".text = ''
       {
           "$schema": "/etc/xdg/swaync/configSchema.json",
           "positionX": "right",

@@ -1,5 +1,5 @@
 # orangc's flake
-A smol (*not really small; excluding my home folder it is 50GB, I'm trying to reduce this*) n' cozy NixOS with Hyprland flake.
+A smol (*not really small; excluding my home folder it is 44GB, I'm trying to reduce this*) n' cozy NixOS with Hyprland flake.
 
 ## Screenshots
 <details> 
@@ -99,7 +99,6 @@ This is a very modular flake.
 - `ags`
 - `firefox`
 - `hyprlock`
-- `swaync`
 </details>
 
 ## Todo
@@ -123,16 +122,18 @@ This is a very modular flake.
 - [x] ~~Use the VScodium home-manager module to its fullest extent.~~
 </details>
 
-- [ ] Make Hyprpanel fully declarative; also maybe make a PR that adds home-manager options to that flake.
+- [ ] Implement impermanence. It seems pretty nice.
 - [ ] Make Stylix theme 100% of everything, not 80%.
-- [ ] Figure out how to deal with secrets.
 - [ ] Figure out a way to make Firefox extension *data* declarative. I've already made installing extensions declarative.
+- [ ] Figure out how to deal with secrets.
 - [ ] Make the flake more.. nixy.  This is, I'd say, 70% done. I still have things to do like make my Hyprland config use the home-manager module in a nixy sort of way.
+- [ ] Make Hyprpanel fully declarative; also maybe make a PR that adds home-manager options to that flake.
 
 ## Last but not least, credits!
 <details>
 <summary>Thank you!</summary>
 
+- the vimjoyer youtube channel, for making immensely helpful videos that saved me hours and hours of pain
 - https://github.com/NotAShelf/nyx/ — teaching me how many different parts of how nix works, and many tidbits of code
 - https://gitlab.com/Zaney/zaneyos — teaching me how many different parts of how nix works, and several tidbits of code 
 - https://github.com/Jas-SinghFSU/HyprPanel — The ags configuration that I use.
