@@ -16,6 +16,15 @@ in {
     programs.vscode = {
       enable = true;
       package = pkgs.vscodium;
+      enableUpdateCheck = false;
+      enableExtensionUpdateCheck = false;
+      extensions = with pkgs; [
+        vscode-extension-leonardssh-vscord
+        vscode-extension-kamadorueda-alejandra
+        vscode-extension-bradgashler-htmltagwrap
+        vscode-extension-ecmel-vscode-html-css
+        vscode-extension-ritwickdey-liveserver
+      ];
     };
   };
 }

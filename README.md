@@ -120,11 +120,12 @@ This is a very modular flake.
 - [x] ~~Fix MIME types.~~
 - [x] ~~Restructure the flake and make it modular.~~
 - [x] ~~Make Vencord fully declarative.~~
+- [x] ~~Use the VScodium home-manager module to its fullest extent.~~
 </details>
 
 - [ ] Make Hyprpanel fully declarative; also maybe make a PR that adds home-manager options to that flake.
-- [ ] Use the VScodium home-manager module to its fullest extent.
-= [ ] Figure out how to deal with secrets.
+- [ ] Make Stylix theme 100% of everything, not 80%.
+- [ ] Figure out how to deal with secrets.
 - [ ] Figure out a way to make Firefox extension *data* declarative. I've already made installing extensions declarative.
 - [ ] Make the flake more.. nixy.  This is, I'd say, 70% done. I still have things to do like make my Hyprland config use the home-manager module in a nixy sort of way.
 
