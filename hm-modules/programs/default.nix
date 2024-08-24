@@ -1,5 +1,6 @@
 {
   imports = [
+    ./hyprland
     ./rofi
     ./starship
     ./waybar

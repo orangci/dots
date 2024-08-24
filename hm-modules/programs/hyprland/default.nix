@@ -7,7 +7,7 @@
   inherit (lib) mkOption types;
 in
   with lib; {
-    options.hmModules.core.hyprland = mkOption {
+    options.hmModules.programs.hyprland = mkOption {
       enabled = mkOption {
         type = types.bool;
         default = true;
