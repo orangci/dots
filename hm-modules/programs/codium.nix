@@ -24,6 +24,8 @@ in {
         bradgashler.htmltagwrap # html tag wrapping
         ecmel.vscode-html-css # html & css formatting
         ritwickdey.liveserver # live server
+        catppuccin.catppuccin-vsc-icons # catppuccin icons
+        catppuccin.catppuccin-vsc # catppuccin
       ];
     };
   };

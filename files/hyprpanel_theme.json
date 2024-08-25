@@ -112,5 +112,11 @@
   "theme.bar.buttons.workspaces.occupied": "#caa6f7",
   "theme.bar.buttons.workspaces.numbered_active_underline_color": "#caa6f7",
   "theme.bar.buttons.workspaces.available": "#cdd6f4",
-  "theme.bar.buttons.workspaces.hover": "#cdd6f4"
+  "theme.bar.buttons.workspaces.hover": "#cdd6f4",
+  "theme.osd.icon_container": "#1e1e2e",
+  "theme.osd.bar_container": "#1e1e2e",
+  "theme.osd.bar_color": "#fab387",
+  "theme.osd.icon": "#fab387",
+  "theme.osd.bar_empty_color": "#cdd6f4",
+  "theme.osd.label": "#cdd6f4"
 }

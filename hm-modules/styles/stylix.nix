@@ -65,6 +65,7 @@ in {
         rofi.enable = false;
         hyprland.enable = false;
         kde.enable = false;
+        vscode.enable = false;
       };
     };
   };

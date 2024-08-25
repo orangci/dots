@@ -15,8 +15,8 @@
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    ags = {
-      url = "github:Aylur/ags";
+    hyprpanel = {
+      url = "github:orxngc/HyprPanel";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -24,6 +24,7 @@
   outputs = inputs @ {
     nixpkgs,
     home-manager,
+    hyprpanel,
     ...
   }: let
     system = "x86_64-linux";
@@ -33,10 +34,19 @@
     pkgs = import nixpkgs {
       inherit system;
       config.allowUnfree = true;
+      overlays = [
+        hyprpanel.overlay
+      ];
     };
   in {
     homeConfigurations."${username}@${host}" = home-manager.lib.homeManagerConfiguration {
-      pkgs = nixpkgs.legacyPackages.${system};
+      pkgs = import nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
+        overlays = [
+          hyprpanel.overlay
+        ];
+      };
       extraSpecialArgs = {
         inherit system;
         inherit inputs;

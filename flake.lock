@@ -2,10 +2,8 @@
   "nodes": {
     "ags": {
       "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "systems": "systems"
+        "nixpkgs": "nixpkgs_2",
+        "systems": "systems_2"
       },
       "locked": {
         "lastModified": 1721306136,
@@ -527,7 +525,7 @@
         "hyprutils": "hyprutils",
         "hyprwayland-scanner": "hyprwayland-scanner",
         "nixpkgs": "nixpkgs",
-        "systems": "systems_2",
+        "systems": "systems",
         "xdph": "xdph"
       },
       "locked": {
@@ -599,6 +597,27 @@
       "original": {
         "owner": "hyprwm",
         "repo": "hyprlang",
+        "type": "github"
+      }
+    },
+    "hyprpanel": {
+      "inputs": {
+        "ags": "ags",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1724568753,
+        "narHash": "sha256-OnYUx1DBhGgE53QrwDONfxocSKxrzO9G4/w1/JaErDc=",
+        "owner": "orxngc",
+        "repo": "HyprPanel",
+        "rev": "b080d6b00d5d5b60df532b85f77910a1124eed77",
+        "type": "github"
+      },
+      "original": {
+        "owner": "orxngc",
+        "repo": "HyprPanel",
         "type": "github"
       }
     },
@@ -720,6 +739,22 @@
     },
     "nixpkgs_2": {
       "locked": {
+        "lastModified": 1718714799,
+        "narHash": "sha256-FUZpz9rg3gL8NVPKbqU8ei1VkPLsTIfAJ2fdAf5qjak=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "c00d587b1a1afbf200b1d8f0b0e4ba9deb1c7f0e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_3": {
+      "locked": {
         "lastModified": 1724224976,
         "narHash": "sha256-Z/ELQhrSd7bMzTO8r7NZgi9g5emh+aRKoCdaAv5fiO0=",
         "owner": "nixos",
@@ -744,11 +779,11 @@
         "pre-commit-hooks": "pre-commit-hooks"
       },
       "locked": {
-        "lastModified": 1724573129,
-        "narHash": "sha256-KgjOj5RfnW67fisU6z5Jolig8TVZAekOoe+lHhdwrNA=",
+        "lastModified": 1724575040,
+        "narHash": "sha256-hkDbmuRcNtD9Z5DFEs3rYDfpGQVQRPjoKkKRhgmkq/c=",
         "owner": "orxngc",
         "repo": "nixvim",
-        "rev": "75ed5be2ebd5597a5548c24b95635188ea2f9277",
+        "rev": "8a9142e9eebad4afe17548633e20279b2f0885f8",
         "type": "github"
       },
       "original": {
@@ -835,10 +870,10 @@
     },
     "root": {
       "inputs": {
-        "ags": "ags",
         "home-manager": "home-manager",
         "hyprland": "hyprland",
-        "nixpkgs": "nixpkgs_2",
+        "hyprpanel": "hyprpanel",
+        "nixpkgs": "nixpkgs_3",
         "nixvim": "nixvim",
         "stylix": "stylix"
       }

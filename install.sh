@@ -29,13 +29,7 @@ cp -r $HOME/dots/hosts/anacreon "$HOME/dots/hosts/$hostname"
 sed -i 's/\(host = "\)[^"]*\(".*\)/\1'$hostname'\2/' flake.nix
 
 # Copy the hyprpanel config
-echo "Installing HyperPanel.."
-cd $HOME/.config || exit
-git clone https://github.com/orxngc/HyprPanel/
-mv $HOME/.config/HyprPanel $HOME/.config/ags
-mkdir -p $HOME/.cache/ags/hyprpanel
 cp $HOME/dots/files/hyprpanel.json $HOME/.cache/ags/hyprpanel/options.json
-echo "Ags configs successfully copied."
 
 # Prompt the user for wallpaper repositories
 echo "Choose wallpaper repositories to install:"
