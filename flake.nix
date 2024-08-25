@@ -38,26 +38,24 @@
     homeConfigurations."${username}@${host}" = home-manager.lib.homeManagerConfiguration {
       pkgs = nixpkgs.legacyPackages.${system};
       extraSpecialArgs = {
+        inherit system;
         inherit inputs;
         inherit username;
         inherit host;
-        inherit system;
       };
       modules = [./hosts/${host}/home.nix inputs.stylix.homeManagerModules.stylix];
     };
-    nixosConfigurations = {
-      "${host}" = nixpkgs.lib.nixosSystem {
-        specialArgs = {
-          inherit system;
-          inherit inputs;
-          inherit username;
-          inherit host;
-        };
-        modules = [
-          ./hosts/${host}/config.nix
-          inputs.stylix.nixosModules.stylix
-        ];
+    nixosConfigurations."${host}" = nixpkgs.lib.nixosSystem {
+      specialArgs = {
+        inherit system;
+        inherit inputs;
+        inherit username;
+        inherit host;
       };
+      modules = [
+        ./hosts/${host}/config.nix
+        inputs.stylix.nixosModules.stylix
+      ];
     };
   };
 }
