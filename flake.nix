@@ -6,10 +6,7 @@
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    hyprland = {
-      url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
     nixvim = {
       url = "github:orxngc/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -38,12 +35,15 @@
       config.allowUnfree = true;
     };
   in {
-    homeConfigurations."${username}" = home-manager.lib.homeManagerConfiguration {
-      inherit pkgs;
-
-      modules = [
-        ./hosts/${host}/home.nix
-      ];
+    homeConfigurations."${username}@${host}" = home-manager.lib.homeManagerConfiguration {
+      pkgs = nixpkgs.legacyPackages.${system};
+      extraSpecialArgs = {
+        inherit inputs;
+        inherit username;
+        inherit host;
+        inherit system;
+      };
+      modules = [./hosts/${host}/home.nix inputs.stylix.homeManagerModules.stylix];
     };
     nixosConfigurations = {
       "${host}" = nixpkgs.lib.nixosSystem {
@@ -56,29 +56,6 @@
         modules = [
           ./hosts/${host}/config.nix
           inputs.stylix.nixosModules.stylix
-          home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              extraSpecialArgs = {
-                inherit username;
-                inherit inputs;
-                inherit host;
-              };
-              sharedModules = [
-                {
-                  manual = {
-                    manpages.enable = false;
-                    html.enable = false;
-                    json.enable = false;
-                  };
-                }
-              ];
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              backupFileExtension = "backup";
-              users.${username} = import ./hosts/${host}/home.nix;
-            };
-          }
         ];
       };
     };
