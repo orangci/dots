@@ -27,6 +27,13 @@ in {
         catppuccin.catppuccin-vsc-icons # catppuccin icons
         catppuccin.catppuccin-vsc # catppuccin
       ];
+      userSettings = {
+        "extensions.autoCheckUpdates" = false;
+        "update.mode" = "none";
+        "git.enableSmartCommit" = true;
+        "workbench.iconTheme" = "catppuccin-mocha";
+        "workbench.colorTheme" = "Catppuccin Mocha";
+      };
     };
   };
 }

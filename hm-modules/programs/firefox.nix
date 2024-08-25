@@ -110,11 +110,26 @@ in {
               ];
             };
 
-            "SearX" = {
-              definedAliases = ["@srx"];
+            "Startpage" = {
+              definedAliases = ["@sp"];
               urls = [
                 {
-                  template = " https://paulgo.io/search";
+                  template = "https://www.startpage.com/sp/search";
+                  params = [
+                    {
+                      name = "q";
+                      value = "{searchTerms}";
+                    }
+                  ];
+                }
+              ];
+            };
+
+            "Code Search" = {
+              definedAliases = ["@gh"];
+              urls = [
+                {
+                  template = "https://github.com/search?type=code";
                   params = [
                     {
                       name = "q";
