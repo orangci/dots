@@ -91,6 +91,7 @@ sed -i "s/gitEmail = \"orangc@proton.me\";/gitEmail = \"$git_email\";/g" "$HOME/
 # Rebuild the system with the specified hostname
 echo "Rebuilding system..."
 sudo nixos-rebuild boot --flake ".#$hostname"
+home-manager switch $HOME/dots
 echo "System successfully rebuilt."
 echo " IMPORTANT: reboot your system now for the changes to take effect."
 echo "Have fun with my dots! —orangc"
