@@ -33,6 +33,7 @@ in {
         "git.enableSmartCommit" = true;
         "workbench.iconTheme" = "catppuccin-mocha";
         "workbench.colorTheme" = "Catppuccin Mocha";
+        "git.confirmSync" = false;
       };
     };
   };
