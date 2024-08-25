@@ -138,5 +138,6 @@ This is a very modular flake.
 - https://gitlab.com/Zaney/zaneyos — teaching me how many different parts of how nix works, and several tidbits of code 
 - https://github.com/Jas-SinghFSU/HyprPanel — The ags configuration that I use.
 - https://github.com/MrVivekRajan/Hypr-Dots — The hyprlock config inspiration.
+- https://github.com/zDyanTB/HyprNova - The wlogout styling.
 - https://github.com/elythh/nixvim — The neovim configuration I use.
 </details>
