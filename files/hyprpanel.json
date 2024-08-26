@@ -31,7 +31,7 @@
   },
   "bar.launcher.icon": "",
   "bar.workspaces.show_numbered": true,
-  "bar.workspaces.workspaces": 5,
+  "bar.workspaces.workspaces": 0,
   "bar.workspaces.spacing": 0.5,
   "bar.clock.format": "󰃭  %A %d     %H:%M",
   "bar.notifications.show_total": true,
@@ -221,5 +221,8 @@
   "theme.osd.bar_color": "#fab387",
   "theme.osd.icon": "#fab387",
   "theme.osd.bar_empty_color": "#cdd6f4",
-  "theme.osd.label": "#cdd6f4"
+  "theme.osd.label": "#cdd6f4",
+  "theme.notification.border_radius": "24px",
+  "notifications.timeout": 5000,
+  "bar.workspaces.hideUnoccupied": true
 }

@@ -7,64 +7,51 @@ A smol (_not really small; excluding my home folder it is 44GB, I'm trying to re
 <details> 
 <summary>Rofi</summary>
 
-![Bindings](https://raw.githubusercontent.com/orxngc/dots/anacreon/.github/bindings.png)
-![Application launcher](https://raw.githubusercontent.com/orxngc/dots/anacreon/.github/application-launcher.png)
-![Wallpaper selector](https://raw.githubusercontent.com/orxngc/dots/anacreon/.github/wallpaper-selector.png)
+![Bindings](.github/bindings.png)
+![Application launcher](.github/application-launcher.png)
+![Wallpaper selector](.github/wallpaper-selector.png)
 
 </details>
 <details>
 <summary>Hyprlock</summary>
 
-![Lockscreen 1](https://raw.githubusercontent.com/orxngc/dots/anacreon/.github/lockscreen-1.png)
-![Lockscreen 2](https://raw.githubusercontent.com/orxngc/dots/anacreon/.github/lockscreen-2.png)
+![Lockscreen 1](.github/lockscreen-1.png)
+![Lockscreen 2](.github/lockscreen-2.png)
 
 </details>
 <details> 
 <summary>Minecraft launcher</summary>
 
-![Minecraft launcher](https://raw.githubusercontent.com/orxngc/dots/anacreon/.github/minecraft-launcher.png)
+![Minecraft launcher](.github/minecraft-launcher.png)
 
 </details>
 <details> 
 <summary>Fetch</summary>
 
-![Fetch](https://raw.githubusercontent.com/orxngc/dots/anacreon/.github/fetch.png)
+![Fetch](.github/fetch.png)
 
 </details>
 <details> 
 <summary>Discord</summary>
 
-![Fetch](https://raw.githubusercontent.com/orxngc/dots/anacreon/.github/discord.png)
+![Discord](.github/discord.png)
 
 </details>
 <details> 
 <summary>nvim</summary>
 
-![nvim](https://raw.githubusercontent.com/orxngc/dots/anacreon/.github/nvim.png)
+![nvim](.github/nvim.png)
 
-</details>
-<details> 
-<summary>ags & thunar</summary>
-
-![ags & thunar](https://raw.githubusercontent.com/orxngc/dots/anacreon/.github/ags-thunar.png)
-
-</details>
-<details> 
-<summary>swaync</summary>
-
-![swaync](https://raw.githubusercontent.com/orxngc/dots/anacreon/.github/swaync.png)
-
-</details>
 <details> 
 <summary>wlogout</summary>
 
-![wlogout](https://raw.githubusercontent.com/orxngc/dots/anacreon/.github/wlogout.png)
+![wlogout](.github/wlogout.png)
 
 </details>
 <details> 
 <summary>firefox & nighttab</summary>
 
-![firefox](https://raw.githubusercontent.com/orxngc/dots/anacreon/.github/firefox.png)
+![firefox](.github/firefox.png)
 
 </details>
 

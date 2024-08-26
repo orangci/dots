@@ -15,7 +15,7 @@
     ./kitty.nix
     ./mpv.nix
     ./swappy.nix
-    ./swaync.nix
+    # ./swaync.nix
     ./vencord.nix
   ];
 }
