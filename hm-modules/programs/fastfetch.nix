@@ -25,7 +25,7 @@ in {
       	}
           },
           "display": {
-              "keyWidth": 16,
+              "key.width": 16,
               "bar": {
                   "charElapsed": "=",
                   "charTotal": "-",
