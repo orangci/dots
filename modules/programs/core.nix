@@ -31,12 +31,9 @@
     nix-output-monitor
     trashy
     ffmpeg
-    lutgen
     imagemagick
-    mya # myanimelist owo
     nix-prefetch
     # open-interpreter
-    pinta
     python3
     wev
     jq
@@ -44,9 +41,11 @@
     wf-recorder
     grimblast # for screenshots
     nurl
+    alejandra
     libwebp
     image_optim
-    alejandra
+    mya # myanimelist owo
+    lutgen
 
     # big gui programs
     file-roller
@@ -54,6 +53,7 @@
     whatsapp-for-linux
     qimgv # image viewer
     calibre # ebooks
+    pinta
     otpclient
     filezilla
     zoom-us
@@ -62,6 +62,7 @@
     cmatrix
     lolcat
     tty-clock
+    kittysay
     nitch
     uwuify
     owofetch
