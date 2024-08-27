@@ -7,52 +7,52 @@ A smol (_not really small; excluding my home folder it is 44GB, I'm trying to re
 <details> 
 <summary>Rofi</summary>
 
-![Bindings](.github/bindings.png)
-![Application launcher](.github/application-launcher.png)
-![Wallpaper selector](.github/wallpaper-selector.png)
-
+![Bindings](https://raw.githubusercontent.com/orxngc/dots/anacreon/.github/bindings.png)
+![Application launcher](https://raw.githubusercontent.com/orxngc/dots/anacreon/.github/application-launcher.png)
+![Wallpaper selector](https://raw.githubusercontent.com/orxngc/dots/anacreon/.github/wallpaper-selector.png)
 </details>
+
 <details>
 <summary>Hyprlock</summary>
 
-![Lockscreen 1](.github/lockscreen-1.png)
-![Lockscreen 2](.github/lockscreen-2.png)
-
+![Lockscreen 1](https://raw.githubusercontent.com/orxngc/dots/anacreon/.github/lockscreen-1.png)
+![Lockscreen 2](https://raw.githubusercontent.com/orxngc/dots/anacreon/.github/lockscreen-2.png)
 </details>
+
 <details> 
 <summary>Minecraft launcher</summary>
 
-![Minecraft launcher](.github/minecraft-launcher.png)
-
+![Minecraft launcher](https://raw.githubusercontent.com/orxngc/dots/anacreon/.github/minecraft-launcher.png)
 </details>
+
 <details> 
 <summary>Fetch</summary>
 
-![Fetch](.github/fetch.png)
-
+![Fetch](https://raw.githubusercontent.com/orxngc/dots/anacreon/.github/fetch.png)
 </details>
+
 <details> 
 <summary>Discord</summary>
 
-![Discord](.github/discord.png)
-
+![Discord](https://raw.githubusercontent.com/orxngc/dots/anacreon/.github/discord.png)
 </details>
+
 <details> 
 <summary>nvim</summary>
 
-![nvim](.github/nvim.png)
+![nvim](https://raw.githubusercontent.com/orxngc/dots/anacreon/.github/nvim.png)
+</details>
 
 <details> 
 <summary>wlogout</summary>
 
-![wlogout](.github/wlogout.png)
-
+![wlogout](https://raw.githubusercontent.com/orxngc/dots/anacreon/.github/wlogout.png)
 </details>
+
 <details> 
 <summary>firefox & nighttab</summary>
 
-![firefox](.github/firefox.png)
-
+![firefox](https://raw.githubusercontent.com/orxngc/dots/anacreon/.github/firefox.png)
 </details>
 
 ## Installation
