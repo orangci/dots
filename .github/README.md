@@ -7,52 +7,52 @@ A smol (_not really small; excluding my home folder it is 44GB, I'm trying to re
 <details> 
 <summary>Rofi</summary>
 
-![Bindings](https://raw.githubusercontent.com/orxngc/dots/anacreon/.github/bindings.png)
-![Application launcher](https://raw.githubusercontent.com/orxngc/dots/anacreon/.github/application-launcher.png)
-![Wallpaper selector](https://raw.githubusercontent.com/orxngc/dots/anacreon/.github/wallpaper-selector.png)
+![Bindings](./bindings.png)
+![Application launcher](./application-launcher.png)
+![Wallpaper selector](./wallpaper-selector.png)
 </details>
 
 <details>
 <summary>Hyprlock</summary>
 
-![Lockscreen 1](https://raw.githubusercontent.com/orxngc/dots/anacreon/.github/lockscreen-1.png)
-![Lockscreen 2](https://raw.githubusercontent.com/orxngc/dots/anacreon/.github/lockscreen-2.png)
+![Lockscreen 1](./lockscreen-1.png)
+![Lockscreen 2](./lockscreen-2.png)
 </details>
 
 <details> 
 <summary>Minecraft launcher</summary>
 
-![Minecraft launcher](https://raw.githubusercontent.com/orxngc/dots/anacreon/.github/minecraft-launcher.png)
+![Minecraft launcher](./minecraft-launcher.png)
 </details>
 
 <details> 
-<summary>Fetch</summary>
+<summary>ags & thunar</summary>
 
-![Fetch](https://raw.githubusercontent.com/orxngc/dots/anacreon/.github/fetch.png)
+![ags-thunar](./ags-thunar.png)
 </details>
 
 <details> 
 <summary>Discord</summary>
 
-![Discord](https://raw.githubusercontent.com/orxngc/dots/anacreon/.github/discord.png)
+![Discord](./discord.png)
 </details>
 
 <details> 
 <summary>nvim</summary>
 
-![nvim](https://raw.githubusercontent.com/orxngc/dots/anacreon/.github/nvim.png)
+![nvim](./nvim.png)
 </details>
 
 <details> 
 <summary>wlogout</summary>
 
-![wlogout](https://raw.githubusercontent.com/orxngc/dots/anacreon/.github/wlogout.png)
+![wlogout](./wlogout.png)
 </details>
 
 <details> 
 <summary>firefox & nighttab</summary>
 
-![firefox](https://raw.githubusercontent.com/orxngc/dots/anacreon/.github/firefox.png)
+![firefox](./firefox.png)
 </details>
 
 ## Installation
