@@ -8,6 +8,7 @@
   browser = ["firefox.desktop"];
   fileManager = ["thunar.desktop"];
   editor = ["codium.desktop"];
+  text = ["micro.desktop"];
 
   associations = {
     "text/html" = browser;

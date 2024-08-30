@@ -53,6 +53,7 @@
     whatsapp-for-linux
     qimgv # image viewer
     calibre # ebooks
+    micro
     pinta
     otpclient
     filezilla
