@@ -16,8 +16,6 @@ in {
     programs.vscode = {
       enable = true;
       package = pkgs.vscodium;
-      enableUpdateCheck = false;
-      enableExtensionUpdateCheck = false;
       extensions = with pkgs.vscode-extensions; [
         leonardssh.vscord # discord RPC
         kamadorueda.alejandra # nix formatter
@@ -27,14 +25,14 @@ in {
         catppuccin.catppuccin-vsc-icons # catppuccin icons
         catppuccin.catppuccin-vsc # catppuccin
       ];
-      userSettings = {
-        "extensions.autoCheckUpdates" = false;
-        "update.mode" = "none";
-        "git.enableSmartCommit" = true;
-        "workbench.iconTheme" = "catppuccin-mocha";
-        "workbench.colorTheme" = "Catppuccin Mocha";
-        "git.confirmSync" = false;
-      };
+      # userSettings = {
+      #   "extensions.autoCheckUpdates" = false;
+      #   "update.mode" = "none";
+      #   "git.enableSmartCommit" = true;
+      #   "workbench.iconTheme" = "catppuccin-mocha";
+      #   "workbench.colorTheme" = "Catppuccin Mocha";
+      #   "git.confirmSync" = false;
+      # };
     };
   };
 }
