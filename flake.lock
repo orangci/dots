@@ -608,11 +608,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1724760593,
-        "narHash": "sha256-tJPk/lFxLzoewDFWFYkSkaxicvDQPY+Z1NQW+9kd5r8=",
+        "lastModified": 1725336659,
+        "narHash": "sha256-NBa/6a51I3jMWHO9YLTzTNZ2okDD/z87KCZ94yHqk6s=",
         "owner": "orxngc",
         "repo": "HyprPanel",
-        "rev": "3d4d9875efe5f53213c07a1ff8c01d8494bc8b66",
+        "rev": "4cdda386043cee8c8e070167014e60e0bf9963f2",
         "type": "github"
       },
       "original": {
