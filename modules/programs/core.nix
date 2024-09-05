@@ -37,6 +37,7 @@
     python3
     wev
     jq
+    yt-dlp
     figlet
     wf-recorder
     grimblast # for screenshots

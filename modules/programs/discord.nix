@@ -14,6 +14,7 @@
         withTTS = true;
         withVencord = true;
       })
+      pkgs.armcord
     ];
   };
 }
