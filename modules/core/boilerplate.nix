@@ -66,6 +66,9 @@
       enable = true;
       enableSSHSupport = true;
     };
+    kdeconnect = {
+      enable = true;
+    };
   };
 
   security = {

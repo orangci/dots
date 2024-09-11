@@ -73,6 +73,7 @@ in {
         "ghmbeldphafepmbegfdlkpapadhbakde" # proton pass
         "hdpcadigjkbcpnlcpbcohpafiaefanki" # nighttab
         "bkkmolkhemgaeaeggcmfbghljjjoofoh" # catppuccin-mocha
+        "ibplnjkanclpjokhdolnendpplpjiace" # simple-translate
       ];
     };
     mpv = {

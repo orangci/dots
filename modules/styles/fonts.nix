@@ -14,7 +14,6 @@
         noto-fonts-emoji
         noto-fonts-cjk
         font-awesome
-        symbola
         ubuntu-sans
         merriweather-sans
         merriweather
