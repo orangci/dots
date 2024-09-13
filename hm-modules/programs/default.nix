@@ -3,7 +3,7 @@
     ./hyprland
     ./rofi
     ./starship
-    ./waybar
+    # ./waybar
     ./wlogout
     ./fastfetch.nix
     ./firefox.nix

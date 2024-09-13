@@ -22,7 +22,6 @@
     gnumake # gnumake
     rink
     swww
-    wget
     killall
     tree
     pkgs.libsForQt5.qt5.qtgraphicaleffects
@@ -35,30 +34,29 @@
     nix-prefetch
     # open-interpreter
     python3
+    virtualenv
     wev
     jq
     yt-dlp
-    figlet
     wf-recorder
     grimblast # for screenshots
     nurl
     alejandra
     libwebp
-    image_optim
+    ncftp
     mya # myanimelist owo
     lutgen
+    catimg
 
     # big gui programs
     file-roller
     # transmission_4-gtk # bittorent client
-    whatsapp-for-linux
     qimgv # image viewer
     calibre # ebooks
     micro
     pinta
     otpclient
-    filezilla
-    zoom-us
+    modrinth-app
 
     # fun stuffs
     cmatrix
@@ -68,7 +66,6 @@
     nitch
     uwuify
     owofetch
-    catimg
     ipfetch
   ];
 }
