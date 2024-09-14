@@ -39,8 +39,7 @@
     jq
     yt-dlp
     wf-recorder
-    grimblast # for screenshots
-    nurl
+    grimblast # for screenshots BIG 1.1GB
     alejandra
     libwebp
     ncftp
@@ -49,14 +48,14 @@
     catimg
 
     # big gui programs
-    file-roller
+    file-roller # BIG 1.1GB
     # transmission_4-gtk # bittorent client
     qimgv # image viewer
-    calibre # ebooks
+    calibre # ebooks BIG 2.1GB
     micro
-    pinta
-    otpclient
-    modrinth-app
+    osu-lazer # BIG 1GB
+    pinta # half a GB
+    otpclient # half a GB
 
     # fun stuffs
     cmatrix

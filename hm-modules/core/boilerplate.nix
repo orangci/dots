@@ -53,6 +53,7 @@ in {
       };
     };
     vscode = {
+      # BIG 1.4GB
       enable = true;
       package = pkgs.vscodium;
       extensions = with pkgs.vscode-extensions; [
@@ -66,6 +67,7 @@ in {
       ];
     };
     chromium = {
+      # BIG 2GB
       enable = true;
       extensions = [
         "cjpalhdlnbpafiamejdnhcphjbkeiagm" # ublock
