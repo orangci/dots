@@ -94,7 +94,7 @@ This is a very modular flake.
 
 - `hyprland`
 - `rofi`
-- `neovim`
+- `micro`
 - `vscodium`
 - `thunar`
 - `kitty`

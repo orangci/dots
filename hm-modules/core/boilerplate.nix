@@ -2,7 +2,7 @@
   pkgs,
   username,
   host,
-  inputs,
+  # inputs,
   ...
 }: let
   gitUsername = "orxngc";
@@ -11,7 +11,7 @@ in {
   home = {
     username = "${username}";
     homeDirectory = "/home/${username}";
-    packages = [inputs.nixvim.packages.${pkgs.system}.default pkgs.hyprpanel];
+    packages = [pkgs.hyprpanel]; # inputs.nixvim.packages.${pkgs.system}.default
     stateVersion = "24.11";
     file = {
       ".local/share/fonts" = {
@@ -79,7 +79,7 @@ in {
       ];
     };
     mpv = {
-      enable = true;
+      enable = true; # BIG 1.4GB
       scripts = [pkgs.mpvScripts.mpris];
     };
     git = {

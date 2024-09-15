@@ -12,6 +12,7 @@
     yad
     grim
     slurp
+    wayfreeze
     nh
     brightnessctl
     btop
@@ -39,19 +40,19 @@
     jq
     yt-dlp
     wf-recorder
-    grimblast # for screenshots BIG 1.1GB
     alejandra
     libwebp
     ncftp
     mya # myanimelist owo
     lutgen
     catimg
+    hyprpicker
 
     # big gui programs
-    file-roller # BIG 1.1GB
+    # file-roller # BIG 1.1GB
     # transmission_4-gtk # bittorent client
-    qimgv # image viewer
-    calibre # ebooks BIG 2.1GB
+    gwenview # image viewer BIG 1.3GB
+    # calibre # ebooks BIG 2.1GB
     micro
     osu-lazer # BIG 1GB
     pinta # half a GB

@@ -25,11 +25,11 @@
     "application/x-extension-xht" = browser;
 
     "inode/directory" = fileManager;
-    "application/x-xz-compressed-tar" = ["org.gnome.FileRoller.desktop"];
+    "application/x-xz-compressed-tar" = fileManager;
 
     "audio/*" = ["mpv.desktop"];
     "video/*" = ["mpv.desktop"];
-    "image/*" = ["qimgv.desktop"];
+    "image/*" = ["org.kde.gwenview.desktop"];
     "application/json" = editor;
     "application/pdf" = browser;
 
