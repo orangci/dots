@@ -17,6 +17,7 @@
         ubuntu-sans
         merriweather-sans
         merriweather
+        lexend
         material-icons
         (nerdfonts.override {fonts = ["JetBrainsMono"];})
       ];
