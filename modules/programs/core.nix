@@ -55,7 +55,6 @@
     gwenview # image viewer BIG 1.3GB
     # calibre # ebooks BIG 2.1GB
     obsidian # BIG 1.8GB
-    osu-lazer # BIG 1GB
     pinta # half a GB
     otpclient # half a GB
 
