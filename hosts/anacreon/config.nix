@@ -43,6 +43,13 @@
     };
   };
 
+  swapDevices = [
+    {
+      device = "/swapfile";
+      size = 16 * 1024; # 16GB
+    }
+  ];
+
   time.timeZone = "Asia/Riyadh";
   hardware.logitech.wireless.enable = true;
 
