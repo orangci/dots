@@ -145,4 +145,6 @@ This is a very modular flake.
 - https://github.com/MrVivekRajan/Hypr-Dots — The hyprlock config inspiration.
 - https://github.com/zDyanTB/HyprNova - The wlogout styling.
 - https://github.com/elythh/nixvim — The neovim configuration I use.
+- https://github.com/1amSimp1e/dots — i tweaked my starship prompt based off of this guy's prompt
+
 </details>
