@@ -38,6 +38,7 @@
     virtualenv
     wev
     jq
+    black
     yt-dlp
     wf-recorder
     alejandra
