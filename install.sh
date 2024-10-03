@@ -20,7 +20,7 @@ cd $HOME || exit
 echo "Cloning repository..."
 git clone https://github.com/orxngc/dots
 echo "orxngc/dots cloned successfully."
-
+cd $HOME/dots
 # Ask the user for their username & hostname
 read -p "Enter your username: " username
 sed -i 's/\(username = "\)[^"]*\(".*\)/\1'$username'\2/' flake.nix
@@ -39,7 +39,7 @@ echo "3) Other (enter URL)"
 echo "4) None"
 echo "Warning: You can only use one wallpaper repository at a time."
 read -p "Enter your choice (comma-separated for multiple options): " choice
-
+mkdir $HOME/media
 cd $HOME/media || exit
 IFS=',' read -ra ADDR <<< "$choice"
 for i in "${ADDR[@]}"; do
@@ -67,6 +67,7 @@ for i in "${ADDR[@]}"; do
     esac
 done
 
+cd $HOME/dots
 # Generate hardware config
 echo "Generating hardware configuration..."
 nixos-generate-config --show-hardware-config > "$HOME/dots/hosts/$hostname/hardware.nix"
@@ -82,10 +83,13 @@ read -p "Enter your git email: " git_email
 sed -i "s/gitUsername = \"orxngc\";/gitUsername = \"$git_username\";/g" "$HOME/dots/hm-modules/core/boilerplate.nix"
 sed -i "s/gitEmail = \"orangc@proton.me\";/gitEmail = \"$git_email\";/g" "$HOME/dots/hm-modules/core/boilerplate.nix"
 
+# GitHub stashing
+git add .
+git commit -m "Save changes"
 # Rebuild the system with the specified hostname
 echo "Rebuilding system..."
-sudo nixos-rebuild boot --flake ".#$hostname"
-home-manager switch $HOME/dots
+sudo nixos-rebuild boot --flake ".#$hostname" --show-trace
+home-manager switch --flake $HOME/dots
 echo "System successfully rebuilt."
 echo " IMPORTANT: reboot your system now for the changes to take effect."
 echo "Have fun with my dots! —orangc"
