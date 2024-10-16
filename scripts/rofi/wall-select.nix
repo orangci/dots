@@ -4,7 +4,7 @@ pkgs.writeShellScriptBin "wall-select" ''
   folders=(
       "$HOME/media/walls"
       "$HOME/media/walls-catppuccin-mocha"
-      "$HOME/media/anibg"
+      "anibg"
   )
 
   # Default folder for the --fast option
@@ -25,6 +25,28 @@ pkgs.writeShellScriptBin "wall-select" ''
   if [ -z "$selected_folder" ]; then
       echo "No folder selected."
       exit 1
+  fi
+
+  # Special case: when 'anibg' is selected
+  if [ "$selected_folder" == "anibg" ]; then
+      # Fetch a random anime wallpaper using Wallhaven API
+      random_image_url=$(curl -s "https://wallhaven.cc/api/v1/search?q=anime+girls&categories=010&purity=100&sorting=random&atleast=1920x1080" | jq -r '.data[0].path')
+
+      if [ -z "$random_image_url" ]; then
+          echo "Failed to fetch an anime wallpaper."
+          exit 1
+      fi
+
+      # Download the image to a temporary location
+      temp_image="/tmp/random_anime_wallpaper.jpg"
+      curl -s "$random_image_url" -o "$temp_image"
+
+      # Set the downloaded image as the wallpaper using swww
+      swww img "$temp_image" --transition-type random --transition-fps 60
+      echo "Anime wallpaper set from $random_image_url"
+      echo "\$WALLPAPER=$temp_image" > /tmp/.current_wallpaper_path_hyprlock
+      echo "$temp_image" > /tmp/.current_wallpaper_path
+      exit 0
   fi
 
   # Get image files in the selected folder

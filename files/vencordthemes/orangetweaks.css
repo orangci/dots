@@ -528,3 +528,12 @@ svg:has(
 button[aria-label="Apps"] {
   display: none;
 }
+
+/* font and hide DMs */
+* {
+  font-family:  Lexend, Raleway;
+}
+
+[data-list-item-id="guildsnav___home"], .tutorialContainer_f9623d {
+  display: none;
+}

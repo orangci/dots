@@ -57,7 +57,6 @@ in {
       enable = true;
       package = pkgs.vscodium;
       extensions = with pkgs.vscode-extensions; [
-        leonardssh.vscord # discord RPC
         kamadorueda.alejandra # nix formatter
         bradgashler.htmltagwrap # html tag wrapping
         ecmel.vscode-html-css # html & css formatting

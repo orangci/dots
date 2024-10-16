@@ -34,9 +34,6 @@
     pkgs = import nixpkgs {
       inherit system;
       config.allowUnfree = true;
-      overlays = [
-        hyprpanel.overlay
-      ];
     };
   in {
     homeConfigurations."${username}@${host}" = home-manager.lib.homeManagerConfiguration {
