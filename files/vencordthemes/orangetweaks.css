@@ -64,7 +64,7 @@
 }
 
 /* Pretty Folder Icons */
-.expandedFolderBackground_b1385f ~ .listItem__48528:nth-child(2) > div:before {
+.expandedFolderBackground_bc7085 ~ .listItem_c96c45:nth-child(2) > div:before {
   content: attr(data-dnd-name);
   position: absolute;
   bottom: 8px;
@@ -84,14 +84,14 @@
   line-height: 0.9;
 }
 
-.expandedFolderIconWrapper__324c1 svg {
+.expandedFolderIconWrapper_bc7085 svg {
   width: 48px;
   height: 48px;
 }
 
-.folderIconWrapper__11165,
-.folder__17546,
-.collapsed__98ad5 {
+.folderIconWrapper_bc7085,
+.folder_bc7085,
+.collapsed_bc7085 {
   background: none !important;
 }
 
@@ -310,7 +310,7 @@
 }
 
 .role_f9575e .roleRemoveButton_f9575e,
-.role_e4010c .roleRemoveButton_e4010c {
+.role_e4010c .roleRemoveButton_f9575e {
   position: static;
 }
 
@@ -360,20 +360,17 @@
   display: contents;
 }
 
-.membersGroup_cad095.container__43554 {
+.membersGroup_cbd271.container_cc72c1 {
   padding-top: 20px;
 }
 
 /* [[yeet useless things]] */
 img[class*="avatar"][src^="https://cdn.discordapp.com/avatar-decoration-presets/a_5e1210779d99ece1c0b4f438a5bc6e72.png"], /* yeet clown avatar decoration */
-div[class*="listItem"]:has(div[aria-label="Explore Discoverable Servers"]),
 /* Hide 'Explore Discoverable Servers' in server page */
 .text_e40c16,
 /* Remove loading quote */
 [class^=threadSuggestionBar_],
 /* Hide thread suggestion in reply */
-div.themed_a0.item_a0.item_c2739c:nth-of-type(4),
-/* No blocked section in friends list */
 [class^=nowPlayingColumn_],
 /* No "Active now" tab */
 button[aria-label="Open GIF picker"],
@@ -467,7 +464,7 @@ svg:has(
 }
 
 /* [[make toolbar icons collapsity]] */
-[class="toolbar_e44302"]::before {
+[class="toolbar_fc4f04"]::before {
   content: "∙∙∙";
   /* Change this to anything you like [Default: ∙∙∙] */
   font-size: 110%;
@@ -476,15 +473,15 @@ svg:has(
 }
 
 /* decrease width to hide everything but menu icon */
-[class="toolbar_e44302"] {
+[class="toolbar_fc4f04"] {
   width: var(--bartender-width);
   /* Adjust this based on design requirements */
   /* If you pick a new icon, instead of "∙∙∙", you may need to adjust this value */
 }
 
-[class="toolbar_e44302"]:hover,
+[class="toolbar_fc4f04"]:hover,
 /* expand toobar on hover */
-[class="toolbar_e44302"]:has(.open_a46bef, .selected_e44302:not([aria-label="Hide Member List"]))
+[class="toolbar_fc4f04"]:has(.open_a46bef, .selected_fc4f04:not([aria-label="Hide Member List"]))
 
 /* keep the toolbar open if an item (e.g., search) is active */ {
   width: unset;

@@ -7,16 +7,16 @@ pkgs.writeShellScriptBin "screenrec" ''
   audio_sink="alsa_output.pci-0000_00_1b.0.analog-stereo.monitor"
 
   # Start fullscreen recording with system audio
-  wf-recorder -f "$output_file" --audio="$audio_sink" &
+  wl-screenrec -f "$output_file" --audio --audio-device "$audio_sink" &
   recorder_pid=$!
 
   # Send a notification that recording is starting
   notify-send "Screen Recording" "Recording started..."
 
-  # Wait for wf-recorder to finish
+  # Wait for wl-screenrec to finish
   wait $recorder_pid
 
-  # Check if wf-recorder ran successfully
+  # Check if wl-screenrec ran successfully
   if [ ! -f "$output_file" ]; then
       notify-send "Screen Recording" "Recording failed: Output file not created."
       exit 1

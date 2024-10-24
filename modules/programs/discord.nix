@@ -14,7 +14,7 @@
         withTTS = true;
         withVencord = true;
       })
-      pkgs.armcord
+      # pkgs.legcord
     ];
   };
 }

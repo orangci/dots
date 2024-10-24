@@ -46,7 +46,6 @@ in {
             inner_color = rgba(30, 30, 46, 0.5)
             font_color = rgb(200, 200, 200)
             fade_on_empty = false
-            font_family = Maple Mono
             placeholder_text = <i><span foreground="##ffffff99">Hi, $USER</span></i>
             hide_input = false
             position = 0, -320
@@ -60,7 +59,7 @@ in {
             text = cmd[update:1000] echo -e "$(date +"%H")"
             color = rgba(250, 179, 135, .75)
             font_size = 180
-            font_family = Maple Mono
+            font_family = Raleway
             position = 0, 300
             halign = center
             valign = center
@@ -72,7 +71,7 @@ in {
             text = cmd[update:1000] echo -e "$(date +"%M")"
             color = rgba(205, 214, 244, .75)
             font_size = 180
-            font_family = Maple Mono
+            font_family = Raleway
             position = 0, 80
             halign = center
             valign = center
@@ -84,7 +83,7 @@ in {
       #       text = cmd[update:1000] echo "$(date '+%A,')"
       #       color = rgba(205, 214, 244, .75)
       #       font_size = 30
-      #       font_family = Maple Mono
+      #       font_family = Raleway
       #       position = -580, -80
       #       halign = center
       #       valign = center
@@ -96,7 +95,7 @@ in {
       #       text = cmd[update:1000] echo "$(date '+%d %B')"
       #       color = rgba(250, 179, 135, .75)
       #       font_size = 30
-      #       font_family = Maple Mono
+      #       font_family = Raleway
       #       position = -400, -81.5
       #       halign = center
       #       valign = center

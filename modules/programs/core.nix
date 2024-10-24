@@ -40,7 +40,7 @@
     jq
     black
     yt-dlp
-    wf-recorder
+    wl-screenrec
     alejandra
     libwebp
     ncftp
@@ -58,6 +58,7 @@
     obsidian # BIG 1.8GB
     pinta # half a GB
     otpclient # half a GB
+    wvkbd
 
     # fun stuffs
     cmatrix
