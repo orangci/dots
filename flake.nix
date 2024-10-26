@@ -34,16 +34,13 @@
     pkgs = import nixpkgs {
       inherit system;
       config.allowUnfree = true;
+      overlays = [
+        hyprpanel.overlay
+      ];
     };
   in {
     homeConfigurations."${username}@${host}" = home-manager.lib.homeManagerConfiguration {
-      pkgs = import nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
-        overlays = [
-          hyprpanel.overlay
-        ];
-      };
+      pkgs = pkgs;
       extraSpecialArgs = {
         inherit system;
         inherit inputs;

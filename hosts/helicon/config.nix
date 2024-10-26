@@ -19,10 +19,18 @@
     programs = {
       thunar.enable = true;
       discord.enable = true;
-      steam.enable = false;
       hyprland.enable = true;
-      minecraft.enable = true;
       appimages.enable = false;
+    };
+    gaming = {
+      wine.enable = false;
+      lutris.enable = false;
+      bottles.enable = true;
+      steam.enable = false;
+      minecraft = {
+        enable = true;
+        modrinth.enable = false;
+      };
     };
     styles = {
       stylix.enable = true;

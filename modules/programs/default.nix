@@ -2,7 +2,7 @@
   imports = [
     ./thunar.nix
     ./discord.nix
-    ./steam.nix
+    ./gaming.nix
     ./hyprland.nix
     ./minecraft.nix
     ./appimages.nix
