@@ -32,8 +32,8 @@ in {
         fi
       '';
       shellAliases = {
-        sv = "sudio nix run github:orxngc/nixvim";
-        v = "nix run github:orxngc/nixvim";
+        sv = "sudio nix run github:orangci/nixvim";
+        v = "nix run github:orangci/nixvim";
         mc = "micro";
         fr = "sudo echo Shikanoko Nokonoko Koshitantan;nh os switch --hostname ${host} /home/${username}/dots";
         frfr = "sudo echo Shikanoko Nokonoko Koshitantan;nh os switch --hostname ${host} /home/${username}/dots;notify-send Rebuilt;nix-collect-garbage --delete-old && sudo nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration boot;notify-send Cleaned;exit";

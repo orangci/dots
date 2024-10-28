@@ -4796,20 +4796,20 @@
         "code": ""
       }
     ],
-    "sourceCode": "/* ==UserStyle==\n@name         Catppuccin-MAL\n@version      1.0.0\n@description  Catppuccin theme for MyAnimeList.net\n@namespace    orangc\n@author       orangc\n@homepageURL  https://github.com/orxngc/random-themes\n@updateURL    https://raw.githubusercontent.com/orxngc/random-themes/main/myanimelist.css\n==/UserStyle== */\n@-moz-document domain(\"myanimelist.net\") {\n  :root {\n    --rosewater: #f5e0dc;\n    --flamingo: #f2cdcd;\n    --pink: #f5c2e7;\n    --mauve: #cba6f7;\n    --red: #f38ba8;\n    --maroon: #eba0ac;\n    --peach: #fab387;\n    --yellow: #f9e2af;\n    --green: #a6e3a1;\n    --teal: #94e2d5;\n    --sky: #89dceb;\n    --sapphire: #74c7ec;\n    --blue: #89b4fa;\n    --lavender: #b4befe;\n    --text: #cdd6f4;\n    --subtext1: #bac2de;\n    --subtext0: #a6adc8;\n    --overlay2: #9399b2;\n    --overlay1: #7f849c;\n    --overlay0: #6c7086;\n    --surface2: #585b70;\n    --surface1: #45475a;\n    --surface0: #313244;\n    --base: #1e1e2e;\n    --mantle: #181825;\n    --crust: #11111b;\n  }\n\n  html, body:not(.ownlist),.dark-mode {\n    background-color: var(--base);\n  }\n}\n",
+    "sourceCode": "/* ==UserStyle==\n@name         Catppuccin-MAL\n@version      1.0.0\n@description  Catppuccin theme for MyAnimeList.net\n@namespace    orangc\n@author       orangc\n@homepageURL  https://github.com/orangci/random-themes\n@updateURL    https://raw.githubusercontent.com/orangci/random-themes/main/myanimelist.css\n==/UserStyle== */\n@-moz-document domain(\"myanimelist.net\") {\n  :root {\n    --rosewater: #f5e0dc;\n    --flamingo: #f2cdcd;\n    --pink: #f5c2e7;\n    --mauve: #cba6f7;\n    --red: #f38ba8;\n    --maroon: #eba0ac;\n    --peach: #fab387;\n    --yellow: #f9e2af;\n    --green: #a6e3a1;\n    --teal: #94e2d5;\n    --sky: #89dceb;\n    --sapphire: #74c7ec;\n    --blue: #89b4fa;\n    --lavender: #b4befe;\n    --text: #cdd6f4;\n    --subtext1: #bac2de;\n    --subtext0: #a6adc8;\n    --overlay2: #9399b2;\n    --overlay1: #7f849c;\n    --overlay0: #6c7086;\n    --surface2: #585b70;\n    --surface1: #45475a;\n    --surface0: #313244;\n    --base: #1e1e2e;\n    --mantle: #181825;\n    --crust: #11111b;\n  }\n\n  html, body:not(.ownlist),.dark-mode {\n    background-color: var(--base);\n  }\n}\n",
     "usercssData": {
       "name": "Catppuccin-MAL",
       "version": "1.0.0",
       "description": "Catppuccin theme for MyAnimeList.net",
       "namespace": "orangc",
       "author": "orangc",
-      "homepageURL": "https://github.com/orxngc/random-themes",
-      "updateURL": "https://raw.githubusercontent.com/orxngc/random-themes/main/myanimelist.css"
+      "homepageURL": "https://github.com/orangci/random-themes",
+      "updateURL": "https://raw.githubusercontent.com/orangci/random-themes/main/myanimelist.css"
     },
     "author": "orangc",
     "description": "Catppuccin theme for MyAnimeList.net",
-    "url": "https://github.com/orxngc/random-themes",
-    "updateUrl": "https://raw.githubusercontent.com/orxngc/random-themes/main/myanimelist.css",
+    "url": "https://github.com/orangci/random-themes",
+    "updateUrl": "https://raw.githubusercontent.com/orangci/random-themes/main/myanimelist.css",
     "name": "Catppuccin-MAL",
     "updateDate": 1716880380545,
     "_id": "84569551-48af-46b2-8d14-12e98da20200",
@@ -4844,14 +4844,14 @@
     "_id": "3775ae67-23f7-4715-8d38-7fbc7274072a",
     "_rev": 1723520780839,
     "id": 45,
-    "url": "https://github.com/orxngc/random-themes",
+    "url": "https://github.com/orangci/random-themes",
     "_usw": {
       "description": "Removes the scores on the studio page and search results uwu...",
-      "homepage": "https://github.com/orxngc/random-themes",
+      "homepage": "https://github.com/orangci/random-themes",
       "license": "No License",
       "name": "orangc's tweaks - remove studio scores",
       "id": 16772,
-      "username": "orxngc",
+      "username": "orangci",
       "token": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJzdHlsZUlEIjoxNjc3MiwidXNlcklEIjoxMjYwMX0.DUX8ifaX2mUzkgQFUPPdKp15iKqLFPSfyjaqsKl2ND2HH_DRafwpLpW3yIdN6qtjl-XPWYZKCVRQV0srPehKDw"
     }
   },

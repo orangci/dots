@@ -5,7 +5,7 @@
   # inputs,
   ...
 }: let
-  gitUsername = "orxngc";
+  gitUsername = "orangci";
   gitEmail = "orangc@proton.me";
 in {
   home = {

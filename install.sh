@@ -15,11 +15,11 @@ else
 fi
 
 
-# clone orxngc/dots in $HOME
+# clone orangci/dots in $HOME
 cd $HOME || exit
 echo "Cloning repository..."
-git clone https://github.com/orxngc/dots
-echo "orxngc/dots cloned successfully."
+git clone https://github.com/orangci/dots
+echo "orangci/dots cloned successfully."
 cd $HOME/dots
 # Ask the user for their username & hostname
 read -p "Enter your username: " username
@@ -33,8 +33,8 @@ cp $HOME/dots/files/hyprpanel.json $HOME/.cache/ags/hyprpanel/options.json
 
 # Prompt the user for wallpaper repositories
 echo "Choose wallpaper repositories to install:"
-echo "1) https://github.com/orxngc/walls"
-echo "2) https://github.com/orxngc/walls-catppuccin-mocha"
+echo "1) https://github.com/orangci/walls"
+echo "2) https://github.com/orangci/walls-catppuccin-mocha"
 echo "3) Other (enter URL)"
 echo "4) None"
 echo "Warning: You can only use one wallpaper repository at a time."
@@ -45,11 +45,11 @@ IFS=',' read -ra ADDR <<< "$choice"
 for i in "${ADDR[@]}"; do
     case $i in
         1)
-            git clone https://github.com/orxngc/walls
+            git clone https://github.com/orangci/walls
             sed -i "s/walls/walls/g" "$HOME/dots/scripts/walls.nix"
             ;;
         2)
-            git clone https://github.com/orxngc/walls-catppuccin-mocha
+            git clone https://github.com/orangci/walls-catppuccin-mocha
             sed -i "s/walls/walls-catppuccin-mocha/g" "$HOME/dots/scripts/walls.nix"
             ;;
         3)
@@ -80,7 +80,7 @@ echo "Enabled flakes."
 # Ask for git username and email, and replace them in variables.nix
 read -p "Enter your git username: " git_username
 read -p "Enter your git email: " git_email
-sed -i "s/gitUsername = \"orxngc\";/gitUsername = \"$git_username\";/g" "$HOME/dots/hm-modules/core/boilerplate.nix"
+sed -i "s/gitUsername = \"orangci\";/gitUsername = \"$git_username\";/g" "$HOME/dots/hm-modules/core/boilerplate.nix"
 sed -i "s/gitEmail = \"orangc@proton.me\";/gitEmail = \"$git_email\";/g" "$HOME/dots/hm-modules/core/boilerplate.nix"
 
 # GitHub stashing

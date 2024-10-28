@@ -8,7 +8,7 @@
     };
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
     # nixvim = {
-    #   url = "github:orxngc/nixvim";
+    #   url = "github:orangci/nixvim";
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
     stylix = {
