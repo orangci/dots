@@ -1,6 +1,11 @@
 # orangc's flake
 
-A smol (_not really small; excluding my home folder it is 44GB, I'm trying to reduce this_) n' cozy NixOS with Hyprland flake.
+> [!CAUTION]
+> This flake is extremely unstable and prone to breaking changes..
+> I do ***not*** recommmend using this/installing it, it will definitely break.
+> However, going through my code for little bits and things to borrow or learn from is totally fine.
+> A process of rewriting my entire configuration starts
+> after commit [`09709dc7f716bf1df7c836dfc191e88ec1ad8339`](https://github.com/orangci/dots/commit/09709dc7f716bf1df7c836dfc191e88ec1ad8339).
 
 ## Screenshots
 
@@ -55,7 +60,7 @@ A smol (_not really small; excluding my home folder it is 44GB, I'm trying to re
 ![firefox](./firefox.png)
 </details>
 
-## Installation
+<!-- ## Installation
 
 Run this command in your terminal and the script will handle the rest. Note that this won't work for non NixOS users. If the script breaks in anyway, please make an issue and notify me. It shouldn't, though.
 
@@ -125,18 +130,12 @@ This is a very modular flake.
 - [x] ~~Use the VScodium home-manager module to its fullest extent.~~
 - [x] ~~Make Hyprpanel fully declarative; also maybe make a PR that adds home-manager options to that flake.~~
 - [x] ~~Switch to standalone home-manager.~~
-</details>
+</details> -->
 
-- [ ] Implement impermanence. It seems pretty nice.
-- [ ] Make Stylix theme 100% of everything, not 80%.
-- [ ] Figure out a way to make Firefox extension _data_ declarative. I've already made installing extensions declarative.
-- [ ] Figure out how to deal with secrets.
-- [ ] Make the flake more.. nixy. This is, I'd say, 70% done. I still have things to do like make my Hyprland config use the home-manager module in a nixy sort of way.
-
-## Last but not least, credits!
+## credits!
 
 <details>
-<summary>Thank you!</summary>
+<summary>thank you!</summary>
 
 - the vimjoyer youtube channel, for making immensely helpful videos that saved me hours and hours of pain
 - https://github.com/NotAShelf/nyx/ — teaching me how many different parts of how nix works, and many tidbits of code
