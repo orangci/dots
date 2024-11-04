@@ -53,7 +53,7 @@ pkgs.writeShellScriptBin "wall-select" ''
   # Special case: when 'anibg2' is selected
   if [ "$selected_folder" == "anibg2" ]; then
       # API URLs for wallpaper sources
-      api_url1="https://api.github.com/repos/dharmx/walls/contents/animated"
+      api_url1="https://github.com/jeushi/wallpapers/tree/main/touhou"
       api_url2="https://api.github.com/repos/dharmx/walls/contents/anime"
 
       # Temporary download directory
@@ -61,7 +61,8 @@ pkgs.writeShellScriptBin "wall-select" ''
       mkdir -p "$download_dir"
 
       # Randomly select one of the API URLs
-      selected_api_url=$(shuf -e "$api_url1" "$api_url2" -n 1)
+      selected_api_url=$(shuf -e "$api_url1" -n 1)
+      # add "$api_url2" after "$api_url1" in the above line to add more repos
 
       # Fetch the list of images from the selected folder
       image_urls=$(curl -s "$selected_api_url" | jq -r '.[] | select(.type == "file") | select(.name | test("\\.(jpg|jpeg|png|bmp|gif)$")) | .download_url')
