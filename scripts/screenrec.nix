@@ -6,8 +6,15 @@ pkgs.writeShellScriptBin "screenrec" ''
   # Define the audio sink (adjust this to match your system's default audio sink)
   audio_sink="alsa_output.pci-0000_00_1b.0.analog-stereo.monitor"
 
-  # Start fullscreen recording with system audio
-  wl-screenrec -f "$output_file" --audio --audio-device "$audio_sink" &
+  # Check if "mic" argument is passed
+  if [ "$1" = "mic" ]; then
+      audio_option=""
+  else
+      audio_option="--audio-device $audio_sink"
+  fi
+
+  # Start fullscreen recording with system audio if "mic" isn't specified
+  wl-screenrec -f "$output_file" --audio $audio_option &
   recorder_pid=$!
 
   # Send a notification that recording is starting

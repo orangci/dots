@@ -12,7 +12,7 @@
     yad
     grim
     slurp
-    wayfreeze
+    # wayfreeze
     nh
     brightnessctl
     btop

@@ -5,6 +5,7 @@ pkgs.writeShellScriptBin "wall-select" ''
       "$HOME/media/walls"
       "$HOME/media/walls-catppuccin-mocha"
       "anibg"
+      "anibg2"
   )
 
   # Default folder for the --fast option
@@ -48,6 +49,49 @@ pkgs.writeShellScriptBin "wall-select" ''
       echo "$temp_image" > /tmp/.current_wallpaper_path
       exit 0
   fi
+
+  # Special case: when 'anibg2' is selected
+  if [ "$selected_folder" == "anibg2" ]; then
+      # API URLs for wallpaper sources
+      api_url1="https://api.github.com/repos/dharmx/walls/contents/animated"
+      api_url2="https://api.github.com/repos/dharmx/walls/contents/anime"
+
+      # Temporary download directory
+      download_dir="/tmp/anibg2_walls"
+      mkdir -p "$download_dir"
+
+      # Randomly select one of the API URLs
+      selected_api_url=$(shuf -e "$api_url1" "$api_url2" -n 1)
+
+      # Fetch the list of images from the selected folder
+      image_urls=$(curl -s "$selected_api_url" | jq -r '.[] | select(.type == "file") | select(.name | test("\\.(jpg|jpeg|png|bmp|gif)$")) | .download_url')
+
+      # Check if there are any images in the folder
+      if [ -z "$image_urls" ]; then
+          echo "No images found in the selected folder."
+          exit 1
+      fi
+
+      # Randomly select an image URL from the list
+      random_image_url=$(echo "$image_urls" | shuf -n 1)
+
+      # Define the temporary image path
+      temp_image="$download_dir/$(basename "$random_image_url")"
+
+      # Download the selected image
+      if ! curl -s -f "$random_image_url" -o "$temp_image"; then
+          echo "Failed to download wallpaper from $random_image_url"
+          exit 1
+      fi
+
+      # Set the wallpaper and record path
+      swww img "$temp_image" --transition-type random --transition-fps 60
+      echo "Anime wallpaper set from $random_image_url"
+      echo "\$WALLPAPER=$temp_image" > /tmp/.current_wallpaper_path_hyprlock
+      echo "$temp_image" > /tmp/.current_wallpaper_path
+      exit 0
+  fi
+
 
   # Get image files in the selected folder
   images=($(ls "$selected_folder" | grep -E '\.(jpg|jpeg|png|bmp|gif)$' | sort))

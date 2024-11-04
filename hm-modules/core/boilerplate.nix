@@ -2,7 +2,7 @@
   pkgs,
   username,
   host,
-  # inputs,
+  inputs,
   ...
 }: let
   gitUsername = "orangci";
@@ -11,7 +11,7 @@ in {
   home = {
     username = "${username}";
     homeDirectory = "/home/${username}";
-    packages = [pkgs.hyprpanel]; # inputs.nixvim.packages.${pkgs.system}.default
+    packages = [pkgs.hyprpanel inputs.nixvim.packages.${pkgs.system}.default];
     stateVersion = "24.11";
     file = {
       ".local/share/fonts" = {

@@ -6,11 +6,8 @@
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
-    # nixvim = {
-    #   url = "github:orangci/nixvim";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    hyprland.url = "github:hyprwm/Hyprland";
+    nixvim.url = "github:orangci/nixvim";
     stylix = {
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -24,7 +21,6 @@
   outputs = inputs @ {
     nixpkgs,
     home-manager,
-    hyprpanel,
     ...
   }: let
     system = "x86_64-linux";
@@ -35,7 +31,7 @@
       inherit system;
       config.allowUnfree = true;
       overlays = [
-        hyprpanel.overlay
+        inputs.hyprpanel.overlay
       ];
     };
   in {
