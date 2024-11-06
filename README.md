@@ -7,59 +7,6 @@
 > A process of rewriting my entire configuration starts
 > after commit [`09709dc7f716bf1df7c836dfc191e88ec1ad8339`](https://github.com/orangci/dots/commit/09709dc7f716bf1df7c836dfc191e88ec1ad8339).
 
-## Screenshots
-
-<details> 
-<summary>Rofi</summary>
-
-![Bindings](./bindings.png)
-![Application launcher](./application-launcher.png)
-![Wallpaper selector](./wallpaper-selector.png)
-</details>
-
-<details>
-<summary>Hyprlock</summary>
-
-![Lockscreen 1](./lockscreen-1.png)
-![Lockscreen 2](./lockscreen-2.png)
-</details>
-
-<details> 
-<summary>Minecraft launcher</summary>
-
-![Minecraft launcher](./minecraft-launcher.png)
-</details>
-
-<details> 
-<summary>ags & thunar</summary>
-
-![ags-thunar](./ags-thunar.png)
-</details>
-
-<details> 
-<summary>Discord</summary>
-
-![Discord](./discord.png)
-</details>
-
-<details> 
-<summary>nvim</summary>
-
-![nvim](./nvim.png)
-</details>
-
-<details> 
-<summary>wlogout</summary>
-
-![wlogout](./wlogout.png)
-</details>
-
-<details> 
-<summary>firefox & nighttab</summary>
-
-![firefox](./firefox.png)
-</details>
-
 <!-- ## Installation
 
 Run this command in your terminal and the script will handle the rest. Note that this won't work for non NixOS users. If the script breaks in anyway, please make an issue and notify me. It shouldn't, though.
