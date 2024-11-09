@@ -63,6 +63,7 @@ in {
         ritwickdey.liveserver # live server
         catppuccin.catppuccin-vsc-icons # catppuccin icons
         catppuccin.catppuccin-vsc # catppuccin
+        bradlc.vscode-tailwindcss # tailwind css
       ];
     };
     chromium = {

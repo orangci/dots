@@ -47,6 +47,8 @@
     mya # myanimelist owo
     lutgen
     catimg
+    tailwindcss
+    hugo
     hyprpicker
     micro
 

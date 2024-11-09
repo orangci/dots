@@ -13,7 +13,7 @@
   "bar.layouts": {
     "0": {
       "left": [
-        "dashboard",
+        "kbinput",
         "workspaces",
         "network",
         "bluetooth"
@@ -24,13 +24,13 @@
       "right": [
         "volume",
         "systray",
-        "clock",
+        "weather",
         "notifications"
       ]
     }
   },
   "bar.launcher.icon": "",
-  "bar.workspaces.show_numbered": true,
+  "bar.workspaces.show_numbered": false,
   "bar.workspaces.workspaces": 0,
   "bar.workspaces.spacing": 0.5,
   "bar.clock.format": "󰃭  %A %d     %H:%M",
@@ -79,7 +79,7 @@
   "theme.bar.menus.menu.clock.scaling": 95,
   "theme.bar.menus.menu.notifications.scaling": 95,
   "theme.font.weight": 600,
-  "theme.font.name": "Raleway",
+  "theme.font.name": "Lexend",
   "theme.bar.buttons.y_margins": "0em",
   "theme.bar.buttons.spacing": "0.3em",
   "theme.bar.buttons.padding_x": "0.75rem",
@@ -91,6 +91,11 @@
       "codium",
       "󰨞",
       "VS Codium"
+    ],
+    [
+      "com.github.aylur.ags",
+      "",
+      "HyprPanel Settings"
     ]
   ],
   "bar.volume.label": true,
@@ -224,5 +229,83 @@
   "theme.osd.label": "#cdd6f4",
   "theme.notification.border_radius": "24px",
   "notifications.timeout": 5000,
-  "bar.workspaces.hideUnoccupied": true
+  "bar.workspaces.hideUnoccupied": true,
+  "bar.clock.showIcon": false,
+  "bar.network.truncation_size": 8,
+  "bar.customModules.updates.pollingInterval": 1440000,
+  "theme.bar.menus.menu.dashboard.profile.size": "10.5em",
+  "bar.customModules.kbLayout.icon": "󰌌",
+  "bar.customModules.kbLayout.labelType": "code",
+  "bar.customModules.weather.unit": "metric",
+  "bar.customModules.weather.leftClick": "menu:calendar",
+  "theme.bar.buttons.modules.weather.icon": "#fab387",
+  "theme.bar.buttons.modules.weather.text": "#fab387",
+  "theme.bar.menus.menu.notifications.pager.background": "#1e1e2e",
+  "theme.bar.menus.menu.notifications.pager.button": "#cdd6f4",
+  "theme.bar.menus.menu.notifications.pager.label": "#cdd6f4",
+  "bar.customModules.kbLayout.leftClick": "menu:dashboard",
+  "theme.bar.menus.menu.dashboard.scaling": 80,
+  "theme.bar.buttons.modules.kbLayout.text": "#caa6f7",
+  "theme.bar.buttons.modules.kbLayout.icon": "#caa6f7",
+  "bar.workspaces.ignored": "-99",
+  "bar.workspaces.showWsIcons": true,
+  "scalingPriority": "gdk",
+  "theme.notification.scaling": 100,
+  "theme.bar.buttons.enableBorders": false,
+  "theme.bar.buttons.dashboard.enableBorder": false,
+  "theme.bar.buttons.workspaces.smartHighlight": true,
+  "bar.workspaces.show_icons": false,
+  "bar.workspaces.workspaceIconMap": {
+    "1": {
+      "icon": "",
+      "color": "#fab387"
+    },
+    "2": {
+      "icon": "󰨞",
+      "color": "#cba6f7"
+    },
+    "3": {
+      "icon": "",
+      "color": "#a6e3a1"
+    },
+    "4": {
+      "icon": "",
+      "color": "#89dceb"
+    },
+    "5": {
+      "icon": "",
+      "color": "#cba6f7"
+    },
+    "6": {
+      "icon": "",
+      "color": "#cba6f7"
+    },
+    "7": {
+      "icon": "",
+      "color": "#cba6f7"
+    },
+    "8": {
+      "icon": "",
+      "color": "#cba6f7"
+    },
+    "9": {
+      "icon": "",
+      "color": "#cba6f7"
+    },
+    "10": {
+      "icon": "",
+      "color": "#fab387"
+    },
+    "-99": {
+      "icon": "󰙯",
+      "color": "#cba6f7"
+    }
+  },
+  "bar.launcher.rightClick": "",
+  "bar.customModules.kbLayout.rightClick": "wvkbd-mobintl",
+  "bar.customModules.kbLayout.middleClick": "pkill wvkbd-mobintl",
+  "bar.workspaces.showApplicationIcons": true,
+  "bar.workspaces.applicationIconEmptyWorkspace": "",
+  "bar.workspaces.applicationIconFallback": "",
+  "bar.windowtitle.custom_title": true
 }
