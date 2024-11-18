@@ -1,14 +1,19 @@
 {
-  config,
   pkgs,
+  config,
+  inputs,
   lib,
   ...
-}: {
-  options = {
-    modules.styles.stylix.enable =
-      lib.mkEnableOption "enables stylix";
+}: let
+  inherit (lib) mkEnableOption mkOption types;
+  cfg = config.modules.styles.stylix;
+in {
+  imports = [inputs.stylix.nixosModules.stylix];
+  options.modules.styles.stylix = {
+    enable = mkEnableOption "Enable stylix";
   };
-  config = lib.mkIf config.modules.styles.stylix.enable {
+
+  config = lib.mkIf cfg.enable {
     stylix = {
       enable = true;
       image = ../../files/face.png;

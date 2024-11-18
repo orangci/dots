@@ -13,9 +13,20 @@ in {
     };
   };
   config = {
+    home.packages = [
+      #   (pkgs.discord.override {
+      #     withOpenASAR = true;
+      #     withTTS = true;
+      #     withVencord = true;
+      #   })
+      pkgs.equibop
+      pkgs.arrpc
+    ];
     home.file = {
       ".config/Vencord/themes/orangetweaks.css".source = ../../files/vencordthemes/orangetweaks.css;
       ".config/Vencord/themes/catppuccin.css".source = ../../files/vencordthemes/catppuccin.css;
+      ".config/equibop/themes/orangetweaks.css".source = ../../files/vencordthemes/orangetweaks.css;
+      ".config/equibop/themes/catppuccin.css".source = ../../files/vencordthemes/catppuccin.css;
       ".config/Vencord/settings/settings.json".text = ''
         {
             "autoUpdate": true,

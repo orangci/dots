@@ -7,7 +7,7 @@
 }: let
   inherit (lib) mkOption types;
 in {
-  options.hmModules.programs.firefix = mkOption {
+  options.hmModules.programs.firefox = mkOption {
     enabled = mkOption {
       type = types.bool;
       default = true;

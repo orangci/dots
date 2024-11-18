@@ -2,10 +2,12 @@
   pkgs,
   config,
   lib,
+  inputs,
   ...
 }: let
   inherit (lib) mkOption types;
 in {
+  imports = [inputs.stylix.homeManagerModules.stylix];
   options.hmModules.styles.stylix = mkOption {
     enabled = mkOption {
       type = types.bool;

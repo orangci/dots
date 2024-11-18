@@ -15,6 +15,7 @@ in {
     };
   };
   config = {
+    programs.zoxide.enable = true;
     programs.bash = {
       enable = true;
       enableCompletion = true;
@@ -22,6 +23,46 @@ in {
         #if [ -z "$DISPLAY" ] && [ "$XDG_VTNR" = 1 ]; then
         #  exec Hyprland
         #fi
+        # Function to create a tar archive
+        mktar() {
+            local input_files=""
+            local output_file=""
+
+            # Parse arguments
+            while [[ "$#" -gt 0 ]]; do
+                case $1 in
+                    -i|--input) input_files="$2"; shift ;;
+                    -o|--output) output_file="$2"; shift ;;
+                    *) echo "Unknown parameter passed: $1"; return 1 ;;
+                esac
+                shift
+            done
+
+            # Check if input files and output file are provided
+            if [[ -z "$input_files" || -z "$output_file" ]]; then
+                echo "Usage: mktar -i <input_files> -o <output_file.tar>"
+                return 1
+            fi
+
+            # Create the tar archive
+            tar -cvf "$output_file" $input_files
+        }
+
+        # Function to extract a tar archive
+        extar() {
+            local tar_file="$1"
+            local dest_folder="''${2:-.}"  # Defaults to current folder if no destination is provided
+
+            # Check if tar file is provided
+            if [[ -z "$tar_file" ]]; then
+                echo "Usage: extar <tar_file> [destination_folder]"
+                return 1
+            fi
+
+            # Extract the tar archive
+            tar -xvf "$tar_file" -C "$dest_folder"
+        }
+
       '';
       initExtra = ''
         if [ -f $HOME/.bashrc-personal ]; then
@@ -35,6 +76,7 @@ in {
         # sv = "sudio nix run github:orangci/nixvim";
         # v = "nix run github:orangci/nixvim";
         sv = "sudo nvim";
+        cd = "z";
         v = "nvim";
         mc = "micro";
         fr = "sudo echo Shikanoko Nokonoko Koshitantan;nh os switch --hostname ${host} /home/${username}/dots";
@@ -50,8 +92,9 @@ in {
         la = "eza -al --icons=auto";
         qq = "clear";
         cat = "bat";
+        tb = "nc termbin.com 9999";
         tr = "trash";
-        ".." = "cd ..";
+        ".." = "z ..";
         neofetch = "fastfetch";
         find = "fd";
         spinmal = "bash $HOME/docs/spinPTW.sh";

@@ -1,14 +1,17 @@
 {
-  config,
   pkgs,
+  config,
   lib,
   ...
-}: {
-  options = {
-    modules.programs.appimages.enable =
-      lib.mkEnableOption "enables appimages";
+}: let
+  inherit (lib) mkEnableOption mkOption types;
+  cfg = config.modules.programs.appimages;
+in {
+  options.modules.programs.appimages = {
+    enable = mkEnableOption "Enable AppImages";
   };
-  config = lib.mkIf config.modules.programs.appimages.enable {
+
+  config = lib.mkIf cfg.enable {
     boot.binfmt.registrations.appimage = {
       wrapInterpreterInShell = false;
       interpreter = "${pkgs.appimage-run}/bin/appimage-run";
@@ -17,6 +20,7 @@
       mask = ''\xff\xff\xff\xff\x00\x00\x00\x00\xff\xff\xff'';
       magicOrExtension = ''\x7fELF....AI\x02'';
     };
-    environment.systemPackages = [pkgs.appimagerun];
+
+    environment.systemPackages = [pkgs.appimage-run];
   };
 }

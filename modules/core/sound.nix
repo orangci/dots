@@ -26,6 +26,6 @@
       };
     };
 
-    environment.systemPackages = with pkgs; [playerctl pavucontrol cava];
+    environment.systemPackages = with pkgs; [playerctl pavucontrol];
   };
 }

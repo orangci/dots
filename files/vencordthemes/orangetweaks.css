@@ -331,11 +331,11 @@
 }
 
 /* [[custom chat prompt]] */
-.placeholder_a552a6.slateTextArea_e52116.fontSize16Padding_d0696b {
+.placeholder_a552a6.slateTextArea_e52116.fontSize16Padding_bdf0de {
   visibility: hidden;
 }
 
-.placeholder_a552a6.slateTextArea_e52116.fontSize16Padding_d0696b::before {
+.placeholder_a552a6.slateTextArea_e52116.fontSize16Padding_bdf0de::before {
   visibility: visible;
   content: "uwu";
 }
@@ -365,7 +365,6 @@
 }
 
 /* [[yeet useless things]] */
-img[class*="avatar"][src^="https://cdn.discordapp.com/avatar-decoration-presets/a_5e1210779d99ece1c0b4f438a5bc6e72.png"], /* yeet clown avatar decoration */
 /* Hide 'Explore Discoverable Servers' in server page */
 .text_e40c16,
 /* Remove loading quote */

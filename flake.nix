@@ -6,8 +6,8 @@
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    hyprland.url = "github:hyprwm/Hyprland";
-    nixvim.url = "github:orangci/nixvim";
+    hyprland.url = "github:hyprwm/Hyprland"; # unstable hyprland
+    nixvim.url = "github:orangci/nixvim"; # FIXME: nixvim is broken and who knows why — perhaps i should move to nvf
     stylix = {
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -30,9 +30,6 @@
     pkgs = import nixpkgs {
       inherit system;
       config.allowUnfree = true;
-      overlays = [
-        inputs.hyprpanel.overlay
-      ];
     };
   in {
     homeConfigurations."${username}@${host}" = home-manager.lib.homeManagerConfiguration {
@@ -43,7 +40,7 @@
         inherit username;
         inherit host;
       };
-      modules = [./hosts/${host}/home.nix inputs.stylix.homeManagerModules.stylix];
+      modules = [./hosts/${host}/home.nix];
     };
     nixosConfigurations."${host}" = nixpkgs.lib.nixosSystem {
       specialArgs = {
@@ -52,10 +49,7 @@
         inherit username;
         inherit host;
       };
-      modules = [
-        ./hosts/${host}/config.nix
-        inputs.stylix.nixosModules.stylix
-      ];
+      modules = [./hosts/${host}/config.nix];
     };
   };
 }

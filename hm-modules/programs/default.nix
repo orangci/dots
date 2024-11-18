@@ -11,6 +11,6 @@
     ./hyprlock.nix
     ./swappy.nix
     # ./swaync.nix
-    ./vencord.nix
+    ./discord.nix
   ];
 }

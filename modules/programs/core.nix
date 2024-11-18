@@ -40,7 +40,7 @@
     jq
     black
     yt-dlp
-    wl-screenrec
+    # wl-screenrec
     alejandra
     libwebp
     ncftp
@@ -51,12 +51,14 @@
     hugo
     hyprpicker
     micro
+    ghostscript
+    mangal
 
     # big gui programs
     # file-roller # BIG 1.1GB
     # transmission_4-gtk # bittorent client
     gwenview # image viewer BIG 1.3GB
-    # calibre # ebooks BIG 2.1GB
+    calibre # ebooks BIG 2.1GB
     obsidian # BIG 1.8GB
     pinta # half a GB
     otpclient # half a GB

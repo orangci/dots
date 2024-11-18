@@ -3,19 +3,26 @@
   config,
   lib,
   ...
-}: {
-  options = {
-    modules.programs.thunar.enable =
-      lib.mkEnableOption "enables thunar";
+}: let
+  inherit (lib) mkEnableOption mkOption types;
+  cfg = config.modules.programs.thunar;
+in {
+  options.modules.programs.thunar = {
+    enable = mkEnableOption "Enable thunar";
+    archive-plugin.enable = mkEnableOption "Enable thunar's archive plugin";
   };
-  config = lib.mkIf config.modules.programs.thunar.enable {
+
+  config = lib.mkIf cfg.enable {
     programs.thunar = {
       enable = true;
-      plugins = with pkgs.xfce; [
-        thunar-archive-plugin
-        thunar-volman
-        thunar-media-tags-plugin
-      ];
+      plugins = with pkgs.xfce;
+        [
+          thunar-volman
+          thunar-media-tags-plugin
+        ]
+        ++ (lib.optionals cfg.archive-plugin.enable [
+          thunar-archive-plugin
+        ]);
     };
     nixpkgs.config.packageOverrides = pkgs: {
       xfce =

@@ -5,12 +5,15 @@
   lib,
   options,
   ...
-}: {
-  options = {
-    modules.core.networking.enable =
-      lib.mkEnableOption "enables networking";
+}: let
+  inherit (lib) mkEnableOption mkOption types;
+  cfg = config.modules.core.networking;
+in {
+  options.modules.core.networking = {
+    enable = mkEnableOption "Enable networking";
   };
-  config = lib.mkIf config.modules.core.networking.enable {
+
+  config = lib.mkIf cfg.enable {
     networking = {
       networkmanager.enable = true;
       hostName = "${host}";
@@ -22,8 +25,18 @@
     };
     networking.firewall = {
       enable = true;
-      allowedTCPPortRanges = [ { from = 1714; to = 1764; } ]; # KDE Connect
-      allowedUDPPortRanges = [ { from = 1714; to = 1764; } ]; # KDE Connect
+      allowedTCPPortRanges = [
+        {
+          from = 1714;
+          to = 1764;
+        }
+      ]; # KDE Connect
+      allowedUDPPortRanges = [
+        {
+          from = 1714;
+          to = 1764;
+        }
+      ]; # KDE Connect
     };
 
     environment.systemPackages = with pkgs; [traceroute speedtest-cli networkmanagerapplet];

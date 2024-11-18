@@ -18,7 +18,6 @@
     };
     programs = {
       thunar.enable = true;
-      discord.enable = true;
       hyprland.enable = true;
       appimages.enable = false;
     };
@@ -39,7 +38,6 @@
     };
     dm.sddm.enable = true;
   };
-  vm.guest-services.enable = false;
   local.hardware-clock.enable = false;
   drivers = {
     intel.enable = true;

@@ -80,17 +80,11 @@ This is a very modular flake.
 </details> -->
 
 ## credits!
-
-<details>
-<summary>thank you!</summary>
-
 - the vimjoyer youtube channel, for making immensely helpful videos that saved me hours and hours of pain
-- https://github.com/NotAShelf/nyx/ — teaching me how many different parts of how nix works, and many tidbits of code
+- https://github.com/NotAShelf/nyx/ — teaching me how many different parts of how nix works, and many bits of code
 - https://gitlab.com/Zaney/zaneyos — teaching me how many different parts of how nix works, and several tidbits of code
 - https://github.com/Jas-SinghFSU/HyprPanel — The ags configuration that I use.
 - https://github.com/MrVivekRajan/Hypr-Dots — The hyprlock config inspiration.
 - https://github.com/zDyanTB/HyprNova - The wlogout styling.
 - https://github.com/elythh/nixvim — The neovim configuration I use.
 - https://github.com/1amSimp1e/dots — i tweaked my starship prompt based off of this guy's prompt
-
-</details>

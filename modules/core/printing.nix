@@ -1,14 +1,17 @@
 {
-  config,
   pkgs,
+  config,
   lib,
   ...
-}: {
-  options = {
-    modules.core.printing.enable =
-      lib.mkEnableOption "enables printing & scanning";
+}: let
+  inherit (lib) mkEnableOption mkOption types;
+  cfg = config.modules.core.printing;
+in {
+  options.modules.core.printing = {
+    enable = mkEnableOption "Enable printing";
   };
-  config = lib.mkIf config.modules.core.printing.enable {
+
+  config = lib.mkIf cfg.enable {
     services = {
       printing = {
         enable = true;
@@ -22,6 +25,6 @@
       ipp-usb.enable = true;
       samba.enable = true;
     };
-    hardware.sane.enable = true; # for scanners, I think?
+    hardware.sane.enable = true; # for scanners
   };
 }

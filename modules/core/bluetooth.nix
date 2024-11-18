@@ -1,14 +1,17 @@
 {
-  config,
   pkgs,
+  config,
   lib,
   ...
-}: {
-  options = {
-    modules.core.bluetooth.enable =
-      lib.mkEnableOption "enables bluetooth";
+}: let
+  inherit (lib) mkEnableOption mkOption types;
+  cfg = config.modules.core.bluetooth;
+in {
+  options.modules.core.bluetooth = {
+    enable = mkEnableOption "Enable bluetooth";
   };
-  config = lib.mkIf config.modules.core.bluetooth.enable {
+
+  config = lib.mkIf cfg.enable {
     services.blueman.enable = true;
     hardware = {
       bluetooth = {

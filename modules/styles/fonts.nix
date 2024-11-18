@@ -3,12 +3,15 @@
   config,
   lib,
   ...
-}: {
-  options = {
-    modules.styles.fonts.enable =
-      lib.mkEnableOption "enables fonts";
+}: let
+  inherit (lib) mkEnableOption mkOption types;
+  cfg = config.modules.styles.fonts;
+in {
+  options.modules.styles.fonts = {
+    enable = mkEnableOption "Enable fonts";
   };
-  config = lib.mkIf config.modules.styles.fonts.enable {
+
+  config = lib.mkIf cfg.enable {
     fonts = {
       packages = with pkgs; [
         noto-fonts-emoji

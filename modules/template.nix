@@ -3,14 +3,15 @@
   config,
   lib,
   ...
-}: {
-  options = {
-    modules.category.name.enable =
-      lib.mkEnableOption "enables name";
+}: let
+  inherit (lib) mkEnableOption mkOption types;
+  cfg = config.modules.category.name;
+in {
+  options.modules.category.name = {
+    enable = mkEnableOption "Enable name";
   };
-  config = lib.mkIf config.modules.category.name.enable {
-    option1.enable = true;
 
-    environment.systemPackages = with pkgs; [hello];
+  config = lib.mkIf cfg.enable {
+    # ...
   };
 }
