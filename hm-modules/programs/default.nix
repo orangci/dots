@@ -8,7 +8,6 @@
     ./fastfetch.nix
     ./firefox.nix
     ./hypridle.nix
-    ./hyprlock.nix
     ./swappy.nix
     # ./swaync.nix
     ./discord.nix

@@ -8,6 +8,7 @@
   inherit (lib) mkOption types;
 in
   with lib; {
+    imports = [./hyprlock.nix];
     options.hmModules.programs.hyprland = mkOption {
       enabled = mkOption {
         type = types.bool;
