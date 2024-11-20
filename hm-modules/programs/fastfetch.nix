@@ -9,7 +9,7 @@ in {
   options.hmModules.programs.fastfetch = mkOption {
     enabled = mkOption {
       type = types.bool;
-      default = true;
+      default = false;
     };
   };
   config = {

@@ -95,7 +95,8 @@ in {
         tb = "nc termbin.com 9999";
         tr = "trash";
         ".." = "z ..";
-        neofetch = "fastfetch";
+        neofetch = "microfetch";
+        fetch = "microfetch";
         find = "fd";
         spinmal = "bash $HOME/docs/spinPTW.sh";
         ga = "git add .";
