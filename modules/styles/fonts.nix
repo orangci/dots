@@ -19,10 +19,11 @@ in {
         font-awesome
         ubuntu-sans
         merriweather-sans
+        atkinson-hyperlegible
         merriweather
         lexend
         material-icons
-        (nerdfonts.override {fonts = ["JetBrainsMono"];})
+        nerd-fonts.jetbrains-mono
       ];
     };
   };

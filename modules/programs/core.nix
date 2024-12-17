@@ -18,6 +18,7 @@
     btop
     unzip
     unrar
+    nwg-dock-hyprland
     zip
     lshw
     gnumake # gnumake
@@ -49,6 +50,7 @@
     catimg
     tailwindcss
     hugo
+    lunar-client
     hyprpicker
     micro
     ghostscript
@@ -58,7 +60,7 @@
     # file-roller # BIG 1.1GB
     # transmission_4-gtk # bittorent client
     gwenview # image viewer BIG 1.3GB
-    # calibre # ebooks BIG 2.1GB
+    calibre # ebooks BIG 2.1GB
     obsidian # BIG 1.8GB
     pinta # half a GB
     otpclient # half a GB

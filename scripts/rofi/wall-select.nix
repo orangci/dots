@@ -53,8 +53,8 @@ pkgs.writeShellScriptBin "wall-select" ''
   # Special case: when 'anibg2' is selected
   if [ "$selected_folder" == "anibg2" ]; then
       # API URLs for wallpaper sources
-      api_url1="https://github.com/jeushi/wallpapers/tree/main/touhou"
-      api_url2="https://api.github.com/repos/dharmx/walls/contents/anime"
+      api_url2="https://github.com/jeushi/wallpapers/tree/main/touhou"
+      api_url1="https://api.github.com/repos/acdcbyl/Dotfiles-arch/contents/wallpaper?ref=main"
 
       # Temporary download directory
       download_dir="/tmp/anibg2_walls"

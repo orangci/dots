@@ -307,5 +307,6 @@
   "bar.workspaces.showApplicationIcons": true,
   "bar.workspaces.applicationIconEmptyWorkspace": "",
   "bar.workspaces.applicationIconFallback": "",
-  "bar.windowtitle.custom_title": true
+  "bar.windowtitle.custom_title": true,
+  "hyprpanel.restartCommand": "ags -q; ags"
 }
