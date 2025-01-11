@@ -17,8 +17,6 @@
     brightnessctl
     btop
     unzip
-    unrar
-    nwg-dock-hyprland
     zip
     lshw
     gnumake # gnumake
@@ -50,7 +48,6 @@
     catimg
     tailwindcss
     hugo
-    lunar-client
     hyprpicker
     micro
     ghostscript
@@ -64,6 +61,7 @@
     obsidian # BIG 1.8GB
     pinta # half a GB
     otpclient # half a GB
+    lunar-clientV
     wvkbd
 
     # fun stuffs

@@ -13,7 +13,7 @@ in {
     username = "${username}";
     homeDirectory = "/home/${username}";
 
-    packages = [pkgs.hyprpanel inputs.nixvim.packages.${pkgs.system}.default];
+    packages = [pkgs.hyprpanel];
     stateVersion = "24.11";
     file = {
       ".local/share/fonts" = {

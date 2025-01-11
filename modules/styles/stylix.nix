@@ -44,8 +44,8 @@ in {
       targets.chromium.enable = false;
       fonts = {
         monospace = {
-          package = pkgs.nerd-fonts.jetbrains-mono;
-          name = "JetBrainsMono Nerd Font";
+          package = pkgs.nerd-fonts.ubuntu-mono;
+          name = "UbuntuMono Nerd Font";
         };
         sansSerif = {
           package = pkgs.raleway;

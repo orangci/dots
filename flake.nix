@@ -7,7 +7,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hyprland.url = "github:hyprwm/Hyprland"; # unstable hyprland
-    nixvim.url = "github:orangci/nixvim"; # FIXME: nixvim is broken and who knows why — perhaps i should move to nvf
     stylix = {
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
