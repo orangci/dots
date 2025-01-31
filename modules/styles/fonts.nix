@@ -14,7 +14,6 @@ in {
   config = lib.mkIf cfg.enable {
     fonts = {
       packages = with pkgs; [
-        noto-fonts-emoji
         noto-fonts-cjk-sans
         font-awesome
         ubuntu-sans

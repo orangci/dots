@@ -1,4 +1,19 @@
-# orangc's flake
+<div align="center">
+      <h1>orangc's flake</h1>
+      <div align="center">
+         <a href="https://github.com/orangci/dots/stargazers">
+            <img src="https://img.shields.io/github/stars/orangci/dots?color=F5BDE6&labelColor=303446&style=for-the-badge&logo=starship&logoColor=F5BDE6">
+         </a>
+         <a href="https://github.com/orangci/dots/">
+            <img src="https://img.shields.io/github/repo-size/orangci/dots?color=C6A0F6&labelColor=303446&style=for-the-badge&logo=github&logoColor=C6A0F6">
+         </a>
+         <a = href="https://nixos.org">
+            <img src="https://img.shields.io/badge/NixOS-Unstable-blue?style=for-the-badge&logo=NixOS&logoColor=white&label=NixOS&labelColor=303446&color=91D7E3">
+         </a>
+         <a href="https://github.com/orangci/dots/blob/main/LICENSE">
+            <img src="https://img.shields.io/static/v1.svg?style=for-the-badge&label=License&message=GPL3&colorA=313244&colorB=F5A97F&logo=unlicense&logoColor=F5A97F&"/>
+         </a>
+</div> <br>
 
 > [!CAUTION]
 > This flake is extremely unstable and prone to breaking changes..
@@ -7,57 +22,18 @@
 > A process of rewriting my entire configuration starts
 > after commit [`09709dc7f716bf1df7c836dfc191e88ec1ad8339`](https://github.com/orangci/dots/commit/09709dc7f716bf1df7c836dfc191e88ec1ad8339).
 
-<!-- ## Installation
+## todo
+- secure boot
+- reorganize
+- cut down disk usage
+- urithiru (homelab) setup
+- impermanence
+- make scripts use pkgs.writeShellApplication
+- use nil / nix language server
+- (maybe) use nvf
+- fix fonts
 
-Run this command in your terminal and the script will handle the rest. Note that this won't work for non NixOS users. If the script breaks in anyway, please make an issue and notify me. It shouldn't, though.
-
-```sh
-nix-shell -p curl # You can skip to the next line if you already have curl installed.
-sh <(curl -L https://raw.githubusercontent.com/orxngc/dots/main/install.sh)
-```
-
-Note: I strongly advise you to read the code of the script [here](github.com/orxngc/dots/blob/main/install.sh) before running it. Always read and thoroughly check scripts you see online for your own safety..!
-
-Press `SUPER + ?` to open a list of all keybindings.
-
-## Structure Overview
-
-This is a very modular flake.
-
-- [`.github`](.github) The assets files for the README.
-- [`files`](files) Files which various home-manager modules utilize.
-  - [`fonts`](files/fonts) This is where you can place fonts that are not available in nixpkgs.
-- [`hm-modules`](hm-modules) All home-manager modules are stored in here.
-  - [`core`](hm-modules/core) Important things, like the hyprland module.
-  - [`programs`](hm-modules/programs) The majority of program modules.
-  - [`styles`](hm-modules/styles) Now this one you should touch. A big chunk of the system is themed here (the rest are themed in hm-modules/programs).
-- [`hosts`](hosts) This is where each host's unique configurations go. You can configure/toggle the different modules and hm-modules for each host here.
-- [`modules`](modules) NixOS system modules.
-  - [`core`](modules/core) There's no reason to touch this.
-  - [`drivers`](modules/core) Again, no reason to touch these.
-  - [`programs`](modules/programs) Honestly not a reason to touch these either.
-- [`scripts`](scripts) This is where I store all my scripts.
-- [`flake.nix`](flake.nix) Where the flake begins, the lovely starting pont.
-
-## Programs
-
-<details>
-<summary>Here's a list of some of the programs you'll find used here.</summary>
-
-- `hyprland`
-- `rofi`
-- `micro`
-- `vscodium`
-- `thunar`
-- `kitty`
-- `ags`
-- `firefox`
-- `hyprlock`
-</details>
-
-## Todo
-
-<details> 
+<!-- <details> 
 <summary>Completed</summary>
 
 - [x] ~~Write an installation script.~~
@@ -83,7 +59,6 @@ This is a very modular flake.
 - the vimjoyer youtube channel, for making immensely helpful videos that saved me hours and hours of pain
 - https://github.com/NotAShelf/nyx/ — teaching me how many different parts of how nix works, and many bits of code
 - https://gitlab.com/Zaney/zaneyos — teaching me how many different parts of how nix works, and several tidbits of code
-- https://github.com/Jas-SinghFSU/HyprPanel — The ags configuration that I use.
 - https://github.com/MrVivekRajan/Hypr-Dots — The hyprlock config inspiration.
 - https://github.com/zDyanTB/HyprNova - The wlogout styling.
 - https://github.com/elythh/nixvim — The neovim configuration I use.

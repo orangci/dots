@@ -11,7 +11,8 @@
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
+    hyprpanel.url = "github:orangci/HyprPanel";
+    grub2-themes.url = "github:vinceliuice/grub2-themes";
   };
 
   outputs = inputs @ {

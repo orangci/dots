@@ -55,6 +55,10 @@ in {
           package = pkgs.merriweather;
           name = "Merriweather";
         };
+        emoji = {
+          package = pkgs.noto-fonts-emoji;
+          name = "Noto Color Emoji";
+        };
         sizes = {
           applications = 12;
           terminal = 16;

@@ -15,15 +15,15 @@ in {
     environment.systemPackages = let
       sddm-themes = pkgs.callPackage ./pkgs.nix {};
     in [
-      # sddm-themes.sugar-dark
-      # sddm-themes.tokyo-night
+      sddm-themes.sugar-dark
+      sddm-themes.tokyo-night
       sddm-themes.astronaut
     ];
 
     services.displayManager.sddm = {
       enable = true; # Enable SDDM.
       wayland.enable = true;
-      theme = "astronaut";
+      theme = "tokyo-night";
     };
   };
 }

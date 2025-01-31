@@ -61,7 +61,7 @@
     obsidian # BIG 1.8GB
     pinta # half a GB
     otpclient # half a GB
-    lunar-clientV
+    lunar-client
     wvkbd
 
     # fun stuffs

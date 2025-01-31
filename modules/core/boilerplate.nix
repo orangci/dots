@@ -5,6 +5,7 @@
   username,
   ...
 }: {
+  imports = [inputs.grub2-themes.nixosModules.default];
   boot = {
     # Kernel
     kernelPackages = pkgs.linuxPackages_latest;
@@ -16,13 +17,21 @@
       "vm.max_map_count" = 2147483642;
     };
     loader = {
-      # Bootloader.
-      systemd-boot.enable = true;
+      efi.efiSysMountPoint = "/boot";
+      systemd-boot.enable = false;
       efi.canTouchEfiVariables = true;
       # grub theme
       grub = {
-        theme = inputs.nixos-grub-themes.packages.${pkgs.system}.nixos;
-        backgroundColor = "#1E1E2E";
+        enable = true;
+        device = "nodev";
+        useOSProber = true;
+        efiSupport = true;
+      };
+      grub2-theme = {
+        enable = true;
+        theme = "tela";
+        footer = true;
+        # customResolution = "1920x1080";
       };
     };
 

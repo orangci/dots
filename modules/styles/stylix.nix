@@ -42,6 +42,7 @@ in {
         size = 24;
       };
       targets.chromium.enable = false;
+      targets.grub.enable = false;
       fonts = {
         monospace = {
           package = pkgs.nerd-fonts.ubuntu-mono;
@@ -54,6 +55,10 @@ in {
         serif = {
           package = pkgs.merriweather;
           name = "Merriweather";
+        };
+        emoji = {
+          package = pkgs.noto-fonts-emoji;
+          name = "Noto Color Emoji";
         };
         sizes = {
           applications = 12;

@@ -6,6 +6,7 @@ pkgs.writeShellScriptBin "wall-select" ''
       "$HOME/media/walls-catppuccin-mocha"
       "anibg"
       "anibg2"
+      "safebooru"
   )
 
   # Default folder for the --fast option
@@ -92,6 +93,52 @@ pkgs.writeShellScriptBin "wall-select" ''
       echo "$temp_image" > /tmp/.current_wallpaper_path
       exit 0
   fi
+
+    # Special case: when 'safebooru' is selected
+    if [ "$selected_folder" == "safebooru" ]; then
+        # Safebooru API endpoint
+        api_url="https://safebooru.org/index.php?page=dapi&s=post&q=index&json=1&tags=rating:safe"
+
+        # Function to fetch a random image that meets size criteria
+        fetch_random_image() {
+            # Fetch data from Safebooru API
+            response=$(curl -s "$api_url")
+
+            # Check if response is empty
+            if [ -z "$response" ]; then
+                echo "Failed to fetch data from Safebooru."
+                exit 1
+            fi
+
+            # Parse JSON response to extract image URLs and dimensions
+            image_urls=($(echo "$response" | jq -r '.[] | select(.width >= 1920 and .height >= 1080) | .file_url'))
+
+            # Check if any images meet the criteria
+            if [ ''${#image_urls[@]} -eq 0 ]; then
+                echo "No suitable images found on Safebooru."
+                exit 1
+            fi
+
+            # Select a random image URL from the filtered list
+            random_image_url=$(shuf -e "''${image_urls[@]}" -n 1)
+
+            # Download the image to a temporary location
+            temp_image="/tmp/$(basename "$random_image_url")"
+            curl -s "$random_image_url" -o "$temp_image"
+
+            # Set the downloaded image as the wallpaper using swww
+            swww img "$temp_image" --transition-type random --transition-fps 60
+            echo "Wallpaper set from $random_image_url"
+            echo "\$WALLPAPER=$temp_image" > /tmp/.current_wallpaper_path_hyprlock
+            echo "$temp_image" > /tmp/.current_wallpaper_path
+        }
+
+        # Fetch and set a random image
+        fetch_random_image
+        exit 0
+    fi
+
+
 
 
   # Get image files in the selected folder
