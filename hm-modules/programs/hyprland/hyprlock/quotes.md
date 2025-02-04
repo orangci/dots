@@ -1,0 +1,41 @@
+- Why catch butterflies?
+- Old Mystics
+- Exterminate sweet mysteries.
+- People die when they are killed.
+- Those were the days...
+- flora & fauna
+- The expedition will not end as long as we remain ambitious!
+- Excercises in silliness.
+- Absolute tomfoolery.
+- Did you really think killing me would make me die?
+- Google en passant.
+- ad astra per aspera
+- Forward the Foundation
+- Senatus Populusque Romanus
+- Behold them, conquerors of the world, the toga-clad race of Romans!
+- Caesar is not above the grammarians.
+- veni, vidi, vici
+- If you try to fail and instead succeed, which have you done?
+- plant lemon trees for lemonade
+- Honor is not dead so long as he lives in the hearts of men!
+- journey before destination
+- Sometimes, a hypocrite is nothing more than a man in the process of change. 
+- Ain't nobody what knows the cow better than the butcher, Wax
+- Hello! Would you like to destroy some evil today?
+- "Aim for the sun. That way if you miss, at least your arrow will fall far away, and the person it kills will likely be someone you don't know."
+- Szeth-son-son-Vallano, Truthless of Shinovar, wore white on the day he was to kill a king.
+- "Treat every lady like she has an older brother who is bigger and stronger than you are."
+- Taravangian was going to save them all.
+- There is something happy about the way Teft is angry.
+- I had a splinter once, it eventually got out of hand.
+- That a thing is hated is not proof that it’s great art, but the lack of hatred is certainly proof that it is not.
+- That's because Wit is an asshole.
+- "We're an odd bunch." "Mmm, yes, seven, odd." 
+- Make a note to have my imagination flogged for its insolence in showing me that particular sight.
+- 'But expectations were like fine pottery. The harder you held them, the more likely they were to crack.'
+- It is lucky. I ain't never died while wearing that hat.
+- Holding your brain hostage against your own stupidity- that was how to get stuff done.
+- If you had to shoot a man, society had already failed.
+- The purpose of a storyteller is not to tell you how to think but to give you questions to think upon. 
+- I am a stick, Shallan!
+- He is the Napoleon of crime, Watson.
