@@ -15,6 +15,6 @@ in {
   };
   config = {
     home.packages = [pkgs.hyprlock];
-    home.file.".config/hypr/hyprlock.conf".text = ''source = ~/dots/hm-modules/programs/hyprland/hyprlock.conf'';
+    home.file.".config/hypr/hyprlock.conf".text = ''source = ~/dots/hm-modules/programs/hyprland/hyprlock/hyprlock.conf'';
   };
 }

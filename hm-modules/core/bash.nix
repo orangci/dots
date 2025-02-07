@@ -63,6 +63,13 @@ in {
             tar -xvf "$tar_file" -C "$dest_folder"
         }
 
+        timer() {
+            local seconds
+            seconds=$(awk "BEGIN {print $1 * 60}")
+            sleep "$seconds" && notify-send "⏰ Timer: $1 minute(s) are up!"
+        }
+
+
       '';
       initExtra = ''
         if [ -f $HOME/.bashrc-personal ]; then
