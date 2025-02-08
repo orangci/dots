@@ -23,10 +23,10 @@
     };
     gaming = {
       enable = true;
-      wine.enable = true;
-      lutris.enable = true;
+      wine.enable = false;
+      lutris.enable = false;
       bottles.enable = false;
-      steam.enable = true;
+      steam.enable = false;
       minecraft = {
         enable = true;
         modrinth.enable = false;

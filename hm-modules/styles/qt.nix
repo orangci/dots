@@ -15,8 +15,8 @@ in {
   config = {
     qt = {
       enable = true;
-      style.name = "adwaita-dark";
-      platformTheme.name = "gtk3";
+      style.name = lib.mkForce "adwaita-dark";
+      platformTheme.name = lib.mkForce "gtk3";
     };
   };
 }

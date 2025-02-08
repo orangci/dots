@@ -29,7 +29,6 @@
 - There is something happy about the way Teft is angry.
 - I had a splinter once, it eventually got out of hand.
 - That a thing is hated is not proof that it’s great art, but the lack of hatred is certainly proof that it is not.
-- That's because Wit is an asshole.
 - "We're an odd bunch." "Mmm, yes, seven, odd." 
 - Make a note to have my imagination flogged for its insolence in showing me that particular sight.
 - 'But expectations were like fine pottery. The harder you held them, the more likely they were to crack.'
