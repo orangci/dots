@@ -2,17 +2,23 @@
   description = "orangc's dots";
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    home-manager = {
-      url = "github:nix-community/home-manager/master";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+
+    home-manager.url = "github:nix-community/home-manager/master";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
     hyprland.url = "github:hyprwm/Hyprland"; # unstable hyprland
-    stylix = {
-      url = "github:danth/stylix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+
+    stylix.url = "github:danth/stylix";
+    stylix.inputs.nixpkgs.follows = "nixpkgs";
+
     hyprpanel.url = "github:orangci/HyprPanel";
+    hyprpanel.inputs.nixpkgs.follows = "nixpkgs";
+
     grub2-themes.url = "github:vinceliuice/grub2-themes";
+    grub2-themes.inputs.nixpkgs.follows = "nixpkgs";
+
+    ioshelfka.url = "github:NotAShelf/Ioshelfka";
+    ioshelfka.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = inputs @ {

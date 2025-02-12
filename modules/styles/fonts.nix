@@ -2,6 +2,7 @@
   pkgs,
   config,
   lib,
+  inputs,
   ...
 }: let
   inherit (lib) mkEnableOption mkOption types;
@@ -22,7 +23,9 @@ in {
         merriweather
         lexend
         material-icons
-        nerd-fonts.jetbrains-mono
+        nerd-fonts.ubuntu-mono
+        inputs.ioshelfka.packages.${system}.ioshelfka-mono-nerd
+        inputs.ioshelfka.packages.${system}.ioshelfka-term-nerd
       ];
     };
   };
