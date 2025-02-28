@@ -35,6 +35,21 @@ in {
         width:                       100%;
         height: 80%;
     }
+
+    /*****----- Inputbar -----*****/
+      inputbar {
+          enabled:                     true;
+          spacing:                     10px;
+          margin:                      0px;
+          padding:                     12px;
+          border:                      0px;
+          border-radius:               24px;
+          border-color:                rgba(203, 166, 247, 85%);
+          background-color:            rgba(30, 30, 46, 85%);
+          text-color:                  #${palette.base05};
+          children:                    [ "entry" ];
+      }
+
     mainbox {
         enabled:                     true;
         orientation:                 horizontal;
@@ -56,11 +71,11 @@ in {
         text-color:                  @main-fg;
         scrollbar:                   false;
     }
-    
+
     mainbox {
         enabled:                     true;
         orientation:                 horizontal;
-        children:                    [ "dummy", "frame", "dummy" ];
+        children:                    [ "inputbar", "dummy", "frame", "dummy" ];
         background-color:            transparent;
     }
     frame {

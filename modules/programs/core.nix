@@ -1,8 +1,8 @@
 {
   config,
   pkgs,
-  host,
   lib,
+  inputs,
   ...
 }: {
   environment.systemPackages = with pkgs; [
@@ -49,19 +49,18 @@
     tailwindcss
     hugo
     hyprpicker
+    temurin-jre-bin
     micro
-    ghostscript
     mangal
 
     # big gui programs
     # file-roller # BIG 1.1GB
     # transmission_4-gtk # bittorent client
-    gwenview # image viewer BIG 1.3GB
+    kdePackages.gwenview # image viewer BIG 1.3GB
     calibre # ebooks BIG 2.1GB
     obsidian # BIG 1.8GB
     pinta # half a GB
     otpclient # half a GB
-    lunar-client
     wvkbd
 
     # fun stuffs
