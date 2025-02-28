@@ -60,12 +60,8 @@
   time.timeZone = "Asia/Riyadh";
   hardware.logitech.wireless.enable = true;
 
-  programs = {
-    java.enable = true;
-    noisetorch.enable = true;
-  };
-
-  # environment.systemPackages = with pkgs; [ ];
+  programs = {};
+  environment.systemPackages = with pkgs; [];
 
   users.users = {
     "${username}" = {

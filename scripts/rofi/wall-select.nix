@@ -28,36 +28,40 @@ pkgs.writeShellScriptBin "wall-select" ''
   }
 
   # Function to display image selection menu with previews
-  select_image_with_preview() {
-      local folder="$1"
-      local images=($(find "$folder" -type f -iregex '.*\.\(jpg\|jpeg\|png\|bmp\|gif\)$' | sort))
-      if [ ''${#images[@]} -eq 0 ]; then
-          echo "No images found in $folder."
-          exit 1
-      fi
+    select_image_with_preview() {
+        local folder="$1"
+        # Find image files in the folder
+        local images=($(find "$folder" -type f -iregex '.*\.\(jpg\|jpeg\|png\|bmp\|gif\)$'))
+        if [ ''${#images[@]} -eq 0 ]; then
+            echo "No images found in $folder."
+            exit 1
+        fi
 
-      # Generate the rofi image list with previews
-      local image_list=""
-      for image in "''${images[@]}"; do
-          local filename=$(basename "$image")
-          local filename_without_extension="''${filename%.*}"
-          image_list+="$filename_without_extension\0icon\x1f$image\n"
-      done
+        # Shuffle the array of images
+        local shuffled_images=($(shuf -e "''${images[@]}"))
 
-      # Use rofi to select image with previews and get the selected entry
-      local selected_entry=$(echo -e "$image_list" | rofi -dmenu -markup-rows -p "Select Image:" -theme selector-big.rasi -i -selected-row 0 -format "i" -preview "qimgv {1}")
+        # Generate the Rofi image list with previews
+        local image_list=""
+        for image in "''${shuffled_images[@]}"; do
+            local filename=$(basename "$image")
+            local filename_without_extension="''${filename%.*}"
+            image_list+="$filename_without_extension\0icon\x1f$image\n"
+        done
 
-      # Check if an image was selected
-      if [ -z "$selected_entry" ]; then
-          echo "No valid image selected."
-          exit 1
-      fi
+        # Use Rofi to select an image with previews and get the selected entry
+        local selected_entry=$(echo -e "$image_list" | rofi -dmenu -markup-rows -p "Select Image:" -theme selector-big.rasi -i -selected-row 0 -format "i" -preview "qimgv {1}")
 
-      # The selected_entry is directly the index
-      local selected_image_file="''${images[$selected_entry]}"
+        # Check if an image was selected
+        if [ -z "$selected_entry" ]; then
+            echo "No valid image selected."
+            exit 1
+        fi
 
-      echo "$selected_image_file"
-  }
+        # The selected_entry is directly the index
+        local selected_image_file="''${shuffled_images[$selected_entry]}"
+
+        echo "$selected_image_file"
+    }
 
   # Function to select folder using rofi
   select_folder() {
