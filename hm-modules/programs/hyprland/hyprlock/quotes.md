@@ -22,19 +22,157 @@
 - Sometimes, a hypocrite is nothing more than a man in the process of change. 
 - Ain't nobody what knows the cow better than the butcher, Wax
 - Hello! Would you like to destroy some evil today?
-- "Aim for the sun. That way if you miss, at least your arrow will fall far away, and the person it kills will likely be someone you don't know."
+- Aim for the sun. That way if you miss, at least your arrow will fall far away, and the person it kills will likely be someone you don't know.
 - Szeth-son-son-Vallano, Truthless of Shinovar, wore white on the day he was to kill a king.
-- "Treat every lady like she has an older brother who is bigger and stronger than you are."
+- Treat every lady like she has an older brother who is bigger and stronger than you are.
 - Taravangian was going to save them all.
 - There is something happy about the way Teft is angry.
 - I had a splinter once, it eventually got out of hand.
-- That a thing is hated is not proof that it’s great art, but the lack of hatred is certainly proof that it is not.
-- "We're an odd bunch." "Mmm, yes, seven, odd." 
 - Make a note to have my imagination flogged for its insolence in showing me that particular sight.
-- 'But expectations were like fine pottery. The harder you held them, the more likely they were to crack.'
+- But expectations were like fine pottery. The harder you held them, the more likely they were to crack.
 - It is lucky. I ain't never died while wearing that hat.
 - Holding your brain hostage against your own stupidity- that was how to get stuff done.
 - If you had to shoot a man, society had already failed.
 - The purpose of a storyteller is not to tell you how to think but to give you questions to think upon. 
-- I am a stick, Shallan!
+- I am a stick!
 - He is the Napoleon of crime, Watson.
+
+- The Lord of the Rings
+- Babel
+- Sixth of the Dusk
+- Shadows for Silence in the Forests of Hell
+- The Emperor's Soul
+- Arcanum Unbounded
+- Tress of the Emerald Sea
+- Elantris
+- The Fellowship of the Ring
+- The Last Wish
+- Yumi and the Nightmare Painter
+- The Sword of Kaigen
+- Assassin's Apprentice
+- Six of Crows
+- The Time Keeper
+- The Premonition: A Pandemic Story
+- The Travelling Cat Chronicles
+- The Art of War
+- A Gentleman in Moscow
+- Gulliver’s Travels
+- Lord of the Flies
+- O Jerusalem
+- Project Hail Mary
+- The Martian
+- The Oceans Between Stars
+- Last Day on Mars
+- The Shores Beyond Time
+- Wonder
+- The Chain Between Worlds
+- Shōgun
+- A Little Princess
+- The Mists of Avalon
+- Oliver Twist
+- The Neverending Story
+- The Phantom Tollbooth
+- Bridge to Terabithia
+- The Shadow of the Wind
+- The Lion, the Witch and the Wardrobe
+- The Adventures of Tom Sawyer
+- Eragon
+- The Name of the Wind
+- Clockwork Angel
+- The Old Man and the Sea
+- The Adventures of Huckleberry Finn
+- A Wrinkle in Time
+- A Game of Thrones
+- The Time Traveler's Wife
+- The Princess Bride
+- The Secret Garden
+- 1984
+- Fahrenheit 451
+- Ender’s Game
+- The Little Prince
+- The Chronicles of Narnia
+- To Kill a Mockingbird
+- Wind and Truth
+- The Cruel Prince
+- Rhapsody: Child of Blood
+- The Lost Metal
+- Foundation
+- The Way of Kings
+- The Ultimate Hitchhiker’s Guide to the Galaxy
+- House Corrino
+- House Harkonnen
+- Sandworms of Dune
+- House Atreides
+- Hunters of Dune
+- Chapterhouse: Dune
+- Heretics of Dune
+- God Emperor of Dune
+- Children of Dune
+- Dune Messiah
+- Dune
+- The Dollmakers
+- The Sunlit Man
+- Son
+- Messenger
+- Gathering Blue
+- The Giver
+- The Borrowers
+- Jo's Boys
+- Little Men
+- Little Women
+- Holes
+- Allegiant
+- Insurgent
+- Divergent
+- The Ballad of Songbirds and Snakes
+- Catching Fire
+- Mockingjay
+- The Hunger Games
+- Red Rising
+- Anne of Green Gables
+- A Wizard of Earthsea
+- The Positronic Man
+- The Currents of Space
+- Pebble in the Sky
+- The Stars, Like Dust
+- Forward the Foundation
+- The Naked Sun
+- The Robots of Dawn
+- Foundation and Earth
+- Prelude to Foundation
+- Foundation's Edge
+- The Caves of Steel
+- Second Foundation
+- Foundation and Empire
+- I, Robot
+- The Adventures of Sherlock Holmes
+- The Hound of the Baskervilles
+- A Study in Scarlet
+- The Eleventh Metal
+- Dawnshard
+- Edgedancer
+- Rhythm of War
+- Shadows of Self
+- The Bands of Mourning
+- Oathbringer
+- Warbreaker
+- Words of Radiance
+- The Decline and Fall of the Roman Empire
+- Death of a Hero
+- The Battle of Hackham Heath
+- The Tournament at Gorlan
+- The Lost Stories
+- Halt's Peril
+- The Kings of Clonmel
+- The Battle for Skandia
+- Erak's Ransom
+- The Sorcerer in the North
+- The Siege of Macindaw
+- The Emperor of Nihon-Ja
+- The Icebound Land
+- The Burning Bridge
+- The Ruins of Gorlan
+- The Alloy of Law
+- The Hero of Ages
+- The Well of Ascension
+- The Final Empire
