@@ -24,8 +24,6 @@ in {
         lexend
         material-icons
         nerd-fonts.ubuntu-mono
-        inputs.ioshelfka.packages.${system}.ioshelfka-mono-nerd
-        inputs.ioshelfka.packages.${system}.ioshelfka-term-nerd
       ];
     };
   };

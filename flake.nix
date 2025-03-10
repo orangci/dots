@@ -17,9 +17,6 @@
     grub2-themes.url = "github:vinceliuice/grub2-themes";
     grub2-themes.inputs.nixpkgs.follows = "nixpkgs";
 
-    ioshelfka.url = "github:NotAShelf/Ioshelfka";
-    ioshelfka.inputs.nixpkgs.follows = "nixpkgs";
-
     nur.url = "github:nix-community/NUR";
     nur.inputs.nixpkgs.follows = "nixpkgs";
   };
