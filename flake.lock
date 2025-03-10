@@ -700,43 +700,6 @@
         "type": "github"
       }
     },
-    "iosevka-upstream": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1737190003,
-        "narHash": "sha256-kB4CsC/hHstajLcVYBxO7RD0lsZymrxlUha4cRtQ7Ak=",
-        "owner": "be5invis",
-        "repo": "Iosevka",
-        "rev": "a5d26cb87836c7245dcae2c741663017245cdd18",
-        "type": "github"
-      },
-      "original": {
-        "owner": "be5invis",
-        "repo": "Iosevka",
-        "type": "github"
-      }
-    },
-    "ioshelfka": {
-      "inputs": {
-        "iosevka-upstream": "iosevka-upstream",
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1737896851,
-        "narHash": "sha256-grVnIBwoWv29q8ayes9dl3aNEV7CVph4GGRx4DudfMM=",
-        "owner": "NotAShelf",
-        "repo": "Ioshelfka",
-        "rev": "9124d3d2b2057014f99df42dc9807f7627d425a0",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NotAShelf",
-        "repo": "Ioshelfka",
-        "type": "github"
-      }
-    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1741246872,
@@ -778,11 +741,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1741581473,
-        "narHash": "sha256-GN1Jkhs5jBJnMzbY5ok8fK07Vr/RSOxOL+QMSx5mAHA=",
+        "lastModified": 1741596298,
+        "narHash": "sha256-ReqBzh7ttF6rcVGgkTfsiKMGOjVaTnDviJALaPt4J08=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "05607425540ace50b41392637ea33b23bff0d2c7",
+        "rev": "48604b22468378d07b7437bff16540413d4eccb9",
         "type": "github"
       },
       "original": {
@@ -843,7 +806,6 @@
         "home-manager": "home-manager",
         "hyprland": "hyprland",
         "hyprpanel": "hyprpanel",
-        "ioshelfka": "ioshelfka",
         "nixpkgs": "nixpkgs_2",
         "nur": "nur",
         "stylix": "stylix"
