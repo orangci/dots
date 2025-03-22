@@ -17,12 +17,12 @@ in {
     home.packages = [pkgs.swappy];
     home.file.".config/swappy/config".text = ''
       [Default]
-      save_dir=/home/${username}/media/screenshots
+      save_dir=${config.xdg.userDirs.pictures}/screenshots
       save_filename_format=%M %d-%H.%M.%S.png
       show_panel=false
       line_size=5
       text_size=20
-      text_font=Raleway
+      text_font=Lexend
       paint_mode=brush
       early_exit=true
       fill_shape=false

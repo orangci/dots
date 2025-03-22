@@ -14,10 +14,10 @@ in
           /* >>> ALL MODULES <<< */
             * {
               font-size: 14px;
-              font-family: JetBrainsMono NFM, Font Awesome, sans-serif;
+              font-family: Raleway, UbuntuMono Nerd Font Propo, Font Awesome, sans-serif;
               font-weight: bold;
             }
-            window#waybar {background-color: rgba(255,0,0,0);}
+            window#waybar {background-color: rgba(255,0,0,0); }
             tooltip {
               background: #${palette.base00};
               border-radius: 15px;

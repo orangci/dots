@@ -7,19 +7,19 @@
   ...
 }: let
   inherit (lib) mkOption types;
-  waybarStyle = "pills-round"; # Different styles for the waybar at the top of the screen. Currently available options: pills-round, colourful-pills-round, boxyStyle,and long
   waybarBottom = false; # If the waybar should be at the bottom of the screen instead of the top
 in {
-  imports = [./${waybarStyle}.nix];
+  imports = [./style.nix];
   options.hmModules.programs.waybar = mkOption {
     enabled = mkOption {
       type = types.bool;
-      default = false;
+      default = true;
     };
   };
   config = {
+    home.packages = [pkgs.wttrbar];
     programs.waybar = {
-      enable = true; # Curious as to why waybar isn't working? Go to home.nix and uncomment the import line for this file; it should be around line 59.
+      enable = true;
       package = pkgs.waybar;
       settings = [
         {
@@ -124,6 +124,7 @@ in {
               ];
             };
             on-click = "pavucontrol";
+            on-click-right = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
           };
           "custom/exit" = {
             tooltip = false;

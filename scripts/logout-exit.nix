@@ -1,5 +1,5 @@
 {pkgs}: let
-  wlogout_horizontal = true;
+  wlogout_horizontal = false;
 in
   pkgs.writeShellScriptBin "logout-exit" ''
     wlogout --css ~/.config/wlogout/${

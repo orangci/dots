@@ -8,12 +8,12 @@
   gitUsername = "orangci";
   gitEmail = "orangc@proton.me";
 in {
-  nixpkgs.overlays = [inputs.hyprpanel.overlay];
+  nixpkgs.overlays = [];
   home = {
     username = "${username}";
     homeDirectory = "/home/${username}";
 
-    packages = [pkgs.hyprpanel];
+    packages = [pkgs.microfetch];
     stateVersion = "24.11";
     file = {
       ".local/share/fonts" = {
@@ -21,6 +21,11 @@ in {
         recursive = true;
       };
       ".face.icon".source = ../../files/face.png;
+
+      ".config/Vencord/themes/orangetweaks.css".source = ../../files/vencordthemes/orangetweaks.css;
+      ".config/Vencord/themes/catppuccin.css".source = ../../files/vencordthemes/catppuccin.css;
+      ".config/equibop/themes/orangetweaks.css".source = ../../files/vencordthemes/orangetweaks.css;
+      ".config/equibop/themes/catppuccin.css".source = ../../files/vencordthemes/catppuccin.css;
     };
   };
 
