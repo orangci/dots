@@ -62,14 +62,6 @@ in {
             # Extract the tar archive
             tar -xvf "$tar_file" -C "$dest_folder"
         }
-
-        timer() {
-            local seconds
-            seconds=$(awk "BEGIN {print $1 * 60}")
-            sleep "$seconds" && notify-send "⏰ Timer: $1 minute(s) are up!"
-        }
-
-
       '';
       initExtra = ''
         if [ -f $HOME/.bashrc-personal ]; then
@@ -78,6 +70,7 @@ in {
         if [ -f /tmp/.current_wallpaper_path ]; then
           export WALLPAPER=$(cat /tmp/.current_wallpaper_path)
         fi
+        eval "$(starship init bash)"
       '';
       shellAliases = {
         # sv = "sudio nix run github:orangci/nixvim";
