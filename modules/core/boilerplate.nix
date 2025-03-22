@@ -9,10 +9,9 @@
   boot = {
     # Kernel
     kernelPackages = pkgs.linuxPackages_latest;
-    # This is for OBS Virtual Cam Support
     kernelModules = ["v4l2loopback"];
     extraModulePackages = [config.boot.kernelPackages.v4l2loopback];
-    # Needed For Some Steam Games
+    # Needed For some steam games
     kernel.sysctl = {
       "vm.max_map_count" = 2147483642;
     };
@@ -29,7 +28,7 @@
       };
       grub2-theme = {
         enable = true;
-        theme = "tela";
+        theme = "vimix";
         footer = true;
         # customResolution = "1920x1080";
       };
@@ -55,7 +54,7 @@
     LC_NUMERIC = "en_US.UTF-8";
     LC_PAPER = "en_US.UTF-8";
     LC_TELEPHONE = "en_US.UTF-8";
-    LC_TIME = "en_US.UTF-8";
+    LC_TIME = "en_GB.UTF-8";
   };
 
   nixpkgs.config.allowUnfree = true;

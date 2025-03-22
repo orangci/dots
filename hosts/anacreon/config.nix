@@ -8,7 +8,6 @@
     ../../modules
   ];
 
-  # modules
   modules = {
     core = {
       bluetooth.enable = true;
@@ -20,6 +19,7 @@
       thunar.enable = true;
       hyprland.enable = true;
       appimages.enable = false;
+      # discord.enable = "vesktop"; # choose between "equibop", "default", "webcord", or "vesktop"
     };
     gaming = {
       enable = true;
@@ -53,7 +53,7 @@
   swapDevices = [
     {
       device = "/swapfile";
-      size = 16 * 1024; # 16GB
+      size = 8 * 1024; # 8GB
     }
   ];
 
