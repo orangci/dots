@@ -38,8 +38,7 @@ in {
           ];
           modules-left = [
             "hyprland/workspaces"
-            "cpu"
-            "memory"
+            "custom/salah"
           ];
           modules-right = [
             "custom/exit"
@@ -203,6 +202,12 @@ in {
             };
             interval = "once";
             signal = "2";
+          };
+          "custom/salah" = {
+            format = "{}";
+            exec = "python3 ~/dots/hm-modules/programs/waybar/salah.py";
+            interval = 60;
+            on-click = "xdg-open https://salah.orangc.net/";
           };
         }
       ];
