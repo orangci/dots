@@ -5,7 +5,7 @@
   username,
   ...
 }: {
-  imports = [inputs.grub2-themes.nixosModules.default];
+  imports = [inputs.minegrub-world-sel-theme.nixosModules.default];
   boot = {
     # Kernel
     kernelPackages = pkgs.linuxPackages_latest;
@@ -25,12 +25,22 @@
         device = "nodev";
         useOSProber = true;
         efiSupport = true;
-      };
-      grub2-theme = {
-        enable = true;
-        theme = "vimix";
-        footer = true;
-        # customResolution = "1920x1080";
+        minegrub-world-sel = {
+          enable = true;
+          customIcons = [
+            {
+              name = "nixos";
+              lineTop = "NixOS, the frosted flake operating system.";
+              lineBottom = "Creative Mode, Cheats, Version: 23.11";
+              # Icon: you can use an icon from the remote repo, or load from a local file
+              imgName = "nixos";
+              # customImg = builtins.path {
+              #   path = ./nixos-logo.png;
+              #   name = "nixos-img";
+              # };
+            }
+          ];
+        };
       };
     };
 

@@ -35,7 +35,7 @@ in
               background: #${palette.base00};
 
             }
-            #window, #clock, #custom-weather, #workspaces { /* Stuff that's rounded both left and right, i.e. standalone pills. */
+            #window, #clock, #custom-weather, #workspaces, #custom-salah { /* Stuff that's rounded both left and right, i.e. standalone pills. */
               border-radius: 15px; margin: 3px 4px;
               padding: 0px 10px;
               background: #${palette.base00};
@@ -87,6 +87,7 @@ in
 
             #cpu {color: #${palette.base0D};}
             #memory {color: #${palette.base0D};}
+            #custom-salah {color: #${palette.base0D};}
             #disk {color: #${palette.base03};}
             #battery {color: #${palette.base08};}
 

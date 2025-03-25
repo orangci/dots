@@ -314,26 +314,6 @@
         "type": "github"
       }
     },
-    "grub2-themes": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1734412921,
-        "narHash": "sha256-JeMqc7lLowKn6klrCcOkcOg38yNqF7MPbN4Elh6Xvq0=",
-        "owner": "vinceliuice",
-        "repo": "grub2-themes",
-        "rev": "f6ab2438e124f60a340a526543e498e5e33b3c53",
-        "type": "github"
-      },
-      "original": {
-        "owner": "vinceliuice",
-        "repo": "grub2-themes",
-        "type": "github"
-      }
-    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -635,6 +615,26 @@
         "type": "github"
       }
     },
+    "minegrub-world-sel-theme": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1742155838,
+        "narHash": "sha256-gMaQkkI8e45AR/fbVE/rpJftwXUINuR2mrce1zpge70=",
+        "owner": "Lxtharia",
+        "repo": "minegrub-world-sel-theme",
+        "rev": "5c2f5c3fb9ba9f7a633881943240f376c754553f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Lxtharia",
+        "repo": "minegrub-world-sel-theme",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1742069588,
@@ -737,9 +737,9 @@
     },
     "root": {
       "inputs": {
-        "grub2-themes": "grub2-themes",
         "home-manager": "home-manager",
         "hyprland": "hyprland",
+        "minegrub-world-sel-theme": "minegrub-world-sel-theme",
         "nixpkgs": "nixpkgs_2",
         "nur": "nur",
         "stylix": "stylix"

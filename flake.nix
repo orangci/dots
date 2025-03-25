@@ -11,8 +11,8 @@
     stylix.url = "github:danth/stylix";
     stylix.inputs.nixpkgs.follows = "nixpkgs";
 
-    grub2-themes.url = "github:vinceliuice/grub2-themes";
-    grub2-themes.inputs.nixpkgs.follows = "nixpkgs";
+    minegrub-world-sel-theme.url = "github:Lxtharia/minegrub-world-sel-theme";
+    minegrub-world-sel-theme.inputs.nixpkgs.follows = "nixpkgs";
 
     nur.url = "github:nix-community/NUR";
     nur.inputs.nixpkgs.follows = "nixpkgs";
