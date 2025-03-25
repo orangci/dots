@@ -3,8 +3,10 @@ import json
 import urllib.request
 from datetime import datetime, timedelta
 import subprocess
+import os
 
 city, country =  "Riyadh", "Saudi+Arabia"
+icon_path = os.path.expanduser(f'/home/{subprocess.check_output(['whoami']).decode('utf-8').strip()}/dots/files/kabah.png')
 
 def get_prayer_times():
     current_date = datetime.now().strftime("%d-%m-%Y")
@@ -16,12 +18,12 @@ def get_prayer_times():
             if data and data.get("data"):
                 return data["data"]["timings"]
     except Exception as e:
-        subprocess.run(['notify-send', "Salawāt Script", "API Error", '-i', '$HOME/dots/files/kabah.png'])
+        subprocess.run(['notify-send', "Salawāt Script", "API Error", '-i', icon_path])
     return {}
 
 def send_notification(prayer_name, prayer_time, calltype):
-    subprocess.run(['notify-send', f"{prayer_name.capitalize()} {calltype.capitalize()}!", f"{prayer_time}", '-i', '$HOME/dots/files/kabah.png'])
-                
+    subprocess.run(['notify-send', f"{prayer_name.capitalize()} Time", f" It is {prayer_time}, the time for the {prayer_name.capitalize()} {calltype}.", '-i', icon_path])
+
 def main():
     prayer_times = get_prayer_times()
 
