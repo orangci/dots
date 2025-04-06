@@ -47,6 +47,8 @@
     lutgen
     catimg
     tailwindcss
+    rustup
+    gcc
     hugo
     hyprpicker
     temurin-jre-bin
