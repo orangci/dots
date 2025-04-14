@@ -34,3 +34,9 @@
 - https://github.com/zDyanTB/HyprNova - The wlogout styling.
 - https://github.com/elythh/nixvim — The neovim configuration I use.
 - https://github.com/1amSimp1e/dots — i tweaked my starship prompt based off of this guy's prompt
+
+## License
+- [License: GNU AGPLv3](./LICENSE)
+
+## Specifications
+- This project follows the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) specification as of 14.04.2025.
