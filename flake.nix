@@ -14,6 +14,9 @@
     minegrub-world-sel-theme.url = "github:Lxtharia/minegrub-world-sel-theme";
     minegrub-world-sel-theme.inputs.nixpkgs.follows = "nixpkgs";
 
+    quickshell.url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
+    quickshell.inputs.nixpkgs.follows = "nixpkgs";
+
     nur.url = "github:nix-community/NUR";
     nur.inputs.nixpkgs.follows = "nixpkgs";
   };

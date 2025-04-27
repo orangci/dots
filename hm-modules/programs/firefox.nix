@@ -33,6 +33,10 @@ in {
                       value = "packages";
                     }
                     {
+                      name = "channel";
+                      value = "unstable";
+                    }
+                    {
                       name = "query";
                       value = "{searchTerms}";
                     }

@@ -28,12 +28,18 @@
     time
     dig
     nix-output-monitor
+    diskus
+    tokei
+    sd
+    onefetch
     trashy
     ffmpeg
     imagemagick
     nix-prefetch
     # open-interpreter
-    python3
+    python313
+    uv
+    ruff
     virtualenv
     wev
     jq
@@ -49,11 +55,10 @@
     tailwindcss
     rustup
     gcc
-    hugo
+    nodejs
     hyprpicker
     temurin-jre-bin
     micro
-    mangal
 
     # big gui programs
     # file-roller # BIG 1.1GB

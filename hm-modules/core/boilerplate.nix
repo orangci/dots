@@ -5,6 +5,7 @@
   inputs,
   ...
 }: let
+  quickshell = inputs.quickshell.packages.${pkgs.system}.default;
   gitUsername = "orangci";
   gitEmail = "orangc@proton.me";
 in {
@@ -13,7 +14,7 @@ in {
     username = "${username}";
     homeDirectory = "/home/${username}";
 
-    packages = [pkgs.microfetch];
+    packages = [pkgs.microfetch quickshell];
     stateVersion = "24.11";
     file = {
       ".local/share/fonts" = {
