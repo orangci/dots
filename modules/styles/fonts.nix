@@ -23,6 +23,7 @@ in {
         merriweather
         lexend
         material-icons
+        material-symbols
         nerd-fonts.ubuntu-mono
       ];
     };

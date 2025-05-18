@@ -13,18 +13,16 @@
 > This flake is extremely unstable and prone to breaking changes..
 > I do ***not*** recommmend using this/installing it, it will definitely break.
 > However, going through my code for little bits and things to borrow or learn from is totally fine.
-> A process of rewriting my entire configuration starts
-> after commit [`09709dc7f716bf1df7c836dfc191e88ec1ad8339`](https://github.com/orangci/dots/commit/09709dc7f716bf1df7c836dfc191e88ec1ad8339).
 
 ## todo
 - secure boot
 - reorganize
-- cut down disk usage
 - urithiru (homelab) setup
 - impermanence
 - make scripts use pkgs.writeShellApplication
 - use nil / nix language server
 - (maybe) use nvf
+- switch to hjem
 
 ## credits!
 - the vimjoyer youtube channel, for making immensely helpful videos that saved me hours and hours of pain
@@ -37,6 +35,3 @@
 
 ## License
 - [License: GNU AGPLv3](./LICENSE)
-
-## Specifications
-- This project follows the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) specification as of 14.04.2025.

@@ -8,7 +8,6 @@
     ../../modules
   ];
 
-  # modules
   modules = {
     core = {
       bluetooth.enable = true;
@@ -18,17 +17,18 @@
     };
     programs = {
       thunar.enable = true;
-      discord.enable = true;
       hyprland.enable = true;
       appimages.enable = false;
+      # discord.enable = "vesktop"; # choose between "equibop", "default", "webcord", or "vesktop"
     };
     gaming = {
+      enable = false;
       wine.enable = false;
       lutris.enable = false;
-      bottles.enable = true;
+      bottles.enable = false;
       steam.enable = false;
       minecraft = {
-        enable = true;
+        enable = false;
         modrinth.enable = false;
       };
     };
@@ -38,7 +38,6 @@
     };
     dm.sddm.enable = true;
   };
-  vm.guest-services.enable = false;
   local.hardware-clock.enable = false;
   drivers = {
     intel.enable = true;
@@ -54,12 +53,8 @@
   time.timeZone = "Asia/Riyadh";
   hardware.logitech.wireless.enable = true;
 
-  programs = {
-    java.enable = true;
-    noisetorch.enable = true;
-  };
-
-  # environment.systemPackages = with pkgs; [ ];
+  programs = {};
+  environment.systemPackages = with pkgs; [];
 
   users.users = {
     "${username}" = {

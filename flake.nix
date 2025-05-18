@@ -19,6 +19,12 @@
 
     nur.url = "github:nix-community/NUR";
     nur.inputs.nixpkgs.follows = "nixpkgs";
+
+    rust-overlay.url = "github:oxalica/rust-overlay";
+    rust-overlay.inputs.nixpkgs.follows = "nixpkgs";
+
+    matugen.url = "github:/InioX/Matugen";
+    matugen.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = inputs @ {

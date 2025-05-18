@@ -15,6 +15,7 @@ in {
     homeDirectory = "/home/${username}";
 
     packages = [pkgs.microfetch quickshell];
+    sessionPath = ["$HOME/.cargo/bin:$PATH"];
     stateVersion = "24.11";
     file = {
       ".local/share/fonts" = {
@@ -64,7 +65,7 @@ in {
       # BIG 1.4GB
       enable = true;
       package = pkgs.vscodium;
-      extensions = with pkgs.vscode-extensions; [
+      profiles.default.extensions = with pkgs.vscode-extensions; [
         kamadorueda.alejandra # nix formatter
         bradgashler.htmltagwrap # html tag wrapping
         ecmel.vscode-html-css # html & css formatting
