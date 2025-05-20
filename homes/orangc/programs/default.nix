@@ -1,0 +1,19 @@
+{
+  imports = [
+    ./hyprland
+    ./rofi
+    ./starship
+    ./waybar
+    ./wlogout
+    ./firefox
+    ./hypridle.nix
+    ./screenshot.nix
+    ./swaync
+    ./discord
+    ./hyprlock
+    ./vscodium.nix
+    ./chromium.nix
+    ./terminal.nix
+    ./media.nix
+  ];
+}

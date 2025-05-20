@@ -1,0 +1,90 @@
+* {
+    background-image: none;
+    font-size: 16px;
+    font-family: Maple Mono;
+}
+
+window {
+    background-color: transparent;
+}
+
+button {
+    color: rgba(205, 214, 244, .6);
+    background-color: rgba(30, 30, 46, .6);
+    outline-style: none;
+    border: none;
+    border-width: 0px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 10%;
+    border-radius: 0px;
+    box-shadow: none;
+    text-shadow: none;
+    animation: gradient_f 20s ease-in infinite;
+}
+
+button:focus {
+    background-color: rgba(203, 166, 247, .7);
+    background-size: 20%;
+}
+
+button:hover {
+    background-color: rgba(243, 139, 168, .7);
+    background-size: 20%;
+    border-radius: 50px;
+    animation: gradient_f 20s ease-in infinite;
+    transition: all 0.3s cubic-bezier(.55,0.0,.28,1.682);
+}
+
+button:hover#lock {
+    margin : 15px 0px 0px 15px;
+}
+
+button:hover#logout {
+    margin : 0px 0px 15px 15px;
+}
+
+button:hover#shutdown {
+    margin : 15px 15px 0px 0px;
+}
+
+button:hover#reboot {
+    margin : 0px 15px 15px 0px;
+}
+
+button:focus#lock {
+    margin : 0px;
+}
+button:focus#logout {
+    margin : 0px;
+}
+button:focus#shutdown {
+    margin : 0px;
+}
+button:focus#reboot {
+    margin : 0px;
+}
+
+#lock {
+    background-image: image(url("icons/lock_white.png"));
+    border-radius: 50px 0px 0px 0px;
+    margin : 30px 0px 0px 30px;
+}
+
+#logout {
+    background-image: image(url("icons/logout_white.png"));
+    border-radius: 0px 0px 0px 50px;
+    margin : 0px 0px 30px 30px;
+}
+
+#shutdown {
+    background-image: image(url("icons/shutdown_white.png"));
+    border-radius: 0px 50px 0px 0px;
+    margin : 30px 30px 0px 0px;
+}
+
+#reboot {
+    background-image: image(url("icons/reboot_white.png"));
+    border-radius: 0px 0px 50px 0px;
+    margin : 0px 30px 30px 0px;
+}
