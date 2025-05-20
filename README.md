@@ -10,11 +10,11 @@
 
 
 > [!CAUTION]
-> This flake is extremely unstable and prone to breaking changes..
-> I do ***not*** recommmend using this/installing it, it will definitely break.
-> However, going through my code for little bits and things to borrow or learn from is totally fine.
+> I do ***not*** recommmend using this/installing this flake, it'll almost certainly break on you.
+> However, going through my code for little bits and things to borrow or learn from is totally fine (as long as you respect the license).
+> This flake is very much a work in progress; I'm constantly working on improving and I have many things planned for it in the future.
 
-Very WIP modular NixOS configuration for my machines.
+Modular NixOS configuration for my machines.
 
 Hosts:
 - anacreon (PC ~ Hyprland)
@@ -24,13 +24,13 @@ Hosts:
 <!-- ## screenshots
 
 <details>
-<summary>Click to expand.</summary> -->
+<summary>Click to expand.</summary> 
 
 ![screenshot](.github/assets/screenshot.png)
 
-</details>
+</details> -->
 
-## credits!
+## Thank you
 - the vimjoyer youtube channel, for making immensely helpful videos that saved me hours and hours of pain
 - https://github.com/MrVivekRajan/Hypr-Dots — The hyprlock config inspiration.
 - https://github.com/zDyanTB/HyprNova - The wlogout styling.
