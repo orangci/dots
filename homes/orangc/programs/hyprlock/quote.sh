@@ -5,7 +5,7 @@ client_id="$MYANIMELIST_AUTH_TOKEN"
 
 # Check for Client ID
 if [[ -z "$client_id" ]]; then
-    echo "Missing MYANIMELIST_AUTH_TOKEN env var."
+    echo ""
     exit 1
 fi
 

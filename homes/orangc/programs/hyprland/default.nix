@@ -31,6 +31,7 @@ in {
           "QT_QPA_PLATFORM,wayland;xcb"
           "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
           "QT_AUTO_SCREEN_SCALE_FACTOR,1"
+          "QT_STYLE_OVERRIDE,kvantum-dark"
           "SDL_VIDEODRIVER,x11"
           "MOZ_ENABLE_WAYLAND,1"
         ];
@@ -86,7 +87,7 @@ in {
             "SUPERSHIFT,P, exec, playerctl next"
             "SUPERALT,P, exec, playerctl previous"
             "SUPER,l, exec, killall hyprlock; hyprlock"
-            "SUPER,BACKSLASH, exec, logout-exit # wlogout"
+            "SUPER,BACKSLASH, global, quickshell:sessionToggle"
             "SUPER, V, exec, cliphist list | rofi -dmenu -theme clipboard.rasi | cliphist decode | wl-copy" # open clipboard
             "SUPERSHIFT,V, exec, cliphist wipe # clear clipboard"
             "SUPERSHIFT,code:61, exec, list-bindings"

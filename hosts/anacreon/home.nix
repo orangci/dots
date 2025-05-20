@@ -14,7 +14,7 @@ in {
   hmModules = {
     cli = {
       fetch.enable = true;
-      shell.enable = true;
+      shell.program = "fish";
       eza.enable = true;
       fd.enable = true;
       zoxide.enable = true;
@@ -53,11 +53,17 @@ in {
       starship.enable = true;
       swaync.enable = false;
       waybar.enable = false;
-      wlogout.enable = true;
       hypridle.enable = true;
       screenshot.enable = true;
       chromium.enable = true;
-      media.enable = true;
+      media = {
+        enable = true;
+        gwenview = true;
+      };
+      wlogout = {
+        enable = false;
+        horizontal = false;
+      };
       discord = {
         enable = false;
         arrpc = true;
@@ -84,7 +90,6 @@ in {
     packages = [
       quickshell
       (import ../../packages/list-bindings.nix {inherit pkgs;})
-      (import ../../packages/logout-exit.nix {inherit pkgs;})
       (import ../../packages/screenrec.nix {inherit pkgs;})
       (import ../../packages/walls.nix {inherit pkgs;})
     ];

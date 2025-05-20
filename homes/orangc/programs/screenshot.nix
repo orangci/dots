@@ -16,7 +16,10 @@
       exit 1
     }
 
-    SWAPPY_CONFIG_DIR="$HOME/.config/swappy"
+    SCREENSHOT_DIR="''${XDG_PICTURES_DIR:-$HOME/media}/screenshots"
+    mkdir -p "$SCREENSHOT_DIR"
+    TIMESTAMP=$(date +"%m %d-%H.%M.%S")
+    FILENAME="$SCREENSHOT_DIR/$TIMESTAMP.png"
 
     OCR=0
     FULLSCREEN=0
@@ -35,42 +38,33 @@
     done
 
     if (( OCR )); then
-      tmpimg=$(mktemp --suffix=.png)
-      grim -g "$(slurp)" "$tmpimg"
-      tesseract -l eng "$tmpimg" - | wl-copy
-      rm "$tmpimg"
+      grim -g "$(slurp)" "$FILENAME"
+      tesseract -l eng "$FILENAME" - | wl-copy
+      rm "$FILENAME"
       exit 0
     fi
 
-    if (( FULLSCREEN )); then
-      tmpimg="/tmp/screenshot.png"
+    if (( FULLSCREEN || AREA )); then
       wayfreeze & PID=$!
       sleep 0.1
-      grim "$tmpimg"
-      kill $PID
-      if (( USE_SWAPPY )); then
-        swappy -f "$tmpimg" --config "$SWAPPY_CONFIG_DIR/config"
+      if (( FULLSCREEN )); then
+        grim "$FILENAME"
       else
-        notify-send "Screenshot saved" "$tmpimg"
+        grim -g "$(slurp)" "$FILENAME"
       fi
-      exit 0
-    fi
-
-    if (( AREA )); then
-      tmpimg="/tmp/screenshot.png"
-      wayfreeze & PID=$!
-      sleep 0.1
-      grim -g "$(slurp)" "$tmpimg"
       kill $PID
+
       if (( USE_SWAPPY )); then
-        swappy -f "$tmpimg" --config "$SWAPPY_CONFIG_DIR/config"
+        swappy -f "$FILENAME" || notify-send "Swappy failed"
       else
-        notify-send "Screenshot saved" "$tmpimg"
+        wl-copy < "$FILENAME"       # <-- copy image to clipboard
+        notify-send "Screenshot saved and copied" "$FILENAME"
       fi
       exit 0
     fi
 
     usage
+
   '';
 in {
   options.hmModules.programs.screenshot = {
