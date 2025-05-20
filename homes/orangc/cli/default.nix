@@ -1,15 +1,8 @@
 {
   imports = [
     ./shell.nix
-    ./fetch.nix
+    ./utilities.nix
     ./git.nix
-    ./eza.nix
-    ./fd.nix
-    ./zoxide.nix
-    ./ripgrep.nix
-    ./fzf.nix
-    ./bat.nix
-    ./fun.nix
     ./compression.nix
   ];
 }
