@@ -39,7 +39,10 @@ in {
   };
 
   config = mkIf cfg.enable {
-    home.packages = [getDiscordPackage cfg.client] ++ [mkIf cfg.arrpc pkgs.arrpc];
+    home.packages =
+      [getDiscordPackage cfg.client]
+      ++ optional cfg.arrpc pkgs.arrpc;
+
     home.file = {
       ".config/Vencord/themes/orangetweaks.css".source = ./vencordthemes/orangetweaks.css;
       ".config/Vencord/themes/catppuccin.css".source = ./vencordthemes/catppuccin.css;
