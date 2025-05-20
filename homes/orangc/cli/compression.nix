@@ -17,7 +17,7 @@ in {
 
   config = mkIf cfg.enable (lib.mkMerge [
     {
-      hmModules.shell.extraAliases = {
+      hmModules.cli.shell.extraAliases = {
         mktar = "tar -czvf";
         extar = "tar -xzvf";
       };

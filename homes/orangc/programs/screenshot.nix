@@ -86,9 +86,8 @@ in {
       wayfreeze
       (pkgs.writeShellApplication {
         name = "screenshot";
-        program = "${pkgs.bash}/bin/bash";
-        script = screenshotScript;
-        buildInputs = with pkgs; [grim slurp tesseract wl-clipboard swappy wayfreeze];
+        runtimeInputs = with pkgs; [grim slurp tesseract wl-clipboard swappy wayfreeze];
+        text = screenshotScript;
       })
     ];
 

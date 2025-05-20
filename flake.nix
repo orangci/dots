@@ -8,7 +8,7 @@
     # when raf writes documentation for hjem, we'll be switching from home-manager to hjem
     home-manager = {
       url = "github:nix-community/home-manager/master";
-      home-inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # unstable Hyprland
@@ -18,12 +18,13 @@
     stylix = {
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs-small";
+      inputs.home-manager.follows = "home-manager";
     };
 
     # ferris says hi!
     rust-overlay = {
       url = "github:oxalica/rust-overlay";
-      rust-inputs.nixpkgs.follows = "nixpkgs-small";
+      inputs.nixpkgs.follows = "nixpkgs-small";
     };
 
     # god knows what the hell i use this for

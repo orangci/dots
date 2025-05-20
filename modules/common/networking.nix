@@ -7,9 +7,9 @@
   ...
 }: let
   inherit (lib) mkEnableOption mkOption types;
-  cfg = config.modules.core.networking;
+  cfg = config.modules.common.networking;
 in {
-  options.modules.core.networking = {
+  options.modules.common.networking = {
     enable = mkEnableOption "Enable networking";
   };
 

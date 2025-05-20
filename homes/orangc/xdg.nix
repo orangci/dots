@@ -56,7 +56,7 @@
   };
 in {
   options.hmModules.core.xdg = {
-    enabled = mkEnableOption "Enable XDG";
+    enable = mkEnableOption "Enable XDG";
   };
   config = mkIf cfg.enable {
     xdg = {

@@ -5,9 +5,9 @@
   ...
 }: let
   inherit (lib) mkEnableOption mkOption types;
-  cfg = config.modules.core.bluetooth;
+  cfg = config.modules.common.bluetooth;
 in {
-  options.modules.core.bluetooth = {
+  options.modules.common.bluetooth = {
     enable = mkEnableOption "Enable bluetooth";
   };
 

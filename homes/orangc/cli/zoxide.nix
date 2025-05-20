@@ -13,7 +13,7 @@ in {
 
   config = mkIf cfg.enable {
     programs.zoxide.enable = true;
-    hmModules.shell.extraAliases = {
+    hmModules.cli.shell.extraAliases = {
       cd = "z";
       ".." = "z ..";
     };

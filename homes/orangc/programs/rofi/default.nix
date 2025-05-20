@@ -5,23 +5,22 @@
   ...
 }: let
   inherit (lib) mkEnableOption types mkIf;
-  cfg = config.modules.programs.rofi;
+  cfg = config.hmModules.programs.rofi;
   colours = config.stylix.base16Scheme;
 in {
   imports = [
     ./selector.nix
     ./selector-big.nix
   ];
-  options.modules.programs.rofi = {
+  options.hmModules.programs.rofi = {
     enable = mkEnableOption "Enable rofi";
   };
   config = mkIf cfg.enable {
     home.packages = [
-      (import ./packages/rofi/calc.nix {inherit pkgs;})
-      (import ./packages/rofi/emoji.nix {inherit pkgs;})
-      (import ./packages/rofi/prism.nix {inherit pkgs;})
-      (import ./packages/rofi/wall-select.nix {inherit pkgs;})
-      (import ./packages/rofi/websearch.nix {inherit pkgs;})
+      (import ./packages/calc.nix {inherit pkgs;})
+      (import ./packages/emoji.nix {inherit pkgs;})
+      (import ./packages/prism.nix {inherit pkgs;})
+      (import ./packages/wall-select.nix {inherit pkgs;})
     ];
     programs.rofi = {
       package = pkgs.rofi-wayland;

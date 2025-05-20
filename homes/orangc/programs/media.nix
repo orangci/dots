@@ -21,7 +21,7 @@ in {
       {
         programs.mpv = {
           enable = true;
-          packages = with pkgs.mpvScripts; [
+          scripts = with pkgs.mpvScripts; [
             mpris
             thumbfast
             modernx-zydezu
@@ -33,7 +33,7 @@ in {
       }
 
       (mkIf cfg.gwenview {
-        programs.gwenview.enable = true;
+        home.packages = [pkgs.libsForQt5.gwenview];
       })
 
       (mkIf cfg.imv {
@@ -45,7 +45,7 @@ in {
       })
 
       (mkIf cfg.qimgv {
-        programs.qimgv.enable = true;
+        home.packages = [pkgs.qimgv];
       })
     ]
   );

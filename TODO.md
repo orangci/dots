@@ -1,15 +1,16 @@
+- ~~fix home modules and the organization of the flake .. why is it so cursed~~
+- modularize/nixify hyprland and any configs that aren't using nix
+- integrate the hyprland module into all modules where it is necessary
+- grub theme
 - consider switching to nushell or zsh
-- fix home modules and the organization of the flake .. why is it so cursed
 - multi user support
 - write modules for the homelab
 - fix theming
 - use impermanence
-- figure out /packages properly
 - set up nvf
 - secure boot
 - full disk encryption
 - manage secrets; possibly agenix
 - make my own quickshell rice
 - fix xdg stuff
-- modularize hyprland and any configs that aren't using nix
 - write a VM module

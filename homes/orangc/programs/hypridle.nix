@@ -8,7 +8,7 @@
   cfg = config.hmModules.programs.hypridle;
 in {
   options.hmModules.programs.hypridle = {
-    enabled = mkEnableOption "Enable hypridle";
+    enable = mkEnableOption "Enable hypridle";
   };
   config = mkIf cfg.enable {
     services.hypridle = {

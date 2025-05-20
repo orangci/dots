@@ -1,7 +1,7 @@
 {
   imports = [
     ./drivers
-    ./core
+    ./common
     ./programs
     ./styles
     ./virtualization

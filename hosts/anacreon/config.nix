@@ -19,10 +19,6 @@
       thunar.enable = true;
       hyprland.enable = true;
       appimages.enable = false;
-      discord = {
-        enable = false;
-        client = "equibop"; # or "equibop", "webcord", "discord", "none"
-      };
     };
     gaming = {
       enable = true;

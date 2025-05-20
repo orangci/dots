@@ -13,7 +13,7 @@ in {
 
   config = mkIf cfg.enable {
     programs.fzf.enable = true;
-    hmModules.shell.extraAliases = {
+    hmModules.cli.shell.extraAliases = {
       fuzzy = "fzf";
     };
   };

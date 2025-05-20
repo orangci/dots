@@ -5,9 +5,9 @@
   ...
 }: let
   inherit (lib) mkEnableOption mkOption types;
-  cfg = config.modules.core.printing;
+  cfg = config.modules.common.printing;
 in {
-  options.modules.core.printing = {
+  options.modules.common.printing = {
     enable = mkEnableOption "Enable printing";
   };
 

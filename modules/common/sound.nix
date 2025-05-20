@@ -5,10 +5,10 @@
   ...
 }: {
   options = {
-    modules.core.sound.enable =
+    modules.common.sound.enable =
       lib.mkEnableOption "enables sound";
   };
-  config = lib.mkIf config.modules.core.sound.enable {
+  config = lib.mkIf config.modules.common.sound.enable {
     services.pipewire = {
       enable = true;
       alsa.enable = true;

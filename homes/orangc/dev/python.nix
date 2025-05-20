@@ -41,7 +41,7 @@ in {
         ++ lib.optionals cfg.pyright [pkgs.pyright]
         ++ lib.optionals cfg.ipython [pkgs.ipython];
 
-      hmModules.shell.extraAliases = {
+      hmModules.cli.shell.extraAliases = {
         rf = "ruff";
         rff = "ruff format";
         rfc = "ruff check";

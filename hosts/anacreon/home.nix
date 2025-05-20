@@ -31,7 +31,7 @@ in {
         enable = true;
         username = "orangc";
         email = "c@orangc.net";
-        github.enable = true;
+        github = true;
       };
     };
     core = {

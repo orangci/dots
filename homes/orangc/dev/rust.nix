@@ -7,10 +7,7 @@
 }: let
   inherit (lib) mkEnableOption mkIf;
   cfg = config.hmModules.dev.rust;
-
-  rustPkgs = import inputs.rust-overlay {
-    inherit pkgs;
-  };
+  rustWithExtensions = (pkgs.extend (import inputs.rust-overlay)).rust-bin.stable.latest.default.override {extensions = ["rust-src"];};
 in {
   options.hmModules.dev.rust = {
     enable = mkEnableOption "Enable Rust development environment";
@@ -18,17 +15,14 @@ in {
 
   config = mkIf cfg.enable {
     home.packages = [
-      (rustPkgs.rust-bin.stable.latest.default.override {
-        extensions = ["rust-src"];
-      })
+      rustWithExtensions
       pkgs.rustlings
       pkgs.rust-analyzer
     ];
 
-    # Add cargo bin path to session
     home.sessionPath = ["$HOME/.cargo/bin:$PATH"];
 
-    hmModules.shell.extraAliases = {
+    hmModules.cli.shell.extraAliases = {
       cr = "cargo";
       crr = "cargo run";
       crf = "cargo fmt";

@@ -13,7 +13,7 @@ in {
 
   config = mkIf cfg.enable {
     programs.fd.enable = true;
-    hmModules.shell.extraAliases = {
+    hmModules.cli.shell.extraAliases = {
       find = "fd";
     };
   };

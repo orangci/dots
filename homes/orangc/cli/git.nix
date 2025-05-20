@@ -36,15 +36,15 @@ in {
         # or even: `git change-commits GIT_AUTHOR_EMAIL "old@email.com" "new@email.com" HEAD~10..HEAD`
         # HEAD~10..HEAD makes it only select the last ten commits
       };
+    };
 
-      hmModules.shell.extraAliases = {
-        ga = "git add .";
-        commit = "git commit -am";
-        gp = "git push";
-        gpf = "git push --force";
-        push = "git push";
-        pull = "git push";
-      };
+    hmModules.cli.shell.extraAliases = {
+      ga = "git add .";
+      commit = "git commit -am";
+      gp = "git push";
+      gpf = "git push --force";
+      push = "git push";
+      pull = "git push";
     };
 
     programs.gh.enable = cfg.github;

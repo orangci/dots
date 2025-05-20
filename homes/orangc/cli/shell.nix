@@ -6,7 +6,7 @@
   lib,
   ...
 }: let
-  inherit (lib) mkMerge mkEnableOption types mkIf;
+  inherit (lib) mkMerge mkEnableOption mkOption types mkIf;
   cfg = config.hmModules.cli.shell;
 in {
   options.hmModules.cli.shell = {

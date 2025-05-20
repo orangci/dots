@@ -1,7 +1,6 @@
 {
   imports = [
     ./programs
-    ./core
     ./styles
     ./cli
     ./dev
