@@ -6,5 +6,6 @@
     ./printing.nix
     ./sound.nix
     ./sddm
+    ./virtualisation.nix
   ];
 }

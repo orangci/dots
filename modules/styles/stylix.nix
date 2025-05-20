@@ -19,11 +19,6 @@ in {
       image = ../../assets/face.png;
       base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
       polarity = "dark";
-      cursor = {
-        package = pkgs.oreo-cursors-plus;
-        name = "oreo_spark_orange_cursors";
-        size = 24;
-      };
       targets.chromium.enable = false;
       targets.grub.enable = false;
       fonts = {
@@ -32,8 +27,8 @@ in {
           name = "UbuntuMono Nerd Font";
         };
         sansSerif = {
-          package = pkgs.raleway;
-          name = "Raleway";
+          package = pkgs.lexend;
+          name = "Lexend";
         };
         serif = {
           package = pkgs.merriweather;

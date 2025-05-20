@@ -14,7 +14,7 @@ in
           /* >>> ALL MODULES <<< */
             * {
               font-size: 14px;
-              font-family: Raleway, UbuntuMono Nerd Font Propo, Font Awesome, sans-serif;
+              font-family: Lexend, UbuntuMono Nerd Font Propo, Font Awesome, sans-serif;
               font-weight: bold;
             }
             window#waybar {background-color: rgba(255,0,0,0); }

@@ -40,7 +40,7 @@ in {
         drun-display-format:        "{name} [<span weight='light' size='small'><i>({generic})</i></span>]";
         window-format:              "{w} · {c} · {t}";
           no-fading-openclose:        true;
-          font:                 "Raleway Regular 14";
+          font:                 "Lexend Regular 14";
       }
       * {
           border-colour:               rgba(203, 166, 247, 85%);

@@ -27,7 +27,7 @@ in {
       };
     };
     xresources.properties = {
-      "Xcursor.size" = 24;
+      "Xcursor.size" = 20;
     };
   };
 }

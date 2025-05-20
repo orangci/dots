@@ -38,8 +38,8 @@ in {
       polarity = "dark";
       cursor = {
         package = pkgs.bibata-cursors;
-        name = "Bibata-Original-Classic"; # use Bibata-Original-Ice for a white cusor or Amber for orange
-        size = 24;
+        name = "Bibata-Modern-Classic"; # use Bibata-Modern-Ice for a white cusor or Amber for orange
+        size = 20;
       };
       fonts = {
         monospace = {

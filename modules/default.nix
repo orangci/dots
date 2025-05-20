@@ -4,6 +4,5 @@
     ./common
     ./programs
     ./styles
-    ./virtualization
   ];
 }

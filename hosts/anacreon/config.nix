@@ -15,6 +15,7 @@
       printing.enable = true;
       sound.enable = true;
       networking.enable = true;
+      virtualisation.enable = false;
     };
     programs = {
       thunar.enable = true;
@@ -35,10 +36,6 @@
     styles = {
       stylix.enable = true;
       fonts.enable = true;
-    };
-    virtualisation = {
-      qemu = false;
-      libvirtd.enable = false;
     };
   };
   local.hardware-clock.enable = false;
@@ -76,6 +73,8 @@
         "libvirtd"
         "scanner"
         "lp"
+        "libvirtd"
+        "docker"
       ];
       shell = pkgs.bash;
       ignoreShellProgramCheck = true;

@@ -47,7 +47,6 @@ in {
     };
     programs = {
       firefox.enable = true;
-      discord.enable = false;
       hyprland.enable = true;
       hyprlock.enable = true;
       rofi.enable = true;
@@ -59,6 +58,10 @@ in {
       screenshot.enable = true;
       chromium.enable = true;
       media.enable = true;
+      discord = {
+        enable = false;
+        arrpc = true;
+      };
       vscodium = {
         enable = true;
         webdev = true;

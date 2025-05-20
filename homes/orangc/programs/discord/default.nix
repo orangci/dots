@@ -23,6 +23,7 @@
 in {
   options.hmModules.programs.discord = {
     enable = mkEnableOption "Install and configure a Discord client";
+    arrpc = mkEnableOption "Enable Discord RPC via arrpc";
 
     client = mkOption {
       type = types.enum ["discord" "equibop" "vesktop" "webcord"];
@@ -38,7 +39,7 @@ in {
   };
 
   config = mkIf cfg.enable {
-    home.packages = [getDiscordPackage cfg.client] ++ [pkgs.arrpc];
+    home.packages = [getDiscordPackage cfg.client] ++ [mkIf cfg.arrpc pkgs.arrpc];
     home.file = {
       ".config/Vencord/themes/orangetweaks.css".source = ./vencordthemes/orangetweaks.css;
       ".config/Vencord/themes/catppuccin.css".source = ./vencordthemes/catppuccin.css;
