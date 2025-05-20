@@ -9,6 +9,7 @@
   ];
 
   modules = {
+    dm.sddm.enable = true;
     common = {
       bluetooth.enable = true;
       printing.enable = true;
@@ -35,7 +36,10 @@
       stylix.enable = true;
       fonts.enable = true;
     };
-    dm.sddm.enable = true;
+    virtualisation = {
+      qemu = false;
+      libvirtd.enable = false;
+    };
   };
   local.hardware-clock.enable = false;
   drivers = {

@@ -13,4 +13,4 @@
 - manage secrets; possibly agenix
 - make my own quickshell rice
 - fix xdg stuff
-- write a VM module
+- ~~write a VM module~~
