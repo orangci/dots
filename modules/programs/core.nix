@@ -47,6 +47,7 @@
     ncftp
     lutgen
     catimg
+    arrpc
     gcc
     nodejs
     temurin-jre-bin
