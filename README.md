@@ -31,6 +31,7 @@ Hosts:
 </details> -->
 
 ## Thank you
+- [end-4](https://github.com/end-4) for the Quickshell config
 - the vimjoyer youtube channel, for making immensely helpful videos that saved me hours and hours of pain
 - https://github.com/MrVivekRajan/Hypr-Dots — The hyprlock config inspiration.
 - https://github.com/zDyanTB/HyprNova - The wlogout styling.
@@ -38,3 +39,4 @@ Hosts:
 
 ## License
 - [License: GNU AGPLv3](./LICENSE)
+ - The quickshell config is forked from ([this](https://github.com/end-4/dots-hyprland/commit/8c67c425e938b5cbcb8c2e49875216fc7590b784) commit of) [end-4](https://github.com/end-4)'s [dots-hyprland](https://github.com/end-4/dots-hyprland). It is licensed under GNU GPLv3.
