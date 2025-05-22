@@ -13,3 +13,4 @@ long terms:
 - manage secrets with sops-nix
 - secure boot
 - use impermanence
+- nixify firefox extensions settings

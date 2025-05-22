@@ -19,8 +19,8 @@ in {
       image = ../../assets/face.png;
       base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
       polarity = "dark";
-      targets.chromium.enable = false;
-      targets.grub.enable = false;
+      # targets.chromium.enable = false;
+      # targets.grub.enable = false;
       fonts = {
         monospace = {
           package = pkgs.nerd-fonts.ubuntu-mono;

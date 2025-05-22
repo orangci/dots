@@ -3,6 +3,7 @@
   config,
   lib,
   inputs,
+  username,
   ...
 }: let
   inherit (lib) mkEnableOption mkOption types mkIf;
@@ -60,8 +61,9 @@ in {
         rofi.enable = false;
         hyprland.enable = false;
         kde.enable = false;
-        vscode.enable = false;
-        firefox.enable = false;
+        firefox.colorTheme.enable = true;
+        # firefox.enable = false;
+        firefox.profileNames = ["${username}"];
       };
     };
   };

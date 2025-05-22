@@ -15,6 +15,7 @@ in {
     programs.firefox = {
       enable = true;
       profiles.${username} = {
+        extensions.force = true;
         id = 0;
         isDefault = true;
         search = {
@@ -325,10 +326,10 @@ in {
           };
 
           # catppuccin mocha mauve:
-          "{76aabc99-c1a8-4c1e-832b-d4f2941d5a7a}" = {
-            install_url = "https://addons.mozilla.org/firefox/downloads/latest/catppuccin-mocha-mauve-git/latest.xpi";
-            installation_mode = "force_installed";
-          };
+          # "{76aabc99-c1a8-4c1e-832b-d4f2941d5a7a}" = {
+          #   install_url = "https://addons.mozilla.org/firefox/downloads/latest/catppuccin-mocha-mauve-git/latest.xpi";
+          #   installation_mode = "force_installed";
+          # };
         };
       };
     };

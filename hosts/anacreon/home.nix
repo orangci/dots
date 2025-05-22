@@ -82,7 +82,7 @@
       qt.enable = true;
       stylix = {
         enable = true;
-        theme = "rose-pine";
+        theme = "rose-pine"; # Choose from https://github.com/tinted-theming/schemes
       };
     };
   };
