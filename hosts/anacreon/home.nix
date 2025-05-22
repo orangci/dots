@@ -2,14 +2,9 @@
   pkgs,
   username,
   host,
-  inputs,
   ...
-}: let
-  quickshell = inputs.quickshell.packages.${pkgs.system}.default;
-in {
-  imports = [
-    ../../homes/${username}
-  ];
+}: {
+  imports = [../../homes/${username}];
 
   hmModules = {
     cli = {
@@ -56,6 +51,11 @@ in {
       hypridle.enable = true;
       screenshot.enable = true;
       chromium.enable = true;
+      better-control.enable = true;
+      quickshell = {
+        enable = true;
+        workspaces = 7;
+      };
       media = {
         enable = true;
         gwenview = true;
@@ -80,7 +80,10 @@ in {
     styles = {
       gtk.enable = true;
       qt.enable = true;
-      stylix.enable = true;
+      stylix = {
+        enable = true;
+        theme = "rose-pine";
+      };
     };
   };
 
@@ -88,7 +91,6 @@ in {
     username = "${username}";
     homeDirectory = "/home/${username}";
     packages = [
-      quickshell
       (import ../../packages/list-bindings.nix {inherit pkgs;})
       (import ../../packages/screenrec.nix {inherit pkgs;})
       (import ../../packages/walls.nix {inherit pkgs;})
@@ -103,8 +105,6 @@ in {
       uris = ["qemu:///system"];
     };
   };
-  services = {
-    cliphist.enable = true;
-  };
+  services.cliphist.enable = true;
   programs.home-manager.enable = true;
 }

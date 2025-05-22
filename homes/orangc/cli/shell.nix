@@ -21,6 +21,7 @@
     fb = "curl bashupload.com -T";
     filebin = "curl bashupload.com -T";
     ftp = "ncftp";
+    clock = "date +'The time is %H.%M on a %A. The date is %b %d, %Y C.E.'";
 
     # nix stuff
     list-big-pkgs = "nix path-info -hsr /run/current-system/ | sort -hrk2 | head -n 30";

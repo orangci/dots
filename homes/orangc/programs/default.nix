@@ -15,5 +15,7 @@
     ./chromium.nix
     ./terminal.nix
     ./media.nix
+    ./quickshell
+    ./better-control.nix
   ];
 }

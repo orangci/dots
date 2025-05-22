@@ -57,66 +57,67 @@ in {
             "Super, Tab, global, quickshell:overviewToggle"
             "Super, A, global, quickshell:sidebarRightToggle"
             "Ctrl+Alt, Delete, global, quickshell:sessionToggle"
-            "Ctrl+Super, T, exec, ~/.config/quickshell/packages/switchwall.sh" # Change wallpaper
             "Super+Shift,T, exec, screenshot --ocr"
-            "SUPER,S, exec, screenshot --area"
-            "SUPERSHIFT,S, exec, screenshot --area --swappy"
-            "SUPER,Return, exec, kitty"
-            "SUPER,W, exec, firefox"
-            "SUPER,D, exec, equibop"
-            "SUPER,G, exec, chromium"
-            "SUPER,E, exec, thunar"
-            "SUPER,O, exec, screenrec"
-            "SUPERALT,O, exec, screenrec mic"
-            "SUPERSHIFT,O, exec, pkill wl-screenrec"
-            # "SUPER,K, exec, rofi -show drun # application launcher rofi"
-            # "SUPER,R, exec, rofi -show run -theme run.rasi" # run individual commands with rofi
-            "SUPER,M, exec, rofi-prism" # minecraft launcher powered by prism and rofi
-            # "SUPER,C, exec, rofi-calc"
-            "SUPERALT,C, exec, hyprpicker -a"
-            "SUPERSHIFT,APOSTROPHE, exec, wall-select" # choose a wallpaper
-            "SUPER,APOSTROPHE, exec, wall-select --fast" # choose a wallpaper
-            "SUPERSHIFT,W, exec, websearch"
-            # "SUPER,A, exec, swaync-client -t "
-            # "SUPERSHIFT,A, exec, swaync-client -C"
-            "SUPERSHIFT,C, exec, codium"
-            "SUPER,PERIOD, exec, emoji-select a"
-            "SUPERSHIFT,PERIOD, exec, emoji-select"
-            "SUPERSHIFT,M, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle" # mute microphone
-            "SUPER,P, exec, playerctl play-pause"
-            "SUPERSHIFT,P, exec, playerctl next"
-            "SUPERALT,P, exec, playerctl previous"
-            "SUPER,l, exec, killall hyprlock; hyprlock"
-            "SUPER,BACKSLASH, global, quickshell:sessionToggle"
-            "SUPER, V, exec, cliphist list | rofi -dmenu -theme clipboard.rasi | cliphist decode | wl-copy" # open clipboard
-            "SUPERSHIFT,V, exec, cliphist wipe # clear clipboard"
-            "SUPERSHIFT,code:61, exec, list-bindings"
-            "SUPERSHIFT,SPACE,movetoworkspace,special"
-            "SUPER,SPACE,togglespecialworkspace"
-            "SUPER,B, exec, hyprctl setprop active opaque toggle # toggle transparency for le active window"
-            "SUPERSHIFT,I,togglesplit # again idk"
-            "SUPERSHIFT,F,togglefloating"
-            "SUPER,Q,killactive # kill active"
-            "SUPER,F,fullscreen,"
-            "SUPER,left,movefocus,l"
-            "SUPER,right,movefocus,r"
-            "SUPER,up,movefocus,u"
-            "SUPER,down,movefocus,d"
-            "SUPERSHIFT,left,movewindow,l"
-            "SUPERSHIFT,right,movewindow,r"
-            "SUPERSHIFT,up,movewindow,u"
-            "SUPERSHIFT,down,movewindow,d"
+            "SUPER, S, exec, screenshot --area"
+            "SUPERSHIFT, S, exec, screenshot --area --swappy"
+            "SUPER, Return, exec, kitty"
+            "SUPER, W, exec, firefox"
+            "SUPER, D, exec, equibop"
+            "SUPER, G, exec, chromium"
+            "SUPER, E, exec, thunar"
+            "SUPER, O, exec, screenrec"
+            "SUPERALT, O, exec, screenrec mic"
+            "SUPERSHIFT, O, exec, pkill wl-screenrec"
+            # "SUPER, K, exec, rofi -show drun # application launcher rofi"
+            # "SUPER, R, exec, rofi -show run -theme run.rasi" # run individual commands with rofi
+            "SUPER, M, exec, rofi-prism" # minecraft launcher powered by prism and rofi
+            # "SUPER, C, exec, rofi-calc"
+            "SUPERALT, C, exec, hyprpicker -a"
+            "SUPERSHIFT, APOSTROPHE, exec, wall-select" # choose a wallpaper
+            "SUPER, APOSTROPHE, exec, wall-select --fast" # choose a wallpaper
+            "SUPERSHIFT, W, exec, websearch"
+            # "SUPER, A, exec, swaync-client -t "
+            # "SUPERSHIFT, A, exec, swaync-client -C"
+            "SUPERSHIFT, C, exec, codium"
+            "SUPER, PERIOD, exec, emoji-select a"
+            "SUPERSHIFT, PERIOD, exec, emoji-select"
+            "SUPERSHIFT, M, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle" # mute microphone
+            "SUPER, P, exec, playerctl play-pause"
+            "SUPERSHIFT, P, exec, playerctl next"
+            "SUPERALT, P, exec, playerctl previous"
+            "SUPER, l, exec, killall hyprlock; hyprlock"
+            "SUPER, BACKSLASH, global, quickshell:sessionToggle"
+            # "SUPER, BACKSLASH, exec, logout-exit"
+            "SUPER,  V, exec, cliphist list | rofi -dmenu -theme clipboard.rasi | cliphist decode | wl-copy" # open clipboard
+            "SUPERSHIFT, V, exec, cliphist wipe # clear clipboard"
+            "SUPERSHIFT, code:61, global, quickshell:cheatsheetToggle"
+            "SUPERSHIFT, SPACE,movetoworkspace,special"
+            "SUPER, SPACE,togglespecialworkspace"
+            "SUPER, B, exec, hyprctl setprop active opaque toggle # toggle transparency for le active window"
+            "SUPERSHIFT, I,togglesplit"
+            "SUPER, I, exec, control"
+            "SUPERSHIFT, F,togglefloating"
+            "SUPER, Q,killactive # kill active"
+            "SUPER, F,fullscreen,"
+            "SUPER, left,movefocus,l"
+            "SUPER, right,movefocus,r"
+            "SUPER, up,movefocus,u"
+            "SUPER, down,movefocus,d"
+            "SUPERSHIFT, left,movewindow,l"
+            "SUPERSHIFT, right,movewindow,r"
+            "SUPERSHIFT, up,movewindow,u"
+            "SUPERSHIFT, down,movewindow,d"
             ",mouse:275,workspace, e+1"
             ",mouse:276,workspace, e-1"
-            "ALT,Tab,cyclenext"
-            "ALT,Tab,bringactivetotop"
+            "ALT,Tab, cyclenext"
+            "ALT,Tab, bringactivetotop"
             ",XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
             ",XF86AudioPlay, exec, playerctl play-pause"
             ",XF86AudioPause, exec, playerctl play-pause"
             ",XF86AudioNext, exec, playerctl next"
             ",XF86AudioPrev, exec, playerctl previous"
             ",XF86HomePage, exec, hyprlock"
-            ",XF86Mail,togglespecialworkspace"
+            ",XF86Mail, togglespecialworkspace"
             ",XF86Calculator, exec, rofi-calc"
           ]
           ++ (
@@ -126,7 +127,7 @@ in {
                 i: let
                   ws = i + 1;
                 in [
-                  "SUPER, code:1${toString i}, workspace, ${toString ws}"
+                  "SUPER,  code:1${toString i}, workspace, ${toString ws}"
                   "SUPER SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
                 ]
               )
@@ -134,8 +135,8 @@ in {
           );
 
         bindm = [
-          "SUPER,mouse:272,movewindow"
-          "SUPER,mouse:273,resizewindow"
+          "SUPER, mouse:272,movewindow"
+          "SUPER, mouse:273,resizewindow"
         ];
 
         bindl = [",Print,exec,screenshot --fullscreen --swappy"];
@@ -143,8 +144,8 @@ in {
         binde = [
           "SUPERCONTROL,right,workspace,e+1"
           "SUPERCONTROL,left,workspace,e-1"
-          "SUPER,mouse_down,workspace, e+1"
-          "SUPER,mouse_up,workspace, e-1"
+          "SUPER, mouse_down,workspace, e+1"
+          "SUPER, mouse_up,workspace, e-1"
           ",XF86AudioRaiseVolume,exec,wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
           ",XF86AudioLowerVolume,exec,wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
           ",XF86MonBrightnessDown,exec,brightnessctl set 5%-"
@@ -157,8 +158,8 @@ in {
           gaps_in = 6;
           gaps_out = 8;
           border_size = 0;
-          "col.active_border" = "rgba(${colours.base0E}ff)";
-          "col.inactive_border" = "rgba(${colours.base00}cc)";
+          # "col.active_border" = "rgba(${colours.base0E}ff)";
+          # "col.inactive_border" = "rgba(${colours.base00}cc)";
           layout = "dwindle";
           resize_on_border = true;
           allow_tearing = true;

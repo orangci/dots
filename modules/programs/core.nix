@@ -12,13 +12,6 @@
     wl-clipboard
     libnotify
     yad
-    # begin illogical-impulse deps
-    libsForQt5.qt5.qtgraphicaleffects
-    kdePackages.qt5compat
-    libqalculate
-    colloid-kde
-    wlsunset
-    # end illogical-impulse deps
     nh
     btop
     lshw

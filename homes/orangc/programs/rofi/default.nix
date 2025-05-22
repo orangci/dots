@@ -46,9 +46,9 @@ in {
           border-colour:               rgba(203, 166, 247, 85%);
           handle-colour:               rgba(203, 166, 247, 85%);
           background-colour:           rgba(30, 30, 46, 85%);
-          foreground-colour:           #${colours.base05};
+          foreground-colour:           ${colours.base05};
           normal-background:           rgba(30, 30, 46, 85%);
-          normal-foreground:           #${colours.base05};
+          normal-foreground:           ${colours.base05};
           urgent-foreground:           rgba(30, 30, 46, 85%);
           active-foreground:           rgba(30, 30, 46, 85%);
           selected-normal-background:  rgba(203, 166, 247, 85%);
@@ -103,7 +103,7 @@ in {
           border-radius:               24px;
           border-color:                rgba(203, 166, 247, 85%);
           background-color:            rgba(30, 30, 46, 85%);
-          text-color:                  #${colours.base05};
+          text-color:                  ${colours.base05};
           children:                    [ "entry" ];
       }
 
@@ -150,7 +150,7 @@ in {
           border-radius:               24px;
           border-color:                rgba(203, 166, 247, 85%);
           background-color:            rgba(30, 30, 46, 85%);
-          text-color:                  #${colours.base05};
+          text-color:                  ${colours.base05};
           cursor:                      "default";
       }
       scrollbar {
@@ -170,7 +170,7 @@ in {
           border-radius:               24px;
           border-color:                rgba(203, 166, 247, 85%);
           background-color:            transparent;
-          text-color:                  #${colours.base05};
+          text-color:                  ${colours.base05};
           cursor:                      pointer;
       }
       element normal.normal {
@@ -187,7 +187,7 @@ in {
       }
       element selected.normal {
           background-color:            white / 5%;
-          text-color:                  #${colours.base05};
+          text-color:                  ${colours.base05};
       }
       element selected.urgent {
           background-color:            var(selected-urgent-background);
@@ -223,7 +223,7 @@ in {
           border-radius:               0px;
           border-color:                rgba(203, 166, 247, 85%);
           background-color:            transparent;
-          text-color:                  #${colours.base05};
+          text-color:                  ${colours.base05};
       }
       button {
           padding:                     10px;
@@ -248,7 +248,7 @@ in {
           border-radius:               0px 0px 0px 0px;
           border-color:                rgba(203, 166, 247, 85%);
           background-color:            transparent;
-          text-color:                  #${colours.base05};
+          text-color:                  ${colours.base05};
       }
       textbox {
           padding:                     100px;
@@ -256,11 +256,11 @@ in {
           border-radius:               0px;
           border-color:                rgba(203, 166, 247, 85%);
           background-color:            rgba(69, 71, 90, 85%);
-          text-color:                  #${colours.base05};
+          text-color:                  ${colours.base05};
           vertical-align:              0.5;
           horizontal-align:            0.0;
           highlight:                   none;
-          placeholder-color:           #${colours.base05};
+          placeholder-color:           ${colours.base05};
           blink:                       true;
           markup:                      true;
       }
@@ -270,11 +270,11 @@ in {
           border-radius:               0px;
           border-color:                rgba(203, 166, 247, 85%);
           background-color:            rgba(30, 30, 46, 85%);
-          text-color:                  #${colours.base05};
+          text-color:                  ${colours.base05};
       }
         element.alternate.normal {
           background-color: transparent;
-          text-color:       #${colours.base05};
+          text-color:       ${colours.base05};
         }
     '';
 

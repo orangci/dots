@@ -10,10 +10,10 @@ in {
     }
 
     * {
-        main-bg:            #${colours.base00}d9;
-        main-fg:            #${colours.base05}d9;
-        select-bg:          #${colours.base0E}d9;
-        select-fg:          #${colours.base01}d9;
+        main-bg:            ${colours.base00}d9;
+        main-fg:            ${colours.base05}d9;
+        select-bg:          ${colours.base0E}d9;
+        select-fg:          ${colours.base01}d9;
         separatorcolor:     transparent;
         border-color:       transparent;
     }
@@ -45,7 +45,7 @@ in {
           border-radius:               24px;
           border-color:                rgba(203, 166, 247, 85%);
           background-color:            rgba(30, 30, 46, 85%);
-          text-color:                  #${colours.base05};
+          text-color:                  ${colours.base05};
           children:                    [ "entry" ];
       }
 

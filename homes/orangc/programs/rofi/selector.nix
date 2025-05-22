@@ -11,10 +11,10 @@ in {
     }
 
     * {
-        main-bg:            #${colours.base00}d9;
-        main-fg:            #${colours.base05}d9;
-        select-bg:          #${colours.base0E}d9;
-        select-fg:          #${colours.base01}d9;
+        main-bg:            ${colours.base00}d9;
+        main-fg:            ${colours.base05}d9;
+        select-bg:          ${colours.base0E}d9;
+        select-fg:          ${colours.base01}d9;
         separatorcolor:     transparent;
         border-color:       transparent;
     }

@@ -1,11 +1,10 @@
 - ~~fix home modules and the organization of the flake .. why is it so cursed~~
-- modularize/nixify hyprland and any configs that aren't using nix
+- ~~modularize/nixify hyprland and any configs that aren't using nix~~
 - integrate the hyprland module into all modules where it is necessary
 - multi user support
 - write modules for the homelab
-- fix theming
+- fix theming: make all programs that dont respect stylix respect it
 - set up nvf
-- make my own quickshell rice
 - fix xdg stuff
 - ~~write a VM module~~
 
