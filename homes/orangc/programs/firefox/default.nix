@@ -229,7 +229,7 @@ in {
             --conf-toolbar-border-radius: 24px;
             --toolbarbutton-border-radius: var(--conf-toolbar-border-radius) !important;
             --tab-border-radius: var(--conf-border-radius) !important;
-            --tab-selected-bgcolor: #1e1e2e !important;
+            /* --tab-selected-bgcolor: #1e1e2e !important; */
             --lwt-tab-line-color: $$ !important;
             --tab-selected-outline-color: $$ !important;
 

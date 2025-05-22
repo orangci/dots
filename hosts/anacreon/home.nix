@@ -82,7 +82,10 @@
       qt.enable = true;
       stylix = {
         enable = true;
-        theme = "rose-pine"; # Choose from https://github.com/tinted-theming/schemes
+        # Choose from https://tinted-theming.github.io/tinted-gallery/
+        # if you want a light theme, i strongly recommend gruvbox-material-light-medium
+        # i usually default to catppuccin-mocha or rose-pine
+        theme = "catppuccin-mocha";
       };
     };
   };

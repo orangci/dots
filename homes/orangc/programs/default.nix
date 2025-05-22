@@ -2,7 +2,7 @@
   imports = [
     ./hyprland
     ./rofi
-    ./starship
+    ./starship.nix
     ./waybar
     ./wlogout
     ./firefox
