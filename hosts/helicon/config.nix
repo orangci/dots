@@ -12,7 +12,7 @@
     dm.sddm.enable = true;
     common = {
       bluetooth.enable = true;
-      printing.enable = true;
+      printing.enable = false;
       sound.enable = true;
       networking.enable = true;
       virtualisation.enable = false;
@@ -22,23 +22,13 @@
       hyprland.enable = true;
       appimages.enable = false;
     };
-    gaming = {
-      enable = false;
-      wine.enable = false;
-      lutris.enable = false;
-      bottles.enable = false;
-      steam.enable = false;
-      minecraft = {
-        enable = false;
-        modrinth.enable = false;
-      };
-    };
+    gaming.enable = false;
     styles = {
       stylix.enable = true;
       fonts.enable = true;
     };
   };
-  local.hardware-clock.enable = true;
+  local.hardware-clock.enable = false;
   drivers = {
     intel.enable = true;
     amdgpu.enable = false;

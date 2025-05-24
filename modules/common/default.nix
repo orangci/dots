@@ -7,5 +7,6 @@
     ./sound.nix
     ./sddm
     ./virtualisation.nix
+    # ./docker.nix
   ];
 }

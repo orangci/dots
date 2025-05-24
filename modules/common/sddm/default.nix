@@ -18,6 +18,7 @@ in {
       sddm-themes.sugar-dark
       sddm-themes.tokyo-night
       sddm-themes.astronaut
+      pkgs.libsForQt5.qt5.qtgraphicaleffects
     ];
 
     services.displayManager.sddm = {

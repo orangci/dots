@@ -43,7 +43,7 @@
     arrpc
     gcc
     nodejs
-    temurin-jre-bin
+    # temurin-jre-bin
     hyprpicker
     micro
 
