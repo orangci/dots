@@ -23,7 +23,6 @@
     time
     dig
     nix-output-monitor
-    diskus
     tokei
     sd
     trashy

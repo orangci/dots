@@ -56,6 +56,7 @@
     mutableUsers = true;
   };
   environment.sessionVariables = {
+    NH_FLAKE = "/home/${username}/dots";
     FLAKE = "/home/${username}/dots";
   };
 

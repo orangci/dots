@@ -17,6 +17,7 @@
       bat.enable = true;
       fzf.enable = true;
       fun.enable = true;
+      disk-usage.enable = true;
       compression = {
         enable = true;
         zip = true;
