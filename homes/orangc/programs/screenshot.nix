@@ -16,10 +16,7 @@
       exit 1
     }
 
-    SCREENSHOT_DIR="''${XDG_PICTURES_DIR:-$HOME/media}/screenshots"
-    mkdir -p "$SCREENSHOT_DIR"
-    TIMESTAMP=$(date +"%m %d-%H.%M.%S")
-    FILENAME="$SCREENSHOT_DIR/$TIMESTAMP.png"
+    FILENAME="/tmp/screenshot.png"
 
     OCR=0
     FULLSCREEN=0
@@ -47,24 +44,37 @@
     if (( FULLSCREEN || AREA )); then
       wayfreeze & PID=$!
       sleep 0.1
-      if (( FULLSCREEN )); then
-        grim "$FILENAME"
-      else
-        grim -g "$(slurp)" "$FILENAME"
-      fi
-      kill $PID
 
-      if (( USE_SWAPPY )); then
-        swappy -f "$FILENAME" || notify-send "Swappy failed"
+      if (( FULLSCREEN )); then
+        grim - | {
+          if (( USE_SWAPPY )); then
+            cat > "$FILENAME"
+            kill $PID
+            swappy -f "$FILENAME" || notify-send "Swappy failed"
+          else
+            wl-copy
+            kill $PID
+            # notify-send "Screenshot copied to clipboard"
+          fi
+        }
       else
-        wl-copy < "$FILENAME"       # <-- copy image to clipboard
-        notify-send "Screenshot saved and copied" "$FILENAME"
+        GEOM=$(slurp) || { kill $PID; exit 1; } # add this before exit 1 if you want the cancel notif: notify-send "Screenshot cancelled";
+        grim -g "$GEOM" - | {
+          if (( USE_SWAPPY )); then
+            cat > "$FILENAME"
+            kill $PID
+            swappy -f "$FILENAME" || notify-send "Swappy failed"
+          else
+            wl-copy
+            kill $PID
+            # notify-send "Screenshot copied to clipboard"
+          fi
+        }
       fi
       exit 0
     fi
 
     usage
-
   '';
 in {
   options.hmModules.programs.screenshot = {
@@ -88,7 +98,7 @@ in {
     home.file.".config/swappy/config".text = ''
       [Default]
       save_dir=${config.xdg.userDirs.pictures}/screenshots
-      save_filename_format=%M %d-%H.%M.%S.png
+      save_filename_format=%B %d, %Y at %H.%M.%S.png
       show_panel=false
       line_size=5
       text_size=20

@@ -57,8 +57,8 @@ in {
       };
 
       profiles.default.extensions = with pkgs.vscode-extensions; let
-        extensions = []; # catppuccin.catppuccin-vsc-icons catppuccin.catppuccin-vsc
-        nixExtensions = lib.optionals config.hmModules.dev.nix.enable [kamadorueda.alejandra];
+        extensions = [esbenp.prettier-vscode]; # catppuccin.catppuccin-vsc-icons catppuccin.catppuccin-vsc
+        nixExtensions = lib.optionals config.hmModules.dev.nix.enable [kamadorueda.alejandra bbenoist.nix];
         rustExtensions = lib.optionals config.hmModules.dev.rust.enable [rust-lang.rust-analyzer];
         pythonExtensions = lib.optionals config.hmModules.dev.python.enable [ms-python.python];
         webdevExtensions = lib.optionals cfg.webdev [bradgashler.htmltagwrap ecmel.vscode-html-css bradlc.vscode-tailwindcss ritwickdey.liveserver];
