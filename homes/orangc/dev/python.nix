@@ -6,6 +6,10 @@
 }: let
   inherit (lib) mkEnableOption mkOption types mkIf mkMerge;
   cfg = config.hmModules.dev.python;
+  svAlias =
+    if config.hmModules.cli.shell.program == "fish"
+    then "source venv/bin/activate.fish"
+    else "source venv/bin/activate";
 in {
   options.hmModules.dev.python = {
     enable = mkEnableOption "Enable Python development environment";
@@ -45,7 +49,7 @@ in {
         rf = "ruff";
         rff = "ruff format";
         rfc = "ruff check";
-        sv = "source venv/bin/activate";
+        sv = svAlias;
       };
     }
 

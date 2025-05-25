@@ -17,6 +17,7 @@
       bat.enable = true;
       fzf.enable = true;
       fun.enable = true;
+      disk-usage.enable = true;
       compression = {
         enable = true;
         zip = true;
@@ -36,7 +37,7 @@
   home = {
     username = "${username}";
     homeDirectory = "/home/${username}";
-    stateVersion = "24.11";
+    stateVersion = "25.05";
   };
 
   dconf.settings = {
@@ -45,6 +46,5 @@
       uris = ["qemu:///system"];
     };
   };
-  services.cliphist.enable = false;
   programs.home-manager.enable = true;
 }

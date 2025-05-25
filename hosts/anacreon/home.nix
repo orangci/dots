@@ -99,7 +99,7 @@
       (import ../../packages/screenrec.nix {inherit pkgs;})
       (import ../../packages/walls.nix {inherit pkgs;})
     ];
-    stateVersion = "24.11";
+    stateVersion = "25.05";
     file.".face.icon".source = ../../assets/face.png;
   };
 
