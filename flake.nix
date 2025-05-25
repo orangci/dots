@@ -12,7 +12,10 @@
     };
 
     # unstable Hyprland
-    hyprland.url = "github:hyprwm/Hyprland";
+    hyprland = {
+      url = "github:hyprwm/Hyprland";
+      inputs.nixpkgs.follows = "nixpkgs-small";
+    };
 
     # i don't know if i still want to be using stylix but we'll stick with it
     stylix = {
@@ -27,21 +30,9 @@
       inputs.nixpkgs.follows = "nixpkgs-small";
     };
 
-    # god knows what the hell i use this for
-    # nur = {
-    #   url = "github:nix-community/NUR";
-    #   inputs.nixpkgs.follows = "nixpkgs-small";
-    # };
-
     # my own quickshell rice coming soon!! maybe! (using end-4's currently)
     quickshell = {
       url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
-      inputs.nixpkgs.follows = "nixpkgs-small";
-    };
-
-    # end-4's quickshell rice needs this, even though I don't use it
-    matugen = {
-      url = "github:/InioX/Matugen";
       inputs.nixpkgs.follows = "nixpkgs-small";
     };
   };
