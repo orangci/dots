@@ -97,17 +97,13 @@ in {
             ",XF86Mail, togglespecialworkspace"
             ",XF86Calculator, exec, rofi-calc"
           ]
-          ++ (
-            # workspaces
-            # binds SUPER + [shift +] {1..9} to [move to] workspace {1..9}
-            builtins.concatLists (builtins.genList (
-                i: let
-                  ws = i + 1;
-                in [
-                  "SUPER,  code:1${toString i}, workspace, ${toString ws}"
-                  "SUPER SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
-                ]
-              )
+          ++ ( # workspaces: binds SUPER + [shift +] {1..9} to [move to] workspace {1..9}
+            builtins.concatLists (builtins.genList (i: let
+                ws = i + 1;
+              in [
+                "SUPER,  code:1${toString i}, workspace, ${toString ws}"
+                "SUPER SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
+              ])
               9)
           );
 
@@ -234,16 +230,6 @@ in {
           "float, title:^(Open Folder)(.*)$"
           "float, title:^(Save As)(.*)$"
           "float, title:^(File Upload)(.*)$"
-        ];
-
-        layerrule = [
-          "blur,rofi"
-          "ignorezero,rofi"
-          "ignorealpha 0.8,rofi"
-          "blur, shell:bar"
-          "ignorezero, shell:bar"
-          "blur, shell:notifications"
-          "ignorealpha 0.1, shell:notifications"
         ];
       };
     };

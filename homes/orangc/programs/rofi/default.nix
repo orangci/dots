@@ -16,6 +16,14 @@ in {
     enable = mkEnableOption "Enable rofi";
   };
   config = mkIf cfg.enable {
+    wayland.windowManager.hyprland.settings = {
+      layerrule = [
+        "blur,rofi"
+        "ignorezero,rofi"
+        "ignorealpha 0.8,rofi"
+      ];
+    };
+
     home.packages = [
       (import ./packages/calc.nix {inherit pkgs;})
       (import ./packages/emoji.nix {inherit pkgs;})
