@@ -86,5 +86,26 @@ in {
         var fontIconNerd = "UbuntuMono Nerd Font Propo"
       EOF
     '';
+
+    wayland.windowManager.hyprland.settings = {
+      exec-once = ["qs"];
+      bind = [
+        "Super, K, global, quickshell:overviewToggleRelease"
+        "Super, R, global, quickshell:overviewToggleRelease"
+        "Super, Tab, global, quickshell:overviewToggle"
+        "Super, A, global, quickshell:sidebarRightToggle"
+        "Ctrl+Alt, Delete, global, quickshell:sessionToggle"
+        "SUPER, BACKSLASH, global, quickshell:sessionToggle"
+      ];
+      layerrule = [
+        "animation fade, quickshell:screenCorners"
+        "animation slide right, quickshell:sidebarRight"
+        "animation slide left, quickshell:sidebarLeft"
+        "animation slide top, quickshell:onScreenDisplay"
+        "animation fade, quickshell:session"
+        "blur, quickshell:session"
+        "noanim, quickshell:overview"
+      ];
+    };
   };
 }

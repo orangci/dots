@@ -3,9 +3,11 @@
 - integrate the hyprland module into all modules where it is necessary
 - multi user support
 - write modules for the homelab
-- fix theming: make all programs that dont respect stylix respect it
+- ~~fix theming: make all programs that dont respect stylix respect it~~
 - set up nvf
 - fix xdg stuff
+- expand on wallpaper and screenrec script
+- write clipboard module
 - ~~write a VM module~~
 
 long terms:

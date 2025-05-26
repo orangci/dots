@@ -39,7 +39,6 @@ in {
         exec-once = [
           "dbus-update-activation-environment --systemd --all"
           "systemctl --user import-environment QT_QPA_PLATFORMTHEME WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
-          "qs"
           "lxqt-policykit-agent"
           "wl-paste --type text --watch cliphist store"
           "wl-paste --type image --watch cliphist store"
@@ -52,18 +51,6 @@ in {
 
         bind =
           [
-            "Super, K, global, quickshell:overviewToggleRelease"
-            "Super, R, global, quickshell:overviewToggleRelease"
-            "Super, Tab, global, quickshell:overviewToggle"
-            "Super, A, global, quickshell:sidebarRightToggle"
-            "Ctrl+Alt, Delete, global, quickshell:sessionToggle"
-            "Super+Shift,T, exec, screenshot --ocr"
-            "SUPER, S, exec, screenshot --area"
-            "SUPERSHIFT, S, exec, screenshot --area --swappy"
-            "SUPER, Return, exec, kitty"
-            "SUPER, W, exec, firefox"
-            "SUPER, D, exec, equibop"
-            "SUPER, G, exec, chromium"
             "SUPER, E, exec, thunar"
             "SUPER, O, exec, screenrec"
             "SUPERALT, O, exec, screenrec mic"
@@ -75,27 +62,18 @@ in {
             "SUPERALT, C, exec, hyprpicker -a"
             "SUPERSHIFT, APOSTROPHE, exec, wall-select" # choose a wallpaper
             "SUPER, APOSTROPHE, exec, wall-select --fast" # choose a wallpaper
-            "SUPERSHIFT, W, exec, websearch"
-            # "SUPER, A, exec, swaync-client -t "
-            # "SUPERSHIFT, A, exec, swaync-client -C"
-            "SUPERSHIFT, C, exec, codium"
             "SUPER, PERIOD, exec, emoji-select a"
             "SUPERSHIFT, PERIOD, exec, emoji-select"
             "SUPERSHIFT, M, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle" # mute microphone
             "SUPER, P, exec, playerctl play-pause"
             "SUPERSHIFT, P, exec, playerctl next"
             "SUPERALT, P, exec, playerctl previous"
-            "SUPER, l, exec, killall hyprlock; hyprlock"
-            "SUPER, BACKSLASH, global, quickshell:sessionToggle"
-            # "SUPER, BACKSLASH, exec, logout-exit"
             "SUPER,  V, exec, cliphist list | rofi -dmenu -theme clipboard.rasi | cliphist decode | wl-copy" # open clipboard
             "SUPERSHIFT, V, exec, cliphist wipe # clear clipboard"
-            "SUPERSHIFT, code:61, global, quickshell:cheatsheetToggle"
             "SUPERSHIFT, SPACE,movetoworkspace,special"
             "SUPER, SPACE,togglespecialworkspace"
             "SUPER, B, exec, hyprctl setprop active opaque toggle # toggle transparency for le active window"
             "SUPERSHIFT, I,togglesplit"
-            "SUPER, I, exec, control"
             "SUPERSHIFT, F,togglefloating"
             "SUPER, Q,killactive # kill active"
             "SUPER, F,fullscreen,"
@@ -116,7 +94,6 @@ in {
             ",XF86AudioPause, exec, playerctl play-pause"
             ",XF86AudioNext, exec, playerctl next"
             ",XF86AudioPrev, exec, playerctl previous"
-            ",XF86HomePage, exec, hyprlock"
             ",XF86Mail, togglespecialworkspace"
             ",XF86Calculator, exec, rofi-calc"
           ]
@@ -138,8 +115,6 @@ in {
           "SUPER, mouse:272,movewindow"
           "SUPER, mouse:273,resizewindow"
         ];
-
-        bindl = [",Print,exec,screenshot --fullscreen --swappy"];
 
         binde = [
           "SUPERCONTROL,right,workspace,e+1"
@@ -262,23 +237,9 @@ in {
         ];
 
         layerrule = [
-          "blur,logout_dialog"
-          "blur,swaync-control-center"
-          "blur,swaync-notification-window"
-          "ignorezero,swaync-control-center"
-          "ignorezero,swaync-notification-window"
-          "ignorealpha 0.8,swaync-control-center"
-          "ignorealpha 0.8,swaync-notification-window"
           "blur,rofi"
           "ignorezero,rofi"
           "ignorealpha 0.8,rofi"
-          "animation fade, quickshell:screenCorners"
-          "animation slide right, quickshell:sidebarRight"
-          "animation slide left, quickshell:sidebarLeft"
-          "animation slide top, quickshell:onScreenDisplay"
-          "animation fade, quickshell:session"
-          "blur, quickshell:session"
-          "noanim, quickshell:overview"
           "blur, shell:bar"
           "ignorezero, shell:bar"
           "blur, shell:notifications"

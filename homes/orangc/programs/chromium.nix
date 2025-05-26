@@ -12,6 +12,7 @@ in {
   };
 
   config = mkIf cfg.enable {
+    wayland.windowManager.hyprland.settings.bind = ["SUPER, G, exec, chromium"];
     programs.chromium = {
       enable = true;
       extensions = [

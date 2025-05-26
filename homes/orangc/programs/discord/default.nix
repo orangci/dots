@@ -39,8 +39,8 @@ in {
   };
 
   config = mkIf cfg.enable {
+    wayland.windowManager.hyprland.settings.bind = ["SUPER, D, exec, ${cfg.client}"];
     home.packages = [getDiscordPackage cfg.client];
-
     home.file = {
       ".config/Vencord/themes/orangetweaks.css".source = ./vencordthemes/orangetweaks.css;
       ".config/Vencord/themes/catppuccin.css".source = ./vencordthemes/catppuccin.css;

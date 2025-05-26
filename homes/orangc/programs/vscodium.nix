@@ -18,6 +18,7 @@ in {
   };
 
   config = mkIf cfg.enable {
+    wayland.windowManager.hyprland.settings.bind = ["SUPERSHIFT, C, exec, codium"];
     programs.vscode = {
       enable = true;
       package = pkgs.vscodium;

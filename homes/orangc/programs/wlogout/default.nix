@@ -30,12 +30,16 @@ in {
 
   config = mkIf cfg.enable {
     programs.wlogout.enable = true;
-
-    home.file.".config/wlogout" = {
-      source = ./config;
-      recursive = true;
+    wayland.windowManager.hyprland.settings = {
+      bind = ["SUPER, BACKSLASH, exec, logout-exit"];
+      layerrule = ["blur,logout_dialog"];
     };
-
-    home.packages = [logoutScript];
+    home = {
+      packages = [logoutScript];
+      file.".config/wlogout" = {
+        source = ./config;
+        recursive = true;
+      };
+    };
   };
 }

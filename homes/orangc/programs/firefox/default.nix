@@ -12,6 +12,7 @@ in {
     enable = mkEnableOption "Enable firefox";
   };
   config = mkIf cfg.enable {
+    wayland.windowManager.hyprland.settings.bind = ["SUPER, W, exec, firefox"];
     programs.firefox = {
       enable = true;
       profiles.${username} = {
