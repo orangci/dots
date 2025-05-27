@@ -42,8 +42,6 @@ in {
           "lxqt-policykit-agent"
           "wl-paste --type text --watch cliphist store"
           "wl-paste --type image --watch cliphist store"
-          "swww kill; swww-daemon"
-          "sleep 3; walls &"
           "sleep 3; arrpc &"
           "kdeconnect-indicator"
           "sleep 10; cd ~/code/pyminaret; python3 main.py --city Riyadh --country \"Saudi Arabia\" -g 10 -n"

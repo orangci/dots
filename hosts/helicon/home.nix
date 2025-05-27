@@ -61,6 +61,10 @@
     styles = {
       gtk.enable = true;
       qt.enable = true;
+      walls = {
+        enable = true;
+        timeout = 20; # Time between wallpaper changes (in minutes)
+      };
       stylix = {
         enable = true;
         # Choose from https://tinted-theming.github.io/tinted-gallery/
@@ -74,7 +78,6 @@
   home = {
     username = "${username}";
     homeDirectory = "/home/${username}";
-    packages = [(import ../../packages/walls.nix {inherit pkgs;})];
     stateVersion = "25.05";
     file.".face.icon".source = ../../assets/face.png;
   };

@@ -2,7 +2,6 @@
 - write modules for the homelab
 - set up nvf
 - fix xdg stuff
-- expand on wallpaper and script
 - write clipboard module
 - rice starship myself
 
