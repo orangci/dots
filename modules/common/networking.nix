@@ -39,6 +39,6 @@ in {
       ]; # KDE Connect
     };
 
-    environment.systemPackages = with pkgs; [traceroute speedtest-cli networkmanagerapplet];
+    environment.systemPackages = with pkgs; [traceroute speedtest-cli networkmanagerapplet ncftp dig xh];
   };
 }

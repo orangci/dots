@@ -89,13 +89,13 @@ in {
 
     wayland.windowManager.hyprland.settings = {
       exec-once = ["qs"];
-      bind = [
-        "Super, K, global, quickshell:overviewToggleRelease"
-        "Super, R, global, quickshell:overviewToggleRelease"
-        "Super, Tab, global, quickshell:overviewToggle"
-        "Super, A, global, quickshell:sidebarRightToggle"
-        "Ctrl+Alt, Delete, global, quickshell:sessionToggle"
-        "SUPER, BACKSLASH, global, quickshell:sessionToggle"
+      bindd = [
+        "Super, K, Quickshell Overview, global, quickshell:overviewToggleRelease"
+        "Super, R, Quickshell Overview, global, quickshell:overviewToggleRelease"
+        "Super, Tab, Quickshell Overview, global, quickshell:overviewToggle"
+        "Super, A, Open Right Sidebar, global, quickshell:sidebarRightToggle"
+        "Ctrl+Alt, Delete, Open Logout Menu, global, quickshell:sessionToggle"
+        "SUPER, BACKSLASH, Open Logout Menu, global, quickshell:sessionToggle"
       ];
       layerrule = [
         "animation fade, quickshell:screenCorners"

@@ -31,7 +31,7 @@ in {
   config = mkIf cfg.enable {
     programs.wlogout.enable = true;
     wayland.windowManager.hyprland.settings = {
-      bind = ["SUPER, BACKSLASH, exec, logout-exit"];
+      bindd = ["SUPER, BACKSLASH, Open Logout Menu, exec, logout-exit"];
       layerrule = ["blur,logout_dialog"];
     };
     home = {

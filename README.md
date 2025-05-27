@@ -14,7 +14,7 @@
 > However, going through my code for little bits and things to borrow or learn from is totally fine (as long as you respect the license).
 > This flake is very much a work in progress; I'm constantly working on improving and I have many things planned for it in the future.
 
-Modular NixOS configuration for my machines. Very [lightweight](https://orangc.net/n/disk-usage)! A fresh installation of this flake will be *17 gigabytes*, which isn't bad at all in my humble opinion.
+Modular NixOS configuration for my machines. Very [lightweight](https://orangc.net/n/disk-usage)! A fresh installation of this flake will be *17 gigabytes*, which isn't bad at all in my opinion.
 
 Hosts:
 - anacreon (PC ~ Hyprland)
@@ -33,7 +33,6 @@ Hosts:
 ## Thank you
 - [end-4](https://github.com/end-4) for the Quickshell config
 - the vimjoyer youtube channel, for making immensely helpful videos that saved me hours and hours of pain
-- https://github.com/MrVivekRajan/Hypr-Dots — The hyprlock config inspiration.
 - https://github.com/zDyanTB/HyprNova - The wlogout styling.
 - https://github.com/1amSimp1e/dots — i tweaked my starship prompt based off of this guy's prompt
 

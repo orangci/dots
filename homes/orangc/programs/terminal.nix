@@ -20,7 +20,7 @@ in {
   config = mkIf cfg.enable (
     lib.mkMerge [
       (mkIf (cfg.emulator == "kitty") {
-        wayland.windowManager.hyprland.settings.bind = ["SUPER, Return, exec, kitty"];
+        wayland.windowManager.hyprland.settings.bindd = ["SUPER, Return, Launch Terminal, exec, kitty"];
         programs.kitty = {
           enable = true;
           settings = {
@@ -33,12 +33,12 @@ in {
       })
 
       (mkIf (cfg.emulator == "foot") {
-        wayland.windowManager.hyprland.settings.bind = ["SUPER, Return, exec, foot"];
+        wayland.windowManager.hyprland.settings.bindd = ["SUPER, Return, Launch Terminal, exec, foot"];
         programs.foot.enable = true;
       })
 
       (mkIf (cfg.emulator == "alacritty") {
-        wayland.windowManager.hyprland.settings.bind = ["SUPER, Return, exec, alacritty"];
+        wayland.windowManager.hyprland.settings.bindd = ["SUPER, Return, Launch Terminal, exec, alacritty"];
         programs.alacritty.enable = true;
       })
     ]

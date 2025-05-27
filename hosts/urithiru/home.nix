@@ -10,12 +10,7 @@
     cli = {
       fetch.enable = true;
       shell.program = "fish";
-      eza.enable = true;
-      fd.enable = true;
-      zoxide.enable = true;
-      ripgrep.enable = true;
-      bat.enable = true;
-      fzf.enable = true;
+      oxidisation.enable = true;
       fun.enable = true;
       disk-usage.enable = true;
       compression = {

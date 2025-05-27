@@ -12,6 +12,6 @@ in {
   };
 
   config = mkIf cfg.enable {
-    home.packages = with pkgs; [hello];
+    home.packages = with pkgs; [alejandra nix-prefetch];
   };
 }

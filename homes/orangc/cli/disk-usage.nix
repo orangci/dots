@@ -53,6 +53,6 @@ in {
   };
 
   config = mkIf cfg.enable {
-    home.packages = [diskUsageApp pkgs.diskus pkgs.dust];
+    home.packages = [diskUsageApp pkgs.diskus pkgs.dust pkgs.kondo];
   };
 }

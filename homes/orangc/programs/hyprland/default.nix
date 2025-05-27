@@ -49,78 +49,74 @@ in {
           "sleep 10; cd ~/code/pyminaret; python3 main.py --city Riyadh --country \"Saudi Arabia\" -g 10 -n"
         ];
 
-        bind =
+        bindd =
           [
-            "SUPER, E, exec, thunar"
-            "SUPER, O, exec, screenrec"
-            "SUPERALT, O, exec, screenrec mic"
-            "SUPERSHIFT, O, exec, pkill wl-screenrec"
+            "SUPER, E, Open File Manager, exec, thunar"
             # "SUPER, K, exec, rofi -show drun # application launcher rofi"
             # "SUPER, R, exec, rofi -show run -theme run.rasi" # run individual commands with rofi
-            "SUPER, M, exec, rofi-prism" # minecraft launcher powered by prism and rofi
+            "SUPER, M, Open Minecraft Instance Menu, exec, rofi-prism" # minecraft launcher powered by prism and rofi
             # "SUPER, C, exec, rofi-calc"
-            "SUPERALT, C, exec, hyprpicker -a"
-            "SUPERSHIFT, APOSTROPHE, exec, wall-select" # choose a wallpaper
-            "SUPER, APOSTROPHE, exec, wall-select --fast" # choose a wallpaper
-            "SUPER, PERIOD, exec, emoji-select a"
-            "SUPERSHIFT, PERIOD, exec, emoji-select"
-            "SUPERSHIFT, M, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle" # mute microphone
-            "SUPER, P, exec, playerctl play-pause"
-            "SUPERSHIFT, P, exec, playerctl next"
-            "SUPERALT, P, exec, playerctl previous"
-            "SUPER,  V, exec, cliphist list | rofi -dmenu -theme clipboard.rasi | cliphist decode | wl-copy" # open clipboard
-            "SUPERSHIFT, V, exec, cliphist wipe # clear clipboard"
-            "SUPERSHIFT, SPACE,movetoworkspace,special"
-            "SUPER, SPACE,togglespecialworkspace"
-            "SUPER, B, exec, hyprctl setprop active opaque toggle # toggle transparency for le active window"
-            "SUPERSHIFT, I,togglesplit"
-            "SUPERSHIFT, F,togglefloating"
-            "SUPER, Q,killactive # kill active"
-            "SUPER, F,fullscreen,"
-            "SUPER, left,movefocus,l"
-            "SUPER, right,movefocus,r"
-            "SUPER, up,movefocus,u"
-            "SUPER, down,movefocus,d"
-            "SUPERSHIFT, left,movewindow,l"
-            "SUPERSHIFT, right,movewindow,r"
-            "SUPERSHIFT, up,movewindow,u"
-            "SUPERSHIFT, down,movewindow,d"
-            ",mouse:275,workspace, e+1"
-            ",mouse:276,workspace, e-1"
-            "ALT,Tab, cyclenext"
-            "ALT,Tab, bringactivetotop"
-            ",XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
-            ",XF86AudioPlay, exec, playerctl play-pause"
-            ",XF86AudioPause, exec, playerctl play-pause"
-            ",XF86AudioNext, exec, playerctl next"
-            ",XF86AudioPrev, exec, playerctl previous"
-            ",XF86Mail, togglespecialworkspace"
-            ",XF86Calculator, exec, rofi-calc"
+            "SUPERALT, C, Colour Picker, exec, hyprpicker -a"
+            "SUPERSHIFT, APOSTROPHE, Choose Wallpaper, exec, wall-select" # choose a wallpaper
+            "SUPER, APOSTROPHE, Random Wallpaper, exec, wall-select --fast" # choose a wallpaper
+            "SUPER, PERIOD, Select Emoji, exec, emoji-select a"
+            "SUPERSHIFT, PERIOD, Select Emoji To Clipboard, exec, emoji-select"
+            "SUPERSHIFT, M, Mute Microphone, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle" # mute microphone
+            "SUPER, P, Pause Media, exec, playerctl play-pause"
+            "SUPERSHIFT, P, Next Media, exec, playerctl next"
+            "SUPERALT, P, Previous Media, exec, playerctl previous"
+            "SUPER,  V, Open Clipboard, exec, cliphist list | rofi -dmenu -theme clipboard.rasi | cliphist decode | wl-copy" # open clipboard
+            "SUPERSHIFT, V, Clear Clipboard, exec, cliphist wipe # clear clipboard"
+            "SUPERSHIFT, SPACE, Move To Special Workspace, movetoworkspace,special"
+            "SUPER, SPACE, Open Special Workspace, togglespecialworkspace"
+            "SUPER, B, Blur/Unblur Current Window, exec, hyprctl setprop active opaque toggle # toggle transparency for le active window"
+            "SUPERSHIFT, I, Toggle Split, togglesplit"
+            "SUPERSHIFT, F, Float Current Window, togglefloating"
+            "SUPER, Q, Close Window, killactive"
+            "SUPER, F, Make Window Fullscreen, fullscreen,"
+            "SUPER, left, Move Focus Left, movefocus,l"
+            "SUPER, right, Move Focus Right, movefocus,r"
+            "SUPER, up, Move Focus Up, movefocus,u"
+            "SUPER, down, Move Focus Down, movefocus,d"
+            "SUPERSHIFT, left, Move Window Left, movewindow,l"
+            "SUPERSHIFT, right, Move Window Right, movewindow,r"
+            "SUPERSHIFT, up, Move Window Up, movewindow,u"
+            "SUPERSHIFT, down, Move Window Down, movewindow,d"
+            ",mouse:275, Scroll Workspace Forward, workspace, e+1"
+            ",mouse:276,Scroll Workspace Backward, workspace, e-1"
+            "ALT,Tab, Cycle To Next Window, cyclenext"
+            "ALT,Tab, Cycle To Next Window, bringactivetotop"
+            ",XF86AudioMute, Mute Microphone, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+            ",XF86AudioPlay, Play Media, exec, playerctl play-pause"
+            ",XF86AudioPause, Pause Media, exec, playerctl play-pause"
+            ",XF86AudioNext, Next Media, exec, playerctl next"
+            ",XF86AudioPrev, Previous Media, exec, playerctl previous"
+            ",XF86Mail, Open Special Workspace, togglespecialworkspace"
           ]
           ++ ( # workspaces: binds SUPER + [shift +] {1..9} to [move to] workspace {1..9}
             builtins.concatLists (builtins.genList (i: let
                 ws = i + 1;
               in [
-                "SUPER,  code:1${toString i}, workspace, ${toString ws}"
-                "SUPER SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
+                "SUPER, code:1${toString i}, Move To Workspace ${toString ws}, workspace, ${toString ws}"
+                "SUPER SHIFT, code:1${toString i}, Move Window To Workspace ${toString ws}, movetoworkspace, ${toString ws}"
               ])
               9)
           );
 
-        bindm = [
-          "SUPER, mouse:272,movewindow"
-          "SUPER, mouse:273,resizewindow"
+        binddm = [
+          "SUPER, mouse:272, Move Window, movewindow"
+          "SUPER, mouse:273, Resize Window, resizewindow"
         ];
 
-        binde = [
-          "SUPERCONTROL,right,workspace,e+1"
-          "SUPERCONTROL,left,workspace,e-1"
-          "SUPER, mouse_down,workspace, e+1"
-          "SUPER, mouse_up,workspace, e-1"
-          ",XF86AudioRaiseVolume,exec,wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
-          ",XF86AudioLowerVolume,exec,wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
-          ",XF86MonBrightnessDown,exec,brightnessctl set 5%-"
-          ",XF86MonBrightnessUp,exec,brightnessctl set +5%"
+        bindde = [
+          "SUPERCONTROL,right, Switch To Right Workspace, workspace,e+1"
+          "SUPERCONTROL,left, Switch To Left Workspace, workspace,e-1"
+          "SUPER, mouse_down, Switch To Right Workspace, workspace, e+1"
+          "SUPER, mouse_up, Switch To Left Workspace, workspace, e-1"
+          ",XF86AudioRaiseVolume, Raise Volume, exec,  wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
+          ",XF86AudioLowerVolume, Lower Volume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+          ",XF86MonBrightnessDown, Raise Brightness, exec, brightnessctl set 5%-"
+          ",XF86MonBrightnessUp, Lower Brightness, exec, brightnessctl set +5%"
         ];
 
         monitor = [",preferred,auto,1"];

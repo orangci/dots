@@ -17,5 +17,7 @@
     ./media.nix
     ./quickshell
     ./better-control.nix
+    ./cheatsheet.nix
+    ./screenrec.nix
   ];
 }

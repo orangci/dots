@@ -25,9 +25,9 @@ in {
         "ignorealpha 0.8,swaync-control-center"
         "ignorealpha 0.8,swaync-notification-window"
       ];
-      bind = [
-        "SUPER, A, exec, swaync-client -t "
-        "SUPERSHIFT, A, exec, swaync-client -C"
+      bindd = [
+        "SUPER, A, Open swaync Panel, exec, swaync-client -t "
+        "SUPERSHIFT, A, Clear Notifications, exec, swaync-client -C"
       ];
     };
   };

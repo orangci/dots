@@ -13,6 +13,6 @@ in {
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [better-control pulseaudio];
-    wayland.windowManager.hyprland.settings.bind = ["SUPER, I, exec, control"];
+    wayland.windowManager.hyprland.settings.bindd = ["SUPER, I, Open Settings, exec, control"];
   };
 }

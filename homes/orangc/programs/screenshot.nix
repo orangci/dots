@@ -83,11 +83,11 @@ in {
 
   config = mkIf cfg.enable {
     wayland.windowManager.hyprland.settings = {
-      bindl = [",Print,exec,screenshot --fullscreen --swappy"];
-      bind = [
-        "Super+Shift,T, exec, screenshot --ocr"
-        "SUPER, S, exec, screenshot --area"
-        "SUPERSHIFT, S, exec, screenshot --area --swappy"
+      bindld = [",Print, Fullscreen Screenshot, exec, screenshot --fullscreen --swappy"];
+      bindd = [
+        "Super+Shift,T, Copy Text From Screenshot, exec, screenshot --ocr"
+        "SUPER, S, Area Screenshot, exec, screenshot --area"
+        "SUPERSHIFT, S, Area Screenshot (With Editor), exec, screenshot --area --swappy"
       ];
     };
     home.packages = with pkgs; [

@@ -5,54 +5,25 @@
   inputs,
   ...
 }: {
-  nixpkgs.overlays = [inputs.rust-overlay.overlays.default];
-
   environment.systemPackages = with pkgs; [
     lxqt.lxqt-policykit
-    wl-clipboard
     libnotify
-    yad
     nh
-    btop
-    lshw
-    gnumake # gnumake
-    rink
-    swww
-    killall
-    tree
-    time
-    dig
     nix-output-monitor
-    tokei
-    sd
-    trashy
-    ffmpeg
-    imagemagick
-    nix-prefetch
-    # open-interpreter
-    wev
-    jq
-    yt-dlp
-    wl-screenrec
-    alejandra
-    libwebp
-    ncftp
-    lutgen
-    catimg
     arrpc
-    gcc
-    nodejs
-    # temurin-jre-bin
-    hyprpicker
     micro
 
-    # big gui programs
-    # transmission_4-gtk # bittorent client
+    hyprpicker
     calibre # ebooks BIG 2.1GB
     obsidian # BIG 1.8GB
-    typst
     pinta # half a GB
     otpclient # half a GB
-    wvkbd
+
+    # wallpaper script
+    swww
+    lutgen
+
+    # clipboard module
+    wl-clipboard
   ];
 }

@@ -10,12 +10,7 @@
     cli = {
       fetch.enable = true;
       shell.program = "fish";
-      eza.enable = true;
-      fd.enable = true;
-      zoxide.enable = true;
-      ripgrep.enable = true;
-      bat.enable = true;
-      fzf.enable = true;
+      oxidisation.enable = true;
       fun.enable = true;
       disk-usage.enable = true;
       compression = {
@@ -33,23 +28,16 @@
     core = {
       xdg.enable = true;
     };
-    dev = {
-      python = {
-        enable = true;
-        version = "python313";
-      };
-      rust.enable = true;
-      nix.enable = true;
-    };
+    dev.nix.enable = true;
     programs = {
       firefox.enable = true;
       hyprland.enable = true;
       hyprlock.enable = true;
       rofi.enable = true;
       starship.enable = true;
-      swaync.enable = false;
-      waybar.enable = false;
       hypridle.enable = true;
+      cheatsheet.enable = true;
+      screenrec.enable = true;
       screenshot.enable = true;
       chromium.enable = true;
       better-control.enable = true;
@@ -60,14 +48,6 @@
       media = {
         enable = true;
         gwenview = true;
-      };
-      wlogout = {
-        enable = false;
-        horizontal = false;
-      };
-      discord = {
-        enable = false;
-        arrpc = true;
       };
       vscodium = {
         enable = true;
@@ -94,11 +74,7 @@
   home = {
     username = "${username}";
     homeDirectory = "/home/${username}";
-    packages = [
-      (import ../../packages/list-bindings.nix {inherit pkgs;})
-      (import ../../packages/screenrec.nix {inherit pkgs;})
-      (import ../../packages/walls.nix {inherit pkgs;})
-    ];
+    packages = [(import ../../packages/walls.nix {inherit pkgs;})];
     stateVersion = "25.05";
     file.".face.icon".source = ../../assets/face.png;
   };
