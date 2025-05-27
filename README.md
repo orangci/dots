@@ -33,6 +33,7 @@ Hosts:
 ## Thank you
 - [end-4](https://github.com/end-4) for the Quickshell config
 - the vimjoyer youtube channel, for making immensely helpful videos that saved me hours and hours of pain
+- https://github.com/fxzzi/NixOhEss - the nvf configuration
 - https://github.com/zDyanTB/HyprNova - The wlogout styling.
 - https://github.com/1amSimp1e/dots — i tweaked my starship prompt based off of this guy's prompt
 

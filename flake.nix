@@ -35,6 +35,12 @@
       url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
       inputs.nixpkgs.follows = "nixpkgs-small";
     };
+
+    # fancy nixy neovim
+    nvf = {
+      url = "github:notashelf/nvf";
+      inputs.nixpkgs.follows = "nixpkgs-small";
+    };
   };
 
   outputs = inputs @ {

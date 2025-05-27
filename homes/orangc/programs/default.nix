@@ -15,5 +15,6 @@
     ./media.nix
     ./quickshell
     ./better-control.nix
+    ./nvf.nix
   ];
 }

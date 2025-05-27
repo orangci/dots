@@ -47,6 +47,7 @@
     };
     programs = {
       firefox.enable = true;
+      nvf.enable = false;
       hyprland.enable = true;
       hyprlock.enable = true;
       rofi.enable = true;

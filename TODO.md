@@ -1,8 +1,6 @@
 - multi user support
 - write modules for the homelab
-- set up nvf
 - fix xdg stuff
-- write clipboard module
 - rice starship myself
 
 long terms:
