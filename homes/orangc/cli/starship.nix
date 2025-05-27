@@ -5,14 +5,14 @@
   ...
 }: let
   inherit (lib) mkEnableOption types mkIf;
-  cfg = config.hmModules.programs.starship;
+  cfg = config.hmModules.cli.starship;
   colours = config.stylix.base16Scheme;
 in {
-  options.hmModules.programs.starship = {
+  options.hmModules.cli.starship = {
     enable = mkEnableOption "Enable starship";
   };
   config = mkIf cfg.enable {
-    home.packages = with pkgs; [starship];
+    home.packages = [pkgs.starship];
     home.file.".config/starship.toml".text = ''
       ## ░█▀▀░▀█▀░█▀█░█▀▄░█▀▀░█░█░▀█▀░█▀█
       ## ░▀▀█░░█░░█▀█░█▀▄░▀▀█░█▀█░░█░░█▀▀

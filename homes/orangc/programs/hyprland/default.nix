@@ -40,8 +40,6 @@ in {
           "dbus-update-activation-environment --systemd --all"
           "systemctl --user import-environment QT_QPA_PLATFORMTHEME WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
           "lxqt-policykit-agent"
-          "wl-paste --type text --watch cliphist store"
-          "wl-paste --type image --watch cliphist store"
           "sleep 3; arrpc &"
           "kdeconnect-indicator"
           "sleep 10; cd ~/code/pyminaret; python3 main.py --city Riyadh --country \"Saudi Arabia\" -g 10 -n"
@@ -63,8 +61,6 @@ in {
             "SUPER, P, Pause Media, exec, playerctl play-pause"
             "SUPERSHIFT, P, Next Media, exec, playerctl next"
             "SUPERALT, P, Previous Media, exec, playerctl previous"
-            "SUPER,  V, Open Clipboard, exec, cliphist list | rofi -dmenu -theme clipboard.rasi | cliphist decode | wl-copy" # open clipboard
-            "SUPERSHIFT, V, Clear Clipboard, exec, cliphist wipe # clear clipboard"
             "SUPERSHIFT, SPACE, Move To Special Workspace, movetoworkspace,special"
             "SUPER, SPACE, Open Special Workspace, togglespecialworkspace"
             "SUPER, B, Blur/Unblur Current Window, exec, hyprctl setprop active opaque toggle # toggle transparency for le active window"

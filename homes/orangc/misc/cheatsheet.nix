@@ -5,7 +5,7 @@
   ...
 }: let
   inherit (lib) mkEnableOption mkIf;
-  cfg = config.hmModules.programs.cheatsheet;
+  cfg = config.hmModules.misc.cheatsheet;
 
   cheatsheetScript = ''
     #!/usr/bin/env bash
@@ -104,7 +104,7 @@
       "''${args[@]}"
   '';
 in {
-  options.hmModules.programs.cheatsheet = {
+  options.hmModules.misc.cheatsheet = {
     enable = mkEnableOption "Enable cheatsheet script";
   };
 

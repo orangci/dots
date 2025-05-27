@@ -2,12 +2,10 @@
   imports = [
     ./hyprland
     ./rofi
-    ./starship.nix
     ./waybar
     ./wlogout
     ./firefox
     ./hypridle.nix
-    ./screenshot.nix
     ./swaync
     ./discord
     ./hyprlock
@@ -17,7 +15,5 @@
     ./media.nix
     ./quickshell
     ./better-control.nix
-    ./cheatsheet.nix
-    ./screenrec.nix
   ];
 }

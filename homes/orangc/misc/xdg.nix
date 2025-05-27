@@ -5,7 +5,7 @@
   ...
 }: let
   inherit (lib) mkEnableOption mkIf types;
-  cfg = config.hmModules.core.xdg;
+  cfg = config.hmModules.misc.xdg;
   browser = ["firefox.desktop"];
   fileManager = ["thunar.desktop"];
   editor = ["codium.desktop"];
@@ -55,7 +55,7 @@
     "x-scheme-handler/mailto" = browser;
   };
 in {
-  options.hmModules.core.xdg = {
+  options.hmModules.misc.xdg = {
     enable = mkEnableOption "Enable XDG";
   };
   config = mkIf cfg.enable {

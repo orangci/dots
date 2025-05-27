@@ -5,7 +5,7 @@
   ...
 }: let
   inherit (lib) mkEnableOption mkIf;
-  cfg = config.hmModules.programs.screenrec;
+  cfg = config.hmModules.misc.screenrec;
 
   screenrecPackage = pkgs.writeShellScriptBin "screenrec" ''
     output_file="/tmp/screenrec.mov"
@@ -61,7 +61,7 @@
     notify-send "Screen Recording" "Recording saved to $save_location"
   '';
 in {
-  options.hmModules.programs.screenrec.enable = mkEnableOption "Enable screenrec script";
+  options.hmModules.misc.screenrec.enable = mkEnableOption "Enable screenrec script";
 
   config = mkIf cfg.enable {
     wayland.windowManager.hyprland.settings.bindd = [

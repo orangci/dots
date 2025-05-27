@@ -6,5 +6,6 @@
     ./compression.nix
     ./disk-usage.nix
     ./media.nix
+    ./starship.nix
   ];
 }

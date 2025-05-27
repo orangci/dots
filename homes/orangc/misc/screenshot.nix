@@ -5,7 +5,7 @@
   ...
 }: let
   inherit (lib) mkEnableOption mkIf;
-  cfg = config.hmModules.programs.screenshot;
+  cfg = config.hmModules.misc.screenshot;
 
   screenshotScript = ''
     #!/usr/bin/env bash
@@ -77,7 +77,7 @@
     usage
   '';
 in {
-  options.hmModules.programs.screenshot = {
+  options.hmModules.misc.screenshot = {
     enable = mkEnableOption "Enable screenshot script";
   };
 

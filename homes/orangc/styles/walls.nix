@@ -30,6 +30,8 @@ in {
             sleep $(( ${toString (cfg.timeout * 60)} ))
         done
       '')
+      pkgs.swww
+      pkgs.lutgen
     ];
   };
 }

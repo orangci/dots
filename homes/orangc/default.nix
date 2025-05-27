@@ -3,7 +3,7 @@
     ./programs
     ./styles
     ./cli
+    ./misc
     ./dev
-    ./xdg.nix
   ];
 }

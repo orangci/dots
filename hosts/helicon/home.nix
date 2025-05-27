@@ -10,6 +10,7 @@
     cli = {
       fetch.enable = true;
       shell.program = "fish";
+      starship.enable = true;
       oxidisation.enable = true;
       fun.enable = true;
       disk-usage.enable = true;
@@ -25,8 +26,12 @@
         github = true;
       };
     };
-    core = {
+    misc = {
       xdg.enable = true;
+      clipboard.enable = true;
+      cheatsheet.enable = true;
+      screenrec.enable = true;
+      screenshot.enable = true;
     };
     dev.nix.enable = true;
     programs = {
@@ -34,11 +39,7 @@
       hyprland.enable = true;
       hyprlock.enable = true;
       rofi.enable = true;
-      starship.enable = true;
       hypridle.enable = true;
-      cheatsheet.enable = true;
-      screenrec.enable = true;
-      screenshot.enable = true;
       chromium.enable = true;
       better-control.enable = true;
       quickshell = {
@@ -88,6 +89,5 @@
       uris = ["qemu:///system"];
     };
   };
-  services.cliphist.enable = true;
   programs.home-manager.enable = true;
 }

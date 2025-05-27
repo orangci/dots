@@ -18,12 +18,5 @@
     obsidian # BIG 1.8GB
     pinta # half a GB
     otpclient # half a GB
-
-    # wallpaper script
-    swww
-    lutgen
-
-    # clipboard module
-    wl-clipboard
   ];
 }
