@@ -16,10 +16,9 @@ in {
     fonts = {
       packages = with pkgs; [
         noto-fonts-cjk-sans
-        font-awesome
         ubuntu-sans
-        merriweather-sans
-        atkinson-hyperlegible
+        raleway
+        maple-mono.truetype
         merriweather
         lexend
         material-icons

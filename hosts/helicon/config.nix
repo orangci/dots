@@ -24,7 +24,6 @@
     };
     gaming.enable = false;
     styles = {
-      stylix.enable = true;
       fonts.enable = true;
     };
   };

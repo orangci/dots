@@ -18,6 +18,7 @@ in {
       enable = true;
       systemd.enable = true;
       package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+      portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
 
       settings = {
         env = [
@@ -31,7 +32,7 @@ in {
           "QT_QPA_PLATFORM,wayland;xcb"
           "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
           "QT_AUTO_SCREEN_SCALE_FACTOR,1"
-          "QT_STYLE_OVERRIDE,kvantum-dark"
+          "QT_STYLE_OVERRIDE,breeze-dark"
           "SDL_VIDEODRIVER,x11"
           "MOZ_ENABLE_WAYLAND,1"
         ];

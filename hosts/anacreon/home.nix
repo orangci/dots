@@ -1,7 +1,6 @@
 {
   pkgs,
   username,
-  host,
   ...
 }: {
   imports = [../../homes/${username}];
@@ -93,7 +92,7 @@
         # Choose from https://tinted-theming.github.io/tinted-gallery/
         # if you want a light theme, i strongly recommend gruvbox-material-light-medium
         # i usually default to catppuccin-mocha or rose-pine
-        theme = "catppuccin-mocha";
+        theme = "rose-pine";
       };
     };
   };

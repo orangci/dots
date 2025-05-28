@@ -49,32 +49,30 @@
     ...
   }: let
     system = "x86_64-linux";
-    host = "anacreon";
     username = "orangc";
 
-    pkgs = import nixpkgs {
-      inherit system;
-      config.allowUnfree = true;
-    };
+    nixosMachine = {host}:
+      nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs system host username;};
+        modules = [
+          ./hosts/${host}/config.nix
+          home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              extraSpecialArgs = {inherit inputs system host username;};
+              useUserPackages = true;
+              useGlobalPkgs = true;
+              backupFileExtension = "backup";
+              users.${username} = import ./hosts/${host}/home.nix;
+            };
+          }
+        ];
+      };
   in {
-    homeConfigurations."${username}@${host}" = home-manager.lib.homeManagerConfiguration {
-      pkgs = pkgs;
-      extraSpecialArgs = {
-        inherit system;
-        inherit inputs;
-        inherit username;
-        inherit host;
-      };
-      modules = [./hosts/${host}/home.nix];
-    };
-    nixosConfigurations."${host}" = nixpkgs.lib.nixosSystem {
-      specialArgs = {
-        inherit system;
-        inherit inputs;
-        inherit username;
-        inherit host;
-      };
-      modules = [./hosts/${host}/config.nix];
+    nixosConfigurations = {
+      anacreon = nixosMachine {host = "anacreon";};
+      helicon = nixosMachine {host = "helicon";};
+      urithiru = nixosMachine {host = "urithiru";};
     };
   };
 }

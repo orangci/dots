@@ -1,7 +1,6 @@
 {
   pkgs,
   username,
-  host,
   ...
 }: {
   imports = [../../homes/${username}];

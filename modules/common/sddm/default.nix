@@ -9,6 +9,11 @@
 in {
   options.modules.dm.sddm = {
     enable = mkEnableOption "Enable SDDM";
+    theme = lib.mkOption {
+      type = lib.types.str;
+      default = "tokyo-night";
+      description = "The SDDM theme to use";
+    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -22,9 +27,9 @@ in {
     ];
 
     services.displayManager.sddm = {
-      enable = true; # Enable SDDM.
+      enable = true;
       wayland.enable = true;
-      theme = "tokyo-night";
+      theme = cfg.theme;
     };
   };
 }

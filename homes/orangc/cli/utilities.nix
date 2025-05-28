@@ -50,7 +50,6 @@ in {
       programs.btop.enable = true;
       home.packages = with pkgs; [tokei killall tree libqalculate];
       hmModules.cli.shell.extraAliases = {
-        pkill = "killall";
         top = "btop";
       };
     })
