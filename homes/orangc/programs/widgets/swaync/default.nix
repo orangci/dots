@@ -6,10 +6,10 @@
   ...
 }: let
   inherit (lib) mkEnableOption types mkIf;
-  cfg = config.hmModules.programs.swaync;
+  cfg = config.hmModules.programs.widgets.swaync;
   colours = config.stylix.base16Scheme;
 in {
-  options.hmModules.programs.swaync = {
+  options.hmModules.programs.widgets.swaync = {
     enable = mkEnableOption "Enable swaync";
   };
   config = mkIf cfg.enable {

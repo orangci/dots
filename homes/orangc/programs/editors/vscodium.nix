@@ -5,9 +5,9 @@
   ...
 }: let
   inherit (lib) mkEnableOption mkOption types mkIf;
-  cfg = config.hmModules.programs.vscodium;
+  cfg = config.hmModules.programs.editors.vscodium;
 in {
-  options.hmModules.programs.vscodium = {
+  options.hmModules.programs.editors.vscodium = {
     enable = mkEnableOption "Enable VSCodium";
 
     webdev = mkOption {

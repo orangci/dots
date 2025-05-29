@@ -45,16 +45,33 @@
       misc.enable = true;
     };
     programs = {
-      firefox.enable = true;
-      nvf.enable = false;
-      hyprland.enable = true;
-      hyprlock.enable = true;
-      rofi.enable = true;
-      swaync.enable = false;
-      waybar.enable = false;
-      hypridle.enable = true;
-      chromium.enable = true;
       better-control.enable = true;
+      editors = {
+        nvf.enable = false;
+        micro.enable = true;
+        vscodium = {
+          enable = true;
+          webdev = true;
+        };
+      };
+      browsers = {
+        firefox.enable = true;
+        chromium.enable = true;
+      };
+      hypr = {
+        land.enable = true;
+        lock.enable = true;
+        idle.enable = true;
+      };
+      widgets = {
+        wlogout = {
+          enable = false;
+          horizontal = false;
+        };
+        rofi.enable = true;
+        swaync.enable = false;
+        waybar.enable = false;
+      };
       quickshell = {
         enable = true;
         workspaces = 7;
@@ -63,17 +80,9 @@
         enable = true;
         gwenview = true;
       };
-      wlogout = {
-        enable = false;
-        horizontal = false;
-      };
       discord = {
         enable = false;
         arrpc = true;
-      };
-      vscodium = {
-        enable = true;
-        webdev = true;
       };
       terminal = {
         enable = true;

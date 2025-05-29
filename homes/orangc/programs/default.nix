@@ -1,20 +1,13 @@
 {
   imports = [
-    ./hyprland
-    ./rofi
-    ./waybar
-    ./wlogout
-    ./firefox
-    ./hypridle.nix
-    ./swaync
+    ./browsers
+    ./widgets
+    ./hypr
+    ./editors
+    ./quickshell
     ./discord
-    ./hyprlock
-    ./vscodium.nix
-    ./chromium.nix
     ./terminal.nix
     ./media.nix
-    ./quickshell
     ./better-control.nix
-    ./nvf.nix
   ];
 }

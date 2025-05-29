@@ -7,10 +7,10 @@
 }: let
   inherit (lib) mkEnableOption mkOption types mkIf;
 
-  cfg = config.hmModules.programs.nvf;
+  cfg = config.hmModules.programs.editors.nvf;
 in {
   imports = [inputs.nvf.homeManagerModules.default];
-  options.hmModules.programs.nvf.enable = mkEnableOption "Enable neovim with nvf";
+  options.hmModules.programs.editors.nvf.enable = mkEnableOption "Enable neovim with nvf";
 
   config = mkIf cfg.enable {
     programs.nvf = {

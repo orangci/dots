@@ -5,9 +5,9 @@
   ...
 }: let
   inherit (lib) mkEnableOption mkOption types mkIf;
-  cfg = config.hmModules.programs.chromium;
+  cfg = config.hmModules.programs.browsers.chromium;
 in {
-  options.hmModules.programs.chromium = {
+  options.hmModules.programs.browsers.chromium = {
     enable = mkEnableOption "Enable Chromium";
   };
 

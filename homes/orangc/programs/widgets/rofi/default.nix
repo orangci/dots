@@ -5,14 +5,14 @@
   ...
 }: let
   inherit (lib) mkEnableOption types mkIf;
-  cfg = config.hmModules.programs.rofi;
+  cfg = config.hmModules.programs.widgets.rofi;
   colours = config.stylix.base16Scheme;
 in {
   imports = [
     ./selector.nix
     ./selector-big.nix
   ];
-  options.hmModules.programs.rofi = {
+  options.hmModules.programs.widgets.rofi = {
     enable = mkEnableOption "Enable rofi";
   };
   config = mkIf cfg.enable {

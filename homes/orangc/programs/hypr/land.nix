@@ -6,10 +6,10 @@
   ...
 }: let
   inherit (lib) mkEnableOption mkOption types mkIf;
-  cfg = config.hmModules.programs.hyprland;
+  cfg = config.hmModules.programs.hypr.land;
   colours = config.stylix.base16Scheme;
 in {
-  options.hmModules.programs.hyprland = {
+  options.hmModules.programs.hypr.land = {
     enable = mkEnableOption "Enable Hyprland";
   };
 

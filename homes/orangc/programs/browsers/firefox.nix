@@ -6,9 +6,9 @@
   ...
 }: let
   inherit (lib) mkEnableOption types mkIf;
-  cfg = config.hmModules.programs.firefox;
+  cfg = config.hmModules.programs.browsers.firefox;
 in {
-  options.hmModules.programs.firefox = {
+  options.hmModules.programs.browsers.firefox = {
     enable = mkEnableOption "Enable firefox";
   };
   config = mkIf cfg.enable {
@@ -128,7 +128,7 @@ in {
           "device.sensors.orientation.enabled" = false;
           "device.sensors.proximity.enabled" = false;
           "dom.battery.enabled" = false;
-          "dom.event.clipboardevents.enabled" = false;
+          "dom.event.clipboardevents.enabled" = true;
           "dom.private-attribution.submission.enabled" = false;
           "experiments.activeExperiment" = false;
           "experiments.enabled" = false;

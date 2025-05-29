@@ -13,6 +13,9 @@
       oxidisation.enable = true;
       fun.enable = true;
       disk-usage.enable = true;
+      media.enable = true;
+      utilities.enable = true;
+      benchmarking.enable = true;
       compression = {
         enable = true;
         zip = true;
@@ -32,15 +35,43 @@
       screenrec.enable = true;
       screenshot.enable = true;
     };
-    dev.nix.enable = true;
+    dev = {
+      python = {
+        enable = true;
+        version = "python313";
+      };
+      rust.enable = true;
+      nix.enable = true;
+      misc.enable = true;
+    };
     programs = {
-      firefox.enable = true;
-      hyprland.enable = true;
-      hyprlock.enable = true;
-      rofi.enable = true;
-      hypridle.enable = true;
-      chromium.enable = true;
       better-control.enable = true;
+      editors = {
+        nvf.enable = false;
+        micro.enable = true;
+        vscodium = {
+          enable = true;
+          webdev = true;
+        };
+      };
+      browsers = {
+        firefox.enable = true;
+        chromium.enable = true;
+      };
+      hypr = {
+        land.enable = true;
+        lock.enable = true;
+        idle.enable = true;
+      };
+      widgets = {
+        wlogout = {
+          enable = false;
+          horizontal = false;
+        };
+        rofi.enable = true;
+        swaync.enable = false;
+        waybar.enable = false;
+      };
       quickshell = {
         enable = true;
         workspaces = 7;
@@ -49,9 +80,9 @@
         enable = true;
         gwenview = true;
       };
-      vscodium = {
-        enable = true;
-        webdev = true;
+      discord = {
+        enable = false;
+        arrpc = true;
       };
       terminal = {
         enable = true;
@@ -70,7 +101,7 @@
         # Choose from https://tinted-theming.github.io/tinted-gallery/
         # if you want a light theme, i strongly recommend gruvbox-material-light-medium
         # i usually default to catppuccin-mocha or rose-pine
-        theme = "catppuccin-mocha";
+        theme = "gruvbox-material-light-medium";
       };
     };
   };

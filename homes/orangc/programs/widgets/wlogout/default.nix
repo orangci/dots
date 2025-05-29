@@ -5,7 +5,7 @@
   ...
 }: let
   inherit (lib) mkEnableOption mkOption types mkIf;
-  cfg = config.hmModules.programs.wlogout;
+  cfg = config.hmModules.programs.widgets.wlogout;
 
   logoutScript = pkgs.writeShellScriptBin "logout-exit" ''
     wlogout --css ~/.config/wlogout/${
@@ -19,7 +19,7 @@
     }
   '';
 in {
-  options.hmModules.programs.wlogout = {
+  options.hmModules.programs.widgets.wlogout = {
     enable = mkEnableOption "Enable wlogout";
     horizontal = mkOption {
       type = types.bool;
