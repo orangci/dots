@@ -1,12 +1,12 @@
 {
   imports = [
+    ./sddm
     ./bluetooth.nix
     ./boilerplate.nix
     ./networking.nix
     ./printing.nix
     ./sound.nix
-    ./sddm
+    ./sops.nix
     ./virtualisation.nix
-    # ./docker.nix
   ];
 }

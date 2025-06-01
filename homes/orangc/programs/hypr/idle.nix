@@ -22,7 +22,7 @@ in {
         };
         listener = [
           {
-            timeout = 2 * 60; # minutes * 60 = seconds
+            timeout = 10 * 60; # minutes * 60 = seconds
             on-timeout = "hyprlock";
           }
           {

@@ -1,5 +1,5 @@
 {
-  description = "orangc's dots";
+  description = "orangc's NixOS flake";
   inputs = {
     # unstable nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -39,6 +39,12 @@
     # fancy nixy neovim
     nvf = {
       url = "github:notashelf/nvf";
+      inputs.nixpkgs.follows = "nixpkgs-small";
+    };
+
+    # secrets management
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs-small";
     };
   };

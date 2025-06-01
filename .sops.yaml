@@ -1,0 +1,12 @@
+keys:
+  - &master age1jw4lthrhthncg578t9uh7qw6jpef6f75agekz6vyrt45fnsr4uvs2y2tpf
+  - &anacreon_admin age1ar9ry945p2222nqmar0gwqxq3nxemestaluc0kdvjdw3dhz37pyqw87ngy
+  - &anacreon_server age1fcpq4yctx8rpvt30hy9p9pfmkttshckknl8pguksgdgqnpwkmd3sa2uflw
+
+creation_rules:
+  - path_regex: secrets/secrets.yaml$
+    key_groups:
+      - age:
+          - *master
+          - *anacreon_admin
+          - *anacreon_server

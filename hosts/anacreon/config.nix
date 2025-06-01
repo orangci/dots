@@ -16,6 +16,7 @@
       sound.enable = true;
       networking.enable = true;
       virtualisation.enable = false;
+      sops.enable = true;
     };
     programs = {
       thunar.enable = true;
