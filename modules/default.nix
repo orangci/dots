@@ -3,6 +3,7 @@
     ./drivers
     ./common
     ./programs
+    ./server
     ./styles
   ];
 }

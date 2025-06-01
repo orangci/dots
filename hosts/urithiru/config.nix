@@ -12,7 +12,23 @@
     common = {
       docker.enable = true;
       networking.enable = true;
+      secrets.enable = true;
       virtualisation.enable = false;
+    };
+    server = {
+      # TODO: test with nix run .#nixosConfigurations.urithiru.config.system.build.vm
+      cloudflared.enable = true; # TODO: complete module
+      caddy.enable = true; # TODO: complete module
+      technitium.enable = true;
+      searxng.enable = true;
+      uptime-kuma.enable = true;
+      vaultwarden.enable = true;
+      microbin.enable = true;
+      ntfy.enable = true;
+      glance.enable = true;
+      gitea.enable = true;
+      calibre-web.enable = true;
+      cryptpad.enable = false;
     };
     styles.fonts.enable = true;
   };

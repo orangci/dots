@@ -15,6 +15,7 @@ in {
   config = mkIf cfg.enable {
     programs.nvf = {
       enable = true;
+      defaultEditor = true;
       # this nvf configuration is based on https://github.com/fxzzi/NixOhEss/blob/main/modules/programs/nvf.nix
       # thanks fazzi
       settings.vim = {

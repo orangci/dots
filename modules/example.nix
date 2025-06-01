@@ -8,7 +8,7 @@
   cfg = config.modules.category.name;
 in {
   options.modules.category.name = {
-    enable = mkEnableOption "Example module";
+    enable = mkEnableOption "Enable name";
 
     exampleOption = lib.mkOption {
       type = lib.types.str;
