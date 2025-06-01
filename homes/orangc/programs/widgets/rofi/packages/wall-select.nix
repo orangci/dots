@@ -1,4 +1,4 @@
-{pkgs}:
+{ pkgs }:
 pkgs.writeShellScriptBin "wall-select" ''
   # Predefined folders
   folders=(

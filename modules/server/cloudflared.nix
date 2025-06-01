@@ -1,12 +1,13 @@
 {
   config,
   lib,
-  pkgs,
   ...
-}: let
-  inherit (lib) mkEnableOption mkOption types;
+}:
+let
+  inherit (lib) mkEnableOption;
   cfg = config.modules.server.cloudflared;
-in {
+in
+{
   options.modules.server.cloudflared = {
     enable = mkEnableOption "Enable Cloudflared";
   };

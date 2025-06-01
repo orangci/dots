@@ -1,15 +1,15 @@
 {
   config,
   pkgs,
-  inputs,
   username,
   ...
-}: {
+}:
+{
   boot = {
     # Kernel
     kernelPackages = pkgs.linuxPackages_latest;
-    kernelModules = ["v4l2loopback"];
-    extraModulePackages = [config.boot.kernelPackages.v4l2loopback];
+    kernelModules = [ "v4l2loopback" ];
+    extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];
     # Needed For some steam games
     kernel.sysctl = {
       "vm.max_map_count" = 2147483642;
@@ -102,8 +102,8 @@
         "nix-command"
         "flakes"
       ];
-      substituters = ["https://hyprland.cachix.org"];
-      trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
+      substituters = [ "https://hyprland.cachix.org" ];
+      trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
     };
     gc = {
       automatic = true;

@@ -1,12 +1,13 @@
 {
-  pkgs,
   config,
   lib,
   ...
-}: let
-  inherit (lib) mkEnableOption mkOption types;
+}:
+let
+  inherit (lib) mkEnableOption;
   cfg = config.modules.server.glance;
-in {
+in
+{
   options.modules.server.glance.enable = mkEnableOption "Enable glance";
 
   config = lib.mkIf cfg.enable {

@@ -3,29 +3,13 @@
   config,
   lib,
   ...
-}: let
-  inherit (lib) mkEnableOption mkIf types;
+}:
+let
+  inherit (lib) mkEnableOption mkIf;
   cfg = config.hmModules.misc.xdg;
-  browser = ["firefox.desktop"];
-  fileManager = ["thunar.desktop"];
-  editor = ["codium.desktop"];
-  text = ["micro.desktop"];
-  home.file."${config.xdg.dataHome}/applications/micro.desktop".text = ''
-    [Desktop Entry]
-    Name=Micro
-    GenericName=Text Editor
-    Comment=Edit text files in a terminal
-
-    Icon=micro
-    Type=Application
-    Categories=Utility;TextEditor;Development;
-    Keywords=text;editor;syntax;terminal;
-
-    Exec=micro %F
-    StartupNotify=false
-    Terminal=true
-    MimeType=text/plain;text/x-chdr;text/x-csrc;text/x-c++hdr;text/x-c++src;text/x-java;text/x-dsrc;text/x-pascal;text/x-perl;text/x-python;application/x-php;application/x-httpd-php3;application/x-httpd-php4;application/x-httpd-php5;application/xml;text/html;text/css;text/x-sql;text/x-diff;
-  '';
+  browser = [ "firefox.desktop" ];
+  fileManager = [ "thunar.desktop" ];
+  editor = [ "codium.desktop" ];
 
   associations = {
     "text/html" = browser;
@@ -44,17 +28,18 @@
     "inode/directory" = fileManager;
     "application/x-xz-compressed-tar" = fileManager;
 
-    "audio/*" = ["mpv.desktop"];
-    "video/*" = ["mpv.desktop"];
-    "image/*" = ["org.kde.kdegraphics.gwenview.lib"];
+    "audio/*" = [ "mpv.desktop" ];
+    "video/*" = [ "mpv.desktop" ];
+    "image/*" = [ "org.kde.kdegraphics.gwenview.lib" ];
     "application/json" = editor;
     "application/pdf" = browser;
 
-    "x-scheme-handler/tg" = ["telegramdesktop.desktop"];
-    "x-scheme-handler/discord" = ["discord.desktop"];
+    "x-scheme-handler/tg" = [ "telegramdesktop.desktop" ];
+    "x-scheme-handler/discord" = [ "discord.desktop" ];
     "x-scheme-handler/mailto" = browser;
   };
-in {
+in
+{
   options.hmModules.misc.xdg = {
     enable = mkEnableOption "Enable XDG";
   };

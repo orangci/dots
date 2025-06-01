@@ -3,10 +3,12 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   inherit (lib) mkEnableOption mkIf;
   cfg = config.hmModules.programs.media;
-in {
+in
+{
   options.hmModules.programs.media = {
     enable = mkEnableOption "Enable MPV media player with scripts";
 
@@ -33,7 +35,7 @@ in {
       }
 
       (mkIf cfg.gwenview {
-        home.packages = [pkgs.libsForQt5.gwenview];
+        home.packages = [ pkgs.libsForQt5.gwenview ];
       })
 
       (mkIf cfg.imv {
@@ -45,7 +47,7 @@ in {
       })
 
       (mkIf cfg.qimgv {
-        home.packages = [pkgs.qimgv];
+        home.packages = [ pkgs.qimgv ];
       })
     ]
   );

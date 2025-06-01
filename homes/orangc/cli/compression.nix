@@ -3,10 +3,12 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   inherit (lib) mkEnableOption mkIf;
   cfg = config.hmModules.cli.compression;
-in {
+in
+{
   options.hmModules.cli.compression = {
     enable = mkEnableOption "Enable compression CLI utilities";
 
@@ -15,24 +17,29 @@ in {
     gui = mkEnableOption "Include file-roller GUI";
   };
 
-  config = mkIf cfg.enable (lib.mkMerge [
-    {
-      hmModules.cli.shell.extraAliases = {
-        mktar = "tar -czvf";
-        extar = "tar -xzvf";
-      };
-    }
+  config = mkIf cfg.enable (
+    lib.mkMerge [
+      {
+        hmModules.cli.shell.extraAliases = {
+          mktar = "tar -czvf";
+          extar = "tar -xzvf";
+        };
+      }
 
-    (mkIf cfg.zip {
-      home.packages = with pkgs; [zip unzip];
-    })
+      (mkIf cfg.zip {
+        home.packages = with pkgs; [
+          zip
+          unzip
+        ];
+      })
 
-    (mkIf cfg.winrar {
-      home.packages = with pkgs; [unar];
-    })
+      (mkIf cfg.winrar {
+        home.packages = with pkgs; [ unar ];
+      })
 
-    (mkIf cfg.gui {
-      home.packages = with pkgs; [file-roller];
-    })
-  ]);
+      (mkIf cfg.gui {
+        home.packages = with pkgs; [ file-roller ];
+      })
+    ]
+  );
 }

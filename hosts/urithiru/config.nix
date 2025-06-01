@@ -2,7 +2,8 @@
   pkgs,
   username,
   ...
-}: {
+}:
+{
   imports = [
     ./hardware.nix
     ../../modules
@@ -60,7 +61,7 @@
       ];
       shell = pkgs.fish;
       ignoreShellProgramCheck = true;
-      packages = with pkgs; [];
+      packages = with pkgs; [ ];
     };
   };
 }

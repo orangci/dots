@@ -2,12 +2,13 @@
   pkgs,
   config,
   lib,
-  inputs,
   ...
-}: let
-  inherit (lib) mkEnableOption mkOption types;
+}:
+let
+  inherit (lib) mkEnableOption;
   cfg = config.modules.styles.fonts;
-in {
+in
+{
   options.modules.styles.fonts = {
     enable = mkEnableOption "Enable fonts";
   };

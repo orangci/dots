@@ -3,7 +3,8 @@
   config,
   lib,
   ...
-}: let
+}:
+let
   inherit (lib) mkEnableOption mkIf;
   cfg = config.hmModules.misc.screenshot;
 
@@ -76,14 +77,15 @@
 
     usage
   '';
-in {
+in
+{
   options.hmModules.misc.screenshot = {
     enable = mkEnableOption "Enable screenshot script";
   };
 
   config = mkIf cfg.enable {
     wayland.windowManager.hyprland.settings = {
-      bindld = [",Print, Fullscreen Screenshot, exec, screenshot --fullscreen --swappy"];
+      bindld = [ ",Print, Fullscreen Screenshot, exec, screenshot --fullscreen --swappy" ];
       bindd = [
         "Super+Shift,T, Copy Text From Screenshot, exec, screenshot --ocr"
         "SUPER, S, Area Screenshot, exec, screenshot --area"
@@ -98,7 +100,14 @@ in {
       wayfreeze
       (pkgs.writeShellApplication {
         name = "screenshot";
-        runtimeInputs = with pkgs; [grim slurp tesseract wl-clipboard swappy wayfreeze];
+        runtimeInputs = with pkgs; [
+          grim
+          slurp
+          tesseract
+          wl-clipboard
+          swappy
+          wayfreeze
+        ];
         text = screenshotScript;
       })
     ];

@@ -3,10 +3,12 @@
   config,
   lib,
   ...
-}: let
-  inherit (lib) mkEnableOption mkOption types;
+}:
+let
+  inherit (lib) mkEnableOption;
   cfg = config.modules.programs.appimages;
-in {
+in
+{
   options.modules.programs.appimages = {
     enable = mkEnableOption "Enable AppImages";
   };
@@ -21,6 +23,6 @@ in {
       magicOrExtension = ''\x7fELF....AI\x02'';
     };
 
-    environment.systemPackages = [pkgs.appimage-run];
+    environment.systemPackages = [ pkgs.appimage-run ];
   };
 }

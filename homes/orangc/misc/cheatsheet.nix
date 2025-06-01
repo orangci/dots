@@ -3,7 +3,8 @@
   config,
   lib,
   ...
-}: let
+}:
+let
   inherit (lib) mkEnableOption mkIf;
   cfg = config.hmModules.misc.cheatsheet;
 
@@ -103,17 +104,20 @@
       --timeout-indicat \
       "''${args[@]}"
   '';
-in {
+in
+{
   options.hmModules.misc.cheatsheet = {
     enable = mkEnableOption "Enable cheatsheet script";
   };
 
   config = mkIf cfg.enable {
-    wayland.windowManager.hyprland.settings.bindd = ["SUPERSHIFT, SLASH, Open Cheatsheet, exec,list-bindings"];
+    wayland.windowManager.hyprland.settings.bindd = [
+      "SUPERSHIFT, SLASH, Open Cheatsheet, exec,list-bindings"
+    ];
     home.packages = with pkgs; [
       (pkgs.writeShellApplication {
         name = "cheatsheet";
-        runtimeInputs = with pkgs; [yad];
+        runtimeInputs = with pkgs; [ yad ];
         text = cheatsheetScript;
       })
     ];

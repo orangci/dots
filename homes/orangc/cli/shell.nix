@@ -1,12 +1,17 @@
 {
-  pkgs,
   config,
   host,
   username,
   lib,
   ...
-}: let
-  inherit (lib) mkMerge mkOption types mkIf;
+}:
+let
+  inherit (lib)
+    mkMerge
+    mkOption
+    types
+    mkIf
+    ;
 
   cfg = config.hmModules.cli.shell;
 
@@ -25,7 +30,10 @@
     gcnix = "sudo nh clean all && nix store optimise";
   };
 
-  mergedAliases = mkMerge [commonAliases cfg.extraAliases];
+  mergedAliases = mkMerge [
+    commonAliases
+    cfg.extraAliases
+  ];
 
   sharedInit = ''
     if [ -f /tmp/.current_wallpaper_path ]; then
@@ -35,16 +43,23 @@
       export $(grep -v '^#' ~/.config/secrets.env | xargs)
     fi
   '';
-in {
+in
+{
   options.hmModules.cli.shell = {
     program = mkOption {
-      type = types.nullOr (types.enum ["bash" "zsh" "fish"]);
+      type = types.nullOr (
+        types.enum [
+          "bash"
+          "zsh"
+          "fish"
+        ]
+      );
       default = null;
       description = "Shell to use and configure (bash, zsh, fish). Leave null to disable.";
     };
     extraAliases = mkOption {
       type = types.attrsOf types.str;
-      default = {};
+      default = { };
       description = "Extra shell aliases collected from modules.";
     };
   };

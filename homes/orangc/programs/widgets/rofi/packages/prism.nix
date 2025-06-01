@@ -1,4 +1,4 @@
-{pkgs}:
+{ pkgs }:
 pkgs.writeShellScriptBin "rofi-prism" ''
   # Define the instances directory
   INSTANCES_DIR="$HOME/.local/share/PrismLauncher/instances"

@@ -1,12 +1,13 @@
 {
-  pkgs,
   config,
   lib,
   ...
-}: let
-  inherit (lib) mkEnableOption mkOption types;
+}:
+let
+  inherit (lib) mkEnableOption;
   cfg = config.modules.server.gitea;
-in {
+in
+{
   options.modules.server.gitea.enable = mkEnableOption "Enable gitea";
 
   config = lib.mkIf cfg.enable {
@@ -33,7 +34,13 @@ in {
         };
         repository = {
           # PREFERRED_LICENSES = ""; TODO
-          DEFAULT_REPO_UNITS = ["repo.code" "repo.issues" "repo.pulls" "repo.wiki" "repo.actions"];
+          DEFAULT_REPO_UNITS = [
+            "repo.code"
+            "repo.issues"
+            "repo.pulls"
+            "repo.wiki"
+            "repo.actions"
+          ];
           DISABLE_STARS = true;
           DEFAULT_BRANCH = "master";
         };

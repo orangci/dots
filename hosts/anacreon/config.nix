@@ -2,7 +2,8 @@
   pkgs,
   username,
   ...
-}: {
+}:
+{
   imports = [
     ./hardware.nix
     ../../modules
@@ -60,7 +61,7 @@
   time.timeZone = "Asia/Riyadh";
   hardware.logitech.wireless.enable = true;
 
-  environment.systemPackages = with pkgs; [];
+  environment.systemPackages = with pkgs; [ ];
 
   users.users = {
     "${username}" = {
@@ -78,7 +79,7 @@
       ];
       shell = pkgs.fish;
       ignoreShellProgramCheck = true;
-      packages = with pkgs; [];
+      packages = with pkgs; [ ];
     };
   };
 }

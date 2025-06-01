@@ -1,6 +1,8 @@
-{config, ...}: let
+{ config, ... }:
+let
   colours = config.stylix.base16Scheme;
-in {
+in
+{
   # For running quick bash commands
   home.file.".config/rofi/selector.rasi".text = ''
     // Config //

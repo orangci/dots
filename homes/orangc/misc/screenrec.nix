@@ -3,7 +3,8 @@
   config,
   lib,
   ...
-}: let
+}:
+let
   inherit (lib) mkEnableOption mkIf;
   cfg = config.hmModules.misc.screenrec;
 
@@ -60,7 +61,8 @@
     mv "$output_file" "$save_location"
     notify-send "Screen Recording" "Recording saved to $save_location"
   '';
-in {
+in
+{
   options.hmModules.misc.screenrec.enable = mkEnableOption "Enable screenrec script";
 
   config = mkIf cfg.enable {
@@ -69,6 +71,10 @@ in {
       "SUPERALT, O, Start Screen Recording (Area), exec, screenrec --area"
       "SUPERSHIFT, O, Stop Screen Recording, exec, pkill wl-screenrec"
     ];
-    home.packages = [screenrecPackage pkgs.wl-screenrec pkgs.yad];
+    home.packages = [
+      screenrecPackage
+      pkgs.wl-screenrec
+      pkgs.yad
+    ];
   };
 }

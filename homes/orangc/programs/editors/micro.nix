@@ -1,12 +1,13 @@
 {
   config,
   lib,
-  pkgs,
   ...
-}: let
+}:
+let
   inherit (lib) mkForce mkEnableOption mkIf;
   cfg = config.hmModules.programs.editors.micro;
-in {
+in
+{
   options.hmModules.programs.editors.micro.enable = mkEnableOption "Enable micro";
 
   config = mkIf cfg.enable {

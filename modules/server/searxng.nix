@@ -3,10 +3,12 @@
   config,
   lib,
   ...
-}: let
-  inherit (lib) mkEnableOption mkOption types;
+}:
+let
+  inherit (lib) mkEnableOption;
   cfg = config.modules.server.searxng;
-in {
+in
+{
   options.modules.server.searxng = {
     enable = mkEnableOption "Enable SearXNG";
   };

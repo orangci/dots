@@ -1,10 +1,8 @@
 {
-  config,
   pkgs,
-  lib,
-  inputs,
   ...
-}: {
+}:
+{
   environment.systemPackages = with pkgs; [
     lxqt.lxqt-policykit
     libnotify

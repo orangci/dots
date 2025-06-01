@@ -1,12 +1,13 @@
 {
-  pkgs,
   config,
   lib,
   ...
-}: let
-  inherit (lib) mkEnableOption mkOption types;
+}:
+let
+  inherit (lib) mkEnableOption;
   cfg = config.modules.server.ntfy;
-in {
+in
+{
   options.modules.server.ntfy.enable = mkEnableOption "Enable ntfy";
 
   config = lib.mkIf cfg.enable {

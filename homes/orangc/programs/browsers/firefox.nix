@@ -4,15 +4,17 @@
   lib,
   username,
   ...
-}: let
-  inherit (lib) mkEnableOption types mkIf;
+}:
+let
+  inherit (lib) mkEnableOption mkIf;
   cfg = config.hmModules.programs.browsers.firefox;
-in {
+in
+{
   options.hmModules.programs.browsers.firefox = {
     enable = mkEnableOption "Enable firefox";
   };
   config = mkIf cfg.enable {
-    wayland.windowManager.hyprland.settings.bindd = ["SUPER, W, Launch Firefox, exec, firefox"];
+    wayland.windowManager.hyprland.settings.bindd = [ "SUPER, W, Launch Firefox, exec, firefox" ];
     programs.firefox = {
       enable = true;
       profiles.${username} = {
@@ -24,67 +26,76 @@ in {
           force = true;
           engines = {
             "Nix Packages" = {
-              urls = [{template = "https://search.nixos.org/packages?type=packages&channel=unstable&query={searchTerms}";}];
+              urls = [
+                {
+                  template = "https://search.nixos.org/packages?type=packages&channel=unstable&query={searchTerms}";
+                }
+              ];
               icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-              definedAliases = ["@np"];
+              definedAliases = [ "@np" ];
             };
 
             "NixOS Wiki" = {
-              urls = [{template = "https://wiki.nixos.org/index.php?search={searchTerms}&title=Special%3ASearch";}];
+              urls = [
+                { template = "https://wiki.nixos.org/index.php?search={searchTerms}&title=Special%3ASearch"; }
+              ];
               icon = "https://wiki.nixos.org/favicon.png";
               updateInterval = 24 * 60 * 60 * 1000; # every day
-              definedAliases = ["@nw"];
+              definedAliases = [ "@nw" ];
             };
 
             "Home-manager Options" = {
-              definedAliases = ["@hm"];
-              urls = [{template = "https://home-manager-options.extranix.com/?query={searchTerms}&release=master";}];
+              definedAliases = [ "@hm" ];
+              urls = [
+                { template = "https://home-manager-options.extranix.com/?query={searchTerms}&release=master"; }
+              ];
             };
 
             "Nix Options" = {
-              definedAliases = ["@no"];
-              urls = [{template = "https://search.nixos.org/options?query={searchTerms}";}];
+              definedAliases = [ "@no" ];
+              urls = [ { template = "https://search.nixos.org/options?query={searchTerms}"; } ];
             };
 
             "Urban Dictionary" = {
-              definedAliases = ["@urban"];
-              urls = [{template = "https://www.urbandictionary.com/define.php?term={searchTerms}";}];
+              definedAliases = [ "@urban" ];
+              urls = [ { template = "https://www.urbandictionary.com/define.php?term={searchTerms}"; } ];
             };
 
             "Youtube" = {
-              definedAliases = ["@yt"];
-              urls = [{template = "https://youtube.com/search?q={searchTerms}";}];
+              definedAliases = [ "@yt" ];
+              urls = [ { template = "https://youtube.com/search?q={searchTerms}"; } ];
             };
 
             "MyAnimeList" = {
-              definedAliases = ["@mal"];
-              urls = [{template = "https://myanimelist.net/anime.php?cat=anime?q={searchTerms}";}];
+              definedAliases = [ "@mal" ];
+              urls = [ { template = "https://myanimelist.net/anime.php?cat=anime?q={searchTerms}"; } ];
             };
 
             "MyAnimeList Anime" = {
-              definedAliases = ["@ani"];
-              urls = [{template = "https://myanimelist.net/anime.php?cat=anime?q={searchTerms}";}];
+              definedAliases = [ "@ani" ];
+              urls = [ { template = "https://myanimelist.net/anime.php?cat=anime?q={searchTerms}"; } ];
             };
 
             "MyAnimeList Manga" = {
-              definedAliases = ["@manga"];
-              urls = [{template = "https://myanimelist.net/manga.php?q={searchTerms}";}];
+              definedAliases = [ "@manga" ];
+              urls = [ { template = "https://myanimelist.net/manga.php?q={searchTerms}"; } ];
             };
 
             "Startpage" = {
-              definedAliases = ["@sp"];
-              urls = [{template = "https://www.startpage.com/sp/search?q={searchTerms}";}];
+              definedAliases = [ "@sp" ];
+              urls = [ { template = "https://www.startpage.com/sp/search?q={searchTerms}"; } ];
             };
 
             "Code Search" = {
-              definedAliases = ["@gh"];
-              urls = [{template = "https://github.com/search?type=code?q={searchTerms}";}];
+              definedAliases = [ "@gh" ];
+              urls = [ { template = "https://github.com/search?type=code?q={searchTerms}"; } ];
             };
           };
         };
         # end of search engines section
         settings = {
-          "browser.uiCustomization.state" = ''{"placements":{"widget-overflow-fixed-list":["firefox-view-button","alltabs-button","fxa-toolbar-menu-button","history-panelmenu","library-button","bookmarks-menu-button","sync-button","panic-button","preferences-button","developer-button","screenshot-button","logins-button","sidebar-button","print-button","save-page-button","characterencoding-button"],"unified-extensions-area":["userchrome-toggle-extended_n2ezr_ru-browser-action","simple-translate_sienori-browser-action","_c84d89d9-a826-4015-957b-affebd9eb603_-browser-action","firefoxcolor_mozilla_com-browser-action","_7e79d10d-9667-4d38-838d-471281c568c3_-browser-action","enhancerforyoutube_maximerf_addons_mozilla_org-browser-action","vpn_proton_ch-browser-action"],"nav-bar":["back-button","forward-button","stop-reload-button","vertical-spacer","urlbar-container","downloads-button","unified-extensions-button","ublock0_raymondhill_net-browser-action","_7a7a4a92-a2a0-41d1-9fd7-1e92480d612d_-browser-action","firefox_tampermonkey_net-browser-action","78272b6fa58f4a1abaac99321d503a20_proton_me-browser-action"],"toolbar-menubar":["menubar-items"],"TabsToolbar":["tabbrowser-tabs","new-tab-button"],"vertical-tabs":[],"PersonalToolbar":["import-button","personal-bookmarks"]},"seen":["save-to-pocket-button","developer-button","simple-translate_sienori-browser-action","_7a7a4a92-a2a0-41d1-9fd7-1e92480d612d_-browser-action","firefox_tampermonkey_net-browser-action","ublock0_raymondhill_net-browser-action","78272b6fa58f4a1abaac99321d503a20_proton_me-browser-action","_c84d89d9-a826-4015-957b-affebd9eb603_-browser-action","firefoxcolor_mozilla_com-browser-action","userchrome-toggle-extended_n2ezr_ru-browser-action","_7e79d10d-9667-4d38-838d-471281c568c3_-browser-action","enhancerforyoutube_maximerf_addons_mozilla_org-browser-action","vpn_proton_ch-browser-action"],"dirtyAreaCache":["nav-bar","vertical-tabs","PersonalToolbar","unified-extensions-area","widget-overflow-fixed-list","toolbar-menubar","TabsToolbar"],"currentVersion":22,"newElementCount":9}'';
+          "browser.uiCustomization.state" =
+            ''{"placements":{"widget-overflow-fixed-list":["firefox-view-button","alltabs-button","fxa-toolbar-menu-button","history-panelmenu","library-button","bookmarks-menu-button","sync-button","panic-button","preferences-button","developer-button","screenshot-button","logins-button","sidebar-button","print-button","save-page-button","characterencoding-button"],"unified-extensions-area":["userchrome-toggle-extended_n2ezr_ru-browser-action","simple-translate_sienori-browser-action","_c84d89d9-a826-4015-957b-affebd9eb603_-browser-action","firefoxcolor_mozilla_com-browser-action","_7e79d10d-9667-4d38-838d-471281c568c3_-browser-action","enhancerforyoutube_maximerf_addons_mozilla_org-browser-action","vpn_proton_ch-browser-action"],"nav-bar":["back-button","forward-button","stop-reload-button","vertical-spacer","urlbar-container","downloads-button","unified-extensions-button","ublock0_raymondhill_net-browser-action","_7a7a4a92-a2a0-41d1-9fd7-1e92480d612d_-browser-action","firefox_tampermonkey_net-browser-action","78272b6fa58f4a1abaac99321d503a20_proton_me-browser-action"],"toolbar-menubar":["menubar-items"],"TabsToolbar":["tabbrowser-tabs","new-tab-button"],"vertical-tabs":[],"PersonalToolbar":["import-button","personal-bookmarks"]},"seen":["save-to-pocket-button","developer-button","simple-translate_sienori-browser-action","_7a7a4a92-a2a0-41d1-9fd7-1e92480d612d_-browser-action","firefox_tampermonkey_net-browser-action","ublock0_raymondhill_net-browser-action","78272b6fa58f4a1abaac99321d503a20_proton_me-browser-action","_c84d89d9-a826-4015-957b-affebd9eb603_-browser-action","firefoxcolor_mozilla_com-browser-action","userchrome-toggle-extended_n2ezr_ru-browser-action","_7e79d10d-9667-4d38-838d-471281c568c3_-browser-action","enhancerforyoutube_maximerf_addons_mozilla_org-browser-action","vpn_proton_ch-browser-action"],"dirtyAreaCache":["nav-bar","vertical-tabs","PersonalToolbar","unified-extensions-area","widget-overflow-fixed-list","toolbar-menubar","TabsToolbar"],"currentVersion":22,"newElementCount":9}'';
           "app.normandy.api_url" = "";
           "app.normandy.enabled" = false;
           "app.shield.optoutstudies.enabled" = false;

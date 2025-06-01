@@ -2,10 +2,17 @@
   config,
   lib,
   ...
-}: let
-  inherit (lib) mkEnableOption mkOption types mkIf;
+}:
+let
+  inherit (lib)
+    mkEnableOption
+    mkOption
+    types
+    mkIf
+    ;
   cfg = config.hmModules.cli.git;
-in {
+in
+{
   options.hmModules.cli.git = {
     enable = mkEnableOption "Enable Git CLI configuration";
 

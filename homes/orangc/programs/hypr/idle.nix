@@ -1,12 +1,13 @@
 {
-  pkgs,
   config,
   lib,
   ...
-}: let
-  inherit (lib) mkEnableOption types mkIf;
+}:
+let
+  inherit (lib) mkEnableOption mkIf;
   cfg = config.hmModules.programs.hypr.idle;
-in {
+in
+{
   options.hmModules.programs.hypr.idle = {
     enable = mkEnableOption "Enable hypridle";
   };

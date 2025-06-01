@@ -1,6 +1,8 @@
-{config, ...}: let
+{ config, ... }:
+let
   colours = config.stylix.base16Scheme;
-in {
+in
+{
   home.file.".config/rofi/selector-big.rasi".text = ''
     // Config //
     configuration {

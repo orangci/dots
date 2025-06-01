@@ -1,12 +1,13 @@
 {
-  pkgs,
   config,
   lib,
   ...
-}: let
-  inherit (lib) mkEnableOption mkOption types;
+}:
+let
+  inherit (lib) mkEnableOption;
   cfg = config.modules.server.uptime-kuma;
-in {
+in
+{
   options.modules.server.uptime-kuma.enable = mkEnableOption "Enable uptime-kuma";
 
   config = lib.mkIf cfg.enable {

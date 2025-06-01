@@ -1,12 +1,13 @@
 {
   config,
   lib,
-  pkgs,
   ...
-}: let
+}:
+let
   inherit (lib) mkEnableOption mkIf;
   cfg = config.modules.common.virtualisation;
-in {
+in
+{
   options.modules.common.virtualisation = {
     enable = mkEnableOption "Enable libvirtd";
   };

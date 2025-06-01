@@ -3,10 +3,12 @@
   config,
   lib,
   ...
-}: let
-  inherit (lib) mkEnableOption mkOption types;
+}:
+let
+  inherit (lib) mkEnableOption;
   cfg = config.modules.programs.thunar;
-in {
+in
+{
   options.modules.programs.thunar = {
     enable = mkEnableOption "Enable thunar";
     archive-plugin.enable = mkEnableOption "Enable thunar's archive plugin";
@@ -15,7 +17,8 @@ in {
   config = lib.mkIf cfg.enable {
     programs.thunar = {
       enable = true;
-      plugins = with pkgs.xfce;
+      plugins =
+        with pkgs.xfce;
         [
           thunar-volman
           thunar-media-tags-plugin
@@ -25,13 +28,11 @@ in {
         ]);
     };
     nixpkgs.config.packageOverrides = pkgs: {
-      xfce =
-        pkgs.xfce
-        // {
-          inherit (pkgs) gvfs;
-        };
+      xfce = pkgs.xfce // {
+        inherit (pkgs) gvfs;
+      };
     };
-    environment.systemPackages = with pkgs; [xfce.tumbler];
+    environment.systemPackages = with pkgs; [ xfce.tumbler ];
     services.gvfs.enable = true;
   };
 }

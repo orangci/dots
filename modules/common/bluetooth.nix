@@ -3,10 +3,12 @@
   config,
   lib,
   ...
-}: let
-  inherit (lib) mkEnableOption mkOption types;
+}:
+let
+  inherit (lib) mkEnableOption;
   cfg = config.modules.common.bluetooth;
-in {
+in
+{
   options.modules.common.bluetooth = {
     enable = mkEnableOption "Enable bluetooth";
   };
@@ -29,8 +31,11 @@ in {
     # Allow bluetooth headset buttons to work properly
     systemd.user.services.mpris-proxy = {
       description = "Mpris proxy";
-      after = ["network.target" "sound.target"];
-      wantedBy = ["default.target"];
+      after = [
+        "network.target"
+        "sound.target"
+      ];
+      wantedBy = [ "default.target" ];
       serviceConfig.ExecStart = "${pkgs.bluez}/bin/mpris-proxy";
     };
   };

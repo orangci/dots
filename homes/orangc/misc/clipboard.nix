@@ -3,15 +3,17 @@
   lib,
   pkgs,
   ...
-}: let
-  inherit (lib) mkEnableOption mkOption types mkIf;
+}:
+let
+  inherit (lib) mkEnableOption mkIf;
   cfg = config.hmModules.misc.clipboard;
-in {
+in
+{
   options.hmModules.misc.clipboard.enable = mkEnableOption "Enable the example module";
 
   config = mkIf cfg.enable {
     services.cliphist.enable = true;
-    home.packages = with pkgs; [wl-clipboard];
+    home.packages = with pkgs; [ wl-clipboard ];
     hmModules.cli.shell.extraAliases = {
       copy = "wl-copy";
       paste = "wl-paste";

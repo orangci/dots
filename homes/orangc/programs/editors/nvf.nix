@@ -4,12 +4,14 @@
   pkgs,
   inputs,
   ...
-}: let
-  inherit (lib) mkEnableOption mkOption types mkIf;
+}:
+let
+  inherit (lib) mkEnableOption mkIf;
 
   cfg = config.hmModules.programs.editors.nvf;
-in {
-  imports = [inputs.nvf.homeManagerModules.default];
+in
+{
+  imports = [ inputs.nvf.homeManagerModules.default ];
   options.hmModules.programs.editors.nvf.enable = mkEnableOption "Enable neovim with nvf";
 
   config = mkIf cfg.enable {
@@ -155,7 +157,7 @@ in {
         presence.neocord.enable = false;
       };
     };
-    home.file.".editorconfig".source = (pkgs.formats.ini {}).generate ".editorconfig" {
+    home.file.".editorconfig".source = (pkgs.formats.ini { }).generate ".editorconfig" {
       "*" = {
         charset = "utf-8";
         end_of_line = "lf";

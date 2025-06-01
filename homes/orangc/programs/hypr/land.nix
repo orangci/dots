@@ -4,11 +4,12 @@
   pkgs,
   inputs,
   ...
-}: let
-  inherit (lib) mkEnableOption mkOption types mkIf;
+}:
+let
+  inherit (lib) mkEnableOption mkIf;
   cfg = config.hmModules.programs.hypr.land;
-  colours = config.stylix.base16Scheme;
-in {
+in
+{
   options.hmModules.programs.hypr.land = {
     enable = mkEnableOption "Enable Hyprland";
   };
@@ -18,7 +19,8 @@ in {
       enable = true;
       systemd.enable = true;
       package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-      portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+      portalPackage =
+        inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
 
       settings = {
         env = [
@@ -88,15 +90,20 @@ in {
             ",XF86AudioPrev, Previous Media, exec, playerctl previous"
             ",XF86Mail, Open Special Workspace, togglespecialworkspace"
           ]
-          ++ ( # workspaces: binds SUPER + [shift +] {1..9} to [move to] workspace {1..9}
-            builtins.concatLists (builtins.genList (i: let
+          ++
+          # workspaces: binds SUPER + [shift +] {1..9} to [move to] workspace {1..9}
+          (builtins.concatLists (
+            builtins.genList (
+              i:
+              let
                 ws = i + 1;
-              in [
+              in
+              [
                 "SUPER, code:1${toString i}, Move To Workspace ${toString ws}, workspace, ${toString ws}"
                 "SUPER SHIFT, code:1${toString i}, Move Window To Workspace ${toString ws}, movetoworkspace, ${toString ws}"
-              ])
-              9)
-          );
+              ]
+            ) 9
+          ));
 
         binddm = [
           "SUPER, mouse:272, Move Window, movewindow"
@@ -114,7 +121,7 @@ in {
           ",XF86MonBrightnessUp, Lower Brightness, exec, brightnessctl set +5%"
         ];
 
-        monitor = [",preferred,auto,1"];
+        monitor = [ ",preferred,auto,1" ];
 
         general = {
           gaps_in = 6;

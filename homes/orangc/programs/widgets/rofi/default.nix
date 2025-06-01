@@ -3,11 +3,13 @@
   config,
   lib,
   ...
-}: let
-  inherit (lib) mkEnableOption types mkIf;
+}:
+let
+  inherit (lib) mkEnableOption mkIf;
   cfg = config.hmModules.programs.widgets.rofi;
   colours = config.stylix.base16Scheme;
-in {
+in
+{
   imports = [
     ./selector.nix
     ./selector-big.nix
@@ -25,10 +27,10 @@ in {
     };
 
     home.packages = [
-      (import ./packages/calc.nix {inherit pkgs;})
-      (import ./packages/emoji.nix {inherit pkgs;})
-      (import ./packages/prism.nix {inherit pkgs;})
-      (import ./packages/wall-select.nix {inherit pkgs;})
+      (import ./packages/calc.nix { inherit pkgs; })
+      (import ./packages/emoji.nix { inherit pkgs; })
+      (import ./packages/prism.nix { inherit pkgs; })
+      (import ./packages/wall-select.nix { inherit pkgs; })
     ];
     programs.rofi = {
       package = pkgs.rofi-wayland;

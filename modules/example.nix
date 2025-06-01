@@ -1,12 +1,13 @@
 {
-  pkgs,
   config,
   lib,
   ...
-}: let
-  inherit (lib) mkEnableOption mkOption types;
+}:
+let
+  inherit (lib) mkEnableOption;
   cfg = config.modules.category.name;
-in {
+in
+{
   options.modules.category.name = {
     enable = mkEnableOption "Enable name";
 

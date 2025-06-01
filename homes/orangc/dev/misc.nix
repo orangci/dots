@@ -3,10 +3,18 @@
   lib,
   pkgs,
   ...
-}: let
-  inherit (lib) mkEnableOption mkOption types mkIf;
+}:
+let
+  inherit (lib) mkEnableOption mkIf;
   cfg = config.hmModules.dev.misc;
-in {
+in
+{
   options.hmModules.dev.misc.enable = mkEnableOption "Enable the misc dev module";
-  config = mkIf cfg.enable {home.packages = with pkgs; [gcc jq nodejs];};
+  config = mkIf cfg.enable {
+    home.packages = with pkgs; [
+      gcc
+      jq
+      nodejs
+    ];
+  };
 }

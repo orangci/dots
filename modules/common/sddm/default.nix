@@ -3,10 +3,12 @@
   config,
   lib,
   ...
-}: let
-  inherit (lib) mkEnableOption mkOption types;
+}:
+let
+  inherit (lib) mkEnableOption;
   cfg = config.modules.dm.sddm;
-in {
+in
+{
   options.modules.dm.sddm = {
     enable = mkEnableOption "Enable SDDM";
     theme = lib.mkOption {
@@ -17,14 +19,16 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    environment.systemPackages = let
-      sddm-themes = pkgs.callPackage ./pkgs.nix {};
-    in [
-      sddm-themes.sugar-dark
-      sddm-themes.tokyo-night
-      sddm-themes.astronaut
-      pkgs.libsForQt5.qt5.qtgraphicaleffects
-    ];
+    environment.systemPackages =
+      let
+        sddm-themes = pkgs.callPackage ./pkgs.nix { };
+      in
+      [
+        sddm-themes.sugar-dark
+        sddm-themes.tokyo-night
+        sddm-themes.astronaut
+        pkgs.libsForQt5.qt5.qtgraphicaleffects
+      ];
 
     services.displayManager.sddm = {
       enable = true;

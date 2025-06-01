@@ -1,12 +1,13 @@
 {
-  pkgs,
   config,
   lib,
   ...
-}: let
-  inherit (lib) mkEnableOption mkOption types;
+}:
+let
+  inherit (lib) mkEnableOption;
   cfg = config.modules.server.vaultwarden;
-in {
+in
+{
   options.modules.server.vaultwarden.enable = mkEnableOption "Enable vaultwarden";
 
   config = lib.mkIf cfg.enable {

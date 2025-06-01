@@ -1,12 +1,13 @@
 {
-  pkgs,
   config,
   lib,
   ...
-}: let
-  inherit (lib) mkEnableOption mkOption types;
+}:
+let
+  inherit (lib) mkEnableOption;
   cfg = config.modules.server.microbin;
-in {
+in
+{
   options.modules.server.microbin.enable = mkEnableOption "Enable microbin";
 
   config = lib.mkIf cfg.enable {

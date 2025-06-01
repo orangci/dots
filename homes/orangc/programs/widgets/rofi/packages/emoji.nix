@@ -1,4 +1,4 @@
-{pkgs}:
+{ pkgs }:
 pkgs.writeShellScriptBin "emoji-select" ''
   # Get user selection via rofi from emoji file.
   chosen=$(cat $HOME/dots/assets/emoji | rofi -i -dmenu -theme clipboard.rasi | awk '{print $1}')

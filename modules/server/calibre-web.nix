@@ -1,12 +1,13 @@
 {
-  pkgs,
   config,
   lib,
   ...
-}: let
-  inherit (lib) mkEnableOption mkOption types;
+}:
+let
+  inherit (lib) mkEnableOption;
   cfg = config.modules.server.calibre-web;
-in {
+in
+{
   options.modules.server.calibre-web.enable = mkEnableOption "Enable calibre-web";
 
   config = lib.mkIf cfg.enable {

@@ -2,18 +2,18 @@
   pkgs,
   config,
   lib,
-  host,
   ...
-}: let
-  inherit (lib) mkEnableOption types mkIf;
+}:
+let
+  inherit (lib) mkEnableOption mkIf;
   cfg = config.hmModules.programs.widgets.swaync;
-  colours = config.stylix.base16Scheme;
-in {
+in
+{
   options.hmModules.programs.widgets.swaync = {
     enable = mkEnableOption "Enable swaync";
   };
   config = mkIf cfg.enable {
-    home.packages = [pkgs.swaynotificationcenter];
+    home.packages = [ pkgs.swaynotificationcenter ];
     home.file.".config/swaync/config.json".source = ./swaync.json;
     home.file.".config/swaync/style.css".source = ./swaync.css;
     wayland.windowManager.hyprland.settings = {

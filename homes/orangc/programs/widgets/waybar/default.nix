@@ -5,30 +5,26 @@
   lib,
   host,
   ...
-}: let
-  inherit (lib) mkEnableOption types mkIf;
+}:
+let
+  inherit (lib) mkEnableOption mkIf;
   cfg = config.hmModules.programs.widgets.waybar;
   waybarBottom = false; # If the waybar should be at the bottom of the screen instead of the top
-in {
-  imports = [./style.nix];
+in
+{
+  imports = [ ./style.nix ];
   options.hmModules.programs.widgets.waybar = {
     enable = mkEnableOption "Enable waybar";
   };
   config = mkIf cfg.enable {
-    home.packages = [pkgs.wttrbar];
+    home.packages = [ pkgs.wttrbar ];
     programs.waybar = {
       enable = true;
       package = pkgs.waybar;
       settings = [
         {
-          layer =
-            if waybarBottom
-            then "bottom"
-            else "top";
-          position =
-            if waybarBottom
-            then "bottom"
-            else "top";
+          layer = if waybarBottom then "bottom" else "top";
+          position = if waybarBottom then "bottom" else "top";
 
           modules-center = [
             "hyprland/window"

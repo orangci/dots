@@ -1,12 +1,13 @@
 {
-  pkgs,
   config,
   lib,
   ...
-}: let
-  inherit (lib) mkEnableOption types mkIf;
+}:
+let
+  inherit (lib) mkEnableOption mkIf;
   cfg = config.hmModules.styles.qt;
-in {
+in
+{
   options.hmModules.styles.qt = {
     enable = mkEnableOption "Enable QT styling";
   };

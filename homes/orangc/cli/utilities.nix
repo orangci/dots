@@ -3,11 +3,13 @@
   lib,
   pkgs,
   ...
-}: let
-  inherit (lib) mkEnableOption mkOption types mkIf;
+}:
+let
+  inherit (lib) mkEnableOption mkIf;
 
   cfg = config.hmModules.cli;
-in {
+in
+{
   options.hmModules.cli = {
     fetch.enable = mkEnableOption "Enable fetch programs";
     fun.enable = mkEnableOption "Enable fun CLI programs";
@@ -17,11 +19,29 @@ in {
   };
 
   config = lib.mkMerge [
-    (mkIf cfg.oxidisation.enable {home.packages = with pkgs; [microfetch nitch onefetch owofetch ipfetch];})
-    (mkIf cfg.fun.enable {home.packages = with pkgs; [cmatrix lolcat kittysay uwuify];})
+    (mkIf cfg.oxidisation.enable {
+      home.packages = with pkgs; [
+        microfetch
+        nitch
+        onefetch
+        owofetch
+        ipfetch
+      ];
+    })
+    (mkIf cfg.fun.enable {
+      home.packages = with pkgs; [
+        cmatrix
+        lolcat
+        kittysay
+        uwuify
+      ];
+    })
 
     (mkIf cfg.oxidisation.enable {
-      home.packages = with pkgs; [ripgrep-all sd];
+      home.packages = with pkgs; [
+        ripgrep-all
+        sd
+      ];
       programs = {
         bat.enable = true;
         eza.enable = true;
@@ -42,13 +62,21 @@ in {
     })
 
     (mkIf cfg.benchmarking.enable {
-      home.packages = with pkgs; [time hyperfine];
+      home.packages = with pkgs; [
+        time
+        hyperfine
+      ];
       hmModules.cli.shell.extraAliases.hf = "hyperfine";
     })
 
     (mkIf cfg.utilities.enable {
       programs.btop.enable = true;
-      home.packages = with pkgs; [tokei killall tree libqalculate];
+      home.packages = with pkgs; [
+        tokei
+        killall
+        tree
+        libqalculate
+      ];
       hmModules.cli.shell.extraAliases = {
         top = "btop";
       };

@@ -49,36 +49,55 @@
     };
   };
 
-  outputs = inputs @ {
-    nixpkgs,
-    home-manager,
-    ...
-  }: let
-    system = "x86_64-linux";
-    username = "orangc";
+  outputs =
+    inputs@{
+      nixpkgs,
+      home-manager,
+      ...
+    }:
+    let
+      system = "x86_64-linux";
+      username = "orangc";
 
-    nixosMachine = {host}:
-      nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs system host username;};
-        modules = [
-          ./hosts/${host}/config.nix
-          home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              extraSpecialArgs = {inherit inputs system host username;};
-              useUserPackages = true;
-              useGlobalPkgs = true;
-              backupFileExtension = "backup";
-              users.${username} = import ./hosts/${host}/home.nix;
-            };
-          }
-        ];
+      nixosMachine =
+        { host }:
+        nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit
+              inputs
+              system
+              host
+              username
+              ;
+          };
+          modules = [
+            ./hosts/${host}/config.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                extraSpecialArgs = {
+                  inherit
+                    inputs
+                    system
+                    host
+                    username
+                    ;
+                };
+                useUserPackages = true;
+                useGlobalPkgs = true;
+                backupFileExtension = "backup";
+                users.${username} = import ./hosts/${host}/home.nix;
+              };
+            }
+          ];
+        };
+    in
+    {
+      formatter.${system} = nixpkgs.legacyPackages.${system}.nixfmt-rfc-style;
+      nixosConfigurations = {
+        anacreon = nixosMachine { host = "anacreon"; };
+        helicon = nixosMachine { host = "helicon"; };
+        urithiru = nixosMachine { host = "urithiru"; };
       };
-  in {
-    nixosConfigurations = {
-      anacreon = nixosMachine {host = "anacreon";};
-      helicon = nixosMachine {host = "helicon";};
-      urithiru = nixosMachine {host = "urithiru";};
     };
-  };
 }

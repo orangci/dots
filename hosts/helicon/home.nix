@@ -1,9 +1,9 @@
 {
-  pkgs,
   username,
   ...
-}: {
-  imports = [../../homes/${username}];
+}:
+{
+  imports = [ ../../homes/${username} ];
 
   hmModules = {
     cli = {
@@ -115,8 +115,8 @@
 
   dconf.settings = {
     "org/virt-manager/virt-manager/connections" = {
-      autoconnect = ["qemu:///system"];
-      uris = ["qemu:///system"];
+      autoconnect = [ "qemu:///system" ];
+      uris = [ "qemu:///system" ];
     };
   };
   programs.home-manager.enable = true;

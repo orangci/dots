@@ -3,14 +3,23 @@
   lib,
   pkgs,
   ...
-}: let
-  inherit (lib) mkEnableOption mkOption types mkIf mkMerge;
+}:
+let
+  inherit (lib)
+    mkEnableOption
+    mkOption
+    types
+    mkIf
+    mkMerge
+    ;
   cfg = config.hmModules.dev.python;
   svAlias =
-    if config.hmModules.cli.shell.program == "fish"
-    then "source venv/bin/activate.fish"
-    else "source venv/bin/activate";
-in {
+    if config.hmModules.cli.shell.program == "fish" then
+      "source venv/bin/activate.fish"
+    else
+      "source venv/bin/activate";
+in
+{
   options.hmModules.dev.python = {
     enable = mkEnableOption "Enable Python development environment";
 
@@ -34,16 +43,17 @@ in {
 
   config = mkIf cfg.enable (mkMerge [
     {
-      home.packages = with pkgs;
+      home.packages =
+        with pkgs;
         [
           (pkgs.${cfg.version})
           uv
           ruff
           virtualenv
         ]
-        ++ lib.optionals cfg.mypy [pkgs.mypy]
-        ++ lib.optionals cfg.pyright [pkgs.pyright]
-        ++ lib.optionals cfg.ipython [pkgs.ipython];
+        ++ lib.optionals cfg.mypy [ pkgs.mypy ]
+        ++ lib.optionals cfg.pyright [ pkgs.pyright ]
+        ++ lib.optionals cfg.ipython [ pkgs.ipython ];
 
       hmModules.cli.shell.extraAliases = {
         rf = "ruff";
@@ -69,7 +79,7 @@ in {
     })
 
     (mkIf (cfg.defaultVenvDir != null) {
-      home.activation.setupPythonVenv = lib.hm.dag.entryAfter ["writeBoundary"] ''
+      home.activation.setupPythonVenv = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
         if [ ! -d "${cfg.defaultVenvDir}" ]; then
           ${pkgs.${cfg.version}}/bin/python -m venv "${cfg.defaultVenvDir}"
         fi

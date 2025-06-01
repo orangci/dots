@@ -3,10 +3,10 @@
   pkgs,
   lib,
   ...
-}: {
+}:
+{
   options = {
-    modules.common.sound.enable =
-      lib.mkEnableOption "enables sound";
+    modules.common.sound.enable = lib.mkEnableOption "enables sound";
   };
   config = lib.mkIf config.modules.common.sound.enable {
     services.pipewire = {
@@ -26,6 +26,9 @@
       };
     };
 
-    environment.systemPackages = with pkgs; [playerctl pavucontrol];
+    environment.systemPackages = with pkgs; [
+      playerctl
+      pavucontrol
+    ];
   };
 }

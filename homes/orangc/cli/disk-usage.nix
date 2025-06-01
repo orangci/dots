@@ -3,13 +3,18 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   inherit (lib) mkEnableOption mkIf;
   cfg = config.hmModules.cli.disk-usage;
 
   diskUsageApp = pkgs.writeShellApplication {
     name = "disk-usage";
-    runtimeInputs = with pkgs; [ripgrep gawk diskus];
+    runtimeInputs = with pkgs; [
+      ripgrep
+      gawk
+      diskus
+    ];
     text = ''
       bold=$(tput bold)
       normal=$(tput sgr0)
@@ -47,12 +52,18 @@
       print_label "Nix Store Size" "$nix_usage"
     '';
   };
-in {
+in
+{
   options.hmModules.cli.disk-usage = {
     enable = mkEnableOption "Enable disk usage analysis tools";
   };
 
   config = mkIf cfg.enable {
-    home.packages = [diskUsageApp pkgs.diskus pkgs.dust pkgs.kondo];
+    home.packages = [
+      diskUsageApp
+      pkgs.diskus
+      pkgs.dust
+      pkgs.kondo
+    ];
   };
 }

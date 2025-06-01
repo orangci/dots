@@ -3,10 +3,12 @@
   config,
   lib,
   ...
-}: let
-  inherit (lib) mkEnableOption mkOption types;
+}:
+let
+  inherit (lib) mkEnableOption;
   cfg = config.modules.common.printing;
-in {
+in
+{
   options.modules.common.printing = {
     enable = mkEnableOption "Enable printing";
   };
@@ -15,7 +17,7 @@ in {
     services = {
       printing = {
         enable = true;
-        drivers = [pkgs.brgenml1cupswrapper];
+        drivers = [ pkgs.brgenml1cupswrapper ];
       };
       avahi = {
         enable = true;

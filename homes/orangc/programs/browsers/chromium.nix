@@ -1,18 +1,19 @@
 {
   config,
   lib,
-  pkgs,
   ...
-}: let
-  inherit (lib) mkEnableOption mkOption types mkIf;
+}:
+let
+  inherit (lib) mkEnableOption mkIf;
   cfg = config.hmModules.programs.browsers.chromium;
-in {
+in
+{
   options.hmModules.programs.browsers.chromium = {
     enable = mkEnableOption "Enable Chromium";
   };
 
   config = mkIf cfg.enable {
-    wayland.windowManager.hyprland.settings.bindd = ["SUPER, G, Launch Chromium, exec, chromium"];
+    wayland.windowManager.hyprland.settings.bindd = [ "SUPER, G, Launch Chromium, exec, chromium" ];
     programs.chromium = {
       enable = true;
       extensions = [

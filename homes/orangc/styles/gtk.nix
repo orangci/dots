@@ -3,10 +3,12 @@
   config,
   lib,
   ...
-}: let
-  inherit (lib) mkEnableOption types mkIf;
+}:
+let
+  inherit (lib) mkEnableOption mkIf;
   cfg = config.hmModules.styles.gtk;
-in {
+in
+{
   options.hmModules.styles.gtk = {
     enable = mkEnableOption "Enable GTK theming";
   };

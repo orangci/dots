@@ -3,10 +3,17 @@
   lib,
   pkgs,
   ...
-}: let
-  inherit (lib) mkEnableOption mkOption types mkIf;
+}:
+let
+  inherit (lib)
+    mkEnableOption
+    mkOption
+    types
+    mkIf
+    ;
   cfg = config.hmModules.category.example;
-in {
+in
+{
   options.hmModules.category.example = {
     enable = mkEnableOption "Enable the example module";
 

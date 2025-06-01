@@ -3,10 +3,17 @@
   lib,
   pkgs,
   ...
-}: let
-  inherit (lib) mkEnableOption mkOption types mkIf;
+}:
+let
+  inherit (lib)
+    mkEnableOption
+    mkOption
+    types
+    mkIf
+    ;
   cfg = config.hmModules.styles.walls;
-in {
+in
+{
   options.hmModules.styles.walls = {
     enable = mkEnableOption "Enable the wallpapers module";
     timeout = mkOption {
@@ -17,7 +24,10 @@ in {
   };
 
   config = mkIf cfg.enable {
-    wayland.windowManager.hyprland.settings.exec-once = ["swww kill; swww-daemon" "sleep 3; walls &"];
+    wayland.windowManager.hyprland.settings.exec-once = [
+      "swww kill; swww-daemon"
+      "sleep 3; walls &"
+    ];
     home.packages = [
       (pkgs.writeShellScriptBin "walls" ''
         cd "$HOME/media/walls"

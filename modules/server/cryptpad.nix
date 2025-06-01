@@ -1,12 +1,13 @@
 {
-  pkgs,
   config,
   lib,
   ...
-}: let
-  inherit (lib) mkEnableOption mkOption types;
+}:
+let
+  inherit (lib) mkEnableOption;
   cfg = config.modules.server.cryptpad;
-in {
+in
+{
   options.modules.server.cryptpad.enable = mkEnableOption "Enable cryptpad";
 
   config = lib.mkIf cfg.enable {

@@ -4,13 +4,20 @@
   pkgs,
   inputs,
   ...
-}: let
-  inherit (lib) mkEnableOption mkOption types mkIf optionalString literalExpression;
+}:
+let
+  inherit (lib)
+    mkEnableOption
+    mkOption
+    types
+    mkIf
+    ;
   cfg = config.hmModules.programs.quickshell;
   colours = config.stylix.base16Scheme;
   fonts = config.stylix.fonts;
   quickshellPackage = inputs.quickshell.packages.${pkgs.system}.default;
-in {
+in
+{
   options.hmModules.programs.quickshell = {
     enable = mkEnableOption "Enable quickshell";
 
@@ -41,8 +48,15 @@ in {
       }
     ];
 
-    home.packages = [quickshellPackage pkgs.wlsunset pkgs.libsForQt5.qt5.qtgraphicaleffects pkgs.kdePackages.qt5compat pkgs.libqalculate pkgs.colloid-kde];
-    home.activation.installQuickshell = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    home.packages = [
+      quickshellPackage
+      pkgs.wlsunset
+      pkgs.libsForQt5.qt5.qtgraphicaleffects
+      pkgs.kdePackages.qt5compat
+      pkgs.libqalculate
+      pkgs.colloid-kde
+    ];
+    home.activation.installQuickshell = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
         if [ -d "$HOME/.config/quickshell" ]; then
           chmod -R u+w "$HOME/.config/quickshell"
           rm -rf "$HOME/.config/quickshell"
@@ -88,7 +102,7 @@ in {
     '';
 
     wayland.windowManager.hyprland.settings = {
-      exec-once = ["qs"];
+      exec-once = [ "qs" ];
       bindd = [
         "Super, K, Quickshell Overview, global, quickshell:overviewToggleRelease"
         "Super, R, Quickshell Overview, global, quickshell:overviewToggleRelease"

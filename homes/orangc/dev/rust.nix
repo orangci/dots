@@ -4,11 +4,15 @@
   pkgs,
   inputs,
   ...
-}: let
+}:
+let
   inherit (lib) mkEnableOption mkIf;
   cfg = config.hmModules.dev.rust;
-  rustWithExtensions = (pkgs.extend (import inputs.rust-overlay)).rust-bin.stable.latest.default.override {extensions = ["rust-src"];};
-in {
+  rustWithExtensions =
+    (pkgs.extend (import inputs.rust-overlay)).rust-bin.stable.latest.default.override
+      { extensions = [ "rust-src" ]; };
+in
+{
   options.hmModules.dev.rust = {
     enable = mkEnableOption "Enable Rust development environment";
   };
@@ -23,7 +27,7 @@ in {
       # pkgs.bacon # background rust code checker
     ];
 
-    home.sessionPath = ["$HOME/.cargo/bin:$PATH"];
+    home.sessionPath = [ "$HOME/.cargo/bin:$PATH" ];
 
     hmModules.cli.shell.extraAliases = {
       cr = "cargo";

@@ -1,12 +1,13 @@
 {
-  pkgs,
   config,
   lib,
   ...
-}: let
-  inherit (lib) mkEnableOption mkOption types;
+}:
+let
+  inherit (lib) mkEnableOption;
   cfg = config.modules.server.technitium;
-in {
+in
+{
   options.modules.server.technitium.enable = mkEnableOption "Enable technitium";
 
   config = lib.mkIf cfg.enable {
