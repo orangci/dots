@@ -12,5 +12,6 @@
     ./gitea.nix
     ./calibre-web.nix
     ./cryptpad.nix
+    ./it-tools.nix
   ];
 }

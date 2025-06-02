@@ -18,8 +18,8 @@
     };
     server = {
       # TODO: test with nix run .#nixosConfigurations.urithiru.config.system.build.vm
-      cloudflared.enable = true; # TODO: complete module
-      caddy.enable = true; # TODO: complete module
+      cloudflared.enable = true; # TODO
+      caddy.enable = true; # TODO
       technitium.enable = true;
       searxng.enable = true;
       uptime-kuma.enable = true;
@@ -29,21 +29,22 @@
       glance.enable = true;
       gitea.enable = true;
       calibre-web.enable = true;
+      it-tools.enable = true;
       cryptpad.enable = false;
     };
     styles.fonts.enable = true;
   };
   local.hardware-clock.enable = true;
   drivers.intel.enable = true;
-
-  # swapDevices = [
-  #   {
-  #     device = "/swapfile";
-  #     size = 8 * 1024; # 8GB
-  #   }
-  # ];
-
   time.timeZone = "Asia/Riyadh";
+
+  services.openssh = {
+    enable = true;
+    settings = {
+      PermitRootLogin = "no";
+      PasswordAuthentication = true;
+    };
+  };
 
   users.users = {
     "${username}" = {
