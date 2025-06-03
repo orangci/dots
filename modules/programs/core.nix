@@ -8,6 +8,7 @@
     libnotify
     nh
     nix-output-monitor
+    deadnix
     arrpc
     micro
 

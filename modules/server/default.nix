@@ -13,5 +13,7 @@
     ./calibre-web.nix
     ./cryptpad.nix
     ./it-tools.nix
+    ./immich.nix
+    ./chibisafe.nix
   ];
 }

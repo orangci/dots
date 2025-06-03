@@ -31,6 +31,8 @@
       calibre-web.enable = true;
       it-tools.enable = true;
       cryptpad.enable = false;
+      immich.enable = true;
+      chibisafe.enable = true;
     };
     styles.fonts.enable = true;
   };
