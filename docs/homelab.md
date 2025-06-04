@@ -47,12 +47,13 @@ Things to consider hosting:
 - [ ] Reserve `192.168.1.42` in my router’s DHCP settings using urithiru's MAC address.
 - [ ] To get the MAC address, run `ip link` or `ip link show | grep -A1 'state UP' | grep ether`.
 - [ ] In Technitium settings, set DNS overrides for all *.orangc.net subdomains in usage, so that we can use LAN.
-- [ ] Create an account on the Gitea instance, then disable registration.
+- [ ] Create an account on the Gitea instance, then disable registration. Set up mirroring with GitHub repositories.
 - [ ] Create an account on the Chibisafe instance, then disable registration.
 - [ ] Create an account on the calibre-web instance, then disable registration.
-- [ ] Create an account on the immich instance, then disable registration.
-- [ ] Create an account on the vaultwarden instance, then disable registration.
-- [ ] Configure Glance.
+- [ ] Create an account on the immich instance, then disable registration. Move wallpapers to Immich albums, make them public, and archive wallpaper related GitHub repositories.
+- [ ] Create an account on the vaultwarden instance, then disable registration. Create a Proton Pass backup and import it into Vaultwarden.
+- [ ] Configure Glance. Do not forget the uptime-kuma plugin.
 - [ ] Check the other services in order to confirm that they're all working.
+- [ ] Create a backup of of Juniper and move it into `/var/lib/minecraft`. Enable `modules.server.minecraft.juniper.enable`.
 
 Use `ssh orangc@192.168.1.42` in order to SSH into the homelab.
