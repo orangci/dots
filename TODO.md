@@ -1,4 +1,5 @@
 - multi user support
+- take a look at [nixos-generators](https://github.com/nix-community/nixos-generators)
 - fix xdg stuff
 - rice starship myself
 - run deadnix

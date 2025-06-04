@@ -12,7 +12,7 @@ in
     enable = mkEnableOption "Enable vaultwarden";
     domain = lib.mkOption {
       type = lib.types.str;
-      default = "https://pass.orangc.net/";
+      default = "pass.orangc.net";
       description = "The domain for vaultwarden to be hosted at";
     };
     port = lib.mkOption {
@@ -29,12 +29,12 @@ in
       backupDir = "/var/backup/vaultwarden";
       environmentFile = "/var/lib/vaultwarden.env";
       config = {
-        domain = cfg.domain;
+        domain = "https://${cfg.domain}/";
         signupsAllowed = false;
         rocketPort = cfg.port;
       };
     };
-    services.caddy.virtualHosts."pass.orangc.net".extraConfig = ''
+    services.caddy.virtualHosts.${cfg.domain}.extraConfig = ''
       reverse_proxy 127.0.0.1:${toString cfg.port}
     '';
   };

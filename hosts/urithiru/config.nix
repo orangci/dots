@@ -17,7 +17,7 @@
       virtualisation.enable = false;
     };
     server = {
-      cloudflared.enable = true; # TODO
+      cloudflared.enable = true;
       caddy.enable = true;
       technitium.enable = true;
       searxng.enable = true;

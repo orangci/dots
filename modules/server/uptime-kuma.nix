@@ -6,6 +6,11 @@ in
 {
   options.modules.server.uptime-kuma = {
     enable = mkEnableOption "Enable uptime-kuma";
+    domain = lib.mkOption {
+      type = lib.types.str;
+      default = "status.orangc.net";
+      description = "The domain for uptime kuma to be hosted at";
+    };
     port = lib.mkOption {
       type = lib.types.str;
       default = "8080";
@@ -19,7 +24,7 @@ in
       settings.PORT = cfg.port;
     };
 
-    services.caddy.virtualHosts."status.orangc.net".extraConfig = ''
+    services.caddy.virtualHosts.${cfg.domain}.extraConfig = ''
       reverse_proxy 127.0.0.1:${cfg.port}
     '';
   };

@@ -10,6 +10,11 @@ in
 {
   options.modules.server.microbin = {
     enable = mkEnableOption "Enable microbin";
+    domain = lib.mkOption {
+      type = lib.types.str;
+      default = "paste.orangc.net";
+      description = "The domain for microbin to be hosted at";
+    };
     port = lib.mkOption {
       type = lib.types.int;
       default = 8181;
@@ -27,14 +32,14 @@ in
         MICROBIN_HIDE_FOOTER = true;
         MICROBIN_HIDE_LOGO = true;
         MICROBIN_PORT = cfg.port;
-        MICROBIN_PUBLIC_PATH = "https://paste.orangc.net/";
+        MICROBIN_PUBLIC_PATH = "https://${cfg.domain}/";
         MICROBIN_SHORT_PATH = "https://orangc.net/";
         MICROBIN_WIDE = true;
         MICROBIN_QR = true;
         MICROBIN_DISABLE_TELEMETRY = true;
       };
     };
-    services.caddy.virtualHosts."paste.orangc.net".extraConfig =
+    services.caddy.virtualHosts."${cfg.domain}".extraConfig =
       "reverse_proxy 127.0.0.1:${toString cfg.port}";
   };
 }

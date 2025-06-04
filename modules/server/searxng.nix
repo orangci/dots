@@ -13,7 +13,7 @@ in
     enable = mkEnableOption "Enable SearXNG";
     domain = lib.mkOption {
       type = lib.types.str;
-      default = "https://search.orangc.net/";
+      default = "search.orangc.net";
       description = "The domain for SearXNG to be hosted at";
     };
     port = lib.mkOption {
@@ -45,7 +45,7 @@ in
           default_lang = "en-CA";
         };
         server = {
-          base_url = cfg.domain;
+          base_url = "https://${cfg.domain}/";
           secret_key = "@SEARX_SECRET_KEY@";
           port = cfg.port;
           bind_address = "127.0.0.1";
@@ -60,7 +60,7 @@ in
         };
       };
     };
-    services.caddy.virtualHosts."search.orangc.net".extraConfig =
+    services.caddy.virtualHosts.${cfg.domain}.extraConfig =
       "reverse_proxy 127.0.0.1:${toString cfg.port}";
   };
 }

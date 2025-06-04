@@ -12,7 +12,7 @@ in
     enable = mkEnableOption "Enable ntfy";
     domain = lib.mkOption {
       type = lib.types.str;
-      default = "https://ntfy.orangc.net/";
+      default = "ntfy.orangc.net";
       description = "The domain for ntfy to be hosted at";
     };
     port = lib.mkOption {
@@ -26,11 +26,11 @@ in
     services.ntfy-sh = {
       enable = true;
       settings = {
-        base-url = cfg.domain;
+        base-url = "https://${cfg.domain}/";
         auth-default-access = "deny-all";
         listen-http = ":${cfg.port}";
       };
     };
-    services.caddy.virtualHosts."ntfy.orangc.net".extraConfig = "reverse_proxy 127.0.0.1:${cfg.port}";
+    services.caddy.virtualHosts.${cfg.domain}.extraConfig = "reverse_proxy 127.0.0.1:${cfg.port}";
   };
 }
