@@ -47,6 +47,12 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs-small";
     };
+
+    # for modules.server.minecraft
+    nix-minecraft = {
+      url = "github:infinidoge/nix-minecraft";
+      inputs.nixpkgs.follows = "nixpkgs-small";
+    };
   };
 
   outputs =

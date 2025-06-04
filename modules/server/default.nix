@@ -15,5 +15,6 @@
     ./it-tools.nix
     ./immich.nix
     ./chibisafe.nix
+    ./minecraft.nix
   ];
 }

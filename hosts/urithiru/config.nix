@@ -14,14 +14,7 @@
   modules = {
     common = {
       networking.enable = true;
-      sops = {
-        enable = true;
-        secrets."${host}-${username}-pass" = {
-          path = "/run/secrets/${host}-${username}-pass";
-          neededForUsers = true;
-        };
-      };
-      virtualisation.enable = false;
+      sops.enable = true;
     };
     server = {
       cloudflared.enable = true;
@@ -39,6 +32,10 @@
       cryptpad.enable = false;
       immich.enable = false;
       chibisafe.enable = true; # TODO
+      minecraft = {
+        enable = false;
+        juniper.enable = false;
+      };
     };
     styles.fonts.enable = true;
   };
@@ -53,13 +50,11 @@
       PasswordAuthentication = true;
     };
   };
-  users.mutableUsers = lib.mkForce false;
   users.users = {
     "${username}" = {
       homeMode = "755";
       isNormalUser = true;
-      # hashedPasswordFile = modules.sops.secrets.${host}-${username}-pass.path;
-      password = "a";
+      initialPassword = "modifythis";
       description = "${username}";
       extraGroups = [
         "networkmanager"
