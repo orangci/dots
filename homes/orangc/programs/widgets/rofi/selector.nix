@@ -1,8 +1,9 @@
-{ config, ... }:
+{ config, lib, ... }:
 let
   colours = config.stylix.base16Scheme;
+  cfg = config.hmModules.programs.widgets.rofi;
 in
-{
+lib.mkIf cfg.enable {
   # For running quick bash commands
   home.file.".config/rofi/selector.rasi".text = ''
     // Config //

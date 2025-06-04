@@ -8,12 +8,21 @@ let
   cfg = config.modules.server.immich;
 in
 {
-  options.modules.server.immich.enable = mkEnableOption "Enable immich";
+  options.modules.server.immich = {
+    enable = mkEnableOption "Enable immich";
+    port = lib.mkOption {
+      type = lib.types.int;
+      default = 2283;
+      description = "The port for immich to be hosted at";
+    };
+  };
 
   config = lib.mkIf cfg.enable {
     services.immich = {
       enable = true;
-      port = 2283;
+      port = cfg.port;
     };
+    services.caddy.virtualHosts."media.orangc.net".extraConfig =
+      "reverse_proxy 127.0.0.1:${toString cfg.port}";
   };
 }

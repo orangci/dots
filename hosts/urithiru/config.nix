@@ -1,6 +1,7 @@
 {
   pkgs,
   username,
+  lib,
   ...
 }:
 {
@@ -11,15 +12,13 @@
 
   modules = {
     common = {
-      docker.enable = true;
       networking.enable = true;
-      secrets.enable = true;
+      sops.enable = true;
       virtualisation.enable = false;
     };
     server = {
-      # TODO: test with nix run .#nixosConfigurations.urithiru.config.system.build.vm
       cloudflared.enable = true; # TODO
-      caddy.enable = true; # TODO
+      caddy.enable = true;
       technitium.enable = true;
       searxng.enable = true;
       uptime-kuma.enable = true;
@@ -31,8 +30,8 @@
       calibre-web.enable = true;
       it-tools.enable = true;
       cryptpad.enable = false;
-      immich.enable = true;
-      chibisafe.enable = true;
+      immich.enable = false;
+      chibisafe.enable = true; # TODO
     };
     styles.fonts.enable = true;
   };
@@ -47,11 +46,12 @@
       PasswordAuthentication = true;
     };
   };
-
+  users.mutableUsers = lib.mkForce false;
   users.users = {
     "${username}" = {
       homeMode = "755";
       isNormalUser = true;
+      initialHashedPassword = "$y$j9T$cqnEz3bHEPqTgmSNxCeOl1$Z8HsEa0QeUlRb9oZs1NuZEk1yytyEBj4kWS4e3N7iJ7";
       description = "${username}";
       extraGroups = [
         "networkmanager"

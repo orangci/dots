@@ -1,8 +1,9 @@
-{ config, ... }:
+{ config, lib, ... }:
 let
   colours = config.stylix.base16Scheme;
+  cfg = config.hmModules.programs.widgets.rofi;
 in
-{
+lib.mkIf cfg.enable {
   home.file.".config/rofi/selector-big.rasi".text = ''
     // Config //
     configuration {

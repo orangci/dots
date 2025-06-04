@@ -17,7 +17,6 @@ in
     services.cloudflared = {
       enable = true;
       #   certificateFile = ;
-      # TODO: complete cloudflared module
     };
   };
 }

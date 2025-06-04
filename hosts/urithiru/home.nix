@@ -12,6 +12,8 @@
       oxidisation.enable = true;
       fun.enable = true;
       disk-usage.enable = true;
+      starship.enable = true;
+      utilities.enable = true;
       compression = {
         enable = true;
         zip = true;
@@ -21,17 +23,15 @@
         enable = true;
         username = "orangc";
         email = "c@orangc.net";
-        github = true;
       };
     };
-
-    programs.starship.enable = true;
   };
 
   home = {
     username = "${username}";
     homeDirectory = "/home/${username}";
     stateVersion = "25.05";
+    file.".face.icon".source = ../../assets/face.png;
   };
 
   dconf.settings = {
