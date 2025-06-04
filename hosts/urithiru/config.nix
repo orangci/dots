@@ -1,6 +1,7 @@
 {
   pkgs,
   username,
+  host,
   lib,
   ...
 }:
@@ -13,7 +14,13 @@
   modules = {
     common = {
       networking.enable = true;
-      sops.enable = true;
+      sops = {
+        enable = true;
+        secrets."${host}-${username}-pass" = {
+          path = "/run/secrets/${host}-${username}-pass";
+          neededForUsers = true;
+        };
+      };
       virtualisation.enable = false;
     };
     server = {
@@ -51,7 +58,8 @@
     "${username}" = {
       homeMode = "755";
       isNormalUser = true;
-      initialHashedPassword = "$y$j9T$cqnEz3bHEPqTgmSNxCeOl1$Z8HsEa0QeUlRb9oZs1NuZEk1yytyEBj4kWS4e3N7iJ7";
+      # hashedPasswordFile = modules.sops.secrets.${host}-${username}-pass.path;
+      password = "a";
       description = "${username}";
       extraGroups = [
         "networkmanager"
