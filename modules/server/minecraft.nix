@@ -5,7 +5,7 @@
   ...
 }:
 let
-  inherit (lib) mkIf mkOption mkEnableOption;
+  inherit (lib) mkIf mkEnableOption;
   cfg = config.modules.server.minecraft;
   pkgs = import inputs.nixpkgs {
     system = config.nixpkgs.system;
