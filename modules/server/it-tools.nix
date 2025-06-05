@@ -7,6 +7,11 @@ in
 {
   options.modules.server.it-tools = {
     enable = mkEnableOption "Enable it-tools";
+    domain = mkOption {
+      type = lib.types.str;
+      default = "tools.orangc.net";
+      description = "The domain for it-tools to be hosted at";
+    };
     port = lib.mkOption {
       type = lib.types.int;
       default = 8808;
@@ -19,7 +24,7 @@ in
       image = "corentinth/it-tools:latest";
       ports = [ "${toString cfg.port}:80" ];
     };
-    services.caddy.virtualHosts."tools.orangc.net".extraConfig =
+    services.caddy.virtualHosts.${cfg.domain}.extraConfig =
       "reverse_proxy 127.0.0.1:${toString cfg.port}";
   };
 }

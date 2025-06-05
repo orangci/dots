@@ -10,6 +10,11 @@ in
 {
   options.modules.server.calibre-web = {
     enable = mkEnableOption "Enable calibre-web";
+    domain = mkOption {
+      type = lib.types.str;
+      default = "books.orangc.net";
+      description = "The domain for calibre-web to be hosted at";
+    };
     port = lib.mkOption {
       type = lib.types.int;
       default = 8802;
@@ -18,7 +23,7 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    services.caddy.virtualHosts."books.orangc.net".extraConfig =
+    services.caddy.virtualHosts.${cfg.domain}.extraConfig =
       "reverse_proxy 127.0.0.1:${toString cfg.port}";
     services.calibre-web = {
       enable = true;

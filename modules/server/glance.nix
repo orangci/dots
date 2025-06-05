@@ -10,6 +10,11 @@ in
 {
   options.modules.server.glance = {
     enable = mkEnableOption "Enable glance";
+    domain = mkOption {
+      type = lib.types.str;
+      default = "glance.orangc.net";
+      description = "The domain for glance to be hosted at";
+    };
     port = lib.mkOption {
       type = lib.types.int;
       default = 8806;
@@ -28,7 +33,7 @@ in
         };
       };
     };
-    services.caddy.virtualHosts."glance.orangc.net".extraConfig =
+    services.caddy.virtualHosts.${cfg.domain}.extraConfig =
       "reverse_proxy 127.0.0.1:${toString cfg.port}";
   };
 }

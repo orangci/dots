@@ -12,7 +12,7 @@ in
     enable = mkEnableOption "Enable gitea";
     domain = lib.mkOption {
       type = lib.types.str;
-      default = "https://git.orangc.net/";
+      default = "git.orangc.net";
       description = "The domain for gitea to be hosted at";
     };
     port = lib.mkOption {
@@ -39,8 +39,8 @@ in
         session.COOKIE_SECURE = true;
         service.DISABLE_REGISTRATION = false; # set to true after the first run
         server = {
-          ROOT_URL = cfg.domain;
-          DOMAIN = cfg.domain;
+          ROOT_URL = "https://${cfg.domain}/";
+          DOMAIN = "https://${cfg.domain}/";
           HTTP_PORT = cfg.port;
           PROTOCOL = "https";
         };
@@ -56,7 +56,7 @@ in
         };
       };
     };
-    services.caddy.virtualHosts."git.orangc.net".extraConfig =
+    services.caddy.virtualHosts.${cfg.domain}.extraConfig =
       "reverse_proxy 127.0.0.1:${toString cfg.port}";
   };
 }

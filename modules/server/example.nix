@@ -16,12 +16,12 @@ in
     domain = mkOption {
       type = lib.types.str;
       default = "example.orangc.net";
-      description = "The domain for example be hosted at";
+      description = "The domain for example to be hosted at";
     };
   };
 
   config = mkIf cfg.enable {
-    services.caddy.virtualHosts."example.orangc.net".extraConfig =
+    services.caddy.virtualHosts.${cfg.domain}.extraConfig =
       "reverse_proxy 127.0.0.1:${toString cfg.port}";
   };
 }

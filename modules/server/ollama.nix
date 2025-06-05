@@ -15,7 +15,7 @@ in
 
     domain = mkOption {
       type = lib.types.str;
-      default = "ollama.orangc.net";
+      default = "ai.orangc.net";
       description = "The domain for ollama be hosted at";
     };
   };
@@ -35,7 +35,7 @@ in
         ENABLE_OPENAI_API = false;
       };
     };
-    services.caddy.virtualHosts."ai.orangc.net".extraConfig =
+    services.caddy.virtualHosts.${cfg.domain}.extraConfig =
       "reverse_proxy 127.0.0.1:${toString cfg.port}";
   };
 }

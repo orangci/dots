@@ -39,7 +39,7 @@ in
         MICROBIN_DISABLE_TELEMETRY = true;
       };
     };
-    services.caddy.virtualHosts."${cfg.domain}".extraConfig =
+    services.caddy.virtualHosts.${cfg.domain}.extraConfig =
       "reverse_proxy 127.0.0.1:${toString cfg.port}";
   };
 }
