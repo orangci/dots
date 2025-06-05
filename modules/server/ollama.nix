@@ -25,6 +25,7 @@ in
       enable = true;
       port = cfg.port - 1000;
       acceleration = false;
+      loadModels = ["deepseek-r1"];
     };
     services.open-webui = {
       enable = true;
