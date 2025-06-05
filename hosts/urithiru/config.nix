@@ -33,6 +33,7 @@
       immich.enable = false;
       twofauth.enable = true;
       chibisafe.enable = true; # TODO
+      bracket.enable = false; # TODO
       mastodon.enable = true;
       ollama.enable = true;
       minecraft = {

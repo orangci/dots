@@ -1,6 +1,11 @@
 { config, lib, ... }:
 let
-  inherit (lib) mkIf mkOption mkEnableOption;
+  inherit (lib)
+    mkEnableOption
+    mkOption
+    mkIf
+    types
+    ;
   cfg = config.modules.server.ollama;
 in
 {
@@ -8,13 +13,13 @@ in
     enable = mkEnableOption "Enable ollama";
 
     port = mkOption {
-      type = lib.types.int;
+      type = types.int;
       default = 8814;
       description = "The port for ollama to be hosted at";
     };
 
     domain = mkOption {
-      type = lib.types.str;
+      type = types.str;
       default = "ai.orangc.net";
       description = "The domain for ollama be hosted at";
     };
@@ -25,7 +30,7 @@ in
       enable = true;
       port = cfg.port - 1000;
       acceleration = false;
-      loadModels = ["deepseek-r1"];
+      loadModels = [ "deepseek-r1" ];
     };
     services.open-webui = {
       enable = true;

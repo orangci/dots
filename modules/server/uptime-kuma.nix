@@ -1,18 +1,23 @@
 { config, lib, ... }:
 let
-  inherit (lib) mkEnableOption mkIf;
+  inherit (lib)
+    mkEnableOption
+    mkOption
+    mkIf
+    types
+    ;
   cfg = config.modules.server.uptime-kuma;
 in
 {
   options.modules.server.uptime-kuma = {
     enable = mkEnableOption "Enable uptime-kuma";
-    domain = lib.mkOption {
-      type = lib.types.str;
+    domain = mkOption {
+      type = types.str;
       default = "status.orangc.net";
       description = "The domain for uptime kuma to be hosted at";
     };
-    port = lib.mkOption {
-      type = lib.types.str;
+    port = mkOption {
+      type = types.str;
       default = "8812";
       description = "The port for uptime kuma to listen at";
     };

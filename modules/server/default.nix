@@ -19,5 +19,6 @@
     ./2fauth.nix
     ./mastodon.nix
     ./ollama.nix
+    ./bracket.nix
   ];
 }

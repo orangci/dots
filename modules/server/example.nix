@@ -1,6 +1,11 @@
 { config, lib, ... }:
 let
-  inherit (lib) mkIf mkOption mkEnableOption;
+  inherit (lib)
+    mkIf
+    mkOption
+    mkEnableOption
+    types
+    ;
   cfg = config.modules.server.example;
 in
 {
@@ -8,13 +13,13 @@ in
     enable = mkEnableOption "Enable example";
 
     port = mkOption {
-      type = lib.types.int;
+      type = types.int;
       default = 8810;
       description = "The port for example to be hosted at";
     };
 
     domain = mkOption {
-      type = lib.types.str;
+      type = types.str;
       default = "example.orangc.net";
       description = "The domain for example to be hosted at";
     };

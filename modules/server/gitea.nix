@@ -4,25 +4,30 @@
   ...
 }:
 let
-  inherit (lib) mkEnableOption;
+  inherit (lib)
+    mkEnableOption
+    mkOption
+    mkIf
+    types
+    ;
   cfg = config.modules.server.gitea;
 in
 {
   options.modules.server.gitea = {
     enable = mkEnableOption "Enable gitea";
-    domain = lib.mkOption {
-      type = lib.types.str;
+    domain = mkOption {
+      type = types.str;
       default = "git.orangc.net";
       description = "The domain for gitea to be hosted at";
     };
-    port = lib.mkOption {
-      type = lib.types.int;
+    port = mkOption {
+      type = types.int;
       default = 8805;
       description = "The port for gitea to be hosted at";
     };
   };
 
-  config = lib.mkIf cfg.enable {
+  config = mkIf cfg.enable {
     services.gitea = {
       enable = true;
       appName = "gitea";

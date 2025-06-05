@@ -1,13 +1,13 @@
 # Urithiru Plan
 
 # Checklist
-- Chibisafe module
+- Chibisafe module (WIP)
 - Test if the cloudflared/caddy modules work (i.e. if the services are actually accessible)
 - [opnform](https://opnform.com/) module
 - discord bot / discord bot's mongodb✓ (database) instance modules
 - matrix homeserver module
 - [olivetin](https://www.olivetin.app) module
-- [bracket](https://docs.bracketapp.nl/) module
+- [bracket](https://docs.bracketapp.nl/) module (WIP)
 - website and [umami](https://umami.is) module
 
 Things to consider hosting:

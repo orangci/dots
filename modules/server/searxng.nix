@@ -5,25 +5,30 @@
   ...
 }:
 let
-  inherit (lib) mkEnableOption;
+  inherit (lib)
+    mkEnableOption
+    mkOption
+    mkIf
+    types
+    ;
   cfg = config.modules.server.searxng;
 in
 {
   options.modules.server.searxng = {
     enable = mkEnableOption "Enable SearXNG";
-    domain = lib.mkOption {
-      type = lib.types.str;
+    domain = mkOption {
+      type = types.str;
       default = "search.orangc.net";
       description = "The domain for SearXNG to be hosted at";
     };
-    port = lib.mkOption {
-      type = lib.types.int;
+    port = mkOption {
+      type = types.int;
       default = 8811;
       description = "The port for SearXNG to be hosted at";
     };
   };
 
-  config = lib.mkIf cfg.enable {
+  config = mkIf cfg.enable {
     modules.common.sops.secrets."searx" = {
       path = "/run/secrets/searx-env";
     };

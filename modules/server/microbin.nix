@@ -4,25 +4,30 @@
   ...
 }:
 let
-  inherit (lib) mkEnableOption;
+  inherit (lib)
+    mkEnableOption
+    mkOption
+    mkIf
+    types
+    ;
   cfg = config.modules.server.microbin;
 in
 {
   options.modules.server.microbin = {
     enable = mkEnableOption "Enable microbin";
-    domain = lib.mkOption {
-      type = lib.types.str;
+    domain = mkOption {
+      type = types.str;
       default = "paste.orangc.net";
       description = "The domain for microbin to be hosted at";
     };
-    port = lib.mkOption {
-      type = lib.types.int;
+    port = mkOption {
+      type = types.int;
       default = 8809;
       description = "The port for microbin to be hosted at";
     };
   };
 
-  config = lib.mkIf cfg.enable {
+  config = mkIf cfg.enable {
     modules.common.sops.secrets.microbin.path = "/var/lib/microbin.env";
     services.microbin = {
       enable = true;

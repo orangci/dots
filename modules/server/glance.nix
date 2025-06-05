@@ -4,25 +4,30 @@
   ...
 }:
 let
-  inherit (lib) mkEnableOption;
+  inherit (lib)
+    mkOption
+    mkEnableOption
+    types
+    mkIf
+    ;
   cfg = config.modules.server.glance;
 in
 {
   options.modules.server.glance = {
     enable = mkEnableOption "Enable glance";
     domain = mkOption {
-      type = lib.types.str;
+      type = types.str;
       default = "glance.orangc.net";
       description = "The domain for glance to be hosted at";
     };
-    port = lib.mkOption {
-      type = lib.types.int;
+    port = mkOption {
+      type = types.int;
       default = 8806;
       description = "The port for glance to be hosted at";
     };
   };
 
-  config = lib.mkIf cfg.enable {
+  config = mkIf cfg.enable {
     services.glance = {
       enable = true;
       settings = {

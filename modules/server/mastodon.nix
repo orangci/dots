@@ -1,6 +1,11 @@
 { config, lib, ... }:
 let
-  inherit (lib) mkIf mkOption mkEnableOption;
+  inherit (lib)
+    mkIf
+    mkOption
+    mkEnableOption
+    types
+    ;
   cfg = config.modules.server.mastodon;
 in
 {
@@ -8,13 +13,13 @@ in
     enable = mkEnableOption "Enable mastodon";
 
     port = mkOption {
-      type = lib.types.int;
+      type = types.int;
       default = 8803;
       description = "The port for mastodon to be hosted at";
     };
 
     domain = mkOption {
-      type = lib.types.str;
+      type = types.str;
       default = "mastodon.orangc.net";
       description = "The domain for mastodon to be hosted at";
     };

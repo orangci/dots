@@ -1,19 +1,24 @@
 { config, lib, ... }:
 
 let
-  inherit (lib) mkEnableOption mkIf;
+  inherit (lib)
+    mkEnableOption
+    mkOption
+    mkIf
+    types
+    ;
   cfg = config.modules.server.it-tools;
 in
 {
   options.modules.server.it-tools = {
     enable = mkEnableOption "Enable it-tools";
     domain = mkOption {
-      type = lib.types.str;
+      type = types.str;
       default = "tools.orangc.net";
       description = "The domain for it-tools to be hosted at";
     };
-    port = lib.mkOption {
-      type = lib.types.int;
+    port = mkOption {
+      type = types.int;
       default = 8808;
       description = "The port for it-tools to be hosted at";
     };

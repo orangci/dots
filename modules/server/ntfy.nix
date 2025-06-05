@@ -4,25 +4,30 @@
   ...
 }:
 let
-  inherit (lib) mkEnableOption;
+  inherit (lib)
+    mkEnableOption
+    mkOption
+    mkIf
+    types
+    ;
   cfg = config.modules.server.ntfy;
 in
 {
   options.modules.server.ntfy = {
     enable = mkEnableOption "Enable ntfy";
-    domain = lib.mkOption {
-      type = lib.types.str;
+    domain = mkOption {
+      type = types.str;
       default = "ntfy.orangc.net";
       description = "The domain for ntfy to be hosted at";
     };
-    port = lib.mkOption {
-      type = lib.types.int;
+    port = mkOption {
+      type = types.int;
       default = "8810";
       description = "The port for ntfy to be hosted at";
     };
   };
 
-  config = lib.mkIf cfg.enable {
+  config = mkIf cfg.enable {
     services.ntfy-sh = {
       enable = true;
       settings = {
