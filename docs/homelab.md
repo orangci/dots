@@ -1,17 +1,16 @@
 # Urithiru Plan
 
 # Checklist
-- [ ] Chibisafe module
-- [ ] Test if the cloudflared/caddy modules work (i.e. if the services are actually accessible)
-- [ ] [2FAuth](https://docs.2fauth.app/) module
-- [ ] [opnform](https://opnform.com/) module
-- [ ] discord bot / discord bot's mongodb✓ (database) instance modules
-- [ ] matrix homeserver module
-- [ ] [mastodon](https://github.com/mastodon/mastodon) module
-- [ ] [olivetin](https://www.olivetin.app) module
-- [ ] [bracket](https://docs.bracketapp.nl/) module
-- [ ] website and [umami](https://umami.is) module
-- [ ] [ollama](https://ollama.com/) module
+- Chibisafe module
+- Test if the cloudflared/caddy modules work (i.e. if the services are actually accessible)
+- [opnform](https://opnform.com/) module
+- discord bot / discord bot's mongodb✓ (database) instance modules
+- matrix homeserver module
+- [mastodon](https://github.com/mastodon/mastodon) module
+- [olivetin](https://www.olivetin.app) module
+- [bracket](https://docs.bracketapp.nl/) module
+- website and [umami](https://umami.is) module
+- [ollama](https://ollama.com/) module
 
 Things to consider hosting:
 - [discount bandit](https://discount-bandit.cybrarist.com/) module

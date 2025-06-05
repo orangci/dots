@@ -18,7 +18,7 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    services.caddy.virtualHosts."git.orangc.net".extraConfig =
+    services.caddy.virtualHosts."books.orangc.net".extraConfig =
       "reverse_proxy 127.0.0.1:${toString cfg.port}";
     services.calibre-web = {
       enable = true;

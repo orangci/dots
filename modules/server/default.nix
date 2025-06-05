@@ -16,5 +16,6 @@
     ./immich.nix
     ./chibisafe.nix
     ./minecraft.nix
+    ./2fauth.nix
   ];
 }

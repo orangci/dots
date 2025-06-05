@@ -31,6 +31,7 @@
       it-tools.enable = true;
       cryptpad.enable = false;
       immich.enable = false;
+      twofauth.enable = true;
       chibisafe.enable = true; # TODO
       minecraft = {
         enable = false;
