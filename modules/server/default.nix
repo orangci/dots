@@ -18,5 +18,6 @@
     ./minecraft.nix
     ./2fauth.nix
     ./mastodon.nix
+    ./ollama.nix
   ];
 }

@@ -24,7 +24,6 @@ in
       enable = true;
       dataDir = "/var/lib/minecraft";
       eula = true;
-      openFirewall = true;
       servers.juniper = mkIf cfg.juniper.enable {
         enable = true;
         enableReload = true;

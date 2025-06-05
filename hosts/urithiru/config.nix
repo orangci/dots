@@ -34,6 +34,7 @@
       twofauth.enable = true;
       chibisafe.enable = true; # TODO
       mastodon.enable = true;
+      ollama.enable = true;
       minecraft = {
         enable = false;
         juniper.enable = false;
