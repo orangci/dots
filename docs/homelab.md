@@ -50,6 +50,7 @@ Things to consider hosting:
 - [ ] Create an account on the immich instance, then disable registration. Move wallpapers to Immich albums, make them public, and archive wallpaper related GitHub repositories.
 - [ ] Create an account on the vaultwarden instance, then disable registration. Create a Proton Pass backup and import it into Vaultwarden.
 - [ ] Configure Glance. Do not forget the uptime-kuma plugin.
+- [ ] Create an account on the mastodon instance, then disable registration. Update `services.mastodon.streamingProcesses` with the amount of urithiru's CPU cores minus one.
 - [ ] Check the other services in order to confirm that they're all working.
 <!-- - [ ] Create a backup of of Juniper and move it into `/var/lib/minecraft`. Enable `modules.server.minecraft.juniper.enable`. -->
 

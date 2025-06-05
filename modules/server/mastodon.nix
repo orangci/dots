@@ -31,6 +31,7 @@ in
       localDomain = cfg.domain;
       webPort = cfg.port;
       mediaAutoRemove.olderThanDays = 7;
+      streamingProcesses = 2; # TODO
     };
     services.caddy.virtualHosts.${cfg.domain}.extraConfig =
       "reverse_proxy 127.0.0.1:${toString cfg.port}";
