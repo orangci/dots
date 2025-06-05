@@ -6,7 +6,7 @@
   ...
 }:
 let
-  inherit (lib) mkEnableOption;
+  inherit (lib) mkEnableOption mkIf;
   cfg = config.hmModules.programs.widgets.ignis;
 in
 {
