@@ -12,7 +12,7 @@ in
     enable = mkEnableOption "Enable glance";
     port = lib.mkOption {
       type = lib.types.int;
-      default = 4242;
+      default = 8806;
       description = "The port for glance to be hosted at";
     };
   };

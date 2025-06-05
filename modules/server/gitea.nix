@@ -17,7 +17,7 @@ in
     };
     port = lib.mkOption {
       type = lib.types.int;
-      default = 3000;
+      default = 8805;
       description = "The port for gitea to be hosted at";
     };
   };

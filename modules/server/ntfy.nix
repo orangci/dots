@@ -16,8 +16,8 @@ in
       description = "The domain for ntfy to be hosted at";
     };
     port = lib.mkOption {
-      type = lib.types.str;
-      default = "8552";
+      type = lib.types.int;
+      default = "8810";
       description = "The port for ntfy to be hosted at";
     };
   };

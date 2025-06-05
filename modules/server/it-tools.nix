@@ -9,7 +9,7 @@ in
     enable = mkEnableOption "Enable it-tools";
     port = lib.mkOption {
       type = lib.types.int;
-      default = 9525;
+      default = 8808;
       description = "The port for it-tools to be hosted at";
     };
   };

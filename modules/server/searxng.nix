@@ -18,7 +18,7 @@ in
     };
     port = lib.mkOption {
       type = lib.types.int;
-      default = 8888;
+      default = 8811;
       description = "The port for SearXNG to be hosted at";
     };
   };

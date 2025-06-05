@@ -12,7 +12,7 @@ in
     enable = mkEnableOption "Enable cryptpad";
     port = lib.mkOption {
       type = lib.types.int;
-      default = 8462;
+      default = 8804;
       description = "The port for cryptpad to be hosted at";
     };
   };

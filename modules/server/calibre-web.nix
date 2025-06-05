@@ -12,7 +12,7 @@ in
     enable = mkEnableOption "Enable calibre-web";
     port = lib.mkOption {
       type = lib.types.int;
-      default = 8083;
+      default = 8802;
       description = "The port for calibre-web to be hosted at";
     };
   };

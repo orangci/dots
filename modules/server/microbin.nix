@@ -17,7 +17,7 @@ in
     };
     port = lib.mkOption {
       type = lib.types.int;
-      default = 8181;
+      default = 8809;
       description = "The port for microbin to be hosted at";
     };
   };

@@ -17,7 +17,7 @@ in
     };
     port = lib.mkOption {
       type = lib.types.int;
-      default = 8222;
+      default = 8813;
       description = "The port for vaultwarden to be hosted at";
     };
   };

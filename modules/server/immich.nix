@@ -12,7 +12,7 @@ in
     enable = mkEnableOption "Enable immich";
     port = lib.mkOption {
       type = lib.types.int;
-      default = 2283;
+      default = 8807;
       description = "The port for immich to be hosted at";
     };
   };

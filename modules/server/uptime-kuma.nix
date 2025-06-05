@@ -13,7 +13,7 @@ in
     };
     port = lib.mkOption {
       type = lib.types.str;
-      default = "8080";
+      default = "8812";
       description = "The port for uptime kuma to listen at";
     };
   };
