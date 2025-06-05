@@ -1,11 +1,19 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  inputs,
+  ...
+}:
 let
   inherit (lib) mkIf mkOption mkEnableOption;
   cfg = config.modules.server.minecraft;
+  pkgs = import inputs.nixpkgs {
+    system = config.nixpkgs.system;
+    overlays = [ inputs.nix-minecraft.overlay ];
+  };
 in
 {
   imports = [ inputs.nix-minecraft.nixosModules.minecraft-servers ];
-  nixpkgs.overlays = [ inputs.nix-minecraft.overlay ];
   options.modules.server.minecraft = {
     enable = mkEnableOption "Enable minecraft";
     juniper.enable = mkEnableOption "Enable Juniper SMP server";

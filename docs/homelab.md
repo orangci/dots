@@ -54,6 +54,6 @@ Things to consider hosting:
 - [ ] Create an account on the vaultwarden instance, then disable registration. Create a Proton Pass backup and import it into Vaultwarden.
 - [ ] Configure Glance. Do not forget the uptime-kuma plugin.
 - [ ] Check the other services in order to confirm that they're all working.
-- [ ] Create a backup of of Juniper and move it into `/var/lib/minecraft`. Enable `modules.server.minecraft.juniper.enable`.
+<!-- - [ ] Create a backup of of Juniper and move it into `/var/lib/minecraft`. Enable `modules.server.minecraft.juniper.enable`. -->
 
 Use `ssh orangc@192.168.1.42` in order to SSH into the homelab.

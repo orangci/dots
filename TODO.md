@@ -8,3 +8,4 @@
 - secure boot (maybe)
 - use impermanence
 - nixify firefox extensions settings
+- create my own SDDM theme

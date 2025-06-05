@@ -11,7 +11,8 @@ in
 
   config = mkIf cfg.enable {
     modules.common.sops.secrets."cloudflared/cert.pem".path = "/run/secrets/cloudflared/cert.pem";
-    modules.common.sops.secrets."cloudflared/credentials.json".path = "/run/secrets/cloudflared/credentials.json";
+    modules.common.sops.secrets."cloudflared/credentials.json".path =
+      "/run/secrets/cloudflared/credentials.json";
 
     services.cloudflared = {
       enable = true;
