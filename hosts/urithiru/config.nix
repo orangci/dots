@@ -33,6 +33,7 @@
       immich.enable = false;
       twofauth.enable = true;
       chibisafe.enable = true; # TODO
+      mastodon.enable = true;
       minecraft = {
         enable = false;
         juniper.enable = false;

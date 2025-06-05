@@ -17,5 +17,6 @@
     ./chibisafe.nix
     ./minecraft.nix
     ./2fauth.nix
+    ./mastodon.nix
   ];
 }

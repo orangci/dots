@@ -9,14 +9,14 @@ in
 
     port = mkOption {
       type = lib.types.int;
-      default = 4242;
+      default = 8810;
       description = "The port for example to be hosted at";
     };
 
     domain = mkOption {
       type = lib.types.str;
       default = "example.orangc.net";
-      description = "The port for domain to be hosted at";
+      description = "The domain for example be hosted at";
     };
   };
 
