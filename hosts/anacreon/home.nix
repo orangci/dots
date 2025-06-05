@@ -71,6 +71,7 @@
         rofi.enable = true;
         swaync.enable = false;
         waybar.enable = false;
+        ignis.enable = true;
       };
       quickshell = {
         enable = true;

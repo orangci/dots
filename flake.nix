@@ -53,6 +53,12 @@
       url = "github:infinidoge/nix-minecraft";
       inputs.nixpkgs.follows = "nixpkgs-small";
     };
+
+    # widgets framework configurable in *python*!!
+    ignis = {
+      url = "github:ignis-sh/ignis";
+      inputs.nixpkgs.follows = "nixpkgs-small";
+    };
   };
 
   outputs =

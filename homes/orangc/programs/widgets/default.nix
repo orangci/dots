@@ -4,5 +4,6 @@
     ./waybar
     ./wlogout
     ./swaync
+    ./ignis.nix
   ];
 }
