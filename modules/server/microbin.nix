@@ -17,7 +17,7 @@ in
     enable = mkEnableOption "Enable microbin";
     domain = mkOption {
       type = types.str;
-      default = "paste.orangc.net";
+      default = "bin.orangc.net";
       description = "The domain for microbin to be hosted at";
     };
     port = mkOption {
@@ -41,10 +41,11 @@ in
         MICROBIN_SHORT_PATH = "https://orangc.net/";
         MICROBIN_WIDE = true;
         MICROBIN_QR = true;
+        MICROBIN_HIGHLIGHTSYNTAX = true;
+        MICROBIN_PRIVATE = true;
+        MICROBIN_EDITABLE = true;
         MICROBIN_DISABLE_TELEMETRY = true;
       };
     };
-    services.caddy.virtualHosts.${cfg.domain}.extraConfig =
-      "reverse_proxy 127.0.0.1:${toString cfg.port}";
   };
 }

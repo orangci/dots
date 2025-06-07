@@ -30,9 +30,13 @@ in
   config = mkIf cfg.enable {
     services.cryptpad = {
       enable = true;
-      settings.httpPort = cfg.port;
+      settings = {
+        httpPort = cfg.port;
+        websocketPort = (cfg.port - 1000);
+        httpSafeOrigin = cfg.domain;
+        httpUnsafeOrigin = "https://${cfg.domain}/";
+        logToStdout = false;
+      };
     };
-    services.caddy.virtualHosts.${cfg.domain}.extraConfig =
-      "reverse_proxy 127.0.0.1:${toString cfg.port}";
   };
 }

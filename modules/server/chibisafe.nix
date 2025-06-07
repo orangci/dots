@@ -28,19 +28,17 @@ in
   config = mkIf cfg.enable {
     virtualisation.oci-containers.containers.chibisafe = {
       image = "chibisafe/chibisafe:latest";
-      ports = [ "${toString cfg.port - 1000}:8001" ];
-      environment.BASE_API_URL = "http://chibisafe_server:${toString cfg.port - 1000}";
+      ports = [ "${toString cfg.port}:8001" ];
+      environment.BASE_API_URL = "http://chibisafe_server:${toString (cfg.port - 1000)}";
     };
     virtualisation.oci-containers.containers.chibisafe_server = {
       image = "chibisafe/chibisafe-server:latest";
-      ports = [ "${toString cfg.port}:8000" ];
+      ports = [ "${toString (cfg.port - 1000)}:8000" ];
       volumes = [
         "database:/app/database:rw"
         "uploads:/app/uploads:rw"
         "logs:/app/logs:rw"
       ];
     };
-    services.caddy.virtualHosts.${cfg.domain}.extraConfig =
-      "reverse_proxy 127.0.0.1:${toString cfg.port}";
   };
 }

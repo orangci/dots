@@ -28,19 +28,17 @@ in
   config = mkIf cfg.enable {
     services.ollama = {
       enable = true;
-      port = cfg.port - 1000;
+      port = (cfg.port - 1000);
       acceleration = false;
-      loadModels = [ "deepseek-r1" ];
+      loadModels = [ "gemma3" ];
     };
     services.open-webui = {
       enable = true;
       port = cfg.port;
       environment = {
-        OLLAMA_BASE_URL = "http://localhost:${cfg.port - 1000}";
-        ENABLE_OPENAI_API = false;
+        OLLAMA_BASE_URL = "http://localhost:${toString (cfg.port - 1000)}";
+        ENABLE_OPENAI_API = "False";
       };
     };
-    services.caddy.virtualHosts.${cfg.domain}.extraConfig =
-      "reverse_proxy 127.0.0.1:${toString cfg.port}";
   };
 }

@@ -30,13 +30,13 @@ in
 
   config = mkIf cfg.enable {
     modules.common.sops.secrets."searx" = {
-      path = "/run/secrets/searx-env";
+      path = "/var/secrets/searx-env";
     };
 
     services.searx = {
       enable = true;
       package = pkgs.searxng;
-      environmentFile = "/run/secrets/searx-env";
+      environmentFile = "/var/secrets/searx-env";
 
       settings = {
         # TODO: engines configuration
@@ -65,7 +65,5 @@ in
         };
       };
     };
-    services.caddy.virtualHosts.${cfg.domain}.extraConfig =
-      "reverse_proxy 127.0.0.1:${toString cfg.port}";
   };
 }

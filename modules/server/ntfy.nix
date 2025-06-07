@@ -22,7 +22,7 @@ in
     };
     port = mkOption {
       type = types.int;
-      default = "8810";
+      default = 8810;
       description = "The port for ntfy to be hosted at";
     };
   };
@@ -33,9 +33,8 @@ in
       settings = {
         base-url = "https://${cfg.domain}/";
         auth-default-access = "deny-all";
-        listen-http = ":${cfg.port}";
+        listen-http = ":${toString cfg.port}";
       };
     };
-    services.caddy.virtualHosts.${cfg.domain}.extraConfig = "reverse_proxy 127.0.0.1:${cfg.port}";
   };
 }

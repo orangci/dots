@@ -32,7 +32,5 @@ in
       enable = true;
       port = cfg.port;
     };
-    services.caddy.virtualHosts.${cfg.domain}.extraConfig =
-      "reverse_proxy 127.0.0.1:${toString cfg.port}";
   };
 }

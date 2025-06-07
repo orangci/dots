@@ -17,7 +17,7 @@ in
     enable = mkEnableOption "Enable vaultwarden";
     domain = mkOption {
       type = types.str;
-      default = "pass.orangc.net";
+      default = "vault.orangc.net";
       description = "The domain for vaultwarden to be hosted at";
     };
     port = mkOption {
@@ -39,8 +39,5 @@ in
         rocketPort = cfg.port;
       };
     };
-    services.caddy.virtualHosts.${cfg.domain}.extraConfig = ''
-      reverse_proxy 127.0.0.1:${toString cfg.port}
-    '';
   };
 }

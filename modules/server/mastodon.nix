@@ -32,8 +32,7 @@ in
       webPort = cfg.port;
       mediaAutoRemove.olderThanDays = 7;
       streamingProcesses = 2; # TODO
+      smtp.fromAddress = "mastodon@orangc.net";
     };
-    services.caddy.virtualHosts.${cfg.domain}.extraConfig =
-      "reverse_proxy 127.0.0.1:${toString cfg.port}";
   };
 }

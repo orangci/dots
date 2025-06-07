@@ -29,7 +29,5 @@ in
       image = "corentinth/it-tools:latest";
       ports = [ "${toString cfg.port}:80" ];
     };
-    services.caddy.virtualHosts.${cfg.domain}.extraConfig =
-      "reverse_proxy 127.0.0.1:${toString cfg.port}";
   };
 }

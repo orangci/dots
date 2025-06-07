@@ -10,7 +10,6 @@
     ./technitium.nix
     ./glance.nix
     ./gitea.nix
-    ./calibre-web.nix
     ./cryptpad.nix
     ./it-tools.nix
     ./immich.nix

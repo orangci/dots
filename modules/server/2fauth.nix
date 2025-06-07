@@ -24,7 +24,7 @@ in
 
     domain = mkOption {
       type = types.str;
-      default = "2fauth.orangc.net";
+      default = "2fa.orangc.net";
       description = "The domain for 2FAuth to be hosted at";
     };
 
@@ -37,9 +37,9 @@ in
 
   config = mkIf cfg.enable {
     users.users.twofauth = {
-      isSystemUser = true;
-      uid = 1000;
-      group = "2fauth";
+      isNormalUser = true;
+      group = "twofauth";
+      home = cfg.dataDir;
     };
 
     users.groups.twofauth = { };
@@ -53,10 +53,7 @@ in
     };
 
     systemd.tmpfiles.rules = [
-      "d ${cfg.dataDir} 0700 2fauth 2fauth -"
+      "d ${cfg.dataDir} 0700 twofauth twofauth -"
     ];
-
-    services.caddy.virtualHosts.${cfg.domain}.extraConfig =
-      "reverse_proxy 127.0.0.1:${toString cfg.port}";
   };
 }

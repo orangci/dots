@@ -15,25 +15,100 @@
       sops.enable = true;
     };
     server = {
-      cloudflared.enable = true;
       caddy.enable = true;
+      cloudflared.enable = true;
       technitium.enable = true;
-      searxng.enable = true;
-      uptime-kuma.enable = true;
-      vaultwarden.enable = true;
-      microbin.enable = true;
-      ntfy.enable = true;
-      glance.enable = true;
-      gitea.enable = true;
-      calibre-web.enable = true;
-      it-tools.enable = true;
-      cryptpad.enable = false;
-      immich.enable = false;
-      twofauth.enable = true;
-      chibisafe.enable = true; # TODO
-      bracket.enable = false; # TODO
-      mastodon.enable = true;
-      ollama.enable = true;
+
+      chibisafe = {
+        enable = true;
+        domain = "safe.orangc.net";
+        port = 8801;
+      };
+
+      cryptpad = {
+        enable = false;
+        domain = "pad.orangc.net";
+        port = 8802;
+      };
+
+      gitea = {
+        enable = true;
+        domain = "git.orangc.net";
+        port = 8803;
+      };
+
+      glance = {
+        enable = true;
+        domain = "glance.orangc.net";
+        port = 8804;
+      };
+
+      immich = {
+        enable = true;
+        domain = "media.orangc.net";
+        port = 8805;
+      };
+
+      it-tools = {
+        enable = true;
+        domain = "tools.orangc.net";
+        port = 8806;
+      };
+
+      mastodon = {
+        enable = true;
+        domain = "mastodon.orangc.net";
+        port = 8807;
+      };
+
+      microbin = {
+        enable = true;
+        domain = "bin.orangc.net";
+        port = 8808;
+      };
+
+      ntfy = {
+        enable = true;
+        domain = "ntfy.orangc.net";
+        port = 8809;
+      };
+
+      ollama = {
+        enable = false;
+        domain = "ai.orangc.net";
+        port = 8810;
+      };
+
+      searxng = {
+        enable = true;
+        domain = "search.orangc.net";
+        port = 8811;
+      };
+
+      twofauth = {
+        enable = false;
+        domain = "2fa.orangc.net";
+        port = 8812;
+      };
+
+      uptime-kuma = {
+        enable = true;
+        domain = "status.orangc.net";
+        port = 8813;
+      };
+
+      vaultwarden = {
+        enable = true;
+        domain = "vault.orangc.net";
+        port = 8814;
+      };
+
+      bracket = {
+        enable = false;
+        domain = "bracket.orangc.net";
+        port = 8815;
+      };
+
       minecraft = {
         enable = false;
         juniper.enable = false;

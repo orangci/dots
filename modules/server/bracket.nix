@@ -40,7 +40,6 @@ in
 
   config = mkIf cfg.enable {
     users.users.bracket = {
-      isSystemUser = true;
       home = "/var/lib/bracket";
     };
 
@@ -104,8 +103,5 @@ in
         RestartSec = "2s";
       };
     };
-
-    services.caddy.virtualHosts.${cfg.domain}.extraConfig =
-      "reverse_proxy 127.0.0.1:${toString cfg.port}";
   };
 }

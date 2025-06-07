@@ -32,13 +32,11 @@ in
       enable = true;
       settings = {
         server.port = cfg.port;
-        pages = {
-          # TODO: config - https://github.com/glanceapp/glance/blob/main/docs/configuration.md#pages--columns
-          # also see https://search.nixos.org/options?channel=unstable&show=services.glance.settings.pages&from=0&size=50&sort=relevance&type=packages&query=services.glance.
-        };
+        # pages = {
+        # TODO: config - https://github.com/glanceapp/glance/blob/main/docs/configuration.md#pages--columns
+        # also see https://search.nixos.org/options?channel=unstable&show=services.glance.settings.pages&from=0&size=50&sort=relevance&type=packages&query=services.glance.
+        # };
       };
     };
-    services.caddy.virtualHosts.${cfg.domain}.extraConfig =
-      "reverse_proxy 127.0.0.1:${toString cfg.port}";
   };
 }

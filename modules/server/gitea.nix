@@ -47,11 +47,10 @@ in
           ROOT_URL = "https://${cfg.domain}/";
           DOMAIN = "https://${cfg.domain}/";
           HTTP_PORT = cfg.port;
-          PROTOCOL = "https";
+          PROTOCOL = "http";
         };
         repository = {
           # PREFERRED_LICENSES = ""; TODO
-          DEFAULT_REPO_UNITS = "repo.code repo.issues repo.pulls repo.wiki repo.actions";
           DISABLE_STARS = true;
           DEFAULT_BRANCH = "master";
         };
@@ -61,7 +60,5 @@ in
         };
       };
     };
-    services.caddy.virtualHosts.${cfg.domain}.extraConfig =
-      "reverse_proxy 127.0.0.1:${toString cfg.port}";
   };
 }
