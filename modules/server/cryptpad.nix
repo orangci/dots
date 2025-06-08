@@ -15,6 +15,12 @@ in
 {
   options.modules.server.cryptpad = {
     enable = mkEnableOption "Enable cryptpad";
+
+    name = mkOption {
+      type = types.str;
+      default = "Cryptpad";
+    };
+
     domain = mkOption {
       type = types.str;
       default = "pad.orangc.net";

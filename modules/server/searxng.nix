@@ -16,6 +16,12 @@ in
 {
   options.modules.server.searxng = {
     enable = mkEnableOption "Enable SearXNG";
+
+    name = mkOption {
+      type = types.str;
+      default = "SearXNG";
+    };
+
     domain = mkOption {
       type = types.str;
       default = "search.orangc.net";

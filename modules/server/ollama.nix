@@ -12,6 +12,11 @@ in
   options.modules.server.ollama = {
     enable = mkEnableOption "Enable ollama";
 
+    name = mkOption {
+      type = types.str;
+      default = "Ollama";
+    };
+
     port = mkOption {
       type = types.int;
       default = 8814;

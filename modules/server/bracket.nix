@@ -25,6 +25,11 @@ in
   options.modules.server.bracket = {
     enable = mkEnableOption "Enable Bracket";
 
+    name = mkOption {
+      type = types.str;
+      default = "Bracket";
+    };
+
     domain = mkOption {
       type = types.str;
       default = "bracket.orangc.net";

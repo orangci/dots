@@ -12,6 +12,11 @@ in
   options.modules.server.chibisafe = {
     enable = mkEnableOption "Enable chibisafe";
 
+    name = mkOption {
+      type = types.str;
+      default = "Chibisafe";
+    };
+
     port = mkOption {
       type = types.int;
       default = 8816;

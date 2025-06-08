@@ -15,6 +15,12 @@ in
 {
   options.modules.server.immich = {
     enable = mkEnableOption "Enable immich";
+
+    name = mkOption {
+      type = types.str;
+      default = "Immich";
+    };
+
     domain = mkOption {
       type = types.str;
       default = "media.orangc.net";

@@ -12,6 +12,12 @@ in
 {
   options.modules.server.it-tools = {
     enable = mkEnableOption "Enable it-tools";
+
+    name = mkOption {
+      type = types.str;
+      default = "IT-Tools";
+    };
+
     domain = mkOption {
       type = types.str;
       default = "tools.orangc.net";

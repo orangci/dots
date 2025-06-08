@@ -15,6 +15,12 @@ in
 {
   options.modules.server.vaultwarden = {
     enable = mkEnableOption "Enable vaultwarden";
+
+    name = mkOption {
+      type = types.str;
+      default = "Vaultwarden";
+    };
+
     domain = mkOption {
       type = types.str;
       default = "vault.orangc.net";

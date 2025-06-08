@@ -11,6 +11,12 @@ in
 {
   options.modules.server.uptime-kuma = {
     enable = mkEnableOption "Enable uptime-kuma";
+
+    name = mkOption {
+      type = types.str;
+      default = "Uptime Kuma";
+    };
+
     domain = mkOption {
       type = types.str;
       default = "status.orangc.net";

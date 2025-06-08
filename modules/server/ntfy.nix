@@ -15,6 +15,12 @@ in
 {
   options.modules.server.ntfy = {
     enable = mkEnableOption "Enable ntfy";
+
+    name = mkOption {
+      type = types.str;
+      default = "Ntfy";
+    };
+
     domain = mkOption {
       type = types.str;
       default = "ntfy.orangc.net";

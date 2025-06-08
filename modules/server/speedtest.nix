@@ -12,6 +12,11 @@ in
   options.modules.server.speedtest = {
     enable = mkEnableOption "Enable speedtest-tracker";
 
+    name = mkOption {
+      type = types.str;
+      default = "Speedtest Tracker";
+    };
+
     port = mkOption {
       type = types.int;
       default = 8816;

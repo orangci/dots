@@ -15,6 +15,12 @@ in
 {
   options.modules.server.microbin = {
     enable = mkEnableOption "Enable microbin";
+
+    name = mkOption {
+      type = types.str;
+      default = "Microbin";
+    };
+
     domain = mkOption {
       type = types.str;
       default = "bin.orangc.net";

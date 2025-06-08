@@ -12,6 +12,11 @@ in
   options.modules.server.example = {
     enable = mkEnableOption "Enable example";
 
+    name = mkOption {
+      type = types.str;
+      default = "Example";
+    };
+
     port = mkOption {
       type = types.int;
       default = 8810;

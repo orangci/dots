@@ -122,7 +122,7 @@
       }; # TODO: untested
 
       uptime-kuma = {
-        enable = true;
+        enable = false;
         domain = "status.orangc.net";
         port = 8813;
       };

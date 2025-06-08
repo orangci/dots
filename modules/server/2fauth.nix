@@ -15,7 +15,10 @@ in
 {
   options.modules.server.twofauth = {
     enable = mkEnableOption "Enable 2fauth";
-
+    name = mkOption {
+      type = types.str;
+      default = "2FAuth";
+    };
     port = mkOption {
       type = types.port;
       default = 8801;

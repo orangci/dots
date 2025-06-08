@@ -12,6 +12,11 @@ in
   options.modules.server.mastodon = {
     enable = mkEnableOption "Enable mastodon";
 
+    name = mkOption {
+      type = types.str;
+      default = "Mastodon";
+    };
+
     port = mkOption {
       type = types.int;
       default = 8803;

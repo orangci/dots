@@ -15,6 +15,12 @@ in
 {
   options.modules.server.gitea = {
     enable = mkEnableOption "Enable gitea";
+
+    name = mkOption {
+      type = types.str;
+      default = "Gitea";
+    };
+
     domain = mkOption {
       type = types.str;
       default = "git.orangc.net";
