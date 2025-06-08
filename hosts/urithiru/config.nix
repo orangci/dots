@@ -29,7 +29,7 @@
         enable = false;
         domain = "pad.orangc.net";
         port = 8802;
-      };
+      }; # TODO: lets you signup but nothing more than that :c
 
       gitea = {
         enable = true;
@@ -92,7 +92,7 @@
       };
 
       uptime-kuma = {
-        enable = true;
+        enable = false;
         domain = "status.orangc.net";
         port = 8813;
       };
@@ -104,7 +104,7 @@
       };
 
       bracket = {
-        enable = false;
+        enable = true;
         domain = "bracket.orangc.net";
         port = 8815;
       };

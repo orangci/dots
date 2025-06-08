@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  inputs,
   ...
 }:
 let
@@ -46,7 +47,15 @@ in
       home.packages =
         with pkgs;
         [
-          (pkgs.${cfg.version})
+          (python3.withPackages (
+            ps: with ps; [
+              (inputs.ignis.packages.${pkgs.stdenv.hostPlatform.system}.ignis.override {
+                extraPackages = [
+                  # Add extra packages if needed
+                ];
+              })
+            ]
+          ))
           uv
           ruff
           virtualenv

@@ -28,6 +28,7 @@ in
   };
 
   config = mkIf cfg.enable {
+    # TODO: https://github.com/catppuccin/gitea
     services.gitea = {
       enable = true;
       appName = "gitea";

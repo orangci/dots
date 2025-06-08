@@ -29,7 +29,7 @@ in
     virtualisation.oci-containers.containers.chibisafe = {
       image = "chibisafe/chibisafe:latest";
       ports = [ "${toString cfg.port}:8001" ];
-      environment.BASE_API_URL = "http://chibisafe_server:${toString (cfg.port - 1000)}";
+      environment.BASE_API_URL = "http://localhost:${toString (cfg.port - 1000)}";
     };
     virtualisation.oci-containers.containers.chibisafe_server = {
       image = "chibisafe/chibisafe-server:latest";

@@ -7,6 +7,7 @@ let
     nameValuePair
     filterAttrs
     mkMerge
+    mkForce
     ;
 
   cfg = config.modules.server.caddy;
@@ -35,6 +36,31 @@ in
         {
           "ping.localhost".extraConfig = ''respond pong'';
           "dns.localhost".extraConfig = ''reverse_proxy 127.0.0.1:5380'';
+          ${config.modules.server.chibisafe.domain}.extraConfig = mkForce ''
+            route {
+              file_server * {
+                root /app/uploads
+                pass_thru
+              }
+
+              @api path /api/*
+              reverse_proxy @api http://localhost:${toString (config.modules.server.chibisafe.port - 1000)} {
+                header_up Host {http.reverse_proxy.upstream.hostport}
+                header_up X-Real-IP {http.request.header.X-Real-IP}
+              }
+
+              @docs path /docs*
+              reverse_proxy @docs http://localhost:${toString (config.modules.server.chibisafe.port - 1000)} {
+                header_up Host {http.reverse_proxy.upstream.hostport}
+                header_up X-Real-IP {http.request.header.X-Real-IP}
+              }
+
+              reverse_proxy http://localhost:${toString config.modules.server.chibisafe.port} {
+                header_up Host {http.reverse_proxy.upstream.hostport}
+                header_up X-Real-IP {http.request.header.X-Real-IP}
+              }
+            }
+          '';
         }
         dynamicVhosts
       ];

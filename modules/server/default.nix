@@ -19,5 +19,6 @@
     ./mastodon.nix
     ./ollama.nix
     ./bracket.nix
+    ./speedtest.nix
   ];
 }

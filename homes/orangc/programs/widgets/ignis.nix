@@ -15,6 +15,6 @@ in
   };
 
   config = mkIf cfg.enable {
-    home.packages = with pkgs; [ inputs.ignis.packages.${system}.ignis ];
+    # home.packages = with pkgs; [ inputs.ignis.packages.${system}.ignis ];
   };
 }

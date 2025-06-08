@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  host,
   ...
 }:
 let
@@ -9,6 +10,7 @@ let
     mkEnableOption
     types
     mkIf
+    optional
     ;
   cfg = config.modules.server.glance;
 in
@@ -26,16 +28,366 @@ in
       description = "The port for glance to be hosted at";
     };
   };
-
+  # maybe in the future https://github.com/glanceapp/community-widgets/blob/main/widgets/google-calendar-list-by-anant-j/README.md
   config = mkIf cfg.enable {
+    modules.common.sops.secrets.technitium-api-token.path = "/var/secrets/technitium-api-token";
+    modules.common.sops.secrets.immich-api-key.path = "/var/secrets/immich-api-key";
+    modules.common.sops.secrets.hardcover-api-key.path = "/var/secrets/hardcover-api-key";
     services.glance = {
       enable = true;
       settings = {
+        # https://github.com/glanceapp/glance/blob/main/docs/configuration.md
         server.port = cfg.port;
-        # pages = {
-        # TODO: config - https://github.com/glanceapp/glance/blob/main/docs/configuration.md#pages--columns
-        # also see https://search.nixos.org/options?channel=unstable&show=services.glance.settings.pages&from=0&size=50&sort=relevance&type=packages&query=services.glance.
-        # };
+        pages = [
+          {
+            name = host;
+            hide-desktop-navigation = false;
+            show-mobile-header = false;
+            branding = {
+              app-background-color = "#191724";
+              hide-footer = true;
+            };
+            theme = {
+              background-color = "249 22 12";
+              primary-color = "2 55 83";
+              positive-color = "197 49 38";
+              negative-color = "343 76 68";
+              contrast-multiplier = "1.3";
+              presets.rose-pine = {
+                background-color = "249 22 12";
+                primary-color = "2 55 83";
+                positive-color = "197 49 38";
+                negative-color = "343 76 68";
+                contrast-multiplier = "1.3";
+              };
+              presets.catppuccin-latte = {
+                light = true;
+                background-color = "0 0 95";
+                primary-color = "0 0 10";
+                negative-color = "0 90 50";
+              };
+            };
+            head-widgets = [ ];
+            columns = [
+              {
+                size = "small";
+                widgets = [
+                  {
+                    type = "search";
+                    search-engine = "https://search.orangc.net/search?q={QUERY}";
+                  }
+                  {
+                    type = "monitor";
+                    title = "Services";
+                    cache = "1m";
+                    show-failing-only = true;
+                    sites = builtins.concatLists [
+                      (optional config.modules.server.chibisafe.enable {
+                        title = "Chibisafe";
+                        url = "https://${config.modules.server.chibisafe.domain}";
+                      })
+                      (optional config.modules.server.cryptpad.enable {
+                        title = "Cryptpad";
+                        url = "https://${config.modules.server.cryptpad.domain}";
+                      })
+                      (optional config.modules.server.gitea.enable {
+                        title = "Gitea";
+                        url = "https://${config.modules.server.gitea.domain}";
+                      })
+                      (optional config.modules.server.immich.enable {
+                        title = "Immich";
+                        url = "https://${config.modules.server.immich.domain}";
+                      })
+                      (optional config.modules.server.it-tools.enable {
+                        title = "IT-Tools";
+                        url = "https://${config.modules.server.it-tools.domain}";
+                      })
+                      (optional config.modules.server.mastodon.enable {
+                        title = "Mastodon";
+                        url = "https://${config.modules.server.mastodon.domain}";
+                      })
+                      (optional config.modules.server.microbin.enable {
+                        title = "Microbin";
+                        url = "https://${config.modules.server.microbin.domain}";
+                      })
+                      (optional config.modules.server.ntfy.enable {
+                        title = "Ntfy";
+                        url = "https://${config.modules.server.ntfy.domain}";
+                      })
+                      (optional config.modules.server.searxng.enable {
+                        title = "SearXNG";
+                        url = "https://${config.modules.server.searxng.domain}";
+                      })
+                      (optional config.modules.server.vaultwarden.enable {
+                        title = "Vaultwarden";
+                        url = "https://${config.modules.server.vaultwarden.domain}";
+                      })
+                      (optional config.modules.server.ollama.enable {
+                        title = "Ollama";
+                        url = "https://${config.modules.server.ollama.domain}";
+                      })
+                      (optional config.modules.server.twofauth.enable {
+                        title = "2FAuth";
+                        url = "https://${config.modules.server.twofauth.domain}";
+                      })
+                      (optional config.modules.server.bracket.enable {
+                        title = "Bracket";
+                        url = "https://${config.modules.server.bracket.domain}";
+                      })
+                    ];
+                  }
+                  {
+                    type = "clock";
+                    hour-format = "24h";
+                    timezones = [
+                      # https://timeapi.io/documentation/iana-timezones
+                      {
+                        timezone = "UTC";
+                        label = "UTC";
+                      }
+                      {
+                        timezone = "Canada/Eastern";
+                        label = "Ottawa";
+                      }
+                      {
+                        timezone = "Asia/Dhaka";
+                        label = "Dhaka";
+                      }
+                    ];
+                  }
+                  {
+                    type = "custom-api";
+                    height = "200px";
+                    title = "Fox";
+                    cache = "2m";
+                    url = "https://randomfox.ca/floof/?ref=public_apis&utm_medium=website";
+                    template = ''<img src="{{ .JSON.String "image" }}"></img>'';
+                  }
+                ];
+              }
+              {
+                size = "full";
+                widgets = [
+                  { type = "to-do"; }
+                  {
+                    type = "server-stats";
+                    servers = [
+                      {
+                        type = "local";
+                        name = host;
+                      }
+                    ];
+                  }
+                  {
+                    type = "custom-api";
+                    title = "Random Qur'an Verse";
+                    cache = "1h";
+                    url = "https://api.alquran.cloud/v1/ayah/random/editions/quran-uthmani,en.hilali";
+                    template = ''
+                      <p class="size-h2 color-highlight">
+                        Ayah {{ .JSON.Int "data.0.numberInSurah" }} of Surah {{ .JSON.String "data.0.surah.englishName" }} ({{ .JSON.String "data.0.surah.englishNameTranslation" }})
+                      </p>
+                      <p class="size-h4 color-paragraph">{{ .JSON.String "data.0.text" }}</p>
+                      <p class="size-h5 color-paragraph">{{ .JSON.String "data.1.text" }}</p>
+                    '';
+                  }
+                  {
+                    type = "custom-api";
+                    title = "Hardcover";
+                    cache = "1h";
+                    url = "https://api.hardcover.app/v1/graphql";
+                    headers = {
+                      content-type = "application/json";
+                      authorization = {
+                        _secret = config.modules.common.sops.secrets.hardcover-api-key.path;
+                      };
+                    };
+                    body = {
+                      query = ''
+                        query MyQuery {
+                          me {
+                            user_books(where: {status_id: {_eq: 2}}, order_by: {first_read_date: desc}) {
+                              id
+                              user_book_reads(
+                                limit: 1,
+                                order_by: {started_at: desc_nulls_last}
+                              ) {
+                                id
+                                started_at
+                                progress
+                                edition {
+                                  image {
+                                    url
+                                  }
+                                  cached_contributors
+                                }
+                              }
+                              book {
+                                title
+                                slug
+                              }
+                            }
+                          }
+                        }
+                      '';
+                    };
+                    template = ''
+                      <ul class="list list-gap-10 collapsible-container" data-collapse-after="5">
+                        {{ range .JSON.Array "data.me.0.user_books" }}
+                          <li class="flex items-center gap-10">
+                            <div style="border-radius: 5px; max-height: 10rem; max-width: 6rem; overflow: hidden;">
+                              <img src="{{ .String "user_book_reads.0.edition.image.url" }}" class="card" style="width: 100%; height: 100%; object-fit: cover; object-position: center;">
+                            </div>
+                            <div class="flex-1">
+                              <a class="size-h4 color-highlight" href="https://hardcover.app/books/{{ .String "book.slug" }}">{{ .String "book.title" }}</a>
+                              <ul class="list-horizontal-text size-h5">
+                                {{ range .Array "user_book_reads.0.edition.cached_contributors" }}
+                                  {{ if not (.String "contribution") }}
+                                    <li>{{ .String "author.name" }}</li>
+                                  {{ end }}
+                                {{ end }}
+                              </ul>
+                              <ul class="list-horizontal-text" >
+                                <li>{{ .String "user_book_reads.0.started_at" }}</li>
+                                <li>{{ .Int "user_book_reads.0.progress" }}%</li>
+                              </ul>
+                            </div>
+                          </li>
+                        {{ end }}
+                      </ul>
+                    '';
+                  }
+                ];
+              }
+              {
+                size = "small";
+                widgets = [
+                  {
+                    type = "weather";
+                    location = "Riyadh, Saudi Arabia";
+                    units = "metric";
+                    hour-format = "24h";
+                  }
+                  {
+                    type = "dns-stats";
+                    url = "http://localhost:5380";
+                    hour-format = "24h";
+                    hide-graph = false;
+                    hide-top-domains = false;
+                    service = "technitium";
+                    token = {
+                      _secret = config.modules.common.sops.secrets.technitium-api-token.path;
+                    };
+                  }
+                  {
+                    type = "custom-api";
+                    title = "Juniper";
+                    url = "https://api.mcstatus.io/v2/status/java/mc.orangc.net";
+                    template = ''
+                      <div style="display:flex; align-items:center; gap:12px;">
+                        <div style="width:40px; height:40px; flex-shrink:0;  border-radius:4px; display:flex; justify-content:center; align-items:center; overflow:hidden;">
+                          {{ if .JSON.Bool "online" }}
+                            <img src="{{ .JSON.String "icon" | safeURL }}" width="64" height="64" style="object-fit:contain;">
+                          {{ else }}
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" style="width:32px; height:32px; opacity:0.5;">
+                              <path fill-rule="evenodd" d="M1 5.25A2.25 2.25 0 0 1 3.25 3h13.5A2.25 2.25 0 0 1 19 5.25v9.5A2.25 2.25 0 0 1 16.75 17H3.25A2.25 2.25 0 0 1 1 14.75v-9.5Zm1.5 5.81v3.69c0 .414.336.75.75.75h13.5a.75.75 0 0 0 .75-.75v-2.69l-2.22-2.219a.75.75 0 0 0-1.06 0l-1.91 1.909.47.47a.75.75 0 1 1-1.06 1.06L6.53 8.091a.75.75 0 0 0-1.06 0l-2.97 2.97ZM12 7a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z" clip-rule="evenodd" />
+                            </svg>
+                          {{ end }}
+                        </div>
+
+                        <div style="flex-grow:1; min-width:0;">
+                          <a class="size-h4 block text-truncate color-highlight">
+                            {{ .JSON.String "host" }}
+                            {{ if .JSON.Bool "online" }}
+                            <span
+                              style="width: 8px; height: 8px; border-radius: 50%; background-color: var(--color-positive); display: inline-block; vertical-align: middle;"
+                              data-popover-type="text"
+                              data-popover-text="Online"
+                            ></span>
+                            {{ else }}
+                            <span
+                              style="width: 8px; height: 8px; border-radius: 50%; background-color: var(--color-negative); display: inline-block; vertical-align: middle;"
+                              data-popover-type="text"
+                              data-popover-text="Offline"
+                            ></span>
+                            {{ end }}
+                          </a>
+
+                          <ul class="list-horizontal-text">
+                            <li>
+                              {{ if .JSON.Bool "online" }}
+                              <span>{{ .JSON.String "version.name_clean" }}</span>
+                              {{ else }}
+                              <span>Offline</span>
+                              {{ end }}
+                            </li>
+                            {{ if .JSON.Bool "online" }}
+                            <li data-popover-type="html">
+                              <div data-popover-html>
+                                {{ range .JSON.Array "players.list" }}{{ .String "name_clean" }}<br>{{ end }}
+                              </div>
+                              <p style="display:inline-flex;align-items:center;">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6" style="height:1em;vertical-align:middle;margin-right:0.5em;">
+                                  <path fill-rule="evenodd" d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z" clip-rule="evenodd" />
+                                </svg>
+                                {{ .JSON.Int "players.online" | formatNumber }}/{{ .JSON.Int "players.max" | formatNumber }} players
+                              </p>
+                            </li>
+                            {{ else }}
+                            <li>
+                              <p style="display:inline-flex;align-items:center;">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6" style="height:1em;vertical-align:middle;margin-right:0.5em;opacity:0.5;">
+                                  <path fill-rule="evenodd" d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z" clip-rule="evenodd" />
+                                </svg>
+                                0 players
+                              </p>
+                            </li>
+                            {{ end }}
+                          </ul>
+                        </div>
+                      </div>
+                    '';
+                  }
+                  {
+                    type = "custom-api";
+                    title = "Immich stats";
+                    cache = "12h";
+                    url = "https://${config.modules.server.immich.domain}/api/server/statistics";
+                    headers = {
+                      x-api-key = {
+                        _secret = config.modules.common.sops.secrets.immich-api-key.path;
+                      };
+                      Accept = "application/json";
+                    };
+                    template = ''
+                      <div class="flex justify-between text-center">
+                        <div>
+                            <div class="color-highlight size-h3">{{ .JSON.Int "photos" | formatNumber }}</div>
+                            <div class="size-h6">PHOTOS</div>
+                        </div>
+                        <div>
+                            <div class="color-highlight size-h3">{{ .JSON.Int "videos" | formatNumber }}</div>
+                            <div class="size-h6">VIDEOS</div>
+                        </div>
+                        <div>
+                            <div class="color-highlight size-h3">{{ div (.JSON.Int "usage" | toFloat) 1073741824 | toInt | formatNumber }}GB</div>
+                            <div class="size-h6">USAGE</div>
+                        </div>
+                      </div>
+                    '';
+                  }
+                  {
+                    type = "custom-api";
+                    title = "Fact";
+                    cache = "1h";
+                    url = "https://uselessfacts.jsph.pl/api/v2/facts/random";
+                    template = ''<p class="size-h4 color-paragraph">{{ .JSON.String "text" }}</p>'';
+                  }
+                ];
+              }
+            ];
+          }
+        ];
       };
     };
   };

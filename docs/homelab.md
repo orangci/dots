@@ -1,7 +1,6 @@
 # Urithiru Plan
 
 # Checklist
-- Configure Glance. Do not forget the uptime-kuma plugin.
 - Chibisafe module (WIP)
 - [opnform](https://opnform.com/) module
 - discord bot / discord bot's mongodb✓ (database) instance modules
