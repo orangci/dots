@@ -16,7 +16,6 @@
     ./chibisafe.nix
     ./minecraft.nix
     ./2fauth.nix
-    ./mastodon.nix
     ./ollama.nix
     ./bracket.nix
     ./speedtest.nix

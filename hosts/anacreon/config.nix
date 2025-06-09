@@ -79,12 +79,6 @@
         port = 8806;
       };
 
-      mastodon = {
-        enable = true;
-        domain = "mastodon.orangc.net";
-        port = 8807;
-      }; # TODO: doesn't connect
-
       microbin = {
         enable = true;
         domain = "bin.orangc.net";
@@ -142,7 +136,7 @@
       zipline = {
         enable = true;
         domain = "zip.orangc.net";
-        port = 8817;
+        port = 8807;
       };
 
       minecraft = {

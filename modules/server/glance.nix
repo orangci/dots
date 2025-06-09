@@ -158,7 +158,7 @@ in
                   {
                     type = "custom-api";
                     title = "Hardcover";
-                    cache = "1h";
+                    cache = "30m";
                     url = "https://api.hardcover.app/v1/graphql";
                     headers = {
                       content-type = "application/json";
