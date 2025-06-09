@@ -55,6 +55,26 @@ in
       settings = {
         # https://github.com/glanceapp/glance/blob/main/docs/configuration.md
         server.port = cfg.port;
+        theme = {
+          background-color = "249 22 12";
+          primary-color = "2 55 83";
+          positive-color = "197 49 38";
+          negative-color = "343 76 68";
+          # contrast-multiplier = "1.3";
+          presets.rose-pine = {
+            background-color = "249 22 12";
+            primary-color = "2 55 83";
+            positive-color = "197 49 38";
+            negative-color = "343 76 68";
+            # contrast-multiplier = "1.3";
+          };
+          presets.catppuccin-latte = {
+            light = true;
+            background-color = "0 0 95";
+            primary-color = "0 0 10";
+            negative-color = "0 90 50";
+          };
+        };
         pages = [
           {
             name = host;
@@ -63,26 +83,6 @@ in
             branding = {
               app-background-color = "#191724";
               hide-footer = true;
-            };
-            theme = {
-              background-color = "249 22 12";
-              primary-color = "2 55 83";
-              positive-color = "197 49 38";
-              negative-color = "343 76 68";
-              contrast-multiplier = "1.3";
-              presets.rose-pine = {
-                background-color = "249 22 12";
-                primary-color = "2 55 83";
-                positive-color = "197 49 38";
-                negative-color = "343 76 68";
-                contrast-multiplier = "1.3";
-              };
-              presets.catppuccin-latte = {
-                light = true;
-                background-color = "0 0 95";
-                primary-color = "0 0 10";
-                negative-color = "0 90 50";
-              };
             };
             head-widgets = [ ];
             columns = [
