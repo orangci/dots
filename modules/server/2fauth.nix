@@ -50,13 +50,11 @@ in
     virtualisation.oci-containers.containers.twofauth = {
       image = "2fauth/2fauth:latest";
       autoStart = true;
-      ports = [ "127.0.0.1:${toString cfg.port}:8000/tcp" ];
+      ports = [ "${toString cfg.port}:8000/tcp" ];
       volumes = [ "${cfg.dataDir}:/2fauth" ];
       user = "1000:1000";
     };
 
-    systemd.tmpfiles.rules = [
-      "d ${cfg.dataDir} 0700 twofauth twofauth -"
-    ];
+    systemd.tmpfiles.rules = [ "d ${cfg.dataDir} 0700 twofauth twofauth -" ];
   };
 }

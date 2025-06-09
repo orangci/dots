@@ -32,11 +32,14 @@ in
 
   config = mkIf cfg.enable {
     virtualisation.oci-containers.containers.chibisafe = {
+      hostname = "chibisafe";
       image = "chibisafe/chibisafe:latest";
       ports = [ "${toString cfg.port}:8001" ];
-      environment.BASE_API_URL = "http://localhost:${toString (cfg.port - 1000)}";
+      environment.BASE_API_URL = "http://chibisafe_server:${toString (cfg.port - 1000)}";
+      dependsOn = [ "chibisafe_server" ];
     };
     virtualisation.oci-containers.containers.chibisafe_server = {
+      hostname = "chibisafe_server";
       image = "chibisafe/chibisafe-server:latest";
       ports = [ "${toString (cfg.port - 1000)}:8000" ];
       volumes = [

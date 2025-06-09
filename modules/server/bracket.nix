@@ -13,13 +13,8 @@ let
     ;
 
   cfg = config.modules.server.bracket;
-
-  bracketSrc = pkgs.fetchFromGitHub {
-    owner = "evroon";
-    repo = "bracket";
-    rev = "..."; # TODO
-    sha256 = "sha256-..."; # TODO
-  };
+  postgresPort = 5432;
+  dataDir = "/var/lib/bracket";
 in
 {
   options.modules.server.bracket = {
@@ -44,69 +39,64 @@ in
   };
 
   config = mkIf cfg.enable {
+    modules.common.sops.secrets.bracket-jwt-secret.path = "/var/secrets/bracket-jwt-secret";
+    virtualisation.oci-containers.containers = {
+      bracket-frontend = {
+        image = "ghcr.io/evroon/bracket-frontend";
+        ports = [
+          "${toString cfg.port}:3000"
+        ];
+        environment = {
+          NODE_ENV = "production";
+          NEXT_PUBLIC_API_BASE_URL = "http://localhost:${toString (cfg.port - 1000)}";
+          NEXT_PUBLIC_HCAPTCHA_SITE_KEY = "";
+        };
+      };
+
+      bracket-backend = {
+        image = "ghcr.io/evroon/bracket-backend";
+        ports = [
+          "${toString (cfg.port - 1000)}:8400"
+        ];
+        environmentFiles = [ "/var/secrets/bracket-jwt-secret" ];
+        environment = {
+          ENVIRONMENT = "PRODUCTION";
+          PG_DSN = "postgresql://bracket_prod:bracket_prod@localhost:${toString postgresPort}/bracket_prod";
+          CORS_ORIGINS = "https://${cfg.domain}";
+        };
+        volumes = [
+          "./backend/static:/app/static"
+        ];
+        dependsOn = [ "postgres" ];
+      };
+
+      postgres = {
+        image = "postgres";
+        ports = [
+          "${toString postgresPort}:${toString postgresPort}"
+        ];
+        environment = {
+          POSTGRES_DB = "bracket_prod";
+          POSTGRES_USER = "bracket_prod";
+          POSTGRES_PASSWORD = "bracket_prod";
+        };
+        volumes = [
+          "./postgres:/var/lib/postgresql/data"
+        ];
+      };
+    };
+
+    systemd.tmpfiles.rules = [
+      "d ${dataDir}/backend/static 0700 1000 1000 -"
+      "d ${dataDir}/postgres 0700 1000 1000 -"
+    ];
+
     users.users.bracket = {
-      home = "/var/lib/bracket";
+      isSystemUser = true;
+      initialPassword = "a";
+      group = "bracket";
     };
 
-    services.postgresql = {
-      enable = true;
-      ensureDatabases = [ "bracket" ];
-      ensureUsers = [
-        {
-          name = "bracket";
-          ensureDBOwnership = true;
-        }
-      ];
-    };
-
-    system.activationScripts.bracket-init = ''
-      if [ ! -f /var/lib/bracket/.setup-complete ]; then
-        echo "Setting up Bracket..."
-        mkdir -p /var/lib/bracket
-        cp -r ${bracketSrc}/* /var/lib/bracket/
-        chown -R bracket:bracket /var/lib/bracket
-        touch /var/lib/bracket/.setup-complete
-      fi
-    '';
-
-    systemd.services.bracket-backend = {
-      description = "Bracket backend";
-      after = [
-        "network.target"
-        "syslog.target"
-      ];
-      wantedBy = [ "multi-user.target" ];
-
-      serviceConfig = {
-        Type = "simple";
-        User = "bracket";
-        WorkingDirectory = "/var/lib/bracket/backend";
-        ExecStart = "${pkgs.pipenv}/bin/pipenv run gunicorn -k uvicorn.workers.UvicornWorker bracket.app:app --bind localhost:${toString (cfg.port - 1000)} --workers 1";
-        # EnvironmentFile = ; TODO
-        TimeoutSec = 15;
-        Restart = "always";
-        RestartSec = "2s";
-      };
-    };
-
-    systemd.services.bracket-frontend = {
-      description = "Bracket frontend";
-      after = [
-        "network.target"
-        "syslog.target"
-      ];
-      wantedBy = [ "multi-user.target" ];
-
-      serviceConfig = {
-        Type = "simple";
-        User = "bracket";
-        WorkingDirectory = "/var/lib/bracket/frontend";
-        ExecStart = "${pkgs.nodePackages.yarn}/bin/yarn start";
-        # EnvironmentFile = ; TODO
-        TimeoutSec = 15;
-        Restart = "always";
-        RestartSec = "2s";
-      };
-    };
+    users.groups.bracket = { };
   };
 }

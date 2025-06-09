@@ -57,6 +57,7 @@ in
     };
     users.users.technitium = {
       isSystemUser = true;
+      initialPassword = "a";
       group = "technitium";
     };
 

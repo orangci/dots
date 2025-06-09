@@ -65,7 +65,7 @@
         enable = true;
         domain = "glance.orangc.net";
         port = 8804;
-      }; # TODO: configuration
+      };
 
       immich = {
         enable = true;
@@ -119,7 +119,7 @@
         enable = false;
         domain = "2fa.orangc.net";
         port = 8812;
-      }; # TODO: untested
+      }; # TODO: broken
 
       uptime-kuma = {
         enable = false;

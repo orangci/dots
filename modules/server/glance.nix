@@ -426,6 +426,7 @@ in
                   {
                     type = "custom-api";
                     title = "Immich stats";
+                    title-url = "https://${config.modules.server.immich.domain}"; 
                     cache = "12h";
                     url = "https://${config.modules.server.immich.domain}/api/server/statistics";
                     headers = {

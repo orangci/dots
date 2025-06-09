@@ -44,18 +44,18 @@ in
               }
 
               @api path /api/*
-              reverse_proxy @api http://localhost:${toString (config.modules.server.chibisafe.port - 1000)} {
+              reverse_proxy @api http://chibisafe_server:${toString (config.modules.server.chibisafe.port - 1000)} {
                 header_up Host {http.reverse_proxy.upstream.hostport}
                 header_up X-Real-IP {http.request.header.X-Real-IP}
               }
 
               @docs path /docs*
-              reverse_proxy @docs http://localhost:${toString (config.modules.server.chibisafe.port - 1000)} {
+              reverse_proxy @docs http://chibisafe_server:${toString (config.modules.server.chibisafe.port - 1000)} {
                 header_up Host {http.reverse_proxy.upstream.hostport}
                 header_up X-Real-IP {http.request.header.X-Real-IP}
               }
 
-              reverse_proxy http://localhost:${toString config.modules.server.chibisafe.port} {
+              reverse_proxy http://chibisafe:${toString config.modules.server.chibisafe.port} {
                 header_up Host {http.reverse_proxy.upstream.hostport}
                 header_up X-Real-IP {http.request.header.X-Real-IP}
               }
