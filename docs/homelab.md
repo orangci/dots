@@ -6,6 +6,7 @@
 - discord bot / discord bot's mongodb✓ (database) instance modules
 - matrix homeserver module
 - [olivetin](https://www.olivetin.app) module
+- 2fauth module (WIP)
 - [bracket](https://docs.bracketapp.nl/) module (WIP)
 - website and [umami](https://umami.is) module
 

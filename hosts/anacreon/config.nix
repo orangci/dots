@@ -44,7 +44,7 @@
       technitium.enable = true;
 
       chibisafe = {
-        enable = true;
+        enable = false;
         domain = "safe.orangc.net";
         port = 8801;
       }; # TODO: connects, but broken
@@ -109,12 +109,6 @@
         port = 8811;
       };
 
-      speedtest = {
-        enable = true;
-        domain = "speedtest.orangc.net";
-        port = 8816;
-      };
-
       twofauth = {
         enable = false;
         domain = "2fa.orangc.net";
@@ -138,6 +132,18 @@
         domain = "bracket.orangc.net";
         port = 8815;
       }; # TODO: untested
+
+      speedtest = {
+        enable = true;
+        domain = "speedtest.orangc.net";
+        port = 8816;
+      };
+
+      zipline = {
+        enable = true;
+        domain = "zip.orangc.net";
+        port = 8817;
+      };
 
       minecraft = {
         enable = false;

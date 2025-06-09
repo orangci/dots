@@ -20,5 +20,6 @@
     ./ollama.nix
     ./bracket.nix
     ./speedtest.nix
+    ./zipline.nix
   ];
 }
