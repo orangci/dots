@@ -50,6 +50,9 @@ in
     modules.common.sops.secrets.immich-api-key.path = "/var/secrets/immich-api-key";
     modules.common.sops.secrets.hardcover-api-key.path = "/var/secrets/hardcover-api-key";
     modules.common.sops.secrets.speedtest-api-key.path = "/var/secrets/speedtest-api-key";
+    environment.etc."glance-style.css".text = ''
+      body {font-family: Lexend, "Jetbrains Mono", sans-serif, monospace;}
+    '';
     services.glance = {
       enable = true;
       settings = {
@@ -60,6 +63,7 @@ in
           hide-footer = true;
         };
         theme = {
+          custom-css-file = "/etc/glance-style.css";
           background-color = "249 22 12";
           primary-color = "2 55 83";
           positive-color = "197 49 38";
@@ -454,7 +458,7 @@ in
                   {
                     type = "custom-api";
                     title = "Fact";
-                    cache = "1h";
+                    cache = "15m";
                     url = "https://uselessfacts.jsph.pl/api/v2/facts/random";
                     template = ''<p class="size-h4 color-paragraph">{{ .JSON.String "text" }}</p>'';
                   }
