@@ -79,7 +79,10 @@ in
       profiles.default.extensions =
         with pkgs.vscode-extensions;
         let
-          extensions = [ esbenp.prettier-vscode ]; # catppuccin.catppuccin-vsc-icons catppuccin.catppuccin-vsc
+          extensions = [
+            esbenp.prettier-vscode
+            wakatime.vscode-wakatime
+          ]; # catppuccin.catppuccin-vsc-icons catppuccin.catppuccin-vsc
           nixExtensions = lib.optionals config.hmModules.dev.nix.enable [ jnoortheen.nix-ide ];
           rustExtensions = lib.optionals config.hmModules.dev.rust.enable [ rust-lang.rust-analyzer ];
           pythonExtensions = lib.optionals config.hmModules.dev.python.enable [ ms-python.python ];
