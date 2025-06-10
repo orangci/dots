@@ -82,6 +82,7 @@ in
           extensions = [
             esbenp.prettier-vscode
             wakatime.vscode-wakatime
+            leonardssh.vscord
           ]; # catppuccin.catppuccin-vsc-icons catppuccin.catppuccin-vsc
           nixExtensions = lib.optionals config.hmModules.dev.nix.enable [ jnoortheen.nix-ide ];
           rustExtensions = lib.optionals config.hmModules.dev.rust.enable [ rust-lang.rust-analyzer ];

@@ -10,16 +10,16 @@
 
 
 > [!CAUTION]
-> I do ***not*** recommmend using this/installing this flake, it'll almost certainly break on you.
-> However, going through my code for little bits and things to borrow or learn from is totally fine (as long as you respect the license).
+> This flake is meant for my personal usage. Use at your own risk. Several modules utilise [secrets](./docs/secrets.md) and are inoperable with them.
+> Going through my code for little bits and things to borrow or learn from is totally fine (as long as you respect the license and credit me appropriately).
 > This flake is very much a work in progress; I'm constantly working on improving and I have many things planned for it in the future.
 
-Modular NixOS configuration for my machines. Very lightweight! A fresh installation of this flake will be *17 gigabytes*, which isn't bad at all in my opinion.
+Modular NixOS configuration for my machines. Very lightweight! A fresh installation of this flake (with the modules enabled in [anacreon](./hosts/anacreon/config.nix)) will be *18 gigabytes*, which isn't bad at all in my opinion.
 
 Hosts:
 - anacreon (PC ~ Hyprland)
 - helicon (portable USB, meant to be plugged in to any machine ~ Hyprland)
-- urithiru (WIP; homelab)
+- urithiru (homelab/server)
 
 <!-- ## screenshots
 

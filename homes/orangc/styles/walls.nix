@@ -26,7 +26,7 @@ in
   config = mkIf cfg.enable {
     wayland.windowManager.hyprland.settings.exec-once = [
       "swww kill; swww-daemon"
-      "sleep 3; walls &"
+      "sleep 3; walls"
     ];
     home.packages = [
       (pkgs.writeShellScriptBin "walls" ''
