@@ -89,7 +89,7 @@
         enable = true;
         domain = "ntfy.orangc.net";
         port = 8809;
-      };
+      }; # TODO: status monitor notifs. with uptime-kuma, probably
 
       ollama = {
         enable = false;

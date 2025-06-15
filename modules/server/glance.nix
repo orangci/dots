@@ -98,11 +98,15 @@ in
                     search-engine = "https://search.orangc.net/search?q={QUERY}";
                   }
                   {
-                    type = "monitor";
-                    title = "Services";
-                    cache = "1m";
-                    show-failing-only = true;
-                    sites = siteList;
+                    type = "dns-stats";
+                    url = "http://localhost:5380";
+                    hour-format = "24h";
+                    hide-graph = false;
+                    hide-top-domains = false;
+                    service = "technitium";
+                    token = {
+                      _secret = config.modules.common.sops.secrets.technitium-api-token.path;
+                    };
                   }
                   {
                     type = "clock";
@@ -226,15 +230,11 @@ in
                     '';
                   }
                   {
-                    type = "dns-stats";
-                    url = "http://localhost:5380";
-                    hour-format = "24h";
-                    hide-graph = false;
-                    hide-top-domains = false;
-                    service = "technitium";
-                    token = {
-                      _secret = config.modules.common.sops.secrets.technitium-api-token.path;
-                    };
+                    type = "monitor";
+                    title = "Services";
+                    cache = "1m";
+                    show-failing-only = false;
+                    sites = siteList;
                   }
                 ];
               }

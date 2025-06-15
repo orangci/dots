@@ -30,25 +30,6 @@ in
           enable = true;
           providers.wl-copy.enable = true;
         };
-        luaConfigRC = {
-          basic = ''
-            -- Restore terminal cursor to vertical beam on exit
-            vim.api.nvim_create_autocmd("ExitPre", {
-              group = vim.api.nvim_create_augroup("Exit", { clear = true }),
-              command = "set guicursor=a:ver1",
-              desc = "Set cursor back to beam when leaving Neovim.",
-            })
-
-            -- Remove "disable mouse" entries from the context menu
-            vim.api.nvim_create_autocmd("VimEnter", {
-              callback = function()
-                vim.cmd("aunmenu PopUp.How-to\\ disable\\ mouse")
-                vim.cmd("aunmenu PopUp.-1-")
-              end,
-              desc = "Remove 'disable mouse' entries from context menu",
-            })
-          '';
-        };
 
         lsp = {
           formatOnSave = true;
@@ -130,8 +111,6 @@ in
 
         git = {
           enable = true;
-          gitsigns.enable = true;
-          gitsigns.codeActions.enable = false; # throws an annoying debug message
         };
 
         utility = {
@@ -154,7 +133,7 @@ in
         };
 
         comments.comment-nvim.enable = true;
-        presence.neocord.enable = false;
+        presence.neocord.enable = true;
       };
     };
     home.file.".editorconfig".source = (pkgs.formats.ini { }).generate ".editorconfig" {

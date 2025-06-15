@@ -47,7 +47,7 @@
     programs = {
       better-control.enable = true;
       editors = {
-        nvf.enable = true;
+        nvf.enable = false;
         micro.enable = true;
         vscodium = {
           enable = true;
