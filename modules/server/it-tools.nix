@@ -32,8 +32,8 @@ in
 
   config = mkIf cfg.enable {
     virtualisation.oci-containers.containers."it-tools" = {
-      image = "corentinth/it-tools:latest";
-      ports = [ "${toString cfg.port}:80" ];
+      image = "sharevb/it-tools:latest"; # corentinth is the original, sharevb is a guy who forked it-tools
+      ports = [ "${toString cfg.port}:8080" ];
     };
   };
 }

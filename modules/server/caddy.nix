@@ -36,31 +36,38 @@ in
         {
           "ping.localhost".extraConfig = ''respond pong'';
           "dns.localhost".extraConfig = ''reverse_proxy 127.0.0.1:5380'';
-          ${config.modules.server.chibisafe.domain}.extraConfig = mkForce ''
-            route {
-              file_server * {
-                root /app/uploads
-                pass_thru
-              }
+          ${config.modules.server.chibisafe.domain} = {
+            listenAddresses = [
+              "127.0.0.1"
+              "::1"
+            ];
+            extraConfig = mkForce ''
+              header -Server
+              route {
+                file_server * {
+                  root /app/uploads
+                  pass_thru
+                }
 
-              @api path /api/*
-              reverse_proxy @api http://localhost:${toString (config.modules.server.chibisafe.port - 1000)} {
-                header_up Host {http.reverse_proxy.upstream.hostport}
-                header_up X-Real-IP {http.request.header.X-Real-IP}
-              }
+                @api path /api/*
+                reverse_proxy @api http://127.0.0.1:${toString (config.modules.server.chibisafe.port - 1000)} {
+                  header_up Host {http.reverse_proxy.upstream.hostport}
+                  header_up X-Real-IP {http.request.header.X-Real-IP}
+                }
 
-              @docs path /docs*
-              reverse_proxy @docs http://localhost:${toString (config.modules.server.chibisafe.port - 1000)} {
-                header_up Host {http.reverse_proxy.upstream.hostport}
-                header_up X-Real-IP {http.request.header.X-Real-IP}
-              }
+                @docs path /docs*
+                reverse_proxy @docs http://127.0.0.1:${toString (config.modules.server.chibisafe.port - 1000)} {
+                  header_up Host {http.reverse_proxy.upstream.hostport}
+                  header_up X-Real-IP {http.request.header.X-Real-IP}
+                }
 
-              reverse_proxy http://localhost:${toString config.modules.server.chibisafe.port} {
-                header_up Host {http.reverse_proxy.upstream.hostport}
-                header_up X-Real-IP {http.request.header.X-Real-IP}
+                reverse_proxy http://127.0.0.1:${toString config.modules.server.chibisafe.port} {
+                  header_up Host {http.reverse_proxy.upstream.hostport}
+                  header_up X-Real-IP {http.request.header.X-Real-IP}
+                }
               }
-            }
-          '';
+            '';
+          };
         }
         dynamicVhosts
       ];

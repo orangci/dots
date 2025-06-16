@@ -44,7 +44,7 @@
       technitium.enable = true;
 
       chibisafe = {
-        enable = false;
+        enable = true;
         domain = "safe.orangc.net";
         port = 8801;
       }; # TODO: connects, but broken
@@ -134,7 +134,7 @@
       };
 
       zipline = {
-        enable = true;
+        enable = false;
         domain = "zip.orangc.net";
         port = 8807;
       };
