@@ -19,12 +19,7 @@ in
       bluetooth = {
         enable = true;
         powerOnBoot = true;
-        settings = {
-          General = {
-            # show battery status of bluetooth devices
-            Experimental = true;
-          };
-        };
+        settings.General.Experimental = true; # show battery status of bluetooth devices
       };
     };
 

@@ -44,7 +44,7 @@
       technitium.enable = true;
 
       chibisafe = {
-        enable = true;
+        enable = false;
         domain = "safe.orangc.net";
         port = 8801;
       }; # TODO: connects, but broken

@@ -24,12 +24,11 @@ in
   };
 
   config = mkIf cfg.enable {
-    wayland.windowManager.hyprland.settings.exec-once = [
-      "swww kill; swww-daemon"
-      "sleep 3; walls"
-    ];
+    wayland.windowManager.hyprland.settings.exec-once = [ "walls" ];
     home.packages = [
       (pkgs.writeShellScriptBin "walls" ''
+        swww kill
+        swww-daemon --no-cache & disown
         cd "$HOME/media/walls"
         while : ; do
             export CURRENT_WALLPAPER="$(ls *.jpg *.png *.jpeg 2>/dev/null | sort -R | tail -1)"
