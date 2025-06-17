@@ -11,6 +11,7 @@
 
   modules = {
     dm.sddm.enable = true;
+    dm.sddm.theme = "stray";
     common = {
       bluetooth.enable = true;
       printing.enable = true;
@@ -168,6 +169,15 @@
   hardware.logitech.wireless.enable = true;
 
   environment.systemPackages = with pkgs; [ ];
+
+  boot.loader.systemd-boot = {
+    windows = {
+      "windows10" = {
+        title = "Michaelsoft Binbows";
+        efiDeviceHandle = "FS0";
+      };
+    };
+  };
 
   users.users = {
     "${username}" = {

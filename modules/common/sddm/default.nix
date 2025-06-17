@@ -24,9 +24,7 @@ in
         sddm-themes = pkgs.callPackage ./pkgs.nix { };
       in
       [
-        sddm-themes.sugar-dark
-        sddm-themes.tokyo-night
-        sddm-themes.astronaut
+        sddm-themes.${cfg.theme}
         pkgs.libsForQt5.qt5.qtgraphicaleffects
       ];
 

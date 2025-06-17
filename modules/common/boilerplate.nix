@@ -16,11 +16,13 @@
     };
     loader = {
       efi.efiSysMountPoint = "/boot";
-      systemd-boot.enable = false;
-      efi.canTouchEfiVariables = true;
-      # grub theme
-      grub = {
+      systemd-boot = {
         enable = true;
+        consoleMode = "max";
+      };
+      efi.canTouchEfiVariables = true;
+      grub = {
+        enable = false;
         device = "nodev";
         useOSProber = true;
         efiSupport = true;

@@ -48,4 +48,19 @@
       sha256 = "1gf074ypgc4r8pgljd8lydy0l5fajrl2pi2avn5ivacz4z7ma595";
     };
   };
+  stray = stdenv.mkDerivation rec {
+    pname = "sddm-stray";
+    version = "8c7759d9a05ad44f71209914b7223cebf845ccd9";
+    dontBuild = true;
+    installPhase = ''
+      mkdir -p $out/share/sddm/themes
+      cp -aR $src/theme $out/share/sddm/themes/stray
+    '';
+    src = fetchFromGitHub {
+      owner = "Bqrry4";
+      repo = "sddm-stray";
+      rev = "${version}";
+      sha256 = "sha256-3wsQFbo545SXwfV5P4+S4/wTme/n/yunfeVpmcEmKz4=";
+    };
+  };
 }
