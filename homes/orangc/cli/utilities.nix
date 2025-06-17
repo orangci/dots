@@ -19,7 +19,7 @@ in
   };
 
   config = lib.mkMerge [
-    (mkIf cfg.oxidisation.enable {
+    (mkIf cfg.fetch.enable {
       home.packages = with pkgs; [
         microfetch
         nitch
