@@ -22,9 +22,19 @@ in
         id = 0;
         isDefault = true;
         search = {
-          default = "SearX";
+          default = "SearXNG";
           force = true;
           engines = {
+            google.metaData.alias = "@g";
+            wikipedia.metaData.alias = "@wiki";
+            bing.metaData.hidden = true;
+            duckduckgo.metaData.hidden = true;
+
+            "SearXNG" = {
+              urls = [ { template = "https://search.orangc.net/search?q={searchTerms}"; } ];
+              definedAliases = [ "@sx" ];
+            };
+
             "Nix Packages" = {
               urls = [
                 {
@@ -39,13 +49,14 @@ in
               urls = [
                 { template = "https://wiki.nixos.org/index.php?search={searchTerms}&title=Special%3ASearch"; }
               ];
-              icon = "https://wiki.nixos.org/favicon.png";
+              icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
               updateInterval = 24 * 60 * 60 * 1000; # every day
               definedAliases = [ "@nw" ];
             };
 
             "Home-manager Options" = {
               definedAliases = [ "@hm" ];
+              icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
               urls = [
                 { template = "https://home-manager-options.extranix.com/?query={searchTerms}&release=master"; }
               ];
@@ -53,6 +64,7 @@ in
 
             "Nix Options" = {
               definedAliases = [ "@no" ];
+              icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
               urls = [ { template = "https://search.nixos.org/options?query={searchTerms}"; } ];
             };
 
@@ -64,31 +76,61 @@ in
             "Youtube" = {
               definedAliases = [ "@yt" ];
               urls = [ { template = "https://youtube.com/search?q={searchTerms}"; } ];
+              iconMapObj."16" = "https://www.youtube.com/s/desktop/606e092f/img/logos/favicon.ico";
             };
 
             "MyAnimeList" = {
-              definedAliases = [ "@mal" ];
-              urls = [ { template = "https://myanimelist.net/anime.php?cat=anime?q={searchTerms}"; } ];
-            };
-
-            "MyAnimeList Anime" = {
-              definedAliases = [ "@ani" ];
-              urls = [ { template = "https://myanimelist.net/anime.php?cat=anime?q={searchTerms}"; } ];
+              definedAliases = [
+                "@mal"
+                "@ani"
+              ];
+              urls = [
+                {
+                  template = "https://myanimelist.net/anime.php?cat=anime";
+                  params = [
+                    {
+                      name = "q";
+                      value = "{searchTerms}";
+                    }
+                  ];
+                }
+              ];
+              iconMapObj."16" = "https://cdn.myanimelist.net/images/favicon.ico";
             };
 
             "MyAnimeList Manga" = {
               definedAliases = [ "@manga" ];
-              urls = [ { template = "https://myanimelist.net/manga.php?q={searchTerms}"; } ];
-            };
-
-            "Startpage" = {
-              definedAliases = [ "@sp" ];
-              urls = [ { template = "https://www.startpage.com/sp/search?q={searchTerms}"; } ];
+              urls = [
+                {
+                  template = "https://myanimelist.net/manga.php";
+                  params = [
+                    {
+                      name = "q";
+                      value = "{searchTerms}";
+                    }
+                  ];
+                }
+              ];
+              iconMapObj."16" = "https://cdn.myanimelist.net/images/favicon.ico";
             };
 
             "Code Search" = {
               definedAliases = [ "@gh" ];
-              urls = [ { template = "https://github.com/search?type=code?q={searchTerms}"; } ];
+              urls = [
+                {
+                  template = "https://github.com/search";
+                  params = [
+                    {
+                      name = "type";
+                      value = "code";
+                    }
+                    {
+                      name = "q";
+                      value = "{searchTerms}";
+                    }
+                  ];
+                }
+              ];
             };
           };
         };
@@ -353,6 +395,18 @@ in
           # decentraleyes:
           "jid1-BoFifL9Vbdl2zQ@jetpack" = {
             install_url = "https://addons.mozilla.org/firefox/downloads/latest/decentraleyes/latest.xpi";
+            installation_mode = "force_installed";
+          };
+
+          # enhanced github:
+          "{72bd91c9-3dc5-40a8-9b10-dec633c0873f}" = {
+            install_url = "https://addons.mozilla.org/firefox/downloads/latest/enhanced-github/latest.xpi";
+            installation_mode = "force_installed";
+          };
+
+          # refined github:
+          "{a4c4eda4-fb84-4a84-b4a1-f7c1cbf2a1ad}" = {
+            install_url = "https://addons.mozilla.org/firefox/downloads/latest/refined-github-/latest.xpi";
             installation_mode = "force_installed";
           };
 
