@@ -10,8 +10,7 @@
   ];
 
   modules = {
-    dm.sddm.enable = true;
-    dm.sddm.theme = "stray";
+    dm.sddm.enable = true; # FIXME: stray and astronaut themes are broken 
     common = {
       bluetooth.enable = true;
       printing.enable = true;

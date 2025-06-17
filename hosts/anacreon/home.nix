@@ -61,7 +61,7 @@
       hypr = {
         land.enable = true;
         lock.enable = true;
-        idle.enable = true;
+        idle.enable = false;
       };
       widgets = {
         wlogout = {
