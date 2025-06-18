@@ -49,6 +49,7 @@
 
   time.timeZone = "Asia/Riyadh";
   hardware.logitech.wireless.enable = true;
+  system.stateVersion = "25.05";
 
   environment.systemPackages = with pkgs; [ ];
 

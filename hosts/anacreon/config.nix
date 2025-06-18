@@ -10,7 +10,7 @@
   ];
 
   modules = {
-    dm.sddm.enable = true; # FIXME: stray and astronaut themes are broken 
+    dm.sddm.enable = true; # FIXME: stray and astronaut themes are broken
     common = {
       bluetooth.enable = true;
       printing.enable = true;
@@ -165,17 +165,14 @@
   # ];
 
   time.timeZone = "Asia/Riyadh";
+  system.stateVersion = "25.05";
   hardware.logitech.wireless.enable = true;
 
   environment.systemPackages = with pkgs; [ ];
 
-  boot.loader.systemd-boot = {
-    windows = {
-      "windows10" = {
-        title = "Michaelsoft Binbows";
-        efiDeviceHandle = "FS0";
-      };
-    };
+  boot.loader.systemd-boot.windows."windows10" = {
+    title = "Michaelsoft Binbows";
+    efiDeviceHandle = "FS0";
   };
 
   users.users = {

@@ -127,6 +127,4 @@
     gnome.gnome-keyring.enable = true;
   };
   hardware.graphics.enable = true;
-
-  system.stateVersion = "24.11";
 }

@@ -10,7 +10,11 @@
   ];
 
   modules = {
+    dm.sddm.enable = true; # FIXME: stray and astronaut themes are broken
+    styles.fonts.enable = true;
     common = {
+      bluetooth.enable = false;
+      printing.enable = false;
       networking.enable = true;
       sops.enable = true;
     };
@@ -65,10 +69,10 @@
         enable = true;
         domain = "ntfy.orangc.net";
         port = 8809;
-      };
+      }; # TODO: status monitor notifs. with uptime-kuma, probably
 
       ollama = {
-        enable = true;
+        enable = false;
         domain = "ai.orangc.net";
         port = 8810;
       };
@@ -110,7 +114,7 @@
       };
 
       zipline = {
-        enable = true;
+        enable = false;
         domain = "zip.orangc.net";
         port = 8807;
       };
@@ -120,24 +124,20 @@
         juniper.enable = false;
       }; # TODO: untested
     };
-    styles.fonts.enable = true;
   };
   local.hardware-clock.enable = true;
   drivers.intel.enable = true;
-  time.timeZone = "Asia/Riyadh";
 
-  services.openssh = {
-    enable = true;
-    settings = {
-      PermitRootLogin = "no";
-      PasswordAuthentication = true;
-    };
-  };
+  time.timeZone = "Asia/Riyadh";
+  system.stateVersion = "25.05";
+
+  environment.systemPackages = with pkgs; [ ];
+
+
   users.users = {
     "${username}" = {
       homeMode = "755";
       isNormalUser = true;
-      initialPassword = "modifythis";
       description = "${username}";
       extraGroups = [
         "networkmanager"

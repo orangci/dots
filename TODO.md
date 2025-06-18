@@ -2,10 +2,9 @@
 - take a look at [nixos-generators](https://github.com/nix-community/nixos-generators)
 - fix xdg stuff
 - rice starship myself
-- run deadnix
 - add screenshots to readme 
 - full disk encryption
 - secure boot (maybe)
-- use impermanence
+- use impermanence / make garbage collection actually good
 - nixify firefox extensions settings
-- create my own SDDM theme
+- fix up QT module — styling is ass currently
