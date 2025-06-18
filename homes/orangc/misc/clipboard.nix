@@ -9,7 +9,7 @@ let
   cfg = config.hmModules.misc.clipboard;
 in
 {
-  options.hmModules.misc.clipboard.enable = mkEnableOption "Enable the example module";
+  options.hmModules.misc.clipboard.enable = mkEnableOption "Enable clipboard with cliphist";
 
   config = mkIf cfg.enable {
     services.cliphist.enable = true;
