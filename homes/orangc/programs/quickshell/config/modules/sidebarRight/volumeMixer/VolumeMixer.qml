@@ -5,6 +5,7 @@ import Qt5Compat.GraphicalEffects
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
+import Quickshell
 import Quickshell.Widgets
 import Quickshell.Services.Pipewire
 
@@ -16,7 +17,7 @@ Item {
     property int dialogMargins: 16
     property PwNode selectedDevice
 
-    function showDeviceSelectorDialog(input) {
+    function showDeviceSelectorDialog(input: bool) {
         root.selectedDevice = null
         root.showDeviceSelector = true
         root.deviceSelectorInput = input
@@ -113,7 +114,7 @@ Item {
             }
         }
         // Device selector
-        RowLayout {
+        ButtonGroup {
             id: deviceSelectorRowLayout
             Layout.fillWidth: true
             Layout.fillHeight: false
@@ -160,7 +161,7 @@ Item {
 
         Rectangle { // The dialog
             id: dialog
-            color: Appearance.m3colors.m3surfaceContainerHigh
+            color: Appearance.colors.colSurfaceContainerHigh
             radius: Appearance.rounding.normal
             anchors.left: parent.left
             anchors.right: parent.right
@@ -207,17 +208,21 @@ Item {
                         spacing: 0
 
                         Repeater {
-                            model: Pipewire.nodes.values.filter(node => {
-                                return !node.isStream && node.isSink !== root.deviceSelectorInput && node.audio
-                            })
+                            model: ScriptModel {
+                                values: Pipewire.nodes.values.filter(node => {
+                                    return !node.isStream && node.isSink !== root.deviceSelectorInput && node.audio
+                                })
+                            }
 
                             // This could and should be refractored, but all data becomes null when passed wtf
-                            delegate: RadioButton {
+                            delegate: StyledRadioButton {
                                 id: radioButton
+                                required property var modelData
                                 Layout.leftMargin: root.dialogMargins
                                 Layout.rightMargin: root.dialogMargins
                                 Layout.fillWidth: true
-                                implicitHeight: 40
+
+                                description: modelData.description
                                 checked: modelData.id === Pipewire.defaultAudioSink?.id
 
                                 Connections {
@@ -228,101 +233,9 @@ Item {
                                     }
                                 }
 
-                                PointingHandInteraction {}
-
                                 onCheckedChanged: {
                                     if (checked) {
                                         root.selectedDevice = modelData
-                                    }
-                                }
-
-                                indicator: Item{}
-                                
-                                contentItem: RowLayout {
-                                    Layout.fillWidth: true
-                                    spacing: 12
-                                    Rectangle {
-                                        id: radio
-                                        Layout.fillWidth: false
-                                        Layout.alignment: Qt.AlignVCenter
-                                        width: 20
-                                        height: 20
-                                        radius: Appearance.rounding.full
-                                        border.color: checked ? Appearance.m3colors.m3primary : Appearance.m3colors.m3onSurfaceVariant
-                                        border.width: 2
-                                        color: "transparent"
-
-                                        // Checked indicator
-                                        Rectangle {
-                                            anchors.centerIn: parent
-                                            width: checked ? 10 : 4
-                                            height: checked ? 10 : 4
-                                            radius: Appearance.rounding.full
-                                            color: Appearance.m3colors.m3primary
-                                            opacity: checked ? 1 : 0
-
-                                            Behavior on opacity {
-                                                NumberAnimation {
-                                                    duration: Appearance.animation.elementMoveFast.duration
-                                                    easing.type: Appearance.animation.elementMoveFast.type
-                                                    easing.bezierCurve: Appearance.animation.elementMoveFast.bezierCurve
-                                                }
-                                            }
-                                            Behavior on width {
-                                                NumberAnimation {
-                                                    duration: Appearance.animation.elementMoveFast.duration
-                                                    easing.type: Appearance.animation.elementMoveFast.type
-                                                    easing.bezierCurve: Appearance.animation.elementMoveFast.bezierCurve
-                                                }
-                                            }
-                                            Behavior on height {
-                                                NumberAnimation {
-                                                    duration: Appearance.animation.elementMoveFast.duration
-                                                    easing.type: Appearance.animation.elementMoveFast.type
-                                                    easing.bezierCurve: Appearance.animation.elementMoveFast.bezierCurve
-                                                }
-                                            }
-
-                                        }
-
-                                        // Hover
-                                        Rectangle {
-                                            anchors.centerIn: parent
-                                            width: radioButton.hovered ? 40 : 20
-                                            height: radioButton.hovered ? 40 : 20
-                                            radius: Appearance.rounding.full
-                                            color: Appearance.m3colors.m3onSurface
-                                            opacity: radioButton.hovered ? 0.1 : 0
-
-                                            Behavior on opacity {
-                                                NumberAnimation {
-                                                    duration: Appearance.animation.elementMoveFast.duration
-                                                    easing.type: Appearance.animation.elementMoveFast.type
-                                                    easing.bezierCurve: Appearance.animation.elementMoveFast.bezierCurve
-                                                }
-                                            }
-                                            Behavior on width {
-                                                NumberAnimation {
-                                                    duration: Appearance.animation.elementMoveFast.duration
-                                                    easing.type: Appearance.animation.elementMoveFast.type
-                                                    easing.bezierCurve: Appearance.animation.elementMoveFast.bezierCurve
-                                                }
-                                            }
-                                            Behavior on height {
-                                                NumberAnimation {
-                                                    duration: Appearance.animation.elementMoveFast.duration
-                                                    easing.type: Appearance.animation.elementMoveFast.type
-                                                    easing.bezierCurve: Appearance.animation.elementMoveFast.bezierCurve
-                                                }
-                                            }
-                                        }
-                                    }
-                                    StyledText {
-                                        text: modelData.description
-                                        Layout.alignment: Qt.AlignVCenter
-                                        Layout.fillWidth: true
-                                        wrapMode: Text.Wrap
-                                        color: Appearance.m3colors.m3onSurface
                                     }
                                 }
                             }

@@ -1,18 +1,42 @@
 import "root:/modules/common"
 import "root:/modules/common/widgets"
 import "../"
-import Quickshell.Hyprland
+import Quickshell.Io
 import Quickshell
 
 QuickToggleButton {
     id: nightLightButton
     property bool enabled: false
     toggled: enabled
-    buttonIcon: "bedtime"
+    buttonIcon: "nightlight"
     onClicked: {
-        enabled = !enabled
-        if (enabled) { Hyprland.dispatch("exec wlsunset -t 4000 -T 4001") }
-        else { Hyprland.dispatch("exec pkill wlsunset") }
+        nightLightButton.enabled = !nightLightButton.enabled
+        if (enabled) {
+            nightLightOn.startDetached()
+        } 
+        else {
+            nightLightOff.startDetached()
+        }
     }
-    StyledToolTip { content: qsTr("Night Light") }
+    Process {
+        id: nightLightOn
+        command: ["gammastep"]
+    }
+    Process {
+        id: nightLightOff
+        command: ["pkill", "gammastep"]
+    }
+    Process {
+        id: updateNightLightState
+        running: true
+        command: ["pidof", "gammastep"]
+        stdout: SplitParser {
+            onRead: (data) => { // if not empty then set toggled to true
+                nightLightButton.enabled = data.length > 0
+            }
+        }
+    }
+    StyledToolTip {
+        content: qsTr("Night Light")
+    }
 }

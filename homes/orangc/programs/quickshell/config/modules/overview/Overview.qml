@@ -1,4 +1,5 @@
 import "root:/"
+import "root:/services"
 import "root:/modules/common"
 import "root:/modules/common/widgets"
 import QtQuick
@@ -10,7 +11,10 @@ import Quickshell.Wayland
 import Quickshell.Hyprland
 
 Scope {
+    id: overviewScope
+    property bool dontAutoCancelSearch: false
     Variants {
+        id: overviewVariants
         model: Quickshell.screens
         PanelWindow {
             id: root
@@ -23,12 +27,16 @@ Scope {
 
             WlrLayershell.namespace: "quickshell:overview"
             WlrLayershell.layer: WlrLayer.Overlay
-            WlrLayershell.keyboardFocus: GlobalStates.overviewOpen ? WlrKeyboardFocus.OnDemand : WlrKeyboardFocus.None
+            // WlrLayershell.keyboardFocus: GlobalStates.overviewOpen ? WlrKeyboardFocus.OnDemand : WlrKeyboardFocus.None
             color: "transparent"
 
             mask: Region {
                 item: GlobalStates.overviewOpen ? columnLayout : null
             }
+            HyprlandWindow.visibleMask: Region {
+                item: GlobalStates.overviewOpen ? columnLayout : null
+            }
+
 
             anchors {
                 top: true
@@ -50,7 +58,15 @@ Scope {
             Connections {
                 target: GlobalStates
                 function onOverviewOpenChanged() {
-                    delayedGrabTimer.start()
+                    if (!GlobalStates.overviewOpen) {
+                        searchWidget.disableExpandAnimation()
+                        overviewScope.dontAutoCancelSearch = false;
+                    } else {
+                        if (!overviewScope.dontAutoCancelSearch) {
+                            searchWidget.cancelSearch()
+                        }
+                        delayedGrabTimer.start()
+                    }
                 }
             }
 
@@ -64,17 +80,29 @@ Scope {
                 }
             }
 
-            implicitWidth: columnLayout.width
-            implicitHeight: columnLayout.height
+            implicitWidth: columnLayout.implicitWidth
+            implicitHeight: columnLayout.implicitHeight
+
+            function setSearchingText(text) {
+                searchWidget.setSearchingText(text);
+            }
 
             ColumnLayout {
                 id: columnLayout
                 visible: GlobalStates.overviewOpen
-                anchors.horizontalCenter: parent.horizontalCenter
+                anchors {
+                    horizontalCenter: parent.horizontalCenter
+                    top: !ConfigOptions.bar.bottom ? parent.top : undefined
+                    bottom: ConfigOptions.bar.bottom ? parent.bottom : undefined
+                }
 
                 Keys.onPressed: (event) => {
                     if (event.key === Qt.Key_Escape) {
                         GlobalStates.overviewOpen = false;
+                    } else if (event.key === Qt.Key_Left) {
+                        if (!root.searchingText) Hyprland.dispatch("workspace r-1");
+                    } else if (event.key === Qt.Key_Right) {
+                        if (!root.searchingText) Hyprland.dispatch("workspace r+1");
                     }
                 }
 
@@ -84,7 +112,7 @@ Scope {
                 }
 
                 SearchWidget {
-                    panelWindow: root
+                    id: searchWidget
                     Layout.alignment: Qt.AlignHCenter
                     onSearchingTextChanged: (text) => {
                         root.searchingText = searchingText
@@ -161,6 +189,51 @@ Scope {
 
         onPressed: {
             GlobalStates.superReleaseMightTrigger = false
+        }
+    }
+    GlobalShortcut {
+        name: "overviewClipboardToggle"
+        description: qsTr("Toggle clipboard query on overview widget")
+
+        onPressed: {
+            if (GlobalStates.overviewOpen && overviewScope.dontAutoCancelSearch) {
+                GlobalStates.overviewOpen = false;
+                return;
+            }
+            for (let i = 0; i < overviewVariants.instances.length; i++) {
+                let panelWindow = overviewVariants.instances[i];
+                if (panelWindow.modelData.name == Hyprland.focusedMonitor.name) {
+                    overviewScope.dontAutoCancelSearch = true;
+                    panelWindow.setSearchingText(
+                        ConfigOptions.search.prefix.clipboard
+                    );
+                    GlobalStates.overviewOpen = true;
+                    return
+                }
+            }
+        }
+    }
+
+    GlobalShortcut {
+        name: "overviewEmojiToggle"
+        description: qsTr("Toggle emoji query on overview widget")
+
+        onPressed: {
+            if (GlobalStates.overviewOpen && overviewScope.dontAutoCancelSearch) {
+                GlobalStates.overviewOpen = false;
+                return;
+            }
+            for (let i = 0; i < overviewVariants.instances.length; i++) {
+                let panelWindow = overviewVariants.instances[i];
+                if (panelWindow.modelData.name == Hyprland.focusedMonitor.name) {
+                    overviewScope.dontAutoCancelSearch = true;
+                    panelWindow.setSearchingText(
+                        ConfigOptions.search.prefix.emojis
+                    );
+                    GlobalStates.overviewOpen = true;
+                    return
+                }
+            }
         }
     }
 

@@ -1,9 +1,12 @@
-// From https://github.com/rafzby/circular-progressbar
+// From https://github.com/rafzby/circular-progressbar with modifications
 // License: LGPL-3.0 - A copy can be found in `licenses` folder of repo
-// Modified so it looks like in Material 3: https://m3.material.io/components/progress-indicators/specs
+
 import QtQuick
 import "root:/modules/common"
 
+/**
+ * Material 3 circular progress. See https://m3.material.io/components/progress-indicators/specs
+ */
 Item {
     id: root
 
@@ -11,8 +14,8 @@ Item {
     property int lineWidth: 2
     property real value: 0
     property color primaryColor: Appearance.m3colors.m3onSecondaryContainer
-    property color secondaryColor: Appearance.m3colors.m3secondaryContainer
-    property real gapAngle: Math.PI / 10
+    property color secondaryColor: Appearance.colors.colSecondaryContainer
+    property real gapAngle: Math.PI / 9
     property bool fill: false
     property int fillOverflow: 2
     property int animationDuration: 1000

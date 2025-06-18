@@ -95,7 +95,7 @@ Item {
 
                 x: tabBar.currentIndex * fullTabSize + (fullTabSize - targetWidth) / 2
 
-                color: Appearance.m3colors.m3primary
+                color: Appearance.colors.colPrimary
                 radius: Appearance.rounding.full
 
                 Behavior on x {
@@ -114,7 +114,7 @@ Item {
             id: tabBarBottomBorder
             Layout.fillWidth: true
             height: 1
-            color: Appearance.m3colors.m3outlineVariant
+            color: Appearance.colors.colOutlineVariant
         }
 
         SwipeView {
@@ -152,38 +152,19 @@ Item {
     }
 
     // + FAB
-    Button { 
+    StyledRectangularShadow {
+        target: fabButton
+        radius: fabButton.buttonRadius
+        blur: 0.6 * Appearance.sizes.elevationMargin
+    }
+    FloatingActionButton {
         id: fabButton
         anchors.right: parent.right
         anchors.bottom: parent.bottom
         anchors.rightMargin: root.fabMargins
         anchors.bottomMargin: root.fabMargins
-        width: root.fabSize
-        height: root.fabSize
-        PointingHandInteraction {}
 
         onClicked: root.showAddDialog = true
-
-        background: Rectangle {
-            id: fabBackground
-            anchors.fill: parent
-            radius: Appearance.rounding.small
-            color: (fabButton.down) ? Appearance.colors.colPrimaryContainerActive : (fabButton.hovered ? Appearance.colors.colPrimaryContainerHover : Appearance.m3colors.m3primaryContainer)
-
-            Behavior on color {
-                animation: Appearance.animation.elementMoveFast.colorAnimation.createObject(this)
-            }
-
-            layer.enabled: true
-            layer.effect: MultiEffect {
-                source: fabBackground
-                anchors.fill: fabBackground
-                shadowEnabled: true
-                shadowColor: Appearance.colors.colShadow
-                shadowBlur: 0.6
-                shadowVerticalOffset: fabButton.hovered ? 4 : 2
-            }
-        }
 
         contentItem: MaterialSymbol {
             text: "add"
@@ -234,7 +215,7 @@ Item {
             anchors.margins: root.dialogMargins
             implicitHeight: dialogColumnLayout.implicitHeight
 
-            color: Appearance.m3colors.m3surfaceContainerHigh
+            color: Appearance.colors.colSurfaceContainerHigh
             radius: Appearance.rounding.normal
 
             function addTask() {
@@ -270,7 +251,7 @@ Item {
                     color: activeFocus ? Appearance.m3colors.m3onSurface : Appearance.m3colors.m3onSurfaceVariant
                     renderType: Text.NativeRendering
                     selectedTextColor: Appearance.m3colors.m3onSecondaryContainer
-                    selectionColor: Appearance.m3colors.m3secondaryContainer
+                    selectionColor: Appearance.colors.colSecondaryContainer
                     placeholderText: qsTr("Task description")
                     placeholderTextColor: Appearance.m3colors.m3outline
                     focus: root.showAddDialog
@@ -280,13 +261,13 @@ Item {
                         anchors.fill: parent
                         radius: Appearance.rounding.verysmall
                         border.width: 2
-                        border.color: todoInput.activeFocus ? Appearance.m3colors.m3primary : Appearance.m3colors.m3outline
+                        border.color: todoInput.activeFocus ? Appearance.colors.colPrimary : Appearance.m3colors.m3outline
                         color: "transparent"
                     }
 
                     cursorDelegate: Rectangle {
                         width: 1
-                        color: todoInput.activeFocus ? Appearance.m3colors.m3primary : "transparent"
+                        color: todoInput.activeFocus ? Appearance.colors.colPrimary : "transparent"
                         radius: 1
                     }
                 }

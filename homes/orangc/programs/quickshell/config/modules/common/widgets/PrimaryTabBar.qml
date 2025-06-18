@@ -10,7 +10,14 @@ ColumnLayout {
     required property var tabButtonList // Something like [{"icon": "notifications", "name": qsTr("Notifications")}, {"icon": "volume_up", "name": qsTr("Volume mixer")}]
     required property var externalTrackedTab
     property bool enableIndicatorAnimation: false
+    property color colIndicator: Appearance?.colors.colPrimary ?? "#65558F"
+    property color colBorder: Appearance?.m3colors.m3outlineVariant ?? "#C6C6D0"
     signal currentIndexChanged(int index)
+
+    property bool centerTabBar: parent.width > 500
+    Layout.fillWidth: !centerTabBar
+    Layout.alignment: Qt.AlignHCenter
+    implicitWidth: Math.max(tabBar.implicitWidth, 600)
 
     TabBar {
         id: tabBar
@@ -38,6 +45,7 @@ ColumnLayout {
                 selected: (index == root.externalTrackedTab)
                 buttonText: modelData.name
                 buttonIcon: modelData.icon
+                minimumWidth: 160
             }
         }
     }
@@ -67,15 +75,15 @@ ColumnLayout {
 
             x: tabBar.currentIndex * fullTabSize + (fullTabSize - targetWidth) / 2
 
-            color: Appearance.m3colors.m3primary
-            radius: Appearance.rounding.full
+            color: root.colIndicator
+            radius: Appearance?.rounding.full ?? 9999
 
             Behavior on x {
-                animation: Appearance.animation.elementMove.numberAnimation.createObject(this)
+                animation: Appearance?.animation.elementMove.numberAnimation.createObject(this)
             }
 
             Behavior on implicitWidth {
-                animation: Appearance.animation.elementMove.numberAnimation.createObject(this)
+                animation: Appearance?.animation.elementMove.numberAnimation.createObject(this)
             }
         }
     }
@@ -83,7 +91,7 @@ ColumnLayout {
     Rectangle { // Tabbar bottom border
         id: tabBarBottomBorder
         Layout.fillWidth: true
-        height: 1
-        color: Appearance.m3colors.m3outlineVariant
+        implicitHeight: 1
+        color: root.colBorder
     }
 }

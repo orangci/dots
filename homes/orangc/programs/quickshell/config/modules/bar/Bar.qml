@@ -2,6 +2,7 @@ import "root:/"
 import "root:/modules/common"
 import "root:/modules/common/widgets"
 import "root:/services"
+import "root:/modules/common/functions/color_utils.js" as ColorUtils
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
@@ -9,27 +10,45 @@ import Qt5Compat.GraphicalEffects
 import Quickshell
 import Quickshell.Wayland
 import Quickshell.Hyprland
-import Quickshell.Io
-import Quickshell.Services.Mpris
+import Quickshell.Services.UPower
 
 Scope {
     id: bar
 
     readonly property int barHeight: Appearance.sizes.barHeight
-    readonly property int barCenterSideModuleWidth: Appearance.sizes.barCenterSideModuleWidth
     readonly property int osdHideMouseMoveThreshold: 20
     property bool showBarBackground: ConfigOptions.bar.showBackground
 
+    component VerticalBarSeparator: Rectangle {
+        Layout.topMargin: barHeight / 3
+        Layout.bottomMargin: barHeight / 3
+        Layout.fillHeight: true
+        implicitWidth: 1
+        color: Appearance.colors.colOutlineVariant
+    }
+
     Variants { // For each monitor
-        model: Quickshell.screens
+        model: {
+            const screens = Quickshell.screens;
+            const list = ConfigOptions.bar.screenList;
+            if (!list || list.length === 0)
+                return screens;
+            return screens.filter(screen => list.includes(screen.name));
+        }
 
         PanelWindow { // Bar window
             id: barRoot
+            screen: modelData
 
             property ShellScreen modelData
             property var brightnessMonitor: Brightness.getMonitorForScreen(modelData)
+            property real useShortenedForm: (Appearance.sizes.barHellaShortenScreenWidthThreshold >= screen.width) ? 2 :
+                (Appearance.sizes.barShortenScreenWidthThreshold >= screen.width) ? 1 : 0
+            readonly property int centerSideModuleWidth: 
+                (useShortenedForm == 2) ? Appearance.sizes.barCenterSideModuleWidthHellaShortened :
+                (useShortenedForm == 1) ? Appearance.sizes.barCenterSideModuleWidthShortened : 
+                    Appearance.sizes.barCenterSideModuleWidth
 
-            screen: modelData
             WlrLayershell.namespace: "quickshell:bar"
             implicitHeight: barHeight + Appearance.rounding.screenRounding
             exclusiveZone: showBarBackground ? barHeight : (barHeight - 4)
@@ -39,16 +58,20 @@ Scope {
             color: "transparent"
 
             anchors {
-                top: true
+                top: !ConfigOptions.bar.bottom
+                bottom: ConfigOptions.bar.bottom
                 left: true
                 right: true
             }
 
             Rectangle { // Bar background
                 id: barContent
-                anchors.right: parent.right
-                anchors.left: parent.left
-                anchors.top: parent.top
+                anchors {
+                    right: parent.right
+                    left: parent.left
+                    top: !ConfigOptions.bar.bottom ? parent.top : undefined
+                    bottom: ConfigOptions.bar.bottom ? parent.bottom : undefined
+                }
                 color: showBarBackground ? Appearance.colors.colLayer0 : "transparent"
                 height: barHeight
                 
@@ -120,25 +143,36 @@ Scope {
                             anchors.fill: parent
                             spacing: 10
 
-                            Rectangle {
+                            RippleButton { // Left sidebar button
                                 Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
                                 Layout.leftMargin: Appearance.rounding.screenRounding
                                 Layout.fillWidth: false
+                                property real buttonPadding: 5
+                                implicitWidth: distroIcon.width + buttonPadding * 2
+                                implicitHeight: distroIcon.height + buttonPadding * 2
                                 
-                                // Layout.fillHeight: true
-                                radius: Appearance.rounding.full
-                                color: (barLeftSideMouseArea.pressed || GlobalStates.sidebarLeftOpen) ? Appearance.colors.colLayer1Active : barLeftSideMouseArea.hovered ? Appearance.colors.colLayer1Hover : "transparent"
-                                implicitWidth: distroIcon.width + 5*2
-                                implicitHeight: distroIcon.height + 5*2
+                                buttonRadius: Appearance.rounding.full
+                                colBackground: barLeftSideMouseArea.hovered ? Appearance.colors.colLayer1Hover : ColorUtils.transparentize(Appearance.colors.colLayer1Hover, 1)
+                                colBackgroundHover: Appearance.colors.colLayer1Hover
+                                colRipple: Appearance.colors.colLayer1Active
+                                colBackgroundToggled: Appearance.colors.colSecondaryContainer
+                                colBackgroundToggledHover: Appearance.colors.colSecondaryContainerHover
+                                colRippleToggled: Appearance.colors.colSecondaryContainerActive
+                                toggled: GlobalStates.sidebarLeftOpen
+                                    property color colText: toggled ? Appearance.m3colors.m3onSecondaryContainer : Appearance.colors.colOnLayer0
 
-                                // CustomIcon {
-                                //     id: distroIcon
-                                //     anchors.centerIn: parent
-                                //     width: 19.5
-                                //     height: 19.5
-                                //     source: ConfigOptions.bar.topLeftIcon == 'distro' ? 
-                                //         SystemInfo.distroIcon : "spark-symbolic"
-                                // }
+                                onPressed: {
+                                    Hyprland.dispatch('global quickshell:sidebarLeftToggle')
+                                }
+
+                                CustomIcon {
+                                    id: distroIcon
+                                    anchors.centerIn: parent
+                                    width: 19.5
+                                    height: 19.5
+                                    source: ConfigOptions.bar.topLeftIcon == 'distro' ? 
+                                        SystemInfo.distroIcon : "spark-symbolic"
+                                }
                                 
                                 ColorOverlay {
                                     anchors.fill: distroIcon
@@ -148,8 +182,10 @@ Scope {
                             }
 
                             ActiveWindow {
+                                visible: barRoot.useShortenedForm === 0
                                 Layout.rightMargin: Appearance.rounding.screenRounding
                                 Layout.fillWidth: true
+                                Layout.fillHeight: true
                                 bar: barRoot
                             }
                         }
@@ -159,20 +195,84 @@ Scope {
                 RowLayout { // Middle section
                     id: middleSection
                     anchors.centerIn: parent
-                    spacing: 8
+                    spacing: ConfigOptions?.bar.borderless ? 4 : 8
 
-                    Media { Layout.fillWidth: true }
+                    BarGroup {
+                        id: leftCenterGroup
+                        Layout.preferredWidth: barRoot.centerSideModuleWidth
+                        Layout.fillHeight: true
 
-                    Workspaces {
-                        bar: barRoot
-                        MouseArea { // Right-click to toggle overview
-                            anchors.fill: parent
-                            acceptedButtons: Qt.RightButton
-                            onPressed: (event) => {if (event.button === Qt.RightButton) {Hyprland.dispatch('global quickshell:overviewToggle')}}
+                        Resources {
+                            alwaysShowAllResources: barRoot.useShortenedForm === 2
+                            Layout.fillWidth: barRoot.useShortenedForm === 2
+                        }
+
+                        Media {
+                            visible: barRoot.useShortenedForm < 2
+                            Layout.fillWidth: true
+                        }
+
+                    }
+
+                    VerticalBarSeparator {visible: ConfigOptions?.bar.borderless}
+
+                    BarGroup {
+                        id: middleCenterGroup
+                        padding: workspacesWidget.widgetPadding
+                        Layout.fillHeight: true
+                        
+                        Workspaces {
+                            id: workspacesWidget
+                            bar: barRoot
+                            Layout.fillHeight: true
+                            MouseArea { // Right-click to toggle overview
+                                anchors.fill: parent
+                                acceptedButtons: Qt.RightButton
+                                
+                                onPressed: (event) => {
+                                    if (event.button === Qt.RightButton) {
+                                        Hyprland.dispatch('global quickshell:overviewToggle')
+                                    }
+                                }
+                            }
                         }
                     }
-                    ClockWidget { Layout.alignment: Qt.AlignVCenter; Layout.fillWidth: true }
-                    UtilButtons { Layout.alignment: Qt.AlignVCenter }
+
+                    VerticalBarSeparator {visible: ConfigOptions?.bar.borderless}
+
+                    MouseArea {
+                        id: rightCenterGroup
+                        implicitWidth: rightCenterGroupContent.implicitWidth
+                        implicitHeight: rightCenterGroupContent.implicitHeight
+                        Layout.preferredWidth: barRoot.centerSideModuleWidth
+                        Layout.fillHeight: true
+
+                        onPressed: {
+                            Hyprland.dispatch('global quickshell:sidebarRightToggle')
+                        }
+
+                        BarGroup {
+                            id: rightCenterGroupContent
+                            anchors.fill: parent
+                            
+                            ClockWidget {
+                                showDate: (ConfigOptions.bar.verbose && barRoot.useShortenedForm < 2)
+                                Layout.alignment: Qt.AlignVCenter
+                                Layout.fillWidth: true
+                            }
+
+                            UtilButtons {
+                                visible: (ConfigOptions.bar.verbose && barRoot.useShortenedForm === 0)
+                                Layout.alignment: Qt.AlignVCenter
+                            }
+
+                            BatteryIndicator {
+                                visible: (barRoot.useShortenedForm < 2 && UPower.displayDevice.isLaptopBattery)
+                                Layout.alignment: Qt.AlignVCenter
+                            }
+                        }
+                    }
+
                 }
 
                 MouseArea { // Right side | scroll to change volume
@@ -252,13 +352,30 @@ Scope {
                             spacing: 5
                             layoutDirection: Qt.RightToLeft
                     
-                            Rectangle {
+                            RippleButton { // Right sidebar button
+                                id: rightSidebarButton
                                 Layout.margins: 4
                                 Layout.rightMargin: Appearance.rounding.screenRounding
                                 Layout.fillHeight: true
                                 implicitWidth: indicatorsRowLayout.implicitWidth + 10*2
-                                radius: Appearance.rounding.full
-                                color: (barRightSideMouseArea.pressed || GlobalStates.sidebarRightOpen) ? Appearance.colors.colLayer1Active : barRightSideMouseArea.hovered ? Appearance.colors.colLayer1Hover : "transparent"
+                                buttonRadius: Appearance.rounding.full
+                                colBackground: barRightSideMouseArea.hovered ? Appearance.colors.colLayer1Hover : ColorUtils.transparentize(Appearance.colors.colLayer1Hover, 1)
+                                colBackgroundHover: Appearance.colors.colLayer1Hover
+                                colRipple: Appearance.colors.colLayer1Active
+                                colBackgroundToggled: Appearance.colors.colSecondaryContainer
+                                colBackgroundToggledHover: Appearance.colors.colSecondaryContainerHover
+                                colRippleToggled: Appearance.colors.colSecondaryContainerActive
+                                toggled: GlobalStates.sidebarRightOpen
+                                property color colText: toggled ? Appearance.m3colors.m3onSecondaryContainer : Appearance.colors.colOnLayer0
+
+                                Behavior on colText {
+                                    animation: Appearance.animation.elementMoveFast.colorAnimation.createObject(this)
+                                }
+
+                                onPressed: {
+                                    Hyprland.dispatch('global quickshell:sidebarRightToggle')
+                                }
+
                                 RowLayout {
                                     id: indicatorsRowLayout
                                     anchors.centerIn: parent
@@ -279,7 +396,7 @@ Scope {
                                         MaterialSymbol {
                                             text: "volume_off"
                                             iconSize: Appearance.font.pixelSize.larger
-                                            color: Appearance.colors.colOnLayer0
+                                            color: rightSidebarButton.colText
                                         }
                                     }
                                     Revealer {
@@ -296,31 +413,26 @@ Scope {
                                         MaterialSymbol {
                                             text: "mic_off"
                                             iconSize: Appearance.font.pixelSize.larger
-                                            color: Appearance.colors.colOnLayer0
+                                            color: rightSidebarButton.colText
                                         }
                                     }
                                     MaterialSymbol {
                                         Layout.rightMargin: indicatorsRowLayout.realSpacing
-                                        text: (Network.networkName.length > 0 && Network.networkName != "lo") ? (
-                                            Network.networkStrength > 80 ? "signal_wifi_4_bar" :
-                                            Network.networkStrength > 60 ? "network_wifi_3_bar" :
-                                            Network.networkStrength > 40 ? "network_wifi_2_bar" :
-                                            Network.networkStrength > 20 ? "network_wifi_1_bar" :
-                                            "signal_wifi_0_bar"
-                                        ) : "signal_wifi_off"
+                                        text: Network.materialSymbol
                                         iconSize: Appearance.font.pixelSize.larger
-                                        color: Appearance.colors.colOnLayer0
+                                        color: rightSidebarButton.colText
                                     }
                                     MaterialSymbol {
                                         text: Bluetooth.bluetoothConnected ? "bluetooth_connected" : Bluetooth.bluetoothEnabled ? "bluetooth" : "bluetooth_disabled"
                                         iconSize: Appearance.font.pixelSize.larger
-                                        color: Appearance.colors.colOnLayer0
+                                        color: rightSidebarButton.colText
                                     }
                                 }
                             }
 
                             SysTray {
                                 bar: barRoot
+                                visible: barRoot.useShortenedForm === 0
                                 Layout.fillWidth: false
                                 Layout.fillHeight: true
                             }
@@ -336,23 +448,27 @@ Scope {
 
             // Round decorators
             Item {
-                anchors.left: parent.left
-                anchors.right: parent.right
-                anchors.top: barContent.bottom
+                anchors {
+                    left: parent.left
+                    right: parent.right
+                    // top: barContent.bottom
+                    top: ConfigOptions.bar.bottom ? undefined : barContent.bottom
+                    bottom: ConfigOptions.bar.bottom ? barContent.top : undefined
+                }
                 height: Appearance.rounding.screenRounding
 
                 RoundCorner {
                     anchors.top: parent.top
                     anchors.left: parent.left
                     size: Appearance.rounding.screenRounding
-                    corner: cornerEnum.topLeft
+                    corner: ConfigOptions.bar.bottom ? cornerEnum.bottomLeft : cornerEnum.topLeft
                     color: showBarBackground ? Appearance.colors.colLayer0 : "transparent"
                 }
                 RoundCorner {
                     anchors.top: parent.top
                     anchors.right: parent.right
                     size: Appearance.rounding.screenRounding
-                    corner: cornerEnum.topRight
+                    corner: ConfigOptions.bar.bottom ? cornerEnum.bottomRight : cornerEnum.topRight
                     color: showBarBackground ? Appearance.colors.colLayer0 : "transparent"
                 }
             }

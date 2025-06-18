@@ -25,6 +25,7 @@ Item {
     property var windowAddresses: HyprlandData.addresses
     property var monitorData: HyprlandData.monitors.find(m => m.id === root.monitor.id)
     property real scale: ConfigOptions.overview.scale
+    property color activeBorderColor: Appearance.colors.colSecondary
 
     property real workspaceImplicitWidth: (monitorData?.transform % 2 === 1) ? 
         ((monitor.height - monitorData?.reserved[0] - monitorData?.reserved[2]) * root.scale / monitor.scale) :
@@ -34,7 +35,7 @@ Item {
         ((monitor.height - monitorData?.reserved[1] - monitorData?.reserved[3]) * root.scale / monitor.scale)
 
     property real workspaceNumberMargin: 80
-    property real workspaceNumberSize: 80
+    property real workspaceNumberSize: Math.min(workspaceImplicitHeight, workspaceImplicitWidth) * monitor.scale
     property int workspaceZ: 0
     property int windowZ: 1
     property int windowDraggingZ: 99999
@@ -49,27 +50,21 @@ Item {
     property Component windowComponent: OverviewWindow {}
     property list<OverviewWindow> windowWidgets: []
 
-    Rectangle {
+    StyledRectangularShadow {
+        target: overviewBackground
+    }
+    Rectangle { // Background
         id: overviewBackground
-        
+        property real padding: 10
         anchors.fill: parent
+        anchors.margins: Appearance.sizes.elevationMargin
 
-        implicitWidth: workspaceColumnLayout.implicitWidth + 5 * 2
-        implicitHeight: workspaceColumnLayout.implicitHeight + 5 * 2
+        implicitWidth: workspaceColumnLayout.implicitWidth + padding * 2
+        implicitHeight: workspaceColumnLayout.implicitHeight + padding * 2
+        radius: Appearance.rounding.screenRounding * root.scale + padding
         color: Appearance.colors.colLayer0
-        radius: Appearance.rounding.screenRounding * root.scale + 5 * 2
 
-        layer.enabled: true
-        layer.effect: MultiEffect {
-            source: overviewBackground
-            anchors.fill: overviewBackground
-            shadowEnabled: true
-            shadowColor: Appearance.colors.colShadow
-            shadowVerticalOffset: 1
-            shadowBlur: 0.5
-        }
-
-        ColumnLayout {
+        ColumnLayout { // Workspaces
             id: workspaceColumnLayout
 
             z: root.workspaceZ
@@ -91,7 +86,6 @@ Item {
                             property color defaultWorkspaceColor: Appearance.colors.colLayer1 // TODO: reconsider this color for a cleaner look
                             property color hoveredWorkspaceColor: ColorUtils.mix(defaultWorkspaceColor, Appearance.colors.colLayer1Hover, 0.1)
                             property color hoveredBorderColor: Appearance.colors.colLayer2Hover
-                            property color activeBorderColor: Appearance.m3colors.m3secondary
                             property bool hoveredWhileDragging: false
 
                             implicitWidth: root.workspaceImplicitWidth
@@ -99,8 +93,17 @@ Item {
                             color: hoveredWhileDragging ? hoveredWorkspaceColor : defaultWorkspaceColor
                             radius: Appearance.rounding.screenRounding * root.scale
                             border.width: 2
-                            border.color: (monitor.activeWorkspace?.id == workspaceValue && root.monitorIsFocused) ? activeBorderColor : 
-                                hoveredWhileDragging ? hoveredBorderColor : "transparent"
+                            border.color: hoveredWhileDragging ? hoveredBorderColor : "transparent"
+
+                            StyledText {
+                                anchors.centerIn: parent
+                                text: workspaceValue
+                                font.pixelSize: root.workspaceNumberSize * root.scale
+                                font.weight: Font.DemiBold
+                                color: ColorUtils.transparentize(Appearance.colors.colOnLayer1, 0.8)
+                                horizontalAlignment: Text.AlignHCenter
+                                verticalAlignment: Text.AlignVCenter
+                            }
 
                             MouseArea {
                                 id: workspaceArea
@@ -134,32 +137,45 @@ Item {
             }
         }
 
-        Item {
+        Item { // Windows & focused workspace indicator
             id: windowSpace
             anchors.centerIn: parent
             implicitWidth: workspaceColumnLayout.implicitWidth
             implicitHeight: workspaceColumnLayout.implicitHeight
 
             Repeater { // Window repeater
-                model: windowAddresses.filter((address) => {
-                    var win = windowByAddress[address]
-                    return (root.workspaceGroup * root.workspacesShown < win?.workspace?.id && win?.workspace?.id <= (root.workspaceGroup + 1) * root.workspacesShown)
-                })
+                model: ScriptModel {
+                    values: {
+                        // console.log(JSON.stringify(ToplevelManager.toplevels.values.map(t => t), null, 2))
+                        return ToplevelManager.toplevels.values.filter((toplevel) => {
+                            const address = `0x${toplevel.HyprlandToplevel.address}`
+                            // console.log(`Checking window with address: ${address}`)
+                            var win = windowByAddress[address]
+                            return (root.workspaceGroup * root.workspacesShown < win?.workspace?.id && win?.workspace?.id <= (root.workspaceGroup + 1) * root.workspacesShown)
+                        })
+                    }
+                }
                 delegate: OverviewWindow {
                     id: window
-                    windowData: windowByAddress[modelData]
+                    required property var modelData
+                    property var address: `0x${modelData.HyprlandToplevel.address}`
+                    windowData: windowByAddress[address]
+                    toplevel: modelData
                     monitorData: root.monitorData
                     scale: root.scale
                     availableWorkspaceWidth: root.workspaceImplicitWidth
                     availableWorkspaceHeight: root.workspaceImplicitHeight
+
+                    property int monitorId: windowData?.monitor
+                    property var monitor: HyprlandData.monitors[monitorId]
 
                     property bool atInitPosition: (initX == x && initY == y)
                     restrictToWorkspace: Drag.active || atInitPosition
 
                     property int workspaceColIndex: (windowData?.workspace.id - 1) % ConfigOptions.overview.numOfCols
                     property int workspaceRowIndex: Math.floor((windowData?.workspace.id - 1) % root.workspacesShown / ConfigOptions.overview.numOfCols)
-                    xOffset: (root.workspaceImplicitWidth + workspaceSpacing) * workspaceColIndex
-                    yOffset: (root.workspaceImplicitHeight + workspaceSpacing) * workspaceRowIndex
+                    xOffset: (root.workspaceImplicitWidth + workspaceSpacing) * workspaceColIndex - (monitor?.x * root.scale)
+                    yOffset: (root.workspaceImplicitHeight + workspaceSpacing) * workspaceRowIndex - (monitor?.y * root.scale)
 
                     Timer {
                         id: updateWindowPosition
@@ -167,8 +183,9 @@ Item {
                         repeat: false
                         running: false
                         onTriggered: {
-                            window.x = Math.max((windowData?.at[0] - monitorData?.reserved[0]) * root.scale, 0) + xOffset
-                            window.y = Math.max((windowData?.at[1] - monitorData?.reserved[1]) * root.scale, 0) + yOffset
+                            window.x = Math.round(Math.max((windowData?.at[0] - monitorData?.reserved[0]) * root.scale, 0) + xOffset)
+                            window.y = Math.round(Math.max((windowData?.at[1] - monitorData?.reserved[1]) * root.scale, 0) + yOffset)
+                            // console.log(`[OverviewWindow] Updated position for window ${windowData?.address} to (${window.x}, ${window.y})`)
                         }
                     }
 
@@ -179,8 +196,8 @@ Item {
                         id: dragArea
                         anchors.fill: parent
                         hoverEnabled: true
-                        onEntered: hovered = true
-                        onExited: hovered = false
+                        onEntered: hovered = true // For hover color change
+                        onExited: hovered = false // For hover color change
                         acceptedButtons: Qt.LeftButton | Qt.MiddleButton
                         drag.target: parent
                         onPressed: {
@@ -188,6 +205,7 @@ Item {
                             window.pressed = true
                             window.Drag.active = true
                             window.Drag.source = window
+                            // console.log(`[OverviewWindow] Dragging window ${windowData?.address} from position (${window.x}, ${window.y})`)
                         }
                         onReleased: {
                             const targetWorkspace = root.draggingTargetWorkspace
@@ -215,7 +233,35 @@ Item {
                                 event.accepted = true
                             }
                         }
+
+                        StyledToolTip {
+                            extraVisibleCondition: false
+                            alternativeVisibleCondition: dragArea.containsMouse && !window.Drag.active
+                            content: `${windowData.title}\n[${windowData.class}] ${windowData.xwayland ? "[XWayland] " : ""}\n`
+                        }
                     }
+                }
+            }
+
+            Rectangle { // Focused workspace indicator
+                id: focusedWorkspaceIndicator
+                property int activeWorkspaceInGroup: monitor.activeWorkspace?.id - (root.workspaceGroup * root.workspacesShown)
+                property int activeWorkspaceRowIndex: Math.floor((activeWorkspaceInGroup - 1) / ConfigOptions.overview.numOfCols)
+                property int activeWorkspaceColIndex: (activeWorkspaceInGroup - 1) % ConfigOptions.overview.numOfCols
+                x: (root.workspaceImplicitWidth + workspaceSpacing) * activeWorkspaceColIndex
+                y: (root.workspaceImplicitHeight + workspaceSpacing) * activeWorkspaceRowIndex
+                z: root.windowZ
+                width: root.workspaceImplicitWidth
+                height: root.workspaceImplicitHeight
+                color: "transparent"
+                radius: Appearance.rounding.screenRounding * root.scale
+                border.width: 2
+                border.color: root.activeBorderColor
+                Behavior on x {
+                    animation: Appearance.animation.elementMoveFast.numberAnimation.createObject(this)
+                }
+                Behavior on y {
+                    animation: Appearance.animation.elementMoveFast.numberAnimation.createObject(this)
                 }
             }
         }

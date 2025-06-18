@@ -1,7 +1,6 @@
 import "root:/modules/common"
 import "root:/modules/common/widgets"
 import "root:/services"
-import "root:/modules/common/functions/icons.js" as Icons
 import Qt5Compat.GraphicalEffects
 import QtQuick
 import QtQuick.Controls
@@ -22,19 +21,10 @@ Item {
         anchors.fill: parent
         spacing: 10
 
-        Image {
-            Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
-            visible: source != ""
-            sourceSize.width: 38
-            sourceSize.height: 38
-            source: {
-                const icon = Icons.noKnowledgeIconGuess(root.node.properties["application.icon-name"]);
-                return Quickshell.iconPath(icon, "image-missing");
-            }
-        }
-
         ColumnLayout {
             Layout.fillWidth: true
+            spacing: 0
+
             RowLayout {
                 StyledText {
                     Layout.fillWidth: true
@@ -50,6 +40,20 @@ Item {
             }
 
             RowLayout {
+                Image {
+                    property real size: slider.trackHeight * 1.3
+                    Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
+                    visible: source != ""
+                    sourceSize.width: size
+                    sourceSize.height: size
+                    source: {
+                        let icon;
+                        icon = AppSearch.guessIcon(root.node.properties["application.icon-name"]);
+                        if (AppSearch.iconExists(icon)) return Quickshell.iconPath(icon, "image-missing");
+                        icon = AppSearch.guessIcon(root.node.properties["node.name"]);
+                        return Quickshell.iconPath(icon, "image-missing");
+                    }
+                }
                 StyledSlider {
                     id: slider
                     value: root.node.audio.volume

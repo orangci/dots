@@ -8,21 +8,15 @@ import QtQuick.Layouts
 import Quickshell.Widgets
 import Quickshell.Services.Pipewire
 
-Button {
+GroupButton {
     id: button
     required property bool input
 
-    background: Rectangle {
-        anchors.fill: parent
-        radius: Appearance.rounding.small
-        color: (button.down) ? Appearance.colors.colLayer2Active : (button.hovered ? Appearance.colors.colLayer2Hover : Appearance.colors.colLayer2)
-
-        Behavior on color {
-            animation: Appearance.animation.elementMoveFast.colorAnimation.createObject(this)
-        }
-    }
-
-    PointingHandInteraction {}
+    buttonRadius: Appearance.rounding.small
+    colBackground: Appearance.colors.colLayer2
+    colBackgroundHover: Appearance.colors.colLayer2Hover
+    colBackgroundActive: Appearance.colors.colLayer2Active
+    clickedWidth: baseWidth + 30
 
     contentItem: RowLayout {
         anchors.fill: parent

@@ -65,12 +65,15 @@ Scope {
             WlrLayershell.layer: WlrLayer.Overlay
             color: "transparent"
 
-            anchors.top: true
+            anchors {
+                top: !ConfigOptions.bar.bottom
+                bottom: ConfigOptions.bar.bottom
+            }
             mask: Region {
                 item: osdValuesWrapper
             }
 
-            implicitWidth: Appearance.sizes.osdWidth
+            implicitWidth: columnLayout.implicitWidth
             implicitHeight: columnLayout.implicitHeight
             visible: osdLoader.active
 

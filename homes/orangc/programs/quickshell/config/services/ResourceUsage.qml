@@ -6,6 +6,9 @@ import QtQuick
 import Quickshell
 import Quickshell.Io
 
+/**
+ * Simple polled resource usage service with RAM, Swap, and CPU usage.
+ */
 Singleton {
 	property double memoryTotal: 1
 	property double memoryFree: 1
@@ -14,12 +17,12 @@ Singleton {
     property double swapTotal: 1
 	property double swapFree: 1
 	property double swapUsed: swapTotal - swapFree
-    property double swapUsedPercentage: swapUsed / swapTotal
+    property double swapUsedPercentage: swapTotal > 0 ? (swapUsed / swapTotal) : 0
     property double cpuUsage: 0
     property var previousCpuStats
 
 	Timer {
-		interval: 10
+		interval: 1
         running: true 
         repeat: true
 		onTriggered: {

@@ -9,13 +9,17 @@ import Quickshell.Io
 import Quickshell.Widgets
 
 TabButton {
-    id: button
+    id: root
     property string buttonText
     property string buttonIcon
     property bool selected: false
     property int rippleDuration: 1200
     height: buttonBackground.height
     property int tabContentWidth: buttonBackground.width - buttonBackground.radius*2
+
+    property color colBackground: ColorUtils.transparentize(Appearance.colors.colLayer1Hover, 1)
+    property color colBackgroundHover: Appearance.colors.colLayer1Hover
+    property color colRipple: Appearance.colors.colLayer1Active
 
     PointingHandInteraction {}
 
@@ -42,7 +46,7 @@ TabButton {
             rippleAnim.restart();
         }
         onReleased: (event) => {
-            button.click() // Because the MouseArea already consumed the event
+            root.click() // Because the MouseArea already consumed the event
             rippleFadeAnim.restart();
         }
     }
@@ -88,9 +92,9 @@ TabButton {
 
     background: Rectangle {
         id: buttonBackground
-        radius: Appearance.rounding.small
+        radius: Appearance?.rounding.small ?? 7
         implicitHeight: 37
-        color: (button.hovered ? Appearance.colors.colLayer1Hover : ColorUtils.transparentize(Appearance.colors.colLayer1Hover, 1))
+        color: (root.hovered ? root.colBackgroundHover : root.colBackground)
         layer.enabled: true
         layer.effect: OpacityMask {
             maskSource: Rectangle {
@@ -108,7 +112,7 @@ TabButton {
             id: ripple
 
             radius: Appearance.rounding.full
-            color: Appearance.colors.colLayer1Active
+            color: root.colRipple
             opacity: 0
 
             transform: Translate {
@@ -138,7 +142,7 @@ TabButton {
                     text: buttonIcon
                     iconSize: Appearance.font.pixelSize.huge
                     fill: selected ? 1 : 0
-                    color: selected ? Appearance.m3colors.m3primary : Appearance.colors.colOnLayer1
+                    color: selected ? Appearance.colors.colPrimary : Appearance.colors.colOnLayer1
                     Behavior on color {
                         animation: Appearance.animation.elementMoveFast.colorAnimation.createObject(this)
                     }
@@ -148,7 +152,7 @@ TabButton {
                 id: buttonTextWidget
                 verticalAlignment: Text.AlignVCenter
                 font.pixelSize: Appearance.font.pixelSize.small
-                color: selected ? Appearance.m3colors.m3primary : Appearance.colors.colOnLayer1
+                color: selected ? Appearance.colors.colPrimary : Appearance.colors.colOnLayer1
                 text: buttonText
                 Behavior on color {
                     animation: Appearance.animation.elementMoveFast.colorAnimation.createObject(this)

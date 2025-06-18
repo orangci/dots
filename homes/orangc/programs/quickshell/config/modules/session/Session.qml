@@ -26,13 +26,13 @@ Scope {
             function hide() {
                 sessionLoader.active = false
             }
-
+    
 
             exclusionMode: ExclusionMode.Ignore
             WlrLayershell.namespace: "quickshell:session"
             WlrLayershell.layer: WlrLayer.Overlay
             WlrLayershell.keyboardFocus: WlrKeyboardFocus.Exclusive
-            color: ColorUtils.transparentize(Appearance.m3colors.m3background, 0.7)
+            color: ColorUtils.transparentize(Appearance.m3colors.m3background, 0.2)
 
             anchors {
                 top: true
@@ -82,8 +82,11 @@ Scope {
                     }
                 }
 
-                RowLayout { // First row of buttons
-                    spacing: 15
+                GridLayout {
+                    columns: 4
+                    columnSpacing: 15
+                    rowSpacing: 15
+
                     SessionActionButton {
                         id: sessionLock
                         focus: sessionRoot.visible
@@ -118,15 +121,12 @@ Scope {
                         id: sessionTaskManager
                         buttonIcon: "browse_activity"
                         buttonText: qsTr("Task Manager")
-                        onClicked:  { Hyprland.dispatch("exec gnome-system-monitor & disown"); sessionRoot.hide() }
+                        onClicked:  { Hyprland.dispatch(`exec ${ConfigOptions.apps.taskManager}`); sessionRoot.hide() }
                         onFocusChanged: { if (focus) sessionRoot.subtitle = buttonText }
                         KeyNavigation.left: sessionLogout
                         KeyNavigation.down: sessionFirmwareReboot
                     }
-                }
 
-                RowLayout { // Second row of buttons
-                    spacing: 15
                     SessionActionButton {
                         id: sessionHibernate
                         buttonIcon: "downloading"

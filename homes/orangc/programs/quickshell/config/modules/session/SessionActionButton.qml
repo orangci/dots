@@ -1,22 +1,37 @@
 import "root:/modules/common"
 import "root:/modules/common/widgets/"
+import "root:/modules/common/functions/color_utils.js" as ColorUtils
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 import Quickshell
 import Quickshell.Io
 
-Button {
+RippleButton {
     id: button
 
     property string buttonIcon
     property string buttonText
     property bool keyboardDown: false
+    property real size: 120
 
-    implicitHeight: 120
-    implicitWidth: 120
+    buttonRadius: (button.focus || button.down) ? size / 2 : Appearance.rounding.verylarge
+    colBackground: button.keyboardDown ? Appearance.colors.colSecondaryContainerActive : 
+        button.focus ? Appearance.colors.colPrimary : 
+        Appearance.colors.colSecondaryContainer
+    colBackgroundHover: Appearance.colors.colPrimary
+    colRipple: Appearance.colors.colPrimaryActive
+    property color colText: (button.down || button.keyboardDown || button.focus || button.hovered) ?
+        Appearance.m3colors.m3onPrimary : Appearance.colors.colOnLayer0
 
-    PointingHandInteraction {}
+    Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
+    background.implicitHeight: size
+    background.implicitWidth: size
+
+    Behavior on buttonRadius {
+        animation: Appearance.animation.elementMoveFast.numberAnimation.createObject(this)
+    }
+
     Keys.onPressed: (event) => {
         if (event.key === Qt.Key_Return || event.key === Qt.Key_Enter) {
             keyboardDown = true
@@ -31,23 +46,12 @@ Button {
         }
     }
 
-    background: Rectangle {
-        anchors.fill: parent
-        radius: Appearance.rounding.full
-        color: (button.down || button.keyboardDown) ? Appearance.colors.colLayer2Active : ((button.hovered || button.focus) ? Appearance.colors.colLayer2Hover : Appearance.colors.colLayer2)
-
-        Behavior on color {
-            animation: Appearance.animation.elementMove.colorAnimation.createObject(this)
-        }
-
-    }
-
     contentItem: MaterialSymbol {
         id: icon
         anchors.fill: parent
-        color: Appearance.colors.colOnLayer2
+        color: button.colText
         horizontalAlignment: Text.AlignHCenter
-        iconSize: 40
+        iconSize: 45
         text: buttonIcon
     }
 

@@ -32,12 +32,6 @@ in
       default = "screenshot --area --swappy";
       description = "The command for taking screenshots";
     };
-
-    commands.colourpicker = mkOption {
-      type = types.str;
-      default = "hyprpicker -a";
-      description = "The colour picker command";
-    };
   };
 
   config = mkIf cfg.enable {
@@ -53,6 +47,7 @@ in
       pkgs.wlsunset
       pkgs.libsForQt5.qt5.qtgraphicaleffects
       pkgs.kdePackages.qt5compat
+      pkgs.kdePackages.syntax-highlighting
       pkgs.libqalculate
       pkgs.colloid-kde
     ];
@@ -88,8 +83,6 @@ in
         cat > "$HOME/.config/quickshell/config.js" <<EOF
         var bluetooth = "control -b"
         var networking = "control -w"
-        var screenshot_command = "${cfg.commands.screenshot}"
-        var colour_picker_command = "${cfg.commands.colourpicker}"
         var workspacesCount = ${builtins.toString cfg.workspaces}
 
         var fontMain = "${fonts.sansSerif.name}"

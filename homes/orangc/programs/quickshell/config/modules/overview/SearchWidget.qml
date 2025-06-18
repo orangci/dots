@@ -15,8 +15,7 @@ import Quickshell.Hyprland
 
 Item { // Wrapper
     id: root
-    required property var panelWindow
-    readonly property string xdgConfigHome: XdgDirectories.config
+    readonly property string xdgConfigHome: Directories.config
     property string searchingText: ""
     property bool showResults: searchingText != ""
     property real searchBarHeight: searchBar.height + Appearance.sizes.elevationMargin * 2
@@ -24,31 +23,47 @@ Item { // Wrapper
     implicitHeight: searchWidgetContent.implicitHeight + Appearance.sizes.elevationMargin * 2
 
     property string mathResult: ""
+
+    function disableExpandAnimation() {
+        searchWidthBehavior.enabled = false;
+    }
+
+    function cancelSearch() {
+        searchInput.selectAll()
+        root.searchingText = ""
+        searchWidthBehavior.enabled = true; 
+    }
+
+    function setSearchingText(text) {
+        searchInput.text = text;
+        root.searchingText = text;
+    }
+
     property var searchActions: [
         {
             action: "img", 
             execute: () => {
-                executor.executeCommand(`${xdgConfigHome}/quickshell/scripts/switchwall.sh`.replace(/file:\/\//, ""))
+                executor.executeCommand(Directories.wallpaperSwitchScriptPath)
             }
         },
         {
             action: "dark",
             execute: () => {
-                executor.executeCommand(`${xdgConfigHome}/quickshell/scripts/switchwall.sh --mode dark --noswitch`.replace(/file:\/\//, ""))
+                executor.executeCommand(`${Directories.wallpaperSwitchScriptPath} --mode dark --noswitch`)
             }
         },
         {
             action: "light",
             execute: () => {
-                executor.executeCommand(`${xdgConfigHome}/quickshell/scripts/switchwall.sh --mode light --noswitch`.replace(/file:\/\//, ""))
+                executor.executeCommand(`${Directories.wallpaperSwitchScriptPath} --mode light --noswitch`)
             }
         },
         {
             action: "accentcolor",
             execute: (args) => {
                 executor.executeCommand(
-                    `${xdgConfigHome}/quickshell/scripts/switchwall.sh --noswitch --color ${args != '' ? ("'"+args+"'") : ""}`
-                    .replace(/file:\/\//, ""))
+                    `${Directories.wallpaperSwitchScriptPath} --noswitch --color ${args != '' ? ("'"+args+"'") : ""}`
+                )
             }
         },
         {
@@ -92,7 +107,7 @@ Item { // Wrapper
         property list<string> baseCommand: ["bash", "-c"]
         function executeCommand(command) {
             executor.command = baseCommand.concat(
-                `${command} || ${ConfigOptions.apps.terminal} fish -C 'echo "${qsTr("Searching for package with that command")}..." && pacman -F ${command}'`
+                `${command}`
             )
             executor.startDetached()
         }
@@ -154,6 +169,9 @@ Item { // Wrapper
         }
     }
 
+    StyledRectangularShadow {
+        target: searchWidgetContent
+    }
     Rectangle { // Background
         id: searchWidgetContent
         anchors.centerIn: parent
@@ -161,22 +179,13 @@ Item { // Wrapper
         implicitHeight: columnLayout.implicitHeight
         radius: Appearance.rounding.large
         color: Appearance.colors.colLayer0
-        layer.enabled: true
-        layer.effect: MultiEffect {
-            source: searchWidgetContent
-            anchors.fill: searchWidgetContent
-            shadowEnabled: true
-            shadowColor: Appearance.colors.colShadow
-            shadowVerticalOffset: 1
-            shadowBlur: 0.5
-        }
 
         ColumnLayout {
             id: columnLayout
             anchors.centerIn: parent
             spacing: 0
 
-            clip: true
+            // clip: true
             layer.enabled: true
             layer.effect: OpacityMask {
                 maskSource: Rectangle {
@@ -194,38 +203,38 @@ Item { // Wrapper
                     Layout.leftMargin: 15
                     iconSize: Appearance.font.pixelSize.huge
                     color: Appearance.m3colors.m3onSurface
-                    text: "search"
+                    text: root.searchingText.startsWith(ConfigOptions.search.prefix.clipboard) ? 'content_paste_search' : 'search'
                 }
                 TextField { // Search box
                     id: searchInput
 
-                    focus: root.panelWindow.visible || GlobalStates.overviewOpen
+                    focus: GlobalStates.overviewOpen
                     Layout.rightMargin: 15
                     padding: 15
                     renderType: Text.NativeRendering
+                    font {
+                        family: Appearance?.font.family.main ?? "sans-serif"
+                        pixelSize: Appearance?.font.pixelSize.small ?? 15
+                        hintingPreference: Font.PreferFullHinting
+                    }
                     color: activeFocus ? Appearance.m3colors.m3onSurface : Appearance.m3colors.m3onSurfaceVariant
                     selectedTextColor: Appearance.m3colors.m3onSecondaryContainer
-                    selectionColor: Appearance.m3colors.m3secondaryContainer
+                    selectionColor: Appearance.colors.colSecondaryContainer
                     placeholderText: qsTr("Search, calculate or run")
                     placeholderTextColor: Appearance.m3colors.m3outline
                     implicitWidth: root.searchingText == "" ? Appearance.sizes.searchWidthCollapsed : Appearance.sizes.searchWidth
 
                     Behavior on implicitWidth {
+                        id: searchWidthBehavior
+                        enabled: false
                         NumberAnimation {
-                            duration: Appearance.animation.elementMoveFast.duration
-                            easing.type: Appearance.animation.elementMoveFast.type
-                            easing.bezierCurve: Appearance.animation.elementMoveFast.bezierCurve
+                            duration: 300
+                            easing.type: Appearance.animation.elementMove.type
+                            easing.bezierCurve: Appearance.animation.elementMove.bezierCurve
                         }
                     }
 
                     onTextChanged: root.searchingText = text
-                    Connections {
-                        target: root
-                        function onVisibleChanged() {
-                            searchInput.selectAll()
-                            root.searchingText = ""
-                        }
-                    }
 
                     onAccepted: {
                         if (appResults.count > 0) {
@@ -241,7 +250,7 @@ Item { // Wrapper
 
                     cursorDelegate: Rectangle {
                         width: 1
-                        color: searchInput.activeFocus ? Appearance.m3colors.m3primary : "transparent"
+                        color: searchInput.activeFocus ? Appearance.colors.colPrimary : "transparent"
                         radius: 1
                     }
                 }
@@ -251,7 +260,7 @@ Item { // Wrapper
                 visible: root.showResults
                 Layout.fillWidth: true
                 height: 1
-                color: Appearance.m3colors.m3outlineVariant
+                color: Appearance.colors.colOutlineVariant
             }
 
             ListView { // App results
@@ -262,8 +271,9 @@ Item { // Wrapper
                 clip: true
                 topMargin: 10
                 bottomMargin: 10
-                spacing: 0
+                spacing: 2
                 KeyNavigation.up: searchBar
+                highlightMoveDuration : 100
 
                 onFocusChanged: {
                     if(focus) appResults.currentIndex = 1;
@@ -279,10 +289,43 @@ Item { // Wrapper
 
                 model: ScriptModel {
                     id: model
-                    values: {
+                    values: { // Search results are handled here
+                        ////////////////// Skip? //////////////////
                         if(root.searchingText == "") return [];
 
-                        // Start math calculation, declare special result objects
+                        ///////////// Special cases ///////////////
+                        if (root.searchingText.startsWith(ConfigOptions.search.prefix.clipboard)) { // Clipboard
+                            const searchString = root.searchingText.slice(ConfigOptions.search.prefix.clipboard.length);
+                            return Cliphist.fuzzyQuery(searchString).map(entry => {
+                                return {
+                                    cliphistRawString: entry,
+                                    name: entry.replace(/^\s*\S+\s+/, ""),
+                                    clickActionName: "",
+                                    type: `#${entry.match(/^\s*(\S+)/)?.[1] || ""}`,
+                                    execute: () => {
+                                        Hyprland.dispatch(`exec echo '${StringUtils.shellSingleQuoteEscape(entry)}' | cliphist decode | wl-copy`);
+                                    }
+                                };
+                            }).filter(Boolean);
+                        } 
+                        if (root.searchingText.startsWith(ConfigOptions.search.prefix.emojis)) { // Clipboard
+                            const searchString = root.searchingText.slice(ConfigOptions.search.prefix.emojis.length);
+                            return Emojis.fuzzyQuery(searchString).map(entry => {
+                                return {
+                                    cliphistRawString: entry,
+                                    bigText: entry.match(/^\s*(\S+)/)?.[1] || "",
+                                    name: entry.replace(/^\s*\S+\s+/, ""),
+                                    clickActionName: "",
+                                    type: "Emoji",
+                                    execute: () => {
+                                        Hyprland.dispatch(`exec wl-copy '${StringUtils.shellSingleQuoteEscape(entry.match(/^\s*(\S+)/)?.[1])}'`);
+                                    }
+                                };
+                            }).filter(Boolean);
+                        } 
+                    
+
+                        ////////////////// Init ///////////////////
                         nonAppResultsTimer.restart();
                         const mathResultObject = {
                             name: root.mathResult,
@@ -295,13 +338,13 @@ Item { // Wrapper
                             }
                         }
                         const commandResultObject = {
-                            name: searchingText,
+                            name: searchingText.replace("file://", ""),
                             clickActionName: qsTr("Run"),
                             type: qsTr("Run command"),
                             fontType: "monospace",
                             materialSymbol: 'terminal',
                             execute: () => {
-                                executor.executeCommand(searchingText.startsWith('sudo') ? `${ConfigOptions.apps.terminal} fish -C '${root.searchingText}'` : root.searchingText);
+                                executor.executeCommand(searchingText.startsWith('sudo') ? `${ConfigOptions.apps.terminal} fish -C '${root.searchingText.replace("file://", "")}'` : root.searchingText.replace("file://", ""));
                             }
                         }
                         const launcherActionObjects = root.searchActions
@@ -322,10 +365,9 @@ Item { // Wrapper
                             })
                             .filter(Boolean);
 
-                        // Init result array
                         let result = [];
 
-                        // Add filtered application entries
+                        //////////////// Apps //////////////////
                         result = result.concat(
                             AppSearch.fuzzyQuery(root.searchingText)
                                 .map((entry) => {
@@ -335,23 +377,20 @@ Item { // Wrapper
                                 })
                         );
 
-                        // Add launcher actions
+                        ////////// Launcher actions ////////////
                         result = result.concat(launcherActionObjects);
 
-                        // Insert math result before command if search starts with a number
+                        /////////// Math result & command //////////
                         const startsWithNumber = /^\d/.test(root.searchingText);
-                        if (startsWithNumber)
+                        if (startsWithNumber) {
                             result.push(mathResultObject);
-
-                        // Command
-                        result.push(commandResultObject);
-
-                        // If not already added, add math result after command
-                        if (!startsWithNumber) {
+                            result.push(commandResultObject);
+                        } else {
+                            result.push(commandResultObject);
                             result.push(mathResultObject);
                         }
 
-                        // Web search
+                        ///////////////// Web search ////////////////
                         result.push({
                             name: root.searchingText,
                             clickActionName: qsTr("Search"),
@@ -369,8 +408,15 @@ Item { // Wrapper
                         return result;
                     }
                 }
-                delegate: SearchItem {
+
+                delegate: SearchItem { // The selectable item for each search result
+                    required property var modelData
+                    anchors.left: parent?.left
+                    anchors.right: parent?.right
                     entry: modelData
+                    query: root.searchingText.startsWith(ConfigOptions.search.prefix.clipboard) ? 
+                        root.searchingText.slice(ConfigOptions.search.prefix.clipboard.length) : 
+                        root.searchingText;
                 }
             }
             

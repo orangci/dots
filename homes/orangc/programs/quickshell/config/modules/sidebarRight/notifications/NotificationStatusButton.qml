@@ -4,46 +4,40 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 
-Button {
+GroupButton {
     id: button
     property string buttonText: ""
     property string buttonIcon: ""
 
-    // implicitHeight: 30
-    implicitWidth: contentRowLayout.implicitWidth + 10 * 2
-    Behavior on implicitWidth {
-        SmoothedAnimation {
-            velocity: Appearance.animation.elementMove.velocity
-        }
-    }
+    baseWidth: content.implicitWidth + 10 * 2
+    baseHeight: 30
 
-    PointingHandInteraction {}
+    buttonRadius: baseHeight / 2
+    buttonRadiusPressed: Appearance.rounding.small
+    colBackground: Appearance.colors.colLayer2
+    colBackgroundHover: Appearance.colors.colLayer2Hover
+    colBackgroundActive: Appearance.colors.colLayer2Active
+    property color colText: toggled ? Appearance.m3colors.m3onPrimary : Appearance.colors.colOnLayer1
 
-    background: Rectangle {
+    contentItem: Item {
+        id: content
         anchors.fill: parent
-        radius: Appearance.rounding.full
-        color: (button.down) ? Appearance.colors.colLayer2Active : (button.hovered ? Appearance.colors.colLayer2Hover : Appearance.colors.colLayer2)
-
-        Behavior on color {
-            animation: Appearance.animation.elementMoveFast.colorAnimation.createObject(this)
-        }
-
-    }
-    contentItem: RowLayout {
-        id: contentRowLayout
-        anchors.centerIn: parent
-        spacing: 0
-        MaterialSymbol {
-            text: buttonIcon
-            Layout.fillWidth: false
-            iconSize: Appearance.font.pixelSize.larger
-            color: Appearance.colors.colOnLayer1
-        }
-        StyledText {
-            text: buttonText
-            Layout.fillWidth: false
-            font.pixelSize: Appearance.font.pixelSize.small
-            color: Appearance.colors.colOnLayer1
+        implicitWidth: contentRowLayout.implicitWidth
+        implicitHeight: contentRowLayout.implicitHeight
+        RowLayout {
+            id: contentRowLayout
+            anchors.centerIn: parent
+            spacing: 5
+            MaterialSymbol {
+                text: buttonIcon
+                iconSize: Appearance.font.pixelSize.large
+                color: button.colText
+            }
+            StyledText {
+                text: buttonText
+                font.pixelSize: Appearance.font.pixelSize.small
+                color: button.colText
+            }
         }
     }
 

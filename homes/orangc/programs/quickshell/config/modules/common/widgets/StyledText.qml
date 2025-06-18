@@ -4,9 +4,12 @@ import QtQuick.Layouts
 
 Text {
     renderType: Text.NativeRendering
-    font.hintingPreference: Font.PreferFullHinting
     verticalAlignment: Text.AlignVCenter
-    font.family: Appearance.font.family.main
-    font.pixelSize: Appearance.font.pixelSize.small
-    color: Appearance.m3colors.m3onBackground
+    font {
+        hintingPreference: Font.PreferFullHinting
+        family: Appearance?.font.family.main ?? "sans-serif"
+        pixelSize: Appearance?.font.pixelSize.small ?? 15
+    }
+    color: Appearance?.m3colors.m3onBackground ?? "black"
+    linkColor: Appearance?.m3colors.m3primary
 }

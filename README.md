@@ -39,4 +39,4 @@ Hosts:
 
 ## License
 - [License: GNU AGPLv3](./LICENSE)
- - The quickshell config is forked from ([this](https://github.com/end-4/dots-hyprland/commit/8c67c425e938b5cbcb8c2e49875216fc7590b784) commit of) [end-4](https://github.com/end-4)'s [dots-hyprland](https://github.com/end-4/dots-hyprland). It is licensed under GNU GPLv3.
+ - The quickshell config is forked from ([this](https://github.com/end-4/dots-hyprland/commit/5d24cc45a3f0e90023b95f8e06ecabb4d987fedc) commit of) [end-4](https://github.com/end-4)'s [dots-hyprland](https://github.com/end-4/dots-hyprland). It is licensed under GNU GPLv3.

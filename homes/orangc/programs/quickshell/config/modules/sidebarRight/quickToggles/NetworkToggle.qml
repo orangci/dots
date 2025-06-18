@@ -1,7 +1,6 @@
 import "root:/services"
 import "root:/modules/common"
 import "root:/modules/common/widgets"
-import "root:/config.js" as Config
 import "root:/modules/common/functions/string_utils.js" as StringUtils
 import "../"
 import QtQuick
@@ -11,28 +10,13 @@ import Quickshell.Hyprland
 
 QuickToggleButton {
     toggled: Network.networkName.length > 0 && Network.networkName != "lo"
-    buttonIcon: toggled ? (
-        Network.networkStrength > 80 ? "signal_wifi_4_bar" :
-        Network.networkStrength > 60 ? "network_wifi_3_bar" :
-        Network.networkStrength > 40 ? "network_wifi_2_bar" :
-        Network.networkStrength > 20 ? "network_wifi_1_bar" :
-        "signal_wifi_0_bar"
-    ) : "signal_wifi_off"
-    MouseArea {
-        anchors.fill: parent
-        acceptedButtons: Qt.RightButton | Qt.LeftButton
-        onClicked: (mouse) =>{
-            if (mouse.button === Qt.LeftButton) {
-                toggleNetwork.running = true
-            }
-            if (mouse.button === Qt.RightButton) {
-                Hyprland.dispatch(`exec ${Config.networking}`)
-                Hyprland.dispatch("global quickshell:sidebarRightClose")
-            }
-        }
-        hoverEnabled: false
-        propagateComposedEvents: true
-        cursorShape: Qt.PointingHandCursor 
+    buttonIcon: Network.materialSymbol
+    onClicked: {
+        toggleNetwork.running = true
+    }
+    altAction: () => {
+        Hyprland.dispatch(`exec ${Network.ethernet ? ConfigOptions.apps.networkEthernet : ConfigOptions.apps.network}`)
+        Hyprland.dispatch("global quickshell:sidebarRightClose")
     }
     Process {
         id: toggleNetwork

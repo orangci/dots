@@ -19,179 +19,199 @@ Scope {
     property int sidebarWidth: Appearance.sizes.sidebarWidth
     property int sidebarPadding: 15
 
-    Loader {
-        id: sidebarLoader
-        active: false
-        onActiveChanged: {
-            GlobalStates.sidebarRightOpen = sidebarLoader.active
+    PanelWindow {
+        id: sidebarRoot
+        visible: GlobalStates.sidebarRightOpen
+
+        function hide() {
+            GlobalStates.sidebarRightOpen = false
         }
 
-        PanelWindow {
-            id: sidebarRoot
-            visible: sidebarLoader.active
+        exclusiveZone: 0
+        implicitWidth: sidebarWidth
+        WlrLayershell.namespace: "quickshell:sidebarRight"
+        // Hyprland 0.49: Focus is always exclusive and setting this breaks mouse focus grab
+        // WlrLayershell.keyboardFocus: WlrKeyboardFocus.Exclusive
+        color: "transparent"
 
-            function hide() {
-                sidebarLoader.active = false
+        anchors {
+            top: true
+            right: true
+            bottom: true
+        }
+
+        HyprlandFocusGrab {
+            id: grab
+            windows: [ sidebarRoot ]
+            active: GlobalStates.sidebarRightOpen
+            onCleared: () => {
+                if (!active) sidebarRoot.hide()
             }
+        }
 
-            exclusiveZone: 0
-            implicitWidth: sidebarWidth
-            WlrLayershell.namespace: "quickshell:sidebarRight"
-            // Hyprland 0.49: Focus is always exclusive and setting this breaks mouse focus grab
-            // WlrLayershell.keyboardFocus: WlrKeyboardFocus.Exclusive
-            color: "transparent"
-
+        Loader {
+            id: sidebarContentLoader
+            active: GlobalStates.sidebarRightOpen
             anchors {
-                top: true
-                right: true
-                bottom: true
+                top: parent.top
+                bottom: parent.bottom
+                right: parent.right
+                left: parent.left
+                topMargin: Appearance.sizes.hyprlandGapsOut
+                rightMargin: Appearance.sizes.hyprlandGapsOut
+                bottomMargin: Appearance.sizes.hyprlandGapsOut
+                leftMargin: Appearance.sizes.elevationMargin
+            }
+            width: sidebarWidth - Appearance.sizes.hyprlandGapsOut - Appearance.sizes.elevationMargin
+            height: parent.height - Appearance.sizes.hyprlandGapsOut * 2
+
+            focus: GlobalStates.sidebarRightOpen
+            Keys.onPressed: (event) => {
+                if (event.key === Qt.Key_Escape) {
+                    sidebarRoot.hide();
+                }
             }
 
-            HyprlandFocusGrab {
-                id: grab
-                windows: [ sidebarRoot ]
-                active: sidebarRoot.visible
-                onCleared: () => {
-                    if (!active) sidebarRoot.hide()
+            sourceComponent: Item {
+                implicitHeight: sidebarRightBackground.implicitHeight
+                implicitWidth: sidebarRightBackground.implicitWidth
+
+                StyledRectangularShadow {
+                    target: sidebarRightBackground
                 }
-            }
+                Rectangle {
+                    id: sidebarRightBackground
 
-            // Background
-            Rectangle {
-                id: sidebarRightBackground
-
-                anchors.centerIn: parent
-                width: parent.width - Appearance.sizes.hyprlandGapsOut * 2
-                height: parent.height - Appearance.sizes.hyprlandGapsOut * 2
-                color: Appearance.colors.colLayer0
-                radius: Appearance.rounding.screenRounding - Appearance.sizes.elevationMargin + 1
-
-                layer.enabled: true
-                layer.effect: MultiEffect {
-                    source: sidebarRightBackground
-                    anchors.fill: sidebarRightBackground
-                    shadowEnabled: true
-                    shadowColor: Appearance.colors.colShadow
-                    shadowVerticalOffset: 1
-                    shadowBlur: 0.5
-                }
-
-                Keys.onPressed: (event) => {
-                    if (event.key === Qt.Key_Escape) {
-                        sidebarRoot.hide();
-                    }
-                }
-
-                ColumnLayout {
                     anchors.fill: parent
-                    anchors.margins: sidebarPadding
-                    
-                    spacing: sidebarPadding
+                    implicitHeight: parent.height - Appearance.sizes.hyprlandGapsOut * 2
+                    implicitWidth: sidebarWidth - Appearance.sizes.hyprlandGapsOut * 2
+                    color: Appearance.colors.colLayer0
+                    radius: Appearance.rounding.screenRounding - Appearance.sizes.hyprlandGapsOut + 1
 
-                    RowLayout {
-                        Layout.fillHeight: false
-                        spacing: 10
-                        Layout.margins: 10
-                        Layout.topMargin: 5
-                        Layout.bottomMargin: 0
+                    ColumnLayout {
+                        spacing: sidebarPadding
+                        anchors.fill: parent
+                        anchors.margins: sidebarPadding
 
-                        Item {
-                            implicitWidth: distroIcon.width
-                            implicitHeight: distroIcon.height
-                            CustomIcon {
-                                id: distroIcon
-                                width: 25
-                                height: 25
-                                source: SystemInfo.distroIcon
-                            }
-                            ColorOverlay {
-                                anchors.fill: distroIcon
-                                source: distroIcon
-                                color: Appearance.colors.colOnLayer0
-                            }
-                        }
-
-                        StyledText {
-                            font.pixelSize: Appearance.font.pixelSize.normal
-                            color: Appearance.colors.colOnLayer0
-                            text: StringUtils.format(qsTr("Uptime: {0}"), DateTime.uptime)
-                            textFormat: Text.MarkdownText
-                        }
-
-                        Item {
-                            Layout.fillWidth: true
-                        }
-
-                        QuickToggleButton {
-                            toggled: false
-                            buttonIcon: "power_settings_new"
-                            onClicked: {
-                                Hyprland.dispatch("global quickshell:sessionOpen")
-                            }
-                            StyledToolTip {
-                                content: qsTr("Session")
-                            }
-                        }
-                    }
-
-                    Rectangle {
-                        Layout.alignment: Qt.AlignHCenter
-                        Layout.fillHeight: false
-                        radius: Appearance.rounding.full
-                        color: Appearance.colors.colLayer1
-                        implicitWidth: sidebarQuickControlsRow.implicitWidth + 10
-                        implicitHeight: sidebarQuickControlsRow.implicitHeight + 10
-                        
-                        
                         RowLayout {
-                            id: sidebarQuickControlsRow
-                            anchors.fill: parent
-                            anchors.margins: 5
+                            Layout.fillHeight: false
+                            spacing: 10
+                            Layout.margins: 10
+                            Layout.topMargin: 5
+                            Layout.bottomMargin: 0
+
+                            Item {
+                                implicitWidth: distroIcon.width
+                                implicitHeight: distroIcon.height
+                                CustomIcon {
+                                    id: distroIcon
+                                    width: 25
+                                    height: 25
+                                    source: SystemInfo.distroIcon
+                                }
+                                ColorOverlay {
+                                    anchors.fill: distroIcon
+                                    source: distroIcon
+                                    color: Appearance.colors.colOnLayer0
+                                }
+                            }
+
+                            StyledText {
+                                font.pixelSize: Appearance.font.pixelSize.normal
+                                color: Appearance.colors.colOnLayer0
+                                text: StringUtils.format(qsTr("Uptime: {0}"), DateTime.uptime)
+                                textFormat: Text.MarkdownText
+                            }
+
+                            Item {
+                                Layout.fillWidth: true
+                            }
+
+                            ButtonGroup {
+                                QuickToggleButton {
+                                    toggled: false
+                                    buttonIcon: "restart_alt"
+                                    onClicked: {
+                                        Hyprland.dispatch("reload")
+                                        Quickshell.reload(true)
+                                    }
+                                    StyledToolTip {
+                                        content: qsTr("Reload Hyprland & Quickshell")
+                                    }
+                                }
+                                QuickToggleButton {
+                                    toggled: false
+                                    buttonIcon: "settings"
+                                    onClicked: {
+                                        Hyprland.dispatch(`exec ${ConfigOptions.apps.settings}`)
+                                        Hyprland.dispatch(`global quickshell:sidebarRightClose`)
+                                    }
+                                    StyledToolTip {
+                                        content: qsTr("Plasma Settings")
+                                    }
+                                }
+                                QuickToggleButton {
+                                    toggled: false
+                                    buttonIcon: "power_settings_new"
+                                    onClicked: {
+                                        Hyprland.dispatch("global quickshell:sessionOpen")
+                                    }
+                                    StyledToolTip {
+                                        content: qsTr("Session")
+                                    }
+                                }
+                            }
+                        }
+
+                        ButtonGroup {
+                            Layout.alignment: Qt.AlignHCenter
                             spacing: 5
+                            padding: 5
+                            color: Appearance.colors.colLayer1
 
                             NetworkToggle {}
                             BluetoothToggle {}
                             NightLight {}
                             GameMode {}
                             IdleInhibitor {}
-                            
                         }
-                    }
 
-                    // Center widget group
-                    CenterWidgetGroup {
-                        focus: sidebarRoot.visible
-                        Layout.alignment: Qt.AlignHCenter
-                        Layout.fillHeight: true
-                        Layout.fillWidth: true
-                    }
+                        // Center widget group
+                        CenterWidgetGroup {
+                            focus: sidebarRoot.visible
+                            Layout.alignment: Qt.AlignHCenter
+                            Layout.fillHeight: true
+                            Layout.fillWidth: true
+                        }
 
-                    BottomWidgetGroup {
-                        Layout.alignment: Qt.AlignHCenter
-                        Layout.fillHeight: false
-                        Layout.fillWidth: true
-                        Layout.preferredHeight: implicitHeight
+                        BottomWidgetGroup {
+                            Layout.alignment: Qt.AlignHCenter
+                            Layout.fillHeight: false
+                            Layout.fillWidth: true
+                            Layout.preferredHeight: implicitHeight
+                        }
                     }
                 }
             }
-
         }
+
+
     }
 
     IpcHandler {
         target: "sidebarRight"
 
         function toggle(): void {
-            sidebarLoader.active = !sidebarLoader.active;
-            if(sidebarLoader.active) Notifications.timeoutAll();
+            GlobalStates.sidebarRightOpen = !GlobalStates.sidebarRightOpen;
+            if(GlobalStates.sidebarRightOpen) Notifications.timeoutAll();
         }
 
         function close(): void {
-            sidebarLoader.active = false;
+            GlobalStates.sidebarRightOpen = false;
         }
 
         function open(): void {
-            sidebarLoader.active = true;
+            GlobalStates.sidebarRightOpen = true;
             Notifications.timeoutAll();
         }
     }
@@ -201,8 +221,8 @@ Scope {
         description: qsTr("Toggles right sidebar on press")
 
         onPressed: {
-            sidebarLoader.active = !sidebarLoader.active;
-            if(sidebarLoader.active) Notifications.timeoutAll();
+            GlobalStates.sidebarRightOpen = !GlobalStates.sidebarRightOpen;
+            if(GlobalStates.sidebarRightOpen) Notifications.timeoutAll();
         }
     }
     GlobalShortcut {
@@ -210,7 +230,7 @@ Scope {
         description: qsTr("Opens right sidebar on press")
 
         onPressed: {
-            sidebarLoader.active = true;
+            GlobalStates.sidebarRightOpen = true;
             Notifications.timeoutAll();
         }
     }
@@ -219,7 +239,7 @@ Scope {
         description: qsTr("Closes right sidebar on press")
 
         onPressed: {
-            sidebarLoader.active = false;
+            GlobalStates.sidebarRightOpen = false;
         }
     }
 
