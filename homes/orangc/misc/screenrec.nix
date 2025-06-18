@@ -75,6 +75,8 @@ in
       screenrecPackage
       pkgs.wl-screenrec
       pkgs.yad
+      pkgs.grim
+      pkgs.slurp
     ];
   };
 }
