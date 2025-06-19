@@ -10,8 +10,10 @@ let
     mkOption
     types
     mkIf
+    optionalAttrs
+    mkMerge
     ;
-  cfg = config.hmModules.programs.discord;
+  cfg = config.hmModules.programs;
   colours = config.stylix.base16Scheme;
   fonts = config.stylix.fonts;
   base16-discord = pkgs.concatTextFile {
@@ -66,40 +68,48 @@ let
       };
 in
 {
-  options.hmModules.programs.discord = {
-    enable = mkEnableOption "Install and configure a Discord client";
-    arrpc = mkEnableOption "Enable Discord RPC via arrpc";
-
-    client = mkOption {
-      type = types.enum [
-        "discord"
-        "equibop"
-        "vesktop"
-        "webcord"
-      ];
-      default = "discord";
-      description = ''
-        Which Discord client to install:
-        - discord (with OpenASAR, TTS, and Vencord)
-        - equibop
-        - vesktop
-        - webcord
-      '';
+  options.hmModules.programs = {
+    discord = {
+      enable = mkEnableOption "Install and configure a Discord client";
+      client = mkOption {
+        type = types.enum [
+          "discord"
+          "equibop"
+          "vesktop"
+          "webcord"
+        ];
+        default = "discord";
+        description = ''
+          Which Discord client to install:
+          - discord (with OpenASAR, TTS, and Vencord)
+          - equibop
+          - vesktop
+          - webcord
+        '';
+      };
     };
+    arrpc.enable = mkEnableOption "Enable Discord RPC via arrpc";
   };
 
-  config = mkIf cfg.enable {
-    wayland.windowManager.hyprland.settings.bindd = [ "SUPER, D, Open Discord, exec, ${cfg.client}" ];
-    home.packages = [ (getDiscordPackage cfg.client) ];
-    home.file = lib.mkMerge [
-      (lib.optionalAttrs (cfg.client != "equibop") {
-        ".config/Vencord/themes/orangetweaks.css".source = ./vencordthemes/orangetweaks.css;
-        ".config/Vencord/themes/base16.css".source = base16-discord;
-      })
-      (lib.optionalAttrs (cfg.client == "equibop") {
-        ".config/equibop/themes/orangetweaks.css".source = ./vencordthemes/orangetweaks.css;
-        ".config/equibop/themes/base16.css".source = base16-discord;
-      })
+  config = {
+    wayland.windowManager.hyprland.settings.bindd = mkIf cfg.discord.enable [
+      "SUPER, D, Open Discord, exec, ${cfg.discord.client}"
     ];
+    home.packages = mkIf cfg.discord.enable [ (getDiscordPackage cfg.discord.client) ];
+    wayland.windowManager.hyprland.settings.exec-once = mkIf cfg.arrpc.enable [
+      "sleep 3; ${pkgs.arrpc}/bin/arrpc &"
+    ];
+    home.file = lib.mkIf cfg.discord.enable (
+      lib.mkMerge [
+        (lib.optional (cfg.discord.client != "equibop") {
+          ".config/Vencord/themes/orangetweaks.css".source = ./vencordthemes/orangetweaks.css;
+          ".config/Vencord/themes/base16.css".source = base16-discord;
+        })
+        (lib.optional (cfg.discord.client == "equibop") {
+          ".config/equibop/themes/orangetweaks.css".source = ./vencordthemes/orangetweaks.css;
+          ".config/equibop/themes/base16.css".source = base16-discord;
+        })
+      ]
+    );
   };
 }

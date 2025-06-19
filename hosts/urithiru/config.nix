@@ -133,7 +133,6 @@
 
   environment.systemPackages = with pkgs; [ ];
 
-
   users.users = {
     "${username}" = {
       homeMode = "755";

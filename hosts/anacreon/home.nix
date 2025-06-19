@@ -81,10 +81,8 @@
         enable = true;
         gwenview = true;
       };
-      discord = {
-        enable = false;
-        arrpc = true;
-      };
+      discord.enable = false;
+      arrpc.enable = true;
       terminal = {
         enable = true;
         emulator = "kitty";

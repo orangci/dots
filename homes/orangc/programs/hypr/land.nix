@@ -43,7 +43,6 @@ in
           "dbus-update-activation-environment --systemd --all"
           "systemctl --user import-environment QT_QPA_PLATFORMTHEME WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
           "lxqt-policykit-agent"
-          "sleep 3; arrpc &"
           "kdeconnect-indicator"
           "sleep 10; cd ~/code/pyminaret; python3 main.py --city Riyadh --country \"Saudi Arabia\" -g 10 -n"
         ];
