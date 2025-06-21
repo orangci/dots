@@ -65,7 +65,6 @@ in
         "[typescriptreact]" = {
           "editor.defaultFormatter" = "vscode.typescript-language-features";
         };
-        "python.defaultInterpreterPath" = "/home/orangc/code/notes/venv";
         "ruff.lineLength" = 150;
         "ruff.configurationPreference" = "filesystemFirst";
         "workbench.iconTheme" = "material-icon-theme";

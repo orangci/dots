@@ -1,7 +1,6 @@
 {
   config,
   host,
-  username,
   lib,
   ...
 }:
@@ -25,8 +24,8 @@ let
     clock = "date +'The time is %H.%M on a %A. The date is %b %d, %Y C.E.'";
 
     # nix stuff
-    fr = "nh os switch --hostname ${host} /home/${username}/dots";
-    fu = "nh os switch --hostname ${host} --update /home/${username}/dots";
+    fr = "nh os switch --hostname ${host} $FLAKE";
+    fu = "nh os switch --hostname ${host} --update $FLAKE";
     gcnix = "sudo nh clean all && nix store optimise && sudo journalctl --vacuum-time=1s";
   };
 

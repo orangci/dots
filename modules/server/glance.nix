@@ -111,6 +111,7 @@ in
                   {
                     type = "clock";
                     hour-format = "24h";
+                    title-url = "https://time.is/Riyadh";
                     timezones = [
                       # https://timeapi.io/documentation/iana-timezones
                       {
@@ -166,6 +167,7 @@ in
                   {
                     type = "custom-api";
                     title = "Hardcover";
+                    title-url = "https://hardcover.app/@ci";
                     cache = "30m";
                     url = "https://api.hardcover.app/v1/graphql";
                     headers = {

@@ -12,3 +12,11 @@ Prerequisites:
 - Commit all changes before running the command in case of accidents
 
 `deadnix -eq **/*.nix`
+
+3. What depends on a package?
+
+`nix why-depends /run/current-system nixpkgs#package-name'
+
+4. Only update a specific flake input
+
+`nix flake update --update-input <input-name>`
