@@ -38,11 +38,7 @@ in
     })
 
     (mkIf cfg.oxidisation.enable {
-      home.packages = with pkgs; [
-        ripgrep-all
-        sd
-        tealdeer
-      ];
+      home.packages = with pkgs; [ sd ];
       programs = {
         bat.enable = true;
         eza.enable = true;
@@ -50,6 +46,14 @@ in
         fzf.enable = true;
         ripgrep.enable = true;
         zoxide.enable = true;
+        ripgrep-all.enable = true;
+        tealdeer = {
+          enable = true;
+          settings.updates = {
+            auto_update_interval_hours = 24 * 7;
+            auto_update = true;
+            };
+        };
       };
       hmModules.cli.shell.extraAliases = {
         cat = "bat";

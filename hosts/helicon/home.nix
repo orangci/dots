@@ -27,6 +27,7 @@
         email = "c@orangc.net";
         github = true;
         gitea = true;
+        lfs = true;
       };
     };
     misc = {
