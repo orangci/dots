@@ -114,6 +114,22 @@ in
               iconMapObj."16" = "https://cdn.myanimelist.net/images/favicon.ico";
             };
 
+            "PyPI" = {
+              definedAliases = [ "@py" ];
+              urls = [
+                {
+                  template = "https://pypi.org/search/";
+                  params = [
+                    {
+                      name = "q";
+                      value = "{searchTerms}";
+                    }
+                  ];
+                }
+              ];
+              iconMapObj."16" = "https://pypi.org/static/images/favicon.35549fe8.ico";
+            };
+
             "Code Search" = {
               definedAliases = [ "@gh" ];
               urls = [
