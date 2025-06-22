@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }:
 let
@@ -29,6 +30,7 @@ in
     };
 
     github = mkEnableOption "Enable GitHub CLI (gh)";
+    gitea = mkEnableOption "Enable Gitea CLI (tea)";
   };
 
   config = mkIf cfg.enable {
@@ -54,6 +56,7 @@ in
       pull = "git push";
     };
 
+    home.packages = mkIf cfg.gitea [ pkgs.tea ];
     programs.gh.enable = cfg.github;
   };
 }

@@ -41,6 +41,7 @@ in
       home.packages = with pkgs; [
         ripgrep-all
         sd
+        tealdeer
       ];
       programs = {
         bat.enable = true;

@@ -26,6 +26,7 @@
         username = "orangc";
         email = "c@orangc.net";
         github = true;
+        gitea = true;
       };
     };
     misc = {
