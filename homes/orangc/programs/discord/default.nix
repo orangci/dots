@@ -10,7 +10,6 @@ let
     mkOption
     types
     mkIf
-    optionalAttrs
     mkMerge
     ;
   cfg = config.hmModules.programs;

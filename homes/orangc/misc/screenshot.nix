@@ -51,24 +51,24 @@ let
           if (( USE_SWAPPY )); then
             cat > "$FILENAME"
             kill $PID
-            swappy -f "$FILENAME" || notify-send "Swappy failed"
+            swappy -f "$FILENAME" || notify-send "Swappy failed" -t 1000
           else
             wl-copy
             kill $PID
-            # notify-send "Screenshot copied to clipboard"
+            # notify-send "Screenshot copied to clipboard" -t 1000
           fi
         }
       else
-        GEOM=$(slurp) || { kill $PID; exit 1; } # add this before exit 1 if you want the cancel notif: notify-send "Screenshot cancelled";
+        GEOM=$(slurp) || { kill $PID; exit 1; } # add this before exit 1 if you want the cancel notif: notify-send "Screenshot cancelled" -t 1000;
         grim -g "$GEOM" - | {
           if (( USE_SWAPPY )); then
             cat > "$FILENAME"
             kill $PID
-            swappy -f "$FILENAME" || notify-send "Swappy failed"
+            swappy -f "$FILENAME" || notify-send "Swappy failed" -t 1000
           else
             wl-copy
             kill $PID
-            # notify-send "Screenshot copied to clipboard"
+            # notify-send "Screenshot copied to clipboard" -t 1000
           fi
         }
       fi

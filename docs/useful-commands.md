@@ -20,3 +20,7 @@ Prerequisites:
 4. Only update a specific flake input
 
 `nix flake update --update-input <input-name>`
+
+5. Cleaning up unused containers (usually used after disabling a server module that utilises oci-containers)
+
+`sudo podman system prune --all --volumes`

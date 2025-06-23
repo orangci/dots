@@ -52,7 +52,7 @@ in
           settings.updates = {
             auto_update_interval_hours = 24 * 7;
             auto_update = true;
-            };
+          };
         };
       };
       hmModules.cli.shell.extraAliases = {
