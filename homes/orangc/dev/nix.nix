@@ -14,6 +14,8 @@ in
   };
 
   config = mkIf cfg.enable {
+    programs.nix-your-shell.enable = true;
+    programs.nix-index.enable = true;
     home.packages = with pkgs; [
       nixfmt-rfc-style
       nix-prefetch

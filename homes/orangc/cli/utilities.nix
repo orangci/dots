@@ -58,7 +58,8 @@ in
       hmModules.cli.shell.extraAliases = {
         cat = "bat";
         ls = "eza -la --icons=auto";
-        l = "eza -a --icons=auto";
+        l = "eza --icons=auto";
+        lh = "eza -a --icons=auto";
         find = "fd";
         fuzzy = "fzf";
         cd = "z";
@@ -75,7 +76,10 @@ in
     })
 
     (mkIf cfg.utilities.enable {
-      programs.btop.enable = true;
+      programs = {
+        btop.enable = true;
+        pay-respects.enable = true;
+      };
       home.packages = with pkgs; [
         tokei
         killall

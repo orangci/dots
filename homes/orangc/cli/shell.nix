@@ -2,6 +2,7 @@
   config,
   host,
   lib,
+  pkgs,
   ...
 }:
 let
@@ -65,50 +66,81 @@ in
 
   config = mkMerge [
     (mkIf (cfg.program == "bash") {
-      programs.bash = {
-        enable = true;
-        enableCompletion = true;
-        initExtra = ''
-          eval "$(starship init bash)"
-          if [ -f $HOME/.bashrc-personal ]; then
-            source $HOME/.bashrc-personal
-          fi
-          ${sharedInit}
-        '';
-        shellAliases = mergedAliases;
+      programs = {
+        starship.enableBashIntegration = config.hmModules.cli.starship.enable;
+        nix-index.enableBashIntegration = config.hmModules.dev.nix.enable;
+        pay-respects.enableBashIntegration = config.hmModules.cli.utilities.enable;
+        bash = {
+          enable = true;
+          enableCompletion = true;
+          initExtra = ''
+            if [ -f $HOME/.bashrc-personal ]; then
+              source $HOME/.bashrc-personal
+            fi
+            ${sharedInit}
+          '';
+          shellAliases = mergedAliases;
+        };
       };
     })
 
     (mkIf (cfg.program == "zsh") {
-      programs.zsh = {
-        enable = true;
-        enableCompletion = true;
-        initExtra = ''
-          eval "$(starship init zsh)"
-          [[ -f ~/.zshrc-personal ]] && source ~/.zshrc-personal
-          ${sharedInit}
-        '';
-        shellAliases = mergedAliases;
+      programs = {
+        starship.enableZshIntegration = config.hmModules.cli.starship.enable;
+        nix-your-shell.enableZshIntegration = config.hmModules.dev.nix.enable;
+        nix-index.enableZshIntegration = config.hmModules.dev.nix.enable;
+        pay-respects.enableZshIntegration = config.hmModules.cli.utilities.enable;
+        zsh = {
+          enable = true;
+          enableCompletion = true;
+          initExtra = ''
+            [[ -f ~/.zshrc-personal ]] && source ~/.zshrc-personal
+            ${sharedInit}
+          '';
+          shellAliases = mergedAliases;
+        };
       };
     })
 
     (mkIf (cfg.program == "fish") {
-      programs.command-not-found.dbPath = null;
-      programs.fish = {
-        enable = true;
-        interactiveShellInit = ''
-          set -g fish_greeting
-          starship init fish | source
-          if test -f /tmp/.current_wallpaper_path
-            set -x WALLPAPER (cat /tmp/.current_wallpaper_path)
-          end
-          if test -f ~/.config/secrets.env
-            for line in (cat ~/.config/secrets.env | grep -v '^#')
-              set -x (string split "=" $line)
+      programs = {
+        nix-your-shell.enableFishIntegration = config.hmModules.dev.nix.enable;
+        starship.enableFishIntegration = config.hmModules.cli.starship.enable;
+        nix-index.enableFishIntegration = config.hmModules.dev.nix.enable;
+        pay-respects.enableFishIntegration = config.hmModules.cli.utilities.enable;
+        fish = {
+          enable = true;
+          interactiveShellInit = ''
+            set -g fish_greeting
+            if test -f /tmp/.current_wallpaper_path
+              set -x WALLPAPER (cat /tmp/.current_wallpaper_path)
             end
-          end
-        '';
-        shellAliases = mergedAliases;
+            if test -f ~/.config/secrets.env
+              for line in (cat ~/.config/secrets.env | grep -v '^#')
+                set -x (string split "=" $line)
+              end
+            end
+          '';
+          shellAliases = mergedAliases; # shellAbbrs = mergedAliases to use abbrs instead of aliases (untested)
+          plugins = [
+            {
+              name = "puffer";
+              src = pkgs.fishPlugins.puffer;
+            }
+            {
+              name = "fish-you-should-use";
+              src = pkgs.fishPlugins.fish-you-should-use;
+            }
+            {
+              name = "done";
+              src = pkgs.fishPlugins.done;
+            }
+            {
+              name = "colored-man-pages";
+              src = pkgs.fishPlugins.colored-man-pages;
+            }
+          ];
+        };
       };
     })
   ];
