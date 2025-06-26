@@ -19,31 +19,31 @@ let
     ++ (lib.optionals cfg.lutris.enable [ lutris ])
     ++ (lib.optionals cfg.bottles.enable [ bottles ])
     ++ (lib.optionals cfg.minecraft.enable [
-      prismlauncher
-      temurin-jre-bin
+      (prismlauncher.override {
+        jdks = [
+          zulu8
+          zulu17
+          zulu21
+        ];
+      })
     ])
     ++ (lib.optionals cfg.minecraft.modrinth.enable [ modrinth-app ]);
 in
 {
   options = {
     modules.gaming = {
-      enable = mkEnableOption "Enable gaming options";
       wine.enable = mkEnableOption "Enable Wine and associated packages for gaming";
       lutris.enable = mkEnableOption "Enable Lutris for gaming";
       bottles.enable = mkEnableOption "Enable Bottles for gaming";
       steam.enable = mkEnableOption "Enable Steam";
       minecraft = {
-        enable = mkEnableOption "Enable PrismLauncher for Minecraft" // {
-          default = true;
-        };
-        modrinth.enable = mkEnableOption "Enable Modrinth Launcher for Minecraft" // {
-          default = false;
-        };
+        enable = mkEnableOption "Enable PrismLauncher for Minecraft";
+        modrinth.enable = mkEnableOption "Enable Modrinth Launcher for Minecraft";
       };
     };
   };
 
-  config = lib.mkIf cfg.enable {
+  config = {
     environment.systemPackages = gamingPackages;
     programs.steam = lib.mkIf cfg.steam.enable {
       enable = true;

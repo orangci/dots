@@ -23,7 +23,6 @@
       hyprland.enable = true;
       appimages.enable = false;
     };
-    gaming.enable = false;
     styles = {
       fonts.enable = true;
     };

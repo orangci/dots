@@ -68,6 +68,7 @@ in
         rf = "ruff";
         rff = "ruff format";
         rfc = "ruff check";
+        py = "python3";
         sv = svAlias;
       };
     }

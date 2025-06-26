@@ -25,13 +25,12 @@
       appimages.enable = false;
     };
     gaming = {
-      enable = false;
       wine.enable = false;
       lutris.enable = false;
       bottles.enable = false;
       steam.enable = false;
       minecraft = {
-        enable = false;
+        enable = true;
         modrinth.enable = false;
       };
     };
@@ -41,7 +40,7 @@
     server = {
       caddy.enable = true;
       cloudflared.enable = true;
-      technitium.enable = true;
+      technitium.enable = false;
 
       chibisafe = {
         enable = false;

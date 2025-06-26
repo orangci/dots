@@ -97,7 +97,7 @@ in
                     type = "search";
                     search-engine = "https://search.orangc.net/search?q={QUERY}";
                   }
-                  {
+                  (mkIf config.modules.server.technitium.enable {
                     type = "dns-stats";
                     url = "http://localhost:5380";
                     hour-format = "24h";
@@ -107,7 +107,7 @@ in
                     token = {
                       _secret = config.modules.common.sops.secrets.technitium-api-token.path;
                     };
-                  }
+                  })
                   {
                     type = "clock";
                     hour-format = "24h";
@@ -249,7 +249,7 @@ in
                     units = "metric";
                     hour-format = "24h";
                   }
-                  {
+                  (mkIf config.modules.server.speedtest.enable {
                     type = "custom-api";
                     cache = "1h";
                     title = "Internet Speedtest";
@@ -358,7 +358,7 @@ in
                       </div>
                       </div>
                     '';
-                  }
+                  })
                   {
                     type = "custom-api";
                     title = "Juniper";
@@ -428,7 +428,7 @@ in
                       </div>
                     '';
                   }
-                  {
+                  (mkIf config.modules.server.immich.enable {
                     type = "custom-api";
                     title = "Immich stats";
                     title-url = "https://${config.modules.server.immich.domain}";
@@ -456,7 +456,7 @@ in
                         </div>
                       </div>
                     '';
-                  }
+                  })
                   {
                     type = "custom-api";
                     title = "Fact";
