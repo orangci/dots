@@ -50,10 +50,6 @@ in
         bindd =
           [
             "SUPER, E, Open File Manager, exec, thunar"
-            # "SUPER, K, exec, rofi -show drun # application launcher rofi"
-            # "SUPER, R, exec, rofi -show run -theme run.rasi" # run individual commands with rofi
-            "SUPER, M, Open Minecraft Instance Menu, exec, rofi-prism" # minecraft launcher powered by prism and rofi
-            # "SUPER, C, exec, rofi-calc"
             "SUPERALT, C, Colour Picker, exec, hyprpicker -a"
             "SUPERSHIFT, APOSTROPHE, Choose Wallpaper, exec, wall-select" # choose a wallpaper
             "SUPER, APOSTROPHE, Random Wallpaper, exec, wall-select --fast" # choose a wallpaper

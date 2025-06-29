@@ -53,7 +53,7 @@ in
         search = {
           safe_search = 1;
           autocomplete = "brave";
-          default_lang = "en-CA";
+          default_lang = "all";
         };
         server = {
           base_url = "https://${cfg.domain}/";

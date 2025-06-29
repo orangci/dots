@@ -138,6 +138,12 @@
         port = 8807;
       };
 
+      pelican = {
+        enable = true;
+        domain = "pelican.orangc.net";
+        port = 8817;
+      };
+
       minecraft = {
         enable = false;
         juniper.enable = false;

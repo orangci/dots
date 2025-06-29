@@ -14,11 +14,12 @@
     ./it-tools.nix
     ./immich.nix
     ./chibisafe.nix
-    ./minecraft.nix
+    ./minecraft
     ./2fauth.nix
     ./ollama.nix
     ./bracket.nix
     ./speedtest.nix
     ./zipline.nix
+    ./pelican.nix
   ];
 }

@@ -24,7 +24,8 @@ in
         "wl-paste --type image --watch cliphist store"
       ];
       bindd = [
-        "SUPER,  V, Open Clipboard, exec, cliphist list | rofi -dmenu -theme clipboard.rasi | cliphist decode | wl-copy"
+        (mkIf config.hmModules.programs.widgets.rofi.enable "SUPER,  V, Open Clipboard, exec, cliphist list | rofi -dmenu -theme clipboard.rasi | cliphist decode | wl-copy")
+        # (mkIf config.hmModules.programs.widgets.walker.enable "SUPER,  V, Open Clipboard, exec, cliphist list | rofi -dmenu -theme clipboard.rasi | cliphist decode | wl-copy")
         "SUPERSHIFT, V, Clear Clipboard, exec, cliphist wipe # clear clipboard"
       ];
     };

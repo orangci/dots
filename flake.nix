@@ -54,9 +54,21 @@
       inputs.nixpkgs.follows = "nixpkgs-small";
     };
 
+    # modules.server.pelican
+    pelican = {
+      url = "github:orangci/pterodactyl.nix";
+      inputs.nixpkgs.follows = "nixpkgs-small";
+    };
+
     # widgets framework configurable in *python*!!
     ignis = {
       url = "github:ignis-sh/ignis";
+      inputs.nixpkgs.follows = "nixpkgs-small";
+    };
+
+    # walker (we be walkin') written by a bald man
+    walker = {
+      url = "github:abenz1267/walker";
       inputs.nixpkgs.follows = "nixpkgs-small";
     };
   };

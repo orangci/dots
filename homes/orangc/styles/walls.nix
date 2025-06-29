@@ -32,6 +32,8 @@ in
         cd "$HOME/media/walls"
         while : ; do
             export CURRENT_WALLPAPER="$(ls *.jpg *.png *.jpeg 2>/dev/null | sort -R | tail -1)"
+            swww clear
+            swww clear-cache
             swww img "$CURRENT_WALLPAPER" --transition-type random --transition-fps 60
             echo "\$WALLPAPER=$HOME/media/walls/$CURRENT_WALLPAPER" > /tmp/.current_wallpaper_path_hyprlock
             export WALLPAPER="$HOME/media/walls/$CURRENT_WALLPAPER"

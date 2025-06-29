@@ -24,6 +24,12 @@ in
         "ignorezero,rofi"
         "ignorealpha 0.8,rofi"
       ];
+      bindd = [
+        "SUPER, K, Application Launcher, exec, rofi -show drun # application launcher rofi"
+        "SUPER, R, Command Runner, exec, rofi -show run -theme run.rasi"
+        "SUPER, M, Open Minecraft Instance Menu, exec, rofi-prism"
+        "SUPER, C, Rofi Calculator, exec, rofi-calc"
+      ];
     };
 
     home.packages = [

@@ -73,6 +73,7 @@
         rofi.enable = true;
         swaync.enable = false;
         waybar.enable = false;
+        walker.enable = false;
         ignis.enable = true;
       };
       quickshell = {
