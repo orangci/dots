@@ -19,6 +19,7 @@ let
     ++ (lib.optionals cfg.lutris.enable [ lutris ])
     ++ (lib.optionals cfg.bottles.enable [ bottles ])
     ++ (lib.optionals cfg.minecraft.enable [
+      packwiz
       (prismlauncher.override {
         jdks = [
           zulu8

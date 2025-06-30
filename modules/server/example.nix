@@ -18,8 +18,7 @@ in
     };
 
     port = mkOption {
-      type = types.int;
-      default = 8810;
+      type = types.port;
       description = "The port for example to be hosted at";
     };
 

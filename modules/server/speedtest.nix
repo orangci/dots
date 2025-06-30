@@ -18,8 +18,7 @@ in
     };
 
     port = mkOption {
-      type = types.int;
-      default = 8816;
+      type = types.port;
       description = "The port for speedtest to be hosted at";
     };
 

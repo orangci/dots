@@ -28,8 +28,7 @@ in
       description = "The domain for SearXNG to be hosted at";
     };
     port = mkOption {
-      type = types.int;
-      default = 8811;
+      type = types.port;
       description = "The port for SearXNG to be hosted at";
     };
   };

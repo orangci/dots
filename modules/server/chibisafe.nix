@@ -24,8 +24,7 @@ in
     };
 
     port = mkOption {
-      type = types.int;
-      default = 8816;
+      type = types.port;
       description = "The port for chibisafe to be hosted at";
     };
 

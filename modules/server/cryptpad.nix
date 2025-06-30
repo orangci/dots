@@ -27,8 +27,7 @@ in
       description = "The domain for cryptpad to be hosted at";
     };
     port = mkOption {
-      type = types.int;
-      default = 8804;
+      type = types.port;
       description = "The port for cryptpad to be hosted at";
     };
   };

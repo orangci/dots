@@ -19,6 +19,7 @@ in
     home.packages = with pkgs; [
       nixfmt-rfc-style
       nix-prefetch
+      nix-prefetch-github
     ];
     hmModules.cli.shell.extraAliases = {
       list-big-pkgs = "nix path-info -hsr /run/current-system/ | sort -hrk2 | head -n 30";

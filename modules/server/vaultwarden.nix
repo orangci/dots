@@ -27,8 +27,7 @@ in
       description = "The domain for vaultwarden to be hosted at";
     };
     port = mkOption {
-      type = types.int;
-      default = 8813;
+      type = types.port;
       description = "The port for vaultwarden to be hosted at";
     };
   };

@@ -27,8 +27,7 @@ in
       description = "The domain for immich to be hosted at";
     };
     port = mkOption {
-      type = types.int;
-      default = 8807;
+      type = types.port;
       description = "The port for immich to be hosted at";
     };
   };

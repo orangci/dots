@@ -28,8 +28,7 @@ in
     };
 
     port = mkOption {
-      type = types.int;
-      default = 8818;
+      type = types.port;
       description = "The port for pelican to be hosted at";
     };
 

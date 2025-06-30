@@ -10,7 +10,7 @@
   ];
 
   modules = {
-    dm.sddm.enable = true; # FIXME: stray and astronaut themes are broken
+    dm.sddm.enable = true;
     styles.fonts.enable = true;
     common = {
       bluetooth.enable = false;
@@ -57,6 +57,12 @@
         enable = true;
         domain = "tools.orangc.net";
         port = 8806;
+      };
+
+      zipline = {
+        enable = false;
+        domain = "zip.orangc.net";
+        port = 8807;
       };
 
       microbin = {
@@ -113,15 +119,14 @@
         port = 8816;
       };
 
-      zipline = {
-        enable = false;
-        domain = "zip.orangc.net";
-        port = 8807;
-      };
-
       minecraft = {
         enable = false;
-        juniper.enable = false;
+        juniper = {
+          enable = true;
+          port = 8817;
+          season = 10;
+          motd = "Highly Responsive To Prayers!!";
+        };
       }; # TODO: untested
     };
   };

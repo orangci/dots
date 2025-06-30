@@ -27,8 +27,7 @@ in
       description = "The domain for gitea to be hosted at";
     };
     port = mkOption {
-      type = types.int;
-      default = 8805;
+      type = types.port;
       description = "The port for gitea to be hosted at";
     };
   };

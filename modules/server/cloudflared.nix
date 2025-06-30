@@ -40,9 +40,8 @@ in
         credentialsFile = config.modules.common.sops.secrets."cloudflared/credentials.json".path;
 
         ingress = mkMerge [
-          {
-            # "example.orangc.net" = "http://127.0.0.1:9000";
-          }
+          # { "example.orangc.net" = "http://localhost:8800"; }
+          { "mc.orangc.net" = "tcp://localhost:${toString config.modules.server.minecraft.juniper.port}"; }
           dynamicIngress
         ];
       };

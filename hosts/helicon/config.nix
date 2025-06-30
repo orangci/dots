@@ -17,6 +17,7 @@
       sound.enable = true;
       networking.enable = true;
       virtualisation.enable = false;
+      sops.enable = true;
     };
     programs = {
       thunar.enable = true;
@@ -27,7 +28,7 @@
       fonts.enable = true;
     };
   };
-  local.hardware-clock.enable = false;
+  local.hardware-clock.enable = true;
   drivers = {
     intel.enable = true;
     amdgpu.enable = false;
@@ -47,8 +48,8 @@
   # ];
 
   time.timeZone = "Asia/Riyadh";
-  hardware.logitech.wireless.enable = true;
   system.stateVersion = "25.05";
+  hardware.logitech.wireless.enable = true;
 
   environment.systemPackages = with pkgs; [ ];
 

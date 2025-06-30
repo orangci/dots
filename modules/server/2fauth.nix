@@ -21,7 +21,6 @@ in
     };
     port = mkOption {
       type = types.port;
-      default = 8801;
       description = "The port for 2FAuth to be hosted at";
     };
 

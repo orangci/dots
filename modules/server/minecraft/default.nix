@@ -2,6 +2,7 @@
   config,
   lib,
   inputs,
+  pkgs,
   ...
 }:
 let
@@ -18,10 +19,13 @@ in
   };
 
   config = mkIf cfg.enable {
+    modules.common.sops.secrets.minecraft-rcon-password.path = "/var/secrets/minecraft-rcon-password";
+    environment.systemPackages = [ pkgs.mcrcon ];
     services.minecraft-servers = {
       enable = true;
-      dataDir = "/var/lib/minecraft";
       eula = true;
+      dataDir = "/var/lib/minecraft";
+      environmentFile = config.modules.common.sops.secrets.minecraft-rcon-password.path;
     };
   };
 }

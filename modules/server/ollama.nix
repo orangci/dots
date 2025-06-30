@@ -18,8 +18,7 @@ in
     };
 
     port = mkOption {
-      type = types.int;
-      default = 8814;
+      type = types.port;
       description = "The port for ollama to be hosted at";
     };
 

@@ -27,8 +27,7 @@ in
       description = "The domain for microbin to be hosted at";
     };
     port = mkOption {
-      type = types.int;
-      default = 8809;
+      type = types.port;
       description = "The port for microbin to be hosted at";
     };
   };

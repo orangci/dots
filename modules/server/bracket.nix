@@ -12,7 +12,6 @@ let
     ;
 
   cfg = config.modules.server.bracket;
-  postgresPort = 5432;
   dataDir = "/var/lib/bracket";
 in
 {
@@ -32,7 +31,6 @@ in
 
     port = mkOption {
       type = types.port;
-      default = 8815;
       description = "The port for bracket to be hosted at";
     };
   };
@@ -60,7 +58,7 @@ in
         environmentFiles = [ "/var/secrets/bracket-jwt-secret" ];
         environment = {
           ENVIRONMENT = "PRODUCTION";
-          PG_DSN = "postgresql://bracket_prod:bracket_prod@localhost:${toString postgresPort}/bracket_prod";
+          PG_DSN = "postgresql://bracket_prod:bracket_prod@localhost:${toString (cfg.port - 2000)}/bracket_prod";
           CORS_ORIGINS = "https://${cfg.domain}";
         };
         volumes = [
@@ -72,7 +70,7 @@ in
       postgres = {
         image = "postgres";
         ports = [
-          "${toString postgresPort}:${toString postgresPort}"
+          "${toString (cfg.port - 2000)}:${toString (cfg.port - 2000)}"
         ];
         environment = {
           POSTGRES_DB = "bracket_prod";

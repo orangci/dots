@@ -39,8 +39,7 @@ in
       description = "The domain for glance to be hosted at";
     };
     port = mkOption {
-      type = types.int;
-      default = 8806;
+      type = types.port;
       description = "The port for glance to be hosted at";
     };
   };

@@ -24,8 +24,7 @@ in
       description = "The domain for it-tools to be hosted at";
     };
     port = mkOption {
-      type = types.int;
-      default = 8808;
+      type = types.port;
       description = "The port for it-tools to be hosted at";
     };
   };

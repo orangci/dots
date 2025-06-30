@@ -18,8 +18,7 @@ in
     };
 
     port = mkOption {
-      type = types.int;
-      default = 8817;
+      type = types.port;
       description = "The port for zipline to be hosted at";
     };
 

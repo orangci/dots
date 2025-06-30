@@ -23,8 +23,7 @@ in
       description = "The domain for uptime kuma to be hosted at";
     };
     port = mkOption {
-      type = types.int;
-      default = 8812;
+      type = types.port;
       description = "The port for uptime kuma to listen at";
     };
   };

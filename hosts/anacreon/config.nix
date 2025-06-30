@@ -10,7 +10,7 @@
   ];
 
   modules = {
-    dm.sddm.enable = true; # FIXME: stray and astronaut themes are broken
+    dm.sddm.enable = true;
     common = {
       bluetooth.enable = true;
       printing.enable = true;
@@ -145,9 +145,15 @@
       };
 
       minecraft = {
-        enable = false;
-        juniper.enable = false;
-      }; # TODO: untested
+        enable = true;
+        juniper = {
+          enable = true;
+          port = 8817;
+          minRAM = 6;
+          maxRAM = 8;
+          motd = "Highly Responsive To Prayers!!";
+        };
+      };
     };
   };
   local.hardware-clock.enable = true;
