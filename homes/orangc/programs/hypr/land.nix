@@ -150,6 +150,7 @@ in
           mouse_move_enables_dpms = true;
           key_press_enables_dpms = true;
           focus_on_activate = true;
+          force_default_wallpaper = 2; # force hyprchan to be the default
         };
 
         animations = {
