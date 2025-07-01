@@ -78,6 +78,12 @@
         port = 8806;
       };
 
+      zipline = {
+        enable = false;
+        domain = "zip.orangc.net";
+        port = 8807;
+      };
+
       microbin = {
         enable = true;
         domain = "bin.orangc.net";
@@ -132,27 +138,27 @@
         port = 8816;
       };
 
-      zipline = {
-        enable = false;
-        domain = "zip.orangc.net";
-        port = 8807;
-      };
-
-      pelican = {
-        enable = true;
-        domain = "pelican.orangc.net";
-        port = 8817;
-      };
-
       minecraft = {
         enable = true;
-        juniper = {
+        juniper = { # TODO: networking, gamerules, mod configs, cracked support, finish 1.21.7 migration
           enable = true;
           port = 8817;
           minRAM = 6;
           maxRAM = 8;
           motd = "Highly Responsive To Prayers!!";
         };
+      };
+
+      pelican = {
+        enable = false;
+        domain = "pelican.orangc.net";
+        port = 8818;
+      };
+
+      filebrowser = {
+        enable = true;
+        domain = "files.orangc.net";
+        port = 8819;
       };
     };
   };

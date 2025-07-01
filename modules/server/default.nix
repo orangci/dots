@@ -21,5 +21,6 @@
     ./speedtest.nix
     ./zipline.nix
     ./pelican.nix
+    ./filebrowser.nix
   ];
 }

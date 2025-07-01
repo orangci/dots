@@ -56,7 +56,6 @@ in
   imports = [ inputs.nix-minecraft.nixosModules.minecraft-servers ];
 
   config = mkIf cfg.enable {
-    # TODO: gamerules, mod configs, cracked support, networking
     nixpkgs.overlays = [ inputs.nix-minecraft.overlay ];
     services.minecraft-servers.servers.juniper = mkIf cfg.enable {
       enable = true;
@@ -68,7 +67,7 @@ in
       # https://github.com/FabricMC/fabric-loader/releases
       # By removing the package override, the loader version will update automatically every flake update.
       # It's overrided because changing the loader version occasionally breaks some mods...
-      package = pkgs.fabricServers.fabric-1_21_7.override { loaderVersion = "0.16.14"; };
+      package = pkgs.fabricServers.fabric-1_21_6.override { loaderVersion = "0.16.14"; };
 
       extraReload = ''
         chunky trim world square 0 0 0 0 outside 0
