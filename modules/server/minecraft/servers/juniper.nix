@@ -11,6 +11,7 @@ let
     mkEnableOption
     types
     mkOption
+    concatStringsSep
     ;
   cfg = config.modules.server.minecraft.juniper;
 in
@@ -40,6 +41,16 @@ in
       default = "Powered by NixOS!";
       description = "The message displayed in the server list of the client";
     };
+
+    gamerules = mkOption {
+      type = types.attrs;
+      description = "Server gamerules";
+      default = {
+        commandBlockOutput = false;
+        commandModificationBlockLimit = 1000;
+        keepInventory = true;
+      };
+    };
   };
 
   imports = [ inputs.nix-minecraft.nixosModules.minecraft-servers ];
@@ -57,7 +68,7 @@ in
       # https://github.com/FabricMC/fabric-loader/releases
       # By removing the package override, the loader version will update automatically every flake update.
       # It's overrided because changing the loader version occasionally breaks some mods...
-      package = pkgs.fabricServers.fabric-1_21_6.override { loaderVersion = "0.16.14"; };
+      package = pkgs.fabricServers.fabric-1_21_7.override { loaderVersion = "0.16.14"; };
 
       extraReload = ''
         chunky trim world square 0 0 0 0 outside 0
@@ -67,6 +78,10 @@ in
         chunky trim world_the_end square 0 0 0 0 outside 0
         chunky confirm
       '';
+
+      extraStartPost = concatStringsSep "\n" (
+        lib.mapAttrsToList (name: value: "gamerule ${name} ${toString value}") cfg.gamerules
+      );
 
       operators = {
         orangci.uuid = "dde112e5-25c7-4963-800c-aa23c3816dbc";
@@ -81,7 +96,7 @@ in
         level-seed = "cirno fumo";
         difficulty = "easy";
         allow-nether = false;
-        broadcast-console-to-ops = true;
+        broadcast-console-to-ops = false;
         broadcast-rcon-to-ops = false;
         bug-report-link = "https://orangc.net/gh/minecraft-modpacks/issues/new";
         enable-command-block = true;
