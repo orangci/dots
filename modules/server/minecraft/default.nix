@@ -24,6 +24,7 @@ in
     services.minecraft-servers = {
       enable = true;
       eula = true;
+      openFirewall = true;
       dataDir = "/var/lib/minecraft";
       environmentFile = config.modules.common.sops.secrets.minecraft-rcon-password.path;
     };
