@@ -145,7 +145,7 @@
 
       minecraft = {
         enable = true;
-        juniper = { # TODO: gamerules, mod configs, cracked support
+        juniper-s10 = { # TODO: gamerules, mod configs, cracked support, backups
           enable = true;
           port = 8817;
           minRAM = 6;

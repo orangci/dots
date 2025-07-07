@@ -13,10 +13,10 @@ let
     mkOption
     concatStringsSep
     ;
-  cfg = config.modules.server.minecraft.juniper;
+  cfg = config.modules.server.minecraft.juniper-s10;
 in
 {
-  options.modules.server.minecraft.juniper = {
+  options.modules.server.minecraft.juniper-s10 = {
     enable = mkEnableOption "Enable Juniper SMP server";
 
     port = mkOption {

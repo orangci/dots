@@ -1,1 +1,1 @@
-{ imports = [ ./juniper.nix ]; }
+{ imports = [ ./juniper ]; }
