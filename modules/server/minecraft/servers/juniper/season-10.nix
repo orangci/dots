@@ -105,7 +105,7 @@ in
       };
 
       serverProperties = {
-        motd = "\\u00a7l   \\u00a7d                Juniper\\u00a7r \\u2014 \\u00a7aSeason 10\\u00a7r\n\\u00a7l   \\u00a7b          \\u00a7o${cfg.motd}";
+        motd = "\\u00a7l   \\u00a7d                Juniper\\u00a7r \\u2014 \\u00a7aSeason 10\\u00a7r\\n\\u00a7l   \\u00a7b          \\u00a7o${cfg.motd}";
         level-seed = "cirno fumo";
         difficulty = "easy";
         allow-nether = false;
