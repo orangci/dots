@@ -130,28 +130,22 @@
         port = 8815;
       };
 
-      twofauth = {
-        enable = false;
-        domain = "2fa.orangc.net";
-        port = 8816;
-      };
-
       uptime-kuma = {
         enable = false;
         domain = "status.orangc.net";
-        port = 8817;
+        port = 8816;
       };
 
       vaultwarden = {
         enable = true;
         domain = "vault.orangc.net";
-        port = 8818;
+        port = 8817;
       };
 
       zipline = {
         enable = false;
         domain = "zip.orangc.net";
-        port = 8819;
+        port = 8818;
       };
     };
   };

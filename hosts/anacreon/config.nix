@@ -113,12 +113,6 @@
         port = 8811;
       };
 
-      twofauth = {
-        enable = false;
-        domain = "2fa.orangc.net";
-        port = 8812;
-      }; # TODO: broken
-
       uptime-kuma = {
         enable = false;
         domain = "status.orangc.net";
