@@ -33,8 +33,8 @@ let
     ++ (optionals cfg.minecraft.modrinth.enable [ modrinth-app ]);
 in
 {
+  imports = [ inputs.aagl.nixosModules.default ];
   options = {
-    imports = [ inputs.aagl.nixosModules.default ];
     modules.gaming = {
       wine.enable = mkEnableOption "Enable Wine and associated packages for gaming";
       lutris.enable = mkEnableOption "Enable Lutris for gaming";
