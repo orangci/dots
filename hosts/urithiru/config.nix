@@ -23,46 +23,58 @@
       cloudflared.enable = true;
       technitium.enable = true;
 
+      bracket = {
+        enable = false;
+        domain = "bracket.orangc.net";
+        port = 8800;
+      };
+
       chibisafe = {
         enable = false;
         domain = "safe.orangc.net";
         port = 8801;
-      }; # TODO: connects, but broken
+      };
 
       cryptpad = {
         enable = false;
         domain = "pad.orangc.net";
         port = 8802;
-      }; # TODO: lets you signup but nothing more than that :c
+      };
+
+      filebrowser = {
+        enable = true;
+        domain = "files.orangc.net";
+        port = 8803;
+      };
 
       gitea = {
         enable = true;
         domain = "git.orangc.net";
-        port = 8803;
+        port = 8804;
       };
 
       glance = {
         enable = true;
         domain = "glance.orangc.net";
-        port = 8804;
+        port = 8805;
       };
 
       immich = {
         enable = true;
         domain = "media.orangc.net";
-        port = 8805;
+        port = 8806;
       };
 
       it-tools = {
         enable = true;
         domain = "tools.orangc.net";
-        port = 8806;
+        port = 8807;
       };
 
-      zipline = {
+      jellyfin = {
         enable = false;
-        domain = "zip.orangc.net";
-        port = 8807;
+        domain = "jf.orangc.net";
+        port = 8920; # can't be changed via the nixos module
       };
 
       microbin = {
@@ -71,63 +83,76 @@
         port = 8808;
       };
 
+      minecraft = {
+        enable = true;
+        juniper-s10 = {
+          enable = true;
+          port = 8809;
+          minRAM = 6;
+          maxRAM = 8;
+          motd = "Highly Responsive To Prayers!!";
+        };
+      };
+
+      moodle = {
+        enable = false;
+        domain = "moodle.orangc.net";
+        port = 8810;
+      };
+
       ntfy = {
         enable = true;
         domain = "ntfy.orangc.net";
-        port = 8809;
-      }; # TODO: status monitor notifs. with uptime-kuma, probably
+        port = 8811;
+      };
 
       ollama = {
         enable = false;
         domain = "ai.orangc.net";
-        port = 8810;
+        port = 8812;
+      };
+
+      pelican = {
+        enable = false;
+        domain = "pelican.orangc.net";
+        port = 8813;
       };
 
       searxng = {
         enable = true;
         domain = "search.orangc.net";
-        port = 8811;
+        port = 8814;
+      };
+
+      speedtest = {
+        enable = true;
+        domain = "speedtest.orangc.net";
+        port = 8815;
       };
 
       twofauth = {
         enable = false;
         domain = "2fa.orangc.net";
-        port = 8812;
-      }; # TODO: broken
+        port = 8816;
+      };
 
       uptime-kuma = {
         enable = false;
         domain = "status.orangc.net";
-        port = 8813;
+        port = 8817;
       };
 
       vaultwarden = {
         enable = true;
         domain = "vault.orangc.net";
-        port = 8814;
+        port = 8818;
       };
 
-      bracket = {
+      zipline = {
         enable = false;
-        domain = "bracket.orangc.net";
-        port = 8815;
-      }; # TODO: untested
-
-      speedtest = {
-        enable = true;
-        domain = "speedtest.orangc.net";
-        port = 8816;
+        domain = "zip.orangc.net";
+        port = 8819;
       };
-
-      minecraft = {
-        enable = false;
-        juniper = {
-          enable = true;
-          port = 8817;
-          season = 10;
-          motd = "Highly Responsive To Prayers!!";
-        };
-      }; # TODO: untested
     };
   };
   local.hardware-clock.enable = true;

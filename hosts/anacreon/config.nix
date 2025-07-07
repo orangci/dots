@@ -30,10 +30,10 @@
       bottles.enable = false;
       steam.enable = false;
       heroic.enable = false;
-      # hoyoverse = {
-      #   enable = true;
-      #   genshin.enable = true;
-      # };
+      hoyoverse = {
+        enable = true;
+        genshin.enable = true;
+      };
       minecraft = {
         enable = true;
         modrinth.enable = false;
