@@ -67,7 +67,21 @@ in
       # https://github.com/FabricMC/fabric-loader/releases
       # By removing the package override, the loader version will update automatically every flake update.
       # It's overrided because changing the loader version occasionally breaks some mods...
-      package = pkgs.fabricServers.fabric-1_21_6.override { loaderVersion = "0.16.14"; };
+      package = pkgs.fabricServers.fabric-1_21_7.override { loaderVersion = "0.16.14"; };
+
+      symlinks =
+        let
+          packwiz = pkgs.fetchPackwizModpack {
+            url = "https://github.com/orangci/minecraft-modpacks/raw/ff459922f174ece77f9d61730723b13d9a4ebcb7/juniper-s10/pack.toml";
+            packHash = "sha256-QOUkasBvDa03lhlzyHrp1xSzDM8ucBHSBt12EiUzDyI=";
+            # dummy: sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=
+          };
+        in
+        {
+          "mods" = "${packwiz}/mods";
+          "resources/datapack/required" = "${packwiz}/datapacks";
+          "server-icon.png" = "${packwiz}/server-icon.png";
+        };
 
       extraReload = ''
         chunky trim world square 0 0 0 0 outside 0
@@ -78,9 +92,9 @@ in
         chunky confirm
       '';
 
-      extraStartPost = concatStringsSep "\n" (
-        lib.mapAttrsToList (name: value: "gamerule ${name} ${toString value}") cfg.gamerules
-      );
+      # extraStartPost = concatStringsSep "\n" (
+      # lib.mapAttrsToList (name: value: "gamerule ${name} ${toString value}") cfg.gamerules
+      # );
 
       operators = {
         orangci.uuid = "dde112e5-25c7-4963-800c-aa23c3816dbc";
@@ -121,25 +135,6 @@ in
         view-distance = 8;
         white-list = true;
       };
-
-      symlinks =
-        let
-          packwiz = pkgs.fetchPackwizModpack {
-            url = "https://github.com/orangci/minecraft-modpacks/raw/master/juniper/pack.toml";
-            packHash = "sha256-0fAjP7NSWOAG6hDa+j8jdUZIa3EWu0krkDt/imeQqvg=";
-          };
-          modpack = pkgs.fetchFromGitHub {
-            owner = "orangci";
-            repo = "minecraft-modpacks";
-            rev = "master";
-            sha256 = "sha256-sd/VXghu4mY/WFBkE4FhAorZckoBxaevjWShZzn4xa8=";
-          };
-        in
-        {
-          "mods" = "${packwiz}/mods";
-          "datapacks" = "${modpack}/juniper/datapacks";
-          "server-icon.png" = "${modpack}/juniper/server-icon.png";
-        };
     };
   };
 }

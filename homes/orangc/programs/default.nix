@@ -4,7 +4,6 @@
     ./widgets
     ./hypr
     ./editors
-    ./quickshell
     ./discord
     ./terminal.nix
     ./media.nix

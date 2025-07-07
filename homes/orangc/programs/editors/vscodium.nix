@@ -69,6 +69,7 @@ in
         "ruff.configurationPreference" = "filesystemFirst";
         "workbench.iconTheme" = "material-icon-theme";
         "workbench.colorTheme" = "Stylix";
+        "workbench.startupEditor" = "none";
         "[python]" = {
           "editor.formatOnSave" = true;
           "editor.defaultFormatter" = "charliermarsh.ruff";

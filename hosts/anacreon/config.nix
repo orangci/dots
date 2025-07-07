@@ -29,6 +29,11 @@
       lutris.enable = false;
       bottles.enable = false;
       steam.enable = false;
+      heroic.enable = false;
+      # hoyoverse = {
+      #   enable = true;
+      #   genshin.enable = true;
+      # };
       minecraft = {
         enable = true;
         modrinth.enable = false;
@@ -140,7 +145,7 @@
 
       minecraft = {
         enable = true;
-        juniper = { # TODO: networking, gamerules, mod configs, cracked support, finish 1.21.7 migration
+        juniper = { # TODO: gamerules, mod configs, cracked support
           enable = true;
           port = 8817;
           minRAM = 6;
@@ -159,6 +164,18 @@
         enable = true;
         domain = "files.orangc.net";
         port = 8819;
+      };
+
+      jellyfin = { # TODO: broken
+        enable = false;
+        domain = "jf.orangc.net";
+        port = 8920; # can't be changed via the nixos module
+      };
+
+      moodle = { # TODO: broken
+        enable = false;
+        domain = "moodle.orangc.net";
+        port = 8820;
       };
     };
   };

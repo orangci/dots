@@ -67,18 +67,14 @@
       };
       widgets = {
         wlogout = {
-          enable = false;
-          horizontal = false;
+          enable = true;
+          horizontal = true;
         };
         rofi.enable = true;
-        swaync.enable = false;
-        waybar.enable = false;
+        swaync.enable = true;
+        waybar.enable = true;
         walker.enable = false;
         ignis.enable = true;
-      };
-      quickshell = {
-        enable = true;
-        workspaces = 7;
       };
       media = {
         enable = true;

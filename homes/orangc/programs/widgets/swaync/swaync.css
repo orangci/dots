@@ -1,9 +1,9 @@
-@define-color text #cdd6f4;
-@define-color background-alt rgba(24, 24, 37, .85);
-@define-color selected #cba6f7;
-@define-color hover rgba(203, 166, 247, .85);
-@define-color urgent #f38ba8;
-@define-color background #1e1e2e;
+@define-color text #e0def4;
+@define-color background-alt rgba(31, 29, 46, .85);
+@define-color selected #ebbcba;
+@define-color hover rgba(235, 188, 186, .85);
+@define-color urgent #eb6f92;
+@define-color background #191724;
 
 * {
     color: @text;

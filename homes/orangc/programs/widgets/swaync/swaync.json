@@ -3,20 +3,15 @@
     "positionX": "right",
     "positionY": "top",
     "cssPriority": "user",
-    "control-center-width": 400,
-    "control-center-height": 960,
-    "control-center-margin-top": 1,
-    "control-center-margin-bottom": 2,
-    "control-center-margin-right": 1,
-    "control-center-margin-left": 0,
-    "notification-window-width": 400,
+    "control-center-width": 420,
+    "notification-window-width": 420,
     "notification-icon-size": 48,
     "notification-body-image-height": 160,
     "notification-body-image-width": 200,
     "timeout": 4,
     "timeout-low": 2,
     "timeout-critical": 6,
-    "fit-to-screen": false,
+    "fit-to-screen": true,
     "keyboard-shortcuts": true,
     "image-visibility": "when-available",
     "transition-time": 100,
@@ -31,10 +26,10 @@
         }
     },
     "widgets": [
-        "mpris",
         "title",
         "dnd",
-        "notifications"
+        "notifications",
+        "mpris"
     ],
     "widget-config": {
         "title": {

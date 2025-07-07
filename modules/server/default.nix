@@ -22,5 +22,7 @@
     ./zipline.nix
     ./pelican.nix
     ./filebrowser.nix
+    ./jellyfin.nix
+    ./moodle.nix
   ];
 }

@@ -21,7 +21,6 @@
     stylix = {
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs-small";
-      inputs.home-manager.follows = "home-manager";
     };
 
     # ferris says hi!
@@ -69,6 +68,12 @@
     # walker (we be walkin') written by a bald man
     walker = {
       url = "github:abenz1267/walker";
+      inputs.nixpkgs.follows = "nixpkgs-small";
+    };
+
+    # for hoyoverse games like genshin and honkai
+    aagl = {
+      url = "github:ezKEa/aagl-gtk-on-nix";
       inputs.nixpkgs.follows = "nixpkgs-small";
     };
   };

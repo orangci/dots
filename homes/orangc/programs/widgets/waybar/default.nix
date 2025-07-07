@@ -1,9 +1,7 @@
 {
   pkgs,
   config,
-  username,
   lib,
-  host,
   ...
 }:
 let
@@ -36,8 +34,6 @@ in
           ];
           modules-right = [
             "custom/exit"
-            "custom/recorder"
-            "idle_inhibitor"
             "pulseaudio"
             "custom/weather"
             "tray"
@@ -55,16 +51,14 @@ in
             on-scroll-down = "hyprctl dispatch workspace e-1";
           };
           "clock" = {
-            format = " {:%H:%M}";
+            format = " {:%H.%M • %A, %B %d}";
             tooltip = true;
             tooltip-format = "<big>{:%A, %B %d}</big>";
           };
           "hyprland/window" = {
             max-length = 25;
             separate-outputs = false;
-            rewrite = {
-              "" = "${username}@${host}";
-            };
+            # rewrite = { "" = "Empty Desktop"; };
           };
           "memory" = {
             interval = 5;
@@ -186,20 +180,9 @@ in
             return-type = "json";
             tooltip = true;
           };
-          "custom/recording" = {
-            exec = "~/dots/packages/recording-status.sh";
-            return-type = "json";
-            format = "{icon}";
-            format-icons = {
-              true = "󰻃  Rec";
-              false = "";
-            };
-            interval = "once";
-            signal = "2";
-          };
           "custom/salah" = {
             format = "{}";
-            exec = "python3 ~/dots/homes/orangc/programs/waybar/salah.py";
+            exec = "python3 ${./salah.py}";
             interval = 60;
             on-click = "xdg-open https://salah.orangc.net/";
           };
