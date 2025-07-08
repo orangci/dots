@@ -9,23 +9,45 @@ let
 in
 with lib;
 {
+  # Configure & Theme Waybar
   programs.waybar = {
     style = concatStrings [
       ''
         /* >>> ALL MODULES <<< */
         * {
-          font-size: 16px;
+          font-size: 14px;
           font-family: Lexend, UbuntuMono Nerd Font Propo, Font Awesome, sans-serif;
         }
-        window#waybar {background-color: ${colours.base00} }
+        window#waybar {background-color: rgba(255,0,0,0); }
         tooltip {
           background: ${colours.base00};
           border-radius: 15px;
         }
         tooltip label {color: ${colours.base05};}
-        #cpu, #custom-exit, #tray, #network { padding: 0px 5px 0px 15px; }
-        #memory, #pulseaudio, #custom-notification { padding: 0px 10px 0px 5px; }
-        #window, #clock, #custom-weather, #workspaces, #custom-salah { padding: 0px 10px; }
+          #cpu, #custom-exit, #tray, #network { /* Stuff that needs to be rounded left. */
+          border-radius: 15px 0px 0px 15px; margin: 3px 0px 3px 2px;
+          padding: 0px 5px 0px 15px;
+          background: ${colours.base00};
+
+        }
+        #memory, #pulseaudio, #custom-notification { /* Stuff that needs to be rounded right. */
+          border-radius: 0px 15px 15px 0px; margin: 3px 2px 3px 0px;
+          padding: 0px 10px 0px 5px;
+          background: ${colours.base00};
+
+        }
+        #window, #clock, #custom-weather, #workspaces, #custom-salah { /* Stuff that's rounded both left and right, i.e. standalone pills. */
+          border-radius: 15px; margin: 3px 4px;
+          padding: 0px 10px;
+          background: ${colours.base00};
+        }
+        #idle_inhibitor, #custom-recorder { /* Stuff that aren't rounded in either direction, i.e. sandwiched pills. */
+            border-radius: 0px;
+            margin: 3px 0px;
+            padding: 0px 14px;
+            background: ${colours.base00};
+        }
+
 
         /* >>> LEFT MODULES <<< */
         #workspaces {

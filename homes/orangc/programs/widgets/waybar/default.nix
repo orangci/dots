@@ -58,7 +58,9 @@ in
           "hyprland/window" = {
             max-length = 25;
             separate-outputs = false;
-            # rewrite = { "" = "Empty Desktop"; };
+            rewrite = {
+              "" = "Empty Desktop";
+            };
           };
           "memory" = {
             interval = 5;

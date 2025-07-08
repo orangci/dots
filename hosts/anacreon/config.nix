@@ -31,8 +31,10 @@
       steam.enable = false;
       heroic.enable = false;
       hoyoverse = {
-        enable = true;
-        genshin.enable = true;
+        enable = false;
+        genshin.enable = false;
+        honkai.enable = false;
+        zzz.enable = false;
       };
       minecraft = {
         enable = true;
@@ -139,7 +141,7 @@
 
       minecraft = {
         enable = true;
-        juniper-s10 = { # TODO: gamerules, mod configs, cracked support, backups
+        juniper-s10 = { # TODO: gamerules, cracked support, backups
           enable = true;
           port = 8817;
           minRAM = 6;
@@ -170,6 +172,12 @@
         enable = false;
         domain = "moodle.orangc.net";
         port = 8820;
+      };
+
+      pocket-exporter = {
+        enable = true;
+        domain = "mzpocket.orangc.net";
+        port = 3000;
       };
     };
   };

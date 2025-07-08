@@ -20,7 +20,7 @@ in
 
   config = mkIf cfg.enable {
     modules.common.sops.secrets.minecraft-rcon-password.path = "/var/secrets/minecraft-rcon-password";
-    environment.systemPackages = [ pkgs.mcrcon ];
+    environment.systemPackages = [ pkgs.rconc ];
     services.minecraft-servers = {
       enable = true;
       eula = true;

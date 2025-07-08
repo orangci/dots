@@ -88,8 +88,8 @@
         juniper-s10 = {
           enable = true;
           port = 8809;
-          minRAM = 6;
-          maxRAM = 8;
+          minRAM = 8;
+          maxRAM = 12;
           motd = "Highly Responsive To Prayers!!";
         };
       };

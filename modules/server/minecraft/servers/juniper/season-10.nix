@@ -14,6 +14,11 @@ let
     concatStringsSep
     ;
   cfg = config.modules.server.minecraft.juniper-s10;
+  packwiz = pkgs.fetchPackwizModpack {
+    url = "https://github.com/orangci/minecraft-modpacks/raw/2196fef63d0376fc591c27304c373a6e8bb510ce/juniper-s10/pack.toml";
+    packHash = "sha256-BWfZYj8kEhbhj1Gww20Ap0QvOI9sz56hL9QCu+ZTFVE=";
+    # dummy: sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=
+  };
 in
 {
   options.modules.server.minecraft.juniper-s10 = {
@@ -57,11 +62,19 @@ in
 
   config = mkIf cfg.enable {
     nixpkgs.overlays = [ inputs.nix-minecraft.overlay ];
+    modules.common.sops.secrets.juniper-discord-bot-token = {
+      owner = "minecraft";
+      path = "/var/secrets/juniper-discord-bot-token";
+    };
+    modules.common.sops.secrets.juniper-in-game-chat-webhook = {
+      owner = "minecraft";
+      path = "/var/secrets/juniper-in-game-chat-webhook";
+    };
     services.minecraft-servers.servers.juniper = mkIf cfg.enable {
       enable = true;
       enableReload = true;
       autoStart = true;
-      restart = "always";
+      restart = "no";
       jvmOpts = "-Xms${toString cfg.minRAM}G -Xmx${toString cfg.maxRAM}G";
       # Update the loader version every now and then!
       # https://github.com/FabricMC/fabric-loader/releases
@@ -69,19 +82,11 @@ in
       # It's overrided because changing the loader version occasionally breaks some mods...
       package = pkgs.fabricServers.fabric-1_21_7.override { loaderVersion = "0.16.14"; };
 
-      symlinks =
-        let
-          packwiz = pkgs.fetchPackwizModpack {
-            url = "https://github.com/orangci/minecraft-modpacks/raw/ff459922f174ece77f9d61730723b13d9a4ebcb7/juniper-s10/pack.toml";
-            packHash = "sha256-QOUkasBvDa03lhlzyHrp1xSzDM8ucBHSBt12EiUzDyI=";
-            # dummy: sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=
-          };
-        in
-        {
-          "mods" = "${packwiz}/mods";
-          "resources/datapack/required" = "${packwiz}/datapacks";
-          "server-icon.png" = "${packwiz}/server-icon.png";
-        };
+      symlinks = {
+        "mods" = "${packwiz}/mods";
+        "resources/datapack/required" = "${packwiz}/datapacks";
+        "server-icon.png" = "${packwiz}/server-icon.png";
+      };
 
       extraReload = ''
         chunky trim world square 0 0 0 0 outside 0
@@ -90,6 +95,29 @@ in
         chunky confirm
         chunky trim world_the_end square 0 0 0 0 outside 0
         chunky confirm
+      '';
+
+      extraStartPre = ''
+        # this is necessary so ledger works
+        mkdir -p ledger
+
+        # mods configs
+        mkdir -p config
+        if [ -d ${packwiz}/config ]; then
+          cp -r --no-preserve=mode,ownership ${packwiz}/config/* config
+        fi
+
+        # simple-discord-link stuff
+        sdlinkConfig="config/simple-discord-link/simple-discord-link.toml"
+        webhook_url=$(cat ${config.modules.common.sops.secrets.juniper-in-game-chat-webhook.path})
+        bot_token=$(cat ${config.modules.common.sops.secrets.juniper-discord-bot-token.path})
+        webhook_url_escaped=$(printf '%s\n' "$webhook_url" | sed -e 's/[\/&|]/\\&/g')
+        bot_token_escaped=$(printf '%s\n' "$bot_token" | sed -e 's/[\/&|]/\\&/g')
+
+        if [ -f "$sdlinkConfig" ]; then
+          sed -i "s|REPLACE_WEBHOOK_URL|$webhook_url_escaped|g" "$sdlinkConfig"
+          sed -i "s|REPLACE_BOT_TOKEN|$bot_token_escaped|g" "$sdlinkConfig"
+        fi
       '';
 
       # extraStartPost = concatStringsSep "\n" (
