@@ -45,7 +45,7 @@ in
             "mc.orangc.net" = "tcp://localhost:${toString config.modules.server.minecraft.juniper-s10.port}";
           }
           {
-            "map.mc.orangc.net" = "tcp://localhost:${
+            "mc-map.orangc.net" = "http://localhost:${
               toString (config.modules.server.minecraft.juniper-s10.port - 2000)
             }";
           }

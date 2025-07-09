@@ -8,6 +8,7 @@ let
     filterAttrs
     mkMerge
     mkForce
+    mkDefault
     ;
 
   cfg = config.modules.server.caddy;
@@ -20,7 +21,7 @@ let
   dynamicVhosts = mapAttrs' (
     _: mod:
     nameValuePair mod.domain {
-      extraConfig = ''reverse_proxy localhost:${toString mod.port}'';
+      extraConfig = mkDefault ''reverse_proxy localhost:${toString mod.port}'';
       # logFormat = mkForce ''output discard''; # if you don't want logs
     }
   ) validModules;
@@ -37,7 +38,11 @@ in
         {
           "ping.localhost".extraConfig = ''respond pong'';
           "dns.localhost".extraConfig = ''reverse_proxy 127.0.0.1:5380'';
-          ${config.modules.server.chibisafe.domain}.extraConfig = mkForce ''
+          "mc-map.orangc.net".extraConfig =
+            mkIf config.modules.server.minecraft.juniper-s10.enable ''reverse_proxy localhost:${
+              toString (config.modules.server.minecraft.juniper-s10.port - 2000)
+            }'';
+          ${config.modules.server.chibisafe.domain}.extraConfig = ''
             route {
               @api path /api/*
               reverse_proxy @api http://localhost:${toString (config.modules.server.chibisafe.port - 1000)} {
