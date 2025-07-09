@@ -1,16 +1,5 @@
 # Urithiru Plan
 
-# Checklist
-- Chibisafe module (WIP)
-- [opnform](https://opnform.com/) module
-- [bracket](https://docs.bracketapp.nl/) module (WIP)
-- website and [umami](https://umami.is) module
-
-Things to consider hosting:
-- [discount bandit](https://discount-bandit.cybrarist.com/) module
-- [convos](https://convos.chat) module
-- [commafeed](https://github.com/Athou/commafeed) module
-
 ## Setup checklist
 - [ ] Plug the computer in (after finding a suitable place to do so). Boot it to check if it works.
 - [ ] Install NixOS onto the computer (assuming the main drive is `/dev/sda`):
@@ -41,13 +30,11 @@ Things to consider hosting:
 - [ ] To get the MAC address, run `ip link` or `ip link show | grep -A1 'state UP' | grep ether`.
 - [ ] In Technitium settings, set DNS overrides for all *.orangc.net subdomains in usage, so that we can use LAN.
 - [ ] Create an account on the Gitea instance, then disable registration. Set up mirroring with GitHub repositories.
-- [ ] Create an account on the Chibisafe instance, then disable registration.
 - [ ] Create an account on the calibre-web instance, then disable registration.
 - [ ] Create an account on the immich instance, then disable registration. Move wallpapers to Immich albums, make them public, and archive wallpaper related GitHub repositories.
 - [ ] Create an account on the vaultwarden instance, then disable registration. Create a Proton Pass backup and import it into Vaultwarden.
 - [ ] Create an account on the mastodon instance, then disable registration. Update `services.mastodon.streamingProcesses` with the amount of urithiru's CPU cores minus one.
-- Regenerate the following secrets and place them in secrets.yaml: technitium, speedtest, immich.
+- [ ] Regenerate the following secrets and place them in secrets.yaml: technitium, speedtest, immich.
 - [ ] Check the other services in order to confirm that they're all working.
-<!-- - [ ] Create a backup of of Juniper and move it into `/var/lib/minecraft`. Enable `modules.server.minecraft.juniper.enable`. -->
 
 Use `ssh orangc@192.168.1.42` in order to SSH into the homelab.
