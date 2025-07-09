@@ -42,6 +42,7 @@ in
         ingress = mkMerge [
           # { "example.orangc.net" = "http://localhost:8800"; }
           { "mc.orangc.net" = "tcp://localhost:${toString config.modules.server.minecraft.juniper-s10.port}"; }
+          { "map.mc.orangc.net" = "tcp://localhost:${toString (config.modules.server.minecraft.juniper-s10.port - 2000)}"; }
           dynamicIngress
         ];
       };

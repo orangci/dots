@@ -15,14 +15,16 @@ let
     ;
   cfg = config.modules.server.minecraft.juniper-s10;
   packwiz = pkgs.fetchPackwizModpack {
-    url = "https://github.com/orangci/minecraft-modpacks/raw/2196fef63d0376fc591c27304c373a6e8bb510ce/juniper-s10/pack.toml";
-    packHash = "sha256-BWfZYj8kEhbhj1Gww20Ap0QvOI9sz56hL9QCu+ZTFVE=";
+    url = "https://github.com/orangci/minecraft-modpacks/raw/be9600e2a9f8370ca05a1a64d95251afecc50b5c/juniper-s10/pack.toml";
+    packHash = "sha256-rJn8uYuuyBQK8DXGi1ed3hKqE6BMdwiv3yY/4FEBqQU=";
     # dummy: sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=
   };
 in
 {
   options.modules.server.minecraft.juniper-s10 = {
     enable = mkEnableOption "Enable Juniper SMP server";
+    chunky-pruner.enable = mkEnableOption "Automatically prune uninhabited chunks with the chunky mod";
+    automatic-backups.enable = mkEnableOption "Automatically backup the server";
 
     port = mkOption {
       type = types.port;
@@ -58,10 +60,15 @@ in
     };
   };
 
-  imports = [ inputs.nix-minecraft.nixosModules.minecraft-servers ];
+  imports = [
+    inputs.nix-minecraft.nixosModules.minecraft-servers
+    ./utilities/chunky-pruner.nix
+    ./utilities/automatic-backups.nix
+  ];
 
   config = mkIf cfg.enable {
     nixpkgs.overlays = [ inputs.nix-minecraft.overlay ];
+    # The two secrets below are required for the simple-discord-link mod to work properly
     modules.common.sops.secrets.juniper-discord-bot-token = {
       owner = "minecraft";
       path = "/var/secrets/juniper-discord-bot-token";
@@ -79,7 +86,7 @@ in
       # Update the loader version every now and then!
       # https://github.com/FabricMC/fabric-loader/releases
       # By removing the package override, the loader version will update automatically every flake update.
-      # It's overrided because changing the loader version occasionally breaks some mods...
+      # It's overridden now because changing the loader version occasionally breaks some mods...
       package = pkgs.fabricServers.fabric-1_21_7.override { loaderVersion = "0.16.14"; };
 
       symlinks = {
@@ -87,15 +94,6 @@ in
         "resources/datapack/required" = "${packwiz}/datapacks";
         "server-icon.png" = "${packwiz}/server-icon.png";
       };
-
-      extraReload = ''
-        chunky trim world square 0 0 0 0 outside 0
-        chunky confirm
-        chunky trim world_the_nether square 0 0 0 0 outside 0
-        chunky confirm
-        chunky trim world_the_end square 0 0 0 0 outside 0
-        chunky confirm
-      '';
 
       extraStartPre = ''
         # this is necessary so ledger works
@@ -118,6 +116,13 @@ in
           sed -i "s|REPLACE_WEBHOOK_URL|$webhook_url_escaped|g" "$sdlinkConfig"
           sed -i "s|REPLACE_BOT_TOKEN|$bot_token_escaped|g" "$sdlinkConfig"
         fi
+
+        # pl3xmap port
+        pl3xmapConfig="config/pl3xmap/config.yml"
+
+        if [ -f "$pl3xmapConfig" ]; then
+          sed -i "s|REPLACE_PL3XMAP_PORT|${toString (cfg.port - 2000)}|g" "$pl3xmapConfig"
+        fi
       '';
 
       # extraStartPost = concatStringsSep "\n" (
@@ -134,7 +139,7 @@ in
 
       serverProperties = {
         motd = "\\u00a7l   \\u00a7d                Juniper\\u00a7r \\u2014 \\u00a7aSeason 10\\u00a7r\\n\\u00a7l   \\u00a7b          \\u00a7o${cfg.motd}";
-        level-seed = "cirno fumo";
+        level-seed = "uriel is the absolute cutest";
         difficulty = "easy";
         allow-nether = false;
         broadcast-console-to-ops = false;

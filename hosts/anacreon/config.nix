@@ -141,12 +141,14 @@
 
       minecraft = {
         enable = true;
-        juniper-s10 = { # TODO: gamerules, cracked support, backups
+        juniper-s10 = {
           enable = true;
           port = 8817;
           minRAM = 6;
           maxRAM = 8;
           motd = "Highly Responsive To Prayers!!";
+          chunky-pruner.enable = true;
+          automatic-backups.enable = true;
         };
       };
 
