@@ -91,8 +91,10 @@
           minRAM = 8;
           maxRAM = 12;
           motd = "Highly Responsive To Prayers!!";
-          chunky-pruner.enable = true;
-          automatic-backups.enable = true;
+          automatic-backups = {
+            enable = true;
+            frequency = "daily";
+          };
         };
       };
 

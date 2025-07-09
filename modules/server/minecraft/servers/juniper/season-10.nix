@@ -23,8 +23,6 @@ in
 {
   options.modules.server.minecraft.juniper-s10 = {
     enable = mkEnableOption "Enable Juniper SMP server";
-    chunky-pruner.enable = mkEnableOption "Automatically prune uninhabited chunks with the chunky mod";
-    automatic-backups.enable = mkEnableOption "Automatically backup the server";
 
     port = mkOption {
       type = types.port;
@@ -62,7 +60,6 @@ in
 
   imports = [
     inputs.nix-minecraft.nixosModules.minecraft-servers
-    ./utilities/chunky-pruner.nix
     ./utilities/automatic-backups.nix
   ];
 

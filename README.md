@@ -32,9 +32,10 @@ Hosts:
 
 ## Thank you
 - the vimjoyer youtube channel, for making immensely helpful videos that saved me hours and hours of pain
-- https://github.com/fxzzi/NixOhEss - the nvf configuration
-- https://github.com/zDyanTB/HyprNova - The wlogout styling.
+- https://github.com/fxzzi/NixOhEss — the nvf configuration
+- https://github.com/zDyanTB/HyprNova — The wlogout styling.
 - https://github.com/1amSimp1e/dots — i tweaked my starship prompt based off of this guy's prompt
-
+- [Rexi](https://github.com/Rexcrazy804) — I used his [his backup script](https://github.com/Rexcrazy804/Zaphkiel/blob/master/nixosModules/server/minecraft/backupservice.nix) as the base for [my own](./modules/server/minecraft/servers/juniper/utilities/automatic-backups.nix) in my Minecraft server module.
+ 
 ## License
 - [License: GNU AGPLv3](./LICENSE)

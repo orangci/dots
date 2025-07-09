@@ -147,8 +147,10 @@
           minRAM = 6;
           maxRAM = 8;
           motd = "Highly Responsive To Prayers!!";
-          chunky-pruner.enable = true;
-          automatic-backups.enable = true;
+          automatic-backups = {
+            enable = true;
+            frequency = "daily";
+          };
         };
       };
 
@@ -164,13 +166,15 @@
         port = 8819;
       };
 
-      jellyfin = { # TODO: broken
+      jellyfin = {
+        # TODO: broken
         enable = false;
         domain = "jf.orangc.net";
         port = 8920; # can't be changed via the nixos module
       };
 
-      moodle = { # TODO: broken
+      moodle = {
+        # TODO: broken
         enable = false;
         domain = "moodle.orangc.net";
         port = 8820;
