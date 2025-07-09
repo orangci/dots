@@ -149,7 +149,7 @@ in
         gamemode = "survival";
         max-players = 20;
         log-ips = false;
-        max-world-size = 1000000;
+        max-world-size = 50000;
         online-mode = true;
         op-permission-level = 4;
         pause-when-empty-seconds = 300;
