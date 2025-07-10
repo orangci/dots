@@ -37,7 +37,7 @@ in
       enable = true;
       settings = {
         base-url = "https://${cfg.domain}/";
-        auth-default-access = "deny-all";
+        # auth-default-access = "deny-all";
         listen-http = ":${toString cfg.port}";
       };
     };
