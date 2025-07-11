@@ -179,12 +179,6 @@
         domain = "moodle.orangc.net";
         port = 8820;
       };
-
-      pocket-exporter = {
-        enable = true;
-        domain = "mzpocket.orangc.net";
-        port = 3000;
-      };
     };
   };
   local.hardware-clock.enable = true;
