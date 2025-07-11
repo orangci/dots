@@ -9,7 +9,7 @@ pkgs.writeShellScriptBin "rofi-prism" ''
           # Extract the instance folder name
           instance_name=$(basename "$instance")
           # Define the path to the icon based on the instance name
-          icon_path="$HOME/.local/share/PrismLauncher/icons/$instance_name.png"
+          icon_path="$HOME/.local/share/PrismLauncher/$instance_name/minecraft/icon.png"
           # Ensure the icon exists, otherwise use a placeholder
           if [[ ! -f "$icon_path" ]]; then
               icon_path="$HOME/.local/share/PrismLauncher/icons/Survival.png"  # Replace with a default icon path
