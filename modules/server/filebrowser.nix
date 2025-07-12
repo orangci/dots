@@ -70,6 +70,8 @@ in
   config = mkIf cfg.enable {
     modules.common.sops.secrets.filebrowser-env.path = "/var/secrets/filebrowser-env";
 
+    systemd.tmpfiles.rules = [ "d ${cfg.dataDir} 0755 root root -" ];
+
     virtualisation.oci-containers.containers."filebrowser" = {
       image = "gtstef/filebrowser";
       ports = [ "${toString cfg.port}:${toString cfg.port}" ];
