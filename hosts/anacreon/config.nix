@@ -146,7 +146,7 @@
           port = 8817;
           minRAM = 6;
           maxRAM = 8;
-          motd = "Highly Responsive To Prayers!!";
+          motd = "A test world until the real S10!";
           automatic-backups = {
             enable = true;
             frequency = "daily";

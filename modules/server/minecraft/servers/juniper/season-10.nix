@@ -78,7 +78,7 @@ in
       enable = true;
       enableReload = true;
       autoStart = true;
-      restart = "no";
+      restart = "always";
       jvmOpts = "-Xms${toString cfg.minRAM}G -Xmx${toString cfg.maxRAM}G";
       # Update the loader version every now and then!
       # https://github.com/FabricMC/fabric-loader/releases
