@@ -29,11 +29,11 @@ let
 
     rcon 'say [§4WARNING§r] The Server backup process is starting §bNOW§r. Prepare for some lag...'
 
-    rcon 'chunky trim world square 0 0 0 0 outside 0'
+    rcon 'chunky trim overworld square 0 0 0 0 outside 0'
     rcon 'chunky confirm'
-    rcon 'chunky trim world_the_nether square 0 0 0 0 outside 0'
+    rcon 'chunky trim the_nether square 0 0 0 0 outside 0'
     rcon 'chunky confirm'
-    rcon 'chunky trim world_the_end square 0 0 0 0 outside 0'
+    rcon 'chunky trim the_end square 0 0 0 0 outside 0'
     rcon 'chunky confirm'
 
     rcon "save-off"
