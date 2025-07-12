@@ -23,6 +23,7 @@ let
 
     export PATH="$PATH:${pkgs.gzip}/bin/"
 
+    mkdir -p ~/backups/juniper-s10
     rcon 'say [§4WARNING§r] The Server will back itself up in five minutes.'
     sleep 5m
 
@@ -37,13 +38,13 @@ let
 
     rcon "save-off"
     rcon "save-all"
-    ${lib.getExe pkgs.gnutar} -cvpzf ~/backups/juniper/backup-$(date +%F).tar.gz ~/juniper/world
+    ${lib.getExe pkgs.gnutar} -cvpzf ~/backups/juniper-s10/backup-$(date +%F).tar.gz ~/juniper/world
     rcon "save-on"
 
     rcon 'say [§bNOTICE§r] The Server backup process has completed.'
 
     # Delete older backups
-    find ~/backups/juniper -type f -mtime +7 -name 'backup-*.tar.gz' -delete
+    find ~/backups/juniper-s10 -type f -mtime +7 -name 'backup-*.tar.gz' -delete
   '';
 in
 {
