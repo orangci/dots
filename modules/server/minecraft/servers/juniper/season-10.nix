@@ -16,7 +16,7 @@ let
   cfg = config.modules.server.minecraft.juniper-s10;
   packwiz = pkgs.fetchPackwizModpack {
     url = "https://github.com/orangci/minecraft-modpacks/raw/master/juniper-s10/pack.toml";
-    packHash = "sha256-BKHnv8CvZ0l3bWP8/M0zCXot19gd04+q4SMA2lGf7mE=";
+    packHash = "sha256-gjQlr+L+UHNr3+XTec5Shkj+R9zmstfZkj3keg98KHY=";
     # dummy: sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=
   };
 in
