@@ -4,7 +4,7 @@
   ...
 }:
 let
-  inherit (lib) mkForce mkEnableOption mkIf;
+  inherit (lib) mkForce mkEnableOption mkDefault mkIf;
   cfg = config.hmModules.programs.editors.micro;
 in
 {

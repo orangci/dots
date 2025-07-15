@@ -34,8 +34,17 @@
       xdg.enable = true;
       clipboard.enable = true;
       cheatsheet.enable = true;
-      screenrec.enable = true;
       screenshot.enable = true;
+      screenrec = {
+        enable = true;
+        fileFormat = "mov";
+        timestampFormat = "%B %d %H.%M";
+        quality = "very_high";
+        encoder = "gpu";
+        showCursor = "yes";
+        framerate = 60;
+        codec = "auto";
+      };
     };
     dev = {
       python = {

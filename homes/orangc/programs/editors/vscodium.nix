@@ -25,6 +25,7 @@ in
   };
 
   config = mkIf cfg.enable {
+    hmModules.programs.editors.xdg = "codium";
     wayland.windowManager.hyprland.settings.bindd = [ "SUPERSHIFT, C, Launch VSCodium, exec, codium" ];
     programs.vscode = {
       enable = true;

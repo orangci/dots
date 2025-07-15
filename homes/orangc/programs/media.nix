@@ -5,7 +5,12 @@
   ...
 }:
 let
-  inherit (lib) mkEnableOption mkIf;
+  inherit (lib)
+    mkEnableOption
+    mkIf
+    mkForce
+    mkDefault
+    ;
   cfg = config.hmModules.programs.media;
 in
 {
@@ -16,6 +21,11 @@ in
     imv = mkEnableOption "Enable imv image viewer";
     feh = mkEnableOption "Enable feh image viewer";
     qimgv = mkEnableOption "Enable qimgv image viewer";
+
+    xdg = lib.mkOption {
+      type = lib.types.str;
+      description = "The .desktop filename to use for XDG";
+    };
   };
 
   config = mkIf cfg.enable (
@@ -35,18 +45,17 @@ in
       }
 
       (mkIf cfg.gwenview {
+        hmModules.programs.media.xdg = mkForce "org.kde.kdegraphics.gwenview.lib";
         home.packages = [ pkgs.libsForQt5.gwenview ];
       })
 
       (mkIf cfg.imv {
         programs.imv.enable = true;
-      })
-
-      (mkIf cfg.feh {
-        programs.feh.enable = true;
+        hmModules.programs.media.xdg = mkDefault "imv.desktop";
       })
 
       (mkIf cfg.qimgv {
+        hmModules.programs.media.xdg = "qimgv.desktop";
         home.packages = [ pkgs.qimgv ];
       })
     ]

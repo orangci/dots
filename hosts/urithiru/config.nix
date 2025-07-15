@@ -34,41 +34,47 @@
         domain = "safe.orangc.net";
         port = 8801;
       };
+      
+      convertx = {
+        enable = true;
+        domain = "convert.orangc.net";
+        port = 8802;
+      };
 
       cryptpad = {
         enable = false;
         domain = "pad.orangc.net";
-        port = 8802;
+        port = 8803;
       };
 
       filebrowser = {
         enable = true;
         domain = "files.orangc.net";
-        port = 8803;
+        port = 8804;
       };
 
       gitea = {
         enable = true;
         domain = "git.orangc.net";
-        port = 8804;
+        port = 8805;
       };
 
       glance = {
         enable = true;
         domain = "glance.orangc.net";
-        port = 8805;
+        port = 8806;
       };
 
       immich = {
         enable = true;
         domain = "media.orangc.net";
-        port = 8806;
+        port = 8807;
       };
 
       it-tools = {
         enable = true;
         domain = "tools.orangc.net";
-        port = 8807;
+        port = 8808;
       };
 
       jellyfin = {
@@ -80,14 +86,14 @@
       microbin = {
         enable = true;
         domain = "bin.orangc.net";
-        port = 8808;
+        port = 8809;
       };
 
       minecraft = {
         enable = true;
         juniper-s10 = {
           enable = true;
-          port = 8809;
+          port = 8810;
           minRAM = 8;
           maxRAM = 12;
           motd = "Highly Responsive To Prayers!!";
@@ -101,55 +107,55 @@
       moodle = {
         enable = false;
         domain = "moodle.orangc.net";
-        port = 8810;
+        port = 8811;
       };
 
       ntfy = {
         enable = true;
         domain = "ntfy.orangc.net";
-        port = 8811;
+        port = 8812;
       };
 
       ollama = {
         enable = false;
         domain = "ai.orangc.net";
-        port = 8812;
+        port = 8813;
       };
 
       pelican = {
         enable = false;
         domain = "pelican.orangc.net";
-        port = 8813;
+        port = 8814;
       };
 
       searxng = {
         enable = true;
         domain = "search.orangc.net";
-        port = 8814;
+        port = 8815;
       };
 
       speedtest = {
         enable = true;
         domain = "speedtest.orangc.net";
-        port = 8815;
+        port = 8816;
       };
 
       uptime-kuma = {
         enable = false;
         domain = "status.orangc.net";
-        port = 8816;
+        port = 8817;
       };
 
       vaultwarden = {
         enable = true;
         domain = "vault.orangc.net";
-        port = 8817;
+        port = 8818;
       };
 
       zipline = {
         enable = false;
         domain = "zip.orangc.net";
-        port = 8818;
+        port = 8819;
       };
     };
   };

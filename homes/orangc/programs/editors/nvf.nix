@@ -15,6 +15,7 @@ in
   options.hmModules.programs.editors.nvf.enable = mkEnableOption "Enable neovim with nvf";
 
   config = mkIf cfg.enable {
+    hmModules.programs.editors.xdg = "nvim";
     programs.nvf = {
       enable = true;
       defaultEditor = true;

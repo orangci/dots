@@ -86,7 +86,7 @@
       };
 
       zipline = {
-        enable = false;
+        enable = true;
         domain = "zip.orangc.net";
         port = 8807;
       };
@@ -178,6 +178,12 @@
         enable = false;
         domain = "moodle.orangc.net";
         port = 8820;
+      };
+
+      convertx = {
+        enable = true;
+        domain = "convert.orangc.net";
+        port = 8821;
       };
     };
   };

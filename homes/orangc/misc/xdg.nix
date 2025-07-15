@@ -9,10 +9,11 @@ let
   cfg = config.hmModules.misc.xdg;
   browser = [ "firefox.desktop" ];
   fileManager = [ "thunar.desktop" ];
-  editor = [ "codium.desktop" ];
+  editor = [ "${config.hmModules.programs.editors.xdg}.desktop" ];
 
   associations = {
     "text/html" = browser;
+    "text/markdown" = editor;
     "x-scheme-handler/http" = browser;
     "x-scheme-handler/https" = browser;
     "x-scheme-handler/ftp" = browser;
@@ -30,13 +31,19 @@ let
 
     "audio/*" = [ "mpv.desktop" ];
     "video/*" = [ "mpv.desktop" ];
-    "image/*" = [ "org.kde.kdegraphics.gwenview.lib" ];
+    "image/*" = [ config.hmModules.programs.media.xdg ];
+
     "application/json" = editor;
     "application/pdf" = browser;
 
     "x-scheme-handler/tg" = [ "telegramdesktop.desktop" ];
-    "x-scheme-handler/discord" = [ "discord.desktop" ];
+    "x-scheme-handler/discord" =
+      if config.hmModules.programs.discord.enable then [ "discord.desktop" ] else browser;
     "x-scheme-handler/mailto" = browser;
+  };
+
+  removedAssociations = {
+    "image/*" = [ "chromium.desktop" ];
   };
 in
 {
@@ -76,6 +83,7 @@ in
       mimeApps = {
         enable = true;
         associations.added = associations;
+        associations.removed = removedAssociations;
         defaultApplications = associations;
       };
     };

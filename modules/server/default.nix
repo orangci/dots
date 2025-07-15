@@ -23,5 +23,6 @@
     ./filebrowser.nix
     ./jellyfin.nix
     ./moodle.nix
+    ./convertx.nix
   ];
 }
