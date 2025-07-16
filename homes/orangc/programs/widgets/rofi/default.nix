@@ -25,17 +25,12 @@ in
         "ignorealpha 0.8,rofi"
       ];
       bindd = [
-        "SUPER, K, Application Launcher, exec, rofi -show drun # application launcher rofi"
-        "SUPER, R, Command Runner, exec, rofi -show run -theme run.rasi"
-        "SUPER, M, Open Minecraft Instance Menu, exec, rofi-prism"
-        "SUPER, C, Rofi Calculator, exec, rofi-calc"
+        "SUPERSHIFT, APOSTROPHE, Choose Wallpaper, exec, wall-select"
+        "SUPER, APOSTROPHE, Random Wallpaper, exec, wall-select --fast"
       ];
     };
 
     home.packages = [
-      (import ./packages/calc.nix { inherit pkgs; })
-      (import ./packages/emoji.nix { inherit pkgs; })
-      (import ./packages/prism.nix { inherit pkgs; })
       (import ./packages/wall-select.nix { inherit pkgs; })
     ];
     programs.rofi = {

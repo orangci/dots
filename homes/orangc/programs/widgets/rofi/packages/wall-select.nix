@@ -10,9 +10,7 @@ pkgs.writeShellScriptBin "wall-select" ''
   # Function to set wallpaper
   set_wallpaper() {
       local image="$1"
-      swww clear
-      swww clear-cache
-      swww img "$image" --transition-type random --transition-fps 60
+      swww img "$image" --transition-type random --transition-fps 60 --transition-duration 1
       echo "Wallpaper set to $image"
       echo "\$WALLPAPER=$image" >/tmp/.current_wallpaper_path_hyprlock
       echo "$image" >/tmp/.current_wallpaper_path

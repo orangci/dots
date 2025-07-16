@@ -1,5 +1,6 @@
 {
   username,
+  config,
   ...
 }:
 {
@@ -20,7 +21,6 @@
         enable = true;
         zip = true;
       };
-
       git = {
         enable = true;
         username = "orangc";
@@ -79,7 +79,7 @@
           enable = true;
           horizontal = true;
         };
-        rofi.enable = false;
+        rofi.enable = true;
         swaync.enable = true;
         waybar.enable = true;
         walker.enable = true;
@@ -102,6 +102,7 @@
       walls = {
         enable = true;
         timeout = 20; # Time between wallpaper changes (in minutes)
+        directory = "${config.xdg.userDirs.pictures}/walls";
       };
       stylix = {
         enable = true;

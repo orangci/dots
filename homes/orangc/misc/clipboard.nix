@@ -10,7 +10,7 @@ let
   cfg = config.hmModules.misc.clipboard;
 in
 {
-  options.hmModules.misc.clipboard.enable = mkEnableOption "Enable clipboard with cliphist";
+  options.hmModules.misc.clipboard.enable = mkEnableOption "Enable clipboard";
 
   config = mkIf cfg.enable {
     services.cliphist.enable = !config.hmModules.programs.widgets.walker.enable;
@@ -29,8 +29,6 @@ in
       ];
 
       bindd = [
-        (mkIf config.hmModules.programs.widgets.rofi.enable "SUPER, V, Open Clipboard, exec, cliphist list | rofi -dmenu -theme clipboard.rasi | cliphist decode | wl-copy")
-
         (mkIf (
           !config.hmModules.programs.widgets.walker.enable
         ) "SUPERSHIFT, V, Clear Clipboard, exec, cliphist wipe")
