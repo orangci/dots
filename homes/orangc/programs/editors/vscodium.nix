@@ -81,6 +81,7 @@ in
         with pkgs.vscode-extensions;
         let
           extensions = [
+            tamasfe.even-better-toml
             esbenp.prettier-vscode
             wakatime.vscode-wakatime
             leonardssh.vscord

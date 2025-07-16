@@ -70,10 +70,10 @@
           enable = true;
           horizontal = true;
         };
-        rofi.enable = true;
+        rofi.enable = false;
         swaync.enable = true;
         waybar.enable = true;
-        walker.enable = false;
+        walker.enable = true;
         ignis.enable = true;
       };
       media = {
