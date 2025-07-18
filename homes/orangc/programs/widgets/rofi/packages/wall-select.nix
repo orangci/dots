@@ -14,6 +14,7 @@ pkgs.writeShellScriptBin "wall-select" ''
       echo "Wallpaper set to $image"
       echo "\$WALLPAPER=$image" >/tmp/.current_wallpaper_path_hyprlock
       echo "$image" >/tmp/.current_wallpaper_path
+      sleep 1
   }
 
   # Function to get a random image from a folder

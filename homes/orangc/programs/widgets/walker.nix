@@ -34,7 +34,7 @@ in
         "SUPERSHIFT, PERIOD, Emoji Picker, exec, walker -m symbols"
         "SUPER, M, Launch Minecraft Instance, exec, walker -m minecraft"
         "SUPER, V, Open Clipboard, exec, walker -m clipboard"
-        "SUPERSHIFT, V, Clear Clipboard, exec, walker -x -m commands -q \"Clear Clipboard\""
+        "SUPERSHIFT, V, Clear Clipboard, exec, walker --clear-clipboard"
       ];
     };
     home.file."${config.xdg.configHome}/hypr/xdph.conf".text = ''

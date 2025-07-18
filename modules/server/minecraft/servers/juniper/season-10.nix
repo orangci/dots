@@ -136,8 +136,8 @@ in
 
       serverProperties = {
         motd = "\\u00a7l   \\u00a7d                Juniper\\u00a7r \\u2014 \\u00a7aSeason 10\\u00a7r\\n\\u00a7l   \\u00a7b          \\u00a7o${cfg.motd}";
-        level-seed = "uriel is the absolute cutest";
-        difficulty = "easy";
+        level-seed = "888880777356331877";
+        difficulty = "hard";
         allow-nether = false;
         broadcast-console-to-ops = false;
         broadcast-rcon-to-ops = false;

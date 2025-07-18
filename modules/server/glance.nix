@@ -20,8 +20,9 @@ let
   );
 
   siteList = builtins.map (mod: {
-    title = mod.name or mod.domain;
+    title = mod.name;
     url = "https://${mod.domain}";
+    # icon = "si:${(lib.strings.toLower mod.name)}";
   }) sites;
 in
 {
@@ -57,6 +58,7 @@ in
       settings = {
         # https://github.com/glanceapp/glance/blob/main/docs/configuration.md
         server.port = cfg.port;
+        server.proxied = true;
         branding = {
           app-background-color = "#191724";
           hide-footer = true;
