@@ -79,7 +79,7 @@
       };
 
       jellyfin = {
-        enable = false;
+        enable = true;
         domain = "jf.orangc.net";
         port = 8096; # can't be changed via the nixos module
       };

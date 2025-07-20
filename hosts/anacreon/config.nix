@@ -66,13 +66,6 @@
         port = 8811;
       };
 
-      jellyfin = {
-        # TODO: broken
-        enable = true;
-        domain = "jf.orangc.net";
-        port = 8096; # can't be changed via the nixos module
-      };
-
       moodle = {
         # TODO: broken
         enable = false;

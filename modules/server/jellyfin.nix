@@ -19,7 +19,7 @@ in
 
     port = mkOption {
       type = types.port;
-      default = 8920;
+      default = 8096;
       description = "The port for jellyfin to be hosted at";
     };
 
