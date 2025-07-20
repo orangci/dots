@@ -15,11 +15,13 @@
     - `mkdir /mnt/boot`
     - `mount /dev/sda1 /mnt/boot`
     - `git clone https://github.com/orangci/dots && cd dots`
-    - `nixos-generate-config --root /mnt --show-hardware-config > hosts/urithiru/hardware.nix`
+    - `nixos-generate-config --root /mnt --show-hardware-config > hosts/urithiru/hardware.nix && git add .`
     - `nixos-install --flake .#urithiru --root /mnt`
     - `nixos-enter --root /mnt`
     - `git clone https://github.com/orangci/dots && cd dots`
-    - `nixos-generate-config --show-hardware-config > hosts/urithiru/hardware.nix && nixos-rebuild --flake .#urithiru`
+    - `nixos-generate-config --show-hardware-config > hosts/urithiru/hardware.nix && git add .`
+    - `nixos-rebuild switch --flake .#urithiru`
+    - `nixos-rebuild boot --flake .#urithiru`
     - `sudo passwd orangc <new password>`
     - `sudo passwd same password as above`
     - `cat /etc/ssh/ssh_host_ed25519_key.pub | ssh-to-age`
