@@ -30,6 +30,7 @@
       bottles.enable = false;
       steam.enable = false;
       heroic.enable = false;
+      osu.enable = true;
       hoyoverse = {
         enable = false;
         genshin.enable = false;

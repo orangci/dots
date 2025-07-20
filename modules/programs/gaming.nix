@@ -20,6 +20,7 @@ let
     ++ (optionals cfg.lutris.enable [ lutris ])
     ++ (optionals cfg.bottles.enable [ bottles ])
     ++ (optionals cfg.heroic.enable [ heroic ])
+    ++ (optionals cfg.osu.enable [ inputs.nix-gaming.packages.${pkgs.system}.osu-stable ])
     ++ (optionals cfg.minecraft.enable [
       packwiz
       (prismlauncher.override {
@@ -44,6 +45,7 @@ in
       bottles.enable = mkEnableOption "Enable Bottles for gaming";
       steam.enable = mkEnableOption "Enable Steam";
       heroic.enable = mkEnableOption "Enable Heroic Launcher";
+      osu.enable = mkEnableOption "Enable Osu!";
       hoyoverse = {
         enable = mkEnableOption "Enable An Anime Game Launcher";
         genshin.enable = mkEnableOption "Enable Genshin Impact";
