@@ -24,9 +24,12 @@ let
       packwiz
       (prismlauncher.override {
         jdks = [
-          zulu8
-          zulu17
-          zulu21
+          # Before 1.17: Java 8
+          # 1.17: Java 16
+          # 1.18 to 1.20: Java 17
+          # 1.21: Java 21
+          temurin-jre-bin-8
+          temurin-jre-bin-24
         ];
       })
     ])
