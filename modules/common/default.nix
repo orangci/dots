@@ -8,5 +8,6 @@
     ./sound.nix
     ./sops.nix
     ./virtualisation.nix
+    ./btrfs.nix
   ];
 }

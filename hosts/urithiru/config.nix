@@ -17,6 +17,7 @@
       printing.enable = false;
       networking.enable = true;
       sops.enable = true;
+      btrfs.enable = true;
     };
     server = {
       caddy.enable = true;
@@ -80,7 +81,7 @@
       jellyfin = {
         enable = false;
         domain = "jf.orangc.net";
-        port = 8920; # can't be changed via the nixos module
+        port = 8096; # can't be changed via the nixos module
       };
 
       microbin = {
@@ -96,7 +97,7 @@
           port = 8810;
           minRAM = 8;
           maxRAM = 12;
-          motd = "Highly Responsive To Prayers!!";
+          motd = "Mountain of Faith";
           automatic-backups = {
             enable = true;
             frequency = "daily";

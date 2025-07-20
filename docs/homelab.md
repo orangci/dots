@@ -4,13 +4,13 @@
 - [ ] Plug the computer in (after finding a suitable place to do so). Boot it to check if it works.
 - [ ] Install NixOS onto the computer (assuming the main drive is `/dev/sda`):
     - `wipefs -a /dev/sda`
-    - `nix-shell -p parted git`
+    - `nix-shell -p git btrfs-progs`
     - `parted /dev/sda -- mklabel gpt`
     - `parted /dev/sda -- mkpart primary fat32 1MiB 513MiB`
     - `parted /dev/sda -- set 1 esp on`
-    - `parted /dev/sda -- mkpart primary ext4 513MiB 100%`
+    - `parted /dev/sda -- mkpart primary btrfs 513MiB 100%`
     - `mkfs.vfat -F32 /dev/sda1`
-    - `mkfs.ext4 /dev/sda2`
+    - `mkfs.btrfs /dev/sda2`
     - `mount /dev/sda2 /mnt`
     - `mkdir /mnt/boot`
     - `mount /dev/sda1 /mnt/boot`

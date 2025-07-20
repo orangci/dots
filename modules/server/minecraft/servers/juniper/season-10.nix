@@ -12,6 +12,7 @@ let
     types
     mkOption
     concatStringsSep
+    replaceStrings
     ;
   cfg = config.modules.server.minecraft.juniper-s10;
   packwiz = pkgs.fetchPackwizModpack {
@@ -126,6 +127,13 @@ in
       # lib.mapAttrsToList (name: value: "gamerule ${name} ${toString value}") cfg.gamerules
       # );
 
+      extraReload = ''
+        ${pkgs.rconc}/bin/rconc jp "carpet customMOTD ${
+          replaceStrings [ "\\n" ] [ "\n" ]
+            config.services.minecraft-servers.servers.juniper.serverProperties.motd
+        }"
+      '';
+
       operators = {
         orangci.uuid = "dde112e5-25c7-4963-800c-aa23c3816dbc";
         Ritorn77.uuid = "d167c6cf-6eaf-4a4f-a6b6-d332ac46de23";
@@ -135,7 +143,7 @@ in
       };
 
       serverProperties = {
-        motd = "\\u00a7l   \\u00a7d                Juniper\\u00a7r \\u2014 \\u00a7aSeason 10\\u00a7r\\n\\u00a7l   \\u00a7b          \\u00a7o${cfg.motd}";
+        motd = "§l  §r                §d§lJuniper §r— §a§lSeason X§r\\n§l §b               §o${cfg.motd}";
         level-seed = "888880777356331877";
         difficulty = "hard";
         allow-nether = false;
