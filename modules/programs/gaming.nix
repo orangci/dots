@@ -20,7 +20,7 @@ let
     ++ (optionals cfg.lutris.enable [ lutris ])
     ++ (optionals cfg.bottles.enable [ bottles ])
     ++ (optionals cfg.heroic.enable [ heroic ])
-    ++ (optionals cfg.osu.enable [ inputs.nix-gaming.packages.${pkgs.system}.osu-stable ])
+    ++ (optionals cfg.osu.enable [ osu-lazer ])
     ++ (optionals cfg.minecraft.enable [
       packwiz
       (prismlauncher.override {
