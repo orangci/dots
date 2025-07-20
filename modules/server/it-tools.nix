@@ -25,6 +25,7 @@ in
     };
     port = mkOption {
       type = types.port;
+      default = 8800;
       description = "The port for it-tools to be hosted at";
     };
   };

@@ -8,3 +8,4 @@
 - use impermanence / make garbage collection actually good
 - nixify firefox extensions settings
 - fix up QT module — styling is ass currently
+- deal with the server's btrfs situation

@@ -51,7 +51,13 @@
   system.stateVersion = "25.05";
   hardware.logitech.wireless.enable = true;
 
-  environment.systemPackages = with pkgs; [ ];
+  environment.systemPackages = with pkgs; [
+    nh
+    micro
+    lxqt.lxqt-policykit
+    nix-output-monitor
+    libnotify
+  ];
 
   users.users = {
     "${username}" = {

@@ -124,15 +124,19 @@
   };
 
   services = {
-    upower.enable = true;
     xserver = {
       enable = false;
       xkb = {
         layout = "us";
       };
     };
+    openssh = {
+      enable = true;
+      settings.PasswordAuthentication = true;
+      settings.PermitRootLogin = "yes";
+    };
+    upower.enable = true;
     libinput.enable = true;
-    openssh.enable = true;
     gnome.gnome-keyring.enable = true;
   };
   hardware.graphics.enable = true;

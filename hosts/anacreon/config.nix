@@ -66,17 +66,6 @@
         port = 8811;
       };
 
-      minecraft = {
-        enable = true;
-        juniper-s10 = {
-          enable = true;
-          port = 8817;
-          minRAM = 6;
-          maxRAM = 8;
-          motd = "Scarlet Weather Rhapsody";
-        };
-      };
-
       jellyfin = {
         # TODO: broken
         enable = true;
@@ -115,7 +104,13 @@
   system.stateVersion = "25.05";
   hardware.logitech.wireless.enable = true;
 
-  environment.systemPackages = with pkgs; [ ];
+  environment.systemPackages = with pkgs; [
+    nh
+    micro
+    lxqt.lxqt-policykit
+    nix-output-monitor
+    libnotify
+  ];
 
   boot.loader.systemd-boot.windows."windows10" = {
     title = "Michaelsoft Binbows";

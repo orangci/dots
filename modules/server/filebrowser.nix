@@ -33,6 +33,7 @@ in
 
     port = mkOption {
       type = types.port;
+      default = 8800;
       description = "The port for Filebrowser to be hosted at";
     };
 

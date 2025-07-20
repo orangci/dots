@@ -4,6 +4,5 @@
     ./gaming.nix
     ./hyprland.nix
     ./appimages.nix
-    ./core.nix
   ];
 }

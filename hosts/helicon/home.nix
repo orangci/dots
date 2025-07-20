@@ -1,5 +1,7 @@
 {
   username,
+  config,
+  pkgs,
   ...
 }:
 {
@@ -99,7 +101,7 @@
         enable = true;
         # Choose from https://tinted-theming.github.io/tinted-gallery/
         # if you want a light theme, i strongly recommend gruvbox-material-light-medium
-        # i usually default to catppuccin-mocha or rose-pine
+        # i usually default to rose-pine or catppuccin-mocha
         theme = "gruvbox-material-light-medium";
       };
     };
@@ -110,6 +112,11 @@
     homeDirectory = "/home/${username}";
     stateVersion = "25.05";
     file.".face.icon".source = ../../assets/face.png;
+    packages = with pkgs; [
+      hyprpicker
+      obsidian
+      pinta
+    ];
   };
 
   dconf.settings = {

@@ -19,6 +19,7 @@ in
 
     port = mkOption {
       type = types.port;
+      default = 8800;
       description = "The port for zipline to be hosted at";
     };
 

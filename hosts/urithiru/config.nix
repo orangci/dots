@@ -35,7 +35,7 @@
         domain = "safe.orangc.net";
         port = 8801;
       };
-      
+
       convertx = {
         enable = true;
         domain = "convert.orangc.net";
@@ -166,7 +166,12 @@
   time.timeZone = "Asia/Riyadh";
   system.stateVersion = "25.05";
 
-  environment.systemPackages = with pkgs; [ ];
+  environment.systemPackages = with pkgs; [
+    lxqt.lxqt-policykit
+    nix-output-monitor
+    nh
+    micro
+  ];
 
   users.users = {
     "${username}" = {
