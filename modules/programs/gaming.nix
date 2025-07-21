@@ -23,6 +23,7 @@ let
     ++ (optionals cfg.osu.enable [ osu-lazer ])
     ++ (optionals cfg.minecraft.enable [
       packwiz
+      rconc
       (prismlauncher.override {
         jdks = [
           # Before 1.17: Java 8
