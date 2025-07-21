@@ -29,23 +29,24 @@ let
     mkdir -p "$BACKUP_DIR"
 
     rcon 'say [§4WARNING§r] The Server will back itself up in five minutes.'
-    # sleep 5m
+    sleep 5m
 
     rcon 'say [§4WARNING§r] The Server backup process is starting §bNOW§r. Prepare for some lag...'
 
     rcon "save-off"
 
-    rcon 'chunky trim overworld square 0 0 0 0 outside 0'
-    rcon 'chunky confirm'
-    rcon 'chunky trim the_nether square 0 0 0 0 outside 0'
-    rcon 'chunky confirm'
-    rcon 'chunky trim the_end square 0 0 0 0 outside 0'
-    rcon 'chunky confirm'
+    # rcon 'chunky trim overworld square 0 0 0 0 outside 0'
+    # rcon 'chunky confirm'
+    # rcon 'chunky trim the_nether square 0 0 0 0 outside 0'
+    # rcon 'chunky confirm'
+    # rcon 'chunky trim the_end square 0 0 0 0 outside 0'
+    # rcon 'chunky confirm'
+
+    rcon "save-all"
 
     mkdir -p "$(dirname "$SNAPSHOT_DIR")"
     ${pkgs.btrfs-progs}/bin/btrfs subvolume snapshot ~/juniper/world "$SNAPSHOT_DIR"
 
-    rcon "save-all"
     rcon "save-on"
 
     rcon 'say [§bNOTICE§r] The Server backup process has completed.'
