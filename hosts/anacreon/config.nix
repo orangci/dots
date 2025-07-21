@@ -49,6 +49,16 @@
       caddy.enable = true;
       cloudflared.enable = true;
 
+      minecraft = {
+        enable = true;
+        juniper-s10 = {
+          enable = true;
+          port = 8810;
+          minRAM = 4;
+          maxRAM = 6;
+        };
+      };
+
       glance = {
         enable = true;
         domain = "glance.orangc.net";
