@@ -1,5 +1,6 @@
 {
   pkgs,
+  lib,
   username,
   ...
 }:
@@ -58,19 +59,13 @@
         enable = true;
         domain = "ntfy.orangc.net";
         port = 8809;
-        users = [
-          {
-            username = "orangc";
-            role = "admin";
-          }
-        ];
-        topics = [
-          {
-            name = "services";
-            users = [ "everyone" ];
-            permission = "read-only";
-          }
-        ];
+        users = lib.singleton {
+          username = "orangc";
+          role = "admin";
+        };
+        scripts = {
+          services.enable = true;
+        };
       };
 
       searxng = {

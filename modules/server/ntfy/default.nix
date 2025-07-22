@@ -1,5 +1,4 @@
-# Thank you to
-# https://github.com/Stef-00012/dots/blob/main/modules/server/ntfy.nix
+# Thank you to https://github.com/Stef-00012/dots/blob/main/modules/server/ntfy.nix
 {
   config,
   lib,
@@ -14,6 +13,7 @@ let
     types
     ;
   cfg = config.modules.server.ntfy;
+  topicsOptions = import ./topicsOptions.nix { inherit lib config; };
 in
 {
   options.modules.server.ntfy = {
@@ -63,25 +63,9 @@ in
       type = types.listOf (
         types.submodule {
           options = {
-            name = mkOption {
-              type = types.str;
-              description = "Name of the ntfy topic";
-            };
-
-            users = mkOption {
-              type = types.listOf types.str;
-              description = "Usernames for the ntfy topic";
-            };
-
-            permission = mkOption {
-              type = types.enum [
-                "read-write"
-                "read-only"
-                "write-only"
-                "deny"
-              ];
-              description = "Permission for the users on this topic";
-            };
+            name = topicsOptions.topic;
+            users = topicsOptions.users;
+            permission = topicsOptions.permission;
           };
         }
       );
@@ -95,6 +79,12 @@ in
     # user1 = password1
     # user2 = password2
     modules.common.sops.secrets.ntfy-users.path = "/var/secrets/ntfy-users";
+    # This secret should contain
+    # NTFY_ACCESS_TOKEN=abc123
+    modules.common.sops.secrets.ntfy-access-token = {
+      path = "/var/secrets/ntfy-access-token";
+      owner = "ntfy-sh";
+    };
 
     services.ntfy-sh = {
       enable = true;

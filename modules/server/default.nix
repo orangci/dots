@@ -6,7 +6,7 @@
     ./uptime-kuma.nix
     ./vaultwarden.nix
     ./microbin.nix
-    ./ntfy.nix
+    ./ntfy
     ./technitium.nix
     ./glance.nix
     ./gitea.nix
