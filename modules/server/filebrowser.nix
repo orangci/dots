@@ -28,7 +28,7 @@ in
 
     name = mkOption {
       type = types.str;
-      default = "Filebrowser";
+      default = "Filebrowser Quantum";
     };
 
     port = mkOption {

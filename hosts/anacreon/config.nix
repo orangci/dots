@@ -54,10 +54,24 @@
       };
 
       ntfy = {
+        # TODO: status monitor notifs
         enable = true;
         domain = "ntfy.orangc.net";
         port = 8809;
-      }; # TODO: status monitor notifs. with uptime-kuma, probably, make module actually work
+        users = [
+          {
+            username = "orangc";
+            role = "admin";
+          }
+        ];
+        topics = [
+          {
+            name = "services";
+            users = [ "everyone" ];
+            permission = "read-only";
+          }
+        ];
+      };
 
       searxng = {
         enable = true;

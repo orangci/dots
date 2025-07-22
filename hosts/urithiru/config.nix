@@ -115,6 +115,19 @@
         enable = true;
         domain = "ntfy.orangc.net";
         port = 8812;
+        users = [
+          {
+            username = "orangc";
+            role = "admin";
+          }
+        ];
+        topics = [
+          {
+            name = "services";
+            users = [ "everyone" ];
+            permission = "read-only";
+          }
+        ];
       };
 
       ollama = {

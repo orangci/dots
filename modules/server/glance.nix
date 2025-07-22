@@ -22,7 +22,7 @@ let
   siteList = builtins.map (mod: {
     title = mod.name;
     url = "https://${mod.domain}";
-    # icon = "si:${(lib.strings.toLower mod.name)}";
+    icon = "sh:${lib.strings.replaceStrings [" "] ["-"] (lib.strings.toLower mod.name)}";
   }) sites;
 in
 {
