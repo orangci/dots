@@ -45,7 +45,7 @@ in
       after = [ "ntfy-sh.service" ];
       wantedBy = [ "multi-user.target" ];
       serviceConfig = {
-        ExecStart = script.name;
+        ExecStart = "${script}/bin/ntfy-script-example";
         Restart = "always";
         RestartSec = 5;
         User = "ntfy-sh";

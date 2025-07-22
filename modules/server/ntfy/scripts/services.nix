@@ -18,7 +18,7 @@ let
     name = "ntfy-script-services";
     runtimeInputs = with pkgs; [ curl ];
     text = ''
-        curl -d "Memories of Phantasm" -u :"$NTFY_ACCESS_TOKEN" https://ntfy.orangc.net/services
+      curl -d "Memories of Phantasm" -u :"$NTFY_ACCESS_TOKEN" https://ntfy.orangc.net/services
       sleep 10000000000
     '';
   };
@@ -47,7 +47,7 @@ in
       after = [ "ntfy-sh.service" ];
       wantedBy = [ "multi-user.target" ];
       serviceConfig = {
-        ExecStart = script.name;
+        ExecStart = "${script}/bin/ntfy-script-services";
         Restart = "always";
         RestartSec = 5;
         User = "ntfy-sh";
