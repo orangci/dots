@@ -14,7 +14,7 @@ https://nixos.org/manual/nixos/stable/#sec-installation-manual
     - `mount /dev/disk/by-label/urithiru /mnt`
     - `mkdir -p /mnt/boot`
     - `mount -o umask=077 /dev/disk/by-label/boot /mnt/boot`
-    - `nixos-generate-config --root /mnt --show-hardware-config > hosts/urithiru/hardware.nix`
+    - `nixos-generate-config --root /mnt --show-hardware-config > dots/hosts/urithiru/hardware.nix`
     - Commit and push
     - `nixos-install --flake .#urithiru`
     - `nixos-enter --root /mnt`
