@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ config, lib, pkgs, ... }:
 let
   inherit (lib)
     mkIf
@@ -8,7 +8,7 @@ let
     singleton
     ;
   cfg = config.modules.server.ntfy.scripts.example;
-  topicsOptions = import ../topicsOptions.nix { inherit lib; };
+  topicsOptions = import ../topicsOptions.nix { inherit config lib; };
   script = pkgs.writeShellScriptBin "ntfy-script-example" ''
     script content
   '';

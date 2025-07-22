@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ config, lib, pkgs, ... }:
 let
   inherit (lib)
     mkIf
@@ -8,7 +8,7 @@ let
     singleton
     ;
   cfg = config.modules.server.ntfy.scripts.services;
-  topicsOptions = import ../topicsOptions.nix { inherit lib; };
+  topicsOptions = import ../topicsOptions.nix { inherit config lib; };
   script = pkgs.writeShellScriptBin "ntfy-script-services" ''
     curl -d "Memories of Phantasm" -u :$NTFY_ACCESS_TOKEN https://ntfy.orangc.net/services
     sleep 10000000000

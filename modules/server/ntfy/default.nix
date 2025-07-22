@@ -11,11 +11,13 @@ let
     mkOption
     mkIf
     types
+    singleton
     ;
   cfg = config.modules.server.ntfy;
   topicsOptions = import ./topicsOptions.nix { inherit lib config; };
 in
 {
+  imports = singleton ./scripts;
   options.modules.server.ntfy = {
     enable = mkEnableOption "Enable ntfy";
 
