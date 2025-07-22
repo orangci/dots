@@ -39,12 +39,12 @@ in
   config = mkIf cfg.enable {
     virtualisation.oci-containers.containers.chibisafe = {
       image = "chibisafe/chibisafe:latest";
-      ports = [ "${toString cfg.port}:8001" ];
+      ports = [ "127.0.0.1:${toString cfg.port}:8001" ];
       environment.BASE_API_URL = "http://${cfg.domain}";
     };
     virtualisation.oci-containers.containers.chibisafe_server = {
       image = "chibisafe/chibisafe-server:latest";
-      ports = [ "${toString (cfg.port - 1000)}:8000" ];
+      ports = [ "127.0.0.1:${toString (cfg.port - 1000)}:8000" ];
       volumes = [
         "${cfg.dataDir}/database:/app/database:rw"
         "${cfg.dataDir}/logs:/app/logs:rw"

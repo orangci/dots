@@ -42,22 +42,10 @@
         modrinth.enable = false;
       };
     };
-    styles = {
-      fonts.enable = true;
-    };
+    styles.fonts.enable = true;
     server = {
       caddy.enable = true;
       cloudflared.enable = true;
-
-      minecraft = {
-        enable = true;
-        juniper-s10 = {
-          enable = true;
-          port = 8810;
-          minRAM = 4;
-          maxRAM = 6;
-        };
-      };
 
       glance = {
         enable = true;

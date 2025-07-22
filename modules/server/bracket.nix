@@ -54,7 +54,7 @@ in
       bracket-backend = {
         image = "ghcr.io/evroon/bracket-backend";
         ports = [
-          "${toString (cfg.port - 1000)}:8400"
+          "127.0.0.1:${toString (cfg.port - 1000)}:8400"
         ];
         environmentFiles = [ "/var/secrets/bracket-jwt-secret" ];
         environment = {
@@ -71,7 +71,7 @@ in
       postgres = {
         image = "postgres";
         ports = [
-          "${toString (cfg.port - 2000)}:${toString (cfg.port - 2000)}"
+          "127.0.0.1:${toString (cfg.port - 2000)}:${toString (cfg.port - 2000)}"
         ];
         environment = {
           POSTGRES_DB = "bracket_prod";

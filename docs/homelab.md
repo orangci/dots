@@ -4,7 +4,7 @@
 - [ ] Plug the computer in (after finding a suitable place to do so). Boot it to check if it works.
 - [ ] Install NixOS onto the computer (assuming the main drive is `/dev/sda`):
     - `wipefs -a /dev/sda`
-    - `nix-shell -p git btrfs-progs`
+    - `nix-shell -p parted git btrfs-progs`
     - `parted /dev/sda -- mklabel gpt`
     - `parted /dev/sda -- mkpart primary fat32 1MiB 513MiB`
     - `parted /dev/sda -- set 1 esp on`
@@ -39,5 +39,6 @@
 - [ ] Set up Jellyfin.
 - [ ] Regenerate the following secrets and place them in secrets.yaml: technitium, speedtest, immich.
 - [ ] Check the other services in order to confirm that they're all working.
+- [ ] Pregenerate Juniper's chunks, put it in maintenance mode, and set the world border to 1,000.
 
 Use `ssh orangc@192.168.1.42` in order to SSH into the homelab.

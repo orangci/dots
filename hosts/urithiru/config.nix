@@ -95,7 +95,7 @@
         juniper-s10 = {
           enable = true;
           port = 8810;
-          minRAM = 8;
+          minRAM = 1;
           maxRAM = 12;
           motd = "Mountain of Faith";
           automatic-backups = {

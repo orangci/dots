@@ -37,7 +37,7 @@ in
 
     virtualisation.oci-containers.containers.convertx = {
       image = "ghcr.io/c4illin/convertx";
-      ports = [ "${toString cfg.port}:3000" ];
+      ports = [ "127.0.0.1:${toString cfg.port}:3000" ];
       volumes = [ "/var/lib/convertx:/app/data" ];
       environmentFiles = [ "/var/secrets/convertx-env" ];
     };

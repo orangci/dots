@@ -75,7 +75,7 @@ in
 
     virtualisation.oci-containers.containers."filebrowser" = {
       image = "gtstef/filebrowser";
-      ports = [ "${toString cfg.port}:${toString cfg.port}" ];
+      ports = [ "127.0.0.1:${toString cfg.port}:${toString cfg.port}" ];
       environment = {
         FILEBROWSER_CONFIG = "data/config.yaml";
         TZ = config.time.timeZone;

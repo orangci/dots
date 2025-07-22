@@ -24,9 +24,7 @@
       hyprland.enable = true;
       appimages.enable = false;
     };
-    styles = {
-      fonts.enable = true;
-    };
+    styles.fonts.enable = true;
   };
   local.hardware-clock.enable = true;
   drivers = {
