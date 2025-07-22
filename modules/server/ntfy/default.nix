@@ -134,7 +134,7 @@ in
           ${builtins.concatStringsSep "\n" (
             map (
               user:
-              "yes $(cat /var/secrets/ntfy-users | grep ${user.username} | awk -F'=' '{print $2}' | xargs) | ntfy user -c /etc/ntfy/server.yml add --role=${user.role} ${user.username}"
+              "yes $(cat /var/secrets/ntfy-users | grep ${user.username} | awk -F'=' '{print $2}' | xargs) | ntfy user -c /etc/ntfy/server.yml add --ignore-exists --role=${user.role} ${user.username}"
             ) cfg.users
           )}
 

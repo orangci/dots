@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
   inherit (lib)
     mkIf
@@ -9,9 +14,13 @@ let
     ;
   cfg = config.modules.server.ntfy.scripts.example;
   topicsOptions = import ../topicsOptions.nix { inherit config lib; };
-  script = pkgs.writeShellScriptBin "ntfy-script-example" ''
-    script content
-  '';
+  script = pkgs.writeShellApplication {
+    name = "ntfy-script-example";
+    runtimeInputs = with pkgs; [ curl ];
+    text = ''
+      script content
+    '';
+  };
 in
 {
   options.modules.server.ntfy.scripts.example = {
@@ -36,7 +45,7 @@ in
       after = [ "ntfy-sh.service" ];
       wantedBy = [ "multi-user.target" ];
       serviceConfig = {
-        ExecStart = "${script}/bin/ntfy-script-example";
+        ExecStart = script.name;
         Restart = "always";
         RestartSec = 5;
         User = "ntfy-sh";

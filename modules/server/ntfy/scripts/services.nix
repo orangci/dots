@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
   inherit (lib)
     mkIf
@@ -9,10 +14,14 @@ let
     ;
   cfg = config.modules.server.ntfy.scripts.services;
   topicsOptions = import ../topicsOptions.nix { inherit config lib; };
-  script = pkgs.writeShellScriptBin "ntfy-script-services" ''
-    curl -d "Memories of Phantasm" -u :$NTFY_ACCESS_TOKEN https://ntfy.orangc.net/services
-    sleep 10000000000
-  '';
+  script = pkgs.writeShellApplication {
+    name = "ntfy-script-services";
+    runtimeInputs = with pkgs; [ curl ];
+    text = ''
+        curl -d "Memories of Phantasm" -u :"$NTFY_ACCESS_TOKEN" https://ntfy.orangc.net/services
+      sleep 10000000000
+    '';
+  };
 in
 {
   options.modules.server.ntfy.scripts.services = {
@@ -27,6 +36,7 @@ in
   };
 
   config = mkIf cfg.enable {
+    environment.systemPackages = singleton script;
     modules.server.ntfy.topics = singleton {
       name = cfg.topic;
       users = cfg.users;
@@ -37,7 +47,7 @@ in
       after = [ "ntfy-sh.service" ];
       wantedBy = [ "multi-user.target" ];
       serviceConfig = {
-        ExecStart = "${script}/bin/ntfy-script-services";
+        ExecStart = script.name;
         Restart = "always";
         RestartSec = 5;
         User = "ntfy-sh";
