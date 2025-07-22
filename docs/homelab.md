@@ -1,29 +1,24 @@
-# Urithiru Plan
+# Installation
+https://nixos.org/manual/nixos/stable/#sec-installation-manual
 
-## Setup checklist
 - [ ] Plug the computer in (after finding a suitable place to do so). Boot it to check if it works.
 - [ ] Install NixOS onto the computer (assuming the main drive is `/dev/sda`):
     - `wipefs -a /dev/sda`
     - `nix-shell -p parted git btrfs-progs`
     - `parted /dev/sda -- mklabel gpt`
-    - `parted /dev/sda -- mkpart primary fat32 1MiB 513MiB`
-    - `parted /dev/sda -- set 1 esp on`
-    - `parted /dev/sda -- mkpart primary btrfs 513MiB 100%`
-    - `mkfs.vfat -F32 /dev/sda1`
-    - `mkfs.btrfs /dev/sda2`
-    - `mount /dev/sda2 /mnt`
-    - `mkdir /mnt/boot`
-    - `mount /dev/sda1 /mnt/boot`
-    - `git clone https://github.com/orangci/dots && cd dots`
-    - `nixos-generate-config --root /mnt --show-hardware-config > hosts/urithiru/hardware.nix && git add .`
-    - `nixos-install --flake .#urithiru --root /mnt`
+    - `parted /dev/sda -- mkpart root btrfs 512MB`
+    - `parted /dev/sda -- mkpart ESP fat32 1MB 512MB`
+    - `parted /dev/sda -- set 2 esp on`
+    - `mkfs.btrfs -L urithiru /dev/sda1`
+    - `mkfs.fat -F 32 -n boot /dev/sda2`
+    - `mount /dev/disk/by-label/urithiru /mnt`
+    - `mkdir -p /mnt/boot`
+    - `mount -o umask=077 /dev/disk/by-label/boot /mnt/boot`
+    - `nixos-generate-config --root /mnt --show-hardware-config > hosts/urithiru/hardware.nix`
+    - Commit and push
+    - `nixos-install --flake .#urithiru`
     - `nixos-enter --root /mnt`
-    - `git clone https://github.com/orangci/dots && cd dots`
-    - `nixos-generate-config --show-hardware-config > hosts/urithiru/hardware.nix && git add .`
-    - `nixos-rebuild switch --flake .#urithiru`
-    - `nixos-rebuild boot --flake .#urithiru`
-    - `sudo passwd orangc <new password>`
-    - `sudo passwd same password as above`
+    - `passwd orangc`
     - `cat /etc/ssh/ssh_host_ed25519_key.pub | ssh-to-age`
     - Setup secrets configuration with the above host key.
     - Use `ip a` to find the local IP. From now on, we will assume it is `192.168.1.42`.
