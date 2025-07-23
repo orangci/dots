@@ -121,7 +121,8 @@
         };
         scripts = {
           services.enable = true;
-          cpu_temperature.enable = true;
+          cpu-temperature.enable = true;
+          power-on.enable = true;
         };
       };
 

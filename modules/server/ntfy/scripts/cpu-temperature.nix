@@ -12,10 +12,10 @@ let
     types
     singleton
     ;
-  cfg = config.modules.server.ntfy.scripts.cpu_temperature;
+  cfg = config.modules.server.ntfy.scripts.cpu-temperature;
   topicsOptions = import ../topicsOptions.nix { inherit config lib; };
   script = pkgs.writeShellApplication {
-    name = "ntfy-script-cpu_temperature";
+    name = "ntfy-script-cpu-temperature";
     runtimeInputs = with pkgs; [
       curl
       lm_sensors
@@ -51,11 +51,11 @@ let
   };
 in
 {
-  options.modules.server.ntfy.scripts.cpu_temperature = {
-    enable = mkEnableOption "Enable cpu_temperature script for Ntfy";
+  options.modules.server.ntfy.scripts.cpu-temperature = {
+    enable = mkEnableOption "Enable cpu-temperature script for Ntfy";
     users = topicsOptions.users;
     topic = topicsOptions.topic // {
-      default = "cpu_temperature";
+      default = "cpu-temperature";
     };
     permission = topicsOptions.permission // {
       default = "read-only";
@@ -68,12 +68,12 @@ in
       users = cfg.users;
       permission = cfg.permission;
     };
-    systemd.services.ntfy-cpu_temperature-script = {
-      description = "Ntfy cpu_temperature script";
+    systemd.services.ntfy-cpu-temperature-script = {
+      description = "Ntfy cpu-temperature script";
       after = [ "ntfy-sh.service" ];
       wantedBy = [ "multi-user.target" ];
       serviceConfig = {
-        ExecStart = "${script}/bin/ntfy-script-cpu_temperature";
+        ExecStart = "${script}/bin/ntfy-script-cpu-temperature";
         Restart = "always";
         RestartSec = 5;
         User = "ntfy-sh";

@@ -1,6 +1,7 @@
 {
   imports = [
     ./services.nix
-    ./cpu_temperature.nix
+    ./cpu-temperature.nix
+    ./power-on.nix
   ];
 }
