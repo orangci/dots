@@ -31,14 +31,11 @@
     username = "${username}";
     homeDirectory = "/home/${username}";
     stateVersion = "25.05";
-    file.".face.icon".source = ../../assets/face.png;
   };
 
-  dconf.settings = {
-    "org/virt-manager/virt-manager/connections" = {
-      autoconnect = [ "qemu:///system" ];
-      uris = [ "qemu:///system" ];
-    };
+  dconf.settings."org/virt-manager/virt-manager/connections" = {
+    autoconnect = [ "qemu:///system" ];
+    uris = [ "qemu:///system" ];
   };
   programs.home-manager.enable = true;
 }

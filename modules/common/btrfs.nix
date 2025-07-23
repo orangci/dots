@@ -9,7 +9,7 @@ let
 in
 {
   options.modules.common.btrfs = {
-    enable = mkEnableOption "Enable btrfs";
+    enable = mkEnableOption "Enable btrfs autoscrub";
   };
 
   config = lib.mkIf cfg.enable {

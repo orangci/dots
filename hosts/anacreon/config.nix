@@ -44,42 +44,7 @@
       };
     };
     styles.fonts.enable = true;
-    server = {
-      caddy.enable = true;
-      cloudflared.enable = true;
-      
-      glance = {
-        enable = true;
-        domain = "glance.orangc.net";
-        port = 8804;
-      };
-
-      ntfy = {
-        enable = true;
-        domain = "ntfy.orangc.net";
-        port = 8809;
-        users = lib.singleton {
-          username = "orangc";
-          role = "admin";
-        };
-        scripts = {
-          services.enable = true;
-        };
-      };
-
-      searxng = {
-        enable = true;
-        domain = "search.orangc.net";
-        port = 8811;
-      };
-
-      moodle = {
-        # TODO: broken
-        enable = false;
-        domain = "moodle.orangc.net";
-        port = 8820;
-      };
-    };
+    # server modules that are broken (TODO): moodle, bracket, chibisafe, cryptpad, pelican
   };
   local.hardware-clock.enable = true;
   drivers = {
@@ -92,13 +57,6 @@
       nvidiaBusID = "";
     };
   };
-
-  # swapDevices = [
-  #   {
-  #     device = "/swapfile";
-  #     size = 8 * 1024; # 8GB
-  #   }
-  # ];
 
   time.timeZone = "Asia/Riyadh";
   system.stateVersion = "25.05";

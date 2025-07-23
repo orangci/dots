@@ -73,7 +73,7 @@
       hypr = {
         land.enable = true;
         lock.enable = true;
-        idle.enable = false;
+        idle.enable = true;
       };
       widgets = {
         wlogout = {
@@ -128,11 +128,9 @@
     ];
   };
 
-  dconf.settings = {
-    "org/virt-manager/virt-manager/connections" = {
-      autoconnect = [ "qemu:///system" ];
-      uris = [ "qemu:///system" ];
-    };
+  dconf.settings."org/virt-manager/virt-manager/connections" = {
+    autoconnect = [ "qemu:///system" ];
+    uris = [ "qemu:///system" ];
   };
   programs.home-manager.enable = true;
 }
