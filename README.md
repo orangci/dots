@@ -14,10 +14,10 @@
 > Going through my code for little bits and things to borrow or learn from is totally fine (as long as you respect the license and credit me appropriately).
 > This flake is very much a work in progress; I'm constantly working on improving and I have many things planned for it in the future.
 
-Modular NixOS configuration for my machines. Very lightweight! A fresh installation of this flake (with the modules enabled in [anacreon](./hosts/anacreon/config.nix)) will be *18 gigabytes*, which isn't bad at all in my opinion.
+Modular NixOS configuration for my machines. Very lightweight! A fresh installation of this flake (with the modules enabled in [komashi](./hosts/komashi/config.nix)) will be *18 gigabytes*, which isn't bad at all in my opinion.
 
 Hosts:
-- anacreon (PC ~ Hyprland)
+- komashi (PC ~ Hyprland)
 - helicon (portable USB, meant to be plugged in to any machine ~ Hyprland)
 - urithiru (homelab/server)
 
