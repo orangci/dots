@@ -19,6 +19,7 @@ let
     runtimeInputs = with pkgs; [
       curl
       lm_sensors
+      gawk
     ];
     text = ''
       #!/usr/bin/env bash
