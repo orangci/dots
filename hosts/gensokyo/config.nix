@@ -11,7 +11,6 @@
   ];
 
   modules = {
-    dm.sddm.enable = true;
     styles.fonts.enable = true;
     common = {
       bluetooth.enable = false;
@@ -21,9 +20,9 @@
       btrfs.enable = true;
     };
     server = {
-      caddy.enable = false;
-      cloudflared.enable = false;
-      technitium.enable = false;
+      caddy.enable = true;
+      cloudflared.enable = true;
+      technitium.enable = true;
 
       bracket = {
         enable = false;
@@ -38,7 +37,7 @@
       };
 
       convertx = {
-        enable = false;
+        enable = true;
         domain = "convert.orangc.net";
         port = 8802;
       };
@@ -50,51 +49,51 @@
       };
 
       filebrowser = {
-        enable = false;
+        enable = true;
         domain = "files.orangc.net";
         port = 8804;
       };
 
       gitea = {
-        enable = false;
+        enable = true;
         domain = "git.orangc.net";
         port = 8805;
       };
 
       glance = {
-        enable = false;
+        enable = true;
         domain = "glance.orangc.net";
         port = 8806;
       };
 
       immich = {
-        enable = false;
+        enable = true;
         domain = "media.orangc.net";
         port = 8807;
       };
 
       it-tools = {
-        enable = false;
+        enable = true;
         domain = "tools.orangc.net";
         port = 8808;
       };
 
       jellyfin = {
-        enable = false;
+        enable = true;
         domain = "jf.orangc.net";
         port = 8096; # can't be changed via the nixos module
       };
 
       microbin = {
-        enable = false;
+        enable = true;
         domain = "bin.orangc.net";
         port = 8809;
       };
 
       minecraft = {
-        enable = false;
+        enable = true;
         juniper-s10 = {
-          enable = false;
+          enable = true;
           port = 8810;
           minRAM = 1;
           maxRAM = 12;
@@ -113,7 +112,7 @@
       };
 
       ntfy = {
-        enable = false;
+        enable = true;
         domain = "ntfy.orangc.net";
         port = 8812;
         users = lib.singleton {
@@ -121,9 +120,9 @@
           role = "admin";
         };
         scripts = {
-          services.enable = false;
-          cpu-temperature.enable = false;
-          power-on.enable = false;
+          services.enable = true;
+          cpu-temperature.enable = true;
+          power-on.enable = true;
         };
       };
 
@@ -140,13 +139,13 @@
       };
 
       searxng = {
-        enable = false;
+        enable = true;
         domain = "search.orangc.net";
         port = 8815;
       };
 
       speedtest = {
-        enable = false;
+        enable = true;
         domain = "speedtest.orangc.net";
         port = 8816;
       };
@@ -158,13 +157,13 @@
       };
 
       vaultwarden = {
-        enable = false;
+        enable = true;
         domain = "vault.orangc.net";
         port = 8818;
       };
 
       zipline = {
-        enable = false;
+        enable = true;
         domain = "zip.orangc.net";
         port = 8819;
       };
