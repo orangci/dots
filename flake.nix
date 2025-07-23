@@ -126,7 +126,7 @@
       nixosConfigurations = {
         komashi = nixosMachine { host = "komashi"; };
         helicon = nixosMachine { host = "helicon"; };
-        urithiru = nixosMachine { host = "urithiru"; };
+        gensokyo = nixosMachine { host = "gensokyo"; };
       };
     };
 }
