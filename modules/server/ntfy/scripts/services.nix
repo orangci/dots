@@ -39,7 +39,7 @@ let
 
       notify_down() {
         local domain="$1"
-        curl -d "$domain is down!" -H "p: low" -u :"$NTFY_ACCESS_TOKEN" https://ntfy.orangc.net/services
+        curl -d "$domain is down!" -H "p: low" -u :"$NTFY_ACCESS_TOKEN" https://ntfy.orangc.net/${cfg.topic}
       }
 
       check_domain() {
@@ -55,7 +55,7 @@ let
         for domain in "''${domains[@]}"; do
           if check_domain "$domain"; then
             if [ "''${notified_flags[$domain]:-0}" -eq 1 ]; then
-              curl -d "$domain is back online!" -H "p: low" -u :"$NTFY_ACCESS_TOKEN" https://ntfy.orangc.net/services
+              curl -d "$domain is back online!" -H "p: low" -u :"$NTFY_ACCESS_TOKEN" https://ntfy.orangc.net/${cfg.topic}
             fi
             failure_counts[$domain]=0
             notified_flags[$domain]=0

@@ -18,7 +18,7 @@ let
     name = "ntfy-script-example";
     runtimeInputs = with pkgs; [ curl ];
     text = ''
-      script content
+      you may use $NTFY_ACCESS_TOKEN in this script to reference the ntfy access token
     '';
   };
 in
