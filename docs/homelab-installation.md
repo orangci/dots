@@ -34,6 +34,6 @@ https://nixos.org/manual/nixos/stable/#sec-installation-manual
 - [ ] Set up Jellyfin.
 - [ ] Regenerate the following secrets and place them in secrets.yaml: technitium, speedtest, immich, ntfy.
 - [ ] Check the other services in order to confirm that they're all working.
-- [ ] Pregenerate Juniper's chunks, put it in maintenance mode, and set the world border to 1,000.
+- [ ] Pregenerate Juniper's chunks, put it in maintenance mode, and set the world border to 1,000. Set up rconc with `sudo -u minecraft rconc server add jp localhost:7810 password`.
 
 Use `ssh orangc@192.168.1.42` in order to SSH into the homelab.

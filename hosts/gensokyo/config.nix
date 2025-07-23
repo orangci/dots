@@ -163,7 +163,7 @@
       };
 
       zipline = {
-        enable = false;
+        enable = true;
         domain = "zip.orangc.net";
         port = 8819;
       };
