@@ -18,7 +18,7 @@ Modular NixOS configuration for my machines. Very lightweight! A fresh installat
 
 Hosts:
 - komashi (PC ~ Hyprland)
-- helicon (portable USB, meant to be plugged in to any machine ~ Hyprland)
+- sirius (portable USB, meant to be plugged in to any machine ~ Hyprland)
 - gensokyo (homelab/server)
 
 <!-- ## screenshots

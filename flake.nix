@@ -125,7 +125,7 @@
       formatter.${system} = nixpkgs.legacyPackages.${system}.nixfmt-rfc-style;
       nixosConfigurations = {
         komashi = nixosMachine { host = "komashi"; };
-        helicon = nixosMachine { host = "helicon"; };
+        sirius = nixosMachine { host = "sirius"; };
         gensokyo = nixosMachine { host = "gensokyo"; };
       };
     };
