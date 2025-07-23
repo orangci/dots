@@ -47,7 +47,7 @@
     server = {
       caddy.enable = true;
       cloudflared.enable = true;
-
+      
       glance = {
         enable = true;
         domain = "glance.orangc.net";
@@ -55,7 +55,6 @@
       };
 
       ntfy = {
-        # TODO: status monitor notifs
         enable = true;
         domain = "ntfy.orangc.net";
         port = 8809;

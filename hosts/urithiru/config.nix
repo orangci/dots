@@ -112,22 +112,16 @@
       };
 
       ntfy = {
-        enable = true;
+        enable = false;
         domain = "ntfy.orangc.net";
         port = 8812;
-        users = [
-          {
-            username = "orangc";
-            role = "admin";
-          }
-        ];
-        topics = [
-          {
-            name = "services";
-            users = [ "everyone" ];
-            permission = "read-only";
-          }
-        ];
+        users = lib.singleton {
+          username = "orangc";
+          role = "admin";
+        };
+        scripts = {
+          services.enable = true;
+        };
       };
 
       ollama = {

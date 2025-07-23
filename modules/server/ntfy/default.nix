@@ -1,4 +1,4 @@
-# Thank you to https://github.com/Stef-00012/dots/blob/main/modules/server/ntfy.nix
+# Thank you to https://github.com/Stef-00012/dots/blob/main/modules/server/ntfy.nix for the original topicsOptions and the ntfy-users script
 {
   config,
   lib,
