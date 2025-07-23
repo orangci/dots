@@ -1,6 +1,7 @@
 {
   pkgs,
   username,
+  lib,
   ...
 }:
 {
@@ -20,9 +21,9 @@
       btrfs.enable = true;
     };
     server = {
-      caddy.enable = true;
-      cloudflared.enable = true;
-      technitium.enable = true;
+      caddy.enable = false;
+      cloudflared.enable = false;
+      technitium.enable = false;
 
       bracket = {
         enable = false;
@@ -37,7 +38,7 @@
       };
 
       convertx = {
-        enable = true;
+        enable = false;
         domain = "convert.orangc.net";
         port = 8802;
       };
@@ -49,51 +50,51 @@
       };
 
       filebrowser = {
-        enable = true;
+        enable = false;
         domain = "files.orangc.net";
         port = 8804;
       };
 
       gitea = {
-        enable = true;
+        enable = false;
         domain = "git.orangc.net";
         port = 8805;
       };
 
       glance = {
-        enable = true;
+        enable = false;
         domain = "glance.orangc.net";
         port = 8806;
       };
 
       immich = {
-        enable = true;
+        enable = false;
         domain = "media.orangc.net";
         port = 8807;
       };
 
       it-tools = {
-        enable = true;
+        enable = false;
         domain = "tools.orangc.net";
         port = 8808;
       };
 
       jellyfin = {
-        enable = true;
+        enable = false;
         domain = "jf.orangc.net";
         port = 8096; # can't be changed via the nixos module
       };
 
       microbin = {
-        enable = true;
+        enable = false;
         domain = "bin.orangc.net";
         port = 8809;
       };
 
       minecraft = {
-        enable = true;
+        enable = false;
         juniper-s10 = {
-          enable = true;
+          enable = false;
           port = 8810;
           minRAM = 1;
           maxRAM = 12;
@@ -120,9 +121,9 @@
           role = "admin";
         };
         scripts = {
-          services.enable = true;
-          cpu-temperature.enable = true;
-          power-on.enable = true;
+          services.enable = false;
+          cpu-temperature.enable = false;
+          power-on.enable = false;
         };
       };
 
@@ -139,13 +140,13 @@
       };
 
       searxng = {
-        enable = true;
+        enable = false;
         domain = "search.orangc.net";
         port = 8815;
       };
 
       speedtest = {
-        enable = true;
+        enable = false;
         domain = "speedtest.orangc.net";
         port = 8816;
       };
@@ -157,13 +158,13 @@
       };
 
       vaultwarden = {
-        enable = true;
+        enable = false;
         domain = "vault.orangc.net";
         port = 8818;
       };
 
       zipline = {
-        enable = true;
+        enable = false;
         domain = "zip.orangc.net";
         port = 8819;
       };
