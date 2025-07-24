@@ -16,8 +16,8 @@ let
     ;
   cfg = config.modules.server.minecraft.juniper-s10;
   packwiz = pkgs.fetchPackwizModpack {
-    url = "https://github.com/orangci/minecraft-modpacks/raw/6f904d1beb90c828ca7ed0bcaada4a7abe9884d6/juniper-s10/pack.toml";
-    packHash = "sha256-kzlojqAnksWya+vMAe3YYr8fvcxf6b/I1KwBY61ZEXo=";
+    url = "https://github.com/orangci/minecraft-modpacks/raw/fd1c97554eb1bdad96906f7f08d3b7f675bb12ee/juniper-s10/pack.toml";
+    packHash = "sha256-xugHKAzyJRm8PJ1yywFhEV2qARUfzCE6VVKiMVKYD0c=";
     # dummy: sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=
   };
 in
@@ -121,6 +121,13 @@ in
 
         if [ -f "$pl3xmapConfig" ]; then
           sed -i "s|REPLACE_PL3XMAP_PORT|${toString (cfg.port - 2000)}|g" "$pl3xmapConfig"
+        fi
+
+        # polymer port
+        polymerConfig="config/polymer/auto-host.json"
+
+        if [ -f "$polymerConfig" ]; then
+          sed -i "s|REPLACE_POLYMER_PORT|${toString (cfg.port - 3000)}|g" "$polymerConfig"
         fi
       '';
 

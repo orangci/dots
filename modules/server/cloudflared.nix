@@ -49,6 +49,11 @@ in
               toString (config.modules.server.minecraft.juniper-s10.port - 2000)
             }";
           }
+          {
+            "mc-resourcepack.orangc.net" = "http://localhost:${
+              toString (config.modules.server.minecraft.juniper-s10.port - 3000)
+            }";
+          }
           dynamicIngress
         ];
       };

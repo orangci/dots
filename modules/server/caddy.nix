@@ -42,6 +42,10 @@ in
             mkIf config.modules.server.minecraft.juniper-s10.enable ''reverse_proxy localhost:${
               toString (config.modules.server.minecraft.juniper-s10.port - 2000)
             }'';
+          "mc-resourcepack.orangc.net".extraConfig =
+            mkIf config.modules.server.minecraft.juniper-s10.enable ''reverse_proxy localhost:${
+              toString (config.modules.server.minecraft.juniper-s10.port - 3000)
+            }'';
           ${config.modules.server.chibisafe.domain}.extraConfig = ''
             route {
               @api path /api/*
@@ -71,6 +75,9 @@ in
         dynamicVhosts
       ];
     };
-    networking.firewall.allowedTCPPorts = [ 80 443 ];
+    networking.firewall.allowedTCPPorts = [
+      80
+      443
+    ];
   };
 }
