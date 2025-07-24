@@ -24,3 +24,11 @@ Prerequisites:
 5. Cleaning up unused containers (usually used after disabling a server module that utilises oci-containers)
 
 `sudo podman system prune --all --volumes`
+
+6. To quickly open a port in the firewall:
+
+`sudo iptables -I INPUT -p tcp --dport 1234 -j ACCEPT`
+
+And to close it again:
+
+`sudo iptables -D INPUT -p tcp --dport 1234 -j ACCEPT`.

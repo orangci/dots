@@ -16,8 +16,8 @@ let
     ;
   cfg = config.modules.server.minecraft.juniper-s10;
   packwiz = pkgs.fetchPackwizModpack {
-    url = "https://github.com/orangci/minecraft-modpacks/raw/fd1c97554eb1bdad96906f7f08d3b7f675bb12ee/juniper-s10/pack.toml";
-    packHash = "sha256-xugHKAzyJRm8PJ1yywFhEV2qARUfzCE6VVKiMVKYD0c=";
+    url = "https://github.com/orangci/minecraft-modpacks/raw/5bf96915ef8589c1a6a1bd2baad80a0b0642c647/juniper-s10/pack.toml";
+    packHash = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
     # dummy: sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=
   };
 in
@@ -151,7 +151,7 @@ in
       # };
 
       serverProperties = {
-        motd = "§l  §r                §d§lJuniper §r— §a§lSeason X§r\\n§l §b               §o${cfg.motd}";
+        motd = "§l  §r                §d§lJuniper §r— §a§lSeason X§r\\n§l §b                   §o${cfg.motd}";
         level-seed = "888880777356331877";
         difficulty = "hard";
         allow-nether = false;
@@ -180,6 +180,9 @@ in
         spawn-protection = 16;
         view-distance = 10;
         white-list = false;
+        require-resource-pack = true;
+        resource-pack = "https://github.com/orangci/minecraft-modpacks/raw/refs/heads/master/juniper-s10/resourcepacks/pack.zip";
+        resource-pack-prompt = "If you don't use the resourcepacks, fumos will burn down your house <3";
       };
     };
   };
