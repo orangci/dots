@@ -26,7 +26,7 @@ let
       if mod ? icon then
         mod.icon
       else
-        "auto-invert sh:${lib.strings.replaceStrings [ " " ] [ "-" ] (lib.strings.toLower mod.name)}-light";
+        "sh:${lib.strings.replaceStrings [ " " ] [ "-" ] (lib.strings.toLower mod.name)}";
   }) sites;
 in
 {
