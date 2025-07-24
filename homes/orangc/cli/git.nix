@@ -79,7 +79,7 @@ in
       gp = "git push";
       gpf = "git push --force";
       push = "git push";
-      pull = "git push";
+      pull = "git pull";
     };
 
     home.packages = mkIf cfg.gitea [ pkgs.tea ];
