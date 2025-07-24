@@ -31,6 +31,7 @@ in
   };
 
   config = mkIf cfg.enable {
+    # Default user and pass is "admin" and "password"
     modules.common.sops.secrets.speedtest-app-key.path = "/var/secrets/speedtest-app-key";
     systemd.tmpfiles.rules = [ "d /var/lib/speedtest-tracker 0755 root root" ];
     virtualisation.oci-containers.containers.speedtest-tracker = {

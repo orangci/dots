@@ -109,6 +109,7 @@ in
                     hour-format = "24h";
                     hide-graph = false;
                     hide-top-domains = false;
+                    allow-insecure = true;
                     service = "technitium";
                     token = {
                       _secret = config.modules.common.sops.secrets.technitium-api-token.path;

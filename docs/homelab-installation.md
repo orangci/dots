@@ -30,7 +30,7 @@ https://nixos.org/manual/nixos/stable/#sec-installation-manual
 - [x] Create an account on the immich instance, then disable registration. Move wallpapers to Immich albums, make them public, and archive wallpaper related GitHub repositories.
 - [x] Create an account on the vaultwarden instance, then disable registration. Create a Proton Pass backup and import it into Vaultwarden.
 - [x] Set up Jellyfin.
-- [ ] Regenerate the following secrets and place them in secrets.yaml: technitium, speedtest, immich, ntfy.
+- [x] Regenerate the following secrets and place them in secrets.yaml: technitium, speedtest, immich, ntfy.
 - [x] Check the other services in order to confirm that they're all working.
 - [x] Pregenerate Juniper's chunks, put it in maintenance mode, and set the world border to 1,000. Set up rconc with `sudo -u minecraft rconc server add jp localhost:7810 password`.
 
