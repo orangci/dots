@@ -9,7 +9,7 @@
     ./ntfy
     ./technitium.nix
     ./glance.nix
-    ./gitea.nix
+    ./gitea
     ./cryptpad.nix
     ./it-tools.nix
     ./immich.nix

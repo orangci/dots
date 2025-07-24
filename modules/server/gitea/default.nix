@@ -50,6 +50,7 @@ in
       settings = {
         session.COOKIE_SECURE = true;
         service.DISABLE_REGISTRATION = true; # set to true after the first run
+        time.DEFAULT_UI_LOCATION = config.time.timeZone;
         server = {
           ROOT_URL = "https://${cfg.domain}/";
           DOMAIN = "https://${cfg.domain}/";
@@ -66,7 +67,7 @@ in
           THEMES = "catppuccin-mocha-rosewater,catppuccin-mocha-flamingo,catppuccin-mocha-pink,catppuccin-mocha-mauve,catppuccin-mocha-red,catppuccin-mocha-maroon,catppuccin-mocha-peach,catppuccin-mocha-yellow,catppuccin-mocha-green,catppuccin-mocha-teal,catppuccin-mocha-sky,catppuccin-mocha-sapphire,catppuccin-mocha-blue,catppuccin-mocha-lavender,catppuccin-rosewater-auto,catppuccin-flamingo-auto,catppuccin-pink-auto,catppuccin-mauve-auto,catppuccin-red-auto,catppuccin-maroon-auto,catppuccin-peach-auto,catppuccin-yellow-auto,catppuccin-green-auto,catppuccin-teal-auto,catppuccin-sky-auto,catppuccin-sapphire-auto,catppuccin-blue-auto,catppuccin-lavender-auto,gitea-auto";
         };
         "ui.meta" = {
-          AUTHOR = "gitea";
+          AUTHOR = "orangc";
           DESCRIPTION = "orangc's selfhosted instance of gitea";
         };
       };
@@ -83,6 +84,7 @@ in
         rm -rf ${config.services.gitea.stateDir}/custom/public/assets
         mkdir -p ${config.services.gitea.stateDir}/custom/public/assets
         ln -sf ${theme} ${config.services.gitea.stateDir}/custom/public/assets/css
+        ln -sf ${./public/assets/img} ${config.services.gitea.stateDir}/custom/public/assets/img
       '';
   };
 }
