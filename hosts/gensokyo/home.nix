@@ -18,11 +18,11 @@
         enable = true;
         zip = true;
       };
-
       git = {
         enable = true;
         username = "orangc";
         email = "c@orangc.net";
+        github = true;
       };
     };
   };
