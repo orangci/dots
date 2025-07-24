@@ -56,6 +56,7 @@ in
           DOMAIN = "https://${cfg.domain}/";
           HTTP_PORT = cfg.port;
           PROTOCOL = "http";
+          SSH_PORT = cfg.port - 1000;
         };
         repository = {
           # PREFERRED_LICENSES = ""; TODO
