@@ -20,9 +20,13 @@ let
   );
 
   siteList = builtins.map (mod: {
-    title = mod.name;
+    title = mod.name or mod.domain;
     url = "https://${mod.domain}";
-    icon = "sh:${lib.strings.replaceStrings [ " " ] [ "-" ] (lib.strings.toLower mod.name)}";
+    icon =
+      if mod ? icon then
+        mod.icon
+      else
+        "auto-invert sh:${lib.strings.replaceStrings [ " " ] [ "-" ] (lib.strings.toLower mod.name)}-light";
   }) sites;
 in
 {

@@ -28,6 +28,12 @@ in
       default = "zip.orangc.net";
       description = "The domain for zipline to be hosted at";
     };
+
+    icon = mkOption {
+      type = types.str;
+      default = "https://cdn.jsdelivr.net/gh/selfhst/icons/png/zipline.png";
+      description = "The zipline icon";
+    };
   };
 
   config = mkIf cfg.enable {
