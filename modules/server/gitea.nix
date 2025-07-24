@@ -63,7 +63,7 @@ in
         };
         ui = {
           DEFAULT_THEME = "catppuccin-mocha-mauve";
-          THEMES = "catppuccin-mocha-mauve,catppuccin-mocha-peach,catpuccin-mocha-red,catppuccin-mauve-auto,catppuccin-peach-auto,catppuccin-red-auto,gitea-auto";
+          THEMES = "catppuccin-mocha-rosewater,catppuccin-mocha-flamingo,catppuccin-mocha-pink,catppuccin-mocha-mauve,catppuccin-mocha-red,catppuccin-mocha-maroon,catppuccin-mocha-peach,catppuccin-mocha-yellow,catppuccin-mocha-green,catppuccin-mocha-teal,catppuccin-mocha-sky,catppuccin-mocha-sapphire,catppuccin-mocha-blue,catppuccin-mocha-lavender,catppuccin-rosewater-auto,catppuccin-flamingo-auto,catppuccin-pink-auto,catppuccin-mauve-auto,catppuccin-red-auto,catppuccin-maroon-auto,catppuccin-peach-auto,catppuccin-yellow-auto,catppuccin-green-auto,catppuccin-teal-auto,catppuccin-sky-auto,catppuccin-sapphire-auto,catppuccin-blue-auto,catppuccin-lavender-auto,gitea-auto";
         };
         "ui.meta" = {
           AUTHOR = "gitea";
@@ -71,33 +71,18 @@ in
         };
       };
     };
-    systemd.services.catppuccin-gitea-theme = {
-      description = "Install Catppuccin theme for Gitea";
-      wantedBy = [ "multi-user.target" ];
-      after = [ "gitea.service" ];
-      serviceConfig = {
-        Type = "oneshot";
-        User = "gitea";
-        ExecStart = pkgs.writeShellScript "install-catppuccin-gitea" ''
-          export PATH="${pkgs.curl}/bin:${pkgs.gnutar}/bin:${pkgs.gzip}/bin:${pkgs.coreutils}/bin"
-          set -e
-          THEME_DIR="/var/lib/gitea/custom/public/css"
-          URL="https://github.com/catppuccin/gitea/releases/download/v1.0.2/catppuccin-gitea.tar.gz"
-          TMP_FILE=/tmp/catppuccin-gitea.tar.gz
-
-          if [ -d "$THEME_DIR" ]; then
-            echo "Theme directory already exists. Skipping download."
-            exit 0
-          fi
-
-          echo "Downloading Catppuccin theme..."
-          curl -L "$URL" -o "$TMP_FILE"
-          echo "Extracting theme to $THEME_DIR..."
-          mkdir -p "$THEME_DIR"
-          tar -xzf "$TMP_FILE" -C "$THEME_DIR" --strip-components=1
-          echo "Theme installed."
-        '';
-      };
-    };
+    systemd.services.gitea.preStart =
+      let
+        theme = pkgs.fetchzip {
+          url = "https://github.com/catppuccin/gitea/releases/download/v1.0.2/catppuccin-gitea.tar.gz";
+          sha256 = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
+          stripRoot = false;
+        };
+      in
+      ''
+        rm -rf ${config.services.gitea.stateDir}/custom/public/assets
+        mkdir -p ${config.services.gitea.stateDir}/custom/public/assets
+        ln -sf ${theme} ${config.services.gitea.stateDir}/custom/public/assets/css
+      '';
   };
 }
