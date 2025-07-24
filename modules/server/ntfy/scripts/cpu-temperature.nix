@@ -69,7 +69,7 @@ in
       users = cfg.users;
       permission = cfg.permission;
     };
-    systemd.services.ntfy-cpu-temperature-script = {
+    systemd.services.ntfy-script-cpu-temperature = {
       description = "Ntfy cpu-temperature script";
       after = [ "ntfy-sh.service" ];
       wantedBy = [ "multi-user.target" ];

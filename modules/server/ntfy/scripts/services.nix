@@ -91,7 +91,7 @@ in
       users = cfg.users;
       permission = cfg.permission;
     };
-    systemd.services.ntfy-services-script = {
+    systemd.services.ntfy-script-services = {
       description = "Ntfy services script";
       after = [ "ntfy-sh.service" ];
       wantedBy = [ "multi-user.target" ];

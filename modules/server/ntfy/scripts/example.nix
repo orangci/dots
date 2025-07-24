@@ -40,7 +40,7 @@ in
       users = cfg.users;
       permission = cfg.permission;
     };
-    systemd.services.ntfy-example-script = {
+    systemd.services.ntfy-script-example = {
       description = "Ntfy example script";
       after = [ "ntfy-sh.service" ];
       wantedBy = [ "multi-user.target" ];

@@ -22,7 +22,7 @@ let
       #!/usr/bin/env bash
       set -euo pipefail
 
-      curl -s -d "✅ ${host} has powered on at $(date +"%B %d %H.%M")" -u :"$NTFY_ACCESS_TOKEN" https://ntfy.orangc.net/${cfg.topic}
+      curl -s -d "✅ ${host} has powered on at $(date +"%B %d, %H.%M")." -u :"$NTFY_ACCESS_TOKEN" https://ntfy.orangc.net/${cfg.topic}
     '';
   };
 in
@@ -44,7 +44,7 @@ in
       users = cfg.users;
       permission = cfg.permission;
     };
-    systemd.services.ntfy-power-on-script = {
+    systemd.services.ntfy-script-power-on = {
       description = "Ntfy power-on script";
       after = [ "ntfy-sh.service" ];
       wantedBy = [ "multi-user.target" ];
