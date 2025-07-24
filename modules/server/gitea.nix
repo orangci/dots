@@ -42,7 +42,7 @@ in
         # Backup configuration
         enable = true;
         type = "tar.gz";
-        file = "backup"; # Filename
+        file = "gitea-backup"; # Filename
         # Interval uses this specification: https://www.freedesktop.org/software/systemd/man/latest/systemd.time.html
         interval = "weekly";
       };
