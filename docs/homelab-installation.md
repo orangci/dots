@@ -28,7 +28,7 @@ https://nixos.org/manual/nixos/stable/#sec-installation-manual
 - [ ] In Technitium settings, set DNS overrides for all *.orangc.net subdomains in usage, so that we can use LAN.
 - [ ] Create an account on the Gitea instance, then disable registration. Set up mirroring with GitHub repositories.
 - [ ] Create an account on the immich instance, then disable registration. Move wallpapers to Immich albums, make them public, and archive wallpaper related GitHub repositories.
-- [ ] Create an account on the vaultwarden instance, then disable registration. Create a Proton Pass backup and import it into Vaultwarden.
+- [x] Create an account on the vaultwarden instance, then disable registration. Create a Proton Pass backup and import it into Vaultwarden.
 - [x] Set up Jellyfin.
 - [ ] Regenerate the following secrets and place them in secrets.yaml: technitium, speedtest, immich, ntfy.
 - [x] Check the other services in order to confirm that they're all working.
