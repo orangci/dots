@@ -41,7 +41,7 @@ in
       environmentFile = "/var/lib/vaultwarden.env";
       config = {
         domain = "https://${cfg.domain}/";
-        signupsAllowed = true;
+        signupsAllowed = false;
         rocketPort = cfg.port;
       };
     };
