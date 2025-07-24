@@ -72,6 +72,7 @@ in
       description = "Install Catppuccin theme for Gitea";
       wantedBy = [ "multi-user.target" ];
       after = [ "gitea.service" ];
+      User = "gitea";
       serviceConfig = {
         Type = "oneshot";
         ExecStart = pkgs.writeShellScript "install-catppuccin-gitea" ''
