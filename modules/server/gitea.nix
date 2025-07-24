@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }:
 let
@@ -34,7 +35,6 @@ in
   };
 
   config = mkIf cfg.enable {
-    # TODO: https://github.com/catppuccin/gitea
     services.gitea = {
       enable = true;
       appName = "gitea";
@@ -50,6 +50,7 @@ in
       settings = {
         session.COOKIE_SECURE = true;
         service.DISABLE_REGISTRATION = true; # set to true after the first run
+        ui.DEFAULT_THEME = "catppuccin-mocha-mauve";
         server = {
           ROOT_URL = "https://${cfg.domain}/";
           DOMAIN = "https://${cfg.domain}/";
@@ -65,6 +66,32 @@ in
           AUTHOR = "gitea";
           DESCRIPTION = "orangc's selfhosted instance of gitea";
         };
+      };
+    };
+    systemd.services.catppuccin-gitea-theme = {
+      description = "Install Catppuccin theme for Gitea";
+      wantedBy = [ "multi-user.target" ];
+      after = [ "gitea.service" ];
+      serviceConfig = {
+        Type = "oneshot";
+        ExecStart = pkgs.writeShellScript "install-catppuccin-gitea" ''
+          set -e
+          THEME_DIR="/var/lib/gitea/custom/public/assets/css"
+          URL="https://github.com/catppuccin/gitea/releases/download/v1.0.2/catppuccin-gitea.tar.gz"
+          TMP_FILE=$(mktemp)
+
+          if [ -d "$THEME_DIR" ]; then
+            echo "Theme directory already exists. Skipping download."
+            exit 0
+          fi
+
+          echo "Downloading Catppuccin theme..."
+          ${pkgs.curl}/bin/curl -L "$URL" -o "$TMP_FILE"
+          echo "Extracting theme to $THEME_DIR..."
+          mkdir -p "$THEME_DIR"
+          ${pkgs.gnutar}/bin/tar -xzf "$TMP_FILE" -C "$THEME_DIR" --strip-components=1
+          echo "Theme installed."
+        '';
       };
     };
   };
