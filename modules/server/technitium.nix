@@ -13,6 +13,7 @@ in
   options.modules.server.technitium.enable = mkEnableOption "Enable technitium";
 
   config = mkIf cfg.enable {
+    networking.firewall.allowedTCPPorts = [ 5380 ];
     systemd.services.technitium-dns-server = {
       description = "Technitium DNS Server";
       wantedBy = [ "multi-user.target" ];
