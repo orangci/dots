@@ -63,7 +63,7 @@ in
         };
         ui = {
           DEFAULT_THEME = "catppuccin-mocha-mauve";
-          THEMES = "catppuccin-mocha-mauve,catppuccin-mocha-peach,catpuccin-mocha-red,catppuccin-mauve-auto,catppuccin-peach-auto,catppuccin-red-auto";
+          # THEMES = "catppuccin-mocha-mauve,catppuccin-mocha-peach,catpuccin-mocha-red,catppuccin-mauve-auto,catppuccin-peach-auto,catppuccin-red-auto,gitea-auto";
         };
         "ui.meta" = {
           AUTHOR = "gitea";
@@ -81,7 +81,7 @@ in
         ExecStart = pkgs.writeShellScript "install-catppuccin-gitea" ''
           export PATH="${pkgs.curl}/bin:${pkgs.gnutar}/bin:${pkgs.gzip}/bin:${pkgs.coreutils}/bin"
           set -e
-          THEME_DIR="/var/lib/gitea/custom/public/assets/css"
+          THEME_DIR="/var/lib/gitea/custom/public/css"
           URL="https://github.com/catppuccin/gitea/releases/download/v1.0.2/catppuccin-gitea.tar.gz"
           TMP_FILE=/tmp/catppuccin-gitea.tar.gz
 
