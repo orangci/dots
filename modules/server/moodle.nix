@@ -35,12 +35,12 @@ in
       enable = true;
       initialPassword = "admin";
       database.port = cfg.port - 1000;
-      virtualHost.listen = [
-        {
-          ip = "*";
-          port = cfg.port;
-        }
-      ];
+      virtualHost.adminAddr = "c@orangc.net";
+      virtualHost.hostName = "127.0.0.1";
+      virtualHost.listen = lib.singleton {
+        ip = "*";
+        port = cfg.port;
+      };
     };
   };
 }
