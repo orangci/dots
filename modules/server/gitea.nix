@@ -72,10 +72,11 @@ in
       description = "Install Catppuccin theme for Gitea";
       wantedBy = [ "multi-user.target" ];
       after = [ "gitea.service" ];
-      User = "gitea";
       serviceConfig = {
         Type = "oneshot";
+        User = "gitea";
         ExecStart = pkgs.writeShellScript "install-catppuccin-gitea" ''
+          export PATH="${pkgs.curl}/bin:${pkgs.gnutar}/bin:${pkgs.gzip}/bin"
           set -e
           THEME_DIR="/var/lib/gitea/custom/public/assets/css"
           URL="https://github.com/catppuccin/gitea/releases/download/v1.0.2/catppuccin-gitea.tar.gz"
@@ -87,10 +88,10 @@ in
           fi
 
           echo "Downloading Catppuccin theme..."
-          ${pkgs.curl}/bin/curl -L "$URL" -o "$TMP_FILE"
+          curl -L "$URL" -o "$TMP_FILE"
           echo "Extracting theme to $THEME_DIR..."
           mkdir -p "$THEME_DIR"
-          ${pkgs.gnutar}/bin/tar -xzf "$TMP_FILE" -C "$THEME_DIR" --strip-components=1
+          tar -xzf "$TMP_FILE" -C "$THEME_DIR" --strip-components=1
           echo "Theme installed."
         '';
       };
