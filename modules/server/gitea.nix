@@ -50,18 +50,20 @@ in
       settings = {
         session.COOKIE_SECURE = true;
         service.DISABLE_REGISTRATION = true; # set to true after the first run
-        ui.DEFAULT_THEME = "catppuccin-mocha-mauve";
         server = {
           ROOT_URL = "https://${cfg.domain}/";
           DOMAIN = "https://${cfg.domain}/";
           HTTP_PORT = cfg.port;
           PROTOCOL = "http";
-          SSH_PORT = cfg.port - 1000;
         };
         repository = {
-          # PREFERRED_LICENSES = ""; TODO
+          PREFERRED_LICENSES = "AGPL-3.0, GPL-3.0, ISC, CC-BY-SA-4.0, MIT, BSD-3-Clause, Unlicense";
           DISABLE_STARS = true;
           DEFAULT_BRANCH = "master";
+        };
+        ui = {
+          DEFAULT_THEME = "catppuccin-mocha-mauve";
+          THEMES = "catppuccin-mocha-mauve, catppuccin-mocha-peach, catpuccin-mocha-red, catppuccin-mauve-auto, catppuccin-peach-auto, catppuccin-red-auto";
         };
         "ui.meta" = {
           AUTHOR = "gitea";
