@@ -19,7 +19,7 @@ in
         add_newline = true;
         hostname = {
           ssh_only = true;
-          format = "[](fg:#252525 bg:none)[█](fg:#E8E3E3 bg:#252525)[$ssh_symbol$hostname](bold bg:#252525)[](fg:#E8E3E3 bg:none) ";
+          format = "[](fg:#252525 bg:none)[█](fg:#252525 bg:#252525)[$ssh_symbol$hostname](bold bg:#252525)[](fg:#252525 bg:none) ";
           disabled = false;
         };
         directory = {
