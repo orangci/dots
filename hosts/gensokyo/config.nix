@@ -106,7 +106,7 @@
       };
 
       moodle = {
-        enable = false;
+        enable = true;
         domain = "moodle.orangc.net";
         port = 8811;
       };

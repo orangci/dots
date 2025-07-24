@@ -44,7 +44,6 @@
       };
     };
     styles.fonts.enable = true;
-    # server modules that are broken (TODO): moodle, bracket, chibisafe, cryptpad, pelican
   };
   local.hardware-clock.enable = true;
   drivers = {
