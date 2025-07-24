@@ -63,7 +63,7 @@ in
         };
         ui = {
           DEFAULT_THEME = "catppuccin-mocha-mauve";
-          # THEMES = "catppuccin-mocha-mauve,catppuccin-mocha-peach,catpuccin-mocha-red,catppuccin-mauve-auto,catppuccin-peach-auto,catppuccin-red-auto,gitea-auto";
+          THEMES = "catppuccin-mocha-mauve,catppuccin-mocha-peach,catpuccin-mocha-red,catppuccin-mauve-auto,catppuccin-peach-auto,catppuccin-red-auto,gitea-auto";
         };
         "ui.meta" = {
           AUTHOR = "gitea";
