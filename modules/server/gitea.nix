@@ -80,7 +80,7 @@ in
           set -e
           THEME_DIR="/var/lib/gitea/custom/public/assets/css"
           URL="https://github.com/catppuccin/gitea/releases/download/v1.0.2/catppuccin-gitea.tar.gz"
-          TMP_FILE=$(mktemp)
+          TMP_FILE=/tmp/catppuccin-gitea.tar.gz
 
           if [ -d "$THEME_DIR" ]; then
             echo "Theme directory already exists. Skipping download."
