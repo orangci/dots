@@ -57,13 +57,13 @@ in
           PROTOCOL = "http";
         };
         repository = {
-          PREFERRED_LICENSES = "AGPL-3.0, GPL-3.0, ISC, CC-BY-SA-4.0, MIT, BSD-3-Clause, Unlicense";
+          PREFERRED_LICENSES = "AGPL-3.0,GPL-3.0,ISC,CC-BY-SA-4.0,BSD-3-Clause,Unlicense";
           DISABLE_STARS = true;
           DEFAULT_BRANCH = "master";
         };
         ui = {
           DEFAULT_THEME = "catppuccin-mocha-mauve";
-          THEMES = "catppuccin-mocha-mauve, catppuccin-mocha-peach, catpuccin-mocha-red, catppuccin-mauve-auto, catppuccin-peach-auto, catppuccin-red-auto";
+          THEMES = "catppuccin-mocha-mauve,catppuccin-mocha-peach,catpuccin-mocha-red,catppuccin-mauve-auto,catppuccin-peach-auto,catppuccin-red-auto";
         };
         "ui.meta" = {
           AUTHOR = "gitea";
