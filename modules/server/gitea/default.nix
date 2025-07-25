@@ -56,6 +56,7 @@ in
           DOMAIN = "https://${cfg.domain}/";
           HTTP_PORT = cfg.port;
           PROTOCOL = "http";
+          LANDING_PAGE = "explore";
         };
         repository = {
           PREFERRED_LICENSES = "AGPL-3.0,GPL-3.0,ISC,CC-BY-SA-4.0,BSD-3-Clause,Unlicense";
