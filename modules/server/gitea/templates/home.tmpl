@@ -1,15 +1,10 @@
 {{template "base/head" .}}
-<div role="main" aria-label="{{if .IsSigned}}{{ctx.Locale.Tr "dashboard"}}{{else}}{{ctx.Locale.Tr "home"}}{{end}}" class="page-content home">
-	<div class="tw-mb-8 tw-px-8">
-		<div class="center">
-			<img class="logo" width="220" height="220" src="{{AssetUrlPrefix}}/img/logo.svg" alt="{{ctx.Locale.Tr "logo"}}">
-			<div class="hero">
-				<h2 class="ui icon header title tw-text-balance">
-					{{AppName}}
-				</h2>
-				<hP class="tw-text-balance">My selfhosted Git server. Most of my GitHub repositories are mirrored from here.</hp>
-			</div>
-		</div>
+<div role="main" aria-label="{{.Title}}" class="page-content explore repositories">
+	{{template "explore/navbar" .}}
+	<div class="ui container">
+		{{template "shared/repo_search" .}}
+		{{template "explore/repo_list" .}}
+		{{template "base/paginate" .}}
 	</div>
 </div>
 {{template "base/footer" .}}
