@@ -86,7 +86,6 @@ in
         ln -sf ${theme} ${config.services.gitea.stateDir}/custom/public/assets/css
         ln -sf ${./public/assets/img} ${config.services.gitea.stateDir}/custom/public/assets/img
         rm -rf ${config.services.gitea.stateDir}/custom/templates
-        mkdir -p ${config.services.gitea.stateDir}/custom/templates
         ln -sf ${./templates} ${config.services.gitea.stateDir}/custom/templates
       '';
   };
