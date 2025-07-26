@@ -26,5 +26,6 @@
     ./convertx.nix
     ./umami.nix
     ./postgresql.nix
+    ./forgejo.nix
   ];
 }

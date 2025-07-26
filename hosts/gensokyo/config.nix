@@ -61,6 +61,12 @@
         port = 8805;
       };
 
+      forgejo = {
+        enable = true;
+        domain = "forgejo.orangc.net";
+        port = 9805;
+      };
+
       glance = {
         enable = true;
         domain = "glance.orangc.net";
