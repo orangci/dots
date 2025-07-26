@@ -170,7 +170,7 @@
 
       postgresql = {
         enable = true;
-        port = 8820;
+        port = 5432;
       };
 
       umami = {

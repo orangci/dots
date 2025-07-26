@@ -46,7 +46,7 @@ in
       environmentFiles = [ "/var/secrets/umami-app-secret" ];
       volumes = [ "/run/postgresql:/run/postgresql:ro" ];
       environment = {
-        DATABASE_URL = "postgresql://umami:@localhost/umami?host=/run/postgresql";
+        DATABASE_URL = "postgresql://umami@localhost/umami?host=/run/postgresql";
         TRACKER_SCRIPT_NAME = "data.js";
         COLLECT_API_ENDPOINT = "/api/postData";
         DATABASE_TYPE = "postgresql";
