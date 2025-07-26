@@ -7,27 +7,33 @@
   lib,
   ...
 }:
+
 let
   inherit (lib)
     mkIf
-    getExe
     mkOption
     types
     mkEnableOption
+    getExe
     ;
+
   cfg = config.modules.server.minecraft.juniper-s10.automatic-backups;
+
   script = pkgs.writeShellScriptBin "juniper-rcon-backup" ''
     function rcon {
-        ${lib.getExe pkgs.rconc} jp "$1"
+        ${getExe pkgs.rconc} jp "$1"
     }
 
-    export PATH="$PATH:${pkgs.gzip}/bin/"
+    BACKUP_DIR=~/backups/juniper-s10
+    SNAPSHOT_DIR=$BACKUP_DIR/$(date +%F)
+    mkdir -p "$BACKUP_DIR"
 
-    mkdir -p ~/backups/juniper-s10
     rcon 'say [§4WARNING§r] The Server will back itself up in five minutes.'
     sleep 5m
 
     rcon 'say [§4WARNING§r] The Server backup process is starting §bNOW§r. Prepare for some lag...'
+
+    rcon "save-off"
 
     # rcon 'chunky trim overworld square 0 0 0 0 outside 0'
     # rcon 'chunky confirm'
@@ -36,15 +42,27 @@ let
     # rcon 'chunky trim the_end square 0 0 0 0 outside 0'
     # rcon 'chunky confirm'
 
-    rcon "save-off"
     rcon "save-all"
-    ${lib.getExe pkgs.gnutar} -cvpzf ~/backups/juniper-s10/backup-$(date +%F).tar.gz ~/juniper/world
+
+    mkdir -p "$(dirname "$SNAPSHOT_DIR")"
+    ${pkgs.btrfs-progs}/bin/btrfs subvolume snapshot ~/juniper/world "$SNAPSHOT_DIR"
+
     rcon "save-on"
 
     rcon 'say [§bNOTICE§r] The Server backup process has completed.'
 
-    # Delete older backups
-    find ~/backups/juniper-s10 -type f -mtime +7 -name 'backup-*.tar.gz' -delete
+    find "$BACKUP_DIR" -mindepth 1 -maxdepth 1 -type d -mtime +7 -exec ${pkgs.btrfs-progs}/bin/btrfs subvolume delete {} \; 2>/dev/null || true
+  '';
+
+  ensureSubvolScript = pkgs.writeShellScriptBin "ensure-juniper-subvol" ''
+    WORLD_DIR=~/juniper/world
+    mkdir -p ~/juniper/world.old
+    if ! ${pkgs.btrfs-progs}/bin/btrfs subvolume show "$WORLD_DIR" > /dev/null 2>&1; then
+      mv "$WORLD_DIR" ~/juniper/world.old
+      ${pkgs.btrfs-progs}/bin/btrfs subvolume create "$WORLD_DIR"
+      cp -aT ~/juniper/world.old "$WORLD_DIR"
+      rm -rf ~/juniper/world.old
+    fi
   '';
 in
 {
@@ -56,19 +74,34 @@ in
       description = "The frequency of which to perform backups and prunes";
     };
   };
+
   config = mkIf cfg.enable {
+    systemd.services.ensure-juniper-subvolume = {
+      enable = true;
+      description = "Ensure Juniper world folder is a btrfs subvolume";
+      before = [ "juniper-automatic-backups.service" ];
+      wantedBy = [ "multi-user.target" ];
+      serviceConfig = {
+        User = "minecraft";
+        Type = "oneshot";
+        ExecStart = "${ensureSubvolScript}/bin/ensure-juniper-subvol";
+      };
+    };
+
     systemd.services.juniper-automatic-backups = {
       enable = true;
       description = "Prune chunks and backup Juniper world folder to backup folder";
+      after = [ "ensure-juniper-subvolume.service" ];
       serviceConfig = {
         User = "minecraft";
         Type = "oneshot";
         ExecStart = "${script}/bin/juniper-rcon-backup";
       };
     };
+
     systemd.timers.juniper-automatic-backups = {
-      description = "Timer to regularly prune chunks of and backup Juniper";
       enable = true;
+      description = "Timer to regularly prune chunks and backup Juniper";
       wantedBy = [ "timers.target" ];
       timerConfig = {
         OnCalendar = cfg.frequency;
