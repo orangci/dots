@@ -177,7 +177,7 @@
 
       umami = {
         enable = true;
-        domain = "analytics.orangc.net";
+        domain = "umami.orangc.net";
         port = 8820;
       };
     };
