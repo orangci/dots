@@ -82,7 +82,7 @@ in
           stripRoot = false;
         };
       in
-      ''
+      lib.mkAfter ''
         rm -rf ${config.services.forgejo.stateDir}/custom/public/assets
         mkdir -p ${config.services.forgejo.stateDir}/custom/public/assets
         ln -sf ${theme} ${config.services.forgejo.stateDir}/custom/public/assets/css
