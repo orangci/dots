@@ -175,7 +175,7 @@
 
       umami = {
         enable = true;
-        domain = "zip.orangc.net";
+        domain = "analytics.orangc.net";
         port = 8821;
       };
     };
