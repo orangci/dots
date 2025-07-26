@@ -29,12 +29,12 @@ in
     services.postgresql = {
       enable = true;
       settings.port = cfg.port;
-      ensureDatabases = mkIf config.modules.server.umami.enable singleton "umami";
+      ensureDatabases = mkIf config.modules.server.umami.enable (singleton "umami");
 
-      ensureUsers = mkIf config.modules.server.umami.enable singleton {
+      ensureUsers = mkIf config.modules.server.umami.enable (singleton {
         name = "umami";
         ensureDBOwnership = true;
-      };
+      });
 
       authentication = builtins.concatStringsSep "\n" (
         map (
