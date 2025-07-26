@@ -12,11 +12,6 @@ let
     types
     ;
   cfg = config.modules.server.forgejo;
-  theme = pkgs.fetchzip {
-    url = "https://github.com/catppuccin/gitea/releases/download/v1.0.2/catppuccin-gitea.tar.gz";
-    sha256 = "sha256-rZHLORwLUfIFcB6K9yhrzr+UwdPNQVSadsw6rg8Q7gs=";
-    stripRoot = false;
-  };
 in
 {
   options.modules.server.forgejo = {
@@ -79,26 +74,20 @@ in
         };
       };
     };
-
-    systemd.services.forgejo-assets = {
-      description = "Prepare custom assets for Forgejo";
-      wantedBy = [ "multi-user.target" ];
-      before = [ "forgejo.service" ];
-      serviceConfig = {
-        Type = "oneshot";
-        RemainAfterExit = true;
-      };
-      script = ''
+    systemd.services.forgejo.preStart =
+      let
+        theme = pkgs.fetchzip {
+          url = "https://github.com/catppuccin/gitea/releases/download/v1.0.2/catppuccin-gitea.tar.gz";
+          sha256 = "sha256-rZHLORwLUfIFcB6K9yhrzr+UwdPNQVSadsw6rg8Q7gs=";
+          stripRoot = false;
+        };
+      in
+      lib.mkAfter ''
         rm -rf ${config.services.forgejo.stateDir}/custom/public/assets
         mkdir -p ${config.services.forgejo.stateDir}/custom/public/assets
         ln -sf ${theme} ${config.services.forgejo.stateDir}/custom/public/assets/css
         ln -sf ${./gitea/public/assets/img} ${config.services.forgejo.stateDir}/custom/public/assets/img
+        rm -rf ${config.services.forgejo.stateDir}/custom/templates
       '';
-    };
-
-    systemd.services.forgejo = {
-      after = [ "forgejo-assets.service" ];
-      requires = [ "forgejo-assets.service" ];
-    };
   };
 }
