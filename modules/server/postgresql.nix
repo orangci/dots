@@ -20,7 +20,7 @@ in
 
     port = mkOption {
       type = types.port;
-      default = 8800;
+      default = 5432;
       description = "The port for postgresql to be hosted at";
     };
   };

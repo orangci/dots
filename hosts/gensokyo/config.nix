@@ -23,6 +23,7 @@
       caddy.enable = true;
       cloudflared.enable = true;
       technitium.enable = true;
+      postgresql.enable = true;
 
       bracket = {
         enable = false;
@@ -168,15 +169,10 @@
         port = 8819;
       };
 
-      postgresql = {
-        enable = true;
-        port = 5432;
-      };
-
       umami = {
         enable = true;
         domain = "analytics.orangc.net";
-        port = 8821;
+        port = 8820;
       };
     };
   };
