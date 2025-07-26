@@ -88,7 +88,6 @@ in
         ln -sf ${theme} ${config.services.forgejo.stateDir}/custom/public/assets/css
         ln -sf ${./gitea/public/assets/img} ${config.services.forgejo.stateDir}/custom/public/assets/img
         rm -rf ${config.services.forgejo.stateDir}/custom/templates
-        ln -sf ${./gitea/templates} ${config.services.forgejo.stateDir}/custom/templates
       '';
   };
 }
