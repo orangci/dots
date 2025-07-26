@@ -55,16 +55,10 @@
         port = 8804;
       };
 
-      gitea = {
+      forgejo = {
         enable = true;
         domain = "git.orangc.net";
         port = 8805;
-      };
-
-      forgejo = {
-        enable = true;
-        domain = "forgejo.orangc.net";
-        port = 9805;
       };
 
       glance = {
