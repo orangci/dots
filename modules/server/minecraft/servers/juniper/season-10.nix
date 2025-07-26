@@ -76,11 +76,11 @@ in
       owner = "minecraft";
       path = "/var/secrets/juniper-in-game-chat-webhook";
     };
-    services.minecraft-servers.servers.juniper = mkIf cfg.enable {
+    services.minecraft-servers.servers.juniper = {
       enable = true;
       enableReload = true;
       autoStart = true;
-      restart = "always";
+      restart = "no";
       jvmOpts = "-Xms${toString cfg.minRAM}G -Xmx${toString cfg.maxRAM}G";
       # Update the loader version every now and then!
       # https://github.com/FabricMC/fabric-loader/releases
