@@ -37,7 +37,6 @@ in
   config = mkIf cfg.enable {
     services.forgejo = {
       enable = true;
-      appName = "forgejo";
       package = pkgs.forgejo;
       dump = {
         # Backup configuration
@@ -49,6 +48,7 @@ in
       };
 
       settings = {
+        DEFAULT.APP_NAME = "forgejo";
         session.COOKIE_SECURE = true;
         service.DISABLE_REGISTRATION = false; # set to true after the first run
         time.DEFAULT_UI_LOCATION = config.time.timeZone;
@@ -82,12 +82,15 @@ in
           stripRoot = false;
         };
       in
-      lib.mkAfter ''
-        rm -rf ${config.services.forgejo.stateDir}/custom/public/assets
-        mkdir -p ${config.services.forgejo.stateDir}/custom/public/assets
-        ln -sf ${theme} ${config.services.forgejo.stateDir}/custom/public/assets/css
-        ln -sf ${./gitea/public/assets/img} ${config.services.forgejo.stateDir}/custom/public/assets/img
-        rm -rf ${config.services.forgejo.stateDir}/custom/templates
-      '';
+      concatStringsSep [
+        config.systemd.services.forgejo.preStart
+        ''
+          rm -rf ${config.services.forgejo.stateDir}/custom/public/assets
+          mkdir -p ${config.services.forgejo.stateDir}/custom/public/assets
+          ln -sf ${theme} ${config.services.forgejo.stateDir}/custom/public/assets/css
+          ln -sf ${./gitea/public/assets/img} ${config.services.forgejo.stateDir}/custom/public/assets/img
+          rm -rf ${config.services.forgejo.stateDir}/custom/templates
+        ''
+      ];
   };
 }
