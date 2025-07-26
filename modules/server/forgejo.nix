@@ -82,7 +82,7 @@ in
           stripRoot = false;
         };
       in
-      concatStringsSep [
+      builtins.concatStringsSep [
         config.systemd.services.forgejo.preStart
         ''
           rm -rf ${config.services.forgejo.stateDir}/custom/public/assets
