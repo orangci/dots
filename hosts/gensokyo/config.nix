@@ -62,7 +62,7 @@
       };
 
       forgejo = {
-        enable = false;
+        enable = true;
         domain = "forgejo.orangc.net";
         port = 9805;
       };
