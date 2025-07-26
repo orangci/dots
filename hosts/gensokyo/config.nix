@@ -167,6 +167,17 @@
         domain = "zip.orangc.net";
         port = 8819;
       };
+
+      postgresql = {
+        enable = true;
+        port = 8820;
+      };
+
+      umami = {
+        enable = true;
+        domain = "zip.orangc.net";
+        port = 8821;
+      };
     };
   };
   local.hardware-clock.enable = true;

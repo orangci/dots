@@ -24,5 +24,7 @@
     ./jellyfin.nix
     ./moodle.nix
     ./convertx.nix
+    ./umami.nix
+    ./postgresql.nix
   ];
 }
