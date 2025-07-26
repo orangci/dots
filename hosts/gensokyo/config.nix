@@ -92,9 +92,9 @@
       };
 
       minecraft = {
-        enable = false;
+        enable = true;
         juniper-s10 = {
-          enable = false;
+          enable = true;
           port = 8810;
           minRAM = 1;
           maxRAM = 12;
