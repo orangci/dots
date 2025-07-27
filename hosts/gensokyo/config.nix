@@ -98,7 +98,7 @@
           port = 8810;
           minRAM = 1;
           maxRAM = 12;
-          motd = "Mountain of Faith";
+          motd = "         Hidden Star in Four Seasons";
           automatic-backups = {
             enable = true;
             frequency = "daily";
