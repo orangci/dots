@@ -18,12 +18,18 @@ in
   config = lib.mkIf cfg.enable {
     networking = {
       networkmanager.enable = true;
-      hostName = "${host}";
+      hostName = host;
       timeServers = options.networking.timeServers.default ++ [ "pool.ntp.org" ];
+      stevenBlackHosts = {
+        enableIPv6 = true;
+        blockFakenews = true;
+        blockGambling = true;
+        blockPorn = true;
+      };
     };
     # dns things
     environment.etc = {
-      "resolv.conf".text = "nameserver 1.1.1.1\n";
+      "resolv.conf".text = "nameserver 192.168.8.191\n";
     };
     networking.firewall = {
       enable = true;
