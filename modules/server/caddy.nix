@@ -38,6 +38,7 @@ in
         dynamicVhosts
         {
           "ping.localhost".extraConfig = ''respond pong'';
+          "bin.orangc.net, orangc.duckdns.org:80".extraConfig = ''reverse_proxy :${toString config.modules.server.microbin.port}'';
           "dns.localhost".extraConfig = ''reverse_proxy 127.0.0.1:5380'';
           "mc-map.orangc.net".extraConfig =
             mkIf config.modules.server.minecraft.juniper-s10.enable ''reverse_proxy localhost:${
