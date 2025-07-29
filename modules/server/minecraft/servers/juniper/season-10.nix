@@ -16,8 +16,8 @@ let
     ;
   cfg = config.modules.server.minecraft.juniper-s10;
   packwiz = pkgs.fetchPackwizModpack {
-    url = "https://github.com/orangci/minecraft-modpacks/raw/2f2e2ed7e86354abb21fda9133b1b43aa8351c9b/juniper-s10/pack.toml";
-    packHash = "sha256-arrARFLZUPsIGifq6Up4gAerZ8g65wgBszK7YcpxM5E=";
+    url = "https://github.com/orangci/minecraft-modpacks/raw/58c16d6cd58c8be750b0fcbe864d7bc1497b6072/juniper-s10/pack.toml";
+    packHash = "sha256-1BN6wgTGyR1Hm9VNGf+39rXRRamP/1tWxlj4cXT/Cgg=";
     # dummy: sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=
   };
 in
@@ -178,7 +178,7 @@ in
         server-port = cfg.port;
         simulation-distance = 8;
         spawn-protection = 16;
-        view-distance = 10;
+        view-distance = 16;
         white-list = false;
         require-resource-pack = true;
         resource-pack = "https://github.com/orangci/minecraft-modpacks/raw/refs/heads/master/juniper-s10/resourcepacks/pack.zip";

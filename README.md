@@ -10,7 +10,7 @@
 
 
 > [!CAUTION]
-> This flake is meant for my personal usage. Use at your own risk. Several (mostly the server related) modules utilise [secrets](./docs/secrets.md) and are inoperable with them.
+> This flake is meant for my personal usage. Use at your own risk. Several (mostly the server related) modules utilise [secrets](./docs/secrets.md) and are inoperable without them.
 > Going through my code for little bits and things to borrow or learn from is totally fine (as long as you respect the license and credit me appropriately).
 > This flake is very much a work in progress; I'm constantly working on improving it and I have many things planned for it in the future.
 

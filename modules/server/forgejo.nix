@@ -19,7 +19,7 @@ in
 
     name = mkOption {
       type = types.str;
-      default = "forgejo";
+      default = "Forgejo";
     };
 
     domain = mkOption {

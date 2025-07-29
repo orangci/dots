@@ -98,7 +98,7 @@
           port = 8810;
           minRAM = 1;
           maxRAM = 12;
-          motd = "         Hidden Star in Four Seasons";
+          motd = "               The Apothecary Diaries";
           automatic-backups = {
             enable = true;
             frequency = "daily";
