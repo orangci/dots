@@ -61,6 +61,8 @@
   system.stateVersion = "25.05";
   hardware.logitech.wireless.enable = true;
 
+  networking.nameservers = lib.singleton "192.168.8.191";
+
   environment.systemPackages = with pkgs; [
     nh
     micro

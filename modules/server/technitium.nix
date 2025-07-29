@@ -5,7 +5,7 @@
   ...
 }:
 let
-  inherit (lib) mkEnableOption mkIf;
+  inherit (lib) mkEnableOption mkIf singleton;
   cfg = config.modules.server.technitium;
   stateDir = "/var/lib/technitium-dns-server";
 in
@@ -13,7 +13,14 @@ in
   options.modules.server.technitium.enable = mkEnableOption "Enable technitium";
 
   config = mkIf cfg.enable {
-    networking.firewall.allowedTCPPorts = [ 5380 ];
+    networking.firewall = {
+      allowedUDPPorts = singleton 53;
+      allowedTCPPorts = [
+        53
+        5380
+        53443
+      ];
+    };
     systemd.services.technitium-dns-server = {
       description = "Technitium DNS Server";
       wantedBy = [ "multi-user.target" ];
