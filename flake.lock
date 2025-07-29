@@ -875,6 +875,7 @@
         "quickshell": "quickshell",
         "rust-overlay": "rust-overlay",
         "sops-nix": "sops-nix",
+        "stevenBlackHosts": "stevenBlackHosts",
         "stylix": "stylix",
         "walker": "walker"
       }
@@ -916,6 +917,26 @@
       "original": {
         "owner": "Mic92",
         "repo": "sops-nix",
+        "type": "github"
+      }
+    },
+    "stevenBlackHosts": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs-small"
+        ]
+      },
+      "locked": {
+        "lastModified": 1753544047,
+        "narHash": "sha256-QrJGRXmyOz7sAxDeefZ/vdeX07RwNqX00WPuw6KOnsI=",
+        "owner": "StevenBlack",
+        "repo": "hosts",
+        "rev": "08ebdd4bb52e87752084d34403abeafae109ffa1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "StevenBlack",
+        "repo": "hosts",
         "type": "github"
       }
     },
