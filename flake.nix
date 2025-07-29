@@ -76,6 +76,12 @@
       url = "github:ezKEa/aagl-gtk-on-nix";
       inputs.nixpkgs.follows = "nixpkgs-small";
     };
+
+    # for blocking gambling websites, porn, etc
+    stevenBlackHosts = {
+      url = "github:StevenBlack/hosts";
+      inputs.nixpkgs.follows = "nixpkgs-small";
+    };
   };
 
   outputs =

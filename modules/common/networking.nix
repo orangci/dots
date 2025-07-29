@@ -4,6 +4,7 @@
   host,
   lib,
   options,
+  inputs,
   ...
 }:
 let
@@ -11,6 +12,7 @@ let
   cfg = config.modules.common.networking;
 in
 {
+  imports = [ inputs.stevenBlackHosts.nixosModule ];
   options.modules.common.networking = {
     enable = mkEnableOption "Enable networking";
   };
