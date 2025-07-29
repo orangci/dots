@@ -24,7 +24,7 @@
       cloudflared.enable = true;
       technitium.enable = true;
       postgresql.enable = true;
-      duckdns.enable = true;
+      duckdns.enable = false;
 
       bracket = {
         enable = false;
