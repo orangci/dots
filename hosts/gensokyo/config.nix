@@ -24,16 +24,11 @@
       cloudflared.enable = true;
       technitium.enable = true;
       postgresql.enable = true;
+      duckdns.enable = true;
 
       bracket = {
         enable = false;
         domain = "bracket.orangc.net";
-        port = 8800;
-      };
-
-      chibisafe = {
-        enable = false;
-        domain = "safe.orangc.net";
         port = 8801;
       };
 

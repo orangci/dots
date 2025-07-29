@@ -7,4 +7,4 @@
 - use impermanence / make garbage collection actually good
 - nixify firefox extensions settings
 - fix up QT module — styling is ass currently
-- server modules that are broken: moodle, bracket, chibisafe, cryptpad, pelican
+- server modules that are broken: moodle, bracket, cryptpad, pelican

@@ -13,7 +13,6 @@
     ./cryptpad.nix
     ./it-tools.nix
     ./immich.nix
-    ./chibisafe.nix
     ./minecraft
     ./ollama.nix
     ./bracket.nix
@@ -27,5 +26,6 @@
     ./umami.nix
     ./postgresql.nix
     ./forgejo.nix
+    ./duckdns.nix
   ];
 }
