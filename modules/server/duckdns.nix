@@ -19,9 +19,9 @@ in
     modules.common.sops.secrets.duckdns-token.path = "/var/secrets/duckdns-token";
     networking.firewall.allowedTCPPorts =
       [ ]
-      ++ (optionals config.modules.server.minecraft.juniper.enable [
-        config.modules.server.minecraft.juniper.port # minecraft server itself
-        (config.modules.server.minecraft.juniper.port - 3000) # polymer autohost
+      ++ (optionals config.modules.server.minecraft.juniper-s10.enable [
+        config.modules.server.minecraft.juniper-s10.port # minecraft server itself
+        (config.modules.server.minecraft.juniper-s10.port - 3000) # polymer autohost
       ])
       ++ (optionals config.modules.server.caddy.enable [
         80
@@ -29,8 +29,8 @@ in
       ]);
     networking.firewall.allowedUDPPorts =
       [ ]
-      ++ (optionals config.modules.server.minecraft.juniper.enable [
-        config.modules.server.minecraft.juniper.port # UDP port for simple voice chat
+      ++ (optionals config.modules.server.minecraft.juniper-s10.enable [
+        config.modules.server.minecraft.juniper-s10.port # UDP port for simple voice chat
       ]);
     services.duckdns = {
       enable = true;

@@ -63,11 +63,10 @@ in
         CapabilityBoundingSet = [ "CAP_NET_BIND_SERVICE" ];
       };
     };
+    users.groups.technitium = { };
     users.users.technitium = {
       isSystemUser = true;
       group = "technitium";
     };
-
-    users.groups.technitium = { };
   };
 }
