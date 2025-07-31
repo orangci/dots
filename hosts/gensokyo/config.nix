@@ -93,7 +93,7 @@
           port = 8810;
           minRAM = 1;
           maxRAM = 12;
-          motd = "               The Apothecary Diaries";
+          motd = "                   Never change the past, Cheng Xiaoshi!";
           automatic-backups = {
             enable = true;
             frequency = "daily";

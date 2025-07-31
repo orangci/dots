@@ -119,7 +119,6 @@
                     ;
                 };
                 useUserPackages = true;
-                useGlobalPkgs = true;
                 backupFileExtension = "backup";
                 users.${username} = import ./hosts/${host}/home.nix;
               };
