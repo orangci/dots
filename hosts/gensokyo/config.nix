@@ -93,7 +93,7 @@
           port = 8810;
           minRAM = 1;
           maxRAM = 12;
-          motd = "                   Never change the past, Cheng Xiaoshi!";
+          motd = "                Into the Nether!";
           automatic-backups = {
             enable = true;
             frequency = "daily";

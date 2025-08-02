@@ -16,8 +16,8 @@ let
     ;
   cfg = config.modules.server.minecraft.juniper-s10;
   packwiz = pkgs.fetchPackwizModpack {
-    url = "https://github.com/orangci/minecraft-modpacks/raw/5f4e66b0fbac98a7b8576e866cdfe569ba001dfa/juniper-s10/pack.toml";
-    packHash = "sha256-kh+FpN78GG8B0NGFKjO++tiySPstmafPppU/YDpoKoM=";
+    url = "https://github.com/orangci/minecraft-modpacks/raw/80685abec0b4e022fd1e7bffef7bb3ac4079c229/juniper-s10/pack.toml";
+    packHash = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
     # dummy: sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=
   };
 in
@@ -154,7 +154,7 @@ in
         motd = "§l  §r                §d§lJuniper §r— §a§lSeason X§r\\n§l §b§o${cfg.motd}";
         level-seed = "888880777356331877";
         difficulty = "hard";
-        allow-nether = false;
+        allow-nether = true;
         broadcast-console-to-ops = false;
         broadcast-rcon-to-ops = false;
         bug-report-link = "https://orangc.net/gh/minecraft-modpacks/issues/new";
