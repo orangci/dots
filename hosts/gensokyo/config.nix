@@ -93,7 +93,7 @@
           port = 8810;
           minRAM = 1;
           maxRAM = 12;
-          motd = "                Into the Nether!";
+          motd = "                     Reimu is not donation-obsessed!";
           automatic-backups = {
             enable = true;
             frequency = "daily";
