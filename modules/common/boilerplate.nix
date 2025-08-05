@@ -100,6 +100,7 @@
   # Optimization settings and garbage collection automation
   nix = {
     settings = {
+      warn-dirty = false;
       auto-optimise-store = true;
       experimental-features = [
         "nix-command"
