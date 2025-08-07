@@ -93,7 +93,7 @@
           port = 8810;
           minRAM = 1;
           maxRAM = 12;
-          motd = "                     Reimu is not donation-obsessed!";
+          motd = "                    Silent Sinner In Blue";
           automatic-backups = {
             enable = true;
             frequency = "daily";
@@ -176,6 +176,7 @@
 
   time.timeZone = "Asia/Riyadh";
   system.stateVersion = "25.05";
+  networking.nameservers = ["192.168.0.191"];
 
   environment.systemPackages = with pkgs; [
     lxqt.lxqt-policykit

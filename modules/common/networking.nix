@@ -8,7 +8,7 @@
   ...
 }:
 let
-  inherit (lib) mkEnableOption;
+  inherit (lib) mkDefault mkEnableOption;
   cfg = config.modules.common.networking;
 in
 {
@@ -30,9 +30,7 @@ in
       };
     };
     # dns things
-    environment.etc = {
-      "resolv.conf".text = "nameserver 192.168.8.191\n";
-    };
+    networking.nameservers = mkDefault [ "1.1.1.1" ];
     networking.firewall = {
       enable = true;
       allowedTCPPortRanges = [
