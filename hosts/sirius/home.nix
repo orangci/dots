@@ -5,6 +5,7 @@
   ...
 }:
 {
+  nixpkgs.config.allowUnfree = true;
   imports = [ ../../homes/${username} ];
 
   hmModules = {
