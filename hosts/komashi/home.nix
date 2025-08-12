@@ -28,8 +28,6 @@
         username = "orangc";
         email = "c@orangc.net";
         github = true;
-        gitea = true;
-        lfs = true;
       };
     };
     misc = {
@@ -85,7 +83,7 @@
         swaync.enable = true;
         waybar.enable = true;
         walker.enable = true;
-        ignis.enable = true;
+        ignis.enable = false;
       };
       media = {
         enable = true;

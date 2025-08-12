@@ -5,7 +5,7 @@
   ...
 }:
 let
-  inherit (lib) mkEnableOption mkIf;
+  inherit (lib) mkEnableOption singleton mkIf;
   cfg = config.hmModules.programs.widgets.waybar;
   waybarBottom = false; # If the waybar should be at the bottom of the screen instead of the top
 in
@@ -15,6 +15,7 @@ in
     enable = mkEnableOption "Enable waybar";
   };
   config = mkIf cfg.enable {
+    wayland.windowManager.hyprland.settings.exec-once = singleton "waybar &";
     home.packages = [ pkgs.wttrbar ];
     programs.waybar = {
       enable = true;

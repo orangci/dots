@@ -12,16 +12,10 @@
     };
 
     # unstable Hyprland
-    hyprland = {
-      url = "github:hyprwm/Hyprland";
-      inputs.nixpkgs.follows = "nixpkgs-small";
-    };
+    hyprland.url = "github:hyprwm/Hyprland";
 
     # i don't know if i still want to be using stylix but we'll stick with it
-    stylix = {
-      url = "github:danth/stylix";
-      inputs.nixpkgs.follows = "nixpkgs-small";
-    };
+    stylix.url = "github:danth/stylix";
 
     # ferris says hi!
     rust-overlay = {
@@ -29,11 +23,8 @@
       inputs.nixpkgs.follows = "nixpkgs-small";
     };
 
-    # my own quickshell rice coming soon!! maybe! (using end-4's currently)
-    quickshell = {
-      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
-      inputs.nixpkgs.follows = "nixpkgs-small";
-    };
+    # quickshillin' it
+    quickshell.url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
 
     # fancy nixy neovim
     nvf = {
@@ -66,16 +57,10 @@
     };
 
     # walker (we be walkin') written by a bald man
-    walker = {
-      url = "github:abenz1267/walker";
-      inputs.nixpkgs.follows = "nixpkgs-small";
-    };
+    walker.url = "github:abenz1267/walker";
 
     # for hoyoverse games like genshin and honkai
-    aagl = {
-      url = "github:ezKEa/aagl-gtk-on-nix";
-      inputs.nixpkgs.follows = "nixpkgs-small";
-    };
+    aagl.url = "github:ezKEa/aagl-gtk-on-nix";
 
     # for blocking gambling websites, porn, etc
     stevenBlackHosts = {

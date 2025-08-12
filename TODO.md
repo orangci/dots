@@ -1,10 +1,16 @@
 - multi user support
 - take a look at [nixos-generators](https://github.com/nix-community/nixos-generators)
 - fix xdg stuff
-- rice starship myself 
 - full disk encryption
 - secure boot (maybe)
 - use impermanence / make garbage collection actually good
 - nixify firefox extensions settings
 - fix up QT module — styling is ass currently
 - server modules that are broken: moodle, bracket, cryptpad, pelican
+- fix ntfy: the scripts don't *seem* to work?
+- syncthing module, perhaps
+- create backups of my data, and an organised schedule and system for backing up data
+- re-install sirius.. *again*
+- ignis has an hm module now, use it
+- switch to hjem and pretend the bullet point above this one doesn't exist
+- fix umami module it seems broken

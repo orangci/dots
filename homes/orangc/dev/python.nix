@@ -26,8 +26,8 @@ in
 
     version = mkOption {
       type = types.str;
-      default = "python313";
-      description = "Python version to use (e.g. 'python312', 'python311')";
+      default = "python314";
+      description = "Python version to use (e.g. 'python314', 'python312')";
     };
 
     mypy = mkEnableOption "Include mypy (type checker)";
@@ -45,20 +45,11 @@ in
   config = mkIf cfg.enable (mkMerge [
     {
       home.packages =
-        with pkgs;
         [
-          (python3.withPackages (
-            ps: with ps; [
-              (inputs.ignis.packages.${pkgs.stdenv.hostPlatform.system}.ignis.override {
-                extraPackages = [
-                  # Add extra packages if needed
-                ];
-              })
-            ]
-          ))
-          uv
-          ruff
-          virtualenv
+          pkgs.${cfg.version}
+          pkgs.uv
+          pkgs.ruff
+          pkgs.virtualenv
         ]
         ++ lib.optionals cfg.mypy [ pkgs.mypy ]
         ++ lib.optionals cfg.pyright [ pkgs.pyright ]
