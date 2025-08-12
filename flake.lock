@@ -850,26 +850,6 @@
         "type": "github"
       }
     },
-    "pelican": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs-small"
-        ]
-      },
-      "locked": {
-        "lastModified": 1751213115,
-        "narHash": "sha256-+laRoFzLgNBUcSLZ5bufcFd5KXfPSW6RUJf9jnbjDn4=",
-        "owner": "orangci",
-        "repo": "pterodactyl.nix",
-        "rev": "c9514efe64622f9a4624b4702d0e13a08d56d780",
-        "type": "github"
-      },
-      "original": {
-        "owner": "orangci",
-        "repo": "pterodactyl.nix",
-        "type": "github"
-      }
-    },
     "pre-commit-hooks": {
       "inputs": {
         "flake-compat": "flake-compat_2",
@@ -921,7 +901,6 @@
         "nixpkgs": "nixpkgs_4",
         "nixpkgs-small": "nixpkgs-small",
         "nvf": "nvf",
-        "pelican": "pelican",
         "quickshell": "quickshell",
         "rust-overlay": "rust-overlay_2",
         "sops-nix": "sops-nix",

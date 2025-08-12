@@ -128,12 +128,6 @@
         port = 8813;
       };
 
-      pelican = {
-        enable = false;
-        domain = "pelican.orangc.net";
-        port = 8814;
-      };
-
       searxng = {
         enable = true;
         domain = "search.orangc.net";

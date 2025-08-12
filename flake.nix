@@ -44,12 +44,6 @@
       inputs.nixpkgs.follows = "nixpkgs-small";
     };
 
-    # modules.server.pelican
-    pelican = {
-      url = "github:orangci/pterodactyl.nix";
-      inputs.nixpkgs.follows = "nixpkgs-small";
-    };
-
     # widgets framework configurable in *python*!!
     ignis = {
       url = "github:ignis-sh/ignis";

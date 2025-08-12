@@ -6,7 +6,7 @@
 - use impermanence / make garbage collection actually good
 - nixify firefox extensions settings
 - fix up QT module — styling is ass currently
-- server modules that are broken: moodle, bracket, cryptpad, pelican
+- server modules that are broken: moodle, bracket, cryptpad
 - fix ntfy: the scripts don't *seem* to work?
 - syncthing module, perhaps
 - create backups of my data, and an organised schedule and system for backing up data
