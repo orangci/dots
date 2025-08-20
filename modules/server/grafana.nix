@@ -70,10 +70,15 @@ in
         users.default_language = "en-GB";
       };
     };
+    modules.server.ntfy.topics = singleton {
+      name = "grafana";
+      users = let users = config.modules.server.ntfy.users or []; in lib.map (user: user.username) users;
+      permission = "read-only";
+    };
     services.grafana-to-ntfy = mkIf config.modules.server.ntfy.enable {
       enable = true;
-      ntfyUrl = "https://${config.modules.server.ntfy.domain}/grafana";
       settings = {
+        ntfyUrl = "https://${config.modules.server.ntfy.domain}/grafana";
         bauthUser = "grafana";
         bauthPass = config.modules.common.sops.secrets.grafana-to-ntfy-bauth-pass.path;
         ntfyBAuthUser = "grafana";
