@@ -163,6 +163,12 @@
         domain = "umami.orangc.net";
         port = 8820;
       };
+
+      grafana = {
+        enable = true;
+        domain = "grafana.orangc.net";
+        port = 8821;
+      };
     };
   };
   local.hardware-clock.enable = true;

@@ -26,5 +26,6 @@
     ./postgresql.nix
     ./forgejo.nix
     ./duckdns.nix
+    ./grafana.nix
   ];
 }
