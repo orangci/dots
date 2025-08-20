@@ -56,7 +56,7 @@ in
     enable = mkEnableOption "Enable cpu-temperature script for Ntfy";
     users = topicsOptions.users;
     topic = topicsOptions.topic // {
-      default = "cpu-temperature";
+      default = "cpu_temperature";
     };
     permission = topicsOptions.permission // {
       default = "read-only";

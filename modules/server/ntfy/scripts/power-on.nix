@@ -31,7 +31,7 @@ in
     enable = mkEnableOption "Enable power-on script for Ntfy";
     users = topicsOptions.users;
     topic = topicsOptions.topic // {
-      default = "power-on";
+      default = "power_on";
     };
     permission = topicsOptions.permission // {
       default = "read-only";
