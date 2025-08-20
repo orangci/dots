@@ -77,7 +77,7 @@ in
         bauthUser = "grafana";
         bauthPass = config.modules.common.sops.secrets.grafana-to-ntfy-bauth-pass.path;
         ntfyBAuthUser = "grafana";
-        ntfyBAuthPass = modules.common.sops.secrets.grafana-to-ntfy-bauth-pass.path;
+        ntfyBAuthPass = config.modules.common.sops.secrets.grafana-to-ntfy-bauth-pass.path;
       };
     };
   };
