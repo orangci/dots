@@ -23,6 +23,8 @@ let
     filebin = "curl bashupload.com -T";
     ftp = "ncftp";
     clock = "date +'The time is %H.%M on a %A. The date is %b %d, %Y C.E.'";
+    randompw = "head -c 64 /dev/urandom | base64";
+    jl = "micro ~/docs/journal/$(date -I).md";
 
     # nix stuff
     fr = "nh os switch --hostname ${host} $FLAKE";

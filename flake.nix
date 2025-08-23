@@ -61,12 +61,25 @@
       url = "github:StevenBlack/hosts";
       inputs.nixpkgs.follows = "nixpkgs-small";
     };
+
+    # hjem is a rafware alternative to home-mananager
+    hjem = {
+      url = "github:feel-co/hjem";
+      inputs.nixpkgs.follows = "nixpkgs-small";
+    };
+
+    hjem-rum = {
+      url = "github:snugnug/hjem-rum";
+      inputs.nixpkgs.follows = "nixpkgs-small";
+      inputs.hjem.follows = "hjem";
+    };
   };
 
   outputs =
     inputs@{
       nixpkgs,
       home-manager,
+      hjem,
       ...
     }:
     let
@@ -87,6 +100,7 @@
           modules = [
             ./hosts/${host}/config.nix
             home-manager.nixosModules.home-manager
+            hjem.nixosModules.default
             {
               home-manager = {
                 extraSpecialArgs = {

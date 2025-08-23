@@ -80,6 +80,7 @@
       homeMode = "755";
       isNormalUser = true;
       description = "${username}";
+      initialPassword = "password";
       extraGroups = [
         "networkmanager"
         "wheel"

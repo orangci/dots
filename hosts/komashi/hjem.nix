@@ -5,10 +5,25 @@
   ...
 }:
 {
-  imports = [ ../../homes/${username} ];
-  nixpkgs.config.allowUnfree = true;
+  imports = [
+    ../../hjem/${username}
+    (mkAliasOptionModule [ "hj" ] [ "hjem" "users" username ])
+  ];
 
-  hmModules = {
+  hjem = {
+    linker = pkgs.smfh;
+    clobberByDefault = true;
+    users.${username} = {
+      enable = true;
+      packages = with pkgs; [
+        hyprpicker
+        obsidian
+        pinta
+      ];
+    };
+  };
+
+  hjModules = {
     cli = {
       fetch.enable = true;
       shell.program = "fish";
@@ -113,22 +128,4 @@
       };
     };
   };
-
-  home = {
-    username = "${username}";
-    homeDirectory = "/home/${username}";
-    stateVersion = "25.05";
-    file.".face.icon".source = ../../assets/face.png;
-    packages = with pkgs; [
-      hyprpicker
-      obsidian
-      pinta
-    ];
-  };
-
-  dconf.settings."org/virt-manager/virt-manager/connections" = {
-    autoconnect = [ "qemu:///system" ];
-    uris = [ "qemu:///system" ];
-  };
-  programs.home-manager.enable = true;
 }
