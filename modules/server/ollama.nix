@@ -33,7 +33,7 @@ in
   config = mkIf cfg.enable {
     services.ollama = {
       enable = true;
-      port = (cfg.port - 1000);
+      port = cfg.port - 1000;
       acceleration = false;
       loadModels = [ "gemma3" ];
     };

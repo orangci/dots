@@ -21,7 +21,7 @@ let
     let
       conf = config.modules.server.${srv};
     in
-    conf.enable == true && lib.hasAttrByPath [ "domain" ] conf && conf.domain != null
+    conf.enable && lib.hasAttrByPath [ "domain" ] conf && conf.domain != null
   ) servers;
 
   domainList = builtins.map (srv: config.modules.server.${srv}.domain) monitoredModules;
@@ -75,7 +75,7 @@ in
 {
   options.modules.server.ntfy.scripts.services = {
     enable = mkEnableOption "Enable services script for Ntfy";
-    users = topicsOptions.users;
+    inherit (topicsOptions) users;
     topic = topicsOptions.topic // {
       default = "services";
     };

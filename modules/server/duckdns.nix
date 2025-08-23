@@ -18,8 +18,7 @@ in
   config = mkIf cfg.enable {
     modules.common.sops.secrets.duckdns-token.path = "/var/secrets/duckdns-token";
     networking.firewall.allowedTCPPorts =
-      [ ]
-      ++ (optionals config.modules.server.minecraft.juniper-s10.enable [
+      (optionals config.modules.server.minecraft.juniper-s10.enable [
         config.modules.server.minecraft.juniper-s10.port # minecraft server itself
         (config.modules.server.minecraft.juniper-s10.port - 3000) # polymer autohost
       ])
@@ -28,10 +27,9 @@ in
         443
       ]);
     networking.firewall.allowedUDPPorts =
-      [ ]
-      ++ (optionals config.modules.server.minecraft.juniper-s10.enable [
+      optionals config.modules.server.minecraft.juniper-s10.enable [
         config.modules.server.minecraft.juniper-s10.port # UDP port for simple voice chat
-      ]);
+      ];
     services.duckdns = {
       enable = true;
       tokenFile = config.modules.common.sops.secrets.duckdns-token.path;

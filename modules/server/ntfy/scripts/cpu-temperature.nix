@@ -54,7 +54,7 @@ in
 {
   options.modules.server.ntfy.scripts.cpu-temperature = {
     enable = mkEnableOption "Enable cpu-temperature script for Ntfy";
-    users = topicsOptions.users;
+    inherit (topicsOptions) users;
     topic = topicsOptions.topic // {
       default = "cpu_temperature";
     };

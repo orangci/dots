@@ -38,7 +38,7 @@ in
       enable = true;
       settings = {
         httpPort = cfg.port;
-        websocketPort = (cfg.port - 1000);
+        websocketPort = cfg.port - 1000;
         httpSafeOrigin = cfg.domain;
         httpUnsafeOrigin = "https://${cfg.domain}/";
         logToStdout = false;

@@ -14,7 +14,7 @@ let
     ;
   cfg = config.hmModules.programs;
   colours = config.stylix.base16Scheme;
-  fonts = config.stylix.fonts;
+  inherit (config.stylix) fonts;
   base16-discord = pkgs.concatTextFile {
     name = "base16-discord.css";
     files = [

@@ -11,8 +11,7 @@ let
 
   gamingPackages =
     with pkgs;
-    [ ] # Conditionally include packages based on options
-    ++ (optionals cfg.wine.enable [
+    (optionals cfg.wine.enable [
       wineWow64Packages.wayland
       winetricks
       protontricks

@@ -29,7 +29,7 @@ in
 {
   options.modules.server.ntfy.scripts.power-on = {
     enable = mkEnableOption "Enable power-on script for Ntfy";
-    users = topicsOptions.users;
+    inherit (topicsOptions) users;
     topic = topicsOptions.topic // {
       default = "power_on";
     };

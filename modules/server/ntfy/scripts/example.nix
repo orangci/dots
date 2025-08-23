@@ -25,7 +25,7 @@ in
 {
   options.modules.server.ntfy.scripts.example = {
     enable = mkEnableOption "Enable example script for Ntfy";
-    users = topicsOptions.users;
+    inherit (topicsOptions) users;
     topic = topicsOptions.topic // {
       default = "example";
     };

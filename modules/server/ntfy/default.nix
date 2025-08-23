@@ -66,8 +66,8 @@ in
         types.submodule {
           options = {
             name = topicsOptions.topic;
-            users = topicsOptions.users;
-            permission = topicsOptions.permission;
+            inherit (topicsOptions) users;
+            inherit (topicsOptions) permission;
           };
         }
       );

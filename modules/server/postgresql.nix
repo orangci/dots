@@ -39,11 +39,11 @@ in
       authentication = builtins.concatStringsSep "\n" (
         map (
           user:
-          builtins.concatStringsSep "\n" ([
+          builtins.concatStringsSep "\n" [
             "local ${user.name} ${user.name} trust"
             # "host ${user.name} ${user.name} 127.0.0.1/32 trust"
             # "host ${user.name} ${user.name} ::1/128 trust"
-          ])
+          ]
         ) config.services.postgresql.ensureUsers
       );
     };
