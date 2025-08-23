@@ -37,7 +37,7 @@ in
       layerrule = [ "blur,logout_dialog" ];
     };
     home = {
-      packages = [ logoutScript wleave ];
+      packages = [ logoutScript pkgs.wleave ];
       file.".config/wleave" = {
         source = ./config;
         recursive = true;
