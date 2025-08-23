@@ -9,7 +9,7 @@ window {
 button {
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 20%;
+    background-size: 30%;
     background-color: transparent;
     animation: gradient_f 20s ease-in infinite;
     transition: all 0.3s ease-in;
@@ -20,7 +20,7 @@ button {
 
 button:focus {
     box-shadow: none;
-    background-size : 20%;
+    background-size : 30%;
     border: 0px solid;
 }
 

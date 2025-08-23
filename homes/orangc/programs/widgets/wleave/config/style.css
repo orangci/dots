@@ -4,9 +4,7 @@
     font-family: Lexend;
 }
 
-window {
-    background-color: transparent;
-}
+window { background-color: transparent; }
 
 button {
     color: rgba(205, 214, 244, .6);
@@ -36,55 +34,36 @@ button:hover {
     transition: all 0.3s cubic-bezier(.55,0.0,.28,1.682);
 }
 
-button:hover#lock {
-    margin : 15px 0px 0px 15px;
-}
+button:hover#lock { margin: 15px 0px 0px 15px; }
+button:hover#logout { margin: 0px 0px 15px 15px; }
+button:hover#shutdown { margin: 15px 15px 0px 0px; }
+button:hover#reboot { margin: 0px 15px 15px 0px; }
 
-button:hover#logout {
-    margin : 0px 0px 15px 15px;
-}
-
-button:hover#shutdown {
-    margin : 15px 15px 0px 0px;
-}
-
-button:hover#reboot {
-    margin : 0px 15px 15px 0px;
-}
-
-button:focus#lock {
-    margin : 0px;
-}
-button:focus#logout {
-    margin : 0px;
-}
-button:focus#shutdown {
-    margin : 0px;
-}
-button:focus#reboot {
-    margin : 0px;
-}
+button:focus#lock { margin : 0px; }
+button:focus#logout { margin : 0px; }
+button:focus#shutdown { margin : 0px; }
+button:focus#reboot { margin : 0px; }
 
 #lock {
-    background-image: image(url("icons/lock_white.png"));
+    background-image: url("icons/lock_white.png");
     border-radius: 50px 0px 0px 0px;
     margin : 30px 0px 0px 30px;
 }
 
 #logout {
-    background-image: image(url("icons/logout_white.png"));
+    background-image: url("icons/logout_white.png");
     border-radius: 0px 0px 0px 50px;
     margin : 0px 0px 30px 30px;
 }
 
 #shutdown {
-    background-image: image(url("icons/shutdown_white.png"));
+    background-image: url("icons/shutdown_white.png");
     border-radius: 0px 50px 0px 0px;
     margin : 30px 30px 0px 0px;
 }
 
 #reboot {
-    background-image: image(url("icons/reboot_white.png"));
+    background-image: url("icons/reboot_white.png");
     border-radius: 0px 0px 50px 0px;
     margin : 0px 30px 30px 0px;
 }

@@ -15,12 +15,12 @@ let
 
   logoutScript = pkgs.writeShellScriptBin "logout-exit" ''
     wleave -k --css ${
-      if cfg.horizontal then ./config/style_horizontal.css else ./config/style.css
+      if cfg.horizontal then "~/.config/wleave/style_horizontal.css" else "~/.config/wleave/style.css"
     } --layout ${
       if cfg.horizontal then
-        "${./config/layout_horizontal} -b 5 -T 400 -B 400"
+        "~/.config/wleave/layout_horizontal -b 5 -T 400 -B 400"
       else
-        "${./config/layout} -b 2 -L 600 -R 600"
+        "~/.config/wleave/layout -b 2 -L 600 -R 600"
     }
   '';
 in
