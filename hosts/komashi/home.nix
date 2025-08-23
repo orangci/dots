@@ -75,7 +75,7 @@
         idle.enable = true;
       };
       widgets = {
-        wlogout = {
+        wleave = {
           enable = true;
           horizontal = true;
         };

@@ -2,7 +2,7 @@
   imports = [
     ./rofi
     ./waybar
-    ./wlogout
+    ./wleave
     ./swaync
     ./walker.nix
     ./ignis.nix

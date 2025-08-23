@@ -10,5 +10,4 @@
 - create backups of my data, and an organised schedule and system for backing up data
 - re-install sirius.. *again*
 - switch to hjem
-- switch from wlogout to wleave
 - look into other image viewers. oculante? fix up mpv to use as my image viewer instead of gwenview? or just keep using gwenview?
