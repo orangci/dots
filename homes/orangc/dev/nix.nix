@@ -22,6 +22,7 @@ in
       nix-prefetch-github
       compose2nix
       deadnix
+      statix
     ];
     hmModules.cli.shell.extraAliases = {
       list-big-pkgs = "nix path-info -hsr /run/current-system/ | sort -hrk2 | head -n 30";
