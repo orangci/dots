@@ -32,38 +32,13 @@ button:hover {
     transition: all 0.3s cubic-bezier(.55, 0.0, .28, 1.682), box-shadow 0.5s ease-in;
 }
 
-#shutdown {
-    background-image: image(url("icons/shutdown_white.png"));
-}
-#shutdown:hover {
-  background-image: image(url("icons/shutdown_black.png"));
-}
-
-#logout {
-    background-image: image(url("icons/logout_white.png"));
-
-}
-#logout:hover {
-  background-image: image(url("icons/logout_black.png"));
-}
-
-#reboot {
-    background-image: image(url("icons/reboot_white.png"));
-}
-#reboot:hover {
-  background-image: image(url("icons/reboot_black.png"));
-}
-
-#lock {
-    background-image: image(url("icons/lock_white.png"));
-}
-#lock:hover {
-  background-image: image(url("icons/lock_black.png"));
-}
-
-#hibernate {
-    background-image: image(url("icons/hibernate_white.png"));
-}
-#hibernate:hover {
-  background-image: image(url("icons/hibernate_black.png"));
-}
+#shutdown { background-image: url("icons/shutdown_white.png"); }
+#shutdown:hover { background-image: url("icons/shutdown_black.png"); }
+#logout { background-image: url("icons/logout_white.png"); }
+#logout:hover { background-image: url("icons/logout_black.png"))}
+#reboot { background-image: url("icons/reboot_white.png"); }
+#reboot:hover { background-image: url("icons/reboot_black.png"); }
+#lock { background-image: url("icons/lock_white.png"); }
+#lock:hover { background-image: url("icons/lock_black.png"); }
+#hibernate { background-image: url("icons/hibernate_white.png"); }
+#hibernate:hover { background-image: url("icons/hibernate_black.png"); }

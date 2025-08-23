@@ -14,10 +14,13 @@ let
   cfg = config.hmModules.programs.widgets.wleave;
 
   logoutScript = pkgs.writeShellScriptBin "logout-exit" ''
-    wleave --css ~/.config/wleave/${
-      if cfg.horizontal then "style_horizontal.css" else "style.css"
-    } --layout ~/.config/wleave/${
-      if cfg.horizontal then "layout_horizontal -b 5 -T 400 -B 400" else "layout -b 2 -L 600 -R 600"
+    wleave -k --css ${
+      if cfg.horizontal then ./config/style_horizontal.css else ./config/style.css
+    } --layout ${
+      if cfg.horizontal then
+        "${./config/layout_horizontal} -b 5 -T 400 -B 400"
+      else
+        "${./config/layout} -b 2 -L 600 -R 600"
     }
   '';
 in
@@ -34,10 +37,13 @@ in
   config = mkIf cfg.enable {
     wayland.windowManager.hyprland.settings = {
       bindd = [ "SUPER, BACKSLASH, Open Logout Menu, exec, logout-exit" ];
-      layerrule = [ "blur,logout_dialog" ];
+      layerrule = [ "blur,wleave" ];
     };
     home = {
-      packages = [ logoutScript pkgs.wleave ];
+      packages = [
+        logoutScript
+        pkgs.wleave
+      ];
       file.".config/wleave" = {
         source = ./config;
         recursive = true;
