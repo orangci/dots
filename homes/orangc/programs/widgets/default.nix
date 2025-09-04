@@ -6,5 +6,6 @@
     ./swaync
     ./walker.nix
     ./ignis.nix
+    ./syshud.nix
   ];
 }
