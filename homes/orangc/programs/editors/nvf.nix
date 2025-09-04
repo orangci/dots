@@ -54,7 +54,7 @@ in
           enableExtraDiagnostics = true;
 
           nix = {
-            enable = config.hmModules.dev.nix.enable;
+            inherit (config.hmModules.dev.nix) enable;
             lsp = {
               enable = true;
               package = pkgs.nil;
@@ -65,7 +65,7 @@ in
           css.enable = true;
           html.enable = true;
           rust = {
-            enable = config.hmModules.dev.rust.enable;
+            inherit (config.hmModules.dev.rust) enable;
             lsp.enable = true;
           };
           python.enable = config.hmModules.dev.python.enable;

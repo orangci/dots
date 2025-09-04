@@ -1,5 +1,6 @@
 {
   username,
+  inputs,
   config,
   pkgs,
   ...
@@ -8,13 +9,16 @@
   imports = [
     ../../hjem/${username}
     (mkAliasOptionModule [ "hj" ] [ "hjem" "users" username ])
+    (mkAliasOptionModule [ "rum" ] [ "hjem" "users" username "rum" ])
   ];
 
   hjem = {
+    extraModules = [ inputs.hjem-rum.hjemModules.default ];
     linker = pkgs.smfh;
     clobberByDefault = true;
     users.${username} = {
       enable = true;
+      directory = config.users.users.${username}.home;
       packages = with pkgs; [
         hyprpicker
         obsidian

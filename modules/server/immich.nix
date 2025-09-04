@@ -36,7 +36,7 @@ in
   config = mkIf cfg.enable {
     services.immich = {
       enable = true;
-      port = cfg.port;
+      inherit (cfg) port;
     };
   };
 }

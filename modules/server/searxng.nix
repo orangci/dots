@@ -58,7 +58,7 @@ in
         server = {
           base_url = "https://${cfg.domain}/";
           secret_key = "@SEARX_SECRET_KEY@";
-          port = cfg.port;
+          inherit (cfg) port;
           bind_address = "127.0.0.1";
           image_proxy = true;
           default_http_headers = {

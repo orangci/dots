@@ -176,7 +176,7 @@
 
   time.timeZone = "Asia/Riyadh";
   system.stateVersion = "25.05";
-  networking.nameservers = lib.singleton "192.168.0.191";
+  networking.nameservers = lib.mkForce [ "192.168.0.191" ];
 
   environment.systemPackages = with pkgs; [
     lxqt.lxqt-policykit
@@ -187,6 +187,7 @@
 
   users.users = {
     "${username}" = {
+      home = "/home/${username}";
       homeMode = "755";
       isNormalUser = true;
       description = "${username}";

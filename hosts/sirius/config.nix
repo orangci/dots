@@ -59,6 +59,7 @@
 
   users.users = {
     "${username}" = {
+      home = "/home/${username}";
       homeMode = "755";
       isNormalUser = true;
       description = "${username}";

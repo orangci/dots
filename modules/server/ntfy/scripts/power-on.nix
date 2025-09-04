@@ -41,8 +41,8 @@ in
   config = mkIf cfg.enable {
     modules.server.ntfy.topics = singleton {
       name = cfg.topic;
-      users = cfg.users;
-      permission = cfg.permission;
+      inherit (cfg) users;
+      inherit (cfg) permission;
     };
     systemd.services.ntfy-script-power-on = {
       description = "Ntfy power-on script";

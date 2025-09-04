@@ -64,7 +64,7 @@ in
         server = {
           http_port = cfg.port;
           enable_gzip = true;
-          domain = cfg.domain;
+          inherit (cfg) domain;
         };
         security.cookie_secure = true;
         users.default_language = "en-GB";

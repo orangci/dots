@@ -39,7 +39,7 @@ in
     };
     services.open-webui = {
       enable = true;
-      port = cfg.port;
+      inherit (cfg) port;
       environment = {
         OLLAMA_BASE_URL = "http://localhost:${toString (cfg.port - 1000)}";
         ENABLE_OPENAI_API = "False";

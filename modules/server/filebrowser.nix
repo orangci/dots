@@ -55,7 +55,7 @@ in
       default = {
         server = {
           sources = [ { path = "/files"; } ];
-          port = cfg.port;
+          inherit (cfg) port;
           baseURL = "/";
         };
         frontend = {

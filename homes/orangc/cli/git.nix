@@ -60,8 +60,8 @@ in
       lfs.enable = cfg.lfs;
 
       signing = mkIf cfg.signing.enable {
-        format = cfg.signing.format;
-        key = cfg.signing.key;
+        inherit (cfg.signing) format;
+        inherit (cfg.signing) key;
         signByDefault = true;
       };
 

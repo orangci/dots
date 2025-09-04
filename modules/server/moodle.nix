@@ -39,7 +39,7 @@ in
       virtualHost.hostName = "127.0.0.1";
       virtualHost.listen = lib.singleton {
         ip = "*";
-        port = cfg.port;
+        inherit (cfg) port;
       };
     };
   };

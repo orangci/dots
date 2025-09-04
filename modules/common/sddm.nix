@@ -64,7 +64,7 @@ in
     services.displayManager.sddm = {
       enable = true;
       wayland.enable = true;
-      theme = cfg.theme;
+      inherit (cfg) theme;
       package = pkgs.kdePackages.sddm;
       extraPackages = with pkgs.kdePackages; [
         qtsvg

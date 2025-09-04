@@ -138,10 +138,10 @@ in
           accel_profile = "flat";
         };
 
-        gestures = {
-          workspace_swipe = true;
-          workspace_swipe_fingers = 3;
-        };
+        gesture = [
+          "3, left, workspace, e-1"
+          "3, right, workspace, e+1"
+        ];
 
         misc = {
           mouse_move_enables_dpms = true;

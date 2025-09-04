@@ -46,7 +46,7 @@ in
 
       (mkIf cfg.gwenview {
         hmModules.programs.media.xdg = mkForce "org.kde.kdegraphics.gwenview.lib";
-        home.packages = [ pkgs.libsForQt5.gwenview ];
+        home.packages = [ pkgs.kdePackages.gwenview ];
       })
 
       (mkIf cfg.imv {
