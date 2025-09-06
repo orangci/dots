@@ -52,6 +52,7 @@ in
         session.COOKIE_SECURE = true;
         service.DISABLE_REGISTRATION = true; # set to true after the first run
         time.DEFAULT_UI_LOCATION = config.time.timeZone;
+        actions.enabled = true;
         server = {
           ROOT_URL = "https://${cfg.domain}/";
           DOMAIN = "https://${cfg.domain}/";
