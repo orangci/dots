@@ -7,6 +7,7 @@
 let
   inherit (lib)
     mkEnableOption
+    singleton
     mkOption
     mkIf
     types
@@ -35,6 +36,7 @@ in
   };
 
   config = mkIf cfg.enable {
+    environment.systemPackages = singleton pkgs.forgejo-runner;
     services.forgejo = {
       enable = true;
       package = pkgs.forgejo;
