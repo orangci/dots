@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  host,
   pkgs,
   ...
 }:
@@ -36,7 +37,6 @@ in
   };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = singleton pkgs.forgejo-runner;
     services.forgejo = {
       enable = true;
       package = pkgs.forgejo;
@@ -75,6 +75,17 @@ in
           AUTHOR = "orangc";
           DESCRIPTION = "orangc's selfhosted instance of forgejo";
         };
+      };
+    };
+    modules.common.sops.secrets.forgejo-runner-registration-token.path = "/var/secrets/forgejo-runner-registration-token";
+    services.gitea-actions-runner = {
+      package = pkgs.forgejo-runner;
+      instances.forgejo = {
+        enable = true;
+        name = host;
+        url = "https://${cfg.domain}";
+        tokenFile = config.modules.common.sops.secrets.forgejo-runner-registration-token.path;
+        labels = singleton "ubuntu-latest:docker://node:18-bullseye";
       };
     };
     systemd.services.forgejo.preStart =
