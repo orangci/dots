@@ -54,7 +54,7 @@ in
         session.COOKIE_SECURE = true;
         service.DISABLE_REGISTRATION = true; # set to true after the first run
         time.DEFAULT_UI_LOCATION = config.time.timeZone;
-        actions.enabled = true;
+        badges.GENERATOR_URL_TEMPLATE = "https://img.shields.io/badge/{{.label}}-{{.text}}-{{.color}}?style=for-the-badge";
         server = {
           ROOT_URL = "https://${cfg.domain}/";
           DOMAIN = "https://${cfg.domain}/";
