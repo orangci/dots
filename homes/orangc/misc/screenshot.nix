@@ -115,7 +115,7 @@ in
     home.file.".config/swappy/config".text = ''
       [Default]
       save_dir=${config.xdg.userDirs.pictures}/screenshots
-      save_filename_format=%B %d, %Y at %H.%M.%S.png
+      save_filename_format=%y-%b-%m_%H.%M.%S.png
       show_panel=false
       line_size=5
       text_size=20
