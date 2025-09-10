@@ -56,7 +56,6 @@ in
         global_argument_delimiter = "#";
         keep_open_modifier = "shift";
         exact_search_prefix = "'";
-        theme = "default";
         disable_mouse = false;
         shell = {
           anchor_top = true;
@@ -219,7 +218,6 @@ in
           background: @window_bg_color;
           padding: 20px;
           border-radius: 20px;
-          border: 1px solid darker(@accent_bg_color);
         }
 
         .input {
