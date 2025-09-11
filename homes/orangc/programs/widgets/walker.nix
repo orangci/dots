@@ -50,7 +50,7 @@ in
       enable = true;
       runAsService = true;
       config = {
-        force_keyboard_focus = false;
+        force_keyboard_focus = true;
         close_when_open = true;
         selection_wrap = false;
         global_argument_delimiter = "#";
@@ -117,40 +117,40 @@ in
           ];
           calc = {
             click = "copy";
-            copy = "enter";
+            copy = "Return";
             save = "ctrl s";
             delete = "ctrl d";
           };
           websearch = {
             click = "search";
-            search = "enter";
+            search = "Return";
           };
           providerlist = {
             click = "activate";
-            activate = "enter";
+            activate = "Return";
           };
           clipboard = {
             time_format = "%b %d ~ %H:%M";
             click = "copy";
-            copy = "enter";
+            copy = "Return";
             delete = "ctrl d";
             edit = "ctrl o";
             toggle_images_only = "ctrl i";
           };
           desktopapplications = {
             click = "start";
-            start = "enter";
+            start = "Return";
           };
           files = {
             click = "open";
-            open = "enter";
-            open_dir = "ctrl enter";
+            open = "Return";
+            open_dir = "ctrl Return";
             copy_path = "ctrl shift C";
             copy_file = "ctrl c";
           };
           todo = {
             click = "save";
-            save = "enter";
+            save = "Return";
             delete = "ctrl d";
             mark_active = "ctrl a";
             mark_done = "ctrl f";
@@ -158,24 +158,24 @@ in
           };
           runner = {
             click = "start";
-            start = "enter";
-            start_terminal = "shift enter";
+            start = "Return";
+            start_terminal = "shift Return";
           };
           dmenu = {
             click = "select";
-            select = "enter";
+            select = "Return";
           };
           symbols = {
             click = "copy";
-            copy = "enter";
+            copy = "Return";
           };
           unicode = {
             click = "copy";
-            copy = "enter";
+            copy = "Return";
           };
           menus = {
             click = "activate";
-            activate = "enter";
+            activate = "Return";
           };
         };
       };
