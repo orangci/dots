@@ -38,7 +38,7 @@
       screenrec = {
         enable = true;
         fileFormat = "mov";
-        timestampFormat = "%B %d %H.%M";
+        timestampFormat = "%y-%b-%m_%H.%M.%S";
         quality = "very_high";
         encoder = "gpu";
         showCursor = "yes";

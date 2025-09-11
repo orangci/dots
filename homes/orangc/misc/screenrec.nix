@@ -57,7 +57,7 @@ in
 
     timestampFormat = mkOption {
       type = types.str;
-      default = "%B %d %H.%M";
+      default = "%y-%b-%m_%H.%M.%S";
       description = "Timestamp format for filenames";
     };
 
