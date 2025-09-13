@@ -57,6 +57,7 @@
     };
     programs = {
       better-control.enable = true;
+      thunderbird.enable = true;
       editors = {
         nvf.enable = false;
         micro.enable = true;

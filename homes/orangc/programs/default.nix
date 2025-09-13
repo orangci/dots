@@ -8,5 +8,6 @@
     ./terminal.nix
     ./media.nix
     ./better-control.nix
+    ./thunderbird.nix
   ];
 }

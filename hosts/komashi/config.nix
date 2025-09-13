@@ -27,8 +27,8 @@
       appimages.enable = false;
     };
     gaming = {
-      wine.enable = false;
-      lutris.enable = false;
+      wine.enable = true;
+      lutris.enable = true;
       bottles.enable = false;
       steam.enable = false;
       heroic.enable = false;
