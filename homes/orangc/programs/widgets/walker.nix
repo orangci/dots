@@ -70,9 +70,9 @@ in
           };
         };
         keybinds = {
-          close = "esc";
-          next = "down";
-          previous = "up";
+          close = "Escape";
+          next = "Down";
+          previous = "Up";
           toggle_exact = "ctrl e";
           resume_last_query = "ctrl r";
         };
