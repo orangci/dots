@@ -7,5 +7,6 @@
     ./walker.nix
     ./ignis.nix
     ./syshud.nix
+    ./kando.nix
   ];
 }

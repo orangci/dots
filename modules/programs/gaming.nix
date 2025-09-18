@@ -30,6 +30,7 @@ let
           # 1.18 to 1.20: Java 17
           # 1.21: Java 21
           temurin-jre-bin-8
+          temurin-jre-bin-17
           temurin-jre-bin-24
         ];
       })

@@ -84,7 +84,8 @@
         swaync.enable = true;
         waybar.enable = true;
         walker.enable = true;
-        ignis.enable = true;
+        ignis.enable = false;
+        kando.enable = true;
         syshud.enable = true;
       };
       media = {

@@ -24,6 +24,7 @@ in
 
       settings = {
         env = [
+          "ELECTRON_OZONE_PLATFORM_HINT,auto"
           "NIXOS_OZONE_WL,1"
           "NIXPKGS_ALLOW_UNFREE,1"
           "XDG_CURRENT_DESKTOP,Hyprland"
