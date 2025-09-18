@@ -34,7 +34,7 @@ in
       (import ./packages/wall-select.nix { inherit pkgs; })
     ];
     programs.rofi = {
-      package = pkgs.rofi-wayland;
+      package = pkgs.rofi;
       enable = true;
     };
 
