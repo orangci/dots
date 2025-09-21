@@ -16,7 +16,7 @@ with lib;
         /* >>> ALL MODULES <<< */
         * {
           font-size: 14px;
-          font-family: Lexend, UbuntuMono Nerd Font Propo, Font Awesome, sans-serif;
+          font-family: ${config.stylix.fonts.serif.name}, UbuntuMono Nerd Font Propo, Font Awesome, sans-serif;
         }
         window#waybar {background-color: rgba(255,0,0,0); }
         tooltip {
