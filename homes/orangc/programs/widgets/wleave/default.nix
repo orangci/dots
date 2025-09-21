@@ -14,7 +14,7 @@ let
   cfg = config.hmModules.programs.widgets.wleave;
 
   logoutScript = pkgs.writeShellScriptBin "logout-exit" ''
-    wleave -k --css ${
+    wleave -x -k --css ${
       if cfg.horizontal then "~/.config/wleave/style_horizontal.css" else "~/.config/wleave/style.css"
     } --layout ${
       if cfg.horizontal then
