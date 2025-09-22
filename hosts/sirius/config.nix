@@ -1,5 +1,6 @@
 {
   pkgs,
+  lib,
   username,
   ...
 }:
@@ -11,6 +12,7 @@
 
   modules = {
     dm.sddm.enable = true;
+    dm.sddm.theme = "sddm-astronaut-theme";
     common = {
       bluetooth.enable = true;
       printing.enable = false;
@@ -37,13 +39,6 @@
       nvidiaBusID = "";
     };
   };
-
-  # swapDevices = [
-  #   {
-  #     device = "/swapfile";
-  #     size = 8 * 1024; # 8GB
-  #   }
-  # ];
 
   time.timeZone = "Asia/Riyadh";
   system.stateVersion = "25.05";

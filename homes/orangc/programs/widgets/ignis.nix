@@ -16,6 +16,12 @@ in
 
   imports = [ inputs.ignis.homeManagerModules.default ];
   config = mkIf cfg.enable {
+    home.packages = with pkgs; [
+      gnome-bluetooth
+      matugen
+      swww
+      material-symbols
+    ];
     programs.ignis = {
       enable = true;
       # addToPythonEnv = true;
@@ -30,13 +36,6 @@ in
         enable = true;
         useDartSass = true;
       };
-
-      extraPackages = with pkgs; [
-        gnome-bluetooth
-        matugen
-        swww
-        material-symbols
-      ];
     };
   };
 }

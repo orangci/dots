@@ -5,8 +5,8 @@
   ...
 }:
 {
-  nixpkgs.config.allowUnfree = true;
   imports = [ ../../homes/${username} ];
+  nixpkgs.config.allowUnfree = true;
 
   hmModules = {
     cli = {
@@ -23,7 +23,6 @@
         enable = true;
         zip = true;
       };
-
       git = {
         enable = true;
         username = "orangc";
@@ -35,8 +34,17 @@
       xdg.enable = true;
       clipboard.enable = true;
       cheatsheet.enable = true;
-      screenrec.enable = true;
       screenshot.enable = true;
+      screenrec = {
+        enable = true;
+        fileFormat = "mov";
+        timestampFormat = "%y-%b-%m_%H.%M.%S";
+        quality = "very_high";
+        encoder = "gpu";
+        showCursor = "yes";
+        framerate = 60;
+        codec = "auto";
+      };
     };
     dev = {
       python = {
@@ -49,6 +57,7 @@
     };
     programs = {
       better-control.enable = true;
+      thunderbird.enable = true;
       editors = {
         nvf.enable = false;
         micro.enable = true;
@@ -76,6 +85,8 @@
         waybar.enable = true;
         walker.enable = true;
         ignis.enable = false;
+        kando.enable = false;
+        syshud.enable = true;
       };
       media = {
         enable = true;
@@ -94,7 +105,7 @@
       walls = {
         enable = true;
         timeout = 20; # Time between wallpaper changes (in minutes)
-        directories = "${config.xdg.userDirs.pictures}/walls";
+        directory = "${config.xdg.userDirs.pictures}/walls";
       };
       stylix = {
         enable = true;
