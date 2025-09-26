@@ -8,7 +8,11 @@
 
   users = lib.mkOption {
     type = lib.types.listOf lib.types.str;
-    default = let users = config.modules.server.ntfy.users or []; in lib.map (user: user.username) users;
+    default =
+      let
+        users = config.modules.server.ntfy.users or [ ];
+      in
+      lib.map (user: user.username) users;
     description = "Users for the ntfy topic";
   };
 

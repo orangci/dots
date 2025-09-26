@@ -44,16 +44,15 @@ in
 
   config = mkIf cfg.enable (mkMerge [
     {
-      home.packages =
-        [
-          pkgs.${cfg.version}
-          pkgs.uv
-          pkgs.ruff
-          pkgs.virtualenv
-        ]
-        ++ lib.optionals cfg.mypy [ pkgs.mypy ]
-        ++ lib.optionals cfg.pyright [ pkgs.pyright ]
-        ++ lib.optionals cfg.ipython [ pkgs.ipython ];
+      home.packages = [
+        pkgs.${cfg.version}
+        pkgs.uv
+        pkgs.ruff
+        pkgs.virtualenv
+      ]
+      ++ lib.optionals cfg.mypy [ pkgs.mypy ]
+      ++ lib.optionals cfg.pyright [ pkgs.pyright ]
+      ++ lib.optionals cfg.ipython [ pkgs.ipython ];
 
       hmModules.cli.shell.extraAliases = {
         rf = "ruff";

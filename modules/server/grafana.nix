@@ -72,7 +72,11 @@ in
     };
     modules.server.ntfy.topics = singleton {
       name = "grafana";
-      users = let users = config.modules.server.ntfy.users or []; in lib.map (user: user.username) users;
+      users =
+        let
+          users = config.modules.server.ntfy.users or [ ];
+        in
+        lib.map (user: user.username) users;
       permission = "read-only";
     };
     services.grafana-to-ntfy = mkIf config.modules.server.ntfy.enable {

@@ -54,6 +54,11 @@ in
               toString (config.modules.server.minecraft.juniper-s10.port - 3000)
             }";
           }
+          {
+            "vault.orangc.net" = lib.mkForce "https://localhost:${
+              toString (config.modules.server.vaultwarden.port - 3000)
+            }";
+          }
           dynamicIngress
         ];
       };

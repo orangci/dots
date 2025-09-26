@@ -143,11 +143,11 @@ in
       '';
 
       # operators = {
-        # orangci.uuid = "dde112e5-25c7-4963-800c-aa23c3816dbc";
-        # Ritorn77.uuid = "d167c6cf-6eaf-4a4f-a6b6-d332ac46de23";
-        # Banglider.uuid = "308ed3f5-8804-4ac0-914f-35c896bd4b10";
-        # Renzo738283.uuid = "91e23da3-716b-46e3-8f87-dd64da08be24";
-        # ElaineQheart.uuid = "f1c0c281-884b-40bd-bbd3-e750dc605cfa";
+      # orangci.uuid = "dde112e5-25c7-4963-800c-aa23c3816dbc";
+      # Ritorn77.uuid = "d167c6cf-6eaf-4a4f-a6b6-d332ac46de23";
+      # Banglider.uuid = "308ed3f5-8804-4ac0-914f-35c896bd4b10";
+      # Renzo738283.uuid = "91e23da3-716b-46e3-8f87-dd64da08be24";
+      # ElaineQheart.uuid = "f1c0c281-884b-40bd-bbd3-e750dc605cfa";
       # };
 
       serverProperties = {

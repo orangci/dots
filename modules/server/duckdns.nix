@@ -26,10 +26,9 @@ in
         80
         443
       ]);
-    networking.firewall.allowedUDPPorts =
-      optionals config.modules.server.minecraft.juniper-s10.enable [
-        config.modules.server.minecraft.juniper-s10.port # UDP port for simple voice chat
-      ];
+    networking.firewall.allowedUDPPorts = optionals config.modules.server.minecraft.juniper-s10.enable [
+      config.modules.server.minecraft.juniper-s10.port # UDP port for simple voice chat
+    ];
     services.duckdns = {
       enable = true;
       tokenFile = config.modules.common.sops.secrets.duckdns-token.path;

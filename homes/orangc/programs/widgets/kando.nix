@@ -33,7 +33,7 @@ in
         "float, class:kando"
         "pin, class:kando"
       ];
-      
+
     };
   };
 }

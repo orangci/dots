@@ -77,7 +77,8 @@ in
         };
       };
     };
-    modules.common.sops.secrets.forgejo-runner-registration-token.path = "/var/secrets/forgejo-runner-registration-token";
+    modules.common.sops.secrets.forgejo-runner-registration-token.path =
+      "/var/secrets/forgejo-runner-registration-token";
     services.gitea-actions-runner = {
       package = pkgs.forgejo-runner;
       instances.forgejo = {
