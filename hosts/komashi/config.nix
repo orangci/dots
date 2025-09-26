@@ -60,7 +60,7 @@
 
   time.timeZone = "Asia/Riyadh";
   system.stateVersion = "25.05";
-  networking.nameservers = lib.mkForce [ "192.168.0.191" ];
+  networking.nameservers = lib.mkForce [ "192.168.8.191" ];
   hardware.logitech.wireless.enable = true;
 
   environment.systemPackages = with pkgs; [

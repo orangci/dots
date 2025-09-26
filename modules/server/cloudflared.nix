@@ -8,6 +8,7 @@ let
     mapAttrs'
     nameValuePair
     filterAttrs
+    singleton
     ;
 
   cfg = config.modules.server.cloudflared;
@@ -31,6 +32,8 @@ in
     modules.common.sops.secrets."cloudflared/cert.pem".path = "/var/secrets/cloudflared/cert.pem";
     modules.common.sops.secrets."cloudflared/credentials.json".path =
       "/var/secrets/cloudflared/credentials.json";
+
+    networking.firewall.allowedTCPPorts = singleton config.modules.server.vaultwarden.port;
 
     services.cloudflared = {
       enable = true;
