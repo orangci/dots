@@ -33,8 +33,6 @@ in
     modules.common.sops.secrets."cloudflared/credentials.json".path =
       "/var/secrets/cloudflared/credentials.json";
 
-    networking.firewall.allowedTCPPorts = singleton config.modules.server.vaultwarden.port;
-
     services.cloudflared = {
       enable = true;
       tunnels.homelab = {
@@ -55,11 +53,6 @@ in
           {
             "mc-resourcepack.orangc.net" = "http://localhost:${
               toString (config.modules.server.minecraft.juniper-s10.port - 3000)
-            }";
-          }
-          {
-            "vault.orangc.net" = lib.mkForce "https://localhost:${
-              toString (config.modules.server.vaultwarden.port - 3000)
             }";
           }
           dynamicIngress

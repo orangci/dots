@@ -148,7 +148,7 @@
 
       vaultwarden = {
         enable = true;
-        domain = "vw.orangc.net";
+        domain = "vault.orangc.net";
         port = 8818;
       };
 
