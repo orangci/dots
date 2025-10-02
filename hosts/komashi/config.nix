@@ -40,7 +40,7 @@
         zzz.enable = false;
       };
       minecraft = {
-        enable = true;
+        enable = false;
         modrinth.enable = false;
       };
     };
