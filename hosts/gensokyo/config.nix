@@ -183,6 +183,8 @@
     nix-output-monitor
     nh
     micro
+    protonvpn-cli
+    discordo
   ];
 
   users.users = {
