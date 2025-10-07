@@ -102,7 +102,7 @@
       };
 
       moodle = {
-        enable = true;
+        enable = false;
         domain = "moodle.orangc.net";
         port = 8811;
       };
@@ -165,7 +165,7 @@
       };
 
       grafana = {
-        enable = true;
+        enable = false;
         domain = "grafana.orangc.net";
         port = 8821;
       };
@@ -183,7 +183,7 @@
     nix-output-monitor
     nh
     micro
-    protonvpn-cli
+    openvpn
     discordo
   ];
 

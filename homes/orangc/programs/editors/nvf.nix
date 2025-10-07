@@ -90,8 +90,8 @@ in
           enable = true;
           transparent = true;
           # base16-colors = config.stylix.base16Scheme;
-          name = lib.mkDefault "catppuccin";
-          style = "mocha";
+          # name = lib.mkDefault "catppuccin";
+          # style = "mocha";
         };
 
         autopairs.nvim-autopairs.enable = true;
