@@ -52,7 +52,7 @@ in
       settings = {
         DEFAULT.APP_NAME = "forgejo";
         session.COOKIE_SECURE = true;
-        service.DISABLE_REGISTRATION = true; # set to true after the first run
+        service.DISABLE_REGISTRATION = false; # set to true after the first run
         time.DEFAULT_UI_LOCATION = config.time.timeZone;
         badges.GENERATOR_URL_TEMPLATE = "https://img.shields.io/badge/{{.label}}-{{.text}}-{{.color}}?style=for-the-badge";
         server = {
