@@ -87,9 +87,9 @@
       };
 
       minecraft = {
-        enable = true;
+       # enable = true;
         juniper-s10 = {
-          enable = true;
+         # enable = true;
           port = 8810;
           minRAM = 1;
           maxRAM = 12;
@@ -176,7 +176,8 @@
 
   time.timeZone = "Asia/Riyadh";
   system.stateVersion = "25.05";
-  # networking.nameservers = lib.mkForce [ "192.168.8.191" ];
+  networking.nameservers = lib.mkForce [ "192.168.8.191" ];
+  networking.resolvconf.enable = false;
 
   environment.systemPackages = with pkgs; [
     lxqt.lxqt-policykit
