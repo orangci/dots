@@ -8,6 +8,7 @@
 
   hmModules = {
   	programs.editors.nvf.enable = true;
+  	dev.python.enable = true;
     cli = {
       fetch.enable = true;
       shell.program = "fish";
