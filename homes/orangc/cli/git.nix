@@ -52,11 +52,12 @@ in
   };
 
   config = mkIf cfg.enable {
+    programs.delta = {
+      enable = true;
+      enableGitIntegration = true;
+    };
     programs.git = {
       enable = true;
-      userName = cfg.username;
-      userEmail = cfg.email;
-      delta.enable = true;
       lfs.enable = cfg.lfs;
 
       signing = mkIf cfg.signing.enable {
@@ -65,15 +66,17 @@ in
         signByDefault = true;
       };
 
-      extraConfig = {
+      settings = {
+        user.name = cfg.username;
+        user.email = cfg.email;
         credential.helper = "store";
-      };
 
-      aliases = {
-        change-commits = "!f() { VAR=$1; OLD=$2; NEW=$3; shift 3; git filter-branch --env-filter \"if [[ \\\"$`echo $VAR`\\\" = '$OLD' ]]; then export $VAR='$NEW'; fi\" \\$@; }; f";
-        # example usage: `change-commits GIT_AUTHOR_NAME "old name" "new name"`
-        # or even: `git change-commits GIT_AUTHOR_EMAIL "old@email.com" "new@email.com" HEAD~10..HEAD`
-        # HEAD~10..HEAD makes it only select the last ten commits
+        aliases = {
+          change-commits = "!f() { VAR=$1; OLD=$2; NEW=$3; shift 3; git filter-branch --env-filter \"if [[ \\\"$`echo $VAR`\\\" = '$OLD' ]]; then export $VAR='$NEW'; fi\" \\$@; }; f";
+          # example usage: `change-commits GIT_AUTHOR_NAME "old name" "new name"`
+          # or even: `git change-commits GIT_AUTHOR_EMAIL "old@email.com" "new@email.com" HEAD~10..HEAD`
+          # HEAD~10..HEAD makes it only select the last ten commits
+        };
       };
     };
 

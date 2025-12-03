@@ -50,6 +50,7 @@ in
       enable = true;
       runAsService = true;
       config = {
+        theme = "nixos";
         force_keyboard_focus = true;
         close_when_open = true;
         selection_wrap = false;
@@ -179,7 +180,7 @@ in
           };
         };
       };
-      theme.style = ''
+      themes."nixos".style = ''
         @define-color window_bg_color ${colours.base00};
         @define-color accent_bg_color ${colours.base0E};
         @define-color theme_fg_color ${colours.base05};

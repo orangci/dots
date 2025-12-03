@@ -7,8 +7,8 @@
   imports = [ ../../homes/${username} ];
 
   hmModules = {
-  	programs.editors.nvf.enable = true;
-  	dev.python.enable = true;
+    programs.editors.nvf.enable = true;
+    dev.python.enable = true;
     cli = {
       fetch.enable = true;
       shell.program = "fish";
