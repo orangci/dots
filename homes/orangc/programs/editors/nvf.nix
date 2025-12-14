@@ -57,7 +57,6 @@ in
             inherit (config.hmModules.dev.nix) enable;
             lsp = {
               enable = true;
-              package = pkgs.nil;
             };
           };
           markdown.enable = true;
