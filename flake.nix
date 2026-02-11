@@ -120,7 +120,7 @@
         };
     in
     {
-      formatter.${system} = nixpkgs.legacyPackages.${system}.nixfmt-rfc-style;
+      formatter.${system} = nixpkgs.legacyPackages.${system}.nixfmt;
       nixosConfigurations = {
         komashi = nixosMachine { host = "komashi"; };
         sirius = nixosMachine { host = "sirius"; };

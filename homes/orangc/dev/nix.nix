@@ -17,7 +17,7 @@ in
     programs.nix-your-shell.enable = true;
     programs.nix-index.enable = true;
     home.packages = with pkgs; [
-      nixfmt-rfc-style
+      nixfmt
       nix-prefetch
       nix-prefetch-github
       compose2nix
