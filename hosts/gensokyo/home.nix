@@ -7,7 +7,7 @@
   imports = [ ../../homes/${username} ];
 
   hmModules = {
-    programs.editors.nvf.enable = true;
+    programs.editors.nvf.enable = false;
     dev.python.enable = true;
     cli = {
       fetch.enable = true;

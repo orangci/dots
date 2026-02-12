@@ -117,7 +117,7 @@
         };
         scripts = {
           services.enable = true;
-          cpu-temperature.enable = true;
+          cpu-temperature.enable = false; # never shuts up
           power-on.enable = true;
         };
       };
