@@ -165,20 +165,22 @@ in
                   fi
               fi
           done <<< "$user_list"
+          '';
 
-          ntfy access -c /etc/ntfy/server.yml --reset
+#         ntfy access -c /etc/ntfy/server.yml --reset
 
-          ${builtins.concatStringsSep "\n" (
-            map (
-              topic:
-              builtins.concatStringsSep "\n" (
-                map (
-                  user: "ntfy access -c /etc/ntfy/server.yml ${user} ${topic.name} ${topic.permission}"
-                ) topic.users
-              )
-            ) cfg.topics
-          )}
-        '';
+#          ${builtins.concatStringsSep "\n" (
+#            map (
+#              topic:
+#              builtins.concatStringsSep "\n" (
+#                map (
+#                  user: "ntfy access -c /etc/ntfy/server.yml ${user} ${topic.name} ${topic.permission}"
+#                ) topic.users
+#              )
+#            ) cfg.topics
+#          )}
+# Commented out section for access control. Since my account is the only account in use, and is the admin account, there's zero need for any access control.
+#        '';
         Restart = "no";
       };
     };
