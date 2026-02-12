@@ -182,7 +182,7 @@ in
           "browser.search.suggest.enabled" = false;
           "browser.selfsupport.url" = "";
           "browser.sessionstore.privacy_level" = 0;
-          "browser.startup.homepage_override.mstone" = ''ignore'';
+          "browser.startup.homepage_override.mstone" = "ignore";
           "browser.tabs.crashReporting.sendReport" = false;
           "browser.urlbar.groupLabels.enabled" = false;
           "browser.urlbar.quicksuggest.enabled" = false;
@@ -251,8 +251,8 @@ in
           "toolkit.telemetry.unifiedIsOptIn" = false;
           "toolkit.telemetry.updatePing.enabled" = false;
           "webgl.disabled" = true;
-          "webgl.renderer-string-override" = '''';
-          "webgl.vendor-string-override" = '''';
+          "webgl.renderer-string-override" = "";
+          "webgl.vendor-string-override" = "";
           "browser.download.always_ask_before_handling_new_types" = true;
           "browser.download.dir" = "${config.xdg.userDirs.download}";
           "browser.startup.page" = 3; # this is the settings that makes it so that you always open with the tabs you had open when you closed firefox. change to 1 for normalcy

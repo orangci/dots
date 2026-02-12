@@ -43,7 +43,7 @@ in
       }
     '';
     home.file."${config.xdg.configHome}/hypr/walker_xdph_picker" = {
-      text = ''walker -n --modules xdphpicker'';
+      text = "walker -n --modules xdphpicker";
       executable = true;
     };
     programs.walker = {
