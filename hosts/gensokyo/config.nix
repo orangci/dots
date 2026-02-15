@@ -184,8 +184,6 @@
     nix-output-monitor
     nh
     micro
-    openvpn
-    discordo
   ];
 
   users.users = {
