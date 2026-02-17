@@ -7,7 +7,7 @@
 - fix up QT module — styling is ass currently
 - server modules that are broken: moodle, bracket, cryptpad
 - syncthing module, perhaps
-- create backups of my data, and an organised schedule and system for backing up data
+- create backups of my data, and an organised schedule and system for backing up data.. syncthing
 - re-install sirius.. *again*
 - switch to hjem
 - look into other image viewers. oculante? fix up mpv to use as my image viewer instead of gwenview? or just keep using gwenview?
