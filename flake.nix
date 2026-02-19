@@ -24,7 +24,7 @@
     };
 
     # quickshillin' it
-    quickshell.url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
+    quickshell.url = "git+https://git.outfoxxed.me/quickshell/quickshell";
 
     # fancy nixy neovim
     nvf = {
