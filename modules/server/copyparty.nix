@@ -34,11 +34,12 @@ in
 
   config = mkIf cfg.enable {
     nixpkgs.overlays = singleton inputs.copyparty.overlays.default;
+    modules.common.sops.secrets.copyparty-password.path = "/var/secrets/copyparty-password";
     services.copyparty = {
         enable = true;
         settings.p = singleton cfg.port;
         openFilesLimit = 4096; 
-        accounts.${username}.passwordFile = modules.common.sops.secrets.copyparty-password.path = "/var/secrets/copyparty-password";
+        accounts.${username}.passwordFile = "/var/secrets/copyparty-password";
         volumes = {
             "/" = {
                 path = "/home/${username}";
