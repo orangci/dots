@@ -51,7 +51,7 @@ in
                 flags.fk = 4; # enable filekeys
             };
             "/public" = {
-                path = "/home/${username}/public";
+                path = "/home/public";
                 access = {
                     r = "*";
                     A = username;
