@@ -46,7 +46,7 @@ in
         volumes = {
             "/" = {
                 path = "/home/${username}";
-                access.rwmda = username;
+                access.A = username;
                 flags.scan = 60;
                 flags.fk = 4; # enable filekeys
             };
@@ -54,7 +54,7 @@ in
                 path = "/home/${username}/public";
                 access = {
                     r = "*";
-                    rwmda = username;
+                    A = username;
                     flags.scan = 30;
                     flags.fk = 4; # enable filekeys
                 };
