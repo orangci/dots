@@ -44,7 +44,7 @@ let
     rcon 'say [§bNOTICE§r] The Server backup process has completed.'
 
     # Delete older backups
-    find ~/backups/juniper-s10 -type f -mtime +7 -name 'backup-*.tar.gz' -delete
+    find ~/backups/juniper-s10 -type f -mtime +3 -name 'backup-*.tar.gz' -delete
   '';
 in
 {
