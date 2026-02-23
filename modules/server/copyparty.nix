@@ -34,7 +34,10 @@ in
 
   config = mkIf cfg.enable {
     nixpkgs.overlays = singleton inputs.copyparty.overlays.default;
-    modules.common.sops.secrets.copyparty-password.path = "/var/secrets/copyparty-password";
+    modules.common.sops.secrets.copyparty-password = {
+    	path = "/var/secrets/copyparty-password";
+    	owner = "copyparty";
+    };
     services.copyparty = {
         enable = true;
         settings.p = singleton cfg.port;
