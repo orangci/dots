@@ -2,6 +2,7 @@ keys:
   - &master age1jw4lthrhthncg578t9uh7qw6jpef6f75agekz6vyrt45fnsr4uvs2y2tpf
   - &komashi_admin age1ar9ry945p2222nqmar0gwqxq3nxemestaluc0kdvjdw3dhz37pyqw87ngy
   - &komashi_server age1fcpq4yctx8rpvt30hy9p9pfmkttshckknl8pguksgdgqnpwkmd3sa2uflw
+  - &gensokyo_admin age164a5t6cdvxz7qk3s78ymxjf02wj3xh8k653hxrscu6htt8a7wpmqdlwsec
   - &gensokyo_server age1ur7jf6ygdwsfwyp6ef0qt2472qqq0g487x7ett88cxejlfkxhyqqmw89a6
 
 creation_rules:
@@ -11,4 +12,5 @@ creation_rules:
           - *master
           - *komashi_admin
           - *komashi_server
+          - *gensokyo_admin
           - *gensokyo_server

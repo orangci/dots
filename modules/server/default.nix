@@ -27,5 +27,6 @@
     ./forgejo.nix
     ./duckdns.nix
     ./grafana.nix
+    ./copyparty.nix
   ];
 }

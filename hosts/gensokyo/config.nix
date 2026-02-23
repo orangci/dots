@@ -169,6 +169,12 @@
         domain = "grafana.orangc.net";
         port = 8821;
       };
+      
+      copyparty = {
+        enable = true;
+        domain = "copyparty.orangc.net";
+        port = 8822;
+      };
     };
   };
   local.hardware-clock.enable = true;
