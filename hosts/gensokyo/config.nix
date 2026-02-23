@@ -45,7 +45,7 @@
       };
 
       filebrowser = {
-        enable = true;
+        enable = false;
         domain = "files.orangc.net";
         port = 8804;
       };
@@ -172,7 +172,7 @@
       
       copyparty = {
         enable = true;
-        domain = "copyparty.orangc.net";
+        domain = "files.orangc.net";
         port = 8822;
       };
     };

@@ -51,13 +51,13 @@ in
                 flags.fk = 4; # enable filekeys
             };
             "/public" = {
-                path = "/home/public";
+                path = "/home/${username}/public";
                 access = {
                     r = "*";
                     A = username;
-                    flags.scan = 30;
-                    flags.fk = 4; # enable filekeys
                 };
+                flags.scan = 30;
+                flags.fk = 4; # enable filekeys
             };
         };
     };
