@@ -8,6 +8,7 @@ let
     singleton
     ;
   cfg = config.modules.server.copyparty;
+  sharedGroup = "copyparty-${username}-shared";
 in
 {
   imports = singleton inputs.copyparty.nixosModules.default;
@@ -33,6 +34,13 @@ in
   };
 
   config = mkIf cfg.enable {
+ 	users.groups.${sharedGroup} = {};
+    users.users.${username}.extraGroups = singleton sharedGroup;
+    users.users.copyparty.extraGroups = singleton sharedGroup;
+    # sudo chgrp copyparty-orangc-shared /folder/name
+    # chmod 770 /folder/name
+    # chmod g+s /folder/name
+    # above commands to give yourseulf and copyparty full control over a folder
     nixpkgs.overlays = singleton inputs.copyparty.overlays.default;
     modules.common.sops.secrets.copyparty-password = {
     	path = "/var/secrets/copyparty-password";

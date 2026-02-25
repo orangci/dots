@@ -12,3 +12,5 @@
 - switch to hjem
 - look into other image viewers. oculante? fix up mpv to use as my image viewer instead of gwenview? or just keep using gwenview?
 - - selfhost litexiv, invidious, redlib, nitter, painterest, patchy (https://git.nadeko.net/Fijxu/patchy), jitsi, cyberchef, freshrss, pairdrop, stirling pdf
+- Make juniper auto link latest backup to public copyparty
+- fix ntfy access control
