@@ -28,5 +28,6 @@
     ./duckdns.nix
     ./grafana.nix
     ./copyparty.nix
+    ./tailscale.nix
   ];
 }

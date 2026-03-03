@@ -25,6 +25,7 @@
       technitium.enable = true;
       postgresql.enable = true;
       duckdns.enable = false;
+      tailscale.enable = true;
 
       bracket = {
         enable = false;
