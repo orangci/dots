@@ -19,7 +19,7 @@ in
   };
 
   config = mkIf cfg.enable {
-  networking.firewall.trustedInterfaces = lib.singleton "tailscale0";
+    networking.firewall.trustedInterfaces = lib.singleton "tailscale0";
     services.tailscale = {
       enable = true;
       permitCertUid = "caddy";

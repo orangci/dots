@@ -22,7 +22,7 @@
     server = {
       caddy.enable = true;
       cloudflared.enable = true;
-      technitium.enable = true;
+      powerdns.enable = true;
       postgresql.enable = true;
       duckdns.enable = false;
       tailscale.enable = true;
@@ -183,7 +183,7 @@
 
   time.timeZone = "Asia/Riyadh";
   system.stateVersion = "25.05";
-  networking.nameservers = lib.mkForce [ "192.168.8.191" ];
+  networking.nameservers = lib.mkForce [ "192.168.100.22" ];
   networking.resolvconf.enable = false;
 
   environment.systemPackages = with pkgs; [

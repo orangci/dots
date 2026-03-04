@@ -18,13 +18,18 @@ let
     _: mod: mod ? domain && mod.domain != null && mod ? port && mod.port != null
   ) allModules;
 
-  dynamicVhosts = mapAttrs' (
-    _: mod:
-    nameValuePair mod.domain {
-      extraConfig = mkDefault "reverse_proxy localhost:${toString mod.port}";
-      # logFormat = mkForce ''output discard''; # if you don't want logs
-    }
-  ) validModules;
+  dynamicVhosts = lib.mkMerge [
+    (mapAttrs' (
+      _: mod:
+      nameValuePair mod.domain { extraConfig = mkDefault "reverse_proxy localhost:${toString mod.port}"; }
+    ) validModules)
+    (mapAttrs' (
+      name: mod:
+      nameValuePair "${name}.home" {
+        extraConfig = mkDefault "reverse_proxy localhost:${toString mod.port}";
+      }
+    ) validModules)
+  ];
 
 in
 {
@@ -37,8 +42,8 @@ in
       virtualHosts = mkMerge [
         dynamicVhosts
         {
-          "ping.localhost".extraConfig = "respond pong";
-          "dns.localhost".extraConfig = "reverse_proxy 127.0.0.1:5380";
+          "ping.home".extraConfig = "respond pong";
+          "dns.home".extraConfig = "reverse_proxy 127.0.0.1:5380";
           "mc-map.orangc.net".extraConfig =
             mkIf config.modules.server.minecraft.juniper-s10.enable "reverse_proxy localhost:${
               toString (config.modules.server.minecraft.juniper-s10.port - 2000)
