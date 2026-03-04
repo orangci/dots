@@ -10,7 +10,6 @@
 let
   inherit (lib)
     mkIf
-    getExe
     mkOption
     types
     mkEnableOption

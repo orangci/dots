@@ -1,15 +1,12 @@
 {
   config,
   lib,
-  pkgs,
   inputs,
   ...
 }:
 let
   inherit (lib)
     mkEnableOption
-    mkOption
-    types
     mkIf
     ;
   cfg = config.hmModules.programs.widgets.walker;

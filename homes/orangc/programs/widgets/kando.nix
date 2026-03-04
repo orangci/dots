@@ -7,9 +7,7 @@
 let
   inherit (lib)
     mkEnableOption
-    mkOption
     singleton
-    types
     mkIf
     ;
   cfg = config.hmModules.programs.widgets.kando;

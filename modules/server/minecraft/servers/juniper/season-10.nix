@@ -11,7 +11,6 @@ let
     mkEnableOption
     types
     mkOption
-    concatStringsSep
     replaceStrings
     ;
   cfg = config.modules.server.minecraft.juniper-s10;

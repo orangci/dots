@@ -7,9 +7,7 @@
 let
   inherit (lib)
     mkIf
-    mkOption
     mkEnableOption
-    types
     singleton
     ;
   cfg = config.modules.server.ntfy.scripts.example;

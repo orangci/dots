@@ -10,7 +10,6 @@ let
     mkOption
     types
     mkIf
-    getExe
     ;
   cfg = config.hmModules.styles.walls;
 in

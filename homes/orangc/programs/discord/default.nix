@@ -10,7 +10,6 @@ let
     mkOption
     types
     mkIf
-    mkMerge
     ;
   cfg = config.hmModules.programs;
   colours = config.stylix.base16Scheme;

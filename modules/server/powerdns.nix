@@ -20,7 +20,7 @@ let
      2h  ; minimum    
      )
      IN NS ns.home.  ns  IN A ${tailscaleIP}  ${
-       lib.concatStringsSep "\n" (mapAttrsToList (name: v: "${name} IN A ${tailscaleIP}") enabledServers)
+       lib.concatStringsSep "\n" (mapAttrsToList (name: _v: "${name} IN A ${tailscaleIP}") enabledServers)
      }  '';
 in
 {

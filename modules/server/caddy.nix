@@ -7,7 +7,6 @@ let
     nameValuePair
     filterAttrs
     mkMerge
-    mkForce
     mkDefault
     ;
 

@@ -8,7 +8,6 @@ let
     mapAttrs'
     nameValuePair
     filterAttrs
-    singleton
     ;
 
   cfg = config.modules.server.cloudflared;
