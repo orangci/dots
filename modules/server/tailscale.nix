@@ -31,9 +31,17 @@ in
   };
 
   config = mkIf cfg.enable {
+  networking.firewall.trustedInterfaces = lib.singleton "tailscale0";
     services.tailscale = {
-    	enable = true;
-    	permitCertUid = "caddy";
+      enable = true;
+      permitCertUid = "caddy";
+      useRoutingFeatures = "server";
+      extraUpFlags = [
+        "--advertise-routes=192.168.100.0/24"
+        "--advertise-exit-node"
+        "--ssh"
+        "--accept-dns=false"
+      ];
     };
   };
 }

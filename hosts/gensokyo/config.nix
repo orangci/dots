@@ -170,7 +170,7 @@
         domain = "grafana.orangc.net";
         port = 8821;
       };
-      
+
       copyparty = {
         enable = true;
         domain = "files.orangc.net";

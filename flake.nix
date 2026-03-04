@@ -73,7 +73,7 @@
       inputs.nixpkgs.follows = "nixpkgs-small";
       inputs.hjem.follows = "hjem";
     };
-    
+
     # copyparty is a file server that is awesome
     copyparty.url = "github:9001/copyparty";
   };

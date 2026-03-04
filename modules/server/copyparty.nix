@@ -1,4 +1,10 @@
-{ config, lib, inputs, username, ... }:
+{
+  config,
+  lib,
+  inputs,
+  username,
+  ...
+}:
 let
   inherit (lib)
     mkIf
@@ -34,7 +40,7 @@ in
   };
 
   config = mkIf cfg.enable {
- 	users.groups.${sharedGroup} = {};
+    users.groups.${sharedGroup} = { };
     users.users.${username}.extraGroups = singleton sharedGroup;
     users.users.copyparty.extraGroups = singleton sharedGroup;
     # sudo chgrp copyparty-orangc-shared /folder/name
@@ -43,31 +49,31 @@ in
     # above commands to give yourseulf and copyparty full control over a folder
     nixpkgs.overlays = singleton inputs.copyparty.overlays.default;
     modules.common.sops.secrets.copyparty-password = {
-    	path = "/var/secrets/copyparty-password";
-    	owner = "copyparty";
+      path = "/var/secrets/copyparty-password";
+      owner = "copyparty";
     };
     services.copyparty = {
-        enable = true;
-        settings.p = singleton cfg.port;
-        openFilesLimit = 4096; 
-        accounts.${username}.passwordFile = "/var/secrets/copyparty-password";
-        volumes = {
-            "/" = {
-                path = "/home/${username}";
-                access.A = username;
-                flags.scan = 60;
-                flags.fk = 4; # enable filekeys
-            };
-            "/public" = {
-                path = "/home/${username}/public";
-                access = {
-                    r = "*";
-                    A = username;
-                };
-                flags.scan = 30;
-                flags.fk = 4; # enable filekeys
-            };
+      enable = true;
+      settings.p = singleton cfg.port;
+      openFilesLimit = 4096;
+      accounts.${username}.passwordFile = "/var/secrets/copyparty-password";
+      volumes = {
+        "/" = {
+          path = "/home/${username}";
+          access.A = username;
+          flags.scan = 60;
+          flags.fk = 4; # enable filekeys
         };
+        "/public" = {
+          path = "/home/${username}/public";
+          access = {
+            r = "*";
+            A = username;
+          };
+          flags.scan = 30;
+          flags.fk = 4; # enable filekeys
+        };
+      };
     };
   };
 }
