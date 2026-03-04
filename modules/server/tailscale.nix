@@ -16,18 +16,6 @@ in
       type = types.str;
       default = "Tailscale";
     };
-
-    port = mkOption {
-      type = types.port;
-      default = 8800;
-      description = "The port for tailscale  to be hosted at";
-    };
-
-    domain = mkOption {
-      type = types.str;
-      default = "ts.orangc.net";
-      description = "The domain for tailscale to be hosted at";
-    };
   };
 
   config = mkIf cfg.enable {
@@ -36,6 +24,7 @@ in
       enable = true;
       permitCertUid = "caddy";
       useRoutingFeatures = "server";
+      disableUpstreamLogging = true;
       extraUpFlags = [
         "--advertise-routes=192.168.100.0/24"
         "--advertise-exit-node"
