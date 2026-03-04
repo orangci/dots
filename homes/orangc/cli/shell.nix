@@ -29,6 +29,7 @@ let
     # nix stuff
     fr = "nh os switch --hostname ${host} $FLAKE";
     fu = "nh os switch --hostname ${host} --update $FLAKE";
+    fe = "nix eval .#nixosConfigurations.${host}.config.system.build.toplevel";
     gcnix = "sudo nh clean all && nix store optimise && sudo journalctl --vacuum-time=1s";
   };
 

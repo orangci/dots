@@ -9,7 +9,7 @@ let
   cfg = config.modules.server.tailscale;
 in
 {
-  options.modules.server.tailscalec= {
+  options.modules.server.tailscale = {
     enable = mkEnableOption "Enable tailscale";
 
     name = mkOption {
