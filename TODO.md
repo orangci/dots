@@ -14,3 +14,6 @@
 - - selfhost litexiv, invidious, redlib, nitter, painterest, patchy (https://git.nadeko.net/Fijxu/patchy), jitsi, cyberchef, freshrss, pairdrop, stirling pdf
 - Make juniper auto link latest backup to public copyparty
 - fix ntfy access control
+- move copyparty to /srv/files
+- force glance font to be lexend
+- fix broken glance widgets

@@ -145,7 +145,6 @@ in
               {
                 size = "full";
                 widgets = [
-                  { type = "to-do"; }
                   {
                     type = "server-stats";
                     servers = [
