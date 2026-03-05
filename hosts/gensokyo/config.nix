@@ -183,8 +183,8 @@
 
   time.timeZone = "Asia/Riyadh";
   system.stateVersion = "25.05";
-  networking.nameservers = lib.mkForce [ "192.168.100.22" ];
-  networking.resolvconf.enable = false;
+  networking.nameservers = lib.mkForce [ "127.0.0.1" ];
+  #networking.resolvconf.enable = false;
 
   environment.systemPackages = with pkgs; [
     lxqt.lxqt-policykit

@@ -25,18 +25,20 @@ in
   };
 
   config = mkIf cfg.enable {
+    boot.kernel.sysctl."net.ipv4.ip_forward" = 1;
     networking.firewall.trustedInterfaces = lib.singleton "tailscale0";
     services.tailscale = {
       enable = true;
       permitCertUid = "caddy";
       useRoutingFeatures = "server";
       disableUpstreamLogging = true;
+      serve.enable = true;
       serve.services = dynamicServices;
       extraUpFlags = [
         "--advertise-routes=192.168.100.0/24"
         "--advertise-exit-node"
         "--ssh"
-        "--accept-dns"
+        "--accept-dns=false"
       ];
     };
   };
