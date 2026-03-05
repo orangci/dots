@@ -8,7 +8,7 @@ let
     ;
   cfg = config.modules.server.tailscale;
   servers = config.modules.server;
-  dynamicServices = lib.mapAttrs (name: srv: {
+  dynamicServices = lib.mapAttrs (_name: srv: {
     endpoints = {
       "tcp:${toString srv.port}" = "https://localhost:${toString srv.port}";
     };

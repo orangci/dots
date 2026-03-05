@@ -29,5 +29,6 @@
     ./grafana.nix
     ./copyparty.nix
     ./tailscale.nix
+    ./vscode.nix
   ];
 }

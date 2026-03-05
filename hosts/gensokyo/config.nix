@@ -176,6 +176,11 @@
         domain = "files.orangc.net";
         port = 8822;
       };
+      vscode = {
+        enable = true;
+        domain = "code.orangc.net";
+        port = 8823;
+      };
     };
   };
   local.hardware-clock.enable = true;
