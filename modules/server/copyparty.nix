@@ -14,7 +14,16 @@ let
     singleton
     ;
   cfg = config.modules.server.copyparty;
-  sharedGroup = "copyparty-${username}-shared";
+  commonPerms = {
+    access = {
+      r = "*";
+      A = username;
+    };
+    flags = {
+      scan = 30;
+      fk = 4;
+    };
+  };
 in
 {
   imports = singleton inputs.copyparty.nixosModules.default;
@@ -40,13 +49,6 @@ in
   };
 
   config = mkIf cfg.enable {
-    users.groups.${sharedGroup} = { };
-    users.users.${username}.extraGroups = singleton sharedGroup;
-    users.users.copyparty.extraGroups = singleton sharedGroup;
-    # sudo chgrp copyparty-orangc-shared /folder/name
-    # chmod 770 /folder/name
-    # chmod g+s /folder/name
-    # above commands to give yourseulf and copyparty full control over a folder
     nixpkgs.overlays = singleton inputs.copyparty.overlays.default;
     modules.common.sops.secrets.copyparty-password = {
       path = "/var/secrets/copyparty-password";
@@ -56,22 +58,28 @@ in
       enable = true;
       settings.p = singleton cfg.port;
       openFilesLimit = 4096;
-      accounts.${username}.passwordFile = "/var/secrets/copyparty-password";
+      accounts.${username}.passwordFile = config.modules.common.sops.secrets.copyparty-password.path;
       volumes = {
         "/" = {
-          path = "/home/${username}";
+          path = "/srv/files";
           access.A = username;
           flags.scan = 60;
           flags.fk = 4; # enable filekeys
         };
-        "/public" = {
-          path = "/home/${username}/public";
-          access = {
-            r = "*";
-            A = username;
-          };
-          flags.scan = 30;
-          flags.fk = 4; # enable filekeys
+        "/books" = commonPerms // {
+          path = "/srv/files/books";
+        };
+        "/juniper-backups" = commonPerms // {
+          path = "/srv/files/juniper-backups";
+        };
+        "/media/walls" = commonPerms // {
+          path = "/srv/files/media/walls";
+        };
+        "/media/walls-catppuccin-mocha" = commonPerms // {
+          path = "/srv/files/media/walls-catppuccin-mocha";
+        };
+        "/media/memes" = commonPerms // {
+          path = "/srv/files/media/memes";
         };
       };
     };

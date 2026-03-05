@@ -15,10 +15,9 @@
 - Make juniper auto link latest backup to public copyparty
 - fix ntfy access control
 - do tailscale access control
-- move copyparty to /srv/files
 - force glance font to be lexend
 - fix broken glance widgets
-- fix DNS server once and for all MOSTLY FUNCTIONAL
+- fix TLS issues with .home stuff
 - finish setting up VSCode Server
 - give server modules a glance.enable option. also a toggle for cf tunnels, being a .home thing etc
 - matrix homeserver

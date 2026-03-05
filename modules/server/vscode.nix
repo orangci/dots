@@ -1,11 +1,18 @@
-{ config, lib, pkgs, username, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  username,
+  ...
+}:
 
 let
   inherit (lib)
     mkIf
     mkOption
     mkEnableOption
-    types;
+    types
+    ;
 
   cfg = config.modules.server.vscode;
 in
