@@ -36,14 +36,15 @@ in
   };
 
   config = mkIf cfg.enable {
-    modules.common.sops.secrets.vscode-server-connection-token.path =
-      "/var/secrets/vscode-server-connection-token";
+    modules.common.sops.secrets.vscode-server-connection-token = {
+      path = "/var/secrets/vscode-server-connection-token";
+      owner = "openvscode-server";
+    };
     services.openvscode-server = {
       enable = true;
       port = cfg.port;
-      serverDataDir = "/var/lib/vscode-server";
-      extensionsDir = "/var/lib/vscode-server/extensions";
-      withoutConnectionToken = true;
+      #serverDataDir = "/var/lib/vscode-server";
+      #extensionsDir = "/var/lib/vscode-server/extensions";
       telemetryLevel = "crash";
       connectionTokenFile = config.modules.common.sops.secrets.vscode-server-connection-token.path;
       extraPackages = with pkgs; [ ];
