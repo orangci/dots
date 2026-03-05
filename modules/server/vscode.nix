@@ -1,16 +1,12 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}:
+{ config, lib, pkgs, username, ... }:
+
 let
   inherit (lib)
     mkIf
     mkOption
     mkEnableOption
-    types
-    ;
+    types;
+
   cfg = config.modules.server.vscode;
 in
 {
@@ -38,16 +34,22 @@ in
   config = mkIf cfg.enable {
     modules.common.sops.secrets.vscode-server-connection-token = {
       path = "/var/secrets/vscode-server-connection-token";
-      owner = "openvscode-server";
+      owner = username;
     };
+
     services.openvscode-server = {
       enable = true;
       port = cfg.port;
-      #serverDataDir = "/var/lib/vscode-server";
-      #extensionsDir = "/var/lib/vscode-server/extensions";
+
+      # use your user home
+      user = username;
+      serverDataDir = "/home/${username}/.vscode-server";
+      extensionsDir = "/home/${username}/.vscode-server/extensions";
+
       telemetryLevel = "crash";
       connectionTokenFile = config.modules.common.sops.secrets.vscode-server-connection-token.path;
-      extraPackages = with pkgs; [ ];
+
+      extraPackages = with pkgs; [ git ];
     };
   };
 }

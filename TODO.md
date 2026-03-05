@@ -3,7 +3,7 @@
 - full disk encryption
 - secure boot
 - use impermanence / make garbage collection actually good
-- nixify firefox extensions settings
+- nixify  firefox extensions settings
 - fix up QT module — styling is ass currently
 - server modules that are broken: moodle, bracket, cryptpad
 - syncthing module, perhaps
@@ -21,3 +21,4 @@
 - fix DNS server once and for all MOSTLY FUNCTIONAL
 - finish setting up VSCode Server
 - give server modules a glance.enable option. also a toggle for cf tunnels, being a .home thing etc
+- matrix homeserver
