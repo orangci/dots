@@ -29,6 +29,5 @@
     ./grafana.nix
     ./copyparty.nix
     ./tailscale.nix
-    ./powerdns.nix
   ];
 }

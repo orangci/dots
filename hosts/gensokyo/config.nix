@@ -22,7 +22,7 @@
     server = {
       caddy.enable = true;
       cloudflared.enable = true;
-      powerdns.enable = true;
+      technitium.enable = true;
       postgresql.enable = true;
       duckdns.enable = false;
       tailscale.enable = true;
