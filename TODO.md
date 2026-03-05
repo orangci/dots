@@ -18,4 +18,6 @@
 - move copyparty to /srv/files
 - force glance font to be lexend
 - fix broken glance widgets
-- fix DNS server once and for all
+- fix DNS server once and for all MOSTLY FUNCTIONAL
+- finish setting up VSCode Server
+- give server modules a glance.enable option. also a toggle for cf tunnels, being a .home thing etc

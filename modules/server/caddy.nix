@@ -23,9 +23,15 @@ let
       nameValuePair mod.domain { extraConfig = mkDefault "reverse_proxy localhost:${toString mod.port}"; }
     ) validModules)
     (mapAttrs' (
-      name: mod:
-      nameValuePair "${name}.home" {
-        extraConfig = mkDefault "reverse_proxy localhost:${toString mod.port}";
+      _: mod:
+      let
+        base = lib.removeSuffix ".orangc.net" mod.domain;
+      in
+      nameValuePair "${base}.home" {
+        extraConfig = mkDefault ''
+          tls internal
+          reverse_proxy localhost:${toString mod.port}
+        '';
       }
     ) validModules)
   ];
