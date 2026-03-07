@@ -18,6 +18,5 @@
 - force glance font to be lexend
 - fix broken glance widgets
 - fix TLS issues with .home stuff
-- finish setting up VSCode Server
 - give server modules a glance.enable option. also a toggle for cf tunnels, being a .home thing etc
-- matrix homeserver
+- go throuh literally every module and option-ify it all

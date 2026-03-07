@@ -176,10 +176,19 @@
         domain = "files.orangc.net";
         port = 8822;
       };
+
       vscode = {
         enable = true;
         domain = "code.orangc.net";
         port = 8823;
+      };
+
+      matrix.enable = true;
+      matrix.synapse = {
+        enable = true;
+        apiDomain = "gensokyo.cormorant-emperor.ts.net";
+        port = 8824;
+        serverName = "orangc.net";
       };
     };
   };

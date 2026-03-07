@@ -34,11 +34,11 @@ in
       disableUpstreamLogging = true;
       serve.enable = true;
       serve.services = dynamicServices;
-      extraUpFlags = [
+      extraSetFlags = [
         "--advertise-routes=192.168.100.0/24"
         "--advertise-exit-node"
-        "--ssh"
         "--accept-dns=false"
+        "--ssh=false"
       ];
     };
   };

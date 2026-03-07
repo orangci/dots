@@ -30,5 +30,6 @@
     ./copyparty.nix
     ./tailscale.nix
     ./vscode.nix
+    ./matrix
   ];
 }
