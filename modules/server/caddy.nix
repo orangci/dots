@@ -27,9 +27,8 @@ let
       let
         base = lib.removeSuffix ".orangc.net" mod.domain;
       in
-      nameValuePair "${base}.home" {
+      nameValuePair "http://${base}.home" {
         extraConfig = mkDefault ''
-          tls internal
           reverse_proxy localhost:${toString mod.port}
         '';
       }
