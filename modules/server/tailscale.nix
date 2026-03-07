@@ -4,15 +4,11 @@ let
     mkIf
     mkOption
     mkEnableOption
+    mkMerge
     types
     ;
   cfg = config.modules.server.tailscale;
   servers = config.modules.server;
-  dynamicServices = lib.mapAttrs (_name: srv: {
-    endpoints = {
-      "tcp:${toString srv.port}" = "https://localhost:${toString srv.port}";
-    };
-  }) (lib.filterAttrs (_: srv: srv.enable or false && srv ? port) servers);
 in
 {
   options.modules.server.tailscale = {
@@ -25,15 +21,19 @@ in
   };
 
   config = mkIf cfg.enable {
-    boot.kernel.sysctl."net.ipv4.ip_forward" = 1;
+    # boot.kernel.sysctl."net.ipv4.ip_forward" = 1;
     networking.firewall.trustedInterfaces = lib.singleton "tailscale0";
     services.tailscale = {
       enable = true;
       permitCertUid = "caddy";
       useRoutingFeatures = "server";
       disableUpstreamLogging = true;
-      serve.enable = true;
-      serve.services = dynamicServices;
+      extraUpFlags = [
+        "--advertise-routes=192.168.100.0/24"
+        "--advertise-exit-node"
+        "--accept-dns=false"
+        "--ssh=false"
+      ];
       extraSetFlags = [
         "--advertise-routes=192.168.100.0/24"
         "--advertise-exit-node"
