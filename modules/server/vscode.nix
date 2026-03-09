@@ -56,7 +56,7 @@ in
       telemetryLevel = "crash";
       connectionTokenFile = config.modules.common.sops.secrets.vscode-server-connection-token.path;
 
-      extraPackages = with pkgs; [ git ];
+      extraPackages = with pkgs; [ git nix ];
     };
   };
 }
