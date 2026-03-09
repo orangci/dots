@@ -22,6 +22,10 @@ let
     _: mod: mod ? domain && mod.domain != null && mod ? port && mod.port != null
   ) allModules;
 
+  httpHomeModules = filterAttrs (
+    _: mod: lib.hasAttrByPath [ "httpHome" "enable" ] mod && mod.httpHome.enable
+  ) validModules;
+
   dynamicVhosts = lib.mkMerge [
     (mapAttrs' (
       _: mod:
@@ -52,7 +56,7 @@ let
           reverse_proxy localhost:${toString mod.port}
         '';
       }
-    ) validModules)
+    ) httpHomeModules)
   ];
 
 in
@@ -73,12 +77,13 @@ in
       };
       environmentFile = config.modules.common.sops.secrets.acme-dns-cloudflare-token.path;
       globalConfig = ''
-      acme_dns cloudflare {env.CLOUDFLARE_API_TOKEN}
+        acme_dns cloudflare {env.CLOUDFLARE_API_TOKEN}
       '';
       virtualHosts = mkMerge [
         dynamicVhosts
         {
-          "home.orangc.net".extraConfig = "
+          "home.orangc.net".extraConfig =
+            "
           tls {
            dns cloudflare {env.CLOUDFLARE_API_TOKEN}
            resolvers 1.1.1.1 1.0.0.1

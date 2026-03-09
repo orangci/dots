@@ -10,25 +10,36 @@ let
     mkEnableOption
     types
     mkIf
-    filterAttrs
     ;
   cfg = config.modules.server.glance;
   serverModules = config.modules.server;
 
   sites = builtins.attrValues (
-    filterAttrs (_name: mod: mod ? enable && mod.enable && mod ? domain) serverModules
+    lib.filterAttrs (
+      _name: mod:
+      (mod ? enable && mod.enable)
+      && lib.hasAttrByPath [ "glance" "enable" ] mod
+      && mod.glance.enable
+      && mod ? domain
+      && mod.domain != null
+    ) serverModules
   );
 
   siteList = builtins.map (mod: {
     title = mod.name or mod.domain;
     url = "https://${mod.domain}";
     icon =
-      mod.icon or "sh:${lib.strings.replaceStrings [ " " ] [ "-" ] (lib.strings.toLower mod.name)}";
+      mod.glance.icon
+        or "sh:${lib.strings.replaceStrings [ " " ] [ "-" ] (lib.strings.toLower mod.name)}";
   }) sites;
 in
 {
   options.modules.server.glance = {
     enable = mkEnableOption "Enable glance";
+
+    cloudflared.enable = mkEnableOption "Enable Cloudflare Tunnels for this service";
+    httpHome.enable = mkEnableOption "Enable an internal, http .home domain for this service";
+    ntfyChecking.enable = mkEnableOption "Allow Ntfy to send notifications when this service goes down";
 
     name = mkOption {
       type = types.str;
@@ -137,7 +148,7 @@ in
                     height = "200px";
                     title = "Fox";
                     cache = "2m";
-                    url = "https://randomfox.ca/floof/?ref=public_apis&utm_medium=website";
+                    url = "https://randomfox.ca/floof/";
                     template = ''<img src="{{ .JSON.String "image" }}"></img>'';
                   }
                 ];

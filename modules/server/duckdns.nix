@@ -9,9 +9,7 @@ let
   cfg = config.modules.server.duckdns;
 in
 {
-  options.modules.server.duckdns = {
-    enable = mkEnableOption "Enable duckdns";
-  };
+  options.modules.server.duckdns.enable = mkEnableOption "Enable duckdns";
 
   config = mkIf cfg.enable {
     modules.common.sops.secrets.duckdns-token.path = "/var/secrets/duckdns-token";

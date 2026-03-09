@@ -19,6 +19,11 @@ in
   options.modules.server.forgejo = {
     enable = mkEnableOption "Enable forgejo";
 
+    glance.enable = mkEnableOption "Enable visibility for this service in the Glance dashboard";
+    cloudflared.enable = mkEnableOption "Enable Cloudflare Tunnels for this service";
+    httpHome.enable = mkEnableOption "Enable an internal, http .home domain for this service";
+    ntfyChecking.enable = mkEnableOption "Allow Ntfy to send notifications when this service goes down";
+
     name = mkOption {
       type = types.str;
       default = "Forgejo";

@@ -4,6 +4,15 @@
   lib,
   ...
 }:
+let
+
+  allThree = {
+    glance.enable = true;
+    httpHome.enable = true;
+    ntfyChecking.enable = true;
+  };
+
+in
 {
   imports = [
     ./hardware.nix
@@ -27,62 +36,72 @@
       duckdns.enable = false;
       tailscale.enable = true;
 
-      bracket = {
+      bracket = allThree // {
         enable = false;
+        cloudflared.enable = true;
         domain = "bracket.orangc.net";
         port = 8801;
       };
 
-      convertx = {
+      convertx = allThree // {
         enable = true;
+        cloudflared.enable = true;
         domain = "convert.orangc.net";
         port = 8802;
       };
 
-      cryptpad = {
+      cryptpad = allThree // {
         enable = false;
+        cloudflared.enable = true;
         domain = "pad.orangc.net";
         port = 8803;
       };
 
-      filebrowser = {
+      filebrowser = allThree // {
         enable = false;
         domain = "files.orangc.net";
         port = 8804;
       };
 
-      forgejo = {
+      forgejo = allThree // {
         enable = true;
+        cloudflared.enable = true;
         domain = "git.orangc.net";
         port = 8805;
       };
 
       glance = {
         enable = true;
+        cloudflared.enable = true;
+        httpHome.enable = true;
+        ntfyChecking.enable = true;
         domain = "glance.orangc.net";
         port = 8806;
       };
 
-      immich = {
+      immich = allThree // {
         enable = true;
+        cloudflared.enable = true;
         domain = "media.orangc.net";
         port = 8807;
       };
 
-      it-tools = {
+      it-tools = allThree // {
         enable = true;
+        cloudflared.enable = true;
         domain = "tools.orangc.net";
         port = 8808;
       };
 
-      jellyfin = {
+      jellyfin = allThree // {
         enable = true;
         domain = "jf.orangc.net";
         port = 8096; # can't be changed via the nixos module
       };
 
-      microbin = {
+      microbin = allThree // {
         enable = true;
+        cloudflared.enable = true;
         domain = "bin.orangc.net";
         port = 8809;
       };
@@ -102,14 +121,18 @@
         };
       };
 
-      moodle = {
+      moodle = allThree // {
         enable = false;
+        cloudflared.enable = true;
         domain = "moodle.orangc.net";
         port = 8811;
       };
 
       ntfy = {
         enable = true;
+        cloudflared.enable = true;
+        glance.enable = true;
+        httpHome.enable = true;
         domain = "ntfy.orangc.net";
         port = 8812;
         users = lib.singleton {
@@ -123,67 +146,75 @@
         };
       };
 
-      ollama = {
+      ollama = allThree // {
         enable = false;
+        cloudflared.enable = true;
         domain = "ai.orangc.net";
         port = 8813;
       };
 
-      searxng = {
+      searxng = allThree // {
         enable = true;
         domain = "search.orangc.net";
         port = 8815;
       };
 
-      speedtest = {
+      speedtest = allThree // {
         enable = true;
         domain = "speedtest.orangc.net";
         port = 8816;
       };
 
-      uptime-kuma = {
+      uptime-kuma = allThree // {
         enable = false;
+        cloudflared.enable = true;
         domain = "status.orangc.net";
         port = 8817;
       };
 
       vaultwarden = {
         enable = true;
+        glance.enable = true;
+        cloudflared.enable = true;
+        ntfyChecking.enable = true;
         domain = "vault.orangc.net";
         port = 8818;
       };
 
-      zipline = {
+      zipline = allThree // {
         enable = true;
+        cloudflared.enable = true;
         domain = "zip.orangc.net";
         port = 8819;
       };
 
-      umami = {
+      umami = allThree // {
         enable = true;
+        cloudflared.enable = true;
         domain = "umami.orangc.net";
         port = 8820;
       };
 
-      grafana = {
+      grafana = allThree // {
         enable = false;
         domain = "grafana.orangc.net";
         port = 8821;
       };
 
-      copyparty = {
+      copyparty = allThree // {
         enable = true;
+        cloudflared.enable = true;
         domain = "files.orangc.net";
         port = 8822;
       };
 
-      vscode = {
+      vscode = allThree // {
         enable = true;
+        cloudflared.enable = true;
         domain = "code.orangc.net";
         port = 8823;
       };
 
-      matrix.enable = true;
       matrix.synapse = {
         enable = true;
         apiDomain = "gensokyo.cormorant-emperor.ts.net";

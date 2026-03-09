@@ -21,6 +21,10 @@ in
   options.modules.server.ntfy = {
     enable = mkEnableOption "Enable ntfy";
 
+    glance.enable = mkEnableOption "Enable visibility for this service in the Glance dashboard";
+    cloudflared.enable = mkEnableOption "Enable Cloudflare Tunnels for this service";
+    httpHome.enable = mkEnableOption "Enable an internal, http .home domain for this service";
+
     name = mkOption {
       type = types.str;
       default = "Ntfy";

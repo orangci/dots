@@ -12,6 +12,11 @@ in
   options.modules.server.zipline = {
     enable = mkEnableOption "Enable zipline";
 
+    glance.enable = mkEnableOption "Enable visibility for this service in the Glance dashboard";
+    cloudflared.enable = mkEnableOption "Enable Cloudflare Tunnels for this service";
+    httpHome.enable = mkEnableOption "Enable an internal, http .home domain for this service";
+    ntfyChecking.enable = mkEnableOption "Allow Ntfy to send notifications when this service goes down";
+
     name = mkOption {
       type = types.str;
       default = "Zipline";
@@ -29,10 +34,10 @@ in
       description = "The domain for zipline to be hosted at";
     };
 
-    icon = mkOption {
+    glance.icon = mkOption {
       type = types.str;
       default = "https://cdn.jsdelivr.net/gh/selfhst/icons/png/zipline.png";
-      description = "The zipline icon";
+      description = "The icon for Glance";
     };
   };
 
@@ -40,7 +45,7 @@ in
     modules.common.sops.secrets.zipline-core-secret.path = "/var/secrets/zipline-core-secret";
     services.zipline = {
       enable = true;
-      environmentFiles = [ config.modules.common.sops.secrets.zipline-core-secret.path ];
+      environmentFiles = lib.singleton config.modules.common.sops.secrets.zipline-core-secret.path;
       settings.CORE_PORT = cfg.port;
     };
   };

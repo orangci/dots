@@ -17,9 +17,13 @@ let
   monitoredModules = builtins.filter (
     srv:
     let
-      conf = config.modules.server.${srv};
+      mod = config.modules.server.${srv};
     in
-    conf.enable && lib.hasAttrByPath [ "domain" ] conf && conf.domain != null
+    (mod ? enable && mod.enable)
+    && lib.hasAttrByPath [ "ntfyChecking" "enable" ] mod
+    && mod.ntfyChecking.enable
+    && mod ? domain
+    && mod.domain != null
   ) servers;
 
   domainList = builtins.map (srv: config.modules.server.${srv}.domain) monitoredModules;

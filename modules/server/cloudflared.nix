@@ -14,7 +14,13 @@ let
 
   allModules = config.modules.server or { };
   validModules = filterAttrs (
-    _: mod: mod ? domain && mod.domain != null && mod ? port && mod.port != null
+    _: mod:
+    (mod ? enable && mod.enable)
+    && lib.hasAttrByPath [ "cloudflared" "enable" ] mod
+    && mod.cloudflared.enable
+    && mod.domain != null
+    && mod ? port
+    && mod.port != null
   ) allModules;
 
   dynamicIngress = mapAttrs' (
@@ -47,11 +53,6 @@ in
           {
             "mc-map.orangc.net" = "http://localhost:${
               toString (config.modules.server.minecraft.juniper-s10.port - 2000)
-            }";
-          }
-          {
-            "mc-resourcepack.orangc.net" = "http://localhost:${
-              toString (config.modules.server.minecraft.juniper-s10.port - 3000)
             }";
           }
           dynamicIngress

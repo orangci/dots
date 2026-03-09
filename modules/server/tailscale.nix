@@ -4,11 +4,9 @@ let
     mkIf
     mkOption
     mkEnableOption
-    mkMerge
     types
     ;
   cfg = config.modules.server.tailscale;
-  servers = config.modules.server;
 in
 {
   options.modules.server.tailscale = {

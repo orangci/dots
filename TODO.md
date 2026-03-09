@@ -3,20 +3,17 @@
 - full disk encryption
 - secure boot
 - use impermanence / make garbage collection actually good
-- nixify  firefox extensions settings
+- nixify firefox extensions settings
 - fix up QT module — styling is ass currently
 - server modules that are broken: moodle, bracket, cryptpad
 - syncthing module, perhaps
 - create backups of my data, and an organised schedule and system for backing up data.. syncthing
-- re-install sirius.. *again*
 - switch to hjem
 - look into other image viewers. oculante? fix up mpv to use as my image viewer instead of gwenview? or just keep using gwenview?
-- - selfhost litexiv, invidious, redlib, nitter, painterest, patchy (https://git.nadeko.net/Fijxu/patchy), jitsi, cyberchef, freshrss, pairdrop, stirling pdf
+- selfhost (maybe) litexiv, invidious, redlib, nitter, painterest, [patchy](https://git.nadeko.net/Fijxu/patchy), jitsi, cyberchef, freshrss, pairdrop, stirling pdf, obsidian sync?, miruro or something like it, librum or kavita or something like it, something like miruro but for manga if that exists
 - Make juniper auto link latest backup to public copyparty
 - fix ntfy access control
-- do tailscale access control
 - force glance font to be lexend
 - fix broken glance widgets
 - fix TLS issues with .home stuff
-- give server modules a glance.enable option. also a toggle for cf tunnels, being a .home thing etc
 - go throuh literally every module and option-ify it all
