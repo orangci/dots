@@ -28,8 +28,15 @@ let
     && mod.port != null
   ) servers;
 
-  domainList = builtins.map (srv: "http://localhost:${toString config.modules.server.${srv}.port}") monitoredModules;
-  domainsString = builtins.concatStringsSep " " domainList;
+  pairs = builtins.map (
+    srv:
+    let
+      mod = config.modules.server.${srv};
+    in
+    "\"${mod.name}|http://localhost:${toString mod.port}\""
+  ) monitoredModules;
+
+  pairsString = builtins.concatStringsSep " " pairs;
 
   script = pkgs.writeShellApplication {
     name = "ntfy-script-services";
@@ -37,18 +44,24 @@ let
     text = ''
       #!/usr/bin/env bash
       set -euo pipefail
-      domains=(${domainsString})
+
+      pairs=(${pairsString})
       declare -A failure_counts
       declare -A notified_flags
 
       notify_down() {
-        local domain="$1"
-        curl -d "$domain is down!" -H "p: low" -u :"$NTFY_ACCESS_TOKEN" https://ntfy.orangc.net/${cfg.topic}
+        local name="$1"
+        curl -d "$name is down!" -H "p: low" -u :"$NTFY_ACCESS_TOKEN" https://ntfy.orangc.net/${cfg.topic}
+      }
+
+      notify_up() {
+        local name="$1"
+        curl -d "$name is back online!" -H "p: low" -u :"$NTFY_ACCESS_TOKEN" https://ntfy.orangc.net/${cfg.topic}
       }
 
       check_domain() {
         local domain="$1"
-        if curl -sf --connect-timeout 5 "https://$domain" > /dev/null; then
+        if curl -sf --connect-timeout 5 "$domain" > /dev/null; then
           return 0
         else
           return 1
@@ -56,18 +69,21 @@ let
       }
 
       while true; do
-        for domain in "''${domains[@]}"; do
+        for pair in "''${pairs[@]}"; do
+          name="''${pair%%|*}"
+          domain="''${pair#*|}"
+
           if check_domain "$domain"; then
-            if [ "''${notified_flags[$domain]:-0}" -eq 1 ]; then
-              curl -d "$domain is back online!" -H "p: low" -u :"$NTFY_ACCESS_TOKEN" https://ntfy.orangc.net/${cfg.topic}
+            if [ "''${notified_flags[$name]:-0}" -eq 1 ]; then
+              notify_up "$name"
             fi
-            failure_counts[$domain]=0
-            notified_flags[$domain]=0
+            failure_counts[$name]=0
+            notified_flags[$name]=0
           else
-            failure_counts[$domain]=$(( ''${failure_counts[$domain]:-0} + 1 ))
-            if [ "''${failure_counts[$domain]}" -ge 3 ] && [ "''${notified_flags[$domain]:-0}" -ne 1 ]; then
-              notify_down "$domain"
-              notified_flags[$domain]=1
+            failure_counts[$name]=$(( ''${failure_counts[$name]:-0} + 1 ))
+            if [ "''${failure_counts[$name]}" -ge 3 ] && [ "''${notified_flags[$name]:-0}" -ne 1 ]; then
+              notify_down "$name"
+              notified_flags[$name]=1
             fi
           fi
         done
