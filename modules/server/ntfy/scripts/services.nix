@@ -24,9 +24,11 @@ let
     && mod.ntfyChecking.enable
     && mod ? domain
     && mod.domain != null
+    && mod ? port
+    && mod.port != null
   ) servers;
 
-  domainList = builtins.map (srv: config.modules.server.${srv}.domain) monitoredModules;
+  domainList = builtins.map (srv: "http://localhost:${toString config.modules.server.${srv}.port}") monitoredModules;
   domainsString = builtins.concatStringsSep " " domainList;
 
   script = pkgs.writeShellApplication {

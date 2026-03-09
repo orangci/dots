@@ -161,6 +161,7 @@ in
 
       speedtest = allThree // {
         enable = true;
+        cloudflared.enable = true;
         domain = "speedtest.orangc.net";
         port = 8816;
       };

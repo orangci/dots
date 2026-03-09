@@ -22,12 +22,14 @@ let
       && mod.glance.enable
       && mod ? domain
       && mod.domain != null
+      && mod ? port
+      && mod.port != null
     ) serverModules
   );
 
   siteList = builtins.map (mod: {
     title = mod.name or mod.domain;
-    url = "https://${mod.domain}";
+    url = "http://localhost:${mod.port}";
     icon =
       mod.glance.icon
         or "sh:${lib.strings.replaceStrings [ " " ] [ "-" ] (lib.strings.toLower mod.name)}";
