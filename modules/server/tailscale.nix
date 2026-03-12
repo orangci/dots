@@ -29,13 +29,13 @@ in
       extraUpFlags = [
         "--advertise-routes=192.168.100.0/24"
         "--advertise-exit-node"
-        "--accept-dns=false"
+        "--accept-dns"
         "--ssh=false"
       ];
       extraSetFlags = [
         "--advertise-routes=192.168.100.0/24"
         "--advertise-exit-node"
-        "--accept-dns=false"
+        "--accept-dns"
         "--ssh=false"
       ];
     };
