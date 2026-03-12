@@ -8,7 +8,7 @@ let
 
   allThree = {
     glance.enable = true;
-    httpHome.enable = true;
+    internalTailscaleDomain.enable = true;
     ntfyChecking.enable = true;
   };
 
@@ -73,7 +73,7 @@ in
       glance = {
         enable = true;
         cloudflared.enable = true;
-        httpHome.enable = true;
+        internalTailscaleDomain.enable = true;
         ntfyChecking.enable = true;
         domain = "glance.orangc.net";
         port = 8806;
@@ -132,7 +132,7 @@ in
         enable = true;
         cloudflared.enable = true;
         glance.enable = true;
-        httpHome.enable = true;
+        internalTailscaleDomain.enable = true;
         domain = "ntfy.orangc.net";
         port = 8812;
         users = lib.singleton {

@@ -22,14 +22,12 @@ let
       && mod.glance.enable
       && mod ? domain
       && mod.domain != null
-      && mod ? port
-      && mod.port != null
     ) serverModules
   );
 
   siteList = builtins.map (mod: {
     title = mod.name or mod.domain;
-    url = "http://localhost:${toString mod.port}";
+    url = "http://${lib.removeSuffix '.orangc.net' mod.domain}.cormorant-emperor.ts.net";
     icon =
       mod.glance.icon
         or "sh:${lib.strings.replaceStrings [ " " ] [ "-" ] (lib.strings.toLower mod.name)}";
@@ -40,7 +38,7 @@ in
     enable = mkEnableOption "Enable glance";
 
     cloudflared.enable = mkEnableOption "Enable Cloudflare Tunnels for this service";
-    httpHome.enable = mkEnableOption "Enable an internal, http .home domain for this service";
+    internalTailscaleDomain.enable = mkEnableOption "Enable an internal, http .home domain for this service";
     ntfyChecking.enable = mkEnableOption "Allow Ntfy to send notifications when this service goes down";
 
     name = mkOption {

@@ -22,8 +22,9 @@ let
     _: mod: mod ? domain && mod.domain != null && mod ? port && mod.port != null
   ) allModules;
 
-  httpHomeModules = filterAttrs (
-    _: mod: lib.hasAttrByPath [ "httpHome" "enable" ] mod && mod.httpHome.enable
+  internalTailscaleDomainModules = filterAttrs (
+    _: mod:
+    lib.hasAttrByPath [ "internalTailscaleDomain" "enable" ] mod && mod.internalTailscaleDomain.enable
   ) validModules;
 
   dynamicVhosts = lib.mkMerge [
@@ -36,27 +37,13 @@ let
       let
         base = lib.removeSuffix ".orangc.net" mod.domain;
       in
-      nameValuePair "${base}.home.orangc.net" {
-        extraConfig = mkDefault ''
-          reverse_proxy localhost:${toString mod.port}
-          tls {
-           dns cloudflare {env.CLOUDFLARE_API_TOKEN}
-           resolvers 1.1.1.1 1.0.0.1 
-          }
-        '';
+      nameValuePair "https://${base}.cormorant-emperor.ts.net" {
+        extraConfig = mkDefault "
+        bind tailscale/${base}
+        reverse_proxy localhost:${toString mod.port}
+        ";
       }
-    ) validModules)
-    (mapAttrs' (
-      _: mod:
-      let
-        base = lib.removeSuffix ".orangc.net" mod.domain;
-      in
-      nameValuePair "http://${base}.home" {
-        extraConfig = mkDefault ''
-          reverse_proxy localhost:${toString mod.port}
-        '';
-      }
-    ) httpHomeModules)
+    ) internalTailscaleDomainModules)
   ];
 
 in
@@ -64,32 +51,31 @@ in
   options.modules.server.caddy.enable = mkEnableOption "Enable Caddy";
 
   config = mkIf cfg.enable {
-    modules.common.sops.secrets.acme-dns-cloudflare-token = {
-      path = "/var/secrets/acme-dns-cloudflare-token";
+    modules.common.sops.secrets.caddy-env = {
+      path = "/var/secrets/caddy-env";
       owner = "caddy";
     };
     services.caddy = {
       enable = true;
       email = "c@orangc.net";
       package = pkgs.caddy.withPlugins {
-        plugins = [ "github.com/caddy-dns/cloudflare@v0.2.3" ];
-        hash = "sha256-mmkziFzEMBcdnCWCRiT3UyWPNbINbpd3KUJ0NMW632w=";
+        plugins = [
+          "github.com/caddy-dns/cloudflare@v0.2.3"
+          "github.com/tailscale/caddy-tailscale@v0.0.0-20260106222316-bb080c4414ac"
+        ];
+        hash = "sha256-EyybDKj/cHySfZm+ij/rpaLHd5buCdbuMmxG0ZjO/rw=";
       };
-      environmentFile = config.modules.common.sops.secrets.acme-dns-cloudflare-token.path;
+      environmentFile = config.modules.common.sops.secrets.caddy-env.path;
       globalConfig = ''
         acme_dns cloudflare {env.CLOUDFLARE_API_TOKEN}
+        tailscale {
+        	auth_key {env.TS_AUTHKEY}
+        	ephemeral true
+        }
       '';
       virtualHosts = mkMerge [
         dynamicVhosts
         {
-          "home.orangc.net".extraConfig =
-            "
-          tls {
-           dns cloudflare {env.CLOUDFLARE_API_TOKEN}
-           resolvers 1.1.1.1 1.0.0.1
-           }
-          ";
-          "dns.orangc.net".extraConfig = "reverse_proxy 127.0.0.1:5380";
           "mc-map.orangc.net".extraConfig =
             mkIf config.modules.server.minecraft.juniper-s10.enable "reverse_proxy localhost:${
               toString (config.modules.server.minecraft.juniper-s10.port - 2000)
