@@ -27,7 +27,7 @@ let
 
   siteList = builtins.map (mod: {
     title = mod.name or mod.domain;
-    url = "http://${lib.removeSuffix '.orangc.net' mod.domain}.cormorant-emperor.ts.net";
+    url = "https://${lib.removeSuffix ".orangc.net" mod.domain}.cormorant-emperor.ts.net";
     icon =
       mod.glance.icon
         or "sh:${lib.strings.replaceStrings [ " " ] [ "-" ] (lib.strings.toLower mod.name)}";
