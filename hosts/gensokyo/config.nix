@@ -148,13 +148,13 @@ in
 
       ollama = allThree // {
         enable = false;
-        cloudflared.enable = true;
         domain = "ai.orangc.net";
         port = 8813;
       };
 
       searxng = allThree // {
         enable = true;
+        cloudflared.enable = true;
         domain = "search.orangc.net";
         port = 8815;
       };
@@ -173,11 +173,9 @@ in
         port = 8817;
       };
 
-      vaultwarden = {
+      vaultwarden = allThree // {
         enable = true;
-        glance.enable = true;
         cloudflared.enable = true;
-        ntfyChecking.enable = true;
         domain = "vault.orangc.net";
         port = 8818;
       };
