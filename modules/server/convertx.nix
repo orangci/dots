@@ -35,7 +35,7 @@ in
       description = "The port for convertx to be hosted at";
     };
 
-    icon = mkOption {
+    glance.icon = mkOption {
       type = types.str;
       default = "https://cdn.jsdelivr.net/gh/selfhst/icons/png/convertx.png";
       description = "The convertx icon";

@@ -15,5 +15,4 @@
 - fix ntfy access control
 - force glance font to be lexend
 - fix broken glance widgets
-- fix TLS issues with .home stuff
 - go throuh literally every module and option-ify it all

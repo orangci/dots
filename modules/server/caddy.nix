@@ -55,6 +55,7 @@ in
       path = "/var/secrets/caddy-env";
       owner = "caddy";
     };
+    systemd.services.caddy.before = lib.singleton "tailscaled.service";
     services.caddy = {
       enable = true;
       email = "c@orangc.net";
@@ -63,7 +64,7 @@ in
           "github.com/caddy-dns/cloudflare@v0.2.3"
           "github.com/tailscale/caddy-tailscale@v0.0.0-20260106222316-bb080c4414ac"
         ];
-        hash = "sha256-EyybDKj/cHySfZm+ij/rpaLHd5buCdbuMmxG0ZjO/rw=";
+        hash = "sha256-B0bCH3TNQYCVznwTQobCiP1Rqy9gZPP/3d9vuTE8+9U=";
       };
       environmentFile = config.modules.common.sops.secrets.caddy-env.path;
       globalConfig = ''
