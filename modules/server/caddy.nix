@@ -51,11 +51,11 @@ in
   options.modules.server.caddy.enable = mkEnableOption "Enable Caddy";
 
   config = mkIf cfg.enable {
+    systemd.services.caddy.before = mkIf config.modules.server.tailscale.enable ["tailscaled.service"];
     modules.common.sops.secrets.caddy-env = {
       path = "/var/secrets/caddy-env";
       owner = "caddy";
     };
-    systemd.services.caddy.before = lib.singleton "tailscaled.service";
     services.caddy = {
       enable = true;
       email = "c@orangc.net";
