@@ -145,11 +145,13 @@ in
                   }
                   {
                     type = "custom-api";
-                    height = "200px";
-                    title = "Fox";
+                    title = "xkcd";
                     cache = "2m";
-                    url = "https://randomfox.ca/floof/";
-                    template = ''<img src="{{ .JSON.String "image" }}"></img>'';
+                    url = "https://xkcd.com/info.0.json";
+                    template = ''
+                      <body> {{ .JSON.String "title" }}</body>
+                      <img src="{{ .JSON.String "img" }}"></img>
+                    '';
                   }
                 ];
               }
