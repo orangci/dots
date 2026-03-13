@@ -198,145 +198,43 @@ in
                     units = "metric";
                     hour-format = "24h";
                   }
-                  (mkIf config.modules.server.speedtest.enable {
+                  {
                     type = "custom-api";
+                    title = "Prayer Times";
+                    title-url = "https://aladhan.com/prayer-times-api";
                     cache = "1h";
-                    title = "Internet Speedtest";
-                    title-url = "https://${config.modules.server.speedtest.domain}";
+                    url = "https://api.aladhan.com/v1/timingsByCity?city=Riyadh&country=Saudi+Arabia&method=4";
                     headers = {
-                      Authorization = {
-                        _secret = config.modules.common.sops.secrets.speedtest-api-key.path;
-                      };
-                      Accept = "application/json";
-                    };
-                    subrequests.stats = {
-                      url = "http://localhost:${toString config.modules.server.speedtest.port}/api/v1/stats";
-                      headers = {
-                        Authorization = {
-                          _secret = config.modules.common.sops.secrets.speedtest-api-key.path;
-                        };
-                        Accept = "application/json";
-                      };
-                    };
-                    options.showPercentageDiff = true;
-                    template = ''
-                      {{ $showPercentage := .Options.BoolOr "showPercentageDiff" true }}
-                      {{ $stats := .Subrequest "stats" }}
-                      <div class="flex justify-between text-center margin-block-3">
-                      <div>
-                          {{ $downloadChange := percentChange (.JSON.Float "data.download_bits") ($stats.JSON.Float "data.download.avg_bits")
-                          }}
-                          {{ if $showPercentage }}
-                          <div
-                          class="size-small {{ if gt $downloadChange 0.0 }}color-positive{{ else if lt $downloadChange 0.0 }}color-negative{{ else }}color-primary{{ end }}"
-                          style="display: inline-flex; align-items: center;">
-                          {{ $downloadChange | printf "%+.1f%%" }}
-                          {{ if gt $downloadChange 0.0 }}
-                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"
-                              style="height: 1em; margin-left: 0.25em;" class="size-4">
-                              <path fill-rule="evenodd"
-                              d="M9.808 4.057a.75.75 0 0 1 .92-.527l3.116.849a.75.75 0 0 1 .528.915l-.823 3.121a.75.75 0 0 1-1.45-.382l.337-1.281a23.484 23.484 0 0 0-3.609 3.056.75.75 0 0 1-1.07.01L6 8.06l-3.72 3.72a.75.75 0 1 1-1.06-1.061l4.25-4.25a.75.75 0 0 1 1.06 0l1.756 1.755a25.015 25.015 0 0 1 3.508-2.85l-1.46-.398a.75.75 0 0 1-.526-.92Z"
-                              clip-rule="evenodd" />
-                          </svg>
-                          {{ else if lt $downloadChange 0.0 }}
-                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"
-                              style="height: 1em; margin-left: 0.25em;" class="size-4">
-                              <path fill-rule="evenodd"
-                              d="M1.22 4.22a.75.75 0 0 1 1.06 0L6 7.94l2.761-2.762a.75.75 0 0 1 1.158.12 24.9 24.9 0 0 1 2.718 5.556l.729-1.261a.75.75 0 0 1 1.299.75l-1.591 2.755a.75.75 0 0 1-1.025.275l-2.756-1.591a.75.75 0 1 1 .75-1.3l1.097.634a23.417 23.417 0 0 0-1.984-4.211L6.53 9.53a.75.75 0 0 1-1.06 0L1.22 5.28a.75.75 0 0 1 0-1.06Z"
-                              clip-rule="evenodd" />
-                          </svg>
-                          {{ end }}
-                          </div>
-                          {{ end }}
-                          <div class="color-highlight size-h3">{{ .JSON.Float "data.download_bits" | mul 0.000001 | printf "%.1f" }}</div>
-                          <div class="size-h6">DOWNLOAD</div>
-                      </div>
-                      <div>
-                          {{ $uploadChange := percentChange (.JSON.Float "data.upload_bits") ($stats.JSON.Float "data.upload.avg_bits") }}
-                          {{ if $showPercentage }}
-                          <div
-                          class="size-small {{ if gt $uploadChange 0.0 }}color-positive{{ else if lt $uploadChange 0.0 }}color-negative{{ else }}color-primary{{ end }}"
-                          style="display: inline-flex; align-items: center;">
-                          {{ $uploadChange | printf "%+.1f%%" }}
-                          {{ if gt $uploadChange 0.0 }}
-                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"
-                              style="height: 1em; margin-left: 0.25em;" class="size-4">
-                              <path fill-rule="evenodd"
-                              d="M9.808 4.057a.75.75 0 0 1 .92-.527l3.116.849a.75.75 0 0 1 .528.915l-.823 3.121a.75.75 0 0 1-1.45-.382l.337-1.281a23.484 23.484 0 0 0-3.609 3.056.75.75 0 0 1-1.07.01L6 8.06l-3.72 3.72a.75.75 0 1 1-1.06-1.061l4.25-4.25a.75.75 0 0 1 1.06 0l1.756 1.755a25.015 25.015 0 0 1 3.508-2.85l-1.46-.398a.75.75 0 0 1-.526-.92Z"
-                              clip-rule="evenodd" />
-                          </svg>
-                          {{ else if lt $uploadChange 0.0 }}
-                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"
-                              style="height: 1em; margin-left: 0.25em;" class="size-4">
-                              <path fill-rule="evenodd"
-                              d="M1.22 4.22a.75.75 0 0 1 1.06 0L6 7.94l2.761-2.762a.75.75 0 0 1 1.158.12 24.9 24.9 0 0 1 2.718 5.556l.729-1.261a.75.75 0 0 1 1.299.75l-1.591 2.755a.75.75 0 0 1-1.025.275l-2.756-1.591a.75.75 0 1 1 .75-1.3l1.097.634a23.417 23.417 0 0 0-1.984-4.211L6.53 9.53a.75.75 0 0 1-1.06 0L1.22 5.28a.75.75 0 0 1 0-1.06Z"
-                              clip-rule="evenodd" />
-                          </svg>
-                          {{ end }}
-                          </div>
-                          {{ end }}
-                          <div class="color-highlight size-h3">{{ .JSON.Float "data.upload_bits" | mul 0.000001 | printf "%.1f" }}</div>
-                          <div class="size-h6">UPLOAD</div>
-                      </div>
-                      <div>
-                          {{ $pingChange := percentChange (.JSON.Float "data.ping") ($stats.JSON.Float "data.ping.avg") }}
-                          {{ if $showPercentage }}
-                          <div
-                          class="size-small {{ if gt $pingChange 0.0 }}color-negative{{ else if lt $pingChange 0.0 }}color-positive{{ else }}color-primary{{ end }}"
-                          style="display: inline-flex; align-items: center;">
-                          {{ $pingChange | printf "%+.1f%%" }}
-                          {{ if lt $pingChange 0.0 }}
-                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"
-                              style="height: 1em; margin-left: 0.25em;" class="size-4">
-                              <path fill-rule="evenodd"
-                              d="M1.22 4.22a.75.75 0 0 1 1.06 0L6 7.94l2.761-2.762a.75.75 0 0 1 1.158.12 24.9 24.9 0 0 1 2.718 5.556l.729-1.261a.75.75 0 0 1 1.299.75l-1.591 2.755a.75.75 0 0 1-1.025.275l-2.756-1.591a.75.75 0 1 1 .75-1.3l1.097.634a23.417 23.417 0 0 0-1.984-4.211L6.53 9.53a.75.75 0 0 1-1.06 0L1.22 5.28a.75.75 0 0 1 0-1.06Z"
-                              clip-rule="evenodd" />
-                          </svg>
-                          {{ else if gt $pingChange 0.0 }}
-                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"
-                              style="height: 1em; margin-left: 0.25em;" class="size-4">
-                              <path fill-rule="evenodd"
-                              d="M9.808 4.057a.75.75 0 0 1 .92-.527l3.116.849a.75.75 0 0 1 .528.915l-.823 3.121a.75.75 0 0 1-1.45-.382l.337-1.281a23.484 23.484 0 0 0-3.609 3.056.75.75 0 0 1-1.07.01L6 8.06l-3.72 3.72a.75.75 0 1 1-1.06-1.061l4.25-4.25a.75.75 0 0 1 1.06 0l1.756 1.755a25.015 25.015 0 0 1 3.508-2.85l-1.46-.398a.75.75 0 0 1-.526-.92Z"
-                              clip-rule="evenodd" />
-                          </svg>
-                          {{ end }}
-                          </div>
-                          {{ end }}
-                          <div class="color-highlight size-h3">{{ .JSON.Float "data.ping" | printf "%.0f ms" }}</div>
-                          <div class="size-h6">PING</div>
-                      </div>
-                      </div>
-                    '';
-                  })
-                  (mkIf config.modules.server.immich.enable {
-                    type = "custom-api";
-                    title = "Immich stats";
-                    title-url = "https://${config.modules.server.immich.domain}";
-                    cache = "12h";
-                    url = "http://localhost:${toString config.modules.server.immich.port}/api/server/statistics";
-                    headers = {
-                      x-api-key = {
-                        _secret = config.modules.common.sops.secrets.immich-api-key.path;
-                      };
                       Accept = "application/json";
                     };
                     template = ''
+                      <div class="text-center mb-2">
+                        <div class="size-h6 color-highlight">{{ .JSON.String "data.date.hijri.date" }} ({{ .JSON.String "data.date.hijri.month.en" }})</div>
+                      </div>
                       <div class="flex justify-between text-center">
                         <div>
-                            <div class="color-highlight size-h3">{{ .JSON.Int "photos" | formatNumber }}</div>
-                            <div class="size-h6">PHOTOS</div>
+                          <div class="color-highlight size-h4">{{ .JSON.String "data.timings.Fajr" }}</div>
+                          <div class="size-h6">FAJR</div>
                         </div>
                         <div>
-                            <div class="color-highlight size-h3">{{ .JSON.Int "videos" | formatNumber }}</div>
-                            <div class="size-h6">VIDEOS</div>
+                          <div class="color-highlight size-h4">{{ .JSON.String "data.timings.Dhuhr" }}</div>
+                          <div class="size-h6">DHUHR</div>
                         </div>
                         <div>
-                            <div class="color-highlight size-h3">{{ div (.JSON.Int "usage" | toFloat) 1073741824 | toInt | formatNumber }}GB</div>
-                            <div class="size-h6">USAGE</div>
+                          <div class="color-highlight size-h4">{{ .JSON.String "data.timings.Asr" }}</div>
+                          <div class="size-h6">ASR</div>
+                        </div>
+                        <div>
+                          <div class="color-highlight size-h4">{{ .JSON.String "data.timings.Maghrib" }}</div>
+                          <div class="size-h6">MAGHRIB</div>
+                        </div>
+                        <div>
+                          <div class="color-highlight size-h4">{{ .JSON.String "data.timings.Isha" }}</div>
+                          <div class="size-h6">ISHA</div>
                         </div>
                       </div>
                     '';
-                  })
+                  }
                   {
                     type = "custom-api";
                     title = "Fact";
