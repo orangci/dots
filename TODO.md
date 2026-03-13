@@ -10,7 +10,7 @@
 - create backups of my data, and an organised schedule and system for backing up data.. syncthing
 - switch to hjem
 - look into other image viewers. oculante? fix up mpv to use as my image viewer instead of gwenview? or just keep using gwenview?
-- selfhost (maybe) litexiv, invidious, redlib, nitter, painterest, [patchy](https://git.nadeko.net/Fijxu/patchy), jitsi, cyberchef, freshrss, pairdrop, stirling pdf, obsidian sync?, miruro or something like it, librum or kavita or something like it, something like miruro but for manga if that exists
+- selfhost (maybe) audiobookshelf, scrutiny, litexiv, invidious, redlib, nitter, painterest, [patchy](https://git.nadeko.net/Fijxu/patchy), jitsi, cyberchef, freshrss, pairdrop, stirling pdf, obsidian sync?, miruro or something like it, librum or kavita or something like it, something like miruro but for manga if that exists
 - Make juniper auto link latest backup to public copyparty
 - fix ntfy access control
 - force glance font to be lexend
