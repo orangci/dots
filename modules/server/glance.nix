@@ -208,7 +208,7 @@ in
                       Accept = "application/json";
                     };
                     subrequests.stats = {
-                      url = "https://${config.modules.server.speedtest.domain}/api/v1/stats";
+                      url = "http://localhost:${toString config.modules.server.speedtest.port}/api/v1/stats";
                       headers = {
                         Authorization = {
                           _secret = config.modules.common.sops.secrets.speedtest-api-key.path;
@@ -311,7 +311,7 @@ in
                     title = "Immich stats";
                     title-url = "https://${config.modules.server.immich.domain}";
                     cache = "12h";
-                    url = "https://${config.modules.server.immich.domain}/api/server/statistics";
+                    url = "http://localhost:${toString config.modules.server.immich.port}/api/server/statistics";
                     headers = {
                       x-api-key = {
                         _secret = config.modules.common.sops.secrets.immich-api-key.path;
