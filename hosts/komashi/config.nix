@@ -24,6 +24,7 @@
       thunar.enable = true;
       hyprland.enable = true;
       appimages.enable = false;
+      sudo-rs.enable = true;
     };
     gaming = {
       wine.enable = true;

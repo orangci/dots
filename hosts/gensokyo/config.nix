@@ -28,6 +28,9 @@ in
       sops.enable = true;
       btrfs.enable = true;
     };
+    programs = {
+      sudo-rs.enable = true;
+    };
     server = {
       caddy.enable = true;
       cloudflared.enable = true;
