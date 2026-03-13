@@ -51,7 +51,9 @@ in
   options.modules.server.caddy.enable = mkEnableOption "Enable Caddy";
 
   config = mkIf cfg.enable {
-    systemd.services.caddy.before = mkIf config.modules.server.tailscale.enable ["tailscaled.service"];
+    systemd.services.caddy.before = mkIf config.modules.server.tailscale.enable [
+      "tailscaled.service"
+    ];
     modules.common.sops.secrets.caddy-env = {
       path = "/var/secrets/caddy-env";
       owner = "caddy";
