@@ -78,12 +78,12 @@ in
       '';
       virtualHosts = mkMerge [
         dynamicVhosts
-        {
+        (mkIf config.modules.server.minecraft.juniper-s10.enable {
           "mc-map.orangc.net".extraConfig =
             mkIf config.modules.server.minecraft.juniper-s10.enable "reverse_proxy localhost:${
               toString (config.modules.server.minecraft.juniper-s10.port - 2000)
             }";
-        }
+        })
       ];
     };
   };

@@ -5,7 +5,7 @@
 - use impermanence / make garbage collection actually good
 - nixify firefox extensions settings
 - fix up QT module — styling is ass currently
-- server modules that are broken: moodle, bracket, cryptpad
+- server modules that are broken: moodle, bracket
 - syncthing module, perhaps
 - create backups of my data, and an organised schedule and system for backing up data.. syncthing
 - switch to hjem
@@ -14,5 +14,4 @@
 - Make juniper auto link latest backup to public copyparty
 - fix ntfy access control
 - force glance font to be lexend
-- fix broken glance widgets
 - go throuh literally every module and option-ify it all

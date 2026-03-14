@@ -54,7 +54,7 @@ in
       };
 
       cryptpad = allThree // {
-        enable = false;
+        enable = true;
         cloudflared.enable = true;
         domain = "pad.orangc.net";
         port = 8803;

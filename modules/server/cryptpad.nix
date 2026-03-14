@@ -44,9 +44,10 @@ in
       settings = {
         httpPort = cfg.port;
         websocketPort = cfg.port - 1000;
-        httpSafeOrigin = cfg.domain;
-        httpUnsafeOrigin = "https://${cfg.domain}/";
-        logToStdout = false;
+        httpUnsafeOrigin = "https://${cfg.domain}";
+        httpSafeOrigin = "https://${cfg.domain}";
+        blockDailyCheck = true; # disable telemetry
+        adminKeys = lib.singleton "[orangc@pad.orangc.net/QHUG+vZKoGOEUVFethXDVhpWIX4NlJytiG1Sy-A2MPQ=]";
       };
     };
   };
