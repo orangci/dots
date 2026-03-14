@@ -31,5 +31,6 @@
     ./tailscale.nix
     ./vscode.nix
     ./matrix
+    ./scrutiny.nix
   ];
 }

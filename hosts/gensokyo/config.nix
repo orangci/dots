@@ -223,6 +223,13 @@ in
         port = 8824;
         serverName = "orangc.net";
       };
+
+      scrutiny = allThree // {
+        enable = true;
+        cloudflared.enable = true;
+        domain = "scrutiny.orangc.net";
+        port = 8825;
+      };
     };
   };
   local.hardware-clock.enable = true;

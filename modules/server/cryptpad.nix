@@ -48,6 +48,7 @@ in
         httpSafeOrigin = "https://${cfg.domain}";
         blockDailyCheck = true; # disable telemetry
         adminKeys = lib.singleton "[orangc@pad.orangc.net/QHUG+vZKoGOEUVFethXDVhpWIX4NlJytiG1Sy-A2MPQ=]";
+        disableIntegratedEviction = true;
       };
     };
   };
