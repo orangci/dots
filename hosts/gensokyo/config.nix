@@ -233,7 +233,6 @@ in
 
       aiostreams = allThree // {
         enable = true;
-        cloudflared.enable = true;
         domain = "aiostreams.orangc.net";
         port = 8826;
       };

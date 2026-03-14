@@ -1,12 +1,25 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
   inherit (lib)
     mkIf
     mkOption
     mkEnableOption
     types
+    singleton
     ;
   cfg = config.modules.server.aiostreams;
+  envFile = pkgs.writeText "aiostreams.env" ''
+    # BASE_URL=https://${cfg.domain}
+    BASE_URL=https://aiostreams.cormorant-emperor.ts.ne
+    ADDON_ID=${cfg.domain}
+    LOG_TIMEZONE=${config.time.timeZone}
+  '';
+  # my UUID is b23d9573-3715-4b8d-9335-69932a8ee8e4
 in
 {
   options.modules.server.aiostreams = {
@@ -36,17 +49,15 @@ in
   };
 
   config = mkIf cfg.enable {
-    modules.common.sops.secrets.aiostreams-env.path = "/var/secrets/aiostreams-env";
-    systemd.tmpfiles.rules = [ "d /var/lib/aiostreams 0755 root root -" ];
+    modules.common.sops.secrets.aiostreams-secret-env.path = "/var/secrets/aiostreams-secret-env";
+    systemd.tmpfiles.rules = singleton "d /var/lib/aiostreams 0755 root root -";
     virtualisation.oci-containers.containers.aiostreams = {
       image = "ghcr.io/viren070/aiostreams:latest";
-      autoStart = true;
-      ports = [ "${toString cfg.port}:3000" ];
-      volumes = [ "/var/lib/aiostreams:/app/data" ];
-      environmentFiles = [ config.modules.common.sops.secrets.aiostreams-env.path ];
-      extraOptions = [
-        "--name=aiostreams"
-        "--restart=unless-stopped"
+      ports = singleton "${toString cfg.port}:3000";
+      volumes = singleton "/var/lib/aiostreams:/app/data";
+      environmentFiles = [
+        config.modules.common.sops.secrets.aiostreams-secret-env.path
+        envFile
       ];
     };
   };
