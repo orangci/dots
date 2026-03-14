@@ -230,6 +230,13 @@ in
         domain = "scrutiny.orangc.net";
         port = 8825;
       };
+
+      aiostreams = allThree // {
+        enable = true;
+        cloudflared.enable = true;
+        domain = "aiostreams.orangc.net";
+        port = 8826;
+      };
     };
   };
   local.hardware-clock.enable = true;

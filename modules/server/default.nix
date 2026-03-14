@@ -32,5 +32,6 @@
     ./vscode.nix
     ./matrix
     ./scrutiny.nix
+    ./aiostreams.nix
   ];
 }
