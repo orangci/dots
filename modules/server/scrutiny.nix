@@ -36,6 +36,7 @@ in
   };
 
   config = mkIf cfg.enable {
+    services.smartd.enable = true;
     services.scrutiny = {
       enable = true;
       # collector.enable = true; # metrics collection
