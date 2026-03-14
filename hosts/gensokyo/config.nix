@@ -234,6 +234,10 @@ in
   };
   local.hardware-clock.enable = true;
   drivers.intel.enable = true;
+  services.smartd = {
+    enable = true;
+    devices = lib.singleton { device = "/dev/nvme0"; };
+  };
 
   time.timeZone = "Asia/Riyadh";
   system.stateVersion = "25.05";
@@ -245,6 +249,7 @@ in
     nix-output-monitor
     nh
     micro
+    smartmontools # smartd drive health monitoring
   ];
 
   users.users = {
