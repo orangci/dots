@@ -31,7 +31,7 @@ in
             duckduckgo.metaData.hidden = true;
 
             "SearXNG" = {
-              urls = [ { template = "https://search.orangc.net/search?q={searchTerms}"; } ];
+              urls = [ { template = "https://search.cormorant-emperor.ts.net/search?q={searchTerms}"; } ];
               definedAliases = [ "@sx" ];
             };
 
@@ -423,6 +423,12 @@ in
           # refined github:
           "{a4c4eda4-fb84-4a84-b4a1-f7c1cbf2a1ad}" = {
             install_url = "https://addons.mozilla.org/firefox/downloads/latest/refined-github-/latest.xpi";
+            installation_mode = "force_installed";
+          };
+
+          # consumer rights wiki:
+          "@crw-extension-firefox" = {
+            install_url = "https://addons.mozilla.org/firefox/downloads/latest/consumer-rights-wiki/latest.xpi";
             installation_mode = "force_installed";
           };
 

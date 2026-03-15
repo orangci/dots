@@ -19,7 +19,6 @@ let
     ADDON_ID=${cfg.domain}
     LOG_TIMEZONE=${config.time.timeZone}
   '';
-  # my UUID is b23d9573-3715-4b8d-9335-69932a8ee8e4
 in
 {
   options.modules.server.aiostreams = {
