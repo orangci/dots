@@ -6,6 +6,7 @@ let
     mkOption
     mkIf
     types
+    singleton
     ;
   cfg = config.modules.server.convertx;
 in
@@ -44,13 +45,13 @@ in
 
   config = mkIf cfg.enable {
     modules.common.sops.secrets.convertx-env.path = "/var/secrets/convertx-env";
-    systemd.tmpfiles.rules = [ "d /var/lib/convertx 0755 root root -" ];
+    systemd.tmpfiles.rules = singleton "d /var/lib/convertx 0755 root root -";
 
     virtualisation.oci-containers.containers.convertx = {
       image = "ghcr.io/c4illin/convertx";
-      ports = [ "127.0.0.1:${toString cfg.port}:3000" ];
-      volumes = [ "/var/lib/convertx:/app/data" ];
-      environmentFiles = [ "/var/secrets/convertx-env" ];
+      ports = singleton "127.0.0.1:${toString cfg.port}:3000";
+      volumes = singleton "/var/lib/convertx:/app/data";
+      environmentFiles = singleton "/var/secrets/convertx-env";
     };
   };
 }
