@@ -62,8 +62,33 @@ in
     services.copyparty = {
       enable = true;
       settings = {
+        # https://copyparty.eu/helptext.txt
+        # above has all the options
         p = singleton cfg.port;
         rproxy = -1;
+        # public URL to assume when creating links
+        site = "https://${cfg.domain}";
+
+        # enable ftp server
+        # future me: ftps server option is also available
+        ftp = cfg.port - 1000;
+
+        # use system time instead of UTC
+        localtime = true;
+
+        # change the boring loading spinner to something other than a tree emoji
+        spinner = ",padding:0;border-radius:9em;border:.2em solid #444;border-top:.2em solid #fc0";
+
+        theme = 2; # pm-monokai
+
+        # hide some UI elements by default
+        # ctrl F for "ui options" in the helptext to learn what these do
+        ui-noacci = true;
+        ui-nosrvi = true;
+        ui-nocpla = true;
+        ui-nolbar = true;
+        ui-norepl = true;
+        ui-noctxb = true;
       };
       openFilesLimit = 4096;
       accounts.${username}.passwordFile = config.modules.common.sops.secrets.copyparty-password.path;
