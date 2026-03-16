@@ -61,7 +61,10 @@ in
     };
     services.copyparty = {
       enable = true;
-      settings.p = singleton cfg.port;
+      settings = {
+        p = singleton cfg.port;
+        rproxy = -1;
+      };
       openFilesLimit = 4096;
       accounts.${username}.passwordFile = config.modules.common.sops.secrets.copyparty-password.path;
       volumes = {
