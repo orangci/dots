@@ -14,5 +14,6 @@
 - Make juniper auto link latest backup to public copyparty
 - fix ntfy access control
 - force glance font to be lexend
-- go throuh literally every module and option-ify it all
+- go throuh literally every module and option-ify it all- ntfy script for watching github repos
+- hook ntfy into all the services that can be, e.g., scrutiny, matrix
 - fix ntfy power on script
