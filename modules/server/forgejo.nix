@@ -91,7 +91,7 @@ in
         name = host;
         url = "https://${cfg.domain}";
         tokenFile = config.modules.common.sops.secrets.forgejo-runner-registration-token.path;
-        labels = singleton "ubuntu-latest:docker://node:18-bullseye";
+        labels = singleton "ubuntu-latest:docker://william/action-runners:ubuntu-latest";
       };
     };
     systemd.services.forgejo.preStart =
