@@ -27,6 +27,14 @@ in
       networking.enable = true;
       sops.enable = true;
       btrfs.enable = true;
+      restic = {
+        enable = true;
+        device = "/dev/disk/by-uuid/XXXX";
+        paths = [
+          "/home/orangc/docs"
+          "/srv/files"
+        ];
+      };
     };
     programs = {
       sudo-rs.enable = true;

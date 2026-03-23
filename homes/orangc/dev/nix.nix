@@ -23,6 +23,7 @@ in
       compose2nix
       deadnix
       statix
+      nix-init
     ];
     hmModules.cli.shell.extraAliases = {
       list-big-pkgs = "nix path-info -hsr /run/current-system/ | sort -hrk2 | head -n 30";

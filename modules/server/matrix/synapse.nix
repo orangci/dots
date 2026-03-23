@@ -94,7 +94,7 @@ in
           };
         };
         listeners = singleton {
-          port = cfg.port;
+          inherit (cfg) port;
           bind_addresses = singleton "0.0.0.0";
           type = "http";
           tls = false;

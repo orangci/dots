@@ -9,5 +9,6 @@
     ./sops.nix
     ./virtualisation.nix
     ./btrfs.nix
+    ./restic.nix
   ];
 }

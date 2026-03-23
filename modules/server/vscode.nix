@@ -57,7 +57,7 @@ in
 
     services.openvscode-server = {
       enable = true;
-      port = cfg.port;
+      inherit (cfg) port;
 
       # use your user home
       user = username;
