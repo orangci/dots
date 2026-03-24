@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  inputs,
   ...
 }:
 let
@@ -9,13 +10,17 @@ let
   cfg = config.hmModules.dev.nix;
 in
 {
+  imports = lib.singleton inputs.nix-index-database.homeModules.default;
   options.hmModules.dev.nix = {
     enable = mkEnableOption "Enable Nix development environment";
   };
 
   config = mkIf cfg.enable {
-    programs.nix-your-shell.enable = true;
-    programs.nix-index.enable = true;
+    programs = {
+      nix-your-shell.enable = true;
+      nix-index.enable = true;
+      nix-index-database.comma.enable = true;
+    };
     home.packages = with pkgs; [
       nixfmt
       nix-prefetch

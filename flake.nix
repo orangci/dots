@@ -76,6 +76,12 @@
 
     # copyparty is a file server that is awesome
     copyparty.url = "github:9001/copyparty";
+
+    # so nix-index, nix-locate, and comma can work
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =

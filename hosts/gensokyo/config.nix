@@ -33,6 +33,7 @@ in
         paths = [
           "/home/orangc/docs"
           "/srv/files"
+          "/var/lib/immich"
         ];
       };
     };
