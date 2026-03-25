@@ -3,6 +3,7 @@
   lib,
   pkgs,
   inputs,
+  host,
   ...
 }:
 let
@@ -35,6 +36,7 @@ in
       list-pkgs = "nix-store -q --requisites /run/current-system | cut -d- -f2- | sort | uniq";
       qn = "clear;nix-shell";
       nr = "nix repl --expr 'builtins.getFlake (toString ./.)'";
+      nrr = "nixos-rebuild repl --flake .#${host}";
     };
   };
 }
