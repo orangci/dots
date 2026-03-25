@@ -29,7 +29,6 @@ in
       btrfs.enable = true;
       restic = {
         enable = true;
-        device = "/dev/disk/by-uuid/7d3b2310-026e-4dd3-8cd0-ee49c7a644a0";
         paths = [
           "/home/orangc/docs"
           "/srv/files"
