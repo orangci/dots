@@ -52,7 +52,6 @@ in
       inherit (cfg) repository paths;
       initialize = true;
       runCheck = true;
-      timerConfig = null;
       pruneOpts = lib.singleton "--keep-last ${toString cfg.keepLast}";
     };
 
