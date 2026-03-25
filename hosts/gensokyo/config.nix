@@ -33,6 +33,8 @@ in
           "/home/orangc/docs"
           "/srv/files"
           "/var/lib/immich"
+          "/var/lib/forgejo"
+          "/var/lib/cryptpad"
         ];
       };
     };

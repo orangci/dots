@@ -40,7 +40,7 @@ in
   };
 
   config = mkIf cfg.enable {
-  # important: before enabling this module, mount the HDD first!!
+    # important: before enabling this module, mount the HDD first!!
     modules.common.sops.secrets.restic-password.path = "/var/secrets/restic-password";
     services.restic.backups.grand-backup = {
       passwordFile = config.modules.common.sops.secrets.restic-password.path;
