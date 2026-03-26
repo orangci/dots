@@ -242,7 +242,7 @@ in
       };
 
       aiostreams = allThree // {
-        enable = true;
+        enable = false;
         domain = "aiostreams.orangc.net";
         port = 8826;
       };
