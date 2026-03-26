@@ -7,7 +7,6 @@
 - fix up QT module — styling is ass currently
 - server modules that are broken: moodle, bracket
 - syncthing module, perhaps
-- create backups of my data, and an organised schedule and system for backing up data.. syncthing
 - switch to hjem
 - look into other image viewers. oculante? fix up mpv to use as my image viewer instead of gwenview? or just keep using gwenview?
 - selfhost (maybe) audiobookshelf, litexiv, invidious, redlib, nitter, painterest, [patchy](https://git.nadeko.net/Fijxu/patchy), jitsi, cyberchef, freshrss, pairdrop, stirling pdf, miruro or something like it, librum or kavita or something like it, something like miruro but for manga if that exists, changedetection, pricebuddy
@@ -19,3 +18,7 @@
 - fix ntfy power on script
 - maybe use an epic shell or make my own. like noctalia
 - look at wateir's grafana setup and perhaps 'borrow' it (love you, water)
+- use synaptic standard
+ - remove hm/system split
+ - export all modules
+- look into ISOs with lib.gens

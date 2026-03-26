@@ -94,10 +94,11 @@
     let
       system = "x86_64-linux";
       username = "orangc";
+      lib = nixpkgs.lib;
 
       nixosMachine =
         { host }:
-        nixpkgs.lib.nixosSystem {
+        lib.nixosSystem {
           specialArgs = {
             inherit
               inputs
@@ -109,7 +110,8 @@
           modules = [
             ./hosts/${host}/config.nix
             home-manager.nixosModules.home-manager
-            hjem.nixosModules.default
+            (lib.mkAliasOptionModule [ "hm" ] [ "home-manager" "users" username ])
+            # hjem.nixosModules.default
             {
               home-manager = {
                 extraSpecialArgs = {
