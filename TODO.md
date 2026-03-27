@@ -22,3 +22,10 @@
  - remove hm/system split
  - export all modules
 - look into ISOs with lib.gens
+- juniper behind tailscale?
+- look into netbird
+- radicale
+- add more pages to glance
+- declarative DNS!!
+- fix forgejo actions
+- write extensive docs for the flake e.g. for restic
