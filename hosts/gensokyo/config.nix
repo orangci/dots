@@ -220,9 +220,10 @@ in
         port = 8822;
       };
 
-      vscode = allThree // {
+      vscode = {
         enable = true;
         cloudflared.enable = true;
+        internalTailscaleDomain.enable = true;
         domain = "code.orangc.net";
         port = 8823;
       };
