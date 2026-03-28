@@ -1,4 +1,4 @@
-# This is my modified version Rexcrazy804's backup script
+# This is my modified version of Rexcrazy804's backup script
 # https://github.com/Rexcrazy804/Zaphkiel/blob/master/nixosModules/server/minecraft/backupservice.nix
 # Ty Rexi
 {
@@ -44,6 +44,12 @@ let
 
     # Delete older backups
     find ~/backups/juniper-s10 -type f -mtime +3 -name 'backup-*.tar.gz' -delete
+
+    # Place the latest backup in /srv/files
+    latest="$(ls -t ~/backups/juniper-s10/backup-*.tar.gz | head -n1)"
+    cp "$latest" /srv/files/season-10.tar.gz
+    chown copyparty:copyparty /srv/files/season-10.tar.gz
+    chmod 775 /srv/files/season-10.tar.gz
   '';
 in
 {
