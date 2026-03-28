@@ -57,6 +57,7 @@ in
       };
       hmModules.cli.shell.extraAliases = {
         cat = "bat -p";
+        catp = "bat -p --no-pager";
         ls = "eza -la --icons=auto";
         l = "eza --icons=auto";
         lh = "eza -a --icons=auto";
