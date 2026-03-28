@@ -13,6 +13,7 @@ let
     mkOption
     types
     mkEnableOption
+    singleton
     ;
   cfg = config.modules.server.minecraft.juniper-s10.automatic-backups;
   script = pkgs.writeShellScriptBin "juniper-rcon-backup" ''
@@ -44,12 +45,6 @@ let
 
     # Delete older backups
     find ~/backups/juniper-s10 -type f -mtime +3 -name 'backup-*.tar.gz' -delete
-
-    # Place the latest backup in /srv/files
-    latest="$(ls -t ~/backups/juniper-s10/backup-*.tar.gz | head -n1)"
-    cp "$latest" /srv/files/season-10.tar.gz
-    chown copyparty:copyparty /srv/files/season-10.tar.gz
-    chmod 775 /srv/files/season-10.tar.gz
   '';
 in
 {
@@ -65,19 +60,33 @@ in
     systemd.services.juniper-automatic-backups = {
       enable = true;
       description = "Prune chunks and backup Juniper world folder to backup folder";
+      onSuccess = singleton "juniper-backup-publish.service";
       serviceConfig = {
         User = "minecraft";
         Type = "oneshot";
         ExecStart = "${script}/bin/juniper-rcon-backup";
+        
       };
     };
     systemd.timers.juniper-automatic-backups = {
       description = "Timer to regularly prune chunks of and backup Juniper";
       enable = true;
-      wantedBy = [ "timers.target" ];
+      wantedBy = singleton "timers.target";
       timerConfig = {
         OnCalendar = cfg.frequency;
         Persistent = true;
+      };
+    };
+    systemd.services.juniper-backup-publish = {
+      description = "Publish latest Juniper backup to /srv/files";
+      serviceConfig = {
+        Type = "oneshot";
+        ExecStart = pkgs.writeShellScript "juniper-backup-publish" ''
+          latest="$(ls -t ~minecraft/backups/juniper-s10/backup-*.tar.gz | head -n1)"
+          cp "$latest" /srv/files/juniper-backups/season-10.tar.gz
+          chown copyparty:copyparty /srv/files/juniper-backups/season-10.tar.gz
+          chmod 775 /srv/files/juniper-backups/season-10.tar.gz
+        '';
       };
     };
   };
