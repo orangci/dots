@@ -7,6 +7,7 @@ let
     types
     ;
   cfg = config.modules.server.miniflux;
+  topicsOptions = import ./ntfy/topicsOptions.nix { inherit config lib; };
 in
 {
   options.modules.server.miniflux = {
@@ -36,7 +37,8 @@ in
   };
 
   config = mkIf cfg.enable {
-    modules.common.sops.secrets.miniflux-admin-credentials.path = "/var/secrets/miniflux-admin-credentials";
+    modules.common.sops.secrets.miniflux-admin-credentials.path =
+      "/var/secrets/miniflux-admin-credentials";
     services.miniflux = {
       enable = true;
       createDatabaseLocally = true;
@@ -45,6 +47,13 @@ in
         CREATE_ADMIN = true;
         WATCHDOG = true;
         LISTEN_ADDR = "0.0.0.0:${toString cfg.port}";
+      };
+    };
+    modules.server.ntfy.topics = lib.singleton {
+      name = "rss";
+      inherit (topicsOptions) users;
+      permission = topicsOptions.permission // {
+        default = "read-only";
       };
     };
   };
