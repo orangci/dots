@@ -65,7 +65,7 @@ in
         User = "minecraft";
         Type = "oneshot";
         ExecStart = "${script}/bin/juniper-rcon-backup";
-        
+
       };
     };
     systemd.timers.juniper-automatic-backups = {

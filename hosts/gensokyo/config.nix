@@ -247,6 +247,13 @@ in
         domain = "aiostreams.orangc.net";
         port = 8826;
       };
+
+      miniflux = allThree // {
+        enable = true;
+        cloudflared.enable = true;
+        domain = "feed.orangc.net";
+        port = 8827;
+      };
     };
   };
   local.hardware-clock.enable = true;
