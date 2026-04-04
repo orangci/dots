@@ -141,6 +141,18 @@ in
                         timezone = "Asia/Dhaka";
                         label = "Dhaka";
                       }
+                      {
+                        timezone = "Europe/Bucharest";
+                        label = "Romania";
+                      }
+                      {
+                        timezone = "Africa/Cairo";
+                        label = "Egypt";
+                      }
+                      {
+                      	timezone = "Asia/Kolkata";
+                      	label = "India";
+                      }
                     ];
                   }
                   {
