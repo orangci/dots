@@ -34,6 +34,12 @@ in
       default = "miniflux.orangc.net";
       description = "The domain for miniflux to be hosted at";
     };
+
+    glance.icon = mkOption {
+      type = types.str;
+      default = "auto-invert sh:miniflux";
+      description = "The icon for Glance";
+    };
   };
 
   config = mkIf cfg.enable {

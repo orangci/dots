@@ -33,6 +33,12 @@ in
       default = "umami.orangc.net";
       description = "The domain for umami to be hosted at";
     };
+
+    glance.icon = mkOption {
+      type = types.str;
+      default = "auto-invert sh:umami";
+      description = "The icon for Glance";
+    };
   };
 
   config = mkIf cfg.enable {

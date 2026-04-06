@@ -31,10 +31,17 @@ in
       default = "vault.orangc.net";
       description = "The domain for vaultwarden to be hosted at";
     };
+
     port = mkOption {
       type = types.port;
       default = 8800;
       description = "The port for vaultwarden to be hosted at";
+    };
+
+    glance.icon = mkOption {
+      type = types.str;
+      default = "auto-invert sh:vaultwarden";
+      description = "The icon for Glance";
     };
   };
 

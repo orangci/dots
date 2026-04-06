@@ -150,8 +150,8 @@ in
                         label = "Egypt";
                       }
                       {
-                      	timezone = "Asia/Kolkata";
-                      	label = "India";
+                        timezone = "Asia/Kolkata";
+                        label = "India";
                       }
                     ];
                   }

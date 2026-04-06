@@ -33,6 +33,12 @@ in
       default = "scrutiny.orangc.net";
       description = "The domain for scrutiny to be hosted at";
     };
+
+    glance.icon = mkOption {
+      type = types.str;
+      default = "auto-invert sh:scrutiny";
+      description = "The icon for Glance";
+    };
   };
 
   config = mkIf cfg.enable {

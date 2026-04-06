@@ -36,6 +36,12 @@ in
       default = 8800;
       description = "The port for microbin to be hosted at";
     };
+
+    glance.icon = mkOption {
+      type = types.str;
+      default = "sh:microbin";
+      description = "The icon for Glance";
+    };
   };
 
   config = mkIf cfg.enable {
