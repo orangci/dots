@@ -29,4 +29,5 @@
 - declarative DNS!!
 - fix forgejo actions
 - write extensive docs for the flake e.g. for restic
-- satty
+- satty and zipline support for screenshot script
+- fix conflict of ports between zipline and caddy
