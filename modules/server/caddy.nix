@@ -13,6 +13,7 @@ let
     filterAttrs
     mkMerge
     mkDefault
+    mkOption
     ;
 
   cfg = config.modules.server.caddy;
@@ -48,7 +49,14 @@ let
 
 in
 {
-  options.modules.server.caddy.enable = mkEnableOption "Enable Caddy";
+  options.modules.server.caddy = {
+    enable = mkEnableOption "Enable Caddy";
+    virtualHosts = mkOption {
+      type = types.attrsOf types.str;
+      default = { };
+      description = "Collect virtual host entries from other modules";
+    };
+  };
 
   config = mkIf cfg.enable {
     systemd.services.caddy.before = mkIf config.modules.server.tailscale.enable [
@@ -78,6 +86,7 @@ in
       '';
       virtualHosts = mkMerge [
         dynamicVhosts
+        cfg.virtualHosts
         (mkIf config.modules.server.minecraft.juniper-s10.enable {
           "mc-map.orangc.net".extraConfig =
             mkIf config.modules.server.minecraft.juniper-s10.enable "reverse_proxy localhost:${

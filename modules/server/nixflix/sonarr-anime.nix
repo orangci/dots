@@ -1,0 +1,24 @@
+{
+  config,
+  lib,
+  ...
+}:
+let
+  inherit (lib)
+    mkIf
+    ;
+  cfg = config.modules.server.nixflix;
+in
+{
+  config = mkIf cfg.enable {
+    modules.common.sops.secrets."nixflix/sonarr-anime/apiKey".path =
+      "/var/secrets/nixflix-sonarr-anime-apiKey";
+    nixflix = {
+      sonarr-anime = {
+        enable = true;
+        apiKey._secret = config.modules.common.sops.secrets."nixflix/sonarr-anime/apiKey".path;
+        settings.server.port = 0;
+      };
+    };
+  };
+}

@@ -34,5 +34,6 @@
     ./scrutiny.nix
     ./aiostreams.nix
     ./miniflux.nix
+    ./nixflix
   ];
 }

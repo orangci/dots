@@ -82,13 +82,18 @@
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # all in one solution to a media server. for jellyfin, the *arr stack, et cetera
+    nixflix = {
+      url = "github:kiriwalawren/nixflix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
     inputs@{
       nixpkgs,
       home-manager,
-      hjem,
       ...
     }:
     let
