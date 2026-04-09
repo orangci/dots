@@ -20,6 +20,7 @@ in
     ./radarr.nix
     ./prowlarr.nix
     ./seerr.nix
+    ./networking.nix
     inputs.nixflix.nixosModules.default
   ];
   options.modules.server.nixflix = {
@@ -29,10 +30,9 @@ in
   config = mkIf cfg.enable {
     nixflix = {
       enable = true;
-      mediaUsers = singleton username;
+      mediaUsers = lib.singleton username;
       mediaDir = "/srv/media";
       stateDor = "/srv/media/.state";
-
       nginx.enable = false;
 
       recyclarr = {

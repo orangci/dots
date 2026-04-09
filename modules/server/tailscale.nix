@@ -7,6 +7,28 @@ let
     types
     ;
   cfg = config.modules.server.tailscale;
+
+  validModules = lib.filterAttrs (
+    _: mod: mod ? domain && mod.domain != null && mod ? port && mod.port != null
+  ) (config.modules.server or { });
+
+  internalTailscaleDomainModules = lib.filterAttrs (
+    _: mod:
+    lib.hasAttrByPath [ "internalTailscaleDomain" "enable" ] mod && mod.internalTailscaleDomain.enable
+  ) validModules;
+
+  tailscaleVhosts = lib.mapAttrs' (
+    _: mod:
+    let
+      base = lib.removeSuffix ".orangc.net" mod.domain;
+    in
+    lib.nameValuePair "https://${base}.cormorant-emperor.ts.net" {
+      extraConfig = lib.mkDefault ''
+        bind tailscale/${base}
+        reverse_proxy localhost:${toString mod.port}
+      '';
+    }
+  ) internalTailscaleDomainModules;
 in
 {
   options.modules.server.tailscale = {
@@ -19,7 +41,7 @@ in
   };
 
   config = mkIf cfg.enable {
-    # boot.kernel.sysctl."net.ipv4.ip_forward" = 1;
+    modules.server.caddy.virtualHosts = tailscaleVhosts;
     networking.firewall.trustedInterfaces = lib.singleton "tailscale0";
     services.tailscale = {
       enable = true;

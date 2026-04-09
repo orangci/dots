@@ -19,7 +19,7 @@ in
       downloadarr.qbittorent = {
         enable = true;
         inherit username;
-        password._secret = modules.common.sops.secrets."nixflix/qbittorent/password".path;
+        password._secret = config.modules.common.sops.secrets."nixflix/qbittorent/password".path;
         port = 0;
       };
     };

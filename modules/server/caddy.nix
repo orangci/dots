@@ -14,45 +14,32 @@ let
     mkMerge
     mkDefault
     mkOption
+    types
     ;
 
   cfg = config.modules.server.caddy;
 
-  allModules = config.modules.server or { };
-  validModules = filterAttrs (
+  validModules = lib.filterAttrs (
     _: mod: mod ? domain && mod.domain != null && mod ? port && mod.port != null
-  ) allModules;
+  ) (config.modules.server or { });
 
-  internalTailscaleDomainModules = filterAttrs (
+  dynamicVhosts = lib.mapAttrs' (
     _: mod:
-    lib.hasAttrByPath [ "internalTailscaleDomain" "enable" ] mod && mod.internalTailscaleDomain.enable
+    lib.nameValuePair mod.domain {
+      extraConfig = lib.mkDefault "reverse_proxy localhost:${toString mod.port}";
+    }
   ) validModules;
-
-  dynamicVhosts = lib.mkMerge [
-    (mapAttrs' (
-      _: mod:
-      nameValuePair mod.domain { extraConfig = mkDefault "reverse_proxy localhost:${toString mod.port}"; }
-    ) validModules)
-    (mapAttrs' (
-      _: mod:
-      let
-        base = lib.removeSuffix ".orangc.net" mod.domain;
-      in
-      nameValuePair "https://${base}.cormorant-emperor.ts.net" {
-        extraConfig = mkDefault "
-        bind tailscale/${base}
-        reverse_proxy localhost:${toString mod.port}
-        ";
-      }
-    ) internalTailscaleDomainModules)
-  ];
 
 in
 {
   options.modules.server.caddy = {
     enable = mkEnableOption "Enable Caddy";
     virtualHosts = mkOption {
-      type = types.attrsOf types.str;
+      type = types.attrsOf (
+        types.submodule {
+          freeformType = lib.types.attrs;
+        }
+      );
       default = { };
       description = "Collect virtual host entries from other modules";
     };
@@ -87,12 +74,6 @@ in
       virtualHosts = mkMerge [
         dynamicVhosts
         cfg.virtualHosts
-        (mkIf config.modules.server.minecraft.juniper-s10.enable {
-          "mc-map.orangc.net".extraConfig =
-            mkIf config.modules.server.minecraft.juniper-s10.enable "reverse_proxy localhost:${
-              toString (config.modules.server.minecraft.juniper-s10.port - 2000)
-            }";
-        })
       ];
     };
   };

@@ -33,4 +33,3 @@
 - fix conflict of ports between zipline and caddy
 - arr stack
 - assertions
-- regarding caddy: move tailscale related vhosts to tailscale module, et cetera

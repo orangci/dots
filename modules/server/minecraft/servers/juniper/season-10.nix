@@ -66,6 +66,8 @@ in
 
   config = mkIf cfg.enable {
     nixpkgs.overlays = [ inputs.nix-minecraft.overlay ];
+    modules.server.caddy.virtualHosts."mc-map.orangc.net".extraConfig =
+      "reverse_proxy localhost:${toString (cfg.port - 2000)}";
     # The two secrets below are required for the simple-discord-link mod to work properly
     modules.common.sops.secrets.juniper-discord-bot-token = {
       owner = "minecraft";
