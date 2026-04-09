@@ -25,6 +25,7 @@ let
     clock = "date +'The time is %H.%M on a %A. The date is %B %d, %Y C.E.'";
     randompw = "head -c 64 /dev/urandom | base64";
     jl = "micro ~/docs/journal/$(date -I).md";
+    syscheck = "systemctl list-units --type=service --state=inactive,failed,activating,deactivating --no-pager";
 
     # nix stuff
     fr = "nh os switch --hostname ${host} $FLAKE";

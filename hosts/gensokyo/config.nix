@@ -48,6 +48,7 @@ in
       postgresql.enable = true;
       duckdns.enable = false;
       tailscale.enable = true;
+      nixflix.enable = true;
 
       bracket = allThree // {
         enable = false;
@@ -107,7 +108,7 @@ in
       };
 
       jellyfin = allThree // {
-        enable = true;
+        enable = false;
         domain = "jf.orangc.net";
         port = 8096; # can't be changed via the nixos module
       };

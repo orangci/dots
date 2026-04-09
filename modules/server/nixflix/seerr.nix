@@ -4,18 +4,23 @@
   ...
 }:
 let
-  inherit (lib)
-    mkIf
-    ;
+  inherit (lib) mkIf mkForce;
   cfg = config.modules.server.nixflix;
 in
 {
   config = mkIf cfg.enable {
+    modules.server.caddy.virtualHosts = {
+      "seerr.orangc.net".extraConfig = "reverse_proxy localhost:${toString (cfg.port + 5)}";
+      "https://seerr.cormorant-emperor.ts.net".extraConfig = ''
+        bind tailscale/seerr
+        reverse_proxy localhost:${toString (cfg.port + 5)}
+      '';
+    };
     modules.common.sops.secrets."nixflix/seerr/apiKey".path = "/var/secrets/nixflix-seerr-apiKey";
     nixflix.seerr = {
       enable = true;
       apiKey._secret = config.modules.common.sops.secrets."nixflix/seerr/apiKey".path;
-      port = cfg.port + 5;
+      port = mkForce (cfg.port + 5);
     };
   };
 }

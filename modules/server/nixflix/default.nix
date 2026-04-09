@@ -9,6 +9,8 @@ let
   inherit (lib)
     mkIf
     mkEnableOption
+    mkOption
+    types
     ;
   cfg = config.modules.server.nixflix;
 in
@@ -20,7 +22,6 @@ in
     ./radarr.nix
     ./prowlarr.nix
     ./seerr.nix
-    ./networking.nix
     inputs.nixflix.nixosModules.default
   ];
   options.modules.server.nixflix = {
@@ -37,11 +38,11 @@ in
       enable = true;
       mediaUsers = lib.singleton username;
       mediaDir = "/srv/media";
-      stateDor = "/srv/media/.state";
+      stateDir = "/srv/media/.state";
       nginx.enable = false;
 
       recyclarr = {
-        enable = true;
+        enable = false;
         cleanupUnmanagedProfiles.enable = true;
       };
     };

@@ -33,3 +33,4 @@
 - fix conflict of ports between zipline and caddy
 - arr stack
 - assertions
+- domains should not be hardcoded
