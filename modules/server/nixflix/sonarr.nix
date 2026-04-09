@@ -16,7 +16,7 @@ in
       sonarr = {
         enable = true;
         apiKey._secret = config.modules.common.sops.secrets."nixflix/sonarr/apiKey".path;
-        settings.server.port = 0;
+        settings.server.port = cfg.port + 7;
       };
     };
   };

@@ -15,7 +15,7 @@ in
     nixflix.seerr = {
       enable = true;
       apiKey._secret = config.modules.common.sops.secrets."nixflix/seerr/apiKey".path;
-      port = 0;
+      port = cfg.port + 5;
     };
   };
 }

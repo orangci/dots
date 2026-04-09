@@ -17,7 +17,7 @@ in
       sonarr-anime = {
         enable = true;
         apiKey._secret = config.modules.common.sops.secrets."nixflix/sonarr-anime/apiKey".path;
-        settings.server.port = 0;
+        settings.server.port = cfg.port + 6;
       };
     };
   };

@@ -25,6 +25,11 @@ in
   ];
   options.modules.server.nixflix = {
     enable = mkEnableOption "Enable nixflix";
+    port = mkOption {
+      type = types.port;
+      default = 4520;
+      description = "The port 'range' to use. Services in nixflix will use a port starting from here and adding +1";
+    };
   };
 
   config = mkIf cfg.enable {

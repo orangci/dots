@@ -15,7 +15,7 @@ in
     nixflix.prowlarr = {
       enable = true;
       config.apiKey._secret = config.modules.common.sops.secrets."nixflix/prowlarr/apiKey".path;
-      settings.server.port = 0;
+      settings.server.port = cfg.port + 2;
     };
   };
 }

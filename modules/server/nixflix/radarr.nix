@@ -15,7 +15,7 @@ in
     nixflix.radarr = {
       enable = true;
       apiKey._secret = config.modules.common.sops.secrets."nixflix/radarr/apiKey".path;
-      settings.server.port = 0;
+      settings.server.port = cfg.port + 4;
     };
   };
 }

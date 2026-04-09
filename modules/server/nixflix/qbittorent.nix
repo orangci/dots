@@ -20,7 +20,7 @@ in
         enable = true;
         inherit username;
         password._secret = config.modules.common.sops.secrets."nixflix/qbittorent/password".path;
-        port = 0;
+        port = cfg.port + 3;
       };
     };
   };

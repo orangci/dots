@@ -23,8 +23,8 @@ in
       branding.customCss = ''@import url("https://cdn.jsdelivr.net/gh/lscambo13/ElegantFin@main/Theme/ElegantFin-jellyfin-theme-build-latest-minified.css"); @import url("https://cdn.jsdelivr.net/gh/lscambo13/ElegantFin@main/Theme/assets/add-ons/media-bar-plugin-support-latest-min.css");'';
 
       network = {
-        internalHttpPort = 0;
-        publicHttpPort = 0;
+        internalHttpPort = cfg.port + 1;
+        publicHttpPort = cfg.port + 1;
       };
 
       users.admin = {
