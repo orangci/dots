@@ -20,7 +20,11 @@ in
     modules.common.sops.secrets."nixflix/qbittorent/password".path =
       "/var/secrets/nixflix-qbittorent-password";
     nixflix = {
-      torrentClients.qbittorrent.enable = true;
+      torrentClients.qbittorrent = {
+      	enable = true;
+      	password._secret = config.modules.common.sops.secrets."nixflix/qbittorent/password".path;
+      	webuiPort = mkForce (cfg.port + 3);
+      };
       downloadarr.qbittorrent = {
         enable = false;
         inherit username;
