@@ -37,8 +37,8 @@ in
     nixflix = {
       enable = true;
       mediaUsers = lib.singleton username;
-      mediaDir = "/srv/media";
-      stateDir = "/srv/media/.state";
+      #mediaDir = "/srv/media";
+      #stateDir = "/srv/media/.state";
       nginx.enable = false;
 
       recyclarr = {
