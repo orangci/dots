@@ -21,9 +21,11 @@ in
       "/var/secrets/nixflix-qbittorent-password";
     nixflix = {
       torrentClients.qbittorrent = {
-      	enable = true;
-      	password._secret = config.modules.common.sops.secrets."nixflix/qbittorent/password".path;
-      	webuiPort = mkForce (cfg.port + 3);
+        enable = true;
+        serverConfig.Preferences.WebUI.Username = username;
+        serverConfig.Preferences.WebUI.Password_PBKDF2 = "VBkxweoqIQkqk/wdJM+zZQ==:Ym+BMMq1wSzVWsZnRRdN7wtzo9g4f13O53dSZcyNUPZcjToM0lr1AnFBavuxcxVZyOUSIY/sVd/CAyfiJkL9Lg==";
+        password._secret = config.modules.common.sops.secrets."nixflix/qbittorent/password".path;
+        webuiPort = mkForce (cfg.port + 3);
       };
       downloadarr.qbittorrent = {
         enable = false;
