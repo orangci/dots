@@ -100,7 +100,7 @@ in
           flags.fk = 4; # enable filekeys
         };
         "/public" = commonPerms // {
-        	path = "/srv/files/public";
+          path = "/srv/files/public";
         };
         "/books" = commonPerms // {
           path = "/srv/files/books";

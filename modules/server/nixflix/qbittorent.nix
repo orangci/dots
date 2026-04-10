@@ -22,7 +22,7 @@ in
     nixflix = {
       torrentClients.qbittorrent.enable = true;
       downloadarr.qbittorrent = {
-        enable = true;
+        enable = false;
         inherit username;
         password._secret = config.modules.common.sops.secrets."nixflix/qbittorent/password".path;
         port = mkForce (cfg.port + 3);

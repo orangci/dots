@@ -21,6 +21,10 @@ in
       "nixflix/prowlarr/apiKey".path = "/var/secrets/nixflix-prowlarr-apiKey";
       "nixflix/prowlarr/password".path = "/var/secrets/nixflix-prowlarr-password";
     };
+    nixflix.flaresolverr = {
+      enable = true;
+      port = cfg.port + 8;
+    };
     nixflix.prowlarr = {
       enable = true;
       config = {
@@ -31,6 +35,14 @@ in
           authenticationRequired = "disabledForLocalAddresses";
           port = mkForce (cfg.port + 2);
         };
+
+        indexers = [
+          # { name = "1337x"; }
+          { name = "Nyaa.si"; }
+          { name = "The Pirate Bay"; }
+          # { name = "EZTV"; }
+          { name = "LimeTorrents"; }
+        ];
       };
       settings.server.port = mkForce (cfg.port + 2);
     };
