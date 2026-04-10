@@ -39,6 +39,9 @@ in
         indexers = [
           # { name = "1337x"; }
           { name = "Nyaa.si"; }
+          { name = "Bangumi Moe"; }
+          { name = "nekoBT"; }
+          { name = "Shana Project"; }
           { name = "The Pirate Bay"; }
           # { name = "EZTV"; }
           { name = "LimeTorrents"; }

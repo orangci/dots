@@ -33,3 +33,5 @@
 - fix conflict of ports between zipline and caddy
 - assertions
 - domains should not be hardcoded
+- glance: visibility should be module based like caddy
+- cloudflared: visibility should be module based like caddy
