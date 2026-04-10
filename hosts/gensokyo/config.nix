@@ -48,7 +48,7 @@ in
       postgresql.enable = true;
       duckdns.enable = false;
       tailscale.enable = true;
-      nixflix.enable = true;
+      nixflix.enable = false;
 
       bracket = allThree // {
         enable = false;
@@ -254,6 +254,13 @@ in
         cloudflared.enable = true;
         domain = "feed.orangc.net";
         port = 8827;
+      };
+
+      changedetection = allThree // {
+        enable = true;
+        cloudflared.enable = true;
+        domain = "detect.orangc.net";
+        port = 8828;
       };
     };
   };

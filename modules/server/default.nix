@@ -35,5 +35,6 @@
     ./aiostreams.nix
     ./miniflux.nix
     ./nixflix
+    ./changedetection.nix
   ];
 }

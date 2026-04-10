@@ -9,7 +9,7 @@
 - syncthing module, perhaps
 - switch to hjem
 - look into other image viewers. oculante? fix up mpv to use as my image viewer instead of gwenview? or just keep using gwenview?
-- selfhost (maybe) audiobookshelf, litexiv, invidious, redlib, nitter, [patchy](https://git.nadeko.net/Fijxu/patchy), jitsi, cyberche, pairdrop, stirling pdf, librum or kavita or something like it, something like miruro but for manga if that exists, changedetection, pricebuddy
+- selfhost (maybe) audiobookshelf, litexiv, invidious, redlib, nitter, [patchy](https://git.nadeko.net/Fijxu/patchy), jitsi, cyberche, pairdrop, stirling pdf, librum or kavita or something like it, something like miruro but for manga if that exists,  pricebuddy
 - fix ntfy access control
 - force glance font to be lexend
 - go throuh literally every module and option-ify it al
