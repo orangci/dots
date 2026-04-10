@@ -28,7 +28,7 @@ in
         webuiPort = mkForce (cfg.port + 3);
       };
       downloadarr.qbittorrent = {
-        enable = false;
+        enable = true;
         inherit username;
         password._secret = config.modules.common.sops.secrets."nixflix/qbittorent/password".path;
         port = mkForce (cfg.port + 3);
