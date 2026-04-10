@@ -21,6 +21,7 @@ in
       enable = true;
       apiKey._secret = config.modules.common.sops.secrets."nixflix/seerr/apiKey".path;
       port = mkForce (cfg.port + 5);
+      settings.users.defaultPermissions = 1024;
     };
   };
 }
