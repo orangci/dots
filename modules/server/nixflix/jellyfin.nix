@@ -2,6 +2,7 @@
   config,
   lib,
   username,
+  tailnetName,
   ...
 }:
 let
@@ -13,7 +14,7 @@ in
     modules.server.cloudflared.ingress."jf.orangc.net" = "localhost:${toString (cfg.port + 1)}";
     modules.server.caddy.virtualHosts = {
       "jf.orangc.net".extraConfig = "reverse_proxy localhost:${toString (cfg.port + 1)}";
-      "https://jf.cormorant-emperor.ts.net".extraConfig = ''
+      "https://jf.${tailnetName}".extraConfig = ''
         bind tailscale/jf
         reverse_proxy localhost:${toString (cfg.port + 1)}
       '';

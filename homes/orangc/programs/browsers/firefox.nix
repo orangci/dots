@@ -3,6 +3,7 @@
   config,
   lib,
   username,
+  tailnetName,
   ...
 }:
 let
@@ -31,7 +32,7 @@ in
             duckduckgo.metaData.hidden = true;
 
             "SearXNG" = {
-              urls = [ { template = "https://search.cormorant-emperor.ts.net/search?q={searchTerms}"; } ];
+              urls = [ { template = "https://search.${tailnetName}/search?q={searchTerms}"; } ];
               definedAliases = [ "@sx" ];
             };
 

@@ -109,6 +109,7 @@
     let
       system = "x86_64-linux";
       username = "orangc";
+      tailnetName = "cormorant-emperor.ts.net";
       lib = nixpkgs.lib;
 
       nixosMachine =
@@ -120,6 +121,7 @@
               system
               host
               username
+              tailnetName
               ;
           };
           modules = [

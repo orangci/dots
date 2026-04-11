@@ -2,6 +2,7 @@
   config,
   lib,
   username,
+  tailnetName,
   ...
 }:
 let
@@ -13,7 +14,7 @@ in
     modules.server.cloudflared.ingress."sonarr.orangc.net" = "localhost:${toString (cfg.port + 7)}";
     modules.server.caddy.virtualHosts = {
       "sonarr.orangc.net".extraConfig = "reverse_proxy localhost:${toString (cfg.port + 7)}";
-      "https://sonarr.cormorant-emperor.ts.net".extraConfig = ''
+      "https://sonarr.${tailnetName}".extraConfig = ''
         bind tailscale/sonarr
         reverse_proxy localhost:${toString (cfg.port + 7)}
       '';

@@ -35,3 +35,4 @@
 - domains should not be hardcoded
 - glance: visibility should be module based like caddy
 - ntfy switch method of declarative users
+- sddm: why is the bg image in the assets dir? fetch it as a package

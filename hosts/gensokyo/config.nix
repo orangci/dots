@@ -2,6 +2,7 @@
   pkgs,
   username,
   lib,
+  tailnetName,
   ...
 }:
 let
@@ -231,7 +232,7 @@ in
 
       matrix.synapse = {
         enable = true;
-        apiDomain = "gensokyo.cormorant-emperor.ts.net";
+        apiDomain = "gensokyo.${tailnetName}";
         port = 8824;
         serverName = "orangc.net";
       };

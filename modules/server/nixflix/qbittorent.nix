@@ -2,6 +2,7 @@
   config,
   lib,
   username,
+  tailnetName,
   ...
 }:
 let
@@ -13,7 +14,7 @@ in
     modules.server.cloudflared.ingress."qbittorent.orangc.net" = "localhost:${toString (cfg.port + 3)}";
     modules.server.caddy.virtualHosts = {
       "qbittorrent.orangc.net".extraConfig = "reverse_proxy localhost:${toString (cfg.port + 3)}";
-      "https://qbittorrent.cormorant-emperor.ts.net".extraConfig = ''
+      "https://qbittorrent.${tailnetName}".extraConfig = ''
         bind tailscale/qbittorrent
         reverse_proxy localhost:${toString (cfg.port + 3)}
       '';

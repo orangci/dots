@@ -1,4 +1,9 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  tailnetName,
+  ...
+}:
 let
   inherit (lib)
     mkIf
@@ -22,7 +27,7 @@ let
     let
       base = lib.removeSuffix ".orangc.net" mod.domain;
     in
-    lib.nameValuePair "https://${base}.cormorant-emperor.ts.net" {
+    lib.nameValuePair "https://${base}.${tailnetName}" {
       extraConfig = lib.mkDefault ''
         bind tailscale/${base}
         reverse_proxy localhost:${toString mod.port}

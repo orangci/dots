@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  tailnetName,
   ...
 }:
 
@@ -39,7 +40,7 @@ in
 
     apiDomain = mkOption {
       type = types.str;
-      default = "gensokyo.cormorant-emperor.ts.net";
+      default = "gensokyo.${tailnetName}";
       description = "Domain the synapse HTTP API is served from";
     };
   };

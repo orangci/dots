@@ -2,6 +2,7 @@
   config,
   lib,
   host,
+  tailnetName,
   ...
 }:
 let
@@ -27,7 +28,7 @@ let
 
   siteList = builtins.map (mod: {
     title = mod.name or mod.domain;
-    url = "https://${lib.removeSuffix ".orangc.net" mod.domain}.cormorant-emperor.ts.net";
+    url = "https://${lib.removeSuffix ".orangc.net" mod.domain}.${tailnetName}";
     icon =
       mod.glance.icon
         or "sh:${lib.strings.replaceStrings [ " " ] [ "-" ] (lib.strings.toLower mod.name)}";
