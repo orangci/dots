@@ -2,6 +2,7 @@
   config,
   lib,
   tailnetName,
+  primaryDomain,
   ...
 }:
 let
@@ -25,7 +26,7 @@ let
   tailscaleVhosts = lib.mapAttrs' (
     _: mod:
     let
-      base = lib.removeSuffix ".orangc.net" mod.domain;
+      base = lib.removeSuffix primaryDomain mod.domain;
     in
     lib.nameValuePair "https://${base}.${tailnetName}" {
       extraConfig = lib.mkDefault ''

@@ -3,6 +3,7 @@
   lib,
   inputs,
   pkgs,
+  primaryDomain,
   ...
 }:
 let
@@ -68,11 +69,11 @@ in
     nixpkgs.overlays = [ inputs.nix-minecraft.overlay ];
 
     # reverse proxying & cloudflared
-    modules.server.caddy.virtualHosts."mc-map.orangc.net".extraConfig =
+    modules.server.caddy.virtualHosts."mc-map.${primaryDomain}".extraConfig =
       "reverse_proxy localhost:${toString (cfg.port - 2000)}";
     modules.server.cloudflared.ingress = {
-      "mc.orangc.net" = "tcp://localhost:${toString cfg.port}";
-      "mc-map.orangc.net" = "http://localhost:${toString (cfg.port - 2000)}";
+      "mc.${primaryDomain}" = "tcp://localhost:${toString cfg.port}";
+      "mc-map.${primaryDomain}" = "http://localhost:${toString (cfg.port - 2000)}";
     };
 
     # The two secrets below are required for the simple-discord-link mod to work properly
@@ -166,7 +167,7 @@ in
         allow-nether = true;
         broadcast-console-to-ops = false;
         broadcast-rcon-to-ops = false;
-        bug-report-link = "https://orangc.net/gh/minecraft-modpacks/issues/new";
+        bug-report-link = "https://${primaryDomain}/gh/minecraft-modpacks/issues/new";
         enable-command-block = true;
         enforce-secure-profile = false;
         enforce-whitelist = true;

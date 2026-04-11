@@ -3,6 +3,7 @@
   lib,
   pkgs,
   username,
+  primaryDomain,
   ...
 }:
 
@@ -38,7 +39,7 @@ in
 
     domain = mkOption {
       type = types.str;
-      default = "code.orangc.net";
+      default = "code.${primaryDomain}";
       description = "The domain for VSCode Server to be hosted at";
     };
 

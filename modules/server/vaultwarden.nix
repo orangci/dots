@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  primaryDomain,
   ...
 }:
 let
@@ -28,7 +29,7 @@ in
 
     domain = mkOption {
       type = types.str;
-      default = "vault.orangc.net";
+      default = "vault.${primaryDomain}";
       description = "The domain for vaultwarden to be hosted at";
     };
 

@@ -2,6 +2,7 @@
   pkgs,
   config,
   lib,
+  primaryDomain,
   ...
 }:
 let
@@ -187,7 +188,7 @@ in
             format = "{}";
             exec = "python3 ${./salah.py}";
             interval = 60;
-            on-click = "xdg-open https://salah.orangc.net/";
+            on-click = "xdg-open https://salah.${primaryDomain}/";
           };
         }
       ];

@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  primaryDomain,
   ...
 }:
 let
@@ -35,7 +36,7 @@ in
 
     domain = mkOption {
       type = types.str;
-      default = "detect.orangc.net";
+      default = "detect.${primaryDomain}";
       description = "The domain for changedetection to be hosted at";
     };
   };

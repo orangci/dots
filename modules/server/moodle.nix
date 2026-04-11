@@ -1,4 +1,9 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  primaryDomain,
+  ...
+}:
 let
   inherit (lib)
     mkIf
@@ -30,7 +35,7 @@ in
 
     domain = mkOption {
       type = types.str;
-      default = "moodle.orangc.net";
+      default = "moodle.${primaryDomain}";
       description = "The domain for moodle to be hosted at";
     };
   };
@@ -40,7 +45,7 @@ in
       enable = true;
       initialPassword = "admin";
       database.port = cfg.port - 1000;
-      virtualHost.adminAddr = "c@orangc.net";
+      virtualHost.adminAddr = "moodle@orangc.net";
       virtualHost.hostName = "127.0.0.1";
       virtualHost.listen = lib.singleton {
         ip = "*";

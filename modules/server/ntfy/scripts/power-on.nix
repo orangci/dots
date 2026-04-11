@@ -3,6 +3,7 @@
   lib,
   pkgs,
   host,
+  primaryDomain,
   ...
 }:
 let
@@ -20,7 +21,7 @@ let
       #!/usr/bin/env bash
       set -euo pipefail
 
-      curl -s -d "✅ ${host} has powered on at $(date +"%B %d, %H.%M")." -u :"$NTFY_ACCESS_TOKEN" https://ntfy.orangc.net/${cfg.topic}
+      curl -s -d "✅ ${host} has powered on at $(date +"%B %d, %H.%M")." -u :"$NTFY_ACCESS_TOKEN" https://${config.modules.server.ntfy.domain}/${cfg.topic}
     '';
   };
 in

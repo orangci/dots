@@ -1,4 +1,9 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  primaryDomain,
+  ...
+}:
 let
   inherit (lib)
     mkEnableOption
@@ -24,7 +29,7 @@ in
 
     domain = mkOption {
       type = types.str;
-      default = "status.orangc.net";
+      default = "status.${primaryDomain}";
       description = "The domain for uptime kuma to be hosted at";
     };
     port = mkOption {

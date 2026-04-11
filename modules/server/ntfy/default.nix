@@ -32,7 +32,7 @@ in
 
     domain = mkOption {
       type = types.str;
-      default = "ntfy.orangc.net";
+      default = "ntfy.${primaryDomain}";
       description = "The domain for ntfy to be hosted at";
     };
 

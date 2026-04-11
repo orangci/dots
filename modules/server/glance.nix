@@ -3,6 +3,7 @@
   lib,
   host,
   tailnetName,
+  primaryDomain,
   ...
 }:
 let
@@ -28,7 +29,7 @@ let
 
   siteList = builtins.map (mod: {
     title = mod.name or mod.domain;
-    url = "https://${lib.removeSuffix ".orangc.net" mod.domain}.${tailnetName}";
+    url = "https://${lib.removeSuffix primaryDomain mod.domain}.${tailnetName}";
     icon =
       mod.glance.icon
         or "sh:${lib.strings.replaceStrings [ " " ] [ "-" ] (lib.strings.toLower mod.name)}";
@@ -49,7 +50,7 @@ in
 
     domain = mkOption {
       type = types.str;
-      default = "glance.orangc.net";
+      default = "glance.${primaryDomain}";
       description = "The domain for glance to be hosted at";
     };
     port = mkOption {
@@ -110,7 +111,7 @@ in
                 widgets = [
                   {
                     type = "search";
-                    search-engine = "https://search.orangc.net/search?q={QUERY}";
+                    search-engine = "https://${config.modules.server.searxng.domain}/search?q={QUERY}";
                   }
                   (mkIf config.modules.server.technitium.enable {
                     type = "dns-stats";

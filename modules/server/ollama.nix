@@ -1,4 +1,9 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  primaryDomain,
+  ...
+}:
 let
   inherit (lib)
     mkEnableOption
@@ -30,7 +35,7 @@ in
 
     domain = mkOption {
       type = types.str;
-      default = "ai.orangc.net";
+      default = "ai.${primaryDomain}";
       description = "The domain for ollama be hosted at";
     };
   };

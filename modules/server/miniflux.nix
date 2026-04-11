@@ -1,4 +1,9 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  primaryDomain,
+  ...
+}:
 let
   inherit (lib)
     mkIf
@@ -31,7 +36,7 @@ in
 
     domain = mkOption {
       type = types.str;
-      default = "miniflux.orangc.net";
+      default = "miniflux.${primaryDomain}";
       description = "The domain for miniflux to be hosted at";
     };
 

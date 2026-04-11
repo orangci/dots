@@ -3,6 +3,7 @@
   lib,
   username,
   tailnetName,
+  primaryDomain,
   ...
 }:
 let
@@ -11,9 +12,10 @@ let
 in
 {
   config = mkIf cfg.enable {
-    modules.server.cloudflared.ingress."qbittorent.orangc.net" = "localhost:${toString (cfg.port + 3)}";
+    modules.server.cloudflared.ingress."qbittorent.${primaryDomain}" =
+      "localhost:${toString (cfg.port + 3)}";
     modules.server.caddy.virtualHosts = {
-      "qbittorrent.orangc.net".extraConfig = "reverse_proxy localhost:${toString (cfg.port + 3)}";
+      "qbittorrent.${primaryDomain}".extraConfig = "reverse_proxy localhost:${toString (cfg.port + 3)}";
       "https://qbittorrent.${tailnetName}".extraConfig = ''
         bind tailscale/qbittorrent
         reverse_proxy localhost:${toString (cfg.port + 3)}

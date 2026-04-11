@@ -3,6 +3,7 @@
   lib,
   username,
   tailnetName,
+  primaryDomain,
   ...
 }:
 let
@@ -11,9 +12,10 @@ let
 in
 {
   config = mkIf cfg.enable {
-    modules.server.cloudflared.ingress."prowlarr.orangc.net" = "localhost:${toString (cfg.port + 2)}";
+    modules.server.cloudflared.ingress."prowlarr.${primaryDomain}" =
+      "localhost:${toString (cfg.port + 2)}";
     modules.server.caddy.virtualHosts = {
-      "prowlarr.orangc.net".extraConfig = "reverse_proxy localhost:${toString (cfg.port + 2)}";
+      "prowlarr.${primaryDomain}".extraConfig = "reverse_proxy localhost:${toString (cfg.port + 2)}";
       "https://prowlarr.${tailnetName}".extraConfig = ''
         bind tailscale/prowlarr
         reverse_proxy localhost:${toString (cfg.port + 2)}

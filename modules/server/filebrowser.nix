@@ -3,6 +3,7 @@
   lib,
   pkgs,
   username,
+  primaryDomain,
   ...
 }:
 
@@ -44,7 +45,7 @@ in
 
     domain = mkOption {
       type = types.str;
-      default = "filebrowser.orangc.net";
+      default = "filebrowser.${primaryDomain}";
       description = "The domain for Filebrowser to be hosted at";
     };
 

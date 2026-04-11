@@ -1,4 +1,9 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  primaryDomain,
+  ...
+}:
 
 let
   inherit (lib)
@@ -25,7 +30,7 @@ in
 
     domain = mkOption {
       type = types.str;
-      default = "tools.orangc.net";
+      default = "tools.${primaryDomain}";
       description = "The domain for it-tools to be hosted at";
     };
     port = mkOption {

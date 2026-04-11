@@ -2,6 +2,7 @@
   pkgs,
   config,
   lib,
+  primaryDomain,
   ...
 }:
 let
@@ -29,7 +30,7 @@ in
 
     domain = mkOption {
       type = types.str;
-      default = "search.orangc.net";
+      default = "search.${primaryDomain}";
       description = "The domain for SearXNG to be hosted at";
     };
     port = mkOption {
@@ -53,7 +54,7 @@ in
         # TODO: engines configuration
         general = {
           # instance_name = "search";
-          contact_url = "mailto:c@orangc.net";
+          contact_url = "mailto:searxng@orangc.net";
         };
         search = {
           safe_search = 1;

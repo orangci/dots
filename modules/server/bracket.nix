@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  primaryDomain,
   ...
 }:
 let
@@ -30,7 +31,7 @@ in
 
     domain = mkOption {
       type = types.str;
-      default = "bracket.orangc.net";
+      default = "bracket.${primaryDomain}";
       description = "The domain for bracket to be hosted at";
     };
 

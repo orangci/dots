@@ -2,6 +2,7 @@
   config,
   lib,
   host,
+  primaryDomain,
   ...
 }:
 let
@@ -36,7 +37,7 @@ in
 
     domain = mkOption {
       type = types.str;
-      default = "grafana.orangc.net";
+      default = "grafana.${primaryDomain}";
       description = "The domain for grafana to be hosted at";
     };
   };

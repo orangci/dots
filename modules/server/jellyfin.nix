@@ -1,4 +1,9 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  primaryDomain,
+  ...
+}:
 let
   inherit (lib)
     mkIf
@@ -30,7 +35,7 @@ in
 
     domain = mkOption {
       type = types.str;
-      default = "jellyfin.orangc.net";
+      default = "jellyfin.${primaryDomain}";
       description = "The domain for jellyfin to be hosted at";
     };
   };

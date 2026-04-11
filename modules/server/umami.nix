@@ -1,4 +1,9 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  primaryDomain,
+  ...
+}:
 let
   inherit (lib)
     mkIf
@@ -30,7 +35,7 @@ in
 
     domain = mkOption {
       type = types.str;
-      default = "umami.orangc.net";
+      default = "umami.${primaryDomain}";
       description = "The domain for umami to be hosted at";
     };
 

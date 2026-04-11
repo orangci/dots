@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  primaryDomain,
   ...
 }:
 let
@@ -42,7 +43,7 @@ in
 
     domain = mkOption {
       type = types.str;
-      default = "aiostreams.orangc.net";
+      default = "aiostreams.${primaryDomain}";
       description = "The domain for AIOStreams to be hosted at";
     };
   };

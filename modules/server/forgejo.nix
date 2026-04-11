@@ -3,6 +3,7 @@
   lib,
   host,
   pkgs,
+  primaryDomain,
   ...
 }:
 let
@@ -31,7 +32,7 @@ in
 
     domain = mkOption {
       type = types.str;
-      default = "git.orangc.net";
+      default = "git.${primaryDomain}";
       description = "The domain for forgejo to be hosted at";
     };
     port = mkOption {

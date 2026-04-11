@@ -109,6 +109,7 @@
     let
       system = "x86_64-linux";
       username = "orangc";
+      primaryDomain = "orangc.net";
       tailnetName = "cormorant-emperor.ts.net";
       lib = nixpkgs.lib;
 
@@ -121,6 +122,7 @@
               system
               host
               username
+              primaryDomain
               tailnetName
               ;
           };

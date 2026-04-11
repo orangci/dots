@@ -2,6 +2,7 @@
   config,
   pkgs,
   lib,
+  primaryDomain,
   ...
 }:
 let
@@ -56,7 +57,7 @@ in
 
     domain = mkOption {
       type = types.str;
-      default = "pad.orangc.net";
+      default = "pad.${primaryDomain}";
       description = "The domain for cryptpad to be hosted at";
     };
     port = mkOption {
@@ -75,7 +76,7 @@ in
         httpUnsafeOrigin = "https://${cfg.domain}";
         httpSafeOrigin = "https://${cfg.domain}";
         blockDailyCheck = true; # disable telemetry
-        adminKeys = singleton "[orangc@pad.orangc.net/QHUG+vZKoGOEUVFethXDVhpWIX4NlJytiG1Sy-A2MPQ=]";
+        adminKeys = singleton "[orangc@pad.${primaryDomain}/QHUG+vZKoGOEUVFethXDVhpWIX4NlJytiG1Sy-A2MPQ=]";
         disableIntegratedEviction = true;
       };
     };

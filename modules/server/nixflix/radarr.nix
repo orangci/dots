@@ -3,6 +3,7 @@
   lib,
   username,
   tailnetName,
+  primaryDomain,
   ...
 }:
 let
@@ -11,9 +12,10 @@ let
 in
 {
   config = mkIf cfg.enable {
-    modules.server.cloudflared.ingress."radarr.orangc.net" = "localhost:${toString (cfg.port + 4)}";
+    modules.server.cloudflared.ingress."radarr.${primaryDomain}" =
+      "localhost:${toString (cfg.port + 4)}";
     modules.server.caddy.virtualHosts = {
-      "radarr.orangc.net".extraConfig = "reverse_proxy localhost:${toString (cfg.port + 4)}";
+      "radarr.${primaryDomain}".extraConfig = "reverse_proxy localhost:${toString (cfg.port + 4)}";
       "https://radarr.${tailnetName}".extraConfig = ''
         bind tailscale/radarr
         reverse_proxy localhost:${toString (cfg.port + 4)}

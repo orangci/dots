@@ -3,6 +3,7 @@
   lib,
   inputs,
   username,
+  primaryDomain,
   ...
 }:
 let
@@ -48,7 +49,7 @@ in
 
     domain = mkOption {
       type = types.str;
-      default = "copyparty.orangc.net";
+      default = "copyparty.${primaryDomain}";
       description = "The domain for copyparty to be hosted at";
     };
   };

@@ -1,4 +1,9 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  primaryDomain,
+  ...
+}:
 let
   inherit (lib)
     mkIf
@@ -30,7 +35,7 @@ in
 
     domain = mkOption {
       type = types.str;
-      default = "scrutiny.orangc.net";
+      default = "scrutiny.${primaryDomain}";
       description = "The domain for scrutiny to be hosted at";
     };
 

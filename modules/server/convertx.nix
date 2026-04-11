@@ -1,4 +1,9 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  primaryDomain,
+  ...
+}:
 
 let
   inherit (lib)
@@ -26,7 +31,7 @@ in
 
     domain = mkOption {
       type = types.str;
-      default = "convert.orangc.net";
+      default = "convert.${primaryDomain}";
       description = "The domain for convertx to be hosted at";
     };
 

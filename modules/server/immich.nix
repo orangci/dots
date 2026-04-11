@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  primaryDomain,
   ...
 }:
 let
@@ -28,7 +29,7 @@ in
 
     domain = mkOption {
       type = types.str;
-      default = "media.orangc.net";
+      default = "media.${primaryDomain}";
       description = "The domain for immich to be hosted at";
     };
     port = mkOption {

@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  primaryDomain,
   ...
 }:
 let
@@ -24,7 +25,7 @@ in
 
     domain = mkOption {
       type = types.str;
-      default = "git.orangc.net";
+      default = "git.${primaryDomain}";
       description = "The domain for gitea to be hosted at";
     };
     port = mkOption {
