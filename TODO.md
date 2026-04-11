@@ -30,8 +30,8 @@
 - fix forgejo actions
 - write extensive docs for the flake e.g. for restic
 - satty and zipline support for screenshot script
-- fix conflict of ports between zipline and caddy
+- fix conflict of ports between tailscale and caddy
 - assertions
 - domains should not be hardcoded
 - glance: visibility should be module based like caddy
-- cloudflared: visibility should be module based like caddy
+- ntfy switch method of declarative users

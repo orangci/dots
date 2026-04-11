@@ -8,6 +8,8 @@ let
     mapAttrs'
     nameValuePair
     filterAttrs
+    mkOption
+    types
     ;
 
   cfg = config.modules.server.cloudflared;
@@ -31,6 +33,11 @@ in
 {
   options.modules.server.cloudflared = {
     enable = mkEnableOption "Enable Cloudflared";
+    ingress = mkOption {
+      type = types.attrsOf types.str;
+      default = { };
+      description = "Collect ingress entries from other modules";
+    };
   };
 
   config = mkIf cfg.enable {
@@ -44,17 +51,8 @@ in
         default = "http_status:404";
         certificateFile = config.modules.common.sops.secrets."cloudflared/cert.pem".path;
         credentialsFile = config.modules.common.sops.secrets."cloudflared/credentials.json".path;
-
         ingress = mkMerge [
-          # { "example.orangc.net" = "http://localhost:8800"; }
-          {
-            "mc.orangc.net" = "tcp://localhost:${toString config.modules.server.minecraft.juniper-s10.port}";
-          }
-          {
-            "mc-map.orangc.net" = "http://localhost:${
-              toString (config.modules.server.minecraft.juniper-s10.port - 2000)
-            }";
-          }
+          cfg.ingress
           dynamicIngress
         ];
       };

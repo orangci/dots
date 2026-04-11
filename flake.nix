@@ -75,7 +75,10 @@
     };
 
     # copyparty is a file server that is awesome
-    copyparty.url = "github:9001/copyparty";
+    copyparty = {
+      url = "github:9001/copyparty";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # so nix-index, nix-locate, and comma can work
     nix-index-database = {
@@ -86,6 +89,13 @@
     # all in one solution to a media server. for jellyfin, the *arr stack, et cetera
     nixflix = {
       url = "github:kiriwalawren/nixflix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # for declarative DNS
+    # why my fork? it supports cloudflare proxying
+    dns-nix = {
+      url = "git+https://git.orangc.net/c/dns.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

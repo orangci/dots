@@ -10,6 +10,7 @@ let
 in
 {
   config = mkIf cfg.enable {
+    modules.server.cloudflared.ingress."jf.orangc.net" = "localhost:${toString (cfg.port + 1)}";
     modules.server.caddy.virtualHosts = {
       "jf.orangc.net".extraConfig = "reverse_proxy localhost:${toString (cfg.port + 1)}";
       "https://jf.cormorant-emperor.ts.net".extraConfig = ''

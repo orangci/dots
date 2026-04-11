@@ -10,6 +10,7 @@ let
 in
 {
   config = mkIf cfg.enable {
+    modules.server.cloudflared.ingress."qbittorent.orangc.net" = "localhost:${toString (cfg.port + 3)}";
     modules.server.caddy.virtualHosts = {
       "qbittorrent.orangc.net".extraConfig = "reverse_proxy localhost:${toString (cfg.port + 3)}";
       "https://qbittorrent.cormorant-emperor.ts.net".extraConfig = ''
