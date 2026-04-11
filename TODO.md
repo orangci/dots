@@ -19,8 +19,8 @@
 - maybe use an epic shell or make my own. like noctalia
 - look at wateir's grafana setup and perhaps 'borrow' it (love you, water)
 - use synaptic standard
- - remove hm/system split
- - export all modules
+- remove hm/system split
+- export all modules
 - look into ISOs with lib.gens
 - juniper behind tailscale?
 - look into netbird
@@ -35,3 +35,4 @@
 - glance: visibility should be module based like caddy
 - ntfy switch method of declarative users
 - sddm: why is the bg image in the assets dir? fetch it as a package
+- perhaps move certain variables into a globals type thing, e.g. primaryDomain, tailnetName, et cetera. that way imports at the top of the file can look a bit nicer
