@@ -12,7 +12,7 @@ let
 in
 {
   config = mkIf cfg.enable {
-    modules.server.cloudflared.ingress."sonarr.${primaryDomain}" =
+    modules.server.cloudflared.ingress."http://sonarr.${primaryDomain}" =
       "localhost:${toString (cfg.port + 7)}";
     modules.server.caddy.virtualHosts = {
       "sonarr.${primaryDomain}".extraConfig = "reverse_proxy localhost:${toString (cfg.port + 7)}";

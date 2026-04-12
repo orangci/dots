@@ -12,7 +12,7 @@ let
 in
 {
   config = mkIf cfg.enable {
-    modules.server.cloudflared.ingress."anisonarr.${primaryDomain}" =
+    modules.server.cloudflared.ingress."http://anisonarr.${primaryDomain}" =
       "localhost:${toString (cfg.port + 6)}";
     modules.server.caddy.virtualHosts = {
       "anisonarr.${primaryDomain}".extraConfig = "reverse_proxy localhost:${toString (cfg.port + 6)}";

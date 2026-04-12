@@ -12,7 +12,7 @@ let
 in
 {
   config = mkIf cfg.enable {
-    modules.server.cloudflared.ingress."qbittorent.${primaryDomain}" =
+    modules.server.cloudflared.ingress."http://qbittorent.${primaryDomain}" =
       "localhost:${toString (cfg.port + 3)}";
     modules.server.caddy.virtualHosts = {
       "qbittorrent.${primaryDomain}".extraConfig = "reverse_proxy localhost:${toString (cfg.port + 3)}";

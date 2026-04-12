@@ -11,7 +11,7 @@ let
 in
 {
   config = mkIf cfg.enable {
-    modules.server.cloudflared.ingress."seerr.${primaryDomain}" =
+    modules.server.cloudflared.ingress."http://seerr.${primaryDomain}" =
       "localhost:${toString (cfg.port + 5)}";
     modules.server.caddy.virtualHosts = {
       "seerr.${primaryDomain}".extraConfig = "reverse_proxy localhost:${toString (cfg.port + 5)}";
