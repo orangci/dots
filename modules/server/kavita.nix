@@ -41,6 +41,7 @@ in
   };
 
   config = mkIf cfg.enable {
+    users.users.kavita.extraGroups = mkIf config.modules.server.copyparty.enable [ "copyparty" ];
     modules.common.sops.secrets.kavita-token.path = "/var/secrets/kavita-token";
     services.kavita = {
       enable = true;

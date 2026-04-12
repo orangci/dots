@@ -56,6 +56,7 @@ in
 
   config = mkIf cfg.enable {
     nixpkgs.overlays = singleton inputs.copyparty.overlays.default;
+    users.users.${username}.extraGroups = singleton "copyparty";
     modules.common.sops.secrets.copyparty-password = {
       path = "/var/secrets/copyparty-password";
       owner = "copyparty";
