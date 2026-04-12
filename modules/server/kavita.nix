@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   primaryDomain,
   ...
 }:
@@ -41,6 +42,7 @@ in
   };
 
   config = mkIf cfg.enable {
+    # so kavita can access copyparty directories
     users.users.kavita.extraGroups = mkIf config.modules.server.copyparty.enable [ "copyparty" ];
     modules.common.sops.secrets.kavita-token.path = "/var/secrets/kavita-token";
     services.kavita = {
@@ -48,5 +50,7 @@ in
       settings.Port = cfg.port;
       tokenKeyFile = config.modules.common.sops.secrets.kavita-token.path;
     };
+    # for downloading manga
+    environment.systemPackages = lib.singleton pkgs.mangal;
   };
 }

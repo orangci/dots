@@ -113,6 +113,9 @@ in
         "/books" = commonPerms // {
           path = "/srv/files/books";
         };
+        "/manga" = commonPerms // {
+          path = "/srv/files/manga";
+        };
         "/juniper-backups" = commonPerms // {
           path = "/srv/files/juniper-backups";
         };
