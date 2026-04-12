@@ -12,7 +12,7 @@ let
 in
 {
   config = mkIf cfg.enable {
-    modules.server.cloudflared.ingress."http://jf.${primaryDomain}" = "localhost:${toString (cfg.port + 1)}";
+    modules.server.cloudflared.ingress."jf.${primaryDomain}" = "http://localhost:${toString (cfg.port + 1)}";
     modules.server.caddy.virtualHosts = {
       "jf.${primaryDomain}".extraConfig = "reverse_proxy localhost:${toString (cfg.port + 1)}";
       "https://jf.${tailnetName}".extraConfig = ''

@@ -12,8 +12,8 @@ let
 in
 {
   config = mkIf cfg.enable {
-    modules.server.cloudflared.ingress."http://radarr.${primaryDomain}" =
-      "localhost:${toString (cfg.port + 4)}";
+    modules.server.cloudflared.ingress."radarr.${primaryDomain}" =
+      "http://localhost:${toString (cfg.port + 4)}";
     modules.server.caddy.virtualHosts = {
       "radarr.${primaryDomain}".extraConfig = "reverse_proxy localhost:${toString (cfg.port + 4)}";
       "https://radarr.${tailnetName}".extraConfig = ''
