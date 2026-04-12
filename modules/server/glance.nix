@@ -29,7 +29,7 @@ let
 
   siteList = builtins.map (mod: {
     title = mod.name or mod.domain;
-    url = "https://${lib.removeSuffix primaryDomain mod.domain}.${tailnetName}";
+    url = "https://${lib.removeSuffix primaryDomain mod.domain}${tailnetName}";
     icon =
       mod.glance.icon
         or "sh:${lib.strings.replaceStrings [ " " ] [ "-" ] (lib.strings.toLower mod.name)}";
