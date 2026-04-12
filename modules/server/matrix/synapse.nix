@@ -69,8 +69,8 @@ in
         RemainAfterExit = true;
 
         ExecStart = [
-          "${pkgs.tailscale}/bin/tailscale serve --bg ${toString cfg.port}"
-          "${pkgs.tailscale}/bin/tailscale funnel --bg ${toString cfg.port}"
+          "${pkgs.tailscale}/bin/tailscale serve --bg localhost:${toString cfg.port}"
+          "${pkgs.tailscale}/bin/tailscale funnel --bg localhost:${toString cfg.port}"
         ];
 
         ExecStop = [
