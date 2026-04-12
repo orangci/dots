@@ -26,7 +26,7 @@ let
   tailscaleVhosts = lib.mapAttrs' (
     _: mod:
     let
-      base = lib.removeSuffix primaryDomain mod.domain;
+      base = lib.removeSuffix "." (lib.removeSuffix primaryDomain mod.domain);
     in
     lib.nameValuePair "https://${base}.${tailnetName}" {
       extraConfig = lib.mkDefault ''
@@ -49,6 +49,9 @@ in
   config = mkIf cfg.enable {
     modules.server.caddy.virtualHosts = tailscaleVhosts;
     networking.firewall.trustedInterfaces = lib.singleton "tailscale0";
+    systemd.services.tailscaled.before = mkIf config.modules.server.caddy.enable [
+      "caddy.service"
+    ];
     services.tailscale = {
       enable = true;
       permitCertUid = "caddy";
