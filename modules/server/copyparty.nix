@@ -83,6 +83,10 @@ in
 
         theme = 2; # pm-monokai
 
+        # to make the dirs accessible to members of copyparty group
+        chmod-d = "775";
+        chmod-f = "664";
+
         # hide some UI elements by default
         # ctrl F for "ui options" in the helptext to learn what these do
         ui-noacci = true;
@@ -100,6 +104,8 @@ in
           access.A = username;
           flags.scan = 60;
           flags.fk = 4; # enable filekeys
+          flags.chmod_D = "775";
+          flags.chmod_f = "664";
         };
         "/public" = commonPerms // {
           path = "/srv/files/public";
