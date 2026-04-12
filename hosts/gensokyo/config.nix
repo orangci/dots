@@ -264,6 +264,13 @@ in
         domain = "detect.${primaryDomain}";
         port = 8828;
       };
+
+      kavita = allThree // {
+        enable = true;
+        cloudflared.enable = true;
+        domain = "read.${primaryDomain}";
+        port = 8829;
+      };
     };
   };
   local.hardware-clock.enable = true;

@@ -36,5 +36,6 @@
     ./miniflux.nix
     ./nixflix
     ./changedetection.nix
+    ./kavita.nix
   ];
 }
