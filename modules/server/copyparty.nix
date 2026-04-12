@@ -104,7 +104,7 @@ in
           access.A = username;
           flags.scan = 60;
           flags.fk = 4; # enable filekeys
-          flags.chmod_D = "775";
+          flags.chmod_d = "775";
           flags.chmod_f = "664";
         };
         "/public" = commonPerms // {
