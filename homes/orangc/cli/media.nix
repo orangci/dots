@@ -16,6 +16,7 @@ in
       catimg
       ffmpeg
       yt-dlp
+      oxipng
     ];
   };
 }
