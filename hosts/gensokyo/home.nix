@@ -18,6 +18,7 @@
       disk-usage.enable = true;
       starship.enable = true;
       utilities.enable = true;
+      media.enable = true;
       compression = {
         enable = true;
         zip = true;
