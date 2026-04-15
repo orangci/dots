@@ -21,10 +21,18 @@ in
         reverse_proxy localhost:${toString (cfg.port + 2)}
       '';
     };
+
     modules.common.sops.secrets = {
       "nixflix/prowlarr/apiKey".path = "/var/secrets/nixflix-prowlarr-apiKey";
       "nixflix/prowlarr/password".path = "/var/secrets/nixflix-prowlarr-password";
     };
+
+    modules.server.glance.monitoredSites = lib.singleton {
+      url = "https://prowlarr.${tailnetName}";
+      title = "Prowlarr";
+      icon = "sh:prowlarr";
+    };
+
     nixflix.flaresolverr = {
       enable = true;
       port = cfg.port + 8;

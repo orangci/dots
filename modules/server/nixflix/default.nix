@@ -17,7 +17,7 @@ in
 {
   imports = [
     ./jellyfin.nix
-    ./qbittorent.nix
+    ./qbittorrent.nix
     ./sonarr.nix
     ./radarr.nix
     ./prowlarr.nix

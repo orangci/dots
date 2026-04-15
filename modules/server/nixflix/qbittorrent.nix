@@ -21,8 +21,16 @@ in
         reverse_proxy localhost:${toString (cfg.port + 3)}
       '';
     };
+
     modules.common.sops.secrets."nixflix/qbittorent/password".path =
       "/var/secrets/nixflix-qbittorent-password";
+
+    modules.server.glance.monitoredSites = lib.singleton {
+      url = "https://qbittorrent.${tailnetName}";
+      title = "Qbittorrent";
+      icon = "sh:qbittorrent";
+    };
+
     nixflix = {
       torrentClients.qbittorrent = {
         enable = true;

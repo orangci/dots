@@ -12,6 +12,7 @@ let
     mkEnableOption
     types
     mkIf
+    mkMerge
     ;
   cfg = config.modules.server.glance;
   serverModules = config.modules.server;
@@ -27,7 +28,7 @@ let
     ) serverModules
   );
 
-  siteList = builtins.map (mod: {
+  dynamicMonitoredSites = builtins.map (mod: {
     title = mod.name or mod.domain;
     url = "https://${lib.removeSuffix primaryDomain mod.domain}${tailnetName}";
     icon =
@@ -57,6 +58,12 @@ in
       type = types.port;
       default = 8800;
       description = "The port for glance to be hosted at";
+    };
+
+    monitoredSites = mkOption {
+      type = types.listOf types.attrs;
+      default = [ ];
+      description = "Collect services definitions from different modules";
     };
   };
   # maybe in the future https://github.com/glanceapp/community-widgets/blob/main/widgets/google-calendar-list-by-anant-j/README.md
@@ -199,7 +206,10 @@ in
                     title = "Services";
                     cache = "1m";
                     show-failing-only = false;
-                    sites = siteList;
+                    sites = mkMerge [
+                      dynamicMonitoredSites
+                      cfg.monitoredSites
+                    ];
                   }
                 ];
               }

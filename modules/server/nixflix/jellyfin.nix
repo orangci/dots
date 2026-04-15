@@ -21,10 +21,18 @@ in
         reverse_proxy localhost:${toString (cfg.port + 1)}
       '';
     };
+
     modules.common.sops.secrets = {
       "nixflix/jellyfin/apiKey".path = "/var/secrets/nixflix-jellyfin-apiKey";
       "nixflix/jellyfin/admin-password".path = "/var/secrets/nixflix-jellyfin-admin-password";
     };
+
+    modules.server.glance.monitoredSites = lib.singleton {
+      url = "https://jf.${tailnetName}";
+      title = "Jellyfin";
+      icon = "sh:jellyfin";
+    };
+
     nixflix.jellyfin = {
       # TODO: plugins ani-sync, animemultisource, in player episode list, powertoys, mediabar, discontinue watching, letterboxd
       enable = true;

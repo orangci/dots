@@ -21,10 +21,18 @@ in
         reverse_proxy localhost:${toString (cfg.port + 7)}
       '';
     };
+
     modules.common.sops.secrets = {
       "nixflix/sonarr/apiKey".path = "/var/secrets/nixflix-sonarr-apiKey";
       "nixflix/sonarr/password".path = "/var/secrets/nixflix-sonarr-password";
     };
+
+    modules.server.glance.monitoredSites = lib.singleton {
+      url = "https://sonarr.${tailnetName}";
+      title = "Sonarr";
+      icon = "sh:sonarr";
+    };
+
     nixflix = {
       sonarr = {
         enable = true;

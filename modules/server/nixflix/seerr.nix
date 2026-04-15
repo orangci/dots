@@ -20,7 +20,15 @@ in
         reverse_proxy localhost:${toString (cfg.port + 5)}
       '';
     };
+
     modules.common.sops.secrets."nixflix/seerr/apiKey".path = "/var/secrets/nixflix-seerr-apiKey";
+
+    modules.server.glance.monitoredSites = lib.singleton {
+      url = "https://seerr.${tailnetName}";
+      title = "Seerr";
+      icon = "sh:seerr";
+    };
+
     nixflix.seerr = {
       enable = true;
       apiKey._secret = config.modules.common.sops.secrets."nixflix/seerr/apiKey".path;

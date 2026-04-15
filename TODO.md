@@ -32,7 +32,6 @@
 - satty and zipline support for screenshot script
 - fix conflict of ports between tailscale and caddy
 - assertions
-- glance: visibility should be module based like caddy
 - ntfy switch method of declarative users
 - sddm: why is the bg image in the assets dir? fetch it as a package
 - perhaps move certain variables into a globals type thing, e.g. primaryDomain, tailnetName, et cetera. that way imports at the top of the file can look a bit nicer

@@ -21,10 +21,12 @@ in
         reverse_proxy localhost:${toString (cfg.port + 6)}
       '';
     };
+
     modules.common.sops.secrets = {
       "nixflix/sonarr-anime/apiKey".path = "/var/secrets/nixflix-sonarr-anime-apiKey";
       "nixflix/sonarr-anime/password".path = "/var/secrets/nixflix-sonarr-anime-password";
     };
+
     nixflix = {
       sonarr-anime = {
         enable = true;

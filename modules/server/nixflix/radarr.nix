@@ -21,10 +21,18 @@ in
         reverse_proxy localhost:${toString (cfg.port + 4)}
       '';
     };
+
     modules.common.sops.secrets = {
       "nixflix/radarr/apiKey".path = "/var/secrets/nixflix-radarr-apiKey";
       "nixflix/radarr/password".path = "/var/secrets/nixflix-radarr-password";
     };
+
+    modules.server.glance.monitoredSites = lib.singleton {
+      url = "https://radarr.${tailnetName}";
+      title = "Radarr";
+      icon = "sh:radarr";
+    };
+
     nixflix.radarr = {
       enable = true;
       config = {
