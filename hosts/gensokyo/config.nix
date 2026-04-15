@@ -150,7 +150,7 @@ in
         domain = "ntfy.${flakeSettings.primaryDomain}";
         port = 8812;
         users = lib.singleton {
-          username = "orangc";
+          inherit (flakeSettings) username;
           role = "admin";
         };
         scripts = {

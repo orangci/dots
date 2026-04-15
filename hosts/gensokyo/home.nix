@@ -25,7 +25,7 @@
       };
       git = {
         enable = true;
-        username = "orangc";
+        inherit (flakeSettings) username;
         email = "c@${flakeSettings.emailDomain}";
         github = true;
       };
