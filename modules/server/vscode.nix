@@ -2,7 +2,6 @@
   config,
   lib,
   pkgs,
-  username,
   flakeSettings,
   ...
 }:
@@ -53,7 +52,7 @@ in
   config = mkIf cfg.enable {
     modules.common.sops.secrets.vscode-server-connection-token = {
       path = "/var/secrets/vscode-server-connection-token";
-      owner = username;
+      owner = flakeSettings.username;
     };
 
     services.openvscode-server = {
@@ -61,9 +60,9 @@ in
       inherit (cfg) port;
 
       # use your user home
-      user = username;
-      serverDataDir = "/home/${username}/.vscode-server";
-      extensionsDir = "/home/${username}/.vscode-server/extensions";
+      user = flakeSettings.username;
+      serverDataDir = "/home/${flakeSettings.username}/.vscode-server";
+      extensionsDir = "/home/${flakeSettings.username}/.vscode-server/extensions";
 
       telemetryLevel = "crash";
       connectionTokenFile = config.modules.common.sops.secrets.vscode-server-connection-token.path;

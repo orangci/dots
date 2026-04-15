@@ -1,7 +1,7 @@
 {
   config,
   pkgs,
-  username,
+  flakeSettings,
   ...
 }:
 {
@@ -58,8 +58,8 @@
     mutableUsers = true;
   };
   environment.sessionVariables = {
-    NH_FLAKE = "/home/${username}/dots";
-    FLAKE = "/home/${username}/dots";
+    NH_FLAKE = "/home/${flakeSettings.username}/dots";
+    FLAKE = "/home/${flakeSettings.username}/dots";
   };
 
   programs = {

@@ -3,7 +3,7 @@
   config,
   lib,
   inputs,
-  username,
+  flakeSettings,
   ...
 }:
 let
@@ -79,7 +79,7 @@ in
         kde.enable = false;
         firefox.colorTheme.enable = true;
         # firefox.enable = false;
-        firefox.profileNames = [ "${username}" ];
+        firefox.profileNames = [ flakeSettings.username ];
       };
     };
   };

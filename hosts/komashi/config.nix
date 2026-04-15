@@ -1,6 +1,6 @@
 {
   pkgs,
-  username,
+  flakeSettings,
   ...
 }:
 {
@@ -77,11 +77,11 @@
   };
 
   users.users = {
-    "${username}" = {
-      home = "/home/${username}";
+    "${flakeSettings.username}" = {
+      home = "/home/${flakeSettings.username}";
       homeMode = "755";
       isNormalUser = true;
-      description = "${username}";
+      description = "${flakeSettings.username}";
       initialPassword = "password";
       extraGroups = [
         "networkmanager"

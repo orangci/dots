@@ -1,5 +1,5 @@
 {
-  username,
+  flakeSettings,
   inputs,
   config,
   pkgs,
@@ -7,18 +7,18 @@
 }:
 {
   imports = [
-    ../../hjem/${username}
-    (mkAliasOptionModule [ "hj" ] [ "hjem" "users" username ])
-    (mkAliasOptionModule [ "rum" ] [ "hjem" "users" username "rum" ])
+    ../../hjem/${flakeSettings.username}
+    (mkAliasOptionModule [ "hj" ] [ "hjem" "users" flakeSettings.username ])
+    (mkAliasOptionModule [ "rum" ] [ "hjem" "users" flakeSettings.username "rum" ])
   ];
 
   hjem = {
     extraModules = [ inputs.hjem-rum.hjemModules.default ];
     linker = pkgs.smfh;
     clobberByDefault = true;
-    users.${username} = {
+    users.${flakeSettings.username} = {
       enable = true;
-      directory = config.users.users.${username}.home;
+      directory = config.users.users.${flakeSettings.username}.home;
       packages = with pkgs; [
         hyprpicker
         obsidian

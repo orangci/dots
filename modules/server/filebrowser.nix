@@ -2,7 +2,6 @@
   config,
   lib,
   pkgs,
-  username,
   flakeSettings,
   ...
 }:
@@ -68,7 +67,7 @@ in
           name = "files";
           disableDefaultLinks = true;
         };
-        auth.adminUsername = username;
+        auth.adminUsername = flakeSettings.username;
         integrations.media.ffmpegPath = "${pkgs.ffmpeg}/bin";
       };
     };
@@ -90,7 +89,7 @@ in
       volumes = [
         "${cfg.dataDir}:/data"
         "${dataDirGenerated}/data:/home/filebrowser/data"
-        "/home/${username}:/files"
+        "/home/${flakeSettings.username}:/files"
       ];
     };
   };

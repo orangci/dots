@@ -2,7 +2,6 @@
   pkgs,
   config,
   lib,
-  username,
   flakeSettings,
   ...
 }:
@@ -18,7 +17,7 @@ in
     wayland.windowManager.hyprland.settings.bindd = [ "SUPER, W, Launch Firefox, exec, firefox" ];
     programs.firefox = {
       enable = true;
-      profiles.${username} = {
+      profiles.${flakeSettings.username} = {
         extensions.force = true;
         id = 0;
         isDefault = true;

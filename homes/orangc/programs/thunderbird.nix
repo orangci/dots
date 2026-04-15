@@ -1,7 +1,7 @@
 {
   config,
   lib,
-  username,
+  flakeSettings,
   ...
 }:
 let
@@ -19,7 +19,7 @@ in
   config.programs.thunderbird = mkIf cfg.enable {
     # https://home-manager-options.extranix.com/?query=programs.thunderbird.&release=master
     enable = true;
-    profiles.${username} = {
+    profiles.${flakeSettings.username} = {
       isDefault = true;
     };
   };

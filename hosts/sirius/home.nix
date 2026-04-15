@@ -1,11 +1,11 @@
 {
-  username,
+  flakeSettings,
   config,
   pkgs,
   ...
 }:
 {
-  imports = [ ../../homes/${username} ];
+  imports = [ ../../homes/${flakeSettings.username} ];
   nixpkgs.config.allowUnfree = true;
 
   hmModules = {
@@ -118,8 +118,8 @@
   };
 
   home = {
-    username = "${username}";
-    homeDirectory = "/home/${username}";
+    username = "${flakeSettings.username}";
+    homeDirectory = "/home/${flakeSettings.username}";
     stateVersion = "25.05";
     file.".face.icon".source = ../../assets/face.png;
     packages = with pkgs; [

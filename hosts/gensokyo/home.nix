@@ -1,10 +1,10 @@
 {
-  username,
+  flakeSettings,
   ...
 }:
 {
   nixpkgs.config.allowUnfree = true;
-  imports = [ ../../homes/${username} ];
+  imports = [ ../../homes/${flakeSettings.username} ];
 
   hmModules = {
     programs.editors.nvf.enable = false;
@@ -33,8 +33,8 @@
   };
 
   home = {
-    username = "${username}";
-    homeDirectory = "/home/${username}";
+    username = "${flakeSettings.username}";
+    homeDirectory = "/home/${flakeSettings.username}";
     stateVersion = "25.05";
   };
 

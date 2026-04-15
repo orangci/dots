@@ -2,7 +2,6 @@
   config,
   lib,
   inputs,
-  username,
   flakeSettings,
   ...
 }:
@@ -18,7 +17,7 @@ let
   commonPerms = {
     access = {
       r = "*";
-      A = username;
+      A = flakeSettings.username;
     };
     flags = {
       scan = 30;
@@ -56,7 +55,7 @@ in
 
   config = mkIf cfg.enable {
     nixpkgs.overlays = singleton inputs.copyparty.overlays.default;
-    users.users.${username}.extraGroups = singleton "copyparty";
+    users.users.${flakeSettings.username}.extraGroups = singleton "copyparty";
     modules.common.sops.secrets.copyparty-password = {
       path = "/var/secrets/copyparty-password";
       owner = "copyparty";
@@ -97,11 +96,12 @@ in
         ui-noctxb = true;
       };
       openFilesLimit = 4096;
-      accounts.${username}.passwordFile = config.modules.common.sops.secrets.copyparty-password.path;
+      accounts.${flakeSettings.username}.passwordFile =
+        config.modules.common.sops.secrets.copyparty-password.path;
       volumes = {
         "/" = {
           path = "/srv/files";
-          access.A = username;
+          access.A = flakeSettings.username;
           flags.scan = 60;
           flags.fk = 4; # enable filekeys
           flags.chmod_d = "775";
