@@ -45,7 +45,7 @@ in
       enable = true;
       initialPassword = "admin";
       database.port = cfg.port - 1000;
-      virtualHost.adminAddr = "moodle@orangc.net";
+      virtualHost.adminAddr = "moodle@${flakeSettings.emailDomain}";
       virtualHost.hostName = "127.0.0.1";
       virtualHost.listen = lib.singleton {
         ip = "*";

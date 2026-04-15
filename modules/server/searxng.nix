@@ -54,7 +54,7 @@ in
         # TODO: engines configuration
         general = {
           # instance_name = "search";
-          contact_url = "mailto:searxng@orangc.net";
+          contact_url = "mailto:searxng@${flakeSettings.emailDomain}";
         };
         search = {
           safe_search = 1;

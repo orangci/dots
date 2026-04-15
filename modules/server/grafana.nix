@@ -91,7 +91,7 @@ in
         security = {
           cookie_secure = true;
           secret_key = config.modules.common.sops.secrets.grafana-secret-key.path;
-          admin_email = "grafana@orangc.net";
+          admin_email = "grafana@${flakeSettings.emailDomain}";
         };
         users.default_language = "en-GB";
       };

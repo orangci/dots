@@ -51,7 +51,7 @@ in
     };
     services.caddy = {
       enable = true;
-      email = "c@orangc.net";
+      email = "c@${flakeSettings.emailDomain}";
       package = pkgs.caddy.withPlugins {
         plugins = [
           "github.com/caddy-dns/cloudflare@v0.2.3"

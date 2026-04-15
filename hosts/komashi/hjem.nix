@@ -45,7 +45,7 @@
       git = {
         enable = true;
         username = "orangc";
-        email = "c@orangc.net";
+        email = "c@${flakeSettings.emailDomain}";
         github = true;
       };
     };

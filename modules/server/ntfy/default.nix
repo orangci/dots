@@ -118,7 +118,7 @@ in
         # web-push-public-key = "REDACTED";
         # web-push-private-key = "REDACTED";
         # web-push-file = /var/lib/ntfy-sh/webpush.db;
-        # web-push-email-address = "c@orangc.net";
+        # web-push-email-address = "c@${flakeSettings.emailDomain}";
       };
     };
 
