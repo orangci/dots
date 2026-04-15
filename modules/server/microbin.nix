@@ -1,7 +1,7 @@
 {
   config,
   lib,
-  primaryDomain,
+  flakeSettings,
   ...
 }:
 let
@@ -29,7 +29,7 @@ in
 
     domain = mkOption {
       type = types.str;
-      default = "bin.${primaryDomain}";
+      default = "bin.${flakeSettings.primaryDomain}";
       description = "The domain for microbin to be hosted at";
     };
     port = mkOption {
@@ -56,7 +56,7 @@ in
         MICROBIN_HIDE_LOGO = true;
         MICROBIN_PORT = cfg.port;
         MICROBIN_PUBLIC_PATH = "https://${cfg.domain}/";
-        MICROBIN_SHORT_PATH = "https://${primaryDomain}/";
+        MICROBIN_SHORT_PATH = "https://${flakeSettings.primaryDomain}/";
         MICROBIN_WIDE = true;
         MICROBIN_QR = true;
         MICROBIN_HIGHLIGHTSYNTAX = true;

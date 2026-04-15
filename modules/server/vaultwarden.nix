@@ -1,7 +1,7 @@
 {
   config,
   lib,
-  primaryDomain,
+  flakeSettings,
   ...
 }:
 let
@@ -29,7 +29,7 @@ in
 
     domain = mkOption {
       type = types.str;
-      default = "vault.${primaryDomain}";
+      default = "vault.${flakeSettings.primaryDomain}";
       description = "The domain for vaultwarden to be hosted at";
     };
 

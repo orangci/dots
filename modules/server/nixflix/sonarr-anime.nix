@@ -2,8 +2,7 @@
   config,
   lib,
   username,
-  tailnetName,
-  primaryDomain,
+  flakeSettings,
   ...
 }:
 let
@@ -12,11 +11,12 @@ let
 in
 {
   config = mkIf cfg.enable {
-    modules.server.cloudflared.ingress."anisonarr.${primaryDomain}" =
+    modules.server.cloudflared.ingress."anisonarr.${flakeSettings.primaryDomain}" =
       "http://localhost:${toString (cfg.port + 6)}";
     modules.server.caddy.virtualHosts = {
-      "anisonarr.${primaryDomain}".extraConfig = "reverse_proxy localhost:${toString (cfg.port + 6)}";
-      "https://anisonarr.${tailnetName}".extraConfig = ''
+      "anisonarr.${flakeSettings.primaryDomain}".extraConfig =
+        "reverse_proxy localhost:${toString (cfg.port + 6)}";
+      "https://anisonarr.${flakeSettings.tailnetName}".extraConfig = ''
         bind tailscale/anisonarr
         reverse_proxy localhost:${toString (cfg.port + 6)}
       '';

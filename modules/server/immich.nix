@@ -1,7 +1,7 @@
 {
   config,
   lib,
-  primaryDomain,
+  flakeSettings,
   ...
 }:
 let
@@ -29,7 +29,7 @@ in
 
     domain = mkOption {
       type = types.str;
-      default = "media.${primaryDomain}";
+      default = "media.${flakeSettings.primaryDomain}";
       description = "The domain for immich to be hosted at";
     };
     port = mkOption {

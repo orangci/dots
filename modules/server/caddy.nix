@@ -8,11 +8,7 @@ let
   inherit (lib)
     mkEnableOption
     mkIf
-    mapAttrs'
-    nameValuePair
-    filterAttrs
     mkMerge
-    mkDefault
     mkOption
     types
     ;

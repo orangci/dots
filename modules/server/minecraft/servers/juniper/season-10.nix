@@ -3,7 +3,7 @@
   lib,
   inputs,
   pkgs,
-  primaryDomain,
+  flakeSettings,
   ...
 }:
 let
@@ -69,11 +69,11 @@ in
     nixpkgs.overlays = [ inputs.nix-minecraft.overlay ];
 
     # reverse proxying & cloudflared
-    modules.server.caddy.virtualHosts."mc-map.${primaryDomain}".extraConfig =
+    modules.server.caddy.virtualHosts."mc-map.${flakeSettings.primaryDomain}".extraConfig =
       "reverse_proxy localhost:${toString (cfg.port - 2000)}";
     modules.server.cloudflared.ingress = {
-      "mc.${primaryDomain}" = "tcp://localhost:${toString cfg.port}";
-      "mc-map.${primaryDomain}" = "http://localhost:${toString (cfg.port - 2000)}";
+      "mc.${flakeSettings.primaryDomain}" = "tcp://localhost:${toString cfg.port}";
+      "mc-map.${flakeSettings.primaryDomain}" = "http://localhost:${toString (cfg.port - 2000)}";
     };
 
     # The two secrets below are required for the simple-discord-link mod to work properly
@@ -167,7 +167,7 @@ in
         allow-nether = true;
         broadcast-console-to-ops = false;
         broadcast-rcon-to-ops = false;
-        bug-report-link = "https://${primaryDomain}/gh/minecraft-modpacks/issues/new";
+        bug-report-link = "https://${flakeSettings.primaryDomain}/gh/minecraft-modpacks/issues/new";
         enable-command-block = true;
         enforce-secure-profile = false;
         enforce-whitelist = true;

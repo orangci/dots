@@ -2,7 +2,7 @@
   config,
   lib,
   pkgs,
-  primaryDomain,
+  flakeSettings,
   ...
 }:
 let
@@ -43,7 +43,7 @@ in
 
     domain = mkOption {
       type = types.str;
-      default = "aiostreams.${primaryDomain}";
+      default = "aiostreams.${flakeSettings.primaryDomain}";
       description = "The domain for AIOStreams to be hosted at";
     };
   };

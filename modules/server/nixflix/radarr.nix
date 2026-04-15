@@ -2,8 +2,7 @@
   config,
   lib,
   username,
-  tailnetName,
-  primaryDomain,
+  flakeSettings,
   ...
 }:
 let
@@ -12,11 +11,12 @@ let
 in
 {
   config = mkIf cfg.enable {
-    modules.server.cloudflared.ingress."radarr.${primaryDomain}" =
+    modules.server.cloudflared.ingress."radarr.${flakeSettings.primaryDomain}" =
       "http://localhost:${toString (cfg.port + 4)}";
     modules.server.caddy.virtualHosts = {
-      "radarr.${primaryDomain}".extraConfig = "reverse_proxy localhost:${toString (cfg.port + 4)}";
-      "https://radarr.${tailnetName}".extraConfig = ''
+      "radarr.${flakeSettings.primaryDomain}".extraConfig =
+        "reverse_proxy localhost:${toString (cfg.port + 4)}";
+      "https://radarr.${flakeSettings.tailnetName}".extraConfig = ''
         bind tailscale/radarr
         reverse_proxy localhost:${toString (cfg.port + 4)}
       '';
@@ -28,7 +28,7 @@ in
     };
 
     modules.server.glance.monitoredSites = lib.singleton {
-      url = "https://radarr.${tailnetName}";
+      url = "https://radarr.${flakeSettings.tailnetName}";
       title = "Radarr";
       icon = "sh:radarr";
     };

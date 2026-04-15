@@ -2,7 +2,7 @@
   pkgs,
   config,
   lib,
-  primaryDomain,
+  flakeSettings,
   ...
 }:
 let
@@ -188,7 +188,7 @@ in
             format = "{}";
             exec = "python3 ${./salah.py}";
             interval = 60;
-            on-click = "xdg-open https://salah.${primaryDomain}/";
+            on-click = "xdg-open https://salah.${flakeSettings.primaryDomain}/";
           };
         }
       ];

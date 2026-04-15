@@ -1,7 +1,7 @@
 {
   config,
   lib,
-  primaryDomain,
+  flakeSettings,
   ...
 }:
 let
@@ -35,7 +35,7 @@ in
 
     domain = mkOption {
       type = types.str;
-      default = "umami.${primaryDomain}";
+      default = "umami.${flakeSettings.primaryDomain}";
       description = "The domain for umami to be hosted at";
     };
 

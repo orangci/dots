@@ -3,7 +3,7 @@
   config,
   lib,
   pkgs,
-  primaryDomain,
+  flakeSettings,
   ...
 }:
 let
@@ -33,7 +33,7 @@ in
 
     domain = mkOption {
       type = types.str;
-      default = "ntfy.${primaryDomain}";
+      default = "ntfy.${flakeSettings.primaryDomain}";
       description = "The domain for ntfy to be hosted at";
     };
 

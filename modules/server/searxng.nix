@@ -2,7 +2,7 @@
   pkgs,
   config,
   lib,
-  primaryDomain,
+  flakeSettings,
   ...
 }:
 let
@@ -30,7 +30,7 @@ in
 
     domain = mkOption {
       type = types.str;
-      default = "search.${primaryDomain}";
+      default = "search.${flakeSettings.primaryDomain}";
       description = "The domain for SearXNG to be hosted at";
     };
     port = mkOption {

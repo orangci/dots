@@ -2,8 +2,7 @@
   config,
   lib,
   username,
-  tailnetName,
-  primaryDomain,
+  flakeSettings,
   ...
 }:
 let
@@ -12,11 +11,12 @@ let
 in
 {
   config = mkIf cfg.enable {
-    modules.server.cloudflared.ingress."prowlarr.${primaryDomain}" =
+    modules.server.cloudflared.ingress."prowlarr.${flakeSettings.primaryDomain}" =
       "http://localhost:${toString (cfg.port + 2)}";
     modules.server.caddy.virtualHosts = {
-      "prowlarr.${primaryDomain}".extraConfig = "reverse_proxy localhost:${toString (cfg.port + 2)}";
-      "https://prowlarr.${tailnetName}".extraConfig = ''
+      "prowlarr.${flakeSettings.primaryDomain}".extraConfig =
+        "reverse_proxy localhost:${toString (cfg.port + 2)}";
+      "https://prowlarr.${flakeSettings.tailnetName}".extraConfig = ''
         bind tailscale/prowlarr
         reverse_proxy localhost:${toString (cfg.port + 2)}
       '';
@@ -28,7 +28,7 @@ in
     };
 
     modules.server.glance.monitoredSites = lib.singleton {
-      url = "https://prowlarr.${tailnetName}";
+      url = "https://prowlarr.${flakeSettings.tailnetName}";
       title = "Prowlarr";
       icon = "sh:prowlarr";
     };

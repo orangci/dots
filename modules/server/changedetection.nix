@@ -2,7 +2,7 @@
   config,
   lib,
   pkgs,
-  primaryDomain,
+  flakeSettings,
   ...
 }:
 let
@@ -36,7 +36,7 @@ in
 
     domain = mkOption {
       type = types.str;
-      default = "detect.${primaryDomain}";
+      default = "detect.${flakeSettings.primaryDomain}";
       description = "The domain for changedetection to be hosted at";
     };
   };

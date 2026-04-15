@@ -107,11 +107,13 @@
       ...
     }:
     let
-      system = "x86_64-linux";
-      username = "orangc";
-      primaryDomain = "orangc.net";
-      tailnetName = "cormorant-emperor.ts.net";
       lib = nixpkgs.lib;
+      system = "x86_64-linux";
+      flakeSettings = {
+        username = "orangc";
+        primaryDomain = "orangc.net";
+        tailnetName = "cormorant-emperor.ts.net";
+      };
 
       nixosMachine =
         { host }:
@@ -121,15 +123,13 @@
               inputs
               system
               host
-              username
-              primaryDomain
-              tailnetName
+              flakeSettings
               ;
           };
           modules = [
             ./hosts/${host}/config.nix
             home-manager.nixosModules.home-manager
-            (lib.mkAliasOptionModule [ "hm" ] [ "home-manager" "users" username ])
+            (lib.mkAliasOptionModule [ "hm" ] [ "home-manager" "users" flakeSettings.username ])
             # hjem.nixosModules.default
             {
               home-manager = {
@@ -138,12 +138,12 @@
                     inputs
                     system
                     host
-                    username
+                    flakeSettings
                     ;
                 };
                 useUserPackages = true;
                 backupFileExtension = "backup";
-                users.${username} = import ./hosts/${host}/home.nix;
+                users.${flakeSettings.username} = import ./hosts/${host}/home.nix;
               };
             }
           ];

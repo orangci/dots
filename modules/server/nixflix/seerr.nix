@@ -1,8 +1,7 @@
 {
   config,
   lib,
-  tailnetName,
-  primaryDomain,
+  flakeSettings,
   ...
 }:
 let
@@ -11,11 +10,12 @@ let
 in
 {
   config = mkIf cfg.enable {
-    modules.server.cloudflared.ingress."seerr.${primaryDomain}" =
+    modules.server.cloudflared.ingress."seerr.${flakeSettings.primaryDomain}" =
       "http://localhost:${toString (cfg.port + 5)}";
     modules.server.caddy.virtualHosts = {
-      "seerr.${primaryDomain}".extraConfig = "reverse_proxy localhost:${toString (cfg.port + 5)}";
-      "https://seerr.${tailnetName}".extraConfig = ''
+      "seerr.${flakeSettings.primaryDomain}".extraConfig =
+        "reverse_proxy localhost:${toString (cfg.port + 5)}";
+      "https://seerr.${flakeSettings.tailnetName}".extraConfig = ''
         bind tailscale/seerr
         reverse_proxy localhost:${toString (cfg.port + 5)}
       '';
@@ -24,7 +24,7 @@ in
     modules.common.sops.secrets."nixflix/seerr/apiKey".path = "/var/secrets/nixflix-seerr-apiKey";
 
     modules.server.glance.monitoredSites = lib.singleton {
-      url = "https://seerr.${tailnetName}";
+      url = "https://seerr.${flakeSettings.tailnetName}";
       title = "Seerr";
       icon = "sh:seerr";
     };

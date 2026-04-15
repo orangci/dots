@@ -1,7 +1,7 @@
 {
   config,
   lib,
-  primaryDomain,
+  flakeSettings,
   ...
 }:
 let
@@ -31,7 +31,7 @@ in
 
     domain = mkOption {
       type = types.str;
-      default = "bracket.${primaryDomain}";
+      default = "bracket.${flakeSettings.primaryDomain}";
       description = "The domain for bracket to be hosted at";
     };
 

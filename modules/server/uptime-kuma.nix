@@ -1,7 +1,7 @@
 {
   config,
   lib,
-  primaryDomain,
+  flakeSettings,
   ...
 }:
 let
@@ -29,7 +29,7 @@ in
 
     domain = mkOption {
       type = types.str;
-      default = "status.${primaryDomain}";
+      default = "status.${flakeSettings.primaryDomain}";
       description = "The domain for uptime kuma to be hosted at";
     };
     port = mkOption {

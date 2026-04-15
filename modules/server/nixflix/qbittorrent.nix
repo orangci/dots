@@ -2,8 +2,7 @@
   config,
   lib,
   username,
-  tailnetName,
-  primaryDomain,
+  flakeSettings,
   ...
 }:
 let
@@ -12,11 +11,12 @@ let
 in
 {
   config = mkIf cfg.enable {
-    modules.server.cloudflared.ingress."qbittorent.${primaryDomain}" =
+    modules.server.cloudflared.ingress."qbittorent.${flakeSettings.primaryDomain}" =
       "http://localhost:${toString (cfg.port + 3)}";
     modules.server.caddy.virtualHosts = {
-      "qbittorrent.${primaryDomain}".extraConfig = "reverse_proxy localhost:${toString (cfg.port + 3)}";
-      "https://qbittorrent.${tailnetName}".extraConfig = ''
+      "qbittorrent.${flakeSettings.primaryDomain}".extraConfig =
+        "reverse_proxy localhost:${toString (cfg.port + 3)}";
+      "https://qbittorrent.${flakeSettings.tailnetName}".extraConfig = ''
         bind tailscale/qbittorrent
         reverse_proxy localhost:${toString (cfg.port + 3)}
       '';
@@ -26,7 +26,7 @@ in
       "/var/secrets/nixflix-qbittorent-password";
 
     modules.server.glance.monitoredSites = lib.singleton {
-      url = "https://qbittorrent.${tailnetName}";
+      url = "https://qbittorrent.${flakeSettings.tailnetName}";
       title = "Qbittorrent";
       icon = "sh:qbittorrent";
     };

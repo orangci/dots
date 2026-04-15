@@ -1,7 +1,7 @@
 {
   config,
   lib,
-  primaryDomain,
+  flakeSettings,
   ...
 }:
 let
@@ -36,7 +36,7 @@ in
 
     domain = mkOption {
       type = types.str;
-      default = "miniflux.${primaryDomain}";
+      default = "miniflux.${flakeSettings.primaryDomain}";
       description = "The domain for miniflux to be hosted at";
     };
 

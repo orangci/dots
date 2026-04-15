@@ -3,7 +3,7 @@
   lib,
   host,
   pkgs,
-  primaryDomain,
+  flakeSettings,
   ...
 }:
 let
@@ -32,7 +32,7 @@ in
 
     domain = mkOption {
       type = types.str;
-      default = "git.${primaryDomain}";
+      default = "git.${flakeSettings.primaryDomain}";
       description = "The domain for forgejo to be hosted at";
     };
     port = mkOption {

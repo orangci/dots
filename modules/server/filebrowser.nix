@@ -3,7 +3,7 @@
   lib,
   pkgs,
   username,
-  primaryDomain,
+  flakeSettings,
   ...
 }:
 
@@ -45,7 +45,7 @@ in
 
     domain = mkOption {
       type = types.str;
-      default = "filebrowser.${primaryDomain}";
+      default = "filebrowser.${flakeSettings.primaryDomain}";
       description = "The domain for Filebrowser to be hosted at";
     };
 

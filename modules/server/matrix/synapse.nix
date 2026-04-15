@@ -2,7 +2,7 @@
   config,
   lib,
   pkgs,
-  tailnetName,
+  flakeSettings,
   ...
 }:
 
@@ -40,7 +40,7 @@ in
 
     apiDomain = mkOption {
       type = types.str;
-      default = "gensokyo.${tailnetName}";
+      default = "gensokyo.${flakeSettings.tailnetName}";
       description = "Domain the synapse HTTP API is served from";
     };
   };

@@ -1,7 +1,7 @@
 {
   config,
   lib,
-  primaryDomain,
+  flakeSettings,
   ...
 }:
 
@@ -31,7 +31,7 @@ in
 
     domain = mkOption {
       type = types.str;
-      default = "convert.${primaryDomain}";
+      default = "convert.${flakeSettings.primaryDomain}";
       description = "The domain for convertx to be hosted at";
     };
 

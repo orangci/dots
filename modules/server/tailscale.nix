@@ -1,8 +1,7 @@
 {
   config,
   lib,
-  tailnetName,
-  primaryDomain,
+  flakeSettings,
   ...
 }:
 let
@@ -26,9 +25,9 @@ let
   tailscaleVhosts = lib.mapAttrs' (
     _: mod:
     let
-      base = lib.removeSuffix "." (lib.removeSuffix primaryDomain mod.domain);
+      base = lib.removeSuffix "." (lib.removeSuffix flakeSettings.primaryDomain mod.domain);
     in
-    lib.nameValuePair "https://${base}.${tailnetName}" {
+    lib.nameValuePair "https://${base}.${flakeSettings.tailnetName}" {
       extraConfig = lib.mkDefault ''
         bind tailscale/${base}
         reverse_proxy localhost:${toString mod.port}

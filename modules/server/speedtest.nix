@@ -1,7 +1,7 @@
 {
   config,
   lib,
-  primaryDomain,
+  flakeSettings,
   ...
 }:
 let
@@ -35,7 +35,7 @@ in
 
     domain = mkOption {
       type = types.str;
-      default = "speedtest.${primaryDomain}";
+      default = "speedtest.${flakeSettings.primaryDomain}";
       description = "The domain for speedtest to be hosted at";
     };
   };

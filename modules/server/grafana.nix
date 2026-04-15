@@ -2,7 +2,7 @@
   config,
   lib,
   host,
-  primaryDomain,
+  flakeSettings,
   pkgs,
   ...
 }:
@@ -38,7 +38,7 @@ in
 
     domain = mkOption {
       type = types.str;
-      default = "grafana.${primaryDomain}";
+      default = "grafana.${flakeSettings.primaryDomain}";
       description = "The domain for grafana to be hosted at";
     };
   };

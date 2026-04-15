@@ -3,7 +3,6 @@
   lib,
   pkgs,
   host,
-  primaryDomain,
   ...
 }:
 let

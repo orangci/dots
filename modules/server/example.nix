@@ -1,7 +1,7 @@
 {
   config,
   lib,
-  primaryDomain,
+  flakeSettings,
   ...
 }:
 let
@@ -35,7 +35,7 @@ in
 
     domain = mkOption {
       type = types.str;
-      default = "example.${primaryDomain}";
+      default = "example.${flakeSettings.primaryDomain}";
       description = "The domain for example to be hosted at";
     };
   };

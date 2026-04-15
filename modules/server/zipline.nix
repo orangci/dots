@@ -1,7 +1,7 @@
 {
   config,
   lib,
-  primaryDomain,
+  flakeSettings,
   ...
 }:
 let
@@ -35,7 +35,7 @@ in
 
     domain = mkOption {
       type = types.str;
-      default = "zip.${primaryDomain}";
+      default = "zip.${flakeSettings.primaryDomain}";
       description = "The domain for zipline to be hosted at";
     };
 

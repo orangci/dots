@@ -3,7 +3,7 @@
   lib,
   pkgs,
   username,
-  primaryDomain,
+  flakeSettings,
   ...
 }:
 
@@ -39,7 +39,7 @@ in
 
     domain = mkOption {
       type = types.str;
-      default = "code.${primaryDomain}";
+      default = "code.${flakeSettings.primaryDomain}";
       description = "The domain for VSCode Server to be hosted at";
     };
 

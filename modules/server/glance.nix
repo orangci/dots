@@ -2,8 +2,7 @@
   config,
   lib,
   host,
-  tailnetName,
-  primaryDomain,
+  flakeSettings,
   ...
 }:
 let
@@ -30,7 +29,7 @@ let
 
   dynamicMonitoredSites = builtins.map (mod: {
     title = mod.name or mod.domain;
-    url = "https://${lib.removeSuffix primaryDomain mod.domain}${tailnetName}";
+    url = "https://${lib.removeSuffix flakeSettings.primaryDomain mod.domain}${flakeSettings.tailnetName}";
     icon =
       mod.glance.icon
         or "sh:${lib.strings.replaceStrings [ " " ] [ "-" ] (lib.strings.toLower mod.name)}";
@@ -51,7 +50,7 @@ in
 
     domain = mkOption {
       type = types.str;
-      default = "glance.${primaryDomain}";
+      default = "glance.${flakeSettings.primaryDomain}";
       description = "The domain for glance to be hosted at";
     };
     port = mkOption {

@@ -3,7 +3,7 @@
   config,
   lib,
   username,
-  tailnetName,
+  flakeSettings,
   ...
 }:
 let
@@ -32,7 +32,7 @@ in
             duckduckgo.metaData.hidden = true;
 
             "SearXNG" = {
-              urls = [ { template = "https://search.${tailnetName}/search?q={searchTerms}"; } ];
+              urls = [ { template = "https://search.${flakeSettings.tailnetName}/search?q={searchTerms}"; } ];
               definedAliases = [ "@sx" ];
             };
 

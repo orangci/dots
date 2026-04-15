@@ -1,7 +1,7 @@
 {
   config,
   lib,
-  primaryDomain,
+  flakeSettings,
   ...
 }:
 let
@@ -35,7 +35,7 @@ in
 
     domain = mkOption {
       type = types.str;
-      default = "scrutiny.${primaryDomain}";
+      default = "scrutiny.${flakeSettings.primaryDomain}";
       description = "The domain for scrutiny to be hosted at";
     };
 

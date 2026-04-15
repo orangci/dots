@@ -1,7 +1,7 @@
 {
   config,
   lib,
-  primaryDomain,
+  flakeSettings,
   ...
 }:
 
@@ -30,7 +30,7 @@ in
 
     domain = mkOption {
       type = types.str;
-      default = "tools.${primaryDomain}";
+      default = "tools.${flakeSettings.primaryDomain}";
       description = "The domain for it-tools to be hosted at";
     };
     port = mkOption {

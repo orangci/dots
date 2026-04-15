@@ -3,7 +3,7 @@
   lib,
   inputs,
   username,
-  primaryDomain,
+  flakeSettings,
   ...
 }:
 let
@@ -49,7 +49,7 @@ in
 
     domain = mkOption {
       type = types.str;
-      default = "copyparty.${primaryDomain}";
+      default = "copyparty.${flakeSettings.primaryDomain}";
       description = "The domain for copyparty to be hosted at";
     };
   };
