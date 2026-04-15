@@ -158,7 +158,7 @@ in
         scripts = {
           services.enable = true;
           cpu-temperature.enable = false; # never shuts up
-          power-on.enable = true;
+          power-on.enable = false;
         };
       };
 
@@ -235,7 +235,7 @@ in
         enable = true;
         apiDomain = "gensokyo.${tailnetName}";
         port = 8824;
-        serverName = "${primaryDomain}";
+        serverName = primaryDomain;
       };
 
       scrutiny = allThree // {

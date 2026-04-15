@@ -17,7 +17,7 @@
 - hook ntfy into all the services that can be, e.g., scrutiny, matrix
 - fix ntfy power on script
 - maybe use an epic shell or make my own. like noctalia
-- look at wateir's grafana setup aznd perhaps 'borrow' it (love you, water)
+- complete grafana/prometheus module
 - use synaptic standard
 - remove hm/system split
 - export all modules

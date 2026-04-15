@@ -48,5 +48,11 @@ in
       runCheck = true;
       pruneOpts = lib.singleton "--keep-last ${toString cfg.keepLast}";
     };
+    services.restic.server = mkIf config.modules.server.grafana.enable {
+      enable = true;
+      listenAddress = "127.0.0.1:9636";
+      prometheus = true;
+      privateRepos = true;
+    };
   };
 }

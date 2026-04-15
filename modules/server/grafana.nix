@@ -3,6 +3,7 @@
   lib,
   host,
   primaryDomain,
+  pkgs,
   ...
 }:
 let
@@ -45,17 +46,32 @@ in
   config = mkIf cfg.enable {
     modules.common.sops.secrets.grafana-to-ntfy-bauth-pass.path =
       "/var/secrets/grafana-to-ntfy-bauth-pass";
+    modules.common.sops.secrets.grafana-secret-key.path = "/var/secrets/grafana-secret-key";
     modules.common.sops.secrets.speedtest-api-key.path = "/var/secrets/speedtest-api-key";
     services.prometheus = {
       enable = true;
       enableReload = true;
       port = cfg.port - 1000;
-      exporters = {
-        node = {
-          enable = true;
-          enabledCollectors = singleton "systemd";
-          port = cfg.port - 2000;
-        };
+      exporters.node = {
+        enable = true;
+        enabledCollectors = [
+          "ethtool"
+          "softirqs"
+          "systemd"
+          "tcpstat"
+          "wifi"
+          "cpu"
+          "diskstats"
+          "filesystem"
+          "loadavg"
+          "meminfo"
+          "netdev"
+          "stat"
+          "time"
+          "uname"
+          "vmstat"
+        ];
+        port = cfg.port - 2000;
       };
       scrapeConfigs = singleton {
         job_name = host;
@@ -72,9 +88,35 @@ in
           enable_gzip = true;
           inherit (cfg) domain;
         };
-        security.cookie_secure = true;
+        security = {
+          cookie_secure = true;
+          secret_key = config.modules.common.sops.secrets.grafana-secret-key.path;
+          admin_email = "grafana@orangc.net";
+        };
         users.default_language = "en-GB";
       };
+
+      provision = {
+        enable = true;
+        datasources.settings.datasources = [
+          {
+            name = "Prometheus";
+            type = "prometheus";
+            access = "proxy";
+            url = "http://127.0.0.1:${toString config.services.prometheus.port}";
+            isDefault = true;
+          }
+        ];
+      };
+
+      declarativePlugins = with pkgs.grafanaPlugins; [
+        bsull-console-datasource
+        fetzerch-sunandmoon-datasource
+        grafana-clock-panel
+        grafana-github-datasource
+        grafana-piechart-panel
+        grafana-worldmap-panel
+      ];
     };
     modules.server.ntfy.topics = singleton {
       name = "grafana";
