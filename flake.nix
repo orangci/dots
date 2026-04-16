@@ -112,6 +112,7 @@
       flakeSettings = {
         username = "orangc";
         primaryDomain = "orangc.net";
+        secondaryDomain = "orang.ci";
         emailDomain = "orangc.net";
         tailnetName = "cormorant-emperor.ts.net";
       };

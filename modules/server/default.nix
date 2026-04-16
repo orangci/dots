@@ -38,5 +38,6 @@
     ./changedetection.nix
     ./kavita.nix
     ./linkwarden.nix
+    ./wastebin.nix
   ];
 }

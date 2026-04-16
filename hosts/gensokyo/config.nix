@@ -113,7 +113,7 @@ in
         port = 8096; # can't be changed via the nixos module
       };
 
-      microbin = allThree // {
+      wastebin = allThree // {
         enable = true;
         cloudflared.enable = true;
         domain = "bin.${flakeSettings.primaryDomain}";
