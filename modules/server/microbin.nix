@@ -46,10 +46,10 @@ in
   };
 
   config = mkIf cfg.enable {
-    modules.common.sops.secrets.microbin.path = "/var/lib/microbin.env";
+    modules.common.sops.secrets.microbin-env.path = "/var/secrets/microbin-env";
     services.microbin = {
       enable = true;
-      passwordFile = "/var/lib/microbin.env";
+      passwordFile = "/var/secrets/microbin-env";
       settings = {
         MICROBIN_HIDE_HEADER = true;
         MICROBIN_HIDE_FOOTER = true;
