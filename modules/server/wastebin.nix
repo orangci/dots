@@ -46,7 +46,7 @@ in
     	enable = true;
     	secretFile = config.modules.common.sops.secrets.wastebin-env.path;
     	settings = {
-    		WASTEBIN_BASE_URL = "https://${flakeSettings.secondaryDomain}/p";
+    		WASTEBIN_BASE_URL = "https://${flakeSettings.primaryDomain}";
     		WASTEBIN_ADDRESS_PORT = "0.0.0.0:${toString cfg.port}";
     		WASTEBIN_THEME = "catppuccin";
     		# WASTEBIN_PASTE_EXPIRATIONS = "";
