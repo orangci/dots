@@ -37,5 +37,6 @@
     ./nixflix
     ./changedetection.nix
     ./kavita.nix
+    ./linkwarden.nix
   ];
 }

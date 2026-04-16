@@ -269,6 +269,13 @@ in
         domain = "read.${flakeSettings.primaryDomain}";
         port = 8829;
       };
+
+      linkwarden = allThree // {
+        enable = true;
+        cloudflared.enable = true;
+        domain = "links.${flakeSettings.primaryDomain}";
+        port = 8830;
+      };
     };
   };
   local.hardware-clock.enable = true;
