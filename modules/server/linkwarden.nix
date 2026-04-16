@@ -41,12 +41,11 @@ in
   };
 
   config = mkIf cfg.enable {
-    modules.common.sops.secrets.linkwarden-nextauth-secret.path =
-      "/var/secrets/linkwarden-nextauth-secret";
+    modules.common.sops.secrets.linkwarden-env.path = "/var/secrets/linkwarden-nextauth-secret";
     services.linkwarden = {
       enable = true;
       inherit (cfg) port;
-      secretFiles.NEXTAUTH_SECRET = config.modules.common.sops.secrets.linkwarden-nextauth-secret.path;
+      environmentFile = config.modules.common.sops.secrets.linkwarden-env.path;
       enableRegistration = false;
     };
   };
