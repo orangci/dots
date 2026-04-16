@@ -35,7 +35,7 @@ in
 
     domain = mkOption {
       type = types.str;
-      default = "umami.${flakeSettings.primaryDomain}";
+      default = "umami.${flakeSettings.domains.primary}";
       description = "The domain for umami to be hosted at";
     };
 

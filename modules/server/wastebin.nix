@@ -35,22 +35,22 @@ in
 
     domain = mkOption {
       type = types.str;
-      default = "bin.${flakeSettings.primaryDomain}";
+      default = "bin.${flakeSettings.domains.primary}";
       description = "The domain for wastebin to be hosted at";
     };
   };
 
   config = mkIf cfg.enable {
-  modules.common.sops.secrets.wastebin-env.path = "/var/secrets/wastebin-env";
+    modules.common.sops.secrets.wastebin-env.path = "/var/secrets/wastebin-env";
     services.wastebin = {
-    	enable = true;
-    	secretFile = config.modules.common.sops.secrets.wastebin-env.path;
-    	settings = {
-    		WASTEBIN_BASE_URL = "https://${flakeSettings.primaryDomain}";
-    		WASTEBIN_ADDRESS_PORT = "0.0.0.0:${toString cfg.port}";
-    		WASTEBIN_THEME = "catppuccin";
-    		# WASTEBIN_PASTE_EXPIRATIONS = "";
-    	};
+      enable = true;
+      secretFile = config.modules.common.sops.secrets.wastebin-env.path;
+      settings = {
+        WASTEBIN_BASE_URL = "https://${flakeSettings.domains.primary}";
+        WASTEBIN_ADDRESS_PORT = "0.0.0.0:${toString cfg.port}";
+        WASTEBIN_THEME = "catppuccin";
+        # WASTEBIN_PASTE_EXPIRATIONS = "";
+      };
     };
   };
 }

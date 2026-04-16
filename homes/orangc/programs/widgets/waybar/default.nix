@@ -188,7 +188,7 @@ in
             format = "{}";
             exec = "python3 ${./salah.py}";
             interval = 60;
-            on-click = "xdg-open https://salah.${flakeSettings.primaryDomain}/";
+            on-click = "xdg-open https://salah.${flakeSettings.domains.primary}/";
           };
         }
       ];

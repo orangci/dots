@@ -10,12 +10,12 @@ let
 in
 {
   config = mkIf cfg.enable {
-    modules.server.cloudflared.ingress."seerr.${flakeSettings.primaryDomain}" =
+    modules.server.cloudflared.ingress."seerr.${flakeSettings.domains.primary}" =
       "http://localhost:${toString (cfg.port + 5)}";
     modules.server.caddy.virtualHosts = {
-      "seerr.${flakeSettings.primaryDomain}".extraConfig =
+      "seerr.${flakeSettings.domains.primary}".extraConfig =
         "reverse_proxy localhost:${toString (cfg.port + 5)}";
-      "https://seerr.${flakeSettings.tailnetName}".extraConfig = ''
+      "https://seerr.${flakeSettings.domains.tailnet}".extraConfig = ''
         bind tailscale/seerr
         reverse_proxy localhost:${toString (cfg.port + 5)}
       '';
@@ -24,7 +24,7 @@ in
     modules.common.sops.secrets."nixflix/seerr/apiKey".path = "/var/secrets/nixflix-seerr-apiKey";
 
     modules.server.glance.monitoredSites = lib.singleton {
-      url = "https://seerr.${flakeSettings.tailnetName}";
+      url = "https://seerr.${flakeSettings.domains.tailnet}";
       title = "Seerr";
       icon = "sh:seerr";
     };

@@ -44,7 +44,7 @@ in
 
     domain = mkOption {
       type = types.str;
-      default = "filebrowser.${flakeSettings.primaryDomain}";
+      default = "filebrowser.${flakeSettings.domains.primary}";
       description = "The domain for Filebrowser to be hosted at";
     };
 

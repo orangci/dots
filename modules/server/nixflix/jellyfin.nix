@@ -10,12 +10,12 @@ let
 in
 {
   config = mkIf cfg.enable {
-    modules.server.cloudflared.ingress."jf.${flakeSettings.primaryDomain}" =
+    modules.server.cloudflared.ingress."jf.${flakeSettings.domains.primary}" =
       "http://localhost:${toString (cfg.port + 1)}";
     modules.server.caddy.virtualHosts = {
-      "jf.${flakeSettings.primaryDomain}".extraConfig =
+      "jf.${flakeSettings.domains.primary}".extraConfig =
         "reverse_proxy localhost:${toString (cfg.port + 1)}";
-      "https://jf.${flakeSettings.tailnetName}".extraConfig = ''
+      "https://jf.${flakeSettings.domains.tailnet}".extraConfig = ''
         bind tailscale/jf
         reverse_proxy localhost:${toString (cfg.port + 1)}
       '';
@@ -27,7 +27,7 @@ in
     };
 
     modules.server.glance.monitoredSites = lib.singleton {
-      url = "https://jf.${flakeSettings.tailnetName}";
+      url = "https://jf.${flakeSettings.domains.tailnet}";
       title = "Jellyfin";
       icon = "sh:jellyfin";
     };

@@ -29,7 +29,7 @@ in
 
     domain = mkOption {
       type = types.str;
-      default = "status.${flakeSettings.primaryDomain}";
+      default = "status.${flakeSettings.domains.primary}";
       description = "The domain for uptime kuma to be hosted at";
     };
     port = mkOption {

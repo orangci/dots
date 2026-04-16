@@ -111,10 +111,12 @@
       system = "x86_64-linux";
       flakeSettings = {
         username = "orangc";
-        primaryDomain = "orangc.net";
-        secondaryDomain = "orang.ci";
-        emailDomain = "orangc.net";
-        tailnetName = "cormorant-emperor.ts.net";
+        domains = {
+          primary = "orangc.net";
+          secondary = "orang.ci";
+          email = "orangc.net";
+          tailnet = "cormorant-emperor.ts.net";
+        };
       };
 
       nixosMachine =

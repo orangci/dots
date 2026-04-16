@@ -35,7 +35,7 @@ in
 
     domain = mkOption {
       type = types.str;
-      default = "zip.${flakeSettings.primaryDomain}";
+      default = "zip.${flakeSettings.domains.primary}";
       description = "The domain for zipline to be hosted at";
     };
 

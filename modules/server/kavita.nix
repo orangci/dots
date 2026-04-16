@@ -36,7 +36,7 @@ in
 
     domain = mkOption {
       type = types.str;
-      default = "read.${flakeSettings.primaryDomain}";
+      default = "read.${flakeSettings.domains.primary}";
       description = "The domain for kavita to be hosted at";
     };
   };

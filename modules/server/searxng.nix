@@ -30,7 +30,7 @@ in
 
     domain = mkOption {
       type = types.str;
-      default = "search.${flakeSettings.primaryDomain}";
+      default = "search.${flakeSettings.domains.primary}";
       description = "The domain for SearXNG to be hosted at";
     };
     port = mkOption {
@@ -54,7 +54,7 @@ in
         # TODO: engines configuration
         general = {
           # instance_name = "search";
-          contact_url = "mailto:searxng@${flakeSettings.emailDomain}";
+          contact_url = "mailto:searxng@${flakeSettings.domains.email}";
         };
         search = {
           safe_search = 1;

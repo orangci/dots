@@ -35,7 +35,7 @@ in
 
     domain = mkOption {
       type = types.str;
-      default = "scrutiny.${flakeSettings.primaryDomain}";
+      default = "scrutiny.${flakeSettings.domains.primary}";
       description = "The domain for scrutiny to be hosted at";
     };
 

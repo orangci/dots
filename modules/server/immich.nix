@@ -29,7 +29,7 @@ in
 
     domain = mkOption {
       type = types.str;
-      default = "media.${flakeSettings.primaryDomain}";
+      default = "media.${flakeSettings.domains.primary}";
       description = "The domain for immich to be hosted at";
     };
     port = mkOption {

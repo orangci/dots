@@ -35,7 +35,7 @@ in
 
     domain = mkOption {
       type = types.str;
-      default = "example.${flakeSettings.primaryDomain}";
+      default = "example.${flakeSettings.domains.primary}";
       description = "The domain for example to be hosted at";
     };
   };

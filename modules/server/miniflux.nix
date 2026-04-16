@@ -36,7 +36,7 @@ in
 
     domain = mkOption {
       type = types.str;
-      default = "miniflux.${flakeSettings.primaryDomain}";
+      default = "miniflux.${flakeSettings.domains.primary}";
       description = "The domain for miniflux to be hosted at";
     };
 

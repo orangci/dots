@@ -25,7 +25,7 @@ in
 
     domain = mkOption {
       type = types.str;
-      default = "git.${flakeSettings.primaryDomain}";
+      default = "git.${flakeSettings.domains.primary}";
       description = "The domain for gitea to be hosted at";
     };
     port = mkOption {

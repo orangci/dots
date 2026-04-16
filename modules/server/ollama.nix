@@ -35,7 +35,7 @@ in
 
     domain = mkOption {
       type = types.str;
-      default = "ai.${flakeSettings.primaryDomain}";
+      default = "ai.${flakeSettings.domains.primary}";
       description = "The domain for ollama be hosted at";
     };
   };

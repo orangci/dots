@@ -30,7 +30,7 @@ in
 
     domain = mkOption {
       type = types.str;
-      default = "tools.${flakeSettings.primaryDomain}";
+      default = "tools.${flakeSettings.domains.primary}";
       description = "The domain for it-tools to be hosted at";
     };
     port = mkOption {

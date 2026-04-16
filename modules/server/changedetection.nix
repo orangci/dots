@@ -36,7 +36,7 @@ in
 
     domain = mkOption {
       type = types.str;
-      default = "detect.${flakeSettings.primaryDomain}";
+      default = "detect.${flakeSettings.domains.primary}";
       description = "The domain for changedetection to be hosted at";
     };
   };

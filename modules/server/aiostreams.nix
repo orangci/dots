@@ -43,7 +43,7 @@ in
 
     domain = mkOption {
       type = types.str;
-      default = "aiostreams.${flakeSettings.primaryDomain}";
+      default = "aiostreams.${flakeSettings.domains.primary}";
       description = "The domain for AIOStreams to be hosted at";
     };
   };

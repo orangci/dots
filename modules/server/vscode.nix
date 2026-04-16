@@ -38,7 +38,7 @@ in
 
     domain = mkOption {
       type = types.str;
-      default = "code.${flakeSettings.primaryDomain}";
+      default = "code.${flakeSettings.domains.primary}";
       description = "The domain for VSCode Server to be hosted at";
     };
 

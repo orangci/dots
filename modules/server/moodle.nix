@@ -35,7 +35,7 @@ in
 
     domain = mkOption {
       type = types.str;
-      default = "moodle.${flakeSettings.primaryDomain}";
+      default = "moodle.${flakeSettings.domains.primary}";
       description = "The domain for moodle to be hosted at";
     };
   };
@@ -45,7 +45,7 @@ in
       enable = true;
       initialPassword = "admin";
       database.port = cfg.port - 1000;
-      virtualHost.adminAddr = "moodle@${flakeSettings.emailDomain}";
+      virtualHost.adminAddr = "moodle@${flakeSettings.domains.email}";
       virtualHost.hostName = "127.0.0.1";
       virtualHost.listen = lib.singleton {
         ip = "*";

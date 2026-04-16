@@ -10,12 +10,12 @@ let
 in
 {
   config = mkIf cfg.enable {
-    modules.server.cloudflared.ingress."sonarr.${flakeSettings.primaryDomain}" =
+    modules.server.cloudflared.ingress."sonarr.${flakeSettings.domains.primary}" =
       "http://localhost:${toString (cfg.port + 7)}";
     modules.server.caddy.virtualHosts = {
-      "sonarr.${flakeSettings.primaryDomain}".extraConfig =
+      "sonarr.${flakeSettings.domains.primary}".extraConfig =
         "reverse_proxy localhost:${toString (cfg.port + 7)}";
-      "https://sonarr.${flakeSettings.tailnetName}".extraConfig = ''
+      "https://sonarr.${flakeSettings.domains.tailnet}".extraConfig = ''
         bind tailscale/sonarr
         reverse_proxy localhost:${toString (cfg.port + 7)}
       '';
@@ -27,7 +27,7 @@ in
     };
 
     modules.server.glance.monitoredSites = lib.singleton {
-      url = "https://sonarr.${flakeSettings.tailnetName}";
+      url = "https://sonarr.${flakeSettings.domains.tailnet}";
       title = "Sonarr";
       icon = "sh:sonarr";
     };

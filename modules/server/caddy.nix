@@ -52,7 +52,7 @@ in
     };
     services.caddy = {
       enable = true;
-      email = "c@${flakeSettings.emailDomain}";
+      email = "c@${flakeSettings.domains.email}";
       package = pkgs.caddy.withPlugins {
         plugins = [
           "github.com/caddy-dns/cloudflare@v0.2.3"

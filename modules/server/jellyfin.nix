@@ -35,7 +35,7 @@ in
 
     domain = mkOption {
       type = types.str;
-      default = "jellyfin.${flakeSettings.primaryDomain}";
+      default = "jellyfin.${flakeSettings.domains.primary}";
       description = "The domain for jellyfin to be hosted at";
     };
   };

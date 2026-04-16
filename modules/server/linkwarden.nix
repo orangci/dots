@@ -35,7 +35,7 @@ in
 
     domain = mkOption {
       type = types.str;
-      default = "links.${flakeSettings.primaryDomain}";
+      default = "links.${flakeSettings.domains.primary}";
       description = "The domain for linkwarden to be hosted at";
     };
   };

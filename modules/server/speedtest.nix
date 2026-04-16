@@ -35,7 +35,7 @@ in
 
     domain = mkOption {
       type = types.str;
-      default = "speedtest.${flakeSettings.primaryDomain}";
+      default = "speedtest.${flakeSettings.domains.primary}";
       description = "The domain for speedtest to be hosted at";
     };
   };

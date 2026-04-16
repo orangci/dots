@@ -33,7 +33,7 @@ in
 
     domain = mkOption {
       type = types.str;
-      default = "ntfy.${flakeSettings.primaryDomain}";
+      default = "ntfy.${flakeSettings.domains.primary}";
       description = "The domain for ntfy to be hosted at";
     };
 
@@ -118,7 +118,7 @@ in
         # web-push-public-key = "REDACTED";
         # web-push-private-key = "REDACTED";
         # web-push-file = /var/lib/ntfy-sh/webpush.db;
-        # web-push-email-address = "c@${flakeSettings.emailDomain}";
+        # web-push-email-address = "c@${flakeSettings.domains.email}";
       };
     };
 

@@ -48,7 +48,7 @@ in
 
     domain = mkOption {
       type = types.str;
-      default = "copyparty.${flakeSettings.primaryDomain}";
+      default = "copyparty.${flakeSettings.domains.primary}";
       description = "The domain for copyparty to be hosted at";
     };
   };

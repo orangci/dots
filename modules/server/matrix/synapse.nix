@@ -40,7 +40,7 @@ in
 
     apiDomain = mkOption {
       type = types.str;
-      default = "gensokyo.${flakeSettings.tailnetName}";
+      default = "gensokyo.${flakeSettings.domains.tailnet}";
       description = "Domain the synapse HTTP API is served from";
     };
   };

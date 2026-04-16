@@ -10,12 +10,12 @@ let
 in
 {
   config = mkIf cfg.enable {
-    modules.server.cloudflared.ingress."radarr.${flakeSettings.primaryDomain}" =
+    modules.server.cloudflared.ingress."radarr.${flakeSettings.domains.primary}" =
       "http://localhost:${toString (cfg.port + 4)}";
     modules.server.caddy.virtualHosts = {
-      "radarr.${flakeSettings.primaryDomain}".extraConfig =
+      "radarr.${flakeSettings.domains.primary}".extraConfig =
         "reverse_proxy localhost:${toString (cfg.port + 4)}";
-      "https://radarr.${flakeSettings.tailnetName}".extraConfig = ''
+      "https://radarr.${flakeSettings.domains.tailnet}".extraConfig = ''
         bind tailscale/radarr
         reverse_proxy localhost:${toString (cfg.port + 4)}
       '';
@@ -27,7 +27,7 @@ in
     };
 
     modules.server.glance.monitoredSites = lib.singleton {
-      url = "https://radarr.${flakeSettings.tailnetName}";
+      url = "https://radarr.${flakeSettings.domains.tailnet}";
       title = "Radarr";
       icon = "sh:radarr";
     };

@@ -38,7 +38,7 @@ in
 
     domain = mkOption {
       type = types.str;
-      default = "grafana.${flakeSettings.primaryDomain}";
+      default = "grafana.${flakeSettings.domains.primary}";
       description = "The domain for grafana to be hosted at";
     };
   };
@@ -91,7 +91,7 @@ in
         security = {
           cookie_secure = true;
           secret_key = config.modules.common.sops.secrets.grafana-secret-key.path;
-          admin_email = "grafana@${flakeSettings.emailDomain}";
+          admin_email = "grafana@${flakeSettings.domains.email}";
         };
         users.default_language = "en-GB";
       };

@@ -31,7 +31,7 @@ in
 
     domain = mkOption {
       type = types.str;
-      default = "bracket.${flakeSettings.primaryDomain}";
+      default = "bracket.${flakeSettings.domains.primary}";
       description = "The domain for bracket to be hosted at";
     };
 

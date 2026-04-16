@@ -31,7 +31,7 @@ in
 
     domain = mkOption {
       type = types.str;
-      default = "convert.${flakeSettings.primaryDomain}";
+      default = "convert.${flakeSettings.domains.primary}";
       description = "The domain for convertx to be hosted at";
     };
 

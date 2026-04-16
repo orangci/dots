@@ -29,7 +29,7 @@ in
 
     domain = mkOption {
       type = types.str;
-      default = "vault.${flakeSettings.primaryDomain}";
+      default = "vault.${flakeSettings.domains.primary}";
       description = "The domain for vaultwarden to be hosted at";
     };
 

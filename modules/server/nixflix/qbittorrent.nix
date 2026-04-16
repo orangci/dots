@@ -10,12 +10,12 @@ let
 in
 {
   config = mkIf cfg.enable {
-    modules.server.cloudflared.ingress."qbittorent.${flakeSettings.primaryDomain}" =
+    modules.server.cloudflared.ingress."qbittorent.${flakeSettings.domains.primary}" =
       "http://localhost:${toString (cfg.port + 3)}";
     modules.server.caddy.virtualHosts = {
-      "qbittorrent.${flakeSettings.primaryDomain}".extraConfig =
+      "qbittorrent.${flakeSettings.domains.primary}".extraConfig =
         "reverse_proxy localhost:${toString (cfg.port + 3)}";
-      "https://qbittorrent.${flakeSettings.tailnetName}".extraConfig = ''
+      "https://qbittorrent.${flakeSettings.domains.tailnet}".extraConfig = ''
         bind tailscale/qbittorrent
         reverse_proxy localhost:${toString (cfg.port + 3)}
       '';
@@ -25,7 +25,7 @@ in
       "/var/secrets/nixflix-qbittorent-password";
 
     modules.server.glance.monitoredSites = lib.singleton {
-      url = "https://qbittorrent.${flakeSettings.tailnetName}";
+      url = "https://qbittorrent.${flakeSettings.domains.tailnet}";
       title = "Qbittorrent";
       icon = "sh:qbittorrent";
     };
