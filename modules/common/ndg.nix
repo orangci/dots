@@ -4,17 +4,13 @@
   inputs,
   flakeSettings,
   system,
+  pkgs,
   ...
 }:
 let
   inherit (lib) mkIf mkEnableOption;
   cfg = config.modules.common.ndg;
-
-  docs = inputs.ndg.packages.${system}.ndg-builder.override {
-    title = "orangc's Flake Documentation";
-    optionsDepth = 30;
-    rawModules = lib.singleton config.modules;
-  };
+  docs = inputs.self.packages.${system}.docs;
 in
 {
   options.modules.common.ndg.enable = mkEnableOption "Enable ndg";

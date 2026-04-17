@@ -124,6 +124,15 @@
         };
       };
 
+      customPkgs = import ./pkgs {
+        inherit
+          inputs
+          pkgs
+          system
+          lib
+          ;
+      };
+
       nixosMachine =
         { host }:
         lib.nixosSystem {
@@ -159,6 +168,7 @@
         };
     in
     {
+      packages.${system} = customPkgs;
       formatter.${system} = pkgs.nixfmt;
       nixosConfigurations = {
         komashi = nixosMachine { host = "komashi"; };
