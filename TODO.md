@@ -37,3 +37,4 @@
 - sddm: why is the bg image in the assets dir? fetch it as a package
 - move shared server module options into a lib to DRY out code
 - add options for primary secondary etc domains, make cfg.domain -> cfg.subdomain
+- direnv and devshells

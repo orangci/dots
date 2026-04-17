@@ -98,17 +98,22 @@
       url = "git+https://git.orangc.net/c/dns.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # documentation generator. peak rafware
+    ndg.url = "github:feel-co/ndg";
   };
 
   outputs =
     inputs@{
       nixpkgs,
       home-manager,
+      ndg,
       ...
     }:
     let
       lib = nixpkgs.lib;
       system = "x86_64-linux";
+      pkgs = nixpkgs.legacyPackages.${system};
       flakeSettings = {
         username = "orangc";
         domains = {
@@ -154,7 +159,7 @@
         };
     in
     {
-      formatter.${system} = nixpkgs.legacyPackages.${system}.nixfmt;
+      formatter.${system} = pkgs.nixfmt;
       nixosConfigurations = {
         komashi = nixosMachine { host = "komashi"; };
         sirius = nixosMachine { host = "sirius"; };

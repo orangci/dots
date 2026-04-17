@@ -54,9 +54,7 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  users = {
-    mutableUsers = true;
-  };
+  users.mutableUsers = true;
   environment.sessionVariables = {
     NH_FLAKE = "/home/${flakeSettings.username}/dots";
     FLAKE = "/home/${flakeSettings.username}/dots";
@@ -71,9 +69,7 @@
       enable = true;
       enableSSHSupport = true;
     };
-    kdeconnect = {
-      enable = true;
-    };
+    kdeconnect.enable = true;
   };
 
   security = {
@@ -110,11 +106,13 @@
         "https://hyprland.cachix.org"
         "https://walker.cachix.org"
         "https://walker-git.cachix.org"
+        "https://feel-co.cachix.org"
       ];
       trusted-public-keys = [
         "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
         "walker.cachix.org-1:fG8q+uAaMqhsMxWjwvk0IMb4mFPFLqHjuvfwQxE4oJM="
         "walker-git.cachix.org-1:vmC0ocfPWh0S/vRAQGtChuiZBTAe4wiKDeyyXM0/7pM="
+        "feel-co.cachix.org-1:nwEFNnwZvtl4KKSH5LDg+/+K7bV0vcs6faMHAJ6xx0w="
       ];
     };
     gc = {
@@ -127,9 +125,7 @@
   services = {
     xserver = {
       enable = false;
-      xkb = {
-        layout = "us";
-      };
+      xkb.layout = "us";
     };
     openssh = {
       enable = true;

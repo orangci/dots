@@ -27,6 +27,7 @@ in
       networking.enable = true;
       sops.enable = true;
       btrfs.enable = true;
+      ndg.enable = true;
       restic = {
         enable = true;
         paths = [

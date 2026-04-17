@@ -10,5 +10,6 @@
     ./virtualisation.nix
     ./btrfs.nix
     ./restic.nix
+    ./ndg.nix
   ];
 }
