@@ -15,6 +15,7 @@ in
 {
   options.modules.common.ndg.enable = mkEnableOption "Enable ndg";
   config = mkIf cfg.enable {
+    documentation.nixos.options.warningsAreErrors = false;
     environment.etc."flake-docs".source = docs.outPath;
     modules.server.cloudflared.ingress."flake.${flakeSettings.domains.primary}" =
       mkIf config.modules.server.cloudflared.enable "http://localhost:3936";

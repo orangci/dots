@@ -1,16 +1,10 @@
-{
+args@{
   inputs,
   pkgs,
   lib,
   system,
+  flakeSettings,
 }:
 {
-  docs = import ./docs.nix {
-    inherit
-      inputs
-      pkgs
-      lib
-      system
-      ;
-  };
+  docs = import ./docs.nix args;
 }

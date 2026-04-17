@@ -128,8 +128,9 @@
         inherit
           inputs
           pkgs
-          system
           lib
+          system
+          flakeSettings
           ;
       };
 
