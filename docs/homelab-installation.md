@@ -1,4 +1,5 @@
-# Installation
+# Homelab Installation
+## Outdated
 https://nixos.org/manual/nixos/stable/#sec-installation-manual
 
 - [x] Plug the computer in (after finding a suitable place to do so). Boot it to check if it works.

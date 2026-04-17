@@ -28,6 +28,20 @@ in
       ":3936".extraConfig = ''
         root * /etc/flake-docs
         file_server
+
+        header { 
+        Cache-Control "no-store, no-cache, must-revalidate, proxy-revalidate"   
+        Pragma "no-cache"
+        Expires "0"
+        }
+        
+        @rootIndex path /index.html 
+        redir @rootIndex / 301  
+        @subIndex path */index.html
+        redir @subIndex {path}/.. 301  
+        @html path_regexp html ^(.+)\.html$  
+        redir @html {re.html.1} 301 
+        try_files {path} {path}.html {path}/index.html
       '';
     };
     modules.server.glance.monitoredSites = mkIf config.modules.server.glance.enable [

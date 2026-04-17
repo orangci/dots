@@ -1,4 +1,5 @@
 # Installation
+## May be outdated?
 https://nixos.org/manual/nixos/stable/#sec-installation-manual
 
 This assumes that you are running these commands from a NixOS system yourself. If you do not have the dots directory, get it via `git clone https://github.com/orangci/dots`. Replace HOSTNAME and USERNAME with your intended hostname and username respectively. For documentation on installing for homelab/server usage, see the [relevant documentation](./homelab-installation.md).
