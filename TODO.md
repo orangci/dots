@@ -29,7 +29,6 @@
 - declarative DNS!!
 - fix forgejo actions
 - write extensive docs for the flake e.g. for restic
-- also use a docs generator thing
 - satty and zipline support for screenshot script
 - fix conflict of ports between tailscale and caddy
 - assertions
@@ -38,3 +37,4 @@
 - move shared server module options into a lib to DRY out code
 - add options for primary secondary etc domains, make cfg.domain -> cfg.subdomain
 - direnv and devshells
+- renovate bot
