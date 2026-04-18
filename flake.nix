@@ -107,11 +107,9 @@
     inputs@{
       nixpkgs,
       home-manager,
-      ndg,
       ...
     }:
     let
-      lib = nixpkgs.lib;
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
       flakeSettings = {
@@ -123,6 +121,15 @@
           tailnet = "cormorant-emperor.ts.net";
         };
       };
+
+      lib = nixpkgs.lib.extend (
+        final: _prev: {
+          my = import ./lib {
+            lib = final;
+            inherit flakeSettings;
+          };
+        }
+      );
 
       customPkgs = import ./pkgs {
         inherit

@@ -1,51 +1,21 @@
 {
   config,
   lib,
-  flakeSettings,
   ...
 }:
 
 let
   inherit (lib)
-    mkEnableOption
-    mkOption
     mkIf
-    types
     singleton
     ;
   cfg = config.modules.server.convertx;
 in
 {
-  options.modules.server.convertx = {
-    enable = mkEnableOption "Enable convertx";
-
-    glance.enable = mkEnableOption "Enable visibility for this service in the Glance dashboard";
-    cloudflared.enable = mkEnableOption "Enable Cloudflare Tunnels for this service";
-    internalTailscaleDomain.enable = mkEnableOption "Enable an internal, http .home domain for this service";
-    ntfyChecking.enable = mkEnableOption "Allow Ntfy to send notifications when this service goes down";
-
-    name = mkOption {
-      type = types.str;
-      default = "ConvertX";
-    };
-
-    domain = mkOption {
-      type = types.str;
-      default = "convert.${flakeSettings.domains.primary}";
-      description = "The domain for convertx to be hosted at";
-    };
-
-    port = mkOption {
-      type = types.port;
-      default = 8800;
-      description = "The port for convertx to be hosted at";
-    };
-
-    glance.icon = mkOption {
-      type = types.str;
-      default = "https://cdn.jsdelivr.net/gh/selfhst/icons/png/convertx.png";
-      description = "The convertx icon";
-    };
+  options.modules.server.convertx = lib.my.mkServerModule {
+    name = "ConvertX";
+    subdomain = "convert";
+    glanceIcon = "https://cdn.jsdelivr.net/gh/selfhst/icons/png/convertx.png";
   };
 
   config = mkIf cfg.enable {

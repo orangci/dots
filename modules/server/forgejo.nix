@@ -8,38 +8,15 @@
 }:
 let
   inherit (lib)
-    mkEnableOption
     singleton
-    mkOption
     mkIf
-    types
     ;
   cfg = config.modules.server.forgejo;
 in
 {
-  options.modules.server.forgejo = {
-    enable = mkEnableOption "Enable forgejo";
-
-    glance.enable = mkEnableOption "Enable visibility for this service in the Glance dashboard";
-    cloudflared.enable = mkEnableOption "Enable Cloudflare Tunnels for this service";
-    internalTailscaleDomain.enable = mkEnableOption "Enable an internal, http .home domain for this service";
-    ntfyChecking.enable = mkEnableOption "Allow Ntfy to send notifications when this service goes down";
-
-    name = mkOption {
-      type = types.str;
-      default = "Forgejo";
-    };
-
-    domain = mkOption {
-      type = types.str;
-      default = "git.${flakeSettings.domains.primary}";
-      description = "The domain for forgejo to be hosted at";
-    };
-    port = mkOption {
-      type = types.port;
-      default = 8800;
-      description = "The port for forgejo to be hosted at";
-    };
+  options.modules.server.forgejo = lib.my.mkServerModule {
+    name = "Forgejo";
+    subdomain = "git";
   };
 
   config = mkIf cfg.enable {
@@ -62,8 +39,8 @@ in
         time.DEFAULT_UI_LOCATION = config.time.timeZone;
         badges.GENERATOR_URL_TEMPLATE = "https://img.shields.io/badge/{{.label}}-{{.text}}-{{.color}}?style=for-the-badge";
         server = {
-          ROOT_URL = "https://${cfg.domain}/";
-          DOMAIN = "https://${cfg.domain}/";
+          ROOT_URL = "https://${cfg.subdomain}/";
+          DOMAIN = "https://${cfg.subdomain}/";
           HTTP_PORT = cfg.port;
           PROTOCOL = "http";
           LANDING_PAGE = "explore";
@@ -90,7 +67,7 @@ in
       instances.forgejo = {
         enable = true;
         name = host;
-        url = "https://${cfg.domain}";
+        url = "https://${cfg.subdomain}";
         tokenFile = config.modules.common.sops.secrets.forgejo-runner-registration-token.path;
         labels = singleton "ubuntu-latest:docker://william/action-runners:ubuntu-latest";
       };

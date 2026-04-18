@@ -7,11 +7,8 @@
 }:
 let
   inherit (lib)
-    mkEnableOption
-    mkOption
     mkIf
     singleton
-    types
     ;
   cfg = config.modules.server.cryptpad;
   applicationConfig = pkgs.writeText "cryptpad-application-config.js" ''
@@ -42,29 +39,9 @@ let
   '';
 in
 {
-  options.modules.server.cryptpad = {
-    enable = mkEnableOption "Enable cryptpad";
-
-    glance.enable = mkEnableOption "Enable visibility for this service in the Glance dashboard";
-    cloudflared.enable = mkEnableOption "Enable Cloudflare Tunnels for this service";
-    internalTailscaleDomain.enable = mkEnableOption "Enable an internal, http .home domain for this service";
-    ntfyChecking.enable = mkEnableOption "Allow Ntfy to send notifications when this service goes down";
-
-    name = mkOption {
-      type = types.str;
-      default = "Cryptpad";
-    };
-
-    domain = mkOption {
-      type = types.str;
-      default = "pad.${flakeSettings.domains.primary}";
-      description = "The domain for cryptpad to be hosted at";
-    };
-    port = mkOption {
-      type = types.port;
-      default = 8800;
-      description = "The port for cryptpad to be hosted at";
-    };
+  options.modules.server.cryptpad = lib.my.mkServerModule {
+    name = "Cryptpad";
+    subdomain = "pad";
   };
 
   config = mkIf cfg.enable {
@@ -73,8 +50,8 @@ in
       settings = {
         httpPort = cfg.port;
         websocketPort = cfg.port - 1000;
-        httpUnsafeOrigin = "https://${cfg.domain}";
-        httpSafeOrigin = "https://${cfg.domain}";
+        httpUnsafeOrigin = "https://${cfg.subdomain}";
+        httpSafeOrigin = "https://${cfg.subdomain}";
         blockDailyCheck = true; # disable telemetry
         adminKeys = singleton "[orangc@pad.${flakeSettings.domains.primary}/QHUG+vZKoGOEUVFethXDVhpWIX4NlJytiG1Sy-A2MPQ=]";
         disableIntegratedEviction = true;

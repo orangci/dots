@@ -17,12 +17,12 @@ let
   cfg = config.modules.server.caddy;
 
   validModules = lib.filterAttrs (
-    _: mod: mod ? domain && mod.domain != null && mod ? port && mod.port != null
+    _: mod: mod ? subdomain && mod.subdomain != null && mod ? port && mod.port != null
   ) (config.modules.server or { });
 
   dynamicVhosts = lib.mapAttrs' (
     _: mod:
-    lib.nameValuePair mod.domain {
+    lib.nameValuePair "${mod.subdomain}.${flakeSettings.domains.primary}" {
       extraConfig = lib.mkDefault "reverse_proxy localhost:${toString mod.port}";
     }
   ) validModules;

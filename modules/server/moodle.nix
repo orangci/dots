@@ -7,38 +7,11 @@
 let
   inherit (lib)
     mkIf
-    mkOption
-    mkEnableOption
-    types
     ;
   cfg = config.modules.server.moodle;
 in
 {
-  options.modules.server.moodle = {
-    enable = mkEnableOption "Enable moodle";
-
-    glance.enable = mkEnableOption "Enable visibility for this service in the Glance dashboard";
-    cloudflared.enable = mkEnableOption "Enable Cloudflare Tunnels for this service";
-    internalTailscaleDomain.enable = mkEnableOption "Enable an internal, http .home domain for this service";
-    ntfyChecking.enable = mkEnableOption "Allow Ntfy to send notifications when this service goes down";
-
-    name = mkOption {
-      type = types.str;
-      default = "Moodle";
-    };
-
-    port = mkOption {
-      type = types.port;
-      default = 8800;
-      description = "The port for moodle to be hosted at";
-    };
-
-    domain = mkOption {
-      type = types.str;
-      default = "moodle.${flakeSettings.domains.primary}";
-      description = "The domain for moodle to be hosted at";
-    };
-  };
+  options.modules.server.moodle = lib.my.mkServerModule { name = "Moodle"; };
 
   config = mkIf cfg.enable {
     services.moodle = {

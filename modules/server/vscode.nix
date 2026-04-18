@@ -9,44 +9,15 @@
 let
   inherit (lib)
     mkIf
-    mkOption
-    mkEnableOption
-    types
     ;
 
   cfg = config.modules.server.vscode;
 in
 {
-  options.modules.server.vscode = {
-    enable = mkEnableOption "Enable VSCode Server";
-
-    glance.enable = mkEnableOption "Enable visibility for this service in the Glance dashboard";
-    cloudflared.enable = mkEnableOption "Enable Cloudflare Tunnels for this service";
-    internalTailscaleDomain.enable = mkEnableOption "Enable an internal, http .home domain for this service";
-    ntfyChecking.enable = mkEnableOption "Allow Ntfy to send notifications when this service goes down";
-
-    name = mkOption {
-      type = types.str;
-      default = "VSCode Server";
-    };
-
-    port = mkOption {
-      type = types.port;
-      default = 8800;
-      description = "The port for VSCode Server to be hosted at";
-    };
-
-    domain = mkOption {
-      type = types.str;
-      default = "code.${flakeSettings.domains.primary}";
-      description = "The domain for VSCode Server to be hosted at";
-    };
-
-    glance.icon = mkOption {
-      type = types.str;
-      default = "si:vscodium";
-      description = "The icon for Glance";
-    };
+  options.modules.server.vscode = lib.my.mkServerModule {
+    name = "VSCode Server";
+    subdomain = "code";
+    glanceIcon = "si:vscodium";
   };
 
   config = mkIf cfg.enable {

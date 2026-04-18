@@ -4,6 +4,7 @@ args@{
   lib,
   system,
   flakeSettings,
+  ...
 }:
 let
   docs-pkgs = import inputs.nixpkgs {
@@ -17,6 +18,10 @@ inputs.ndg.packages.${system}.ndg-builder.override {
   optionsDepth = 30;
   warningsAreErrors = false;
   rawModules = lib.singleton ../modules;
-  specialArgs = args // { pkgs = docs-pkgs; };
-  moduleArgs = { pkgs = docs-pkgs; };
+  specialArgs = args // {
+    pkgs = docs-pkgs;
+  };
+  moduleArgs = {
+    pkgs = docs-pkgs;
+  };
 }

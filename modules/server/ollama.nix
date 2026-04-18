@@ -1,43 +1,18 @@
 {
   config,
   lib,
-  flakeSettings,
   ...
 }:
 let
   inherit (lib)
-    mkEnableOption
-    mkOption
     mkIf
-    types
     ;
   cfg = config.modules.server.ollama;
 in
 {
-  options.modules.server.ollama = {
-    enable = mkEnableOption "Enable ollama";
-
-    glance.enable = mkEnableOption "Enable visibility for this service in the Glance dashboard";
-    cloudflared.enable = mkEnableOption "Enable Cloudflare Tunnels for this service";
-    internalTailscaleDomain.enable = mkEnableOption "Enable an internal, http .home domain for this service";
-    ntfyChecking.enable = mkEnableOption "Allow Ntfy to send notifications when this service goes down";
-
-    name = mkOption {
-      type = types.str;
-      default = "Ollama";
-    };
-
-    port = mkOption {
-      type = types.port;
-      default = 8800;
-      description = "The port for ollama to be hosted at";
-    };
-
-    domain = mkOption {
-      type = types.str;
-      default = "ai.${flakeSettings.domains.primary}";
-      description = "The domain for ollama be hosted at";
-    };
+  options.modules.server.ollama = lib.my.mkServerModule {
+    name = "Ollama";
+    subdomain = "ai";
   };
 
   config = mkIf cfg.enable {

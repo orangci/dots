@@ -8,9 +8,6 @@
 let
   inherit (lib)
     mkIf
-    mkOption
-    mkEnableOption
-    types
     singleton
     ;
   cfg = config.modules.server.copyparty;
@@ -27,30 +24,9 @@ let
 in
 {
   imports = singleton inputs.copyparty.nixosModules.default;
-  options.modules.server.copyparty = {
-    enable = mkEnableOption "Enable copyparty";
-
-    glance.enable = mkEnableOption "Enable visibility for this service in the Glance dashboard";
-    cloudflared.enable = mkEnableOption "Enable Cloudflare Tunnels for this service";
-    internalTailscaleDomain.enable = mkEnableOption "Enable an internal, http .home domain for this service";
-    ntfyChecking.enable = mkEnableOption "Allow Ntfy to send notifications when this service goes down";
-
-    name = mkOption {
-      type = types.str;
-      default = "Copyparty";
-    };
-
-    port = mkOption {
-      type = types.port;
-      default = 8800;
-      description = "The port for copyparty to be hosted at";
-    };
-
-    domain = mkOption {
-      type = types.str;
-      default = "copyparty.${flakeSettings.domains.primary}";
-      description = "The domain for copyparty to be hosted at";
-    };
+  options.modules.server.copyparty = lib.my.mkServerModule {
+    name = "Copyparty";
+    subdomain = "files";
   };
 
   config = mkIf cfg.enable {
@@ -68,7 +44,7 @@ in
         p = singleton cfg.port;
         rproxy = -1;
         # public URL to assume when creating links
-        site = "https://${cfg.domain}";
+        site = "https://${cfg.subdomain}";
 
         # enable ftp server
         # future me: ftps server option is also available

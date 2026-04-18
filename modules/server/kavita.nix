@@ -2,43 +2,18 @@
   config,
   lib,
   pkgs,
-  flakeSettings,
   ...
 }:
 let
   inherit (lib)
     mkIf
-    mkOption
-    mkEnableOption
-    types
     ;
   cfg = config.modules.server.kavita;
 in
 {
-  options.modules.server.kavita = {
-    enable = mkEnableOption "Enable Kavita";
-
-    glance.enable = mkEnableOption "Enable visibility for this service in the Glance dashboard";
-    cloudflared.enable = mkEnableOption "Enable Cloudflare Tunnels for this service";
-    internalTailscaleDomain.enable = mkEnableOption "Enable an internal, http .home domain for this service";
-    ntfyChecking.enable = mkEnableOption "Allow Ntfy to send notifications when this service goes down";
-
-    name = mkOption {
-      type = types.str;
-      default = "Kavita";
-    };
-
-    port = mkOption {
-      type = types.port;
-      default = 8800;
-      description = "The port for kavita to be hosted at";
-    };
-
-    domain = mkOption {
-      type = types.str;
-      default = "read.${flakeSettings.domains.primary}";
-      description = "The domain for kavita to be hosted at";
-    };
+  options.modules.server.kavita = lib.my.mkServerModule {
+    name = "Kavita";
+    subdomain = "read";
   };
 
   config = mkIf cfg.enable {

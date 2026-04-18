@@ -7,32 +7,14 @@
 }:
 let
   inherit (lib)
-    mkEnableOption
-    mkOption
     mkIf
-    types
     ;
   cfg = config.modules.server.gitea;
 in
 {
-  options.modules.server.gitea = {
-    enable = mkEnableOption "Enable gitea";
-
-    name = mkOption {
-      type = types.str;
-      default = "Gitea";
-    };
-
-    domain = mkOption {
-      type = types.str;
-      default = "git.${flakeSettings.domains.primary}";
-      description = "The domain for gitea to be hosted at";
-    };
-    port = mkOption {
-      type = types.port;
-      default = 8800;
-      description = "The port for gitea to be hosted at";
-    };
+  options.modules.server.gitea = lib.my.mkServerModule {
+    name = "Gitea";
+    subdomain = "git";
   };
 
   config = mkIf cfg.enable {
@@ -53,8 +35,8 @@ in
         service.DISABLE_REGISTRATION = true; # set to true after the first run
         time.DEFAULT_UI_LOCATION = config.time.timeZone;
         server = {
-          ROOT_URL = "https://${cfg.domain}/";
-          DOMAIN = "https://${cfg.domain}/";
+          ROOT_URL = "https://${cfg.subdomain}/";
+          DOMAIN = "https://${cfg.subdomain}/";
           HTTP_PORT = cfg.port;
           PROTOCOL = "http";
           LANDING_PAGE = "explore";

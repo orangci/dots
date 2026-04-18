@@ -1,43 +1,18 @@
 {
   config,
   lib,
-  flakeSettings,
   ...
 }:
 let
   inherit (lib)
     mkIf
-    mkOption
-    mkEnableOption
-    types
     ;
   cfg = config.modules.server.speedtest;
 in
 {
-  options.modules.server.speedtest = {
-    enable = mkEnableOption "Enable speedtest-tracker";
-
-    glance.enable = mkEnableOption "Enable visibility for this service in the Glance dashboard";
-    cloudflared.enable = mkEnableOption "Enable Cloudflare Tunnels for this service";
-    internalTailscaleDomain.enable = mkEnableOption "Enable an internal, http .home domain for this service";
-    ntfyChecking.enable = mkEnableOption "Allow Ntfy to send notifications when this service goes down";
-
-    name = mkOption {
-      type = types.str;
-      default = "Speedtest Tracker";
-    };
-
-    port = mkOption {
-      type = types.port;
-      default = 8800;
-      description = "The port for speedtest to be hosted at";
-    };
-
-    domain = mkOption {
-      type = types.str;
-      default = "speedtest.${flakeSettings.domains.primary}";
-      description = "The domain for speedtest to be hosted at";
-    };
+  options.modules.server.speedtest = lib.my.mkServerModule {
+    name = "Speedtest Tracker";
+    subdomain = "speedtest";
   };
 
   config = mkIf cfg.enable {
@@ -54,8 +29,8 @@ in
         PGID = "1000";
         DB_CONNECTION = "sqlite";
         APP_NAME = "Speedtest";
-        APP_URL = "https://${cfg.domain}";
-        ASSET_URL = "https://${cfg.domain}";
+        APP_URL = "https://${cfg.subdomain}";
+        ASSET_URL = "https://${cfg.subdomain}";
         APP_TIMEZONE = config.time.timeZone;
         CHART_DATETIME_FORMAT = "m/j G.i";
         DATETIME_FORMAT = "j M Y, G.i.s";

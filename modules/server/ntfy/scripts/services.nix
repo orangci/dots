@@ -51,12 +51,12 @@ let
 
       notify_down() {
         local name="$1"
-        curl -d "$name is down!" -H "p: low" -u :"$NTFY_ACCESS_TOKEN" https://${config.modules.server.ntfy.domain}/${cfg.topic}
+        curl -d "$name is down!" -H "p: low" -u :"$NTFY_ACCESS_TOKEN" https://${config.modules.server.ntfy.subdomain}/${cfg.topic}
       }
 
       notify_up() {
         local name="$1"
-        curl -d "$name is back online!" -H "p: low" -u :"$NTFY_ACCESS_TOKEN" https://${config.modules.server.ntfy.domain}/${cfg.topic}
+        curl -d "$name is back online!" -H "p: low" -u :"$NTFY_ACCESS_TOKEN" https://${config.modules.server.ntfy.subdomain}/${cfg.topic}
       }
 
       check_domain() {

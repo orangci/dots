@@ -7,37 +7,14 @@
 }:
 let
   inherit (lib)
-    mkEnableOption
-    mkOption
     mkIf
-    types
     ;
   cfg = config.modules.server.searxng;
 in
 {
-  options.modules.server.searxng = {
-    enable = mkEnableOption "Enable SearXNG";
-
-    glance.enable = mkEnableOption "Enable visibility for this service in the Glance dashboard";
-    cloudflared.enable = mkEnableOption "Enable Cloudflare Tunnels for this service";
-    internalTailscaleDomain.enable = mkEnableOption "Enable an internal, http .home domain for this service";
-    ntfyChecking.enable = mkEnableOption "Allow Ntfy to send notifications when this service goes down";
-
-    name = mkOption {
-      type = types.str;
-      default = "SearXNG";
-    };
-
-    domain = mkOption {
-      type = types.str;
-      default = "search.${flakeSettings.domains.primary}";
-      description = "The domain for SearXNG to be hosted at";
-    };
-    port = mkOption {
-      type = types.port;
-      default = 8800;
-      description = "The port for SearXNG to be hosted at";
-    };
+  options.modules.server.searxng = lib.my.mkServerModule {
+    name = "SearXNG";
+    subdomain = "search";
   };
 
   config = mkIf cfg.enable {
@@ -62,7 +39,7 @@ in
           default_lang = "all";
         };
         server = {
-          base_url = "https://${cfg.domain}/";
+          base_url = "https://${cfg.subdomain}/";
           secret_key = "@SEARX_SECRET_KEY@";
           inherit (cfg) port;
           bind_address = "127.0.0.1";

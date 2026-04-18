@@ -1,50 +1,20 @@
 {
   config,
   lib,
-  flakeSettings,
   ...
 }:
 let
   inherit (lib)
     mkIf
-    mkOption
-    mkEnableOption
-    types
     ;
   cfg = config.modules.server.miniflux;
   topicsOptions = import ./ntfy/topicsOptions.nix { inherit config lib; };
 in
 {
-  options.modules.server.miniflux = {
-    enable = mkEnableOption "Enable miniflux";
-
-    glance.enable = mkEnableOption "Enable visibility for this service in the Glance dashboard";
-    cloudflared.enable = mkEnableOption "Enable Cloudflare Tunnels for this service";
-    internalTailscaleDomain.enable = mkEnableOption "Enable an internal, http .home domain for this service";
-    ntfyChecking.enable = mkEnableOption "Allow Ntfy to send notifications when this service goes down";
-
-    name = mkOption {
-      type = types.str;
-      default = "MiniFlux";
-    };
-
-    port = mkOption {
-      type = types.port;
-      default = 8800;
-      description = "The port for miniflux to be hosted at";
-    };
-
-    domain = mkOption {
-      type = types.str;
-      default = "miniflux.${flakeSettings.domains.primary}";
-      description = "The domain for miniflux to be hosted at";
-    };
-
-    glance.icon = mkOption {
-      type = types.str;
-      default = "auto-invert sh:miniflux";
-      description = "The icon for Glance";
-    };
+  options.modules.server.miniflux = lib.my.mkServerModule {
+    name = "Miniflux";
+    subdomain = "feed";
+    glanceIcon = "auto-invert sh:miniflux";
   };
 
   config = mkIf cfg.enable {

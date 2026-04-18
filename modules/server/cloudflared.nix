@@ -1,4 +1,9 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  flakeSettings,
+  ...
+}:
 
 let
   inherit (lib)
@@ -20,13 +25,14 @@ let
     (mod ? enable && mod.enable)
     && lib.hasAttrByPath [ "cloudflared" "enable" ] mod
     && mod.cloudflared.enable
-    && mod.domain != null
+    && mod.subdomain != null
     && mod ? port
     && mod.port != null
   ) allModules;
 
   dynamicIngress = mapAttrs' (
-    _: mod: nameValuePair mod.domain "http://localhost:${toString mod.port}"
+    _: mod:
+    nameValuePair "${mod.subdomain}.${flakeSettings.domains.primary}" "http://localhost:${toString mod.port}"
   ) validModules;
 
 in

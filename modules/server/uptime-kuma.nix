@@ -1,42 +1,18 @@
 {
   config,
   lib,
-  flakeSettings,
   ...
 }:
 let
   inherit (lib)
-    mkEnableOption
-    mkOption
     mkIf
-    types
     ;
   cfg = config.modules.server.uptime-kuma;
 in
 {
-  options.modules.server.uptime-kuma = {
-    enable = mkEnableOption "Enable uptime-kuma";
-
-    glance.enable = mkEnableOption "Enable visibility for this service in the Glance dashboard";
-    cloudflared.enable = mkEnableOption "Enable Cloudflare Tunnels for this service";
-    internalTailscaleDomain.enable = mkEnableOption "Enable an internal, http .home domain for this service";
-    ntfyChecking.enable = mkEnableOption "Allow Ntfy to send notifications when this service goes down";
-
-    name = mkOption {
-      type = types.str;
-      default = "Uptime Kuma";
-    };
-
-    domain = mkOption {
-      type = types.str;
-      default = "status.${flakeSettings.domains.primary}";
-      description = "The domain for uptime kuma to be hosted at";
-    };
-    port = mkOption {
-      type = types.port;
-      default = 8800;
-      description = "The port for uptime kuma to listen at";
-    };
+  options.modules.server.uptime-kuma = lib.my.mkServerModule {
+    name = "Uptime Kuma";
+    subdomain = "status";
   };
 
   config = mkIf cfg.enable {

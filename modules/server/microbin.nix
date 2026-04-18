@@ -6,43 +6,14 @@
 }:
 let
   inherit (lib)
-    mkEnableOption
-    mkOption
     mkIf
-    types
     ;
   cfg = config.modules.server.microbin;
 in
 {
-  options.modules.server.microbin = {
-    enable = mkEnableOption "Enable microbin";
-
-    glance.enable = mkEnableOption "Enable visibility for this service in the Glance dashboard";
-    cloudflared.enable = mkEnableOption "Enable Cloudflare Tunnels for this service";
-    internalTailscaleDomain.enable = mkEnableOption "Enable an internal, http .home domain for this service";
-    ntfyChecking.enable = mkEnableOption "Allow Ntfy to send notifications when this service goes down";
-
-    name = mkOption {
-      type = types.str;
-      default = "Microbin";
-    };
-
-    domain = mkOption {
-      type = types.str;
-      default = "bin.${flakeSettings.domains.primary}";
-      description = "The domain for microbin to be hosted at";
-    };
-    port = mkOption {
-      type = types.port;
-      default = 8800;
-      description = "The port for microbin to be hosted at";
-    };
-
-    glance.icon = mkOption {
-      type = types.str;
-      default = "sh:microbin";
-      description = "The icon for Glance";
-    };
+  options.modules.server.microbin = lib.my.mkServerModule {
+    name = "Microbin";
+    subdomain = "bin";
   };
 
   config = mkIf cfg.enable {
@@ -55,7 +26,7 @@ in
         MICROBIN_HIDE_FOOTER = true;
         MICROBIN_HIDE_LOGO = true;
         MICROBIN_PORT = cfg.port;
-        MICROBIN_PUBLIC_PATH = "https://${cfg.domain}/";
+        MICROBIN_PUBLIC_PATH = "https://${cfg.subdomain}/";
         MICROBIN_SHORT_PATH = "https://${flakeSettings.domains.primary}/";
         MICROBIN_WIDE = true;
         MICROBIN_QR = true;

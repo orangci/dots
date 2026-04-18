@@ -35,11 +35,11 @@ let
 
           if [ "$TEMP_INT" -ge "$OVERHEAT_THRESHOLD" ] && [ "$ALERTED" -eq 0 ]; then
             curl -s -d "⚠️ CPU temperature is high: ''${TEMP_INT}°C" -u :"$NTFY_ACCESS_TOKEN" \
-              https://${config.modules.server.ntfy.domain}/${cfg.topic}
+              https://${config.modules.server.ntfy.subdomain}/${cfg.topic}
             ALERTED=1
           elif [ "$TEMP_INT" -le "$COOLDOWN_THRESHOLD" ] && [ "$ALERTED" -eq 1 ]; then
             curl -s -d "✅ CPU temperature back to normal: ''${TEMP_INT}°C" -u :"$NTFY_ACCESS_TOKEN" \
-              https://${config.modules.server.ntfy.domain}/${cfg.topic}
+              https://${config.modules.server.ntfy.subdomain}/${cfg.topic}
             ALERTED=0
           fi
         fi

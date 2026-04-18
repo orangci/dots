@@ -9,39 +9,12 @@
 let
   inherit (lib)
     mkIf
-    mkOption
-    mkEnableOption
-    types
     singleton
     ;
   cfg = config.modules.server.grafana;
 in
 {
-  options.modules.server.grafana = {
-    enable = mkEnableOption "Enable grafana";
-
-    glance.enable = mkEnableOption "Enable visibility for this service in the Glance dashboard";
-    cloudflared.enable = mkEnableOption "Enable Cloudflare Tunnels for this service";
-    internalTailscaleDomain.enable = mkEnableOption "Enable an internal, http .home domain for this service";
-    ntfyChecking.enable = mkEnableOption "Allow Ntfy to send notifications when this service goes down";
-
-    name = mkOption {
-      type = types.str;
-      default = "Grafana";
-    };
-
-    port = mkOption {
-      type = types.port;
-      default = 8800;
-      description = "The port for grafana to be hosted at";
-    };
-
-    domain = mkOption {
-      type = types.str;
-      default = "grafana.${flakeSettings.domains.primary}";
-      description = "The domain for grafana to be hosted at";
-    };
-  };
+  options.modules.server.grafana = lib.my.mkServerModule { name = "Grafana"; };
 
   config = mkIf cfg.enable {
     modules.common.sops.secrets.grafana-to-ntfy-bauth-pass.path =
@@ -130,7 +103,7 @@ in
     services.grafana-to-ntfy = mkIf config.modules.server.ntfy.enable {
       enable = true;
       settings = {
-        ntfyUrl = "https://${config.modules.server.ntfy.domain}/grafana";
+        ntfyUrl = "https://${config.modules.server.ntfy.subdomain}/grafana";
         bauthUser = "grafana";
         bauthPass = config.modules.common.sops.secrets.grafana-to-ntfy-bauth-pass.path;
         ntfyBAuthUser = "grafana";

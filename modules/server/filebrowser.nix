@@ -10,7 +10,6 @@ let
   inherit (lib)
     mkIf
     mkOption
-    mkEnableOption
     types
     ;
 
@@ -23,55 +22,36 @@ let
   '';
 in
 {
-  options.modules.server.filebrowser = {
-    enable = mkEnableOption "Enable Filebrowser";
+  options.modules.server.filebrowser =
+    lib.my.mkServerModule {
+      name = "Filebrowser Quantum";
+      subdomain = "files";
+    }
+    // {
+      dataDir = mkOption {
+        type = types.str;
+        default = "/var/lib/filebrowser";
+        description = "Host path to the folder you want to expose inside Filebrowser as /folder";
+      };
 
-    glance.enable = mkEnableOption "Enable visibility for this service in the Glance dashboard";
-    cloudflared.enable = mkEnableOption "Enable Cloudflare Tunnels for this service";
-    internalTailscaleDomain.enable = mkEnableOption "Enable an internal, http .home domain for this service";
-    ntfyChecking.enable = mkEnableOption "Allow Ntfy to send notifications when this service goes down";
-
-    name = mkOption {
-      type = types.str;
-      default = "Filebrowser Quantum";
-    };
-
-    port = mkOption {
-      type = types.port;
-      default = 8800;
-      description = "The port for Filebrowser to be hosted at";
-    };
-
-    domain = mkOption {
-      type = types.str;
-      default = "filebrowser.${flakeSettings.domains.primary}";
-      description = "The domain for Filebrowser to be hosted at";
-    };
-
-    dataDir = mkOption {
-      type = types.str;
-      default = "/var/lib/filebrowser";
-      description = "Host path to the folder you want to expose inside Filebrowser as /folder";
-    };
-
-    settings = mkOption {
-      type = types.attrs;
-      description = "Filebrowser configuration. See https://github.com/gtsteffaniak/filebrowser/wiki/Configuration-And-Examples for documentation";
-      default = {
-        server = {
-          sources = [ { path = "/files"; } ];
-          inherit (cfg) port;
-          baseURL = "/";
+      settings = mkOption {
+        type = types.attrs;
+        description = "Filebrowser configuration. See https://github.com/gtsteffaniak/filebrowser/wiki/Configuration-And-Examples for documentation";
+        default = {
+          server = {
+            sources = [ { path = "/files"; } ];
+            inherit (cfg) port;
+            baseURL = "/";
+          };
+          frontend = {
+            name = "files";
+            disableDefaultLinks = true;
+          };
+          auth.adminUsername = flakeSettings.username;
+          integrations.media.ffmpegPath = "${pkgs.ffmpeg}/bin";
         };
-        frontend = {
-          name = "files";
-          disableDefaultLinks = true;
-        };
-        auth.adminUsername = flakeSettings.username;
-        integrations.media.ffmpegPath = "${pkgs.ffmpeg}/bin";
       };
     };
-  };
 
   config = mkIf cfg.enable {
     modules.common.sops.secrets.filebrowser-env.path = "/var/secrets/filebrowser-env";

@@ -3,12 +3,10 @@
   config,
   lib,
   pkgs,
-  flakeSettings,
   ...
 }:
 let
   inherit (lib)
-    mkEnableOption
     mkOption
     mkIf
     types
@@ -19,67 +17,49 @@ let
 in
 {
   imports = singleton ./scripts;
-  options.modules.server.ntfy = {
-    enable = mkEnableOption "Enable ntfy";
+  options.modules.server.ntfy =
+    lib.my.mkServerModule {
+      name = "Ntfy";
+      subdomain = "ntfy";
+    }
+    // {
+      users = mkOption {
+        type = types.listOf (
+          types.submodule {
+            options = {
+              username = mkOption {
+                type = types.str;
+                description = "Username for the ntfy user";
+              };
 
-    glance.enable = mkEnableOption "Enable visibility for this service in the Glance dashboard";
-    cloudflared.enable = mkEnableOption "Enable Cloudflare Tunnels for this service";
-    internalTailscaleDomain.enable = mkEnableOption "Enable an internal, http .home domain for this service";
-
-    name = mkOption {
-      type = types.str;
-      default = "Ntfy";
-    };
-
-    domain = mkOption {
-      type = types.str;
-      default = "ntfy.${flakeSettings.domains.primary}";
-      description = "The domain for ntfy to be hosted at";
-    };
-
-    port = mkOption {
-      type = types.port;
-      default = 8800;
-      description = "The port for ntfy to be hosted at";
-    };
-
-    users = mkOption {
-      type = types.listOf (
-        types.submodule {
-          options = {
-            username = mkOption {
-              type = types.str;
-              description = "Username for the ntfy user";
+              role = mkOption {
+                type = types.enum [
+                  "user"
+                  "admin"
+                ];
+                description = "Role for the ntfy user (user or admin)";
+              };
             };
+          }
+        );
+        default = [ ];
+        description = "List of ntfy users with username and role (user or admin)";
+      };
 
-            role = mkOption {
-              type = types.enum [
-                "user"
-                "admin"
-              ];
-              description = "Role for the ntfy user (user or admin)";
+      topics = mkOption {
+        type = types.listOf (
+          types.submodule {
+            options = {
+              name = topicsOptions.topic;
+              inherit (topicsOptions) users;
+              inherit (topicsOptions) permission;
             };
-          };
-        }
-      );
-      default = [ ];
-      description = "List of ntfy users with username and role (user or admin)";
+          }
+        );
+        default = [ ];
+        description = "List of ntfy topics with username of the user who can access it and with what permission";
+      };
     };
-
-    topics = mkOption {
-      type = types.listOf (
-        types.submodule {
-          options = {
-            name = topicsOptions.topic;
-            inherit (topicsOptions) users;
-            inherit (topicsOptions) permission;
-          };
-        }
-      );
-      default = [ ];
-      description = "List of ntfy topics with username of the user who can access it and with what permission";
-    };
-  };
 
   config = mkIf cfg.enable {
     # File format:
@@ -96,7 +76,7 @@ in
     services.ntfy-sh = {
       enable = true;
       settings = {
-        base-url = "https://${cfg.domain}";
+        base-url = "https://${cfg.subdomain}";
         auth-default-access = "deny-all";
         listen-http = ":${toString cfg.port}";
         behind-proxy = true;

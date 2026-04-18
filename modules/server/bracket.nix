@@ -1,46 +1,18 @@
 {
   config,
   lib,
-  flakeSettings,
   ...
 }:
 let
   inherit (lib)
     mkIf
-    mkEnableOption
-    mkOption
-    types
     ;
 
   cfg = config.modules.server.bracket;
   dataDir = "/var/lib/bracket";
 in
 {
-  options.modules.server.bracket = {
-    enable = mkEnableOption "Enable Bracket";
-
-    glance.enable = mkEnableOption "Enable visibility for this service in the Glance dashboard";
-    cloudflared.enable = mkEnableOption "Enable Cloudflare Tunnels for this service";
-    internalTailscaleDomain.enable = mkEnableOption "Enable an internal, http .home domain for this service";
-    ntfyChecking.enable = mkEnableOption "Allow Ntfy to send notifications when this service goes down";
-
-    name = mkOption {
-      type = types.str;
-      default = "Bracket";
-    };
-
-    domain = mkOption {
-      type = types.str;
-      default = "bracket.${flakeSettings.domains.primary}";
-      description = "The domain for bracket to be hosted at";
-    };
-
-    port = mkOption {
-      type = types.port;
-      default = 8800;
-      description = "The port for bracket to be hosted at";
-    };
-  };
+  options.modules.server.bracket = lib.my.mkServerModule { name = "Bracket"; };
 
   config = mkIf cfg.enable {
     modules.common.sops.secrets.bracket-jwt-secret.path = "/var/secrets/bracket-jwt-secret";
@@ -66,7 +38,7 @@ in
         environment = {
           ENVIRONMENT = "PRODUCTION";
           PG_DSN = "postgresql://bracket_prod:bracket_prod@localhost:${toString (cfg.port - 2000)}/bracket_prod";
-          CORS_ORIGINS = "https://${cfg.domain}";
+          CORS_ORIGINS = "https://${cfg.subdomain}";
         };
         volumes = [
           "./backend/static:/app/static"

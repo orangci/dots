@@ -4,6 +4,7 @@ args@{
   lib,
   system,
   flakeSettings,
+  ...
 }:
 {
   docs = import ./docs.nix args;

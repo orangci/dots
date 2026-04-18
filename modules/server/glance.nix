@@ -8,7 +8,6 @@
 let
   inherit (lib)
     mkOption
-    mkEnableOption
     types
     mkIf
     mkMerge
@@ -22,49 +21,29 @@ let
       (mod ? enable && mod.enable)
       && lib.hasAttrByPath [ "glance" "enable" ] mod
       && mod.glance.enable
-      && mod ? domain
-      && mod.domain != null
+      && mod ? subdomain
+      && mod.subdomain != null
     ) serverModules
   );
 
   dynamicMonitoredSites = builtins.map (mod: {
-    title = mod.name or mod.domain;
-    url = "https://${lib.removeSuffix flakeSettings.domains.primary mod.domain}${flakeSettings.domains.tailnet}";
-    icon =
-      mod.glance.icon
-        or "sh:${lib.strings.replaceStrings [ " " ] [ "-" ] (lib.strings.toLower mod.name)}";
+    title = mod.name or mod.subdomain;
+    url = "https://${mod.subdomain}.${flakeSettings.domains.tailnet}";
+    icon = mod.glance.icon;
   }) sites;
 in
 {
-  options.modules.server.glance = {
-    enable = mkEnableOption "Enable glance";
-
-    cloudflared.enable = mkEnableOption "Enable Cloudflare Tunnels for this service";
-    internalTailscaleDomain.enable = mkEnableOption "Enable an internal, http .home domain for this service";
-    ntfyChecking.enable = mkEnableOption "Allow Ntfy to send notifications when this service goes down";
-
-    name = mkOption {
-      type = types.str;
-      default = "Glance";
+  options.modules.server.glance =
+    lib.my.mkServerModule {
+      name = "Glance";
+    }
+    // {
+      monitoredSites = mkOption {
+        type = types.listOf types.attrs;
+        default = [ ];
+        description = "Collect services definitions from different modules";
+      };
     };
-
-    domain = mkOption {
-      type = types.str;
-      default = "glance.${flakeSettings.domains.primary}";
-      description = "The domain for glance to be hosted at";
-    };
-    port = mkOption {
-      type = types.port;
-      default = 8800;
-      description = "The port for glance to be hosted at";
-    };
-
-    monitoredSites = mkOption {
-      type = types.listOf types.attrs;
-      default = [ ];
-      description = "Collect services definitions from different modules";
-    };
-  };
   # maybe in the future https://github.com/glanceapp/community-widgets/blob/main/widgets/google-calendar-list-by-anant-j/README.md
   config = mkIf cfg.enable {
     modules.common.sops.secrets.technitium-api-token.path = "/var/secrets/technitium-api-token";
@@ -117,7 +96,7 @@ in
                 widgets = [
                   {
                     type = "search";
-                    search-engine = "https://${config.modules.server.searxng.domain}/search?q={QUERY}";
+                    search-engine = "https://${config.modules.server.searxng.subdomain}/search?q={QUERY}";
                   }
                   (mkIf config.modules.server.technitium.enable {
                     type = "dns-stats";

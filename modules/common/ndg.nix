@@ -4,7 +4,6 @@
   inputs,
   flakeSettings,
   system,
-  pkgs,
   ...
 }:
 let
@@ -34,7 +33,7 @@ in
         Pragma "no-cache"
         Expires "0"
         }
-        
+
         @rootIndex path /index.html 
         redir @rootIndex / 301  
         @subIndex path */index.html

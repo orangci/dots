@@ -1,49 +1,18 @@
 {
   config,
   lib,
-  flakeSettings,
   ...
 }:
 let
   inherit (lib)
     mkIf
-    mkOption
-    mkEnableOption
-    types
     ;
   cfg = config.modules.server.umami;
 in
 {
-  options.modules.server.umami = {
-    enable = mkEnableOption "Enable umami";
-
-    glance.enable = mkEnableOption "Enable visibility for this service in the Glance dashboard";
-    cloudflared.enable = mkEnableOption "Enable Cloudflare Tunnels for this service";
-    internalTailscaleDomain.enable = mkEnableOption "Enable an internal, http .home domain for this service";
-    ntfyChecking.enable = mkEnableOption "Allow Ntfy to send notifications when this service goes down";
-
-    name = mkOption {
-      type = types.str;
-      default = "Umami";
-    };
-
-    port = mkOption {
-      type = types.port;
-      default = 8800;
-      description = "The port for umami to be hosted at";
-    };
-
-    domain = mkOption {
-      type = types.str;
-      default = "umami.${flakeSettings.domains.primary}";
-      description = "The domain for umami to be hosted at";
-    };
-
-    glance.icon = mkOption {
-      type = types.str;
-      default = "auto-invert sh:umami";
-      description = "The icon for Glance";
-    };
+  options.modules.server.umami = lib.my.mkServerModule {
+    name = "Umami";
+    glanceIcon = "auto-invert sh:umami";
   };
 
   config = mkIf cfg.enable {

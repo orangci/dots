@@ -14,7 +14,7 @@ let
   cfg = config.modules.server.tailscale;
 
   validModules = lib.filterAttrs (
-    _: mod: mod ? domain && mod.domain != null && mod ? port && mod.port != null
+    _: mod: mod ? subdomain && mod.subdomain != null && mod ? port && mod.port != null
   ) (config.modules.server or { });
 
   internalTailscaleDomainModules = lib.filterAttrs (
@@ -24,12 +24,9 @@ let
 
   tailscaleVhosts = lib.mapAttrs' (
     _: mod:
-    let
-      base = lib.removeSuffix "." (lib.removeSuffix flakeSettings.domains.primary mod.domain);
-    in
-    lib.nameValuePair "https://${base}.${flakeSettings.domains.tailnet}" {
+    lib.nameValuePair "https://${mod.subdomain}.${flakeSettings.domains.tailnet}" {
       extraConfig = lib.mkDefault ''
-        bind tailscale/${base}
+        bind tailscale/${mod.subdomain}
         reverse_proxy localhost:${toString mod.port}
       '';
     }

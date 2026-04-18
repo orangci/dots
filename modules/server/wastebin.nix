@@ -7,37 +7,13 @@
 let
   inherit (lib)
     mkIf
-    mkOption
-    mkEnableOption
-    types
     ;
   cfg = config.modules.server.wastebin;
 in
 {
-  options.modules.server.wastebin = {
-    enable = mkEnableOption "Enable wastebin";
-
-    glance.enable = mkEnableOption "Enable visibility for this service in the Glance dashboard";
-    cloudflared.enable = mkEnableOption "Enable Cloudflare Tunnels for this service";
-    internalTailscaleDomain.enable = mkEnableOption "Enable an internal, http .home domain for this service";
-    ntfyChecking.enable = mkEnableOption "Allow Ntfy to send notifications when this service goes down";
-
-    name = mkOption {
-      type = types.str;
-      default = "Wastebin";
-    };
-
-    port = mkOption {
-      type = types.port;
-      default = 8800;
-      description = "The port for wastebin to be hosted at";
-    };
-
-    domain = mkOption {
-      type = types.str;
-      default = "bin.${flakeSettings.domains.primary}";
-      description = "The domain for wastebin to be hosted at";
-    };
+  options.modules.server.wastebin = lib.my.mkServerModule {
+    name = "Wastebin";
+    subdomain = "bin";
   };
 
   config = mkIf cfg.enable {

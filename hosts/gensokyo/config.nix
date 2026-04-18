@@ -54,34 +54,29 @@ in
       bracket = allThree // {
         enable = false;
         cloudflared.enable = true;
-        domain = "bracket.${flakeSettings.domains.primary}";
         port = 8801;
       };
 
       convertx = allThree // {
         enable = true;
         cloudflared.enable = true;
-        domain = "convert.${flakeSettings.domains.primary}";
         port = 8802;
       };
 
       cryptpad = allThree // {
         enable = true;
         cloudflared.enable = true;
-        domain = "pad.${flakeSettings.domains.primary}";
         port = 8803;
       };
 
       filebrowser = allThree // {
         enable = false;
-        domain = "files.${flakeSettings.domains.primary}";
         port = 8804;
       };
 
       forgejo = allThree // {
         enable = true;
         cloudflared.enable = true;
-        domain = "git.${flakeSettings.domains.primary}";
         port = 8805;
       };
 
@@ -90,34 +85,29 @@ in
         cloudflared.enable = true;
         internalTailscaleDomain.enable = true;
         ntfyChecking.enable = true;
-        domain = "glance.${flakeSettings.domains.primary}";
         port = 8806;
       };
 
       immich = allThree // {
         enable = true;
         cloudflared.enable = true;
-        domain = "media.${flakeSettings.domains.primary}";
         port = 8807;
       };
 
       it-tools = allThree // {
         enable = true;
         cloudflared.enable = true;
-        domain = "tools.${flakeSettings.domains.primary}";
         port = 8808;
       };
 
       jellyfin = allThree // {
         enable = false;
-        domain = "jf.${flakeSettings.domains.primary}";
         port = 8096; # can't be changed via the nixos module
       };
 
       wastebin = allThree // {
         enable = true;
         cloudflared.enable = true;
-        domain = "bin.${flakeSettings.domains.primary}";
         port = 8809;
       };
 
@@ -139,7 +129,6 @@ in
       moodle = allThree // {
         enable = false;
         cloudflared.enable = true;
-        domain = "moodle.${flakeSettings.domains.primary}";
         port = 8811;
       };
 
@@ -148,7 +137,6 @@ in
         cloudflared.enable = true;
         glance.enable = true;
         internalTailscaleDomain.enable = true;
-        domain = "ntfy.${flakeSettings.domains.primary}";
         port = 8812;
         users = lib.singleton {
           inherit (flakeSettings) username;
@@ -163,62 +151,53 @@ in
 
       ollama = allThree // {
         enable = false;
-        domain = "ai.${flakeSettings.domains.primary}";
         port = 8813;
       };
 
       searxng = allThree // {
         enable = true;
         cloudflared.enable = true;
-        domain = "search.${flakeSettings.domains.primary}";
         port = 8815;
       };
 
       speedtest = allThree // {
         enable = true;
         cloudflared.enable = true;
-        domain = "speedtest.${flakeSettings.domains.primary}";
         port = 8816;
       };
 
       uptime-kuma = allThree // {
         enable = false;
         cloudflared.enable = true;
-        domain = "status.${flakeSettings.domains.primary}";
         port = 8817;
       };
 
       vaultwarden = allThree // {
         enable = true;
         cloudflared.enable = true;
-        domain = "vault.${flakeSettings.domains.primary}";
         port = 8818;
       };
 
       zipline = allThree // {
         enable = true;
         cloudflared.enable = true;
-        domain = "zip.${flakeSettings.domains.primary}";
         port = 8819;
       };
 
       umami = allThree // {
         enable = true;
         cloudflared.enable = true;
-        domain = "umami.${flakeSettings.domains.primary}";
         port = 8820;
       };
 
       grafana = allThree // {
         enable = false;
-        domain = "grafana.${flakeSettings.domains.primary}";
         port = 8821;
       };
 
       copyparty = allThree // {
         enable = true;
         cloudflared.enable = true;
-        domain = "files.${flakeSettings.domains.primary}";
         port = 8822;
       };
 
@@ -226,7 +205,6 @@ in
         enable = true;
         cloudflared.enable = true;
         internalTailscaleDomain.enable = true;
-        domain = "code.${flakeSettings.domains.primary}";
         port = 8823;
       };
 
@@ -240,41 +218,35 @@ in
       scrutiny = allThree // {
         enable = true;
         cloudflared.enable = true;
-        domain = "scrutiny.${flakeSettings.domains.primary}";
         port = 8825;
       };
 
       aiostreams = allThree // {
         enable = false;
-        domain = "aiostreams.${flakeSettings.domains.primary}";
         port = 8826;
       };
 
       miniflux = allThree // {
         enable = true;
         cloudflared.enable = true;
-        domain = "feed.${flakeSettings.domains.primary}";
         port = 8827;
       };
 
       changedetection = allThree // {
         enable = true;
         cloudflared.enable = true;
-        domain = "detect.${flakeSettings.domains.primary}";
         port = 8828;
       };
 
       kavita = allThree // {
         enable = true;
         cloudflared.enable = true;
-        domain = "read.${flakeSettings.domains.primary}";
         port = 8829;
       };
 
       linkwarden = allThree // {
         enable = true;
         cloudflared.enable = true;
-        domain = "links.${flakeSettings.domains.primary}";
         port = 8830;
       };
     };

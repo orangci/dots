@@ -20,7 +20,7 @@ let
       #!/usr/bin/env bash
       set -euo pipefail
 
-      curl -s -d "✅ ${host} has powered on at $(date +"%B %d, %H.%M")." -u :"$NTFY_ACCESS_TOKEN" https://${config.modules.server.ntfy.domain}/${cfg.topic}
+      curl -s -d "✅ ${host} has powered on at $(date +"%B %d, %H.%M")." -u :"$NTFY_ACCESS_TOKEN" https://${config.modules.server.ntfy.subdomain}/${cfg.topic}
     '';
   };
 in
