@@ -12,8 +12,8 @@ in
 {
   options.modules.server.zipline = lib.my.mkServerModule {
     name = "Zipline";
-    subdomain = "https://cdn.jsdelivr.net/gh/selfhst/icons/png/zipline.png";
-    glanceIcon = "";
+    subdomain = "zip";
+    glanceIcon = "https://cdn.jsdelivr.net/gh/selfhst/icons/png/zipline.png";
   };
 
   config = mkIf cfg.enable {

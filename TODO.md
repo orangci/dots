@@ -41,3 +41,4 @@
 - remove that jf module, and other modules that i think are worth yeeting
 - add minecraft status widget to glance
 - make lib functions for setting caddy and glance stuff more easily
+- mkforce module options thst shojldnt exist into nonexisfence
