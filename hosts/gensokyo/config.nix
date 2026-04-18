@@ -249,6 +249,12 @@ in
         cloudflared.enable = true;
         port = 8830;
       };
+
+      vikunja = allThree // {
+        enable = true;
+        cloudflared.enable = true;
+        port = 8831;
+      };
     };
   };
   local.hardware-clock.enable = true;

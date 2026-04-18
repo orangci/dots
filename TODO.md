@@ -34,11 +34,10 @@
 - assertions
 - ntfy switch method of declarative users
 - sddm: why is the bg image in the assets dir? fetch it as a package
-- move shared server module options into a lib to DRY out code
 - direnv and devshells
 - renovate bot
 - add options for secondary domains / having two domains at once
 - remove that jf module, and other modules that i think are worth yeeting
 - add minecraft status widget to glance
 - make lib functions for setting caddy and glance stuff more easily
-- mkforce module options thst shojldnt exist into nonexisfence
+- yeet module options thst shouldn't exist into nonexistence

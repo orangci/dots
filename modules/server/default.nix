@@ -39,5 +39,6 @@
     ./kavita.nix
     ./linkwarden.nix
     ./wastebin.nix
+    ./vikunja.nix
   ];
 }
