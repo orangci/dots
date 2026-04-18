@@ -15,7 +15,7 @@ with lib;
   glance.enable = mkEnableOption "visibility for ${name} in the Glance dashboard";
   cloudflared.enable = mkEnableOption "Cloudflare Tunnelling for ${name}";
   internalTailscaleDomain.enable = mkEnableOption "an internal tailnet domain for ${name} at ${subdomain}.${flakeSettings.domains.tailnet}";
-  ntfyChecking.enable = mkEnableOption "Ntfy sending notifications when this ¢{name} goes down";
+  ntfyChecking.enable = mkEnableOption "Ntfy sending notifications when this ${name} goes down";
 
   name = mkOption {
     type = types.str;
@@ -26,18 +26,18 @@ with lib;
   port = mkOption {
     type = types.port;
     default = port;
-    description = "The port at which ${name} is hosted at";
+    description = "The port at which ${name} is hosted at.";
   };
 
   subdomain = mkOption {
     type = types.str;
     default = strings.toLower subdomain;
-    description = "The domain at which ${name} is hosted at";
+    description = "The domain at which ${name} is hosted at.";
   };
 
   glance.icon = mkOption {
     type = types.str;
     default = glanceIcon;
-    description = "The icon for ${name} to be displayed in the Glance dashboard";
+    description = "The icon for ${name} to be displayed in the Glance dashboard.";
   };
 }
