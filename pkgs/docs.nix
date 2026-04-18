@@ -13,9 +13,10 @@ let
 in
 inputs.ndg.packages.${system}.ndg-builder.override {
   title = "orangc's Flake Documentation";
-  inputDir = ../docs;
+  inputDir = ../.;
   optionsDepth = 30;
-  # rawModules = lib.singleton ../modules;
-  # specialArgs = args // { pkgs = docs-pkgs; };
-  # moduleArgs = { pkgs = docs-pkgs; };
+  warningsAreErrors = false;
+  rawModules = lib.singleton ../modules;
+  specialArgs = args // { pkgs = docs-pkgs; };
+  moduleArgs = { pkgs = docs-pkgs; };
 }
