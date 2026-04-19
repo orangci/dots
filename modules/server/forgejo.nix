@@ -39,8 +39,8 @@ in
         time.DEFAULT_UI_LOCATION = config.time.timeZone;
         badges.GENERATOR_URL_TEMPLATE = "https://img.shields.io/badge/{{.label}}-{{.text}}-{{.color}}?style=for-the-badge";
         server = {
-          ROOT_URL = "https://${cfg.subdomain}/";
-          DOMAIN = "https://${cfg.subdomain}/";
+          ROOT_URL = "https://${cfg.subdomain}.${flakeSettings.domains.primary}/";
+          DOMAIN = "https://${cfg.subdomain}.${flakeSettings.domains.primary}/";
           HTTP_PORT = cfg.port;
           PROTOCOL = "http";
           LANDING_PAGE = "explore";
@@ -67,7 +67,7 @@ in
       instances.forgejo = {
         enable = true;
         name = host;
-        url = "https://${cfg.subdomain}";
+        url = "https://${cfg.subdomain}.${flakeSettings.domains.primary}";
         tokenFile = config.modules.common.sops.secrets.forgejo-runner-registration-token.path;
         labels = singleton "ubuntu-latest:docker://william/action-runners:ubuntu-latest";
       };
