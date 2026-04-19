@@ -250,7 +250,7 @@ in
         port = 8830;
       };
 
-      vikunja = allThree // {
+      radicale = allThree // {
         enable = true;
         cloudflared.enable = true;
         port = 8831;

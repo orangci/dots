@@ -40,5 +40,6 @@
     ./linkwarden.nix
     ./wastebin.nix
     ./vikunja.nix
+    ./radicale.nix
   ];
 }

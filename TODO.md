@@ -41,3 +41,6 @@
 - add minecraft status widget to glance
 - make lib functions for setting caddy and glance stuff more easily
 - yeet module options thst shouldn't exist into nonexistence
+- module for takina
+- module for my website
+- module for my NOTES website

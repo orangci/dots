@@ -10,7 +10,7 @@
 with lib;
 
 {
-  enable = mkEnableOption "${name}";
+  enable = mkEnableOption name;
 
   glance.enable = mkEnableOption "visibility for ${name} in the Glance dashboard";
   cloudflared.enable = mkEnableOption "Cloudflare Tunnelling for ${name}";
