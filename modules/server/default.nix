@@ -37,5 +37,6 @@
     ./wastebin.nix
     ./vikunja.nix
     ./davis.nix
+    ./takina.nix
   ];
 }

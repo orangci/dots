@@ -50,6 +50,7 @@ in
       duckdns.enable = false;
       tailscale.enable = true;
       nixflix.enable = true;
+      takina.enable = true;
 
       bracket = allThree // {
         enable = false;

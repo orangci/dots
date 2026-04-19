@@ -101,6 +101,13 @@
 
     # documentation generator. peak rafware
     ndg.url = "github:feel-co/ndg";
+
+    # an extremely handsome and charming man is the maintainer of this cute little bot
+    # hint: it's me, i'm the handsome man
+    takina = {
+      url = "git+https://git.orangc.net/c/takina";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
