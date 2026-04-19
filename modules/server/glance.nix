@@ -48,7 +48,6 @@ in
   config = mkIf cfg.enable {
     modules.common.sops.secrets.technitium-api-token.path = "/var/secrets/technitium-api-token";
     modules.common.sops.secrets.immich-api-key.path = "/var/secrets/immich-api-key";
-    modules.common.sops.secrets.hardcover-api-key.path = "/var/secrets/hardcover-api-key";
     modules.common.sops.secrets.speedtest-api-key.path = "/var/secrets/speedtest-api-key";
     environment.etc."glance-style.css".text = ''
       body {font-family: Lexend, "Jetbrains Mono", sans-serif, monospace;}

@@ -250,7 +250,7 @@ in
         port = 8830;
       };
 
-      radicale = allThree // {
+      davis = allThree // {
         enable = true;
         cloudflared.enable = true;
         port = 8831;
