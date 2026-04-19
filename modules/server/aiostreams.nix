@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  flakeSettings,
   ...
 }:
 let
@@ -11,9 +12,9 @@ let
     ;
   cfg = config.modules.server.aiostreams;
   envFile = pkgs.writeText "aiostreams.env" ''
-    # BASE_URL=https://${cfg.subdomain}
+    # BASE_URL=https://${cfg.subdomain}.${flakeSettings.domains.primary}
     BASE_URL=https://aiostreams.cormorant-emperor.ts.ne
-    ADDON_ID=${cfg.subdomain}
+    ADDON_ID=${cfg.subdomain}.${flakeSettings.domains.primary}
     LOG_TIMEZONE=${config.time.timeZone}
   '';
 in

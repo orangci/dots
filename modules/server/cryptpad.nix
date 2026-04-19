@@ -50,8 +50,8 @@ in
       settings = {
         httpPort = cfg.port;
         websocketPort = cfg.port - 1000;
-        httpUnsafeOrigin = "https://${cfg.subdomain}";
-        httpSafeOrigin = "https://${cfg.subdomain}";
+        httpUnsafeOrigin = "https://${cfg.subdomain}.${flakeSettings.domains.primary}";
+        httpSafeOrigin = "https://${cfg.subdomain}.${flakeSettings.domains.primary}";
         blockDailyCheck = true; # disable telemetry
         adminKeys = singleton "[orangc@pad.${flakeSettings.domains.primary}/QHUG+vZKoGOEUVFethXDVhpWIX4NlJytiG1Sy-A2MPQ=]";
         disableIntegratedEviction = true;

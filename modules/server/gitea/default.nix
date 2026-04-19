@@ -35,8 +35,8 @@ in
         service.DISABLE_REGISTRATION = true; # set to true after the first run
         time.DEFAULT_UI_LOCATION = config.time.timeZone;
         server = {
-          ROOT_URL = "https://${cfg.subdomain}/";
-          DOMAIN = "https://${cfg.subdomain}/";
+          ROOT_URL = "https://${cfg.subdomain}.${flakeSettings.domains.primary}/";
+          DOMAIN = "https://${cfg.subdomain}.${flakeSettings.domains.primary}/";
           HTTP_PORT = cfg.port;
           PROTOCOL = "http";
           LANDING_PAGE = "explore";

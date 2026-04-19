@@ -39,7 +39,7 @@ in
           default_lang = "all";
         };
         server = {
-          base_url = "https://${cfg.subdomain}/";
+          base_url = "https://${cfg.subdomain}.${flakeSettings.domains.primary}/";
           secret_key = "@SEARX_SECRET_KEY@";
           inherit (cfg) port;
           bind_address = "127.0.0.1";

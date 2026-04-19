@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  flakeSettings,
   ...
 }:
 let
@@ -38,7 +39,7 @@ in
         environment = {
           ENVIRONMENT = "PRODUCTION";
           PG_DSN = "postgresql://bracket_prod:bracket_prod@localhost:${toString (cfg.port - 2000)}/bracket_prod";
-          CORS_ORIGINS = "https://${cfg.subdomain}";
+          CORS_ORIGINS = "https://${cfg.subdomain}.${flakeSettings.domains.primary}";
         };
         volumes = [
           "./backend/static:/app/static"

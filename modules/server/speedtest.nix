@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  flakeSettings,
   ...
 }:
 let
@@ -29,8 +30,8 @@ in
         PGID = "1000";
         DB_CONNECTION = "sqlite";
         APP_NAME = "Speedtest";
-        APP_URL = "https://${cfg.subdomain}";
-        ASSET_URL = "https://${cfg.subdomain}";
+        APP_URL = "https://${cfg.subdomain}.${flakeSettings.domains.primary}";
+        ASSET_URL = "https://${cfg.subdomain}.${flakeSettings.domains.primary}";
         APP_TIMEZONE = config.time.timeZone;
         CHART_DATETIME_FORMAT = "m/j G.i";
         DATETIME_FORMAT = "j M Y, G.i.s";

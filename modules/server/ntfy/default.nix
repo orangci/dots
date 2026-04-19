@@ -3,6 +3,7 @@
   config,
   lib,
   pkgs,
+  flakeSettings,
   ...
 }:
 let
@@ -76,7 +77,7 @@ in
     services.ntfy-sh = {
       enable = true;
       settings = {
-        base-url = "https://${cfg.subdomain}";
+        base-url = "https://${cfg.subdomain}.${flakeSettings.domains.primary}";
         auth-default-access = "deny-all";
         listen-http = ":${toString cfg.port}";
         behind-proxy = true;

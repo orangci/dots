@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  flakeSettings,
   ...
 }:
 let
@@ -23,7 +24,7 @@ in
       backupDir = "/var/backup/vaultwarden";
       environmentFile = "/var/lib/vaultwarden.env";
       config = {
-        domain = "https://${cfg.subdomain}/";
+        domain = "https://${cfg.subdomain}.${flakeSettings.domains.primary}/";
         signupsAllowed = false;
         rocketPort = cfg.port;
       };

@@ -26,7 +26,7 @@ in
         MICROBIN_HIDE_FOOTER = true;
         MICROBIN_HIDE_LOGO = true;
         MICROBIN_PORT = cfg.port;
-        MICROBIN_PUBLIC_PATH = "https://${cfg.subdomain}/";
+        MICROBIN_PUBLIC_PATH = "https://${cfg.subdomain}.${flakeSettings.domains.primary}/";
         MICROBIN_SHORT_PATH = "https://${flakeSettings.domains.primary}/";
         MICROBIN_WIDE = true;
         MICROBIN_QR = true;

@@ -44,7 +44,7 @@ in
         p = singleton cfg.port;
         rproxy = -1;
         # public URL to assume when creating links
-        site = "https://${cfg.subdomain}";
+        site = "https://${cfg.subdomain}.${flakeSettings.domains.primary}";
 
         # enable ftp server
         # future me: ftps server option is also available
