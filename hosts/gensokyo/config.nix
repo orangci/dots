@@ -69,11 +69,6 @@ in
         port = 8803;
       };
 
-      filebrowser = allThree // {
-        enable = false;
-        port = 8804;
-      };
-
       forgejo = allThree // {
         enable = true;
         cloudflared.enable = true;
@@ -166,12 +161,6 @@ in
         port = 8816;
       };
 
-      uptime-kuma = allThree // {
-        enable = false;
-        cloudflared.enable = true;
-        port = 8817;
-      };
-
       vaultwarden = allThree // {
         enable = true;
         cloudflared.enable = true;
@@ -219,11 +208,6 @@ in
         enable = true;
         cloudflared.enable = true;
         port = 8825;
-      };
-
-      aiostreams = allThree // {
-        enable = false;
-        port = 8826;
       };
 
       miniflux = allThree // {
