@@ -3,7 +3,6 @@
     ./cloudflared.nix
     ./caddy.nix
     ./searxng.nix
-    ./uptime-kuma.nix
     ./vaultwarden.nix
     ./microbin.nix
     ./ntfy
@@ -18,7 +17,6 @@
     ./bracket.nix
     ./speedtest.nix
     ./zipline.nix
-    ./filebrowser.nix
     ./jellyfin.nix
     ./moodle.nix
     ./convertx.nix
@@ -31,7 +29,6 @@
     ./vscode.nix
     ./matrix
     ./scrutiny.nix
-    ./aiostreams.nix
     ./miniflux.nix
     ./nixflix
     ./changedetection.nix
