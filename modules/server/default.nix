@@ -9,7 +9,7 @@
     ./ntfy
     ./technitium.nix
     ./glance.nix
-    ./gitea
+    ./forgejo
     ./cryptpad.nix
     ./it-tools.nix
     ./immich.nix
@@ -24,7 +24,6 @@
     ./convertx.nix
     ./umami.nix
     ./postgresql.nix
-    ./forgejo.nix
     ./duckdns.nix
     ./grafana.nix
     ./copyparty.nix

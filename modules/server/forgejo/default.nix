@@ -85,7 +85,7 @@ in
         mkdir -p ${config.services.forgejo.stateDir}/custom/public/assets/css
         cp -r --no-preserve=mode,ownership ${theme}/* ${config.services.forgejo.stateDir}/custom/public/assets/css
         mkdir -p ${config.services.forgejo.stateDir}/custom/public/assets/img
-        cp -r --no-preserve=mode,ownership ${./gitea/public/assets/img}/* ${config.services.forgejo.stateDir}/custom/public/assets/img
+        cp -r --no-preserve=mode,ownership ${./public/assets/img}/* ${config.services.forgejo.stateDir}/custom/public/assets/img
       '';
   };
 }
