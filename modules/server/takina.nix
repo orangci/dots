@@ -20,7 +20,7 @@ in
       enable = true;
       environmentFile = config.modules.common.sops.secrets.takina-env.path;
       config = {
-        PREFIX = "?";
+        prefix = "?";
       };
     };
   };
