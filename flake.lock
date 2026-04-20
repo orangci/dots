@@ -1512,11 +1512,11 @@
         "uv2nix": "uv2nix_2"
       },
       "locked": {
-        "lastModified": 1776655912,
-        "narHash": "sha256-1Rxwa20Fmk1L9MBQt9icFmyJ4lazbw8J3s6/Oje99mw=",
+        "lastModified": 1776662828,
+        "narHash": "sha256-myqRxZhdZGSrHNtTM8XRPZRH/fgS/7r1ryjgGEQWgxU=",
         "ref": "refs/heads/master",
-        "rev": "f629cb3c173de5bc5a9557c837c4699f7c595670",
-        "revCount": 622,
+        "rev": "acf0c931a95f7ecbfb369a601e4df01d7ab7a755",
+        "revCount": 623,
         "type": "git",
         "url": "https://git.orangc.net/c/takina"
       },

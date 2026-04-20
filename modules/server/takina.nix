@@ -20,7 +20,8 @@ in
       enable = true;
       environmentFile = config.modules.common.sops.secrets.takina-env.path;
       config = {
-        prefix = "?";
+        prefix = ".";
+        embedColor = "#FAB387";
       };
     };
   };
