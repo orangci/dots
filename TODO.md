@@ -25,7 +25,6 @@
 - look into netbird
 - add more pages to glance
 - declarative DNS!!
-- fix forgejo actions
 - write extensive docs for the flake e.g. for restic
 - satty and zipline support for screenshot script
 - fix conflict of ports between tailscale and caddy

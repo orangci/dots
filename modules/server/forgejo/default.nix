@@ -7,10 +7,7 @@
   ...
 }:
 let
-  inherit (lib)
-    singleton
-    mkIf
-    ;
+  inherit (lib) singleton mkIf mkForce;
   cfg = config.modules.server.forgejo;
 in
 {
@@ -62,14 +59,37 @@ in
     };
     modules.common.sops.secrets.forgejo-runner-registration-token.path =
       "/var/secrets/forgejo-runner-registration-token";
+
+    virtualisation.docker.enable = true;
     services.gitea-actions-runner = {
       package = pkgs.forgejo-runner;
       instances.forgejo = {
         enable = true;
         name = host;
-        url = "https://${cfg.subdomain}.${flakeSettings.domains.primary}";
+        url = "https://${cfg.subdomain}.${flakeSettings.domains.tailnet}";
         tokenFile = config.modules.common.sops.secrets.forgejo-runner-registration-token.path;
-        labels = singleton "ubuntu-latest:docker://william/action-runners:ubuntu-latest";
+        # hostPackages =
+        labels = [
+          "ubuntu-latest:docker://william/action-runners:ubuntu-24.04"
+          "ubuntu-24.04:docker://william/action-runners:ubuntu-24.04"
+          "ubuntu-22.04:docker://william/action-runners:ubuntu-22.04"
+          "nixos-latest:docker://nixos/nix"
+        ];
+        settings = {
+          container = {
+            network = "host";
+            docker_host = "unix:///run/docker.sock";
+          };
+          runner = {
+            capacity = 5;
+            labels = [
+              "ubuntu-latest:docker://william/action-runners:ubuntu-24.04"
+              "ubuntu-24.04:docker://william/action-runners:ubuntu-24.04"
+              "ubuntu-22.04:docker://william/action-runners:ubuntu-22.04"
+              "nixos-latest:docker://nixos/nix"
+            ];
+          };
+        };
       };
     };
     systemd.services.forgejo.preStart =
