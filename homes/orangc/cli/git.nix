@@ -71,7 +71,7 @@ in
         user.email = cfg.email;
         credential.helper = "store";
 
-        aliases = {
+        alias = {
           change-commits = "!f() { VAR=$1; OLD=$2; NEW=$3; shift 3; git filter-branch --env-filter \"if [[ \\\"$`echo $VAR`\\\" = '$OLD' ]]; then export $VAR='$NEW'; fi\" \\$@; }; f";
           # example usage: `change-commits GIT_AUTHOR_NAME "old name" "new name"`
           # or even: `git change-commits GIT_AUTHOR_EMAIL "old@email.com" "new@email.com" HEAD~10..HEAD`

@@ -18,7 +18,6 @@
 - fix ntfy power on script
 - maybe use an epic shell or make my own. like noctalia
 - complete grafana/prometheus module
-- use synaptic standard
 - remove hm/system split
 - export all modules
 - look into ISOs with lib.gens
@@ -36,7 +35,6 @@
 - direnv and devshells
 - renovate bot
 - add options for secondary domains / having two domains at once
-- remove that jf module, and other modules that i think are worth yeeting
 - make lib functions for setting caddy and glance stuff more easily
 - yeet module options thst shouldn't exist into nonexistence
 - module for my website
