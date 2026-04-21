@@ -1513,11 +1513,11 @@
         "uv2nix": "uv2nix_2"
       },
       "locked": {
-        "lastModified": 1776756870,
-        "narHash": "sha256-VpFL9/kvoszDSGoJW5/7d8HtBCiG6rh7nK2tTOukU0o=",
+        "lastModified": 1776767417,
+        "narHash": "sha256-DOxdKwWThC39dRNNLti9cA1psnWSh5ONQAi05BbptNI=",
         "ref": "refs/heads/master",
-        "rev": "07c600b1f20ab014d1332e1514e7b62708419caa",
-        "revCount": 630,
+        "rev": "2daff6b8564c8d9fc55d50bf99bdff50c1c1aa6d",
+        "revCount": 631,
         "type": "git",
         "url": "https://git.orangc.net/c/takina"
       },

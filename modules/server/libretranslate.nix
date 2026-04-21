@@ -17,7 +17,7 @@ in
       updateModels = true;
       enableApiKeys = false;
       extraArgs = {
-        hide-api = true; # Hide the API request/response fields in the frontend
+        hide-api = false; # Hide the API request/response fields in the frontend
         metrics = true;
         batch-limit = 25; # max number of texts you can translate in a batch request
         req-limit = 20; # minutely request limit

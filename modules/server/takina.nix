@@ -22,6 +22,7 @@ in
       config = {
         prefix = ".";
         embedColor = "#FAB387";
+        libretranslateApiUrl = "http://localhost:${toString config.modules.server.libretranslate.port}";
       };
     };
   };
