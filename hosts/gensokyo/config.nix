@@ -207,7 +207,6 @@ in
 
       scrutiny = allThree // {
         enable = true;
-        cloudflared.enable = true;
         port = 8825;
       };
 

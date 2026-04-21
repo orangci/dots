@@ -10,8 +10,6 @@ let
 in
 {
   config = mkIf cfg.enable {
-    modules.server.cloudflared.ingress."qbittorent.${flakeSettings.domains.primary}" =
-      "http://localhost:${toString (cfg.port + 3)}";
     modules.server.caddy.virtualHosts = {
       "qbittorrent.${flakeSettings.domains.primary}".extraConfig =
         "reverse_proxy localhost:${toString (cfg.port + 3)}";

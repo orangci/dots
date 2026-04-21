@@ -10,8 +10,6 @@ let
 in
 {
   config = mkIf cfg.enable {
-    modules.server.cloudflared.ingress."prowlarr.${flakeSettings.domains.primary}" =
-      "http://localhost:${toString (cfg.port + 2)}";
     modules.server.caddy.virtualHosts = {
       "prowlarr.${flakeSettings.domains.primary}".extraConfig =
         "reverse_proxy localhost:${toString (cfg.port + 2)}";
