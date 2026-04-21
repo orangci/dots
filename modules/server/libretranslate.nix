@@ -15,7 +15,7 @@ in
       enable = true;
       inherit (cfg) port;
       updateModels = true;
-      enableApiKeys = true;
+      enableApiKeys = false;
       extraArgs = {
         hide-api = true; # Hide the API request/response fields in the frontend
         metrics = true;
