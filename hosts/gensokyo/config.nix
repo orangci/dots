@@ -239,6 +239,12 @@ in
         cloudflared.enable = true;
         port = 8831;
       };
+
+      libretranslate = allThree // {
+        enable = true;
+        cloudflared.enable = true;
+        port = 8832;
+      };
     };
   };
   local.hardware-clock.enable = true;

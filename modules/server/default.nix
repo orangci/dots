@@ -38,5 +38,6 @@
     ./vikunja.nix
     ./davis.nix
     ./takina.nix
+    ./libretranslate.nix
   ];
 }
