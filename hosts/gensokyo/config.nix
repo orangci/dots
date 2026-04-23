@@ -52,6 +52,17 @@ in
       nixflix.enable = true;
       takina.enable = true;
 
+      webpages.main = allThree // {
+        enable = true;
+        cloudflared.enable = true;
+        port = 8804;
+      };
+      webpages.notes = allThree // {
+        enable = true;
+        cloudflared.enable = true;
+        port = 8814;
+      };
+
       bracket = allThree // {
         enable = false;
         cloudflared.enable = true;

@@ -21,7 +21,7 @@ in
     ./sonarr.nix
     ./radarr.nix
     ./prowlarr.nix
-    ./seerr.nix
+    # ./seerr.nix
     inputs.nixflix.nixosModules.default
   ];
   options.modules.server.nixflix = {

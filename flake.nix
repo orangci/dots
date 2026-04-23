@@ -108,6 +108,18 @@
       url = "git+https://git.orangc.net/c/takina";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # webpagc
+    webpagc = {
+      url = "git+https://git.orangc.net/c/webpage";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # bro just keeps on yapping 🥀🥀
+    notes-webpage = {
+      url = "git+https://git.orangc.net/c/notes";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =

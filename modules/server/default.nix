@@ -39,5 +39,6 @@
     ./davis.nix
     ./takina.nix
     ./libretranslate.nix
+    ./webpages
   ];
 }

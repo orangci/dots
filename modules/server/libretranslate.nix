@@ -8,7 +8,10 @@ let
   cfg = config.modules.server.libretranslate;
 in
 {
-  options.modules.server.libretranslate = lib.my.mkServerModule { name = "LibreTranslate"; subdomain = "translate"; };
+  options.modules.server.libretranslate = lib.my.mkServerModule {
+    name = "LibreTranslate";
+    subdomain = "translate";
+  };
 
   config = mkIf cfg.enable {
     services.libretranslate = {
