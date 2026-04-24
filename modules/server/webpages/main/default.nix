@@ -16,7 +16,7 @@ in
     lib.my.mkServerModule {
       name = "Webpagc";
       subdomain = "";
-      glanceIcon = "http://localhost:${toString cfg.port}/leaf.png";
+      glanceIcon = "https://${flakeSettings.domains.primary}/leaf.png";
     }
     // {
       redirects = mkOption {
@@ -67,7 +67,7 @@ in
     };
     modules.server.glance.monitoredSites = mkIf cfg.glance.enable [
       {
-        url = "https://${cfg.subdomain}.${flakeSettings.domains.tailnet}";
+        url = "https://${flakeSettings.domains.primary}";
         title = cfg.name;
         icon = cfg.glance.icon;
       }

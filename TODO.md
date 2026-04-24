@@ -35,7 +35,6 @@
 - renovate bot
 - add options for secondary domains / having two domains at once
 - make lib functions for setting caddy and glance stuff more easily
-- yeet module options thst shouldn't exist into nonexistence
-- module for my website
-- module for my NOTES website
+- yeet module options that shouldn't exist into nonexistence
 - look into nixos containers and microvm.nix
+- outpath redirs & icon

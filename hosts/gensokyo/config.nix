@@ -31,11 +31,13 @@ in
       restic = {
         enable = true;
         paths = [
-          "/home/orangc/docs"
+          "/home/orangc"
           "/srv/files"
           "/var/lib/immich"
           "/var/lib/forgejo"
           "/var/lib/cryptpad"
+          "/var/lib/vaultwarden"
+          "/var/lib/private/zipline"
         ];
       };
     };
