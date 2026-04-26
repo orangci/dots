@@ -13,6 +13,7 @@ in
   options.modules.server.davis = lib.my.mkServerModule {
     name = "Davis";
     subdomain = "cal";
+    glanceIcon = "di:davis";
   };
 
   config = mkIf cfg.enable {
