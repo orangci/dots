@@ -50,6 +50,12 @@ in
         header ?Cache-Control "max-age=1800"
         file_server
 
+        handle_errors {
+         @404 expression {http.error.status_code} == 404
+         rewrite @404 /404
+         file_server
+        }
+
         @rootIndex path /index.html 
         redir @rootIndex / 301  
         @subIndex path */index.html
