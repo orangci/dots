@@ -20,7 +20,7 @@ in
     services.changedetection-io = {
       enable = true;
       behindProxy = true;
-      port = cfg.port;
+      inherit (cfg) port;
       listenAddress = "0.0.0.0";
       baseURL = "https://${cfg.subdomain}";
       environmentFile = pkgs.writeText "changedetection-io.env" "DISABLE_VERSION_CHECK=true";

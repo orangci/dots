@@ -29,7 +29,7 @@ let
   dynamicMonitoredSites = builtins.map (mod: {
     title = mod.name or mod.subdomain;
     url = "https://${mod.subdomain}.${flakeSettings.domains.tailnet}";
-    icon = mod.glance.icon;
+    inherit (mod.glance) icon;
   }) sites;
 in
 {

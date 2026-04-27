@@ -75,7 +75,7 @@ in
       {
         url = "https://${flakeSettings.domains.primary}";
         title = cfg.name;
-        icon = cfg.glance.icon;
+        inherit (cfg.glance) icon;
       }
     ];
     systemd.tmpfiles.settings."10-webpagc"."/srv/webpagc"."L+" = {

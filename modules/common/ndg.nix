@@ -9,7 +9,7 @@
 let
   inherit (lib) mkIf mkEnableOption;
   cfg = config.modules.common.ndg;
-  docs = inputs.self.packages.${system}.docs;
+  inherit (inputs.self.packages.${system}) docs;
 in
 {
   options.modules.common.ndg.enable = mkEnableOption "Enable ndg";

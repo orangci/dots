@@ -78,7 +78,7 @@ in
       {
         url = "https://${cfg.subdomain}.${flakeSettings.domains.primary}";
         title = cfg.name;
-        icon = cfg.glance.icon;
+        inherit (cfg.glance) icon;
       }
     ];
     systemd.tmpfiles.settings."10-webpages.notes"."/srv/notes"."L+" = {
