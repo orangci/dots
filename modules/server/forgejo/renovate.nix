@@ -5,7 +5,7 @@
   ...
 }:
 let
-  inherit (lib) mkIf mkEnableOption;
+  inherit (lib) mkIf mkEnableOption singleton;
   cfg = config.modules.server.forgejo;
 in
 {
@@ -17,10 +17,18 @@ in
       enable = true;
       settings = {
         endpoint = "https://${cfg.subdomain}.${flakeSettings.domains.tailnet}";
-        gitAuthor = "Renovate <renovate@${flakeSettings.domains.primary}>";
+        gitAuthor = "renovate <renovate@${flakeSettings.domains.primary}>";
         platform = "forgejo";
         autodiscover = true;
         timezone = config.time.timeZone;
+        groupName = "all dependencies";
+        groupSlug = "all";
+        packageRules = singleton {
+          groupName = "all dependencies";
+          groupSlug = "all";
+          matchPackageNames = singleton "*";
+        };
+        separateMajorMinor = true;
       };
       credentials.RENOVATE_TOKEN = config.modules.common.sops.secrets.renovate-token.path;
     };

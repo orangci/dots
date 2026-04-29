@@ -32,7 +32,7 @@
 - ntfy switch method of declarative users
 - sddm: why is the bg image in the assets dir? fetch it as a package
 - direnv and devshells
-- renovate bot
+- renovate: maybe automerging. also, it shouldn't use merge commits. also also.. it should use a specific PR label
 - add options for secondary domains / having two domains at once
 - make lib functions for setting caddy and glance stuff more easily
 - yeet module options that shouldn't exist into nonexistence
