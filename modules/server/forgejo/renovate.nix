@@ -6,14 +6,22 @@
   ...
 }:
 let
-  inherit (lib) mkIf mkEnableOption singleton;
+  inherit (lib)
+    mkIf
+    mkEnableOption
+    singleton
+    getExe
+    ;
   cfg = config.modules.server.forgejo;
 in
 {
   options.modules.server.forgejo.renovate.enable = mkEnableOption "Renovate bot";
   config = mkIf cfg.renovate.enable {
     # https://docs.renovatebot.com/configuration-options/
-    modules.common.sops.secrets.renovate-token.path = "/var/secrets/renovate-token";
+    modules.common.sops.secrets = {
+      "renovate/forgejo-token".path = "/var/secrets/renovate-forgejo-token";
+      "renovate/github-token".path = "/var/secrets/renovate-github-token";
+    };
     services.renovate = {
       enable = true;
       settings = {
@@ -32,7 +40,10 @@ in
         separateMajorMinor = false;
       };
       runtimePackages = with pkgs; [ uv ];
-      credentials.RENOVATE_TOKEN = config.modules.common.sops.secrets.renovate-token.path;
+      credentials = {
+        RENOVATE_TOKEN = config.modules.common.sops.secrets."renovate/forgejo-token".path;
+        RENOVATE_GITHUB_COM_TOKEN = config.modules.common.sops.secrets."renovate/github-token".path;
+      };
     };
   };
 }
