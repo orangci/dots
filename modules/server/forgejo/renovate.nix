@@ -2,6 +2,7 @@
   config,
   lib,
   flakeSettings,
+  pkgs,
   ...
 }:
 let
@@ -28,8 +29,9 @@ in
           groupSlug = "all";
           matchPackageNames = singleton "*";
         };
-        separateMajorMinor = true;
+        separateMajorMinor = false;
       };
+      runtimePackages = with pkgs; [ uv ];
       credentials.RENOVATE_TOKEN = config.modules.common.sops.secrets.renovate-token.path;
     };
   };
