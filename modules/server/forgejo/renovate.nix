@@ -24,6 +24,7 @@ in
     };
     services.renovate = {
       enable = true;
+      schedule = "*:0"; # run every hour
       settings = {
         endpoint = "https://${cfg.subdomain}.${flakeSettings.domains.tailnet}";
         gitAuthor = "renovate <renovate@${flakeSettings.domains.primary}>";
