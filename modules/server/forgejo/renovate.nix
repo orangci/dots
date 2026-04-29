@@ -13,6 +13,12 @@ let
     getExe
     ;
   cfg = config.modules.server.forgejo;
+  uvWrapped = pkgs.symlinkJoin {
+    name = "uv";
+    paths = singleton pkgs.uv;
+    buildInputs = singleton pkgs.makeWrapper;
+    postBuild = "wrapProgram $out/bin/uv --set UV_PYTHON ${lib.getExe pkgs.python314}";
+  };
 in
 {
   options.modules.server.forgejo.renovate.enable = mkEnableOption "Renovate bot";
@@ -40,7 +46,7 @@ in
         };
         separateMajorMinor = false;
       };
-      runtimePackages = with pkgs; [ uv ];
+      runtimePackages = singleton uvWrapped;
       credentials = {
         RENOVATE_TOKEN = config.modules.common.sops.secrets."renovate/forgejo-token".path;
         RENOVATE_GITHUB_COM_TOKEN = config.modules.common.sops.secrets."renovate/github-token".path;
