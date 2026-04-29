@@ -46,7 +46,7 @@ in
         fzf.enable = true;
         ripgrep.enable = true;
         zoxide.enable = true;
-        ripgrep-all.enable = true;
+        # ripgrep-all.enable = true;
         tealdeer = {
           enable = true;
           settings.updates = {

@@ -22,7 +22,7 @@ in
       nix-index.enable = true;
       nix-index-database.comma.enable = true;
     };
-    home.packages = [
+    home.packages = with pkgs; [
       nixfmt
       nix-prefetch
       nix-prefetch-github

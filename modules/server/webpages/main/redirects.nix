@@ -16,7 +16,7 @@
     }
     {
       source = "p";
-      target = "https://bin.${flakeSettings.domains.primary}/:paste";
+      target = "https://bin.${flakeSettings.domains.primary}";
     }
     {
       source = "g";

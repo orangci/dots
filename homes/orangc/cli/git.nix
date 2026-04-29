@@ -82,8 +82,9 @@ in
 
     hmModules.cli.shell.extraAliases = {
       ga = "git add .";
-      commit = "git commit -am";
+      commit = "git commit -m";
       gp = "git push";
+      gs = "git status";
       gpf = "git push --force";
       push = "git push";
       pull = "git pull";

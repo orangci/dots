@@ -63,13 +63,11 @@
   programs = {
     dconf.enable = true;
     seahorse.enable = true;
-    gpu-screen-recorder.enable = true;
     fuse.userAllowOther = true;
     gnupg.agent = {
       enable = true;
       enableSSHSupport = true;
     };
-    kdeconnect.enable = true;
   };
 
   security = {
