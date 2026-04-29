@@ -11,6 +11,7 @@ let
   cfg = config.modules.server.forgejo;
 in
 {
+  imports = singleton ./renovate.nix;
   options.modules.server.forgejo = lib.my.mkServerModule {
     name = "Forgejo";
     subdomain = "git";

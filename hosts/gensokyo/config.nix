@@ -87,6 +87,7 @@ in
         enable = true;
         cloudflared.enable = true;
         port = 8805;
+        renovate.enable = true;
       };
 
       glance = {
