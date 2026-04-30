@@ -47,6 +47,11 @@ in
           PREFERRED_LICENSES = "AGPL-3.0,GPL-3.0,ISC,CC-BY-SA-4.0,BSD-3-Clause,Unlicense";
           DISABLE_STARS = true;
           DEFAULT_BRANCH = "master";
+          DEFAULT_REPO_UNITS = "repo.code,repo.issues,repo.pulls,repo.actions";
+        };
+        "repository.pull-request" = {
+          DEFAULT_MERGE_STYLE = "rebase";
+          DEFAULT_UPDATE_STYLE = "rebase";
         };
         ui = {
           DEFAULT_THEME = "catppuccin-peach-auto";
