@@ -8,6 +8,7 @@
 
   hmModules = {
     programs.editors.nvf.enable = false;
+    programs.editors.micro.enable = true;
     dev = {
       python = {
         enable = true;
