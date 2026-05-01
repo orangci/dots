@@ -44,11 +44,7 @@ in
       }) cfg.users;
 
       authentication = builtins.concatStringsSep "\n" (
-        flatten (
-          map (
-            db: map (user: builtins.concatStringsSep "\n" singleton "local ${db} ${user.name} trust") cfg.users
-          ) cfg.databases
-        )
+        lib.concatMap (db: map (user: "local ${db} ${user} trust") cfg.users) cfg.databases
       );
     };
   };
