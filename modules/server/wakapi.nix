@@ -28,7 +28,6 @@ in
           dialect = "sqlite3";
           name = "wakapi_db.db";
         };
-        app.leaderboard_enabled = false;
         app.custom_languages = {
           "nix" = "Nix";
         };
