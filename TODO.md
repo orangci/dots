@@ -12,7 +12,7 @@
 - selfhost (maybe) audiobookshelf, litexiv, invidious, redlib, jitsi, cyberchef, pairdrop, stirling pdf, pricebuddy, home-assistant, wakapi
 - fix ntfy access control
 - force glance font to be lexend
-- go throuh literally every module and option-ify it all
+- go throuh literally every module and optionify it all
 - ntfy script for watching github repos
 - hook ntfy into all the services that can be, e.g., scrutiny, matrix
 - fix ntfy power on script
@@ -32,9 +32,6 @@
 - ntfy switch method of declarative users
 - sddm: why is the bg image in the assets dir? fetch it as a package
 - direnv and devshells
-- renovate: it should use a specific PR label
 - add options for secondary domains / having two domains at once
-- make lib functions for setting caddy and glance stuff more easily
 - yeet module options that shouldn't exist into nonexistence
 - look into nixos containers and microvm.nix
-- outpath redirs & icon

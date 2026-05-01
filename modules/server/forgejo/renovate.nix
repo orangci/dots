@@ -45,8 +45,18 @@ in
           matchPackageNames = singleton "*";
         };
         separateMajorMinor = false;
+        nix.enabled = true;
+        lockFileMaintenance = {
+        	enabled = true;
+        	commitMessageAction = "update lock file(s)";
+        	# schedule = singleton "0 0 * * 0"; # weekly
+        };
       };
-      runtimePackages = singleton uvWrapped;
+      runtimePackages = [
+        uvWrapped
+        pkgs.nix
+        pkgs.nodejs
+      ];
       credentials = {
         RENOVATE_TOKEN = config.modules.common.sops.secrets."renovate/forgejo-token".path;
         RENOVATE_GITHUB_COM_TOKEN = config.modules.common.sops.secrets."renovate/github-token".path;

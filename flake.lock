@@ -448,11 +448,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1777389590,
-        "narHash": "sha256-HWbn7WASXsXGADiBDt6/k9U/HpGBEmoeqIOzrf+z2HE=",
+        "lastModified": 1777518431,
+        "narHash": "sha256-SwgiG2T5pbyo33Vz7/vUCAhEMgwCK8Pa2nDSx5a6/WE=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "8ec5a714dbbeb3fda00bd9758175555ebbad4d07",
+        "rev": "2e54a938cdd4c8e414b2518edc3d82308027c670",
         "type": "github"
       },
       "original": {
@@ -963,11 +963,11 @@
         "systems": "systems_2"
       },
       "locked": {
-        "lastModified": 1777348346,
-        "narHash": "sha256-mmgh8nS7vyzqarK0cZZIJHQsgGHwKWzOSVzL1DXEUOU=",
+        "lastModified": 1777521040,
+        "narHash": "sha256-wqjD2tlQltiPzV1jFRSZeHrvBIZl9AKk978S789BStE=",
         "owner": "infinidoge",
         "repo": "nix-minecraft",
-        "rev": "b3bd86dd01cd174eef08f067d8b40f184cfc3629",
+        "rev": "5c95b434c9471fb45e6f748afa15d9fd714843d8",
         "type": "github"
       },
       "original": {
@@ -986,11 +986,11 @@
         "vpn-confinement": "vpn-confinement"
       },
       "locked": {
-        "lastModified": 1777404598,
-        "narHash": "sha256-qLJy1MvNo/EkQvRY5REjUUnIWh+OGiwbQVcQt+MfU+0=",
+        "lastModified": 1777433276,
+        "narHash": "sha256-xnzjQpyQB0Uyq7IsfS/K/JMYh7YB3j3pn7862E1P/JA=",
         "owner": "kiriwalawren",
         "repo": "nixflix",
-        "rev": "fad1b1129302cfae2016e13d24bbd1452c1f55ff",
+        "rev": "2cf95184a495b6b2cc039cc4db86ab32fb0e5d36",
         "type": "github"
       },
       "original": {
@@ -1017,11 +1017,11 @@
     },
     "nixpkgs-small": {
       "locked": {
-        "lastModified": 1777368937,
-        "narHash": "sha256-aQ5pxj90ew4H2bSbupwmdJdv/jcIDn/jNcp/P+U3ccc=",
+        "lastModified": 1777492476,
+        "narHash": "sha256-Tqqjzf9j/+H2J2XEvwrGssYf+BQf4dk8SQYH3Kovw/4=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "170bede2c6f335abfc2ff094addceea0ff7f40d2",
+        "rev": "4fee57762d0f9ee448c94eee7cfd55ae5c1ef670",
         "type": "github"
       },
       "original": {
@@ -1162,11 +1162,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1777206746,
-        "narHash": "sha256-AAtUgy2Gpjsufux9ajITRXQWaDErUW/KbGD8IQQuiUA=",
+        "lastModified": 1777541793,
+        "narHash": "sha256-tmGEEznkKAEX0G6uk6tJh7JzICPYGD0ptPdopu29v0o=",
         "ref": "refs/heads/master",
-        "rev": "e5a12d74d17468c979ee82c6f6fa333f00a6dd83",
-        "revCount": 93,
+        "rev": "40e1310e08d18da8db6cde6537ff615297aca358",
+        "revCount": 96,
         "type": "git",
         "url": "https://git.orangc.net/c/notes"
       },
@@ -1406,11 +1406,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1777299728,
-        "narHash": "sha256-n2ne22h6juJ4UN9I7o7/WNoYDB7Xa8AKB1mz2qJrwaQ=",
+        "lastModified": 1777484145,
+        "narHash": "sha256-BjGsA7hMuEzMTUb4EDC1kkvq3eDjdRXtfFsfXm9VuJc=",
         "owner": "StevenBlack",
         "repo": "hosts",
-        "rev": "d5b7e74f31314eacd99b86ca1d09cd53434d762a",
+        "rev": "a37afe9499df7a23fa4aee0c04cb2011a513bb3a",
         "type": "github"
       },
       "original": {
@@ -1535,11 +1535,11 @@
         "uv2nix": "uv2nix_2"
       },
       "locked": {
-        "lastModified": 1776771954,
-        "narHash": "sha256-aiAmz0HLIlOMYLnWU01Vgh99umgI8KS0lfkkCTxqjmo=",
+        "lastModified": 1777488709,
+        "narHash": "sha256-wEeCtHlAFVRiVNoel63K7JThC3c89gT1qtgBuQDIywA=",
         "ref": "refs/heads/master",
-        "rev": "24fa61d8b34a0595c256a3a7f104e42e356dcd1a",
-        "revCount": 634,
+        "rev": "878205c4aba75c3e2fd203382a961d3189a0260b",
+        "revCount": 639,
         "type": "git",
         "url": "https://git.orangc.net/c/takina"
       },
@@ -1748,11 +1748,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1777405207,
-        "narHash": "sha256-uyKFd1QwNohsd9KxWnLfU5UxTjmPIqiYxcFv2GvSxWM=",
+        "lastModified": 1777474311,
+        "narHash": "sha256-l1xv/hm9Pr4ueML27kA//IZ3DSC8nhDVkf+dGickVBs=",
         "ref": "refs/heads/v4",
-        "rev": "2a283c6504b02430643cdd7c19f76068e76f0fe5",
-        "revCount": 304,
+        "rev": "ff47eb588ba1957e965c8a47324560e832d5ce0d",
+        "revCount": 306,
         "type": "git",
         "url": "https://git.orangc.net/c/webpage"
       },
