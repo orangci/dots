@@ -6,6 +6,7 @@ let
     mkEnableOption
     types
     singleton
+    flatten
     ;
   cfg = config.modules.server.postgresql;
 in
@@ -13,15 +14,22 @@ in
   options.modules.server.postgresql = {
     enable = mkEnableOption "Enable postgresql";
 
-    name = mkOption {
-      type = types.str;
-      default = "PostgreSQL";
-    };
-
     port = mkOption {
       type = types.port;
       default = 5432;
       description = "The port for postgresql to be hosted at";
+    };
+
+    databases = mkOption {
+      type = types.listOf types.str;
+      default = [ ];
+      description = "Names of database to ensure exist in PostgreSQL.";
+    };
+
+    users = mkOption {
+      type = types.listOf types.str;
+      default = [ ];
+      description = "Names of users to ensure exist in PostgreSQL.";
     };
   };
 
@@ -29,22 +37,18 @@ in
     services.postgresql = {
       enable = true;
       settings.port = cfg.port;
-      ensureDatabases = mkIf config.modules.server.umami.enable (singleton "umami");
-
-      ensureUsers = mkIf config.modules.server.umami.enable (singleton {
-        name = "umami";
+      ensureDatabases = cfg.databases;
+      ensureUsers = map (name: {
+        inherit name;
         ensureDBOwnership = true;
-      });
+      }) cfg.users;
 
       authentication = builtins.concatStringsSep "\n" (
-        map (
-          user:
-          builtins.concatStringsSep "\n" [
-            "local ${user.name} ${user.name} trust"
-            # "host ${user.name} ${user.name} 127.0.0.1/32 trust"
-            # "host ${user.name} ${user.name} ::1/128 trust"
-          ]
-        ) config.services.postgresql.ensureUsers
+        flatten (
+          map (
+            db: map (user: builtins.concatStringsSep "\n" singleton "local ${db} ${user.name} trust") cfg.users
+          ) cfg.databases
+        )
       );
     };
   };

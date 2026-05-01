@@ -4,9 +4,7 @@
   ...
 }:
 let
-  inherit (lib)
-    mkIf
-    ;
+  inherit (lib) mkIf singleton;
   cfg = config.modules.server.umami;
 in
 {
@@ -16,6 +14,10 @@ in
   };
 
   config = mkIf cfg.enable {
+    modules.server.postgresql = {
+      users = singleton "umami";
+      databases = singleton "umami";
+    };
     modules.common.sops.secrets.umami-app-secret.path = "/var/secrets/umami-app-secret";
     systemd.services.postgresql.before = [ "podman-umami.service" ];
     systemd.services.postgresql.requiredBy = [ "podman-umami.service" ];
