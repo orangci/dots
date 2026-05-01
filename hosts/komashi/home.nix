@@ -49,11 +49,12 @@
     dev = {
       python = {
         enable = true;
-        version = "python313";
+        version = "python314";
       };
       rust.enable = true;
       nix.enable = true;
       misc.enable = true;
+      direnv.enable = true;
     };
     programs = {
       better-control.enable = true;

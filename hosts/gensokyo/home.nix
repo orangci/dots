@@ -8,8 +8,14 @@
 
   hmModules = {
     programs.editors.nvf.enable = false;
-    dev.python.enable = true;
-    dev.nix.enable = true;
+    dev = {
+      python = {
+        enable = true;
+        version = "python314";
+      };
+      nix.enable = true;
+      direnv.enable = true;
+    };
     cli = {
       fetch.enable = true;
       shell.program = "fish";

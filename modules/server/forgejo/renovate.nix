@@ -47,9 +47,9 @@ in
         separateMajorMinor = false;
         nix.enabled = true;
         lockFileMaintenance = {
-        	enabled = true;
-        	commitMessageAction = "update lock file(s)";
-        	# schedule = singleton "0 0 * * 0"; # weekly
+          enabled = true;
+          commitMessageAction = "update lock file(s)";
+          # schedule = singleton "0 0 * * 0"; # weekly
         };
       };
       runtimePackages = [

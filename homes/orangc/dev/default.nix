@@ -4,5 +4,6 @@
     ./python.nix
     ./rust.nix
     ./misc.nix
+    ./direnv.nix
   ];
 }

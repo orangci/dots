@@ -16,7 +16,7 @@
 - ntfy script for watching github repos
 - hook ntfy into all the services that can be, e.g., scrutiny, matrix
 - fix ntfy power on script
-- maybe use an epic shell or make my own. like noctalia
+- maybe use an epic shell or make my own. like noctalia or danklinux.com
 - complete grafana/prometheus module
 - remove hm/system split
 - export all modules
@@ -31,7 +31,7 @@
 - assertions
 - ntfy switch method of declarative users
 - sddm: why is the bg image in the assets dir? fetch it as a package
-- direnv and devshells
 - add options for secondary domains / having two domains at once
 - yeet module options that shouldn't exist into nonexistence
 - look into nixos containers and microvm.nix
+- use [nixos-core](https://github.com/feel-co/nixos-core)
