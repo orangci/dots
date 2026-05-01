@@ -259,6 +259,12 @@ in
         cloudflared.enable = true;
         port = 8832;
       };
+
+      wakapi = allThree // {
+        enable = true;
+        cloudflared.enable = true;
+        port = 8833;
+      };
     };
   };
   local.hardware-clock.enable = true;

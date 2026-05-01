@@ -9,7 +9,7 @@
 - syncthing module, perhaps
 - switch to hjem
 - look into other image viewers. oculante? fix up mpv to use as my image viewer instead of gwenview? or just keep using gwenview?
-- selfhost (maybe) audiobookshelf, litexiv, invidious, redlib, jitsi, cyberchef, pairdrop, stirling pdf, pricebuddy, home-assistant, wakapi
+- selfhost (maybe) audiobookshelf, litexiv, invidious, redlib, jitsi, cyberchef, pairdrop, stirling pdf, pricebuddy, home-assistant
 - fix ntfy access control
 - force glance font to be lexend
 - go throuh literally every module and optionify it all

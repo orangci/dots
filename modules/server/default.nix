@@ -40,5 +40,6 @@
     ./takina.nix
     ./libretranslate.nix
     ./webpages
+    ./wakapi.nix
   ];
 }
