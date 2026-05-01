@@ -25,19 +25,14 @@ in
           public_url = "https://${cfg.subdomain}.${flakeSettings.domains.primary}";
         };
         db = {
-          dialect = "postgres";
-          user = "wakapi";
-          name = "wakapi";
+          dialect = "sqlite3";
+          name = "wakapi_db.db";
         };
         app.leaderboard_enabled = false;
         app.custom_languages = {
           "nix" = "Nix";
         };
       };
-    };
-    modules.server.postgresql = {
-      users = singleton "wakapi";
-      databases = singleton "wakapi";
     };
   };
 }
