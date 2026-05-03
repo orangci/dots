@@ -55,9 +55,7 @@ in
 
           nix = {
             inherit (config.hmModules.dev.nix) enable;
-            lsp = {
-              enable = true;
-            };
+            lsp.enable = true;
           };
           markdown.enable = true;
           bash.enable = true;
@@ -94,12 +92,9 @@ in
         };
 
         autopairs.nvim-autopairs.enable = true;
-
         autocomplete.nvim-cmp.enable = true;
         snippets.luasnip.enable = true;
-
         filetree.neo-tree.enable = true;
-
         tabline.nvimBufferline.enable = true;
 
         binds = {
@@ -108,10 +103,7 @@ in
         };
 
         telescope.enable = true;
-
-        git = {
-          enable = true;
-        };
+        git.enable = true;
 
         utility = {
           icon-picker.enable = true;

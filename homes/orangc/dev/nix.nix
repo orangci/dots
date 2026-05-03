@@ -31,6 +31,7 @@ in
       statix
       nix-init
       nix-tree
+      nil
     ];
     hmModules.cli.shell.extraAliases = {
       list-big-pkgs = "nix path-info -hsr /run/current-system/ | sort -hrk2 | head -n 30";

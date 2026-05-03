@@ -7,7 +7,7 @@
   imports = [ ../../homes/${flakeSettings.username} ];
 
   hmModules = {
-    programs.editors.nvf.enable = false;
+    programs.editors.nvf.enable = true;
     programs.editors.micro.enable = true;
     dev = {
       python = {

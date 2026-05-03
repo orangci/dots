@@ -9,6 +9,8 @@ let
     mkForce
     mkEnableOption
     mkIf
+    singleton
+    getExe
     ;
   cfg = config.hmModules.programs.editors.micro;
   plugins = {
@@ -36,11 +38,14 @@ in
   options.hmModules.programs.editors.micro.enable = mkEnableOption "Enable micro";
 
   config = mkIf cfg.enable {
+    home.sessionVariables.EDITOR = "micro";
     programs.micro = {
       enable = true;
       settings = {
         colorscheme = mkForce "cmc-16";
         mkparents = true;
+        softwrap = true;
+        "lsp.server" = "nix=${getExe pkgs.nil}";
       };
     };
     home.file = lib.mapAttrs' (name: value: {

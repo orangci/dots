@@ -35,4 +35,4 @@
 - yeet module options that shouldn't exist into nonexistence
 - look into nixos containers and microvm.nix
 - use [nixos-core](https://github.com/feel-co/nixos-core)
-- micro lsp plugin config
+- finish nvf config
