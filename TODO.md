@@ -5,7 +5,7 @@
 - use impermanence / make garbage collection actually good
 - nixify firefox extensions settings
 - fix up QT module — styling is ass currently
-- server modules that are broken: moodle, bracket
+- server modules that are broken: moodle
 - syncthing module, perhaps
 - switch to hjem
 - look into other image viewers. oculante? fix up mpv to use as my image viewer instead of gwenview? or just keep using gwenview?

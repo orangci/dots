@@ -65,12 +65,6 @@ in
         port = 8814;
       };
 
-      bracket = allThree // {
-        enable = false;
-        cloudflared.enable = true;
-        port = 8801;
-      };
-
       convertx = allThree // {
         enable = true;
         cloudflared.enable = true;

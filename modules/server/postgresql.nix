@@ -7,7 +7,10 @@ let
     types
     singleton
     flatten
+    concatMap
+    mkForce
     ;
+  inherit (builtins) concatStringsSep;
   cfg = config.modules.server.postgresql;
 in
 {
@@ -37,15 +40,26 @@ in
     services.postgresql = {
       enable = true;
       settings.port = cfg.port;
+      settings.listen_addresses = mkForce "*";
       ensureDatabases = cfg.databases;
       ensureUsers = map (name: {
         inherit name;
         ensureDBOwnership = true;
       }) cfg.users;
 
-      authentication = builtins.concatStringsSep "\n" (
-        lib.concatMap (db: map (user: "local ${db} ${user} trust") cfg.users) cfg.databases
-      );
+      authentication = ''
+        ${concatStringsSep "\n" (
+          concatMap (db: map (user: "local ${db} ${user} trust") cfg.users) cfg.databases
+        )}
+        ${concatStringsSep "\n" (
+          concatMap (db: map (user: "host ${db} ${user} 127.0.0.1/32 trust") cfg.users) cfg.databases
+        )}
+        ${concatStringsSep "\n" (
+          concatMap (db: map (user: "host ${db} ${user} ::1/128 trust") cfg.users) cfg.databases
+        )}
+        ${concatStringsSep "\n" (
+          concatMap (db: map (user: "host ${db} ${user} 10.88.0.0/16 trust") cfg.users) cfg.databases
+        )}''; # 10.88.x is for podman containers
     };
   };
 }
