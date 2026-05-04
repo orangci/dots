@@ -70,6 +70,8 @@ in
     modules.server.cloudflared.ingress = mkIf cfg.cloudflared.enable {
       ${flakeSettings.domains.primary} = "http://localhost:${toString cfg.port}";
       ${flakeSettings.domains.secondary} = "http://localhost:${toString cfg.port}";
+      "www.${flakeSettings.domains.primary}" = "http://localhost:${toString cfg.port}";
+      "www.${flakeSettings.domains.secondary}" = "http://localhost:${toString cfg.port}";
     };
     modules.server.glance.monitoredSites = mkIf cfg.glance.enable [
       {
