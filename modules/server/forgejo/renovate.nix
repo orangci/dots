@@ -10,7 +10,6 @@ let
     mkIf
     mkEnableOption
     singleton
-    getExe
     ;
   cfg = config.modules.server.forgejo;
   uvWrapped = pkgs.symlinkJoin {

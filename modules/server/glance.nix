@@ -46,9 +46,11 @@ in
     };
   # maybe in the future https://github.com/glanceapp/community-widgets/blob/main/widgets/google-calendar-list-by-anant-j/README.md
   config = mkIf cfg.enable {
-    modules.common.sops.secrets.technitium-api-token.path = "/var/secrets/technitium-api-token";
-    modules.common.sops.secrets.immich-api-key.path = "/var/secrets/immich-api-key";
-    modules.common.sops.secrets.speedtest-api-key.path = "/var/secrets/speedtest-api-key";
+    modules.common.sops.secrets = {
+      technitium-api-token.path = "/var/secrets/technitium-api-token";
+      immich-api-key.path = "/var/secrets/immich-api-key";
+      speedtest-api-key.path = "/var/secrets/speedtest-api-key";
+    };
     environment.etc."glance-style.css".text = ''
       body {font-family: Lexend, "Jetbrains Mono", sans-serif, monospace;}
     '';

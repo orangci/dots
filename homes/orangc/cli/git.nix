@@ -52,30 +52,33 @@ in
   };
 
   config = mkIf cfg.enable {
-    programs.delta = {
-      enable = true;
-      enableGitIntegration = true;
-    };
-    programs.git = {
-      enable = true;
-      lfs.enable = cfg.lfs;
-
-      signing = mkIf cfg.signing.enable {
-        inherit (cfg.signing) format;
-        inherit (cfg.signing) key;
-        signByDefault = true;
+    programs = {
+      gh.enable = cfg.github;
+      delta = {
+        enable = true;
+        enableGitIntegration = true;
       };
+      git = {
+        enable = true;
+        lfs.enable = cfg.lfs;
 
-      settings = {
-        user.name = cfg.username;
-        user.email = cfg.email;
-        credential.helper = "store";
+        signing = mkIf cfg.signing.enable {
+          inherit (cfg.signing) format;
+          inherit (cfg.signing) key;
+          signByDefault = true;
+        };
 
-        alias = {
-          change-commits = "!f() { VAR=$1; OLD=$2; NEW=$3; shift 3; git filter-branch --env-filter \"if [[ \\\"$`echo $VAR`\\\" = '$OLD' ]]; then export $VAR='$NEW'; fi\" \\$@; }; f";
-          # example usage: `change-commits GIT_AUTHOR_NAME "old name" "new name"`
-          # or even: `git change-commits GIT_AUTHOR_EMAIL "old@email.com" "new@email.com" HEAD~10..HEAD`
-          # HEAD~10..HEAD makes it only select the last ten commits
+        settings = {
+          user.name = cfg.username;
+          user.email = cfg.email;
+          credential.helper = "store";
+
+          alias = {
+            change-commits = "!f() { VAR=$1; OLD=$2; NEW=$3; shift 3; git filter-branch --env-filter \"if [[ \\\"$`echo $VAR`\\\" = '$OLD' ]]; then export $VAR='$NEW'; fi\" \\$@; }; f";
+            # example usage: `change-commits GIT_AUTHOR_NAME "old name" "new name"`
+            # or even: `git change-commits GIT_AUTHOR_EMAIL "old@email.com" "new@email.com" HEAD~10..HEAD`
+            # HEAD~10..HEAD makes it only select the last ten commits
+          };
         };
       };
     };
@@ -91,6 +94,5 @@ in
     };
 
     home.packages = mkIf cfg.gitea [ pkgs.tea ];
-    programs.gh.enable = cfg.github;
   };
 }

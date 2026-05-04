@@ -6,19 +6,19 @@
   ...
 }:
 let
-  inherit (lib) mkEnableOption mkIf;
+  inherit (lib) mkEnableOption mkIf singleton;
 
   cfg = config.hmModules.programs.editors.nvf;
 in
 {
-  imports = [ inputs.nvf.homeManagerModules.default ];
+  imports = singleton inputs.nvf.homeManagerModules.default;
   options.hmModules.programs.editors.nvf.enable = mkEnableOption "Enable neovim with nvf";
 
   config = mkIf cfg.enable {
     hmModules.programs.editors.xdg = "nvim";
     programs.nvf = {
       enable = true;
-      defaultEditor = true;
+      # defaultEditor = true;
       # this nvf configuration is based on https://github.com/fxzzi/NixOhEss/blob/main/modules/programs/nvf.nix
       # thanks fazzi
       settings.vim = {

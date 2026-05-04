@@ -9,7 +9,6 @@ let
     mkForce
     mkEnableOption
     mkIf
-    singleton
     getExe
     ;
   cfg = config.hmModules.programs.editors.micro;

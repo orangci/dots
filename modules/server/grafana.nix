@@ -17,10 +17,11 @@ in
   options.modules.server.grafana = lib.my.mkServerModule { name = "Grafana"; };
 
   config = mkIf cfg.enable {
-    modules.common.sops.secrets.grafana-to-ntfy-bauth-pass.path =
-      "/var/secrets/grafana-to-ntfy-bauth-pass";
-    modules.common.sops.secrets.grafana-secret-key.path = "/var/secrets/grafana-secret-key";
-    modules.common.sops.secrets.speedtest-api-key.path = "/var/secrets/speedtest-api-key";
+    modules.common.sops.secrets = {
+      grafana-to-ntfy-bauth-pass.path = "/var/secrets/grafana-to-ntfy-bauth-pass";
+      grafana-secret-key.path = "/var/secrets/grafana-secret-key";
+      speedtest-api-key.path = "/var/secrets/speedtest-api-key";
+    };
     services.prometheus = {
       enable = true;
       enableReload = true;

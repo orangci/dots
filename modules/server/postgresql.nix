@@ -5,8 +5,6 @@ let
     mkOption
     mkEnableOption
     types
-    singleton
-    flatten
     concatMap
     mkForce
     ;

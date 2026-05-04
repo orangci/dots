@@ -78,10 +78,12 @@ in
         "/" = {
           path = "/srv/files";
           access.A = flakeSettings.username;
-          flags.scan = 60;
-          flags.fk = 4; # enable filekeys
-          flags.chmod_d = "775";
-          flags.chmod_f = "664";
+          flags = {
+            scan = 60;
+            fk = 4; # enable filekeys
+            chmod_d = "775";
+            chmod_f = "664";
+          };
         };
         "/public" = commonPerms // {
           path = "/srv/files/public";

@@ -7,7 +7,7 @@
   ...
 }:
 let
-  inherit (lib) singleton mkIf mkForce;
+  inherit (lib) singleton mkIf;
   cfg = config.modules.server.forgejo;
 in
 {

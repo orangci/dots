@@ -1,4 +1,4 @@
-{ config, flakeSettings, ... }:
+{ flakeSettings, ... }:
 {
   config.modules.server.webpages.main.redirects = [
     # subdomains

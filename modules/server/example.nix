@@ -4,7 +4,7 @@
   ...
 }:
 let
-  inherit (lib) mkIf singleton;
+  inherit (lib) mkIf;
   cfg = config.modules.server.example;
 in
 {
