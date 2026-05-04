@@ -5,5 +5,6 @@
     ./hyprland.nix
     ./appimages.nix
     ./sudo-rs.nix
+    ./syncthing.nix
   ];
 }

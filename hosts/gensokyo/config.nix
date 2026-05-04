@@ -43,6 +43,7 @@ in
     };
     programs = {
       sudo-rs.enable = true;
+      syncthing.enable = false;
     };
     server = {
       caddy.enable = true;

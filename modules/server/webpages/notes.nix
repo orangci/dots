@@ -7,7 +7,12 @@
   ...
 }:
 let
-  inherit (lib) mkIf mkOption types;
+  inherit (lib)
+    mkIf
+    mkOption
+    types
+    singleton
+    ;
   cfg = config.modules.server.webpages.notes;
 in
 {
@@ -48,9 +53,6 @@ in
           try_files {path} {path}.html {path}/index.html
           redir /source https://${config.modules.server.forgejo.subdomain}.${flakeSettings.domains.primary}/c/notes 301
           redir /analytics https://${config.modules.server.umami.subdomain}.${flakeSettings.domains.primary}/share/OuROCRqSGB6Qw0Ov/notes.orangc.net 301
-          ${lib.concatStringsSep "\n" (
-            map (r: "redir /${r.source} ${r.target} ${toString r.code}") cfg.redirects
-          )}
         '';
       };
       cloudflared.ingress = mkIf cfg.cloudflared.enable {
@@ -59,11 +61,11 @@ in
         "blog.${flakeSettings.domains.primary}" = "http://localhost:${toString cfg.port}";
         "blog.${flakeSettings.domains.secondary}" = "http://localhost:${toString cfg.port}";
       };
-      glance.monitoredSites = mkIf cfg.glance.enable singleton {
+      glance.monitoredSites = mkIf cfg.glance.enable (singleton {
         url = "https://${cfg.subdomain}.${flakeSettings.domains.primary}";
         title = cfg.name;
         inherit (cfg.glance) icon;
-      };
+      });
     };
     systemd.tmpfiles.settings."10-webpages.notes"."/srv/notes"."L+" = {
       argument = inputs.notes-webpage.packages.${system}.default.outPath;
