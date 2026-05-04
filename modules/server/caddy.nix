@@ -34,7 +34,7 @@ in
     virtualHosts = mkOption {
       type = types.attrsOf (
         types.submodule {
-          freeformType = lib.types.attrs;
+          freeformType = types.attrs;
         }
       );
       default = { };
@@ -43,9 +43,6 @@ in
   };
 
   config = mkIf cfg.enable {
-    systemd.services.caddy.before = mkIf config.modules.server.tailscale.enable [
-      "tailscaled.service"
-    ];
     modules.common.sops.secrets.caddy-env = {
       path = "/var/secrets/caddy-env";
       owner = "caddy";
@@ -55,10 +52,10 @@ in
       email = "c@${flakeSettings.domains.email}";
       package = pkgs.caddy.withPlugins {
         plugins = [
-          "github.com/caddy-dns/cloudflare@v0.2.3"
+          "github.com/caddy-dns/cloudflare@v0.2.4"
           "github.com/tailscale/caddy-tailscale@v0.0.0-20260106222316-bb080c4414ac"
         ];
-        hash = "sha256-zmOjWs8jxr5OQxAZ6/7HtHAwETdMQH8t/sbBqEFNPnQ=";
+        hash = "sha256-1V3bXIoyh+UplVOXY309iMco2rjQcUbobk7x3S1nC94=";
       };
       environmentFile = config.modules.common.sops.secrets.caddy-env.path;
       globalConfig = ''

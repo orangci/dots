@@ -9,7 +9,7 @@
 - syncthing module, perhaps
 - switch to hjem
 - look into other image viewers. oculante? fix up mpv to use as my image viewer instead of gwenview? or just keep using gwenview?
-- selfhost (maybe) audiobookshelf, litexiv, invidious, redlib, jitsi, cyberchef, pairdrop, stirling pdf, pricebuddy, home-assistant
+- selfhost (maybe) audiobookshelf, litexiv, invidious, redlib, jitsi, cyberchef, pairdrop, stirling pdf, pricebuddy, home-assistant, [fiche](https://github.com/solusipse/fiche)
 - fix ntfy access control
 - force glance font to be lexend
 - go throuh literally every module and optionify it all
@@ -27,7 +27,6 @@
 - declarative DNS!!
 - write extensive docs for the flake e.g. for restic
 - satty and zipline support for screenshot script
-- fix conflict of ports between tailscale and caddy
 - assertions
 - ntfy switch method of declarative users
 - sddm: why is the bg image in the assets dir? fetch it as a package

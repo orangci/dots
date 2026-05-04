@@ -448,11 +448,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1777679572,
-        "narHash": "sha256-egYNbRrkn+6SwTHinhdb6WUfzzdC3nXfCRqS321VylY=",
+        "lastModified": 1777913624,
+        "narHash": "sha256-4MwfrGuqjsnEORQbM3cmkmG/9cWhDV63dTDguDj4FXw=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "9cb587ade2aa1b4a7257f0238d41072690b0ca4f",
+        "rev": "a89686d115e970e200eb2caa7603f3673050e00c",
         "type": "github"
       },
       "original": {
@@ -986,11 +986,11 @@
         "vpn-confinement": "vpn-confinement"
       },
       "locked": {
-        "lastModified": 1777622038,
-        "narHash": "sha256-5tOrOvxni3ev44BwS8E3z3+Gj+ULxv6C74u0kGgiLzI=",
+        "lastModified": 1777907601,
+        "narHash": "sha256-V9mwnBs8EIdnfjXC15HPUXJzS2k5kDUmzME9AYTdBsA=",
         "owner": "kiriwalawren",
         "repo": "nixflix",
-        "rev": "b10d36c475267e3255261e0f4751e95929200036",
+        "rev": "ef250bd1ee5dd94da5b57dbf3639081b7d88265b",
         "type": "github"
       },
       "original": {
@@ -1017,11 +1017,11 @@
     },
     "nixpkgs-small": {
       "locked": {
-        "lastModified": 1777718177,
-        "narHash": "sha256-qq56SczKpUNKcm8xdOsXYLzaX37p1bLS0fFaCMB7s3Y=",
+        "lastModified": 1777891250,
+        "narHash": "sha256-XNMv5HI0uzQL+s6TOQUu/Bl0zgBRRPHPpJf1d+fhWxY=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "e59d8bfa2cc42b1e1104595ac4292cfedce7f1a4",
+        "rev": "e7b6ff4aac6041bd0ddb759f59318305c17cf0b8",
         "type": "github"
       },
       "original": {
@@ -1165,11 +1165,11 @@
         "uv2nix": "uv2nix_2"
       },
       "locked": {
-        "lastModified": 1777753575,
-        "narHash": "sha256-CynaGeW+jxLUaY9MbHL337zqJICWpN06fsyWd5K2f1Y=",
+        "lastModified": 1777880650,
+        "narHash": "sha256-rkUqyk8eSCHkOHWRjj8ZutvC+rlBJP05QwjJ1R7mvck=",
         "ref": "refs/heads/master",
-        "rev": "d8ef263daada2c3f475a6f56f3566830380ec10b",
-        "revCount": 101,
+        "rev": "9e3b433ed5a561f0bbd70903d93b84cbddb80bc3",
+        "revCount": 103,
         "type": "git",
         "url": "https://git.orangc.net/c/notes"
       },
@@ -1585,11 +1585,11 @@
         "uv2nix": "uv2nix_4"
       },
       "locked": {
-        "lastModified": 1777644757,
-        "narHash": "sha256-2KtmvJu1dYo6NrlnQMdRrOBliBI8VlceU2tYnkoSPAo=",
+        "lastModified": 1777880644,
+        "narHash": "sha256-SP/czvUTfSzLmmlQXSyNb8AHuTcR08b+5Dd6kFizhHo=",
         "ref": "refs/heads/master",
-        "rev": "d1ca32d675b06abb4d63e5d1fd37da90f0ecdb5d",
-        "revCount": 642,
+        "rev": "9417cf699a5606851a5195874ab9d8331ef2563f",
+        "revCount": 644,
         "type": "git",
         "url": "https://git.orangc.net/c/takina"
       },
@@ -1850,11 +1850,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1777732885,
-        "narHash": "sha256-HaKQvq8Yjv0mMFFm6csL8wy95HyXOKNuAgdYdiWmYhE=",
+        "lastModified": 1777842274,
+        "narHash": "sha256-LmS4UJbL806uGtdxQvaLyXM8FjoK3/tfrXdueHiEths=",
         "ref": "refs/heads/v4",
-        "rev": "af606e6e98f249add2f3f03e44a927708681cb9c",
-        "revCount": 309,
+        "rev": "1ffbd6e6ba46da4e1cc9ce64823daf661c9d302c",
+        "revCount": 310,
         "type": "git",
         "url": "https://git.orangc.net/c/webpage"
       },

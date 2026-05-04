@@ -44,9 +44,6 @@ in
   config = mkIf cfg.enable {
     modules.server.caddy.virtualHosts = tailscaleVhosts;
     networking.firewall.trustedInterfaces = lib.singleton "tailscale0";
-    systemd.services.tailscaled.before = mkIf config.modules.server.caddy.enable [
-      "caddy.service"
-    ];
     services.tailscale = {
       enable = true;
       permitCertUid = "caddy";
