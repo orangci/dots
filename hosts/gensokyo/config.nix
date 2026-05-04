@@ -39,6 +39,7 @@ in
           "/var/lib/vaultwarden"
           "/var/lib/private/zipline"
           "/var/lib/postgresql"
+          "/var/lib/matrix-synapse"
         ];
       };
     };
@@ -210,7 +211,6 @@ in
 
       matrix.synapse = {
         enable = true;
-        apiDomain = "gensokyo.${flakeSettings.domains.tailnet}";
         port = 8824;
         serverName = flakeSettings.domains.primary;
       };

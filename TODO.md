@@ -39,3 +39,4 @@
 - ndg assets dir
 - modules.server is way too big, divide it into subfolders
 - takina database backups should be public.. probably
+- make websites support www. subdomains

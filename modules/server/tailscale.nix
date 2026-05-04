@@ -35,7 +35,6 @@ in
 {
   options.modules.server.tailscale = {
     enable = mkEnableOption "Enable tailscale";
-
     name = mkOption {
       type = types.str;
       default = "Tailscale";
