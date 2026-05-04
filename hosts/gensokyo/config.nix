@@ -38,6 +38,7 @@ in
           "/var/lib/cryptpad"
           "/var/lib/vaultwarden"
           "/var/lib/private/zipline"
+          "/var/lib/postgresql"
         ];
       };
     };

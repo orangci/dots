@@ -36,3 +36,6 @@
 - look into nixos containers and microvm.nix
 - use [nixos-core](https://github.com/feel-co/nixos-core)
 - finish nvf config
+- ndg assets dir
+- modules.server is way too big, divide it into subfolders
+- takina database backups should be public.. probably

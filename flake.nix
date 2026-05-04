@@ -196,7 +196,7 @@
     in
     {
       packages.${system} = customPkgs;
-      formatter.${system} = pkgs.nixfmt;
+      formatter.${system} = pkgs.nixfmt-tree;
       nixosConfigurations = {
         komashi = nixosMachine { host = "komashi"; };
         sirius = nixosMachine { host = "sirius"; };
