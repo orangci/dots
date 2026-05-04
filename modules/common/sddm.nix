@@ -44,7 +44,10 @@ in
     enable = mkEnableOption "Enable SDDM";
     wallpaper = lib.mkOption {
       type = lib.types.path;
-      default = ../../assets/sddm-astronaut-wall.jpg;
+      default = pkgs.fetchurl {
+        url = "https://files.orangc.net/media/walls/misty-boat.png";
+        name = "misty-boat";
+      };
       description = "Wallpaper to use for the SDDM Astronaut theme";
     };
     theme = lib.mkOption {

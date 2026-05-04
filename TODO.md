@@ -29,7 +29,6 @@
 - satty and zipline support for screenshot script
 - assertions
 - ntfy switch method of declarative users
-- sddm: why is the bg image in the assets dir? fetch it as a package
 - add options for secondary domains / having two domains at once
 - yeet module options that shouldn't exist into nonexistence
 - look into nixos containers and microvm.nix
@@ -37,4 +36,3 @@
 - finish nvf config
 - ndg assets dir
 - modules.server is way too big, divide it into subfolders
-- takina database backups should be public.. probably
