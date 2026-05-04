@@ -31,7 +31,7 @@ let
     fr = "nh os switch --hostname ${host} $FLAKE";
     fu = "nh os switch --hostname ${host} --update $FLAKE";
     fe = "nix eval .#nixosConfigurations.${host}.config.system.build.toplevel";
-    gcnix = "sudo nh clean all  && sudo journalctl --vacuum-time=1s";
+    gcnix = "sudo nh clean all --no-gcroots && sudo journalctl --vacuum-time=1s";
   };
 
   mergedAliases = mkMerge [
