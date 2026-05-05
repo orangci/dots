@@ -18,6 +18,10 @@ inputs.ndg.packages.${system}.ndg-builder.override {
   optionsDepth = 30;
   warningsAreErrors = false;
   rawModules = lib.singleton ../modules;
+  extraConfig = {
+    assets_dir = ../assets;
+    index.use_readme = true;
+  };
   specialArgs = args // {
     pkgs = docs-pkgs;
   };

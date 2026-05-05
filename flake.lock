@@ -878,15 +878,15 @@
         "nixpkgs": "nixpkgs_5"
       },
       "locked": {
-        "lastModified": 1777191475,
-        "narHash": "sha256-2H+39WTyKxwL9PMd2De9pGBqs96qRj05QFnLAE1DUGI=",
-        "owner": "feel-co",
+        "lastModified": 1777982752,
+        "narHash": "sha256-/Rk9TgKrLlqsQf6lYH9Hjy6SD7+UChzZe7OU2r2iduY=",
+        "owner": "orangci",
         "repo": "ndg",
-        "rev": "959b859dc23d2e2b93bda0fd16f59581cae69c62",
+        "rev": "bc47737cb1d3413b6977c62ce97d6898c03cfea1",
         "type": "github"
       },
       "original": {
-        "owner": "feel-co",
+        "owner": "orangci",
         "repo": "ndg",
         "type": "github"
       }

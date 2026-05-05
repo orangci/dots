@@ -347,7 +347,7 @@
     }
     {
       source = "dots";
-      target = "https://git.${flakeSettings.domains.primary}/c/dots";
+      target = "https://flake.${flakeSettings.domains.primary}";
     }
     {
       source = "flake";

@@ -100,7 +100,7 @@
     };
 
     # documentation generator. peak rafware
-    ndg.url = "github:feel-co/ndg";
+    ndg.url = "github:orangci/ndg";
 
     # an extremely handsome and charming man is the maintainer of this cute little bot
     # hint: it's me, i'm the handsome man

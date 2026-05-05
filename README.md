@@ -1,7 +1,8 @@
 <div align="center">
       <h1>orangc's flake</h1>
       <div>
-         <a href="https://github.com/orangci/dots/stargazers"><img src="https://img.shields.io/github/stars/orangci/dots?color=F5BDE6&labelColor=303446&style=for-the-badge&logo=starship&logoColor=F5BDE6"></a>
+         <a href="https://builtwithnix.org"><img src="https://builtwithnix.org/badge.svg"></a>
+         <!-- <a href="https://github.com/orangci/dots/stargazers"><img src="https://img.shields.io/github/stars/orangci/dots?color=F5BDE6&labelColor=303446&style=for-the-badge&logo=starship&logoColor=F5BDE6"></a> -->
          <!-- <a href="https://github.com/orangci/dots/"><img src="https://img.shields.io/github/repo-size/orangci/dots?color=C6A0F6&labelColor=303446&style=for-the-badge&logo=github&logoColor=C6A0F6"></a> -->
          <a = href="https://nixos.org"><img src="https://img.shields.io/badge/NixOS-Unstable-blue?style=for-the-badge&logo=NixOS&logoColor=white&label=NixOS&labelColor=303446&color=91D7E3"></a>
          <a href="https://github.com/orangci/dots/blob/main/LICENSE"><img src="https://img.shields.io/static/v1.svg?style=for-the-badge&label=License&message=AGPL3&colorA=313244&colorB=F5A97F&logo=unlicense&logoColor=F5A97F&"/></a>
@@ -10,29 +11,31 @@
 
 
 > [!CAUTION]
-> This flake is meant for my personal usage. Use at your own risk. Several (mostly the server related) modules utilise [secrets](./docs/secrets.md) and are inoperable without them.
-> Going through my code for little bits and things to borrow or learn from is totally fine (as long as you respect the license and credit me appropriately).
-> This flake is very much a work in progress; I'm constantly working on improving it and I have [many things planned for it](./TODO.md) in the future.
+> This flake is meant for my personal usage. Use at your own risk. Several (mostly server related) modules utilise [secrets](./docs/secrets.md) and are inoperable without them.
+> Going through my code for little bits and snippets to borrow or learn from is totally fine, as long as you respect the license and credit me appropriately.
+> This flake is very much a work in progress; I'm constantly working on improving it and I have [many things planned for it](./TODO.md) for the future.
 
 Modular NixOS configuration for my machines. Very lightweight! A fresh installation of this flake (with the modules enabled in [komashi](./hosts/komashi/config.nix)) will be *18 gigabytes*, which isn't bad at all in my opinion.
 
 Hosts:
 - komashi ~ My main computer; a HP EliteDesk mini PC with an Intel i5-6500T, integrated graphics, 16GiB of RAM, and a 512GiB NVMe SSD. Name is a reference to *Yumi and the Nightmare Painter*.
-- gensokyo ~ My homelab/server. A HP EliteDesk mini PC with an Intel i7-6700, integrated graphics, 32GiB of RAM, and a 1TiB NVMe SSD. Name is a reference to Touhou.
+- gensokyo ~ My homelab/server. A HP EliteDesk mini PC with an Intel i7-6700T, integrated graphics, 32GiB of RAM, and a 1TiB NVMe SSD. Name is a reference to Touhou.
 
 ## Screenshots
 
 <details>
 <summary>Click to expand.</summary> 
 
-![screenshot](assets/desktop.png)
+![screenshot](https://files.orangc.net/public/dots-screenshots/1.png)
 
-![screenshot](assets/light-desktop.png)
+![screenshot](https://files.orangc.net/public/dots-screenshots/2.png)
+
+![screenshot](https://files.orangc.net/public/dots-screenshots/3.png)
 
 </details>
 
 ## Thank you
-- Vimjoyer, for making immensely helpful videos.
+- [Vimjoyer](https://www.vimjoyer.com/), for making immensely helpful YouTube videos.
 - [fxzzi's NixOhEss](https://github.com/fxzzi/NixOhEss) — the nvf configuration.
 - [zDyanTB's HyprNova](https://github.com/zDyanTB/HyprNova) — The wlogout styling.
 - [1amSimp1e's dots](https://github.com/1amSimp1e/dots) — The original Starship prompt.

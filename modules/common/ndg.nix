@@ -16,8 +16,12 @@ in
   config = mkIf cfg.enable {
     documentation.nixos.options.warningsAreErrors = false;
     environment.etc."flake-docs".source = docs.outPath;
-    modules.server.cloudflared.ingress."flake.${flakeSettings.domains.primary}" =
+    modules.server.cloudflared.ingress = {
+      "flake.${flakeSettings.domains.primary}" =
       mkIf config.modules.server.cloudflared.enable "http://localhost:3936";
+      "flake.${flakeSettings.domains.secondary}" =
+      mkIf config.modules.server.cloudflared.enable "http://localhost:3936";
+    };
     modules.server.caddy.virtualHosts = mkIf config.modules.server.caddy.enable {
       "flake.${flakeSettings.domains.primary}".extraConfig = "reverse_proxy localhost:3936";
       "https://flake.${flakeSettings.domains.tailnet}".extraConfig = ''
