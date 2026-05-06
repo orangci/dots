@@ -29,9 +29,10 @@
 - satty and zipline support for screenshot script
 - assertions
 - ntfy switch method of declarative users
-- add options for secondary domains / having two domains at once
 - yeet module options that shouldn't exist into nonexistence
 - look into nixos containers and microvm.nix
 - use [nixos-core](https://github.com/feel-co/nixos-core)
 - finish nvf config
 - modules.server is way too big, divide it into subfolders
+- style ndg a bit
+- ndg: make options only scan config.modules and hmModules

@@ -20,12 +20,19 @@ let
     _: mod: mod ? subdomain && mod.subdomain != null && mod ? port && mod.port != null
   ) (config.modules.server or { });
 
-  dynamicVhosts = lib.mapAttrs' (
-    _: mod:
-    lib.nameValuePair "${mod.subdomain}.${flakeSettings.domains.primary}" {
-      extraConfig = lib.mkDefault "reverse_proxy localhost:${toString mod.port}";
-    }
-  ) validModules;
+  mkVhostEntries =
+    domain:
+    lib.mapAttrs' (
+      _: mod:
+      lib.nameValuePair "${mod.subdomain}.${domain}" {
+        extraConfig = lib.mkDefault "reverse_proxy localhost:${toString mod.port}";
+      }
+    ) validModules;
+
+  domains = lib.filter (d: d != "" && d != null) [
+    flakeSettings.domains.primary
+    flakeSettings.domains.secondary
+  ];
 
 in
 {
@@ -65,10 +72,7 @@ in
         	ephemeral true
         }
       '';
-      virtualHosts = mkMerge [
-        dynamicVhosts
-        cfg.virtualHosts
-      ];
+      virtualHosts = mkMerge ((map mkVhostEntries domains) ++ lib.singleton cfg.virtualHosts);
     };
   };
 }

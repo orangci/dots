@@ -18,12 +18,13 @@ in
     environment.etc."flake-docs".source = docs.outPath;
     modules.server.cloudflared.ingress = {
       "flake.${flakeSettings.domains.primary}" =
-      mkIf config.modules.server.cloudflared.enable "http://localhost:3936";
+        mkIf config.modules.server.cloudflared.enable "http://localhost:3936";
       "flake.${flakeSettings.domains.secondary}" =
-      mkIf config.modules.server.cloudflared.enable "http://localhost:3936";
+        mkIf config.modules.server.cloudflared.enable "http://localhost:3936";
     };
     modules.server.caddy.virtualHosts = mkIf config.modules.server.caddy.enable {
       "flake.${flakeSettings.domains.primary}".extraConfig = "reverse_proxy localhost:3936";
+      "flake.${flakeSettings.domains.secondary}".extraConfig = "reverse_proxy localhost:3936";
       "https://flake.${flakeSettings.domains.tailnet}".extraConfig = ''
         bind tailscale/flake
         reverse_proxy localhost:3936
@@ -31,12 +32,7 @@ in
       ":3936".extraConfig = ''
         root * /etc/flake-docs
         file_server
-
-        header { 
-        Cache-Control "no-store, no-cache, must-revalidate, proxy-revalidate"   
-        Pragma "no-cache"
-        Expires "0"
-        }
+        header ?Cache-Control "max-age=1800"
 
         @rootIndex path /index.html 
         redir @rootIndex / 301  

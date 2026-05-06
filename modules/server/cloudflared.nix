@@ -6,21 +6,11 @@
 }:
 
 let
-  inherit (lib)
-    mkEnableOption
-    mkIf
-    mkMerge
-    mapAttrs'
-    nameValuePair
-    filterAttrs
-    mkOption
-    types
-    ;
-
+  inherit (lib) types;
   cfg = config.modules.server.cloudflared;
 
   allModules = config.modules.server or { };
-  validModules = filterAttrs (
+  validModules = lib.filterAttrs (
     _: mod:
     (mod ? enable && mod.enable)
     && lib.hasAttrByPath [ "cloudflared" "enable" ] mod
@@ -30,16 +20,22 @@ let
     && mod.port != null
   ) allModules;
 
-  dynamicIngress = mapAttrs' (
-    _: mod:
-    nameValuePair "${mod.subdomain}.${flakeSettings.domains.primary}" "http://localhost:${toString mod.port}"
-  ) validModules;
+  mkIngress =
+    domain:
+    lib.mapAttrs' (
+      _: mod: lib.nameValuePair "${mod.subdomain}.${domain}" "http://localhost:${toString mod.port}"
+    ) validModules;
+
+  domains = lib.filter (d: d != "" && d != null) [
+    flakeSettings.domains.primary
+    flakeSettings.domains.secondary
+  ];
 
 in
 {
   options.modules.server.cloudflared = {
-    enable = mkEnableOption "Enable Cloudflared";
-    ingress = mkOption {
+    enable = lib.mkEnableOption "Enable Cloudflared";
+    ingress = lib.mkOption {
       type = types.attrsOf types.str;
       default = { };
       description = "Collect ingress entries from other modules";
@@ -57,10 +53,7 @@ in
         default = "http_status:404";
         certificateFile = config.modules.common.sops.secrets."cloudflared/cert.pem".path;
         credentialsFile = config.modules.common.sops.secrets."cloudflared/credentials.json".path;
-        ingress = mkMerge [
-          cfg.ingress
-          dynamicIngress
-        ];
+        ingress = lib.mkMerge ((map mkIngress domains) ++ lib.singleton cfg.ingress);
       };
     };
   };
