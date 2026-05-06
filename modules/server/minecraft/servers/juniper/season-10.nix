@@ -75,6 +75,7 @@ in
       (my.mkCloudflaredIngress "mc-map" (cfg.port - 2000))
       {
         "mc.${flakeSettings.domains.primary}" = "tcp://localhost:${toString cfg.port}";
+        "mc.${flakeSettings.domains.secondary}" = "tcp://localhost:${toString cfg.port}";
       }
     ];
 
