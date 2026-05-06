@@ -30,4 +30,4 @@ let
     else
       { };
 in
-baseEntries // tailnetEntry
+lib.mkMerge [baseEntries tailnetEntry]
