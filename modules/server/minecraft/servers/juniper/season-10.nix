@@ -71,9 +71,12 @@ in
 
     # reverse proxying & cloudflared
     modules.server.caddy.virtualHosts = my.mkCaddyEntry "mc-map" (cfg.port - 2000) false;
-    modules.server.cloudflared.ingress = (my.mkCloudflaredIngress "mc-map" (cfg.port - 2000)) // {
-      "mc.${flakeSettings.domains.primary}" = "tcp://localhost:${toString cfg.port}";
-    };
+    modules.server.cloudflared.ingress = lib.mkMerge [
+      (my.mkCloudflaredIngress "mc-map" (cfg.port - 2000))
+      {
+        "mc.${flakeSettings.domains.primary}" = "tcp://localhost:${toString cfg.port}";
+      }
+    ];
 
     # The two secrets below are required for the simple-discord-link mod to work properly
     modules.common.sops.secrets.juniper-discord-bot-token = {
