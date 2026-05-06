@@ -6,23 +6,14 @@
   ...
 }:
 let
-  inherit (lib) mkIf mkForce;
+  inherit (lib) mkIf mkForce my;
   cfg = config.modules.server.nixflix;
   inherit (inputs.nixflix.lib.jellyfinPlugins) fromRepo;
 in
 {
   config = mkIf cfg.enable {
-    modules.server.cloudflared.ingress."jf.${flakeSettings.domains.primary}" =
-      "http://localhost:${toString (cfg.port + 1)}";
-    modules.server.caddy.virtualHosts = {
-      "jf.${flakeSettings.domains.primary}".extraConfig =
-        "reverse_proxy localhost:${toString (cfg.port + 1)}";
-      "https://jf.${flakeSettings.domains.tailnet}".extraConfig = ''
-        bind tailscale/jf
-        reverse_proxy localhost:${toString (cfg.port + 1)}
-      '';
-    };
-
+    modules.server.cloudflared.ingress = my.mkCloudflaredIngress "jf" (cfg.port + 1);
+    modules.server.caddy.virtualHosts = my.mkCaddyEntry "jf" (cfg.port + 1) true;
     modules.common.sops.secrets = {
       "nixflix/jellyfin/apiKey".path = "/var/secrets/nixflix-jellyfin-apiKey";
       "nixflix/jellyfin/admin-password".path = "/var/secrets/nixflix-jellyfin-admin-password";

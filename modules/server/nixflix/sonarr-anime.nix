@@ -5,20 +5,12 @@
   ...
 }:
 let
-  inherit (lib) mkIf mkForce;
+  inherit (lib) mkIf mkForce my;
   cfg = config.modules.server.nixflix;
 in
 {
   config = mkIf cfg.enable {
-    modules.server.caddy.virtualHosts = {
-      "anisonarr.${flakeSettings.domains.primary}".extraConfig =
-        "reverse_proxy localhost:${toString (cfg.port + 6)}";
-      "https://anisonarr.${flakeSettings.domains.tailnet}".extraConfig = ''
-        bind tailscale/anisonarr
-        reverse_proxy localhost:${toString (cfg.port + 6)}
-      '';
-    };
-
+    modules.server.caddy.virtualHosts = my.mkCaddyEntry "anisonarr" (cfg.port + 6) true;
     modules.common.sops.secrets = {
       "nixflix/sonarr-anime/apiKey".path = "/var/secrets/nixflix-sonarr-anime-apiKey";
       "nixflix/sonarr-anime/password".path = "/var/secrets/nixflix-sonarr-anime-password";

@@ -13,6 +13,7 @@ let
     types
     mkOption
     replaceStrings
+    my
     ;
   cfg = config.modules.server.minecraft.juniper-s10;
   packwiz = pkgs.fetchPackwizModpack {
@@ -69,11 +70,9 @@ in
     nixpkgs.overlays = [ inputs.nix-minecraft.overlay ];
 
     # reverse proxying & cloudflared
-    modules.server.caddy.virtualHosts."mc-map.${flakeSettings.domains.primary}".extraConfig =
-      "reverse_proxy localhost:${toString (cfg.port - 2000)}";
-    modules.server.cloudflared.ingress = {
+    modules.server.caddy.virtualHosts = my.mkCaddyEntry "mc-map" (cfg.port - 2000) false;
+    modules.server.cloudflared.ingress = (my.mkCloudflaredIngress "mc-map" (cfg.port - 2000)) // {
       "mc.${flakeSettings.domains.primary}" = "tcp://localhost:${toString cfg.port}";
-      "mc-map.${flakeSettings.domains.primary}" = "http://localhost:${toString (cfg.port - 2000)}";
     };
 
     # The two secrets below are required for the simple-discord-link mod to work properly

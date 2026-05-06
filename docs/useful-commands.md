@@ -32,3 +32,7 @@ Prerequisites:
 And to close it again:
 
 `sudo iptables -D INPUT -p tcp --dport 1234 -j ACCEPT`.
+
+7. Generate an ISO based on any host config:
+
+`nixos-rebuild build-image --image-variant iso --flake .#hostname`

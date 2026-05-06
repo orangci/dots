@@ -5,20 +5,12 @@
   ...
 }:
 let
-  inherit (lib) mkIf mkForce;
+  inherit (lib) mkIf mkForce my;
   cfg = config.modules.server.nixflix;
 in
 {
   config = mkIf cfg.enable {
-    modules.server.caddy.virtualHosts = {
-      "prowlarr.${flakeSettings.domains.primary}".extraConfig =
-        "reverse_proxy localhost:${toString (cfg.port + 2)}";
-      "https://prowlarr.${flakeSettings.domains.tailnet}".extraConfig = ''
-        bind tailscale/prowlarr
-        reverse_proxy localhost:${toString (cfg.port + 2)}
-      '';
-    };
-
+    modules.server.caddy.virtualHosts = my.mkCaddyEntry "prowlarr" (cfg.port + 2) true;
     modules.common.sops.secrets = {
       "nixflix/prowlarr/apiKey".path = "/var/secrets/nixflix-prowlarr-apiKey";
       "nixflix/prowlarr/password".path = "/var/secrets/nixflix-prowlarr-password";

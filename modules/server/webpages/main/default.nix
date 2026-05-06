@@ -7,7 +7,12 @@
   ...
 }:
 let
-  inherit (lib) mkIf mkOption types;
+  inherit (lib)
+    mkIf
+    mkOption
+    types
+    mkMerge
+    ;
   cfg = config.modules.server.webpages.main;
 in
 {
@@ -38,41 +43,45 @@ in
     };
 
   config = mkIf cfg.enable {
-    modules.server.caddy.virtualHosts = {
-      ${flakeSettings.domains.primary}.extraConfig = "reverse_proxy localhost:${toString cfg.port}";
-      ${flakeSettings.domains.secondary}.extraConfig = "reverse_proxy localhost:${toString cfg.port}";
-      ":${toString cfg.port}".extraConfig = ''
-        root * /srv/webpagc
-        file_server
-        header ?Cache-Control "max-age=1800"
+    modules.server.caddy.virtualHosts = mkMerge [
+      (lib.my.mkCaddyEntry "www" cfg.port false)
+      {
+        ${flakeSettings.domains.primary}.extraConfig = "reverse_proxy localhost:${toString cfg.port}";
+        ${flakeSettings.domains.secondary}.extraConfig = "reverse_proxy localhost:${toString cfg.port}";
+        ":${toString cfg.port}".extraConfig = ''
+          root * /srv/webpagc
+          file_server
+          header ?Cache-Control "max-age=1800"
 
-        handle_errors {
-         @404 expression {http.error.status_code} == 404
-         rewrite @404 /404
-         file_server
-        }
+          handle_errors {
+           @404 expression {http.error.status_code} == 404
+           rewrite @404 /404
+           file_server
+          }
 
-        @rootIndex path /index.html 
-        redir @rootIndex / 301  
-        @subIndex path */index.html
-        redir @subIndex {path}/.. 301  
-        @html path_regexp html ^(.+)\.html$  
-        redir @html {re.html.1} 301 
-        try_files {path} {path}.html {path}/index.html
-        ${lib.concatStringsSep "\n" (
-          map (r: "redir /${r.source} ${r.target} ${toString r.code}") cfg.redirects
-        )}
-        ${lib.concatStringsSep "\n" (
-          map (r: "handle_path /${r.source}/* { redir ${r.target}{path} ${toString r.code} }") cfg.redirects
-        )}
-      '';
-    };
-    modules.server.cloudflared.ingress = mkIf cfg.cloudflared.enable {
-      ${flakeSettings.domains.primary} = "http://localhost:${toString cfg.port}";
-      ${flakeSettings.domains.secondary} = "http://localhost:${toString cfg.port}";
-      "www.${flakeSettings.domains.primary}" = "http://localhost:${toString cfg.port}";
-      "www.${flakeSettings.domains.secondary}" = "http://localhost:${toString cfg.port}";
-    };
+          @rootIndex path /index.html 
+          redir @rootIndex / 301  
+          @subIndex path */index.html
+          redir @subIndex {path}/.. 301  
+          @html path_regexp html ^(.+)\.html$  
+          redir @html {re.html.1} 301 
+          try_files {path} {path}.html {path}/index.html
+          ${lib.concatStringsSep "\n" (
+            map (r: "redir /${r.source} ${r.target} ${toString r.code}") cfg.redirects
+          )}
+          ${lib.concatStringsSep "\n" (
+            map (r: "handle_path /${r.source}/* { redir ${r.target}{path} ${toString r.code} }") cfg.redirects
+          )}
+        '';
+      }
+    ];
+    modules.server.cloudflared.ingress = mkMerge [
+      (lib.my.mkCloudflaredIngress "www" cfg.port)
+      {
+        ${flakeSettings.domains.primary} = "http://localhost:${toString cfg.port}";
+        ${flakeSettings.domains.secondary} = "http://localhost:${toString cfg.port}";
+      }
+    ];
     modules.server.glance.monitoredSites = mkIf cfg.glance.enable [
       {
         url = "https://${flakeSettings.domains.primary}";

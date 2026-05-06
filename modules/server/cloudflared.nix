@@ -42,7 +42,7 @@ in
     };
   };
 
-  config = mkIf cfg.enable {
+  config = lib.mkIf cfg.enable {
     modules.common.sops.secrets."cloudflared/cert.pem".path = "/var/secrets/cloudflared/cert.pem";
     modules.common.sops.secrets."cloudflared/credentials.json".path =
       "/var/secrets/cloudflared/credentials.json";

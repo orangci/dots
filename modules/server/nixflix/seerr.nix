@@ -5,20 +5,12 @@
   ...
 }:
 let
-  inherit (lib) mkIf mkForce;
+  inherit (lib) mkIf mkForce my;
   cfg = config.modules.server.nixflix;
 in
 {
   config = mkIf cfg.enable {
-    modules.server.caddy.virtualHosts = {
-      "seerr.${flakeSettings.domains.primary}".extraConfig =
-        "reverse_proxy localhost:${toString (cfg.port + 5)}";
-      "https://seerr.${flakeSettings.domains.tailnet}".extraConfig = ''
-        bind tailscale/seerr
-        reverse_proxy localhost:${toString (cfg.port + 5)}
-      '';
-    };
-
+    modules.server.caddy.virtualHosts = my.mkCaddyEntry "seerr" (cfg.port + 5) true;
     modules.common.sops.secrets."nixflix/seerr/apiKey".path = "/var/secrets/nixflix-seerr-apiKey";
 
     modules.server.glance.monitoredSites = lib.singleton {

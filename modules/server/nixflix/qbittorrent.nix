@@ -5,20 +5,12 @@
   ...
 }:
 let
-  inherit (lib) mkIf mkForce;
+  inherit (lib) mkIf mkForce my;
   cfg = config.modules.server.nixflix;
 in
 {
   config = mkIf cfg.enable {
-    modules.server.caddy.virtualHosts = {
-      "qbittorrent.${flakeSettings.domains.primary}".extraConfig =
-        "reverse_proxy localhost:${toString (cfg.port + 3)}";
-      "https://qbittorrent.${flakeSettings.domains.tailnet}".extraConfig = ''
-        bind tailscale/qbittorrent
-        reverse_proxy localhost:${toString (cfg.port + 3)}
-      '';
-    };
-
+    modules.server.caddy.virtualHosts = my.mkCaddyEntry "qb" (cfg.port + 3) true;
     modules.common.sops.secrets."nixflix/qbittorent/password".path =
       "/var/secrets/nixflix-qbittorent-password";
 

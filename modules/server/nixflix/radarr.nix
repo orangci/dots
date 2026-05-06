@@ -5,20 +5,12 @@
   ...
 }:
 let
-  inherit (lib) mkIf mkForce;
+  inherit (lib) mkIf mkForce my;
   cfg = config.modules.server.nixflix;
 in
 {
   config = mkIf cfg.enable {
-    modules.server.caddy.virtualHosts = {
-      "radarr.${flakeSettings.domains.primary}".extraConfig =
-        "reverse_proxy localhost:${toString (cfg.port + 4)}";
-      "https://radarr.${flakeSettings.domains.tailnet}".extraConfig = ''
-        bind tailscale/radarr
-        reverse_proxy localhost:${toString (cfg.port + 4)}
-      '';
-    };
-
+    modules.server.caddy.virtualHosts = my.mkCaddyEntry "radarr" (cfg.port + 4) true;
     modules.common.sops.secrets = {
       "nixflix/radarr/apiKey".path = "/var/secrets/nixflix-radarr-apiKey";
       "nixflix/radarr/password".path = "/var/secrets/nixflix-radarr-password";
