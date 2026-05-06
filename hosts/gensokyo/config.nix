@@ -209,8 +209,9 @@ in
         port = 8823;
       };
 
-      matrix-synapse = {
+      matrix-synapse = allThree // {
         enable = true;
+        cloudflared.enable = true;
         port = 8824;
         serverName = flakeSettings.domains.primary;
       };
