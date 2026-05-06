@@ -15,7 +15,7 @@
 > Going through my code for little bits and snippets to borrow or learn from is totally fine, as long as you respect the license and credit me appropriately.
 > This flake is very much a work in progress; I'm constantly working on improving it and I have [many things planned for it](./TODO.md) for the future.
 
-Modular NixOS configuration for my machines. Very lightweight! A fresh installation of this flake (with the modules enabled in [komashi](./hosts/komashi/config.nix)) will be *18 gigabytes*, which isn't bad at all in my opinion.
+Modular NixOS configuration for my machines. Very lightweight! A fresh installation of this flake (with the modules enabled in [komashi](./hosts/komashi/config.nix)) will be *18 gigabytes*, which isn't bad at all in my opinion. If you are reading this on the [documentation page](https://flake.orang.ci), the source code is [available on my Forgejo instance](https://git.orangc.net/c/dots).
 
 Hosts:
 - komashi ~ My main computer; a HP EliteDesk mini PC with an Intel i5-6500T, integrated graphics, 16GiB of RAM, and a 512GiB NVMe SSD. Name is a reference to *Yumi and the Nightmare Painter*.
