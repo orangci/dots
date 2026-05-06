@@ -1,6 +1,0 @@
-{ ... }:
-{
-  imports = [
-    ./synapse.nix
-  ];
-}

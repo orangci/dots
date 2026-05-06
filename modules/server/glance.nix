@@ -11,7 +11,6 @@ let
     types
     mkIf
     mkMerge
-    singleton
     ;
   cfg = config.modules.server.glance;
   serverModules = config.modules.server;

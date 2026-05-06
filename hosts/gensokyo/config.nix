@@ -209,7 +209,7 @@ in
         port = 8823;
       };
 
-      matrix.synapse = {
+      matrix-synapse = {
         enable = true;
         port = 8824;
         serverName = flakeSettings.domains.primary;

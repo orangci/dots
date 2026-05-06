@@ -26,7 +26,7 @@
     ./copyparty.nix
     ./tailscale.nix
     ./vscode.nix
-    ./matrix
+    ./matrix-synapse.nix
     ./scrutiny.nix
     ./miniflux.nix
     ./nixflix
