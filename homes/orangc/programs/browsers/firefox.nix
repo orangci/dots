@@ -348,6 +348,12 @@ in
             installation_mode = "force_installed";
           };
 
+          # mailvelope:
+          "	jid1-AQqSMBYb0a8ADg@jetpack" = {
+            install_url = "https://addons.mozilla.org/firefox/downloads/latest/mailvelope/latest.xpi";
+            installation_mode = "force_installed";
+          };
+
           # mal-sync:
           "{c84d89d9-a826-4015-957b-affebd9eb603}" = {
             install_url = "https://addons.mozilla.org/firefox/downloads/latest/mal-sync/latest.xpi";
