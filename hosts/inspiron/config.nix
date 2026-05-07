@@ -34,7 +34,7 @@
       steam.enable = false;
       heroic.enable = false;
       minecraft = {
-        enable = false;
+        enable = true;
         modrinth.enable = false;
       };
     };

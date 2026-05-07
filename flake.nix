@@ -201,6 +201,7 @@
         komashi = nixosMachine { host = "komashi"; };
         sirius = nixosMachine { host = "sirius"; };
         gensokyo = nixosMachine { host = "gensokyo"; };
+        inspiron = nixosMachine { host = "inspiron"; };
       };
     };
 }
