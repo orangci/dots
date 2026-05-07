@@ -40,6 +40,7 @@ in
           "/var/lib/private/zipline"
           "/var/lib/postgresql"
           "/var/lib/matrix-synapse"
+          "/var/lib/davis"
         ];
       };
     };

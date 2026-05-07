@@ -36,3 +36,4 @@
 - modules.server is way too big, divide it into subfolders
 - style ndg a bit
 - ndg: make options only scan config.modules and hmModules
+- use GPG for secrets over SSH

@@ -54,6 +54,7 @@ in
       ncftp
       dig
       xh
+      whois
     ];
   };
 }
