@@ -47,6 +47,7 @@ in
       default = pkgs.fetchurl {
         url = "https://files.orangc.net/media/walls/misty-boat.png";
         name = "misty-boat";
+        hash = "sha256-o+SYyAObIcUpzpXkoNa7HGbdc5u4jcN8tnA5Aulp8rM=";
       };
       description = "Wallpaper to use for the SDDM Astronaut theme";
     };

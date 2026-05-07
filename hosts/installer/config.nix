@@ -1,13 +1,18 @@
 {
   pkgs,
   flakeSettings,
+  modulesPath,
+  system,
+  lib,
   ...
 }:
 {
   imports = [
-    ./hardware.nix
+    "${modulesPath}/installer/cd-dvd/installation-cd-minimal.nix"
     ../../modules
   ];
+  nixpkgs.hostPlatform = system;
+  boot.supportedFilesystems = lib.mkForce [ "btrfs" "ext4" "xfs" "vfat" ];
 
   modules = {
     dm.sddm.enable = true;
@@ -24,7 +29,6 @@
       thunar.enable = true;
       hyprland.enable = true;
       appimages.enable = false;
-      sudo-rs.enable = true;
     };
     gaming = {
       wine.enable = true;
@@ -33,7 +37,7 @@
       steam.enable = false;
       heroic.enable = false;
       minecraft = {
-        enable = true;
+        enable = false;
         modrinth.enable = false;
       };
     };

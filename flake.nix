@@ -198,10 +198,10 @@
       packages.${system} = customPkgs;
       formatter.${system} = pkgs.nixfmt-tree;
       nixosConfigurations = {
+        gensokyo = nixosMachine { host = "gensokyo"; };
         komashi = nixosMachine { host = "komashi"; };
         # sirius = nixosMachine { host = "sirius"; };
-        gensokyo = nixosMachine { host = "gensokyo"; };
-        inspiron = nixosMachine { host = "inspiron"; };
+        installer = nixosMachine { host = "installer"; };
       };
     };
 }
