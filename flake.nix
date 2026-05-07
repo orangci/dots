@@ -199,7 +199,7 @@
       formatter.${system} = pkgs.nixfmt-tree;
       nixosConfigurations = {
         komashi = nixosMachine { host = "komashi"; };
-        sirius = nixosMachine { host = "sirius"; };
+        # sirius = nixosMachine { host = "sirius"; };
         gensokyo = nixosMachine { host = "gensokyo"; };
         inspiron = nixosMachine { host = "inspiron"; };
       };

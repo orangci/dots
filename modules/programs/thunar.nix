@@ -18,7 +18,7 @@ in
     programs.thunar = {
       enable = true;
       plugins =
-        with pkgs.xfce;
+        with pkgs;
         [
           thunar-volman
           thunar-media-tags-plugin
@@ -32,7 +32,7 @@ in
         inherit (pkgs) gvfs;
       };
     };
-    environment.systemPackages = with pkgs; [ xfce.tumbler ];
+    environment.systemPackages = [ pkgs.tumbler ];
     services.gvfs.enable = true;
   };
 }

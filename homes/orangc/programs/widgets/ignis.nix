@@ -19,7 +19,7 @@ in
     home.packages = with pkgs; [
       gnome-bluetooth
       matugen
-      swww
+      awww
       material-symbols
     ];
     programs.ignis = {

@@ -62,6 +62,7 @@ in
       userDirs = {
         enable = pkgs.stdenv.isLinux;
         createDirectories = true;
+        setSessionVariables = true;
 
         download = "${config.home.homeDirectory}/dl";
         desktop = null;

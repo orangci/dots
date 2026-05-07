@@ -121,7 +121,7 @@
   home = {
     username = "${flakeSettings.username}";
     homeDirectory = "/home/${flakeSettings.username}";
-    stateVersion = "25.05";
+    stateVersion = "26.11";
     file.".face.icon".source = ../../assets/face.png;
     packages = with pkgs; [
       hyprpicker
