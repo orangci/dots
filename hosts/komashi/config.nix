@@ -25,7 +25,6 @@
       hyprland.enable = true;
       appimages.enable = false;
       sudo-rs.enable = true;
-      kdeconnect.enable = true;
     };
     gaming = {
       wine.enable = true;
