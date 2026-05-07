@@ -39,13 +39,13 @@ in
           "openpgp"
           "ssh"
         ];
-        default = "ssh";
+        default = "openpgp";
         description = "Git signing format";
       };
 
       key = mkOption {
         type = types.str;
-        default = "";
+        default = null;
         description = "Git Signing Key";
       };
     };
@@ -61,7 +61,6 @@ in
       git = {
         enable = true;
         lfs.enable = cfg.lfs;
-
         signing = mkIf cfg.signing.enable {
           inherit (cfg.signing) format;
           inherit (cfg.signing) key;

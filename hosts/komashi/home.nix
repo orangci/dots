@@ -28,6 +28,10 @@
         inherit (flakeSettings) username;
         email = "c@${flakeSettings.domains.email}";
         github = true;
+        signing = {
+          enable = true;
+          key = "D23D8C2EDC080D5470CC35803C6C89BA4FFFCD24";
+        };
       };
     };
     misc = {
