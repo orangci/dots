@@ -9,6 +9,7 @@
   hmModules = {
     programs.editors.nvf.enable = true;
     programs.editors.micro.enable = true;
+    misc.gnupg.enable = true;
     dev = {
       python = {
         enable = true;

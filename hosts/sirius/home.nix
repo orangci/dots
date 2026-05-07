@@ -39,6 +39,7 @@
       clipboard.enable = true;
       cheatsheet.enable = true;
       screenshot.enable = true;
+      gnupg.enable = true;
       screenrec = {
         enable = true;
         fileFormat = "mov";

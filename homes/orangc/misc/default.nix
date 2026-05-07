@@ -5,5 +5,6 @@
     ./screenshot.nix
     ./cheatsheet.nix
     ./screenrec.nix
+    ./gnupg.nix
   ];
 }
