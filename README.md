@@ -41,6 +41,7 @@ Hosts:
 - [1amSimp1e's dots](https://github.com/1amSimp1e/dots) — The original Starship prompt.
 - [Rexi](https://github.com/Rexcrazy804) — I used his [backup script](https://github.com/Rexcrazy804/Zaphkiel/blob/master/nixosModules/server/minecraft/backupservice.nix) as the base for [my own](./modules/server/minecraft/servers/juniper/utilities/automatic-backups.nix) in my Minecraft server module.
 - [Stef](https://github.com/stef-00012/dots) for the [Umami module](./modules/server/umami.nix). Funnily enough, his dotfiles are a fork of mine...
+- [llakala's synaptic-standard](https://github.com/llakala/synaptic-standard) for [the importer function](./lib/recursivelyImport.nix)
  
 ## License
 - [License: GNU AGPLv3](./LICENSE)

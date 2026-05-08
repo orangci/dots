@@ -11,7 +11,7 @@
 - look into other image viewers. oculante? fix up mpv to use as my image viewer instead of gwenview? or just keep using gwenview?
 - selfhost (maybe) audiobookshelf, litexiv, invidious, redlib, jitsi, cyberchef, pairdrop, stirling pdf, pricebuddy, home-assistant, [fiche](https://github.com/solusipse/fiche)
 - force glance font to be lexend
-- go throuh literally every module and optionify it all
+- go through literally every module and optionify it all
 - hook ntfy into all the services that can be, e.g., scrutiny, matrix
 - maybe use an epic shell or make my own. like noctalia or danklinux.com
 - complete grafana/prometheus module
@@ -23,11 +23,8 @@
 - write extensive docs for the flake e.g. for restic
 - satty and zipline support for screenshot script
 - assertions
-- yeet module options that shouldn't exist into nonexistence
 - look into nixos containers and microvm.nix
 - use [nixos-core](https://github.com/feel-co/nixos-core)
 - finish nvf config
 - modules.server is way too big, divide it into subfolders
 - style ndg a bit
-- ndg: make options only scan config.modules and hmModules
-- use GPG for secrets over SSH
