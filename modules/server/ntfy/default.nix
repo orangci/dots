@@ -50,7 +50,7 @@ in
       settings = {
         base-url = "https://${cfg.subdomain}.${flakeSettings.domains.primary}";
         auth-default-access = "deny-all";
-        auth-access = ["*:up*:write-only"] ++ cfg.acl; # for unified push
+        auth-access = [ "*:up*:write-only" ] ++ cfg.acl; # for unified push
         listen-http = ":${toString cfg.port}";
         behind-proxy = true;
         enable-login = true;
