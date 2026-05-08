@@ -1,5 +1,6 @@
 keys:
   - &master age1jw4lthrhthncg578t9uh7qw6jpef6f75agekz6vyrt45fnsr4uvs2y2tpf
+  - &master_pgp D23D8C2EDC080D5470CC35803C6C89BA4FFFCD24
   - &komashi_admin age1ar9ry945p2222nqmar0gwqxq3nxemestaluc0kdvjdw3dhz37pyqw87ngy
   - &komashi_server age1fcpq4yctx8rpvt30hy9p9pfmkttshckknl8pguksgdgqnpwkmd3sa2uflw
   - &gensokyo_admin age164a5t6cdvxz7qk3s78ymxjf02wj3xh8k653hxrscu6htt8a7wpmqdlwsec
@@ -14,3 +15,5 @@ creation_rules:
           - *komashi_server
           - *gensokyo_admin
           - *gensokyo_server
+      - pgp:
+          - *master_pgp
