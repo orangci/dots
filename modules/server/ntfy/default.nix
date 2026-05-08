@@ -70,8 +70,8 @@ in
         web-push-email-address = "c@${flakeSettings.domains.email}";
         # for sending notifs via email
         smtp-sender-addr = "smtp.purelymail.com:587";
-        smtp-sender-user = "automation@orangc.net";
-        smtp-sender-from = "ntfy@orangc.net";
+        smtp-sender-user = "automation@${flakeSettings.domains.email}";
+        smtp-sender-from = "ntfy@${flakeSettings.domains.email}";
       };
     };
   };
