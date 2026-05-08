@@ -8,10 +8,11 @@ let
   inherit (lib)
     mkIf
     mkEnableOption
+    mkOption
+    types
     singleton
     ;
   cfg = config.modules.server.ntfy.scripts.services;
-  topicsOptions = import ../topicsOptions.nix { inherit config lib; };
 
   servers = builtins.attrNames config.modules.server;
   monitoredModules = builtins.filter (
@@ -95,22 +96,15 @@ in
 {
   options.modules.server.ntfy.scripts.services = {
     enable = mkEnableOption "Enable services script for Ntfy";
-    inherit (topicsOptions) users;
-    topic = topicsOptions.topic // {
+    topic = mkOption {
+      type = types.str;
       default = "services";
-    };
-    permission = topicsOptions.permission // {
-      default = "read-only";
     };
   };
 
   config = mkIf cfg.enable {
     environment.systemPackages = singleton script;
-    modules.server.ntfy.topics = singleton {
-      name = cfg.topic;
-      inherit (cfg) users;
-      inherit (cfg) permission;
-    };
+    modules.server.ntfy.acl = singleton "*:${cfg.topic}:read";
     systemd.services.ntfy-script-services = {
       description = "Ntfy services script";
       after = [ "ntfy-sh.service" ];

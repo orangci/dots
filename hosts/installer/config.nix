@@ -12,7 +12,12 @@
     ../../modules
   ];
   nixpkgs.hostPlatform = system;
-  boot.supportedFilesystems = lib.mkForce [ "btrfs" "ext4" "xfs" "vfat" ];
+  boot.supportedFilesystems = lib.mkForce [
+    "btrfs"
+    "ext4"
+    "xfs"
+    "vfat"
+  ];
 
   modules = {
     dm.sddm.enable = true;

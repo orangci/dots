@@ -126,7 +126,7 @@ in
           port = 8810;
           minRAM = 1;
           maxRAM = 12;
-          motd = "                    Silent Sinner In Blue";
+          motd = "                  Lord of the Mysteries";
           automatic-backups = {
             enable = true;
             frequency = "daily";
@@ -146,14 +146,8 @@ in
         glance.enable = true;
         internalTailscaleDomain.enable = true;
         port = 8812;
-        users = lib.singleton {
-          inherit (flakeSettings) username;
-          role = "admin";
-        };
         scripts = {
           services.enable = true;
-          cpu-temperature.enable = false; # never shuts up
-          power-on.enable = false;
         };
       };
 
