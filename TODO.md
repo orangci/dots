@@ -29,3 +29,4 @@
 - finish nvf config
 - modules.server is way too big, divide it into subfolders
 - style ndg a bit
+- fix matrix glance icon

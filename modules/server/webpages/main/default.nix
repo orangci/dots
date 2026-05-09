@@ -58,8 +58,7 @@ in
 
           handle_errors {
               @404 expression {http.error.status_code} == 404
-              rewrite @404 /404.html
-              file_server
+              redir @404 /404.html 301
           }
 
           @rootIndex path /index.html 
