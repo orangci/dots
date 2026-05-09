@@ -55,7 +55,7 @@ in
       postgresql.enable = true;
       duckdns.enable = false;
       tailscale.enable = true;
-      nixflix.enable = true;
+      nixflix.enable = false;
       takina.enable = true;
 
       webpages.main = allThree // {
