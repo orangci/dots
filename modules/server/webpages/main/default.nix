@@ -76,7 +76,7 @@ in
           )}
           ${concatStringsSep "\n" (
             concatMap (
-              r: map (source: "redir /${source}/* ${r.target} ${toString r.code}") r.sources
+              r: map (source: "handle_path /${source}/* { redir ${r.target}{path} ${toString r.code} }") r.sources
             ) cfg.redirects
           )}
         '';
