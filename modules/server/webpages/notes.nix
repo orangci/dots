@@ -55,11 +55,11 @@ in
         (my.mkCloudflaredIngress "blog" cfg.port)
         (my.mkCloudflaredIngress "notes" cfg.port)
       ];
-      glance.monitoredSites = mkIf cfg.glance.enable (singleton {
+      glance.monitoredSites = singleton {
         url = "https://${cfg.subdomain}.${flakeSettings.domains.primary}";
         title = cfg.name;
         inherit (cfg.glance) icon;
-      });
+      };
     };
     systemd.tmpfiles.settings."10-webpages.notes"."/srv/notes"."L+" = {
       argument = inputs.notes-webpage.packages.${system}.default.outPath;

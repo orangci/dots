@@ -12,6 +12,7 @@ let
     mkOption
     types
     mkMerge
+    singleton
     ;
   cfg = config.modules.server.webpages.main;
 in
@@ -82,13 +83,11 @@ in
         ${flakeSettings.domains.secondary} = "http://localhost:${toString cfg.port}";
       }
     ];
-    modules.server.glance.monitoredSites = mkIf cfg.glance.enable [
-      {
+    modules.server.glance.monitoredSites = singleton {
         url = "https://${flakeSettings.domains.primary}";
         title = cfg.name;
         inherit (cfg.glance) icon;
-      }
-    ];
+      };
     systemd.tmpfiles.settings."10-webpagc"."/srv/webpagc"."L+" = {
       argument = inputs.webpagc.packages.${system}.default.outPath;
       user = "root";
