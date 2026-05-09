@@ -1,224 +1,222 @@
-{ flakeSettings, ... }:
+{ flakeSettings, lib, ... }:
+let
+  inherit (lib) singleton;
+in
 {
   config.modules.server.webpages.main.redirects = [
     # subdomains
     {
-      source = "blog";
+      sources = [
+        "blog"
+        "notes"
+      ];
       target = "https://notes.${flakeSettings.domains.primary}";
     }
     {
-      source = "notes";
-      target = "https://notes.${flakeSettings.domains.primary}";
-    }
-    {
-      source = "n";
+      sources = singleton "n";
       target = "https://notes.${flakeSettings.domains.primary}/notes";
     }
     {
-      source = "p";
+      sources = singleton "p";
       target = "https://bin.${flakeSettings.domains.primary}";
     }
     {
-      source = "g";
+      sources = singleton "g";
       target = "https://git.${flakeSettings.domains.primary}/c";
     }
     {
-      source = "z";
+      sources = singleton "z";
       target = "https://zip.${flakeSettings.domains.primary}/z";
     }
     {
-      source = "u";
+      sources = singleton "u";
       target = "https://zip.${flakeSettings.domains.primary}/u";
     }
     {
-      source = "f";
+      sources = singleton "f";
       target = "https://files.${flakeSettings.domains.primary}";
     }
     {
-      source = "m";
+      sources = singleton "m";
       target = "https://files.${flakeSettings.domains.primary}/media/memes";
     }
     {
-      source = "salah";
+      sources = singleton "salah";
       target = "https://salah.${flakeSettings.domains.primary}";
     }
     {
-      source = "takina";
+      sources = singleton "takina";
       target = "https://takina.${flakeSettings.domains.primary}";
     }
     # old versions of the site
     {
-      source = "v2";
+      sources = singleton "v2";
       target = "https://vercel.uwu.is-a.dev";
     }
     {
-      source = "v3";
+      sources = singleton "v3";
       target = "https://8e6ebe40.orangc.pages.dev";
     }
 
     # socials
     {
-      source = "anime";
+      sources = singleton "anime";
       target = "https://myanimelist.net/animelist/orangc";
     }
     {
-      source = "animeschedule";
+      sources = singleton "animeschedule";
       target = "https://animeschedule.net/users/orange";
     }
     {
-      source = "anilist";
+      sources = [
+        "anilist"
+        "al"
+      ];
       target = "https://anilist.co/user/orangc";
     }
     {
-      source = "backloggd";
+      sources = singleton "backloggd";
       target = "https://www.backloggd.com/u/orangc";
     }
     {
-      source = "bluesky";
+      sources = [
+        "bluesky"
+        "bsky"
+      ];
       target = "https://bsky.app/profile/orang.ci";
     }
     {
-      source = "discord";
+      sources = singleton "discord";
       target = "https://discord.com/users/961063229168164864";
     }
     {
-      source = "github";
+      sources = [
+        "github"
+        "gh"
+      ];
       target = "https://github.com/orangci";
     }
     {
-      source = "goodreads";
+      sources = singleton "goodreads";
       target = "https://www.goodreads.com/orangc";
     }
     {
-      source = "gh";
-      target = "https://github.com/orangci";
-    }
-    {
-      source = "hardcover";
+      sources = singleton "hardcover";
       target = "https://hardcover.app/@ci";
     }
     {
-      source = "letterboxd";
+      sources = singleton "letterboxd";
       target = "https://letterboxd.com/orangc";
     }
     {
-      source = "mal";
+      sources = [
+        "mal"
+        "myanimelist"
+      ];
       target = "https://myanimelist.net/profile/orangc";
     }
     {
-      source = "manga";
+      sources = singleton "manga";
       target = "https://myanimelist.net/mangalist/orangc";
     }
     {
-      source = "mastodon";
+      sources = singleton "mastodon";
       target = "https://mastodon.social/@orangc";
     }
     {
-      source = "matrix";
+      sources = singleton "matrix";
       target = "https://matrix.to/#/@c:${flakeSettings.domains.primary}";
     }
     {
-      source = "mc";
+      sources = [
+        "namemc"
+        "minecraft"
+        "mc"
+      ];
       target = "https://namemc.com/profile/orangci.1";
     }
     {
-      source = "minecraft";
-      target = "https://namemc.com/profile/orangci.1";
-    }
-    {
-      source = "myanimelist";
-      target = "https://myanimelist.net/profile/orangc";
-    }
-    {
-      source = "namemc";
-      target = "https://namemc.com/profile/orangci.1";
-    }
-    {
-      source = "osu";
+      sources = singleton "osu";
       target = "https://osu.ppy.sh/users/36686648";
     }
     {
-      source = "reddit";
+      sources = singleton "reddit";
       target = "https://reddit.com/u/orangc";
     }
     {
-      source = "steam";
+      sources = singleton "steam";
       target = "https://steamcommunity.com/id/orangc";
     }
     {
-      source = "twitch";
+      sources = singleton "twitch";
       target = "https://www.twitch.tv/orangci";
     }
     {
-      source = "twitter";
-      target = "https://x.com/orangcii";
-    }
-    {
-      source = "wakatime";
+      sources = singleton "wakatime";
       target = "https://wakatime.com/@orangc";
     }
     {
-      source = "wikispeedruns";
+      sources = [
+        "wikispeedruns"
+        "wsr"
+      ];
       target = "https://wikispeedruns.com/profile/ci";
     }
     {
-      source = "wsr";
-      target = "https://wikispeedruns.com/profile/ci";
-    }
-    {
-      source = "x";
+      sources = [
+        "x"
+        "twitter"
+      ];
       target = "https://x.com/orangcii";
     }
     {
-      source = "yt";
+      sources = [
+        "yt"
+        "youtube"
+      ];
       target = "https://www.youtube.com/@orangc";
     }
-    {
-      source = "youtube";
-      target = "https://www.youtube.com/@orangc";
-    }
+
     # walls
     {
-      source = "walls";
+      sources = singleton "walls";
       target = "https://files.${flakeSettings.domains.primary}/media/walls/?nombar&noacci&nosrvi&nonav&nolbar&noctxb&norepl&grid";
     }
     {
-      source = "walls-catppuccin-mocha";
-      target = "https://files.${flakeSettings.domains.primary}/media/walls-catppuccin-mocha/?nombar&noacci&nosrvi&nonav&nolbar&noctxb&norepl&grid";
-    }
-    {
-      source = "wallsppuccin";
+      sources = [
+        "walls-catppuccin-mocha"
+        "wallsppuccin"
+      ];
       target = "https://files.${flakeSettings.domains.primary}/media/walls-catppuccin-mocha/?nombar&noacci&nosrvi&nonav&nolbar&noctxb&norepl&grid";
     }
 
     # other
     {
-      source = "license";
+      sources = singleton "license";
       target = "https://www.gnu.org/licenses/agpl-3.0.en.html";
     }
     {
-      source = "source";
+      sources = singleton "source";
       target = "https://git.${flakeSettings.domains.primary}/c/webpage";
     }
     {
-      source = "analytics";
+      sources = singleton "analytics";
       target = "https://umami.${flakeSettings.domains.primary}/share/TnoNTAvEwjDueE7F/orangc.net";
     }
     {
-      source = "nohello";
+      sources = singleton "nohello";
       target = "https://notes.${flakeSettings.domains.primary}/notes/internet-etiquette#no-quothelloquot";
     }
     {
-      source = "uses";
+      sources = singleton "uses";
       target = "https://notes.${flakeSettings.domains.primary}/notes/uses";
     }
     {
-      source = "dots";
+      sources = [
+        "dots"
+        "flake"
+      ];
       target = "https://flake.${flakeSettings.domains.primary}";
-    }
-    {
-      source = "flake";
-      target = "https://git.${flakeSettings.domains.primary}/c/dots";
     }
   ];
 }

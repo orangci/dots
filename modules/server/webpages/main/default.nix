@@ -29,7 +29,7 @@ in
         type = types.listOf (
           types.submodule {
             options = {
-              source = mkOption { type = types.str; };
+              sources = mkOption { type = types.listOf types.str; };
               target = mkOption { type = types.str; };
               code = mkOption {
                 type = types.int;
@@ -68,10 +68,14 @@ in
           redir @html {re.html.1} 301 
           try_files {path} {path}.html {path}/index.html
           ${lib.concatStringsSep "\n" (
-            map (r: "redir /${r.source} ${r.target} ${toString r.code}") cfg.redirects
+            lib.concatMap (
+              r: map (source: "redir /${source} ${r.target} ${toString r.code}") r.sources
+            ) cfg.redirects
           )}
           ${lib.concatStringsSep "\n" (
-            map (r: "handle_path /${r.source}/* { redir ${r.target}{path} ${toString r.code} }") cfg.redirects
+            lib.concatMap (
+              r: map (source: "redir /${source}/* ${r.target} ${toString r.code}") r.sources
+            ) cfg.redirects
           )}
         '';
       }
@@ -84,10 +88,10 @@ in
       }
     ];
     modules.server.glance.monitoredSites = singleton {
-        url = "https://${flakeSettings.domains.primary}";
-        title = cfg.name;
-        inherit (cfg.glance) icon;
-      };
+      url = "https://${flakeSettings.domains.primary}";
+      title = cfg.name;
+      inherit (cfg.glance) icon;
+    };
     systemd.tmpfiles.settings."10-webpagc"."/srv/webpagc"."L+" = {
       argument = inputs.webpagc.packages.${system}.default.outPath;
       user = "root";
