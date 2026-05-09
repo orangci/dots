@@ -21,6 +21,7 @@ in
     lib.my.mkServerModule {
       name = "Matrix Synapse";
       subdomain = "matrix";
+      glanceIcon = "auto-invert sh:matrix";
     }
     // {
       serverName = mkOption {
