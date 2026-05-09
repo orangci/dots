@@ -13,11 +13,13 @@ let
     types
     mkMerge
     singleton
+    concatStringsSep
+    concatMap
     ;
   cfg = config.modules.server.webpages.main;
 in
 {
-  imports = lib.singleton ./redirects.nix;
+  imports = singleton ./redirects.nix;
   options.modules.server.webpages.main =
     lib.my.mkServerModule {
       name = "Webpagc";
@@ -55,25 +57,25 @@ in
           header ?Cache-Control "max-age=1800"
 
           handle_errors {
-           @404 expression {http.error.status_code} == 404
-           rewrite @404 /404
-           file_server
+              @404 expression {http.error.status_code} == 404
+              rewrite @404 /404.html
+              file_server
           }
 
           @rootIndex path /index.html 
           redir @rootIndex / 301  
           @subIndex path */index.html
-          redir @subIndex {path}/.. 301  
+          redir @subIndex {path}/.. 301 
           @html path_regexp html ^(.+)\.html$  
           redir @html {re.html.1} 301 
           try_files {path} {path}.html {path}/index.html
-          ${lib.concatStringsSep "\n" (
-            lib.concatMap (
+          ${concatStringsSep "\n" (
+            concatMap (
               r: map (source: "redir /${source} ${r.target} ${toString r.code}") r.sources
             ) cfg.redirects
           )}
-          ${lib.concatStringsSep "\n" (
-            lib.concatMap (
+          ${concatStringsSep "\n" (
+            concatMap (
               r: map (source: "redir /${source}/* ${r.target} ${toString r.code}") r.sources
             ) cfg.redirects
           )}

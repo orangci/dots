@@ -29,5 +29,3 @@
 - finish nvf config
 - modules.server is way too big, divide it into subfolders
 - style ndg a bit
-- add passthrough redirs
-- fix 404 pages in webpages
