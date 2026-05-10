@@ -1,0 +1,88 @@
+{
+  pkgs,
+  flakeSettings,
+  ...
+}:
+{
+  imports = [
+    ./hardware.nix
+    ../../modules
+  ];
+
+  modules = {
+    dm.sddm.enable = true;
+    dm.sddm.theme = "stray";
+    common = {
+      bluetooth.enable = true;
+      printing.enable = true;
+      sound.enable = true;
+      networking.enable = true;
+      virtualisation.enable = false;
+      sops.enable = true;
+    };
+    programs = {
+      thunar.enable = true;
+      hyprland.enable = true;
+      appimages.enable = false;
+      sudo-rs.enable = true;
+    };
+    gaming = {
+      wine.enable = true;
+      lutris.enable = true;
+      bottles.enable = false;
+      steam.enable = false;
+      heroic.enable = false;
+      minecraft = {
+        enable = true;
+        modrinth.enable = false;
+      };
+    };
+    styles.fonts.enable = true;
+  };
+  local.hardware-clock.enable = true;
+  drivers = {
+    intel.enable = true;
+    amdgpu.enable = false;
+    nvidia.enable = false;
+    nvidia-prime = {
+      enable = false;
+      intelBusID = "";
+      nvidiaBusID = "";
+    };
+  };
+
+  time.timeZone = "Asia/Riyadh";
+  system.stateVersion = "26.11";
+  # networking.nameservers = lib.mkForce [ "192.168.8.191" ];
+  hardware.logitech.wireless.enable = true;
+
+  environment.systemPackages = with pkgs; [
+    nh
+    micro
+    lxqt.lxqt-policykit
+    nix-output-monitor
+    libnotify
+  ];
+
+  users.users = {
+    "${flakeSettings.username}" = {
+      home = "/home/${flakeSettings.username}";
+      homeMode = "755";
+      isNormalUser = true;
+      description = "${flakeSettings.username}";
+      initialPassword = "password";
+      extraGroups = [
+        "networkmanager"
+        "wheel"
+        "libvirtd"
+        "scanner"
+        "lp"
+        "libvirtd"
+        "docker"
+      ];
+      shell = pkgs.fish;
+      ignoreShellProgramCheck = true;
+      packages = with pkgs; [ ];
+    };
+  };
+}

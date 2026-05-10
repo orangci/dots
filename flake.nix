@@ -202,6 +202,7 @@
         komashi = nixosMachine { host = "komashi"; };
         # sirius = nixosMachine { host = "sirius"; };
         installer = nixosMachine { host = "installer"; };
+        inspiron = nixosMachine { host = "inspiron"; };
       };
     };
 }
