@@ -13,6 +13,7 @@
 - force glance font to be lexend
 - go through literally every module and optionify it all
 - hook ntfy into all the services that can be, e.g., scrutiny, matrix
+- ntfy temp script https://github.com/nickexyz/ntfy-shellscripts/blob/main/temperature.sh
 - use ntfy CLI for ntfy scripts
 - maybe use an epic shell or make my own. like noctalia or danklinux.com
 - complete grafana/prometheus module

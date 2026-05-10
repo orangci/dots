@@ -15,9 +15,9 @@ let
   cfg = config.modules.server.ntfy.scripts.example;
   script = pkgs.writeShellApplication {
     name = "ntfy-script-example";
-    runtimeInputs = with pkgs; [ curl ];
+    runtimeInputs = with pkgs; [ ntfy-sh ];
     text = ''
-      you may use $NTFY_ACCESS_TOKEN in this script to reference the ntfy access token, as well as ${cfg.topic}
+      export NTFY_TOPIC=${cfg.topic}
     '';
   };
 in
