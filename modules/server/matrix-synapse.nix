@@ -9,7 +9,6 @@ let
   inherit (lib)
     mkIf
     mkOption
-    mkEnableOption
     singleton
     types
     ;

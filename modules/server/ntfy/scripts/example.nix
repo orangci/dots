@@ -10,7 +10,6 @@ let
     mkEnableOption
     mkOption
     types
-    singleton
     ;
   cfg = config.modules.server.ntfy.scripts.example;
   script = pkgs.writeShellApplication {
