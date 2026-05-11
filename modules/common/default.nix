@@ -11,5 +11,6 @@
     ./btrfs.nix
     ./restic.nix
     ./ndg.nix
+    ./hjem.nix
   ];
 }

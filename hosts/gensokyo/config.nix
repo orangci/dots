@@ -26,6 +26,7 @@ in
   modules = {
     styles.fonts.enable = true;
     common = {
+      hjem.enable = true;
       bluetooth.enable = false;
       printing.enable = false;
       networking.enable = true;

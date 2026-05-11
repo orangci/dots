@@ -5,12 +5,6 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-small.url = "github:NixOS/nixpkgs/nixos-unstable-small"; # moves faster, has less packages
 
-    # when raf writes documentation for hjem, we'll be switching from home-manager to hjem
-    home-manager = {
-      url = "github:nix-community/home-manager/master";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     # unstable Hyprland
     hyprland.url = "github:hyprwm/Hyprland";
 
@@ -180,25 +174,8 @@
               ;
           };
           modules = [
-            ./hosts/${host}/config.nix
             home-manager.nixosModules.home-manager
-            # hjem.nixosModules.default
-            {
-              home-manager = {
-                extraSpecialArgs = {
-                  inherit
-                    inputs
-                    system
-                    host
-                    flakeSettings
-                    users
-                    ;
-                };
-                useUserPackages = true;
-                backupFileExtension = "backup";
-                users = builtins.mapAttrs (name: _: import ./hosts/${host}/homes/${name}.nix) filteredUsers;
-              };
-            }
+            hjem.nixosModules.default
           ];
         };
     in
