@@ -1,12 +1,20 @@
 {
   pkgs,
   flakeSettings,
+  inputs,
+  users,
+  lib,
   ...
 }:
+let
+  excludedUsers = [ "sysadmin" ];
+  filteredUsers = lib.filterAttrs (n: _: !(builtins.elem n excludedUsers)) users;
+in
 {
   imports = [
     ./hardware.nix
     ../../modules
+    inputs.home-manager.nixosModules.home-manager
   ];
 
   modules = {
@@ -18,7 +26,7 @@
       sound.enable = true;
       networking.enable = true;
       virtualisation.enable = false;
-      sops.enable = true;
+      sops.enable = false;
     };
     programs = {
       thunar.enable = true;
@@ -64,25 +72,32 @@
     libnotify
   ];
 
-  users.users = {
-    "${flakeSettings.username}" = {
-      home = "/home/${flakeSettings.username}";
-      homeMode = "755";
-      isNormalUser = true;
-      description = "${flakeSettings.username}";
-      initialPassword = "password";
-      extraGroups = [
-        "networkmanager"
-        "wheel"
-        "libvirtd"
-        "scanner"
-        "lp"
-        "libvirtd"
-        "docker"
-      ];
-      shell = pkgs.fish;
-      ignoreShellProgramCheck = true;
-      packages = with pkgs; [ ];
+  users.users = builtins.mapAttrs (_: user: {
+    home = "/home/${user.username}";
+    homeMode = "755";
+    isNormalUser = true;
+    description = "${user.username}";
+    initialPassword = "password";
+    extraGroups = [
+      "networkmanager"
+      "scanner"
+    ]
+    ++ lib.optionals user.sudo [
+      "wheel"
+      "libvirtd"
+      "lp"
+      "docker"
+    ];
+    shell = pkgs.fish;
+    ignoreShellProgramCheck = true;
+  }) filteredUsers;
+
+  home-manager.users = builtins.mapAttrs (_: user: {
+    home = {
+      username = user.username;
+      homeDirectory = "/home/${user.username}";
+      stateVersion = "25.05";
     };
-  };
+    programs.home-manager.enable = true;
+  }) filteredUsers;
 }

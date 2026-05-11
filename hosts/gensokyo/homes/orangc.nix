@@ -1,10 +1,11 @@
 {
   flakeSettings,
+  config,
   ...
 }:
 {
   nixpkgs.config.allowUnfree = true;
-  imports = [ ../../homes/${flakeSettings.username} ];
+  imports = [ ../../../home ];
 
   hmModules = {
     programs.editors.nvf.enable = true;
@@ -33,7 +34,7 @@
       };
       git = {
         enable = true;
-        inherit (flakeSettings) username;
+        username = config.home.username;
         email = "c@${flakeSettings.domains.email}";
         github = true;
         signing = {
@@ -44,15 +45,8 @@
     };
   };
 
-  home = {
-    username = "${flakeSettings.username}";
-    homeDirectory = "/home/${flakeSettings.username}";
-    stateVersion = "25.05";
-  };
-
   dconf.settings."org/virt-manager/virt-manager/connections" = {
     autoconnect = [ "qemu:///system" ];
     uris = [ "qemu:///system" ];
   };
-  programs.home-manager.enable = true;
 }

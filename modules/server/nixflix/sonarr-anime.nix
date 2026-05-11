@@ -2,6 +2,7 @@
   config,
   lib,
   flakeSettings,
+  users,
   ...
 }:
 let
@@ -22,7 +23,7 @@ in
         config = {
           apiKey._secret = config.modules.common.sops.secrets."nixflix/sonarr-anime/apiKey".path;
           hostConfig = {
-            inherit (flakeSettings) username;
+            inherit (users.sysadmin) username;
             password._secret = config.modules.common.sops.secrets."nixflix/sonarr-anime/password".path;
             authenticationRequired = "disabledForLocalAddresses";
             port = mkForce (cfg.port + 6);

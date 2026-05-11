@@ -79,7 +79,7 @@ in
         kde.enable = false;
         firefox.colorTheme.enable = true;
         # firefox.enable = false;
-        firefox.profileNames = [ flakeSettings.username ];
+        firefox.profileNames = [ config.home.username ];
       };
     };
   };

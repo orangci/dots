@@ -160,8 +160,13 @@
           ;
       };
 
-      nixosMachine =
-        { host }:
+      mkNixosSystem =
+        host:
+        let
+          users = import ./hosts/${host}/users.nix;
+          excludedUsers = [ "sysadmin" ];
+          filteredUsers = lib.filterAttrs (n: _: !(builtins.elem n excludedUsers)) users;
+        in
         lib.nixosSystem {
           specialArgs = {
             inherit
@@ -169,12 +174,12 @@
               system
               host
               flakeSettings
+              users
               ;
           };
           modules = [
             ./hosts/${host}/config.nix
             home-manager.nixosModules.home-manager
-            (lib.mkAliasOptionModule [ "hm" ] [ "home-manager" "users" flakeSettings.username ])
             # hjem.nixosModules.default
             {
               home-manager = {
@@ -184,11 +189,12 @@
                     system
                     host
                     flakeSettings
+                    users
                     ;
                 };
                 useUserPackages = true;
                 backupFileExtension = "backup";
-                users.${flakeSettings.username} = import ./hosts/${host}/home.nix;
+                users = builtins.mapAttrs (name: _: import ./hosts/${host}/homes/${name}.nix) filteredUsers;
               };
             }
           ];
@@ -198,11 +204,9 @@
       packages.${system} = customPkgs;
       formatter.${system} = pkgs.nixfmt-tree;
       nixosConfigurations = {
-        gensokyo = nixosMachine { host = "gensokyo"; };
-        komashi = nixosMachine { host = "komashi"; };
-        # sirius = nixosMachine { host = "sirius"; };
-        installer = nixosMachine { host = "installer"; };
-        inspiron = nixosMachine { host = "inspiron"; };
+        gensokyo = mkNixosSystem "gensokyo";
+        komashi = mkNixosSystem "komashi";
+        inspiron = mkNixosSystem "inspiron";
       };
     };
 }

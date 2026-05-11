@@ -5,7 +5,7 @@
   ...
 }:
 {
-  imports = [ ../../homes/${flakeSettings.username} ];
+  imports = [ ../../../home ];
   nixpkgs.config.allowUnfree = true;
 
   hmModules = {
@@ -25,13 +25,9 @@
       };
       git = {
         enable = true;
-        inherit (flakeSettings) username;
-        email = "c@${flakeSettings.domains.email}";
+        username = config.home.username;
+        email = "mrlion871@protonmail.com";
         github = true;
-        signing = {
-          enable = true;
-          key = "D23D8C2EDC080D5470CC35803C6C89BA4FFFCD24";
-        };
       };
     };
     misc = {
@@ -52,30 +48,13 @@
       };
     };
     dev = {
-      python = {
-        enable = true;
-        version = "python314";
-      };
-      rust.enable = true;
       nix.enable = true;
-      misc.enable = true;
       direnv.enable = true;
     };
     programs = {
       better-control.enable = true;
-      thunderbird.enable = true;
-      editors = {
-        nvf.enable = false;
-        micro.enable = true;
-        vscodium = {
-          enable = true;
-          webdev = true;
-        };
-      };
-      browsers = {
-        firefox.enable = true;
-        chromium.enable = true;
-      };
+      editors.micro.enable = true;
+      browsers.chromium.enable = true;
       hypr = {
         land.enable = true;
         lock.enable = true;
@@ -90,15 +69,13 @@
         swaync.enable = true;
         waybar.enable = true;
         walker.enable = true;
-        ignis.enable = false;
-        kando.enable = false;
         syshud.enable = true;
       };
       media = {
         enable = true;
         gwenview = true;
       };
-      discord.enable = false;
+      discord.enable = true;
       arrpc.enable = true;
       terminal = {
         enable = true;
@@ -118,19 +95,15 @@
         # Choose from https://tinted-theming.github.io/tinted-gallery/
         # if you want a light theme, i strongly recommend gruvbox-material-light-medium
         # i usually default to rose-pine or catppuccin-mocha
-        theme = "rose-pine";
+        theme = "base16-catppuccin-mocha";
       };
     };
   };
 
   home = {
-    username = "${flakeSettings.username}";
-    homeDirectory = "/home/${flakeSettings.username}";
-    stateVersion = "26.05";
     file.".face.icon".source = ../../assets/face.png;
     packages = with pkgs; [
       hyprpicker
-      obsidian
       pinta
     ];
   };
@@ -139,5 +112,4 @@
     autoconnect = [ "qemu:///system" ];
     uris = [ "qemu:///system" ];
   };
-  programs.home-manager.enable = true;
 }

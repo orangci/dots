@@ -5,7 +5,7 @@
   ...
 }:
 {
-  imports = [ ../../homes/${flakeSettings.username} ];
+  imports = [ ../../../home ];
   nixpkgs.config.allowUnfree = true;
 
   hmModules = {
@@ -25,7 +25,7 @@
       };
       git = {
         enable = true;
-        inherit (flakeSettings) username;
+        username = config.home.username;
         email = "c@${flakeSettings.domains.email}";
         github = true;
       };
@@ -98,15 +98,12 @@
         # Choose from https://tinted-theming.github.io/tinted-gallery/
         # if you want a light theme, i strongly recommend gruvbox-material-light-medium
         # i usually default to rose-pine or catppuccin-mocha
-        theme = "rose-pine";
+        theme = "base16-rose-pine";
       };
     };
   };
 
   home = {
-    username = "${flakeSettings.username}";
-    homeDirectory = "/home/${flakeSettings.username}";
-    stateVersion = "26.05";
     file.".face.icon".source = ../../assets/face.png;
     packages = with pkgs; [
       hyprpicker
@@ -119,5 +116,4 @@
     autoconnect = [ "qemu:///system" ];
     uris = [ "qemu:///system" ];
   };
-  programs.home-manager.enable = true;
 }

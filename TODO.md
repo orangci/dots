@@ -1,4 +1,3 @@
-- multi user support
 - fix xdg stuff
 - full disk encryption
 - secure boot

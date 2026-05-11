@@ -2,10 +2,13 @@
   pkgs,
   lib,
   flakeSettings,
+  inputs,
+  users,
   ...
 }:
 let
-
+  excludedUsers = [ "sysadmin" ];
+  filteredUsers = lib.filterAttrs (n: _: !(builtins.elem n excludedUsers)) users;
   allThree = {
     glance.enable = true;
     internalTailscaleDomain.enable = true;
@@ -17,6 +20,7 @@ in
   imports = [
     ./hardware.nix
     ../../modules
+    inputs.home-manager.nixosModules.home-manager
   ];
 
   modules = {
@@ -279,25 +283,32 @@ in
     smartmontools # smartd drive health monitoring
   ];
 
-  users.users = {
-    "${flakeSettings.username}" = {
-      home = "/home/${flakeSettings.username}";
-      homeMode = "755";
-      isNormalUser = true;
-      description = "${flakeSettings.username}";
-      initialPassword = "password";
-      extraGroups = [
-        "networkmanager"
-        "wheel"
-        "libvirtd"
-        "scanner"
-        "lp"
-        "libvirtd"
-        "docker"
-      ];
-      shell = pkgs.fish;
-      ignoreShellProgramCheck = true;
-      packages = with pkgs; [ ];
+  users.users = builtins.mapAttrs (name: user: {
+    home = "/home/${name}";
+    homeMode = "755";
+    isNormalUser = true;
+    description = "${name}";
+    initialPassword = "password";
+    extraGroups = [
+      "networkmanager"
+      "scanner"
+    ]
+    ++ lib.optionals user.sudo [
+      "wheel"
+      "libvirtd"
+      "lp"
+      "docker"
+    ];
+    shell = pkgs.fish;
+    ignoreShellProgramCheck = true;
+  }) filteredUsers;
+
+  home-manager.users = builtins.mapAttrs (name: user: {
+    home = {
+      username = name;
+      homeDirectory = "/home/${name}";
+      stateVersion = "25.05";
     };
-  };
+    programs.home-manager.enable = true;
+  }) filteredUsers;
 }

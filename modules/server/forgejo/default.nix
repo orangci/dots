@@ -4,6 +4,7 @@
   host,
   pkgs,
   flakeSettings,
+  users,
   ...
 }:
 let
@@ -58,8 +59,8 @@ in
           THEMES = "catppuccin-mocha-rosewater,catppuccin-mocha-flamingo,catppuccin-mocha-pink,catppuccin-mocha-mauve,catppuccin-mocha-red,catppuccin-mocha-maroon,catppuccin-mocha-peach,catppuccin-mocha-yellow,catppuccin-mocha-green,catppuccin-mocha-teal,catppuccin-mocha-sky,catppuccin-mocha-sapphire,catppuccin-mocha-blue,catppuccin-mocha-lavender,catppuccin-rosewater-auto,catppuccin-flamingo-auto,catppuccin-pink-auto,catppuccin-mauve-auto,catppuccin-red-auto,catppuccin-maroon-auto,catppuccin-peach-auto,catppuccin-yellow-auto,catppuccin-green-auto,catppuccin-teal-auto,catppuccin-sky-auto,catppuccin-sapphire-auto,catppuccin-blue-auto,catppuccin-lavender-auto,forgejo-auto";
         };
         "ui.meta" = {
-          AUTHOR = flakeSettings.username;
-          DESCRIPTION = "${flakeSettings.username}'s selfhosted instance of forgejo";
+          AUTHOR = users.sysadmin.username;
+          DESCRIPTION = "${users.sysadmin.username}'s selfhosted instance of forgejo";
         };
       };
     };

@@ -2,6 +2,7 @@
   config,
   lib,
   flakeSettings,
+  users,
   ...
 }:
 let
@@ -42,7 +43,7 @@ in
           docs = {
             id = "docs";
             devices = [ "evergarden" ];
-            path = "/home/${flakeSettings.username}/docs";
+            path = "/home/${users.sysadmin.username}/docs";
           };
         };
       };

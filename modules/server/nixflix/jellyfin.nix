@@ -3,6 +3,7 @@
   lib,
   flakeSettings,
   inputs,
+  users,
   ...
 }:
 let
@@ -46,7 +47,7 @@ in
         publicHttpPort = mkForce (cfg.port + 1);
       };
 
-      users.${flakeSettings.username} = {
+      users.${users.sysadmin.username} = {
         password._secret = config.modules.common.sops.secrets."nixflix/jellyfin/admin-password".path;
         policy.isAdministrator = true;
       };

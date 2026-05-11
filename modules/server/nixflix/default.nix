@@ -3,6 +3,7 @@
   lib,
   inputs,
   flakeSettings,
+  users,
   ...
 }:
 let
@@ -36,7 +37,7 @@ in
   config = mkIf cfg.enable {
     nixflix = {
       enable = true;
-      mediaUsers = lib.singleton flakeSettings.username;
+      mediaUsers = lib.singleton users.sysadmin.username;
       #mediaDir = "/srv/media";
       #stateDir = "/srv/media/.state";
       nginx.enable = false;

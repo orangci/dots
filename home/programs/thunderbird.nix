@@ -19,7 +19,7 @@ in
   config.programs.thunderbird = mkIf cfg.enable {
     # https://home-manager-options.extranix.com/?query=programs.thunderbird.&release=master
     enable = true;
-    profiles.${flakeSettings.username} = {
+    profiles.${config.home.username} = {
       isDefault = true;
     };
   };
