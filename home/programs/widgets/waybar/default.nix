@@ -66,7 +66,7 @@ in
           };
           "memory" = {
             interval = 5;
-            format = " {}%";
+            format = " {text}%";
             tooltip = true;
           };
           "cpu" = {
@@ -132,7 +132,7 @@ in
           };
           "custom/notification" = {
             tooltip = false;
-            format = "{icon} {}";
+            format = "{icon} {text}";
             format-icons = {
               notification = "<span foreground='red'><sup></sup></span>";
               none = "";
@@ -175,7 +175,7 @@ in
           "custom/weather" = {
             interval = 3600;
             exec = "wttrbar";
-            format = "{}℃";
+            format = "{text}℃";
             format-alt = "{on-click-right}℉";
             format-alt-click = "click-right";
             on-click = "exec";
@@ -185,7 +185,7 @@ in
             tooltip = true;
           };
           "custom/salah" = {
-            format = "{}";
+            format = "{text}";
             exec = "python3 ${./salah.py}";
             interval = 60;
             on-click = "xdg-open https://salah.${flakeSettings.domains.primary}/";
