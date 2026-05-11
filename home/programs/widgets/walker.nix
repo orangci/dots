@@ -21,9 +21,8 @@ in
   config = mkIf cfg.enable {
     wayland.windowManager.hyprland.settings = {
       layerrule = [
-        "blur,walker"
-        "ignorezero,walker"
-        "ignorealpha 0.8,walker"
+        "match:walker, blur on"
+        "match:walker, ignore_alpha 0.8"
       ];
       bindd = [
         "SUPER, R, Walker, exec, walker"
