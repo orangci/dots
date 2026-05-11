@@ -4,9 +4,8 @@
 - use impermanence / make garbage collection actually good
 - nixify firefox extensions settings
 - fix up QT module — styling is ass currently
-- server modules that are broken: moodle
-- syncthing module, perhaps
-- switch to hjem
+- modules that are broken: moodle, syncthing
+- emove hm/system split... switch to hjem
 - look into other image viewers. oculante? fix up mpv to use as my image viewer instead of gwenview? or just keep using gwenview?
 - selfhost (maybe) audiobookshelf, litexiv, invidious, redlib, jitsi, cyberchef, pairdrop, stirling pdf, pricebuddy, home-assistant, [fiche](https://github.com/solusipse/fiche)
 - hook ntfy into all the services that can be, e.g., scrutiny, matrix
@@ -14,7 +13,6 @@
 - use ntfy CLI for ntfy scripts
 - maybe use an epic shell or make my own. like noctalia or danklinux.com
 - complete grafana/prometheus module
-- remove hm/system split
 - export all modules
 - look into netbird
 - add more pages to glance

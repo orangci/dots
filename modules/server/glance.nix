@@ -52,12 +52,10 @@ in
       immich-api-key.path = "/var/secrets/immich-api-key";
       speedtest-api-key.path = "/var/secrets/speedtest-api-key";
     };
-    systemd.tmpfiles.rules = lib.singleton "L+ /run/glance/assets/font.css - - - - ${
-      pkgs.writeText "font.css" ''
-        @import url(https://fonts.bunny.net/css?family=lexend:400);
-        body { font-family: "Lexend", "JetBrains Mono", sans-serif, monospace; }
-      ''
-    }";
+    systemd.tmpfiles.rules = lib.singleton "L+ /run/glance/assets/font.css - - - - ${pkgs.writeText "font.css" ''
+      @import url(https://fonts.bunny.net/css?family=lexend:400);
+      body { font-family: "Lexend", "JetBrains Mono", sans-serif, monospace; }
+    ''}";
     services.glance = {
       enable = true;
       settings = {
