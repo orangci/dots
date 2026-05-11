@@ -91,7 +91,6 @@
         waybar.enable = true;
         walker.enable = true;
         ignis.enable = false;
-        kando.enable = false;
         syshud.enable = true;
       };
       media = {
