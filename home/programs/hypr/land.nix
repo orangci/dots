@@ -60,7 +60,6 @@ in
           "SUPERSHIFT, SPACE, Move To Special Workspace, movetoworkspace,special"
           "SUPER, SPACE, Open Special Workspace, togglespecialworkspace"
           "SUPER, B, Blur/Unblur Current Window, exec, hyprctl setprop active opaque toggle # toggle transparency for le active window"
-          "SUPERSHIFT, I, Toggle Split, togglesplit"
           "SUPERSHIFT, F, Float Current Window, togglefloating"
           "SUPER, Q, Close Window, killactive"
           "SUPER, F, Make Window Fullscreen, fullscreen,"
@@ -122,7 +121,6 @@ in
           border_size = 0;
           # "col.active_border" = "rgba(${colours.base0E}ff)";
           # "col.inactive_border" = "rgba(${colours.base00}cc)";
-          layout = "dwindle";
           resize_on_border = true;
           allow_tearing = true;
         };
@@ -188,12 +186,10 @@ in
         };
 
         dwindle = {
-          pseudotile = true;
           preserve_split = true;
         };
 
         windowrulev2 = [
-          "opacity 1 override,class:^(Minecraft* 1.21)$"
           "opacity 1 override,class:^(zoom)$"
           "opacity 0.85 override 0.75 override 0.85 override,class:^(kitty)$"
           "opacity 0.85 override 0.75 override 0.85 override,class:^(thunar)$"
