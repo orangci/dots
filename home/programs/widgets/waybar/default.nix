@@ -53,7 +53,7 @@ in
             on-scroll-down = "hyprctl dispatch workspace e-1";
           };
           "clock" = {
-            format = " {:%H.%M • %A, %B %d}";
+            format = " {:%H:%M • %A, %B %d}";
             tooltip = true;
             tooltip-format = "<big>{:%A, %B %d}</big>";
           };

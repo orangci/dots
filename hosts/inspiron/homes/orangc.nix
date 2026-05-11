@@ -28,6 +28,10 @@
         username = config.home.username;
         email = "c@${flakeSettings.domains.email}";
         github = true;
+        signing = {
+          enable = true;
+          key = "D23D8C2EDC080D5470CC35803C6C89BA4FFFCD24";
+        };
       };
     };
     misc = {
@@ -54,10 +58,7 @@
     programs = {
       better-control.enable = true;
       editors.micro.enable = true;
-      browsers = {
-        firefox.enable = true;
-        chromium.enable = true;
-      };
+      browsers.firefox.enable = true;
       hypr = {
         land.enable = true;
         lock.enable = true;
@@ -107,7 +108,6 @@
     file.".face.icon".source = ../../../assets/face.png;
     packages = with pkgs; [
       hyprpicker
-      obsidian
       pinta
     ];
   };

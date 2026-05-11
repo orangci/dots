@@ -90,7 +90,7 @@ in
       gpf = "git push --force";
       push = "git push";
       pull = "git pull";
-      gd = "git duff | bat -p";
+      gd = "git diff | bat -p";
       gt = "git status";
       gr = "git rebase";
     };

@@ -6,7 +6,11 @@
   ...
 }:
 {
-  nixpkgs.overlays = [(_: prev: {openldap = prev.openldap.overrideAttrs {doCheck = !prev.stdenv.hostPlatform.isi686;};})];
+  nixpkgs.overlays = [
+    (_: prev: {
+      openldap = prev.openldap.overrideAttrs { doCheck = !prev.stdenv.hostPlatform.isi686; };
+    })
+  ];
   boot = {
     # Kernel
     kernelPackages = pkgs.linuxPackages_latest;
