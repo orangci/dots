@@ -9,8 +9,6 @@
 - switch to hjem
 - look into other image viewers. oculante? fix up mpv to use as my image viewer instead of gwenview? or just keep using gwenview?
 - selfhost (maybe) audiobookshelf, litexiv, invidious, redlib, jitsi, cyberchef, pairdrop, stirling pdf, pricebuddy, home-assistant, [fiche](https://github.com/solusipse/fiche)
-- force glance font to be lexend
-- go through literally every module and optionify it all
 - hook ntfy into all the services that can be, e.g., scrutiny, matrix
 - ntfy temp script https://github.com/nickexyz/ntfy-shellscripts/blob/main/temperature.sh
 - use ntfy CLI for ntfy scripts
@@ -32,3 +30,4 @@
 - auto discover hosts
 - boilerplate bad
 - make installer iso config
+- disko

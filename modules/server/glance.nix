@@ -3,6 +3,7 @@
   lib,
   host,
   flakeSettings,
+  pkgs,
   ...
 }:
 let
@@ -51,21 +52,25 @@ in
       immich-api-key.path = "/var/secrets/immich-api-key";
       speedtest-api-key.path = "/var/secrets/speedtest-api-key";
     };
-    environment.etc."glance-style.css".text = ''
-      body {font-family: Lexend, "Jetbrains Mono", sans-serif, monospace;}
-    '';
+    systemd.tmpfiles.rules = lib.singleton "L+ /run/glance/assets/font.css - - - - ${
+      pkgs.writeText "font.css" ''
+        @import url(https://fonts.bunny.net/css?family=lexend:400);
+        body { font-family: "Lexend", "JetBrains Mono", sans-serif, monospace; }
+      ''
+    }";
     services.glance = {
       enable = true;
       settings = {
         # https://github.com/glanceapp/glance/blob/main/docs/configuration.md
         server.port = cfg.port;
         server.proxied = true;
+        server.assets-path = "/run/glance/assets";
         branding = {
           app-background-color = "#191724";
           hide-footer = true;
         };
         theme = {
-          custom-css-file = "/etc/glance-style.css";
+          custom-css-file = "/assets/font.css";
           background-color = "249 22 12";
           primary-color = "2 55 83";
           positive-color = "197 49 38";
