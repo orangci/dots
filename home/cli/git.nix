@@ -86,7 +86,7 @@ in
       ga = "git add .";
       commit = "git commit -m";
       gp = "git push";
-      gs = "git status";
+      gs = "git switch";
       gpf = "git push --force";
       push = "git push";
       pull = "git pull";
