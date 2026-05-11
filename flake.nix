@@ -121,7 +121,7 @@
   outputs =
     inputs@{
       nixpkgs,
-      home-manager,
+      hjem,
       ...
     }:
     let
@@ -174,7 +174,6 @@
               ;
           };
           modules = [
-            home-manager.nixosModules.home-manager
             hjem.nixosModules.default
           ];
         };
