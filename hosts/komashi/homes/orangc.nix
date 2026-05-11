@@ -124,7 +124,7 @@
   };
 
   home = {
-    file.".face.icon".source = ../../assets/face.png;
+    file.".face.icon".source = ../../../assets/face.png;
     packages = with pkgs; [
       hyprpicker
       obsidian
