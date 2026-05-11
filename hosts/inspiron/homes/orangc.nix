@@ -98,7 +98,7 @@
         # Choose from https://tinted-theming.github.io/tinted-gallery/
         # if you want a light theme, i strongly recommend gruvbox-material-light-medium
         # i usually default to rose-pine or catppuccin-mocha
-        theme = "base16-rose-pine";
+        theme = "rose-pine";
       };
     };
   };
