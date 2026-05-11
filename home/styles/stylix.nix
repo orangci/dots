@@ -28,7 +28,7 @@ in
   config = mkIf cfg.enable {
     stylix = {
       enable = true;
-      image = ../../../assets/face.png;
+      image = ../../assets/face.png;
       base16Scheme = lib.importJSON (
         pkgs.runCommand "base16-scheme.json"
           {
