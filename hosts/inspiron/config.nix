@@ -19,7 +19,6 @@ in
 
   modules = {
     dm.sddm.enable = true;
-    dm.sddm.theme = "stray";
     common = {
       bluetooth.enable = true;
       printing.enable = true;
@@ -42,7 +41,7 @@ in
       heroic.enable = false;
       minecraft = {
         enable = true;
-        modrinth.enable = false;
+        modrinth.enable = true;
       };
     };
     styles.fonts.enable = true;
