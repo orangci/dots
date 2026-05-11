@@ -29,3 +29,6 @@
 - finish nvf config
 - modules.server is way too big, divide it into subfolders
 - style ndg a bit
+- auto discover hosts
+- boilerplate bad
+- make installer iso config
