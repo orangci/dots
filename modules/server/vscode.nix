@@ -41,6 +41,7 @@ in
       extraPackages = with pkgs; [
         git
         nix
+        nixd
       ];
     };
   };
