@@ -69,6 +69,7 @@
           enable = true;
           horizontal = true;
         };
+        noctalia.enable = true;
         rofi.enable = true;
         swaync.enable = true;
         waybar.enable = true;

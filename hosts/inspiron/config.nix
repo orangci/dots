@@ -57,6 +57,7 @@ in
       nvidiaBusID = "";
     };
   };
+  services.tailscale.enable = true;
 
   time.timeZone = "Asia/Riyadh";
   system.stateVersion = "26.11";
