@@ -1,6 +1,5 @@
 {
   pkgs,
-  flakeSettings,
   inputs,
   users,
   lib,
@@ -107,7 +106,7 @@ in
 
   home-manager.users = builtins.mapAttrs (_: user: {
     home = {
-      username = user.username;
+      inherit (user) username;
       homeDirectory = "/home/${user.username}";
       stateVersion = "25.05";
     };

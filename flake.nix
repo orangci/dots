@@ -211,6 +211,7 @@
       nixosConfigurations = {
         gensokyo = mkNixosSystem "gensokyo";
         komashi = mkNixosSystem "komashi";
+        sirius = mkNixosSystem "sirius";
         inspiron = mkNixosSystem "inspiron";
       };
     };

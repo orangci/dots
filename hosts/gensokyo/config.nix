@@ -303,7 +303,7 @@ in
     ignoreShellProgramCheck = true;
   }) filteredUsers;
 
-  home-manager.users = builtins.mapAttrs (name: user: {
+  home-manager.users = builtins.mapAttrs (name: _user: {
     home = {
       username = name;
       homeDirectory = "/home/${name}";

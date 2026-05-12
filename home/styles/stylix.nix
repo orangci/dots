@@ -3,7 +3,6 @@
   config,
   lib,
   inputs,
-  flakeSettings,
   ...
 }:
 let

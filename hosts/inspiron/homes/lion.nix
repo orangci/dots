@@ -1,5 +1,4 @@
 {
-  flakeSettings,
   config,
   pkgs,
   ...
@@ -25,7 +24,7 @@
       };
       git = {
         enable = true;
-        username = config.home.username;
+        inherit (config.home) username;
         email = "mrlion871@protonmail.com";
         github = true;
       };

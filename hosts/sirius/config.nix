@@ -33,13 +33,13 @@ in
       sudo-rs.enable = true;
     };
     gaming = {
-      wine.enable = true;
-      lutris.enable = true;
+      wine.enable = false;
+      lutris.enable = false;
       bottles.enable = false;
       steam.enable = false;
       heroic.enable = false;
       minecraft = {
-        enable = true;
+        enable = false;
         modrinth.enable = false;
       };
     };

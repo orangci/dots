@@ -57,6 +57,7 @@
     };
     programs = {
       better-control.enable = true;
+      editors.vscodium.enable = true;
       editors.micro.enable = true;
       browsers.firefox.enable = true;
       hypr = {
