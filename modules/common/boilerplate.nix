@@ -136,6 +136,7 @@
       settings.PasswordAuthentication = true;
       settings.PermitRootLogin = "yes";
     };
+    power-profiles-daemon.enable = true;
     upower.enable = true;
     libinput.enable = true;
     gnome.gnome-keyring.enable = true;

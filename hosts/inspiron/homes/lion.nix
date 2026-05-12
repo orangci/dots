@@ -54,7 +54,6 @@
     programs = {
       better-control.enable = true;
       editors.micro.enable = true;
-      browsers.chromium.enable = true;
       hypr = {
         land.enable = true;
         lock.enable = true;
@@ -105,11 +104,8 @@
     packages = with pkgs; [
       hyprpicker
       pinta
+      google-chrome
     ];
-  };
-
-  programs = {
-    chromium.package = pkgs.google-chrome;
   };
 
   dconf.settings."org/virt-manager/virt-manager/connections" = {
