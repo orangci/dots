@@ -41,7 +41,7 @@ in
       heroic.enable = false;
       minecraft = {
         enable = true;
-        modrinth.enable = true;
+        modrinth.enable = false;
       };
     };
     styles.fonts.enable = true;
