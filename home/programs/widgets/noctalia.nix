@@ -21,6 +21,9 @@ in
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [ gpu-screen-recorder ];
+    wayland.windowManager.hyprland.settings = {
+      exec-once = singleton "noctalia-shell";
+    };
     programs.noctalia-shell = {
       enable = true;
       plugins = {
@@ -36,7 +39,7 @@ in
           currency-exchange = enablePlugin;
           usb-drive-manager = enablePlugin;
           workspace-overview = enablePlugin;
-          file-search = config.programs.fd.enable;
+          file-search = mkIf config.programs.fd.enable enablePlugin;
           sys-info-widget = enablePlugin;
           privacy-indicator = enablePlugin;
           mawaqit = enablePlugin;
@@ -44,12 +47,12 @@ in
           ntfy-notifications = enablePlugin;
           keybind-cheatsheet = enablePlugin;
           timer = enablePlugin;
-          kde-connect = config.services.kdeconnect.enable;
+          kde-connect = mkIf config.services.kdeconnect.enable enablePlugin;
           polkit-agent = enablePlugin;
           custom-commands = enablePlugin;
           screen-recorder = enablePlugin;
         };
-        version = 2;
+        version = 4;
       };
 
       pluginSettings = {
