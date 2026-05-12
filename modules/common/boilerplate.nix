@@ -141,7 +141,7 @@
     gnome.gnome-keyring.enable = true;
   };
   powerManagement = {
-    cpuFreqGoverner = "performance";
+    cpuFreqGovernor = "performance";
     powertop.enable = true;
   };
 }
