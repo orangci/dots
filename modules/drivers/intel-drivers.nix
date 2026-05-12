@@ -15,6 +15,9 @@ in
 
   config = mkIf cfg.enable {
     boot.kernelParams = [ "i915.enable_guc=3" ];
+    nixpkgs.config.packageOverrides = pkgs: {
+      intel-vaapi-driver = pkgs.intel-vaapi-driver.override { enableHybridCodec = true; };
+    };
 
     # OpenGL
     hardware.intel-gpu-tools.enable = true;
@@ -32,7 +35,7 @@ in
     };
     environment.sessionVariables = {
       LIBVA_DRIVER_NAME = "iHD"; # Prefer the modern iHD backend
-      # VDPAU_DRIVER = "va_gl";      # Only if using libvdpau-va-gl
+      VDPAU_DRIVER = "va_gl";      # Only if using libvdpau-va-gl
     };
   };
 }
