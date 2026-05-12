@@ -20,8 +20,8 @@ in
   config = mkIf cfg.enable {
     wayland.windowManager.hyprland.settings = {
       layerrule = [
-        "match:rofi, blur on"
-        "match:rofi, ignore_alpha 0.8"
+        "match:namespace rofi, blur on"
+        "match:namespace rofi, ignore_alpha 0.8"
       ];
       bindd = [
         "SUPERSHIFT, APOSTROPHE, Choose Wallpaper, exec, wall-select"

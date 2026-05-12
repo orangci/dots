@@ -37,7 +37,7 @@ in
   config = mkIf cfg.enable {
     wayland.windowManager.hyprland.settings = {
       bindd = [ "SUPER, BACKSLASH, Open Logout Menu, exec, logout-exit" ];
-      layerrule = [ "match:wleave, blur on" ];
+      layerrule = [ "match:namespace wleave, blur on" ];
     };
     home = {
       packages = [

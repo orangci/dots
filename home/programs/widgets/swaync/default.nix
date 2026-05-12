@@ -20,10 +20,10 @@ in
     };
     wayland.windowManager.hyprland.settings = {
       layerrule = [
-        "match:swaync-control-center, blur on"
-        "match:swaync-notification-window, blur on"
-        "match:swaync-control-center, ignore_alpha 0.8"
-        "match:swaync-notification-window, ignore_alpha 0.8"
+        "match:namespace swaync-control-center, blur on"
+        "match:namespace swaync-notification-window, blur on"
+        "match:namespace swaync-control-center, ignore_alpha 0.8"
+        "match:namespace swaync-notification-window, ignore_alpha 0.8"
       ];
       bindd = [
         "SUPER, A, Open swaync Panel, exec, swaync-client -t "

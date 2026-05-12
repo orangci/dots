@@ -200,10 +200,8 @@ in
           "match:class ^(zoom)$, no_blur on"
           "match:class ^(yad)$, stay_focused on"
           # Picture-in-Picture
-          "match:title ^([Pp]icture[-\s]?[Ii]n[-\s]?[Pp]icture)(.*)$, blur on"
           "match:title ^([Pp]icture[-\s]?[Ii]n[-\s]?[Pp]icture)(.*)$, move 73% 72%"
           "match:title ^([Pp]icture[-\s]?[Ii]n[-\s]?[Pp]icture)(.*)$, size 25% 25%"
-          "match:title ^([Pp]icture[-\s]?[Ii]n[-\s]?[Pp]icture)(.*)$, blur on"
           "match:title ^([Pp]icture[-\s]?[Ii]n[-\s]?[Pp]icture)(.*)$, pin on"
           # Dialog windows – float+center these windows.
           "match:title ^(Open File)(.*)$, center on"
