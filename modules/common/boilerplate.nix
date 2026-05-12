@@ -104,6 +104,7 @@
       experimental-features = [
         "nix-command"
         "flakes"
+        "pipe-operators"
       ];
       substituters = [
         "https://hyprland.cachix.org"
