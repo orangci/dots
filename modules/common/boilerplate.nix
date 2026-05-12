@@ -140,5 +140,8 @@
     libinput.enable = true;
     gnome.gnome-keyring.enable = true;
   };
-  hardware.graphics.enable = true;
+  powerManagement = {
+    cpuFreqGoverner = "performance";
+    powertop.enable = true;
+  };
 }
