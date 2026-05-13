@@ -73,7 +73,7 @@
         enable = true;
         gwenview = true;
       };
-      discord.enable = false;
+      discord.enable = true;
       arrpc.enable = true;
       terminal = {
         enable = true;

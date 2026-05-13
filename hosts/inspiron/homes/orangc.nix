@@ -57,6 +57,7 @@
     };
     programs = {
       better-control.enable = true;
+      editors.vscodium.enable = true;
       editors.micro.enable = true;
       browsers.firefox.enable = true;
       hypr.land.enable = true;
@@ -65,7 +66,7 @@
         enable = true;
         gwenview = true;
       };
-      discord.enable = false;
+      discord.enable = true;
       arrpc.enable = true;
       terminal = {
         enable = true;
@@ -75,11 +76,6 @@
     styles = {
       gtk.enable = true;
       qt.enable = true;
-      walls = {
-        enable = true;
-        timeout = 20; # Time between wallpaper changes (in minutes)
-        directory = "${config.xdg.userDirs.pictures}/walls";
-      };
       stylix = {
         enable = true;
         # Choose from https://tinted-theming.github.io/tinted-gallery/

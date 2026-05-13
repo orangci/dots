@@ -12,7 +12,7 @@ let
     mkIf
     ;
   cfg = config.hmModules.programs;
-  colours = config.stylix.base16Scheme;
+  colours = config.lib.stylix.colors.withHashtag;
   inherit (config.stylix) fonts;
   base16-discord = pkgs.concatTextFile {
     name = "base16-discord.css";
@@ -99,11 +99,11 @@ in
     ];
     home.file = lib.mkIf cfg.discord.enable (
       lib.mkMerge [
-        (lib.optional (cfg.discord.client != "equibop") {
+        (mkIf (cfg.discord.client != "equibop") {
           ".config/Vencord/themes/orangetweaks.css".source = ./vencordthemes/orangetweaks.css;
           ".config/Vencord/themes/base16.css".source = base16-discord;
         })
-        (lib.optional (cfg.discord.client == "equibop") {
+        (mkIf (cfg.discord.client == "equibop") {
           ".config/equibop/themes/orangetweaks.css".source = ./vencordthemes/orangetweaks.css;
           ".config/equibop/themes/base16.css".source = base16-discord;
         })
