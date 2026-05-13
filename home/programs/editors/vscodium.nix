@@ -16,7 +16,6 @@ in
 {
   options.hmModules.programs.editors.vscodium = {
     enable = mkEnableOption "Enable VSCodium";
-
     webdev = mkOption {
       type = types.bool;
       default = false;
@@ -27,7 +26,7 @@ in
   config = mkIf cfg.enable {
     hmModules.programs.editors.xdg = "codium";
     wayland.windowManager.hyprland.settings.bindd = [ "SUPERSHIFT, C, Launch VSCodium, exec, codium" ];
-    programs.vscodium = {
+    programs.vscode = {
       enable = true;
 
       profiles.default.userSettings = lib.mkForce {
@@ -35,9 +34,7 @@ in
         "git.confirmSync" = false;
         "explorer.confirmDelete" = false;
         "editor.minimap.enabled" = false;
-        "[css]" = {
-          "editor.defaultFormatter" = "vscode.css-language-features";
-        };
+        "[css]"."editor.defaultFormatter" = "vscode.css-language-features";
         "vscord.status.idle.timeout" = 120;
         "explorer.confirmDragAndDrop" = false;
         "vscord.status.details.text.idle" = "";
@@ -46,29 +43,19 @@ in
         "conventionalCommits.showNewVersionNotes" = false;
         "liveServer.settings.donotVerifyTags" = true;
         "liveServer.settings.donotShowInfoMsg" = true;
-        "[html]" = {
-          "editor.defaultFormatter" = "vscode.html-language-features";
-        };
-        "[json]" = {
-          "editor.defaultFormatter" = "vscode.json-language-features";
-        };
+        "[html]"."editor.defaultFormatter" = "vscode.html-language-features";
+        "[json]"."editor.defaultFormatter" = "vscode.json-language-features";
         "conventionalCommits.promptBody" = false;
         "conventionalCommits.promptFooter" = false;
-        "[javascript]" = {
-          "editor.defaultFormatter" = "vscode.typescript-language-features";
-        };
-        "extensions.experimental.affinity" = {
-          "asvetliakov.vscode-neovim" = 1;
-        };
+        "[javascript]"."editor.defaultFormatter" = "vscode.typescript-language-features";
+        "extensions.experimental.affinity"."asvetliakov.vscode-neovim" = 1;
         "editor.wordWrap" = "on";
         "editor.fontSize" = 16;
-        "[typescriptreact]" = {
-          "editor.defaultFormatter" = "vscode.typescript-language-features";
-        };
+        "[typescriptreact]"."editor.defaultFormatter" = "vscode.typescript-language-features";
         "ruff.lineLength" = 150;
         "ruff.configurationPreference" = "filesystemFirst";
         "workbench.iconTheme" = "material-icon-theme";
-        "workbench.colorTheme" = "Stylix";
+        "workbench.colorTheme" = "Rosé Pine";
         "workbench.startupEditor" = "none";
         "[python]" = {
           "editor.formatOnSave" = true;
@@ -80,6 +67,7 @@ in
         with pkgs.vscode-extensions;
         let
           extensions = [
+            mvllow.rose-pine
             tamasfe.even-better-toml
             esbenp.prettier-vscode
             wakatime.vscode-wakatime
@@ -93,6 +81,7 @@ in
             ecmel.vscode-html-css
             bradlc.vscode-tailwindcss
             ritwickdey.liveserver
+            svelte.svelte-vscode
           ];
         in
         extensions ++ webdevExtensions ++ nixExtensions ++ rustExtensions ++ pythonExtensions;

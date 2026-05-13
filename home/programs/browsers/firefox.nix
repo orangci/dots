@@ -291,7 +291,7 @@ in
           #spell-check-enabled,
           #context-sep-bidi,
           .bookmark-item .toolbarbutton-icon { display: none !important; }
-          
+
           :root {
             --conf-border-radius: 24px;
             --conf-toolbar-border-radius: 24px;

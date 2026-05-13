@@ -570,7 +570,7 @@ in
       pluginSettings = {
         ntfy-notifications = {
           serverUrl = "https://ntfy.orangc.net";
-          topics = ["services"];
+          topics = [ "services" ];
         };
       };
 
