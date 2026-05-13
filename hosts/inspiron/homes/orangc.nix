@@ -91,6 +91,7 @@
     packages = with pkgs; [
       hyprpicker
       pinta
+      zoom-us
     ];
   };
 
