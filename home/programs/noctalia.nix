@@ -568,9 +568,18 @@ in
       };
 
       pluginSettings = {
+        privacy-indicator.hideInactive = true;
         ntfy-notifications = {
           serverUrl = "https://ntfy.orangc.net";
           topics = [ "services" ];
+        };
+        mawaqit = {
+          city = "Riyadh";
+          country = "SA";
+          method = 4;
+          school = 0;
+          playAzan = true;
+          azanFile = "azan3.mp3";
         };
       };
 
