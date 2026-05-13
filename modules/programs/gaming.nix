@@ -35,7 +35,8 @@ let
         ];
       })
     ])
-    ++ (optionals cfg.minecraft.modrinth.enable [ modrinth-app ]);
+    ++ (optionals cfg.minecraft.modrinth.enable [ modrinth-app ])
+    ++ (optionals cfg.minecraft.labymod.enable [ labymod-launcher ]);
 in
 {
   imports = [ inputs.aagl.nixosModules.default ];

@@ -41,6 +41,7 @@ in
       minecraft = {
         enable = true;
         modrinth.enable = false;
+        labymod.enable = true;
       };
     };
     styles.fonts.enable = true;
