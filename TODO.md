@@ -1,9 +1,6 @@
-- fix xdg stuff
-- full disk encryption
-- secure boot
+- full disk encryption and secure boot
 - use impermanence / make garbage collection actually good
 - nixify firefox extensions settings
-- fix up QT module — styling is ass currently
 - modules that are broken: moodle, syncthing
 - emove hm/system split... switch to hjem
 - look into other image viewers. oculante? fix up mpv to use as my image viewer instead of gwenview? or just keep using gwenview?
@@ -27,5 +24,5 @@
 - style ndg a bit
 - auto discover hosts
 - boilerplate bad
-- make installer iso config
-- disko
+- make installer iso config, disko stuff
+- mounting copyparty on local filesystem

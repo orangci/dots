@@ -63,21 +63,19 @@ in
         enable = pkgs.stdenv.isLinux;
         createDirectories = true;
         setSessionVariables = true;
-
         download = "${config.home.homeDirectory}/dl";
-        desktop = null;
         documents = "${config.home.homeDirectory}/docs";
-
-        publicShare = null;
-        templates = null;
-
         music = "${config.home.homeDirectory}/media/audio";
         pictures = "${config.home.homeDirectory}/media";
         videos = "${config.home.homeDirectory}/media/videos";
+        publicShare = null;
+        projects = null;
+        templates = null;
+        desktop = null;
 
         extraConfig = {
           SCREENSHOTS = "${config.xdg.userDirs.pictures}/screenshots";
-          MAIL = "${config.xdg.userDirs.documents}/mail";
+          MAIL = "${config.home.homeDirectory}/mail";
         };
       };
 
