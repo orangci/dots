@@ -59,23 +59,8 @@
       better-control.enable = true;
       editors.micro.enable = true;
       browsers.firefox.enable = true;
-      hypr = {
-        land.enable = true;
-        lock.enable = true;
-        idle.enable = true;
-      };
-      widgets = {
-        wleave = {
-          enable = true;
-          horizontal = true;
-        };
-        noctalia.enable = true;
-        rofi.enable = true;
-        swaync.enable = true;
-        waybar.enable = true;
-        walker.enable = true;
-        syshud.enable = true;
-      };
+      hypr.land.enable = true;
+      widgets.noctalia.enable = true;
       media = {
         enable = true;
         gwenview = true;

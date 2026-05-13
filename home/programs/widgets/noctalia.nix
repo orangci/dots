@@ -9,7 +9,7 @@ let
   inherit (lib) mkEnableOption singleton mkIf;
   cfg = config.hmModules.programs.widgets.noctalia;
   enablePlugin = {
-    enable = true;
+    enabled = true;
     sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
   };
 in
@@ -17,9 +17,10 @@ in
   imports = singleton inputs.noctalia.homeModules.default;
   options.hmModules.programs.widgets.noctalia = {
     enable = mkEnableOption "Noctalia shell";
-  };
+  };  
 
   config = mkIf cfg.enable {
+    stylix.targets.noctalia-shell.enable = false;
     home.packages = with pkgs; [ gpu-screen-recorder ];
     wayland.windowManager.hyprland.settings = {
       exec-once = singleton "noctalia-shell";
@@ -52,7 +53,7 @@ in
           custom-commands = enablePlugin;
           screen-recorder = enablePlugin;
         };
-        version = 4;
+        version = 2;
       };
 
       pluginSettings = {
