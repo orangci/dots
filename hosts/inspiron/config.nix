@@ -63,6 +63,7 @@ in
   system.stateVersion = "26.11";
   # networking.nameservers = lib.mkForce [ "192.168.8.191" ];
   hardware.logitech.wireless.enable = true;
+  services.libinput.touchpad.sendEventsMode = "disabled";
 
   environment.systemPackages = with pkgs; [
     nh
