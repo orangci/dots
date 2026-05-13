@@ -6,7 +6,7 @@
 }:
 
 let
-  inherit (lib) mkEnableOption mkIf;
+  inherit (lib) mkEnableOption mkIf singleton;
   cfg = config.hmModules.misc.clipboard;
 in
 {
@@ -14,9 +14,7 @@ in
 
   config = mkIf cfg.enable {
     services.cliphist.enable = !config.hmModules.programs.widgets.walker.enable;
-
-    home.packages = with pkgs; [ wl-clipboard ];
-
+    home.packages = singleton pkgs.wl-clipboard;
     hmModules.cli.shell.extraAliases = {
       copy = "wl-copy";
       paste = "wl-paste";
@@ -28,11 +26,11 @@ in
         "wl-paste --type image --watch cliphist store"
       ];
 
-      bindd = [
-        (mkIf (
+      bindd = singleton (
+        mkIf (
           !config.hmModules.programs.widgets.walker.enable
-        ) "SUPERSHIFT, V, Clear Clipboard, exec, cliphist wipe")
-      ];
+        ) "SUPERSHIFT, V, Clear Clipboard, exec, cliphist wipe"
+      );
     };
   };
 }

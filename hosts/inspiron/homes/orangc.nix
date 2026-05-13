@@ -61,7 +61,7 @@
       editors.micro.enable = true;
       browsers.firefox.enable = true;
       hypr.land.enable = true;
-      widgets.noctalia.enable = true;
+      noctalia.enable = true;
       media = {
         enable = true;
         gwenview = true;

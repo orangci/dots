@@ -22,7 +22,7 @@ let
           owner = "imbypass";
           repo = "base16-discord";
           rev = "main";
-          sha256 = "sha256-aIHKXraupaT8IoUXfBLxRp9lx73wpVMYi2BTpixcWxg=";
+          sha256 = "sha256-KKJEorqX/Xs9ybayDL1wBA827zghw6Xathjn0j9X+Fc=";
         }
       }/base16.css"
       (builtins.toFile "base16.css" ''

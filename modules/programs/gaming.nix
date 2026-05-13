@@ -42,21 +42,22 @@ in
   imports = [ inputs.aagl.nixosModules.default ];
   options = {
     modules.gaming = {
-      wine.enable = mkEnableOption "Enable Wine and associated packages for gaming";
-      lutris.enable = mkEnableOption "Enable Lutris for gaming";
-      bottles.enable = mkEnableOption "Enable Bottles for gaming";
-      steam.enable = mkEnableOption "Enable Steam";
-      heroic.enable = mkEnableOption "Enable Heroic Launcher";
-      osu.enable = mkEnableOption "Enable Osu!";
+      wine.enable = mkEnableOption "Wine and associated packages for gaming";
+      lutris.enable = mkEnableOption "Lutris for gaming";
+      bottles.enable = mkEnableOption "Bottles for gaming";
+      steam.enable = mkEnableOption "Steam";
+      heroic.enable = mkEnableOption "Heroic Launcher";
+      osu.enable = mkEnableOption "Osu!";
       hoyoverse = {
-        enable = mkEnableOption "Enable An Anime Game Launcher";
-        genshin.enable = mkEnableOption "Enable Genshin Impact";
-        honkai.enable = mkEnableOption "Enable Honkai Impact";
-        zzz.enable = mkEnableOption "Enable Zenless Zone Zero";
+        enable = mkEnableOption "An Anime Game Launcher";
+        genshin.enable = mkEnableOption "Genshin Impact";
+        honkai.enable = mkEnableOption "Honkai Impact";
+        zzz.enable = mkEnableOption "Zenless Zone Zero";
       };
       minecraft = {
-        enable = mkEnableOption "Enable PrismLauncher for Minecraft";
-        modrinth.enable = mkEnableOption "Enable Modrinth Launcher for Minecraft";
+        enable = mkEnableOption "PrismLauncher for Minecraft";
+        modrinth.enable = mkEnableOption "Modrinth Launcher for Minecraft";
+        labymod.enable = mkEnableOption "Labymod Launcher for Minecraft";
       };
     };
   };

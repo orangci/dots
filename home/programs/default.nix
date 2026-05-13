@@ -9,5 +9,6 @@
     ./media.nix
     ./better-control.nix
     ./thunderbird.nix
+    ./noctalia.nix
   ];
 }

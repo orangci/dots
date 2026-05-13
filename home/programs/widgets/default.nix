@@ -7,6 +7,5 @@
     ./walker.nix
     ./ignis.nix
     ./syshud.nix
-    ./noctalia.nix
   ];
 }
