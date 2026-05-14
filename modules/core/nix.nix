@@ -1,5 +1,4 @@
-_:
-{
+_: {
   nixpkgs.config.allowUnfree = true;
   nixpkgs.overlays = [
     (_: prev: {
