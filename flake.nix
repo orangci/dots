@@ -206,6 +206,7 @@
         };
     in
     {
+      inherit lib;
       packages.${system} = customPkgs;
       formatter.${system} = pkgs.nixfmt-tree;
       nixosConfigurations = {

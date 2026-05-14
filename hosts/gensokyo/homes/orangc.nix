@@ -1,11 +1,12 @@
 {
   flakeSettings,
   config,
+  lib,
   ...
 }:
 {
   nixpkgs.config.allowUnfree = true;
-  imports = [ ../../../home ];
+  imports = lib.my.recursivelyImport [ ../../../home ];
 
   hmModules = {
     programs.editors.nvf.enable = true;

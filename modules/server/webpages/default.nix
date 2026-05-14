@@ -1,6 +1,0 @@
-{
-  imports = [
-    ./main
-    ./notes.nix
-  ];
-}
