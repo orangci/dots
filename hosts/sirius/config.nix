@@ -12,9 +12,9 @@ in
 {
   imports = [
     ./hardware.nix
-    ../../modules
     inputs.home-manager.nixosModules.home-manager
-  ];
+  ]
+  ++ lib.my.recursivelyImport [ ../../modules ];
 
   modules = {
     dm.sddm.enable = true;

@@ -2,10 +2,11 @@
   flakeSettings,
   config,
   pkgs,
+  lib,
   ...
 }:
 {
-  imports = [ ../../../home ];
+  imports = lib.my.recursivelyImport [ ../../../home ];
   nixpkgs.config.allowUnfree = true;
 
   hmModules = {

@@ -19,9 +19,9 @@ in
 {
   imports = [
     ./hardware.nix
-    ../../modules
     inputs.home-manager.nixosModules.home-manager
-  ];
+  ]
+  ++ lib.my.recursivelyImport [ ../../modules ];
 
   modules = {
     styles.fonts.enable = true;
