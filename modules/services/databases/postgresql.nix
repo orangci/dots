@@ -35,7 +35,7 @@ in
   };
 
   config = mkIf cfg.enable {
-    services.databases.postgresql = {
+    services.postgresql = {
       enable = true;
       settings.port = cfg.port;
       settings.listen_addresses = mkForce "*";

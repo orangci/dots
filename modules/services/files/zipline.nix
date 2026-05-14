@@ -10,7 +10,7 @@ let
   cfg = config.modules.services.files.zipline;
 in
 {
-  options.modules.services.zipline = lib.my.mkServerModule {
+  options.modules.services.files.zipline = lib.my.mkServerModule {
     name = "Zipline";
     subdomain = "zip";
     glanceIcon = "https://cdn.jsdelivr.net/gh/selfhst/icons/png/zipline.png";

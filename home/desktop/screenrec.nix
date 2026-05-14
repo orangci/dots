@@ -11,7 +11,7 @@ let
     mkOption
     types
     ;
-  cfg = config.hmModules.misc.screenrec;
+  cfg = config.hmModules.desktop.screenrec;
 
   screenrecPackage = pkgs.writeShellScriptBin "screenrec" ''
     # === Configurable Variables ===
@@ -51,7 +51,7 @@ let
   '';
 in
 {
-  options.hmModules.misc.screenrec = {
+  options.hmModules.desktop.screenrec = {
     # For more information about gpu-screen-recorder, see https://git.dec05eba.com/gpu-screen-recorder/about/.
     enable = mkEnableOption "Enable screenrec script";
 

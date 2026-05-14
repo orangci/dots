@@ -7,10 +7,10 @@
 
 let
   inherit (lib) mkEnableOption mkIf singleton;
-  cfg = config.hmModules.misc.clipboard;
+  cfg = config.hmModules.midesktopsc.clipboard;
 in
 {
-  options.hmModules.misc.clipboard.enable = mkEnableOption "Enable clipboard";
+  options.hmModules.desktop.clipboard.enable = mkEnableOption "Enable clipboard";
 
   config = mkIf cfg.enable {
     services.cliphist.enable = !config.hmModules.programs.widgets.walker.enable;

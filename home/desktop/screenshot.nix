@@ -6,7 +6,7 @@
 }:
 let
   inherit (lib) mkEnableOption mkIf;
-  cfg = config.hmModules.misc.screenshot;
+  cfg = config.hmModules.desktop.screenshot;
 
   screenshotScript = ''
     #!/usr/bin/env bash
@@ -56,7 +56,7 @@ let
   '';
 in
 {
-  options.hmModules.misc.screenshot.enable = mkEnableOption "Enable screenshot script";
+  options.hmModules.desktop.screenshot.enable = mkEnableOption "Enable screenshot script";
   config = mkIf cfg.enable {
     wayland.windowManager.hyprland.settings = {
       bindld = [ ",Print, Fullscreen Screenshot, exec, screenshot --fullscreen --edit" ];

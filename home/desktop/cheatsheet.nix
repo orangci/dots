@@ -5,12 +5,12 @@
   ...
 }:
 let
-  inherit (lib) mkEnableOption mkIf;
-  cfg = config.hmModules.misc.cheatsheet;
+  inherit (lib) mkEnableOption singleton mkIf;
+  cfg = config.hmModules.desktop.cheatsheet;
 
   cheatsheetScript = ''
     #!/usr/bin/env bash
-    CONFIG="$HOME/.config/hypr/hyprland.conf"
+    CONFIG="${config.xdg.cacheHome}/hypr/hyprland.conf"
 
     trim() {
       echo "$1" | sed 's/^[[:space:]]*//;s/[[:space:]]*$//'
@@ -106,20 +106,16 @@ let
   '';
 in
 {
-  options.hmModules.misc.cheatsheet = {
-    enable = mkEnableOption "Enable cheatsheet script";
-  };
-
+  options.hmModules.desktop.cheatsheet.enable = mkEnableOption "Enable cheatsheet script";
   config = mkIf cfg.enable {
-    wayland.windowManager.hyprland.settings.bindd = [
-      "SUPERSHIFT, SLASH, Open Cheatsheet, exec,list-bindings"
-    ];
-    home.packages = with pkgs; [
-      (pkgs.writeShellApplication {
+    wayland.windowManager.hyprland.settings.bindd =
+      singleton "SUPERSHIFT, SLASH, Open Cheatsheet, exec, cheatsheet";
+    home.packages = singleton (
+      pkgs.writeShellApplication {
         name = "cheatsheet";
         runtimeInputs = with pkgs; [ yad ];
         text = cheatsheetScript;
-      })
-    ];
+      }
+    );
   };
 }

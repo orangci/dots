@@ -9,7 +9,6 @@ let
     mkOption
     mkIf
     types
-    singleton
     ;
   cfg = config.modules.services.monitoring.ntfy;
 in

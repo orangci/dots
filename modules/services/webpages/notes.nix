@@ -24,7 +24,7 @@ in
 
   config = mkIf cfg.enable {
     modules.services = {
-      caddy.virtualHosts = mkMerge [
+      infrastructure.caddy.virtualHosts = mkMerge [
         (my.mkCaddyEntry "blog" cfg.port false)
         (my.mkCaddyEntry "blog" cfg.port false)
         {
@@ -50,11 +50,11 @@ in
           '';
         }
       ];
-      cloudflared.ingress = mkMerge [
+      infrastructure.cloudflared.ingress = mkMerge [
         (my.mkCloudflaredIngress "blog" cfg.port)
         (my.mkCloudflaredIngress "notes" cfg.port)
       ];
-      glance.monitoredSites = singleton {
+      monitoring.glance.monitoredSites = singleton {
         url = "https://${cfg.subdomain}.${flakeSettings.domains.primary}";
         title = cfg.name;
         inherit (cfg.glance) icon;
