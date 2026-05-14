@@ -17,8 +17,8 @@ in
   config = mkIf cfg.enable {
     # so kavita can access copyparty directories
     users.users.kavita.extraGroups =
-      mkIf config.modules.services.files.copyparty.enable singleton
-        "copyparty";
+      mkIf config.modules.services.files.copyparty.enable (singleton
+        "copyparty");
     modules.security.sops.secrets.kavita-token.path = "/var/secrets/kavita-token";
     services.kavita = {
       enable = true;
