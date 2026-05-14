@@ -7,11 +7,11 @@
 }:
 let
   inherit (lib) mkEnableOption singleton mkIf;
-  cfg = config.hmModules.programs.widgets.waybar;
+  cfg = config.hmModules.desktop.waybar;
   waybarBottom = false; # If the waybar should be at the bottom of the screen instead of the top
 in
 {
-  options.hmModules.programs.widgets.waybar = {
+  options.hmModules.desktop.waybar = {
     enable = mkEnableOption "Enable waybar";
   };
   config = mkIf cfg.enable {

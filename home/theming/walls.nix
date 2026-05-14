@@ -11,10 +11,10 @@ let
     types
     mkIf
     ;
-  cfg = config.hmModules.styles.walls;
+  cfg = config.hmModules.theming.walls;
 in
 {
-  options.hmModules.styles.walls = {
+  options.hmModules.theming.walls = {
     enable = mkEnableOption "Enable the wallpapers module";
     timeout = mkOption {
       type = types.ints.positive;

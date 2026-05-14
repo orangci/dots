@@ -11,7 +11,7 @@ let
     types
     mkIf
     ;
-  cfg = config.hmModules.programs.widgets.wleave;
+  cfg = config.hmModules.desktop.wleave;
 
   logoutScript = pkgs.writeShellScriptBin "logout-exit" ''
     wleave -x -k --css ${
@@ -25,7 +25,7 @@ let
   '';
 in
 {
-  options.hmModules.programs.widgets.wleave = {
+  options.hmModules.desktop.wleave = {
     enable = mkEnableOption "Enable wleave";
     horizontal = mkOption {
       type = types.bool;

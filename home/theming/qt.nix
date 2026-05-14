@@ -5,10 +5,10 @@
 }:
 let
   inherit (lib) mkEnableOption mkIf;
-  cfg = config.hmModules.styles.qt;
+  cfg = config.hmModules.theming.qt;
 in
 {
-  options.hmModules.styles.qt = {
+  options.hmModules.theming.qt = {
     enable = mkEnableOption "Enable QT styling";
   };
   config = mkIf cfg.enable {

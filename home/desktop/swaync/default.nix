@@ -6,10 +6,10 @@
 }:
 let
   inherit (lib) mkEnableOption mkIf;
-  cfg = config.hmModules.programs.widgets.swaync;
+  cfg = config.hmModules.desktop.swaync;
 in
 {
-  options.hmModules.programs.widgets.swaync = {
+  options.hmModules.desktop.swaync = {
     enable = mkEnableOption "Enable swaync";
   };
   config = mkIf cfg.enable {

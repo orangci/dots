@@ -9,12 +9,12 @@ let
     mkEnableOption
     mkIf
     ;
-  cfg = config.hmModules.programs.widgets.walker;
+  cfg = config.hmModules.desktop.walker;
   colours = config.stylix.base16Scheme;
 in
 {
   imports = [ inputs.walker.homeManagerModules.default ];
-  options.hmModules.programs.widgets.walker = {
+  options.hmModules.desktop.walker = {
     enable = mkEnableOption "Enable the walker module";
   };
 

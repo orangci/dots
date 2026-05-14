@@ -7,7 +7,7 @@
 }:
 let
   inherit (lib) mkEnableOption singleton mkIf;
-  cfg = config.hmModules.programs.noctalia;
+  cfg = config.hmModules.desktop.noctalia;
   enablePlugin = {
     enabled = true;
     sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
@@ -15,7 +15,7 @@ let
 in
 {
   imports = singleton inputs.noctalia.homeModules.default;
-  options.hmModules.programs.noctalia = {
+  options.hmModules.desktop.noctalia = {
     enable = mkEnableOption "Noctalia shell";
   };
 

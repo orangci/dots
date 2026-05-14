@@ -10,6 +10,8 @@
   nixpkgs.config.allowUnfree = true;
 
   hmModules = {
+    security.gnupg.enable = true;
+    misc.xdg.enable = true;
     cli = {
       fetch.enable = true;
       shell.program = "fish";
@@ -35,12 +37,12 @@
         };
       };
     };
-    misc = {
-      xdg.enable = true;
+    desktop = {
+      hypr.land.enable = true;
+      noctalia.enable = true;
       clipboard.enable = true;
       cheatsheet.enable = true;
       screenshot.enable = true;
-      gnupg.enable = true;
       screenrec = {
         enable = true;
         fileFormat = "mov";
@@ -77,23 +79,6 @@
         firefox.enable = true;
         chromium.enable = true;
       };
-      hypr = {
-        land.enable = true;
-        lock.enable = true;
-        idle.enable = true;
-      };
-      widgets = {
-        wleave = {
-          enable = true;
-          horizontal = true;
-        };
-        rofi.enable = true;
-        swaync.enable = true;
-        waybar.enable = true;
-        walker.enable = true;
-        ignis.enable = false;
-        syshud.enable = true;
-      };
       media = {
         enable = true;
         gwenview = true;
@@ -105,7 +90,7 @@
         emulator = "kitty";
       };
     };
-    styles = {
+    theming = {
       gtk.enable = true;
       qt.enable = true;
       walls = {

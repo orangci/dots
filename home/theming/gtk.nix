@@ -6,10 +6,10 @@
 }:
 let
   inherit (lib) mkEnableOption mkIf;
-  cfg = config.hmModules.styles.gtk;
+  cfg = config.hmModules.theming.gtk;
 in
 {
-  options.hmModules.styles.gtk = {
+  options.hmModules.theming.gtk = {
     enable = mkEnableOption "Enable GTK theming";
   };
   config = mkIf cfg.enable {

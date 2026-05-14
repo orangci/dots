@@ -12,11 +12,11 @@ let
     types
     mkIf
     ;
-  cfg = config.hmModules.styles.stylix;
+  cfg = config.hmModules.theming.stylix;
 in
 {
   imports = [ inputs.stylix.homeModules.stylix ];
-  options.hmModules.styles.stylix = {
+  options.hmModules.theming.stylix = {
     enable = mkEnableOption "Enable Stylix";
     theme = mkOption {
       type = types.str;

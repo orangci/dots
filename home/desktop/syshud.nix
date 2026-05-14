@@ -6,10 +6,10 @@
 }:
 let
   inherit (lib) mkEnableOption mkIf singleton;
-  cfg = config.hmModules.programs.widgets.syshud;
+  cfg = config.hmModules.desktop.syshud;
 in
 {
-  options.hmModules.programs.widgets.syshud.enable = mkEnableOption "Enable the syshud module";
+  options.hmModules.desktop.syshud.enable = mkEnableOption "Enable the syshud module";
   config = mkIf cfg.enable {
     home.packages = singleton pkgs.syshud;
     wayland.windowManager.hyprland.settings.exec-once =
