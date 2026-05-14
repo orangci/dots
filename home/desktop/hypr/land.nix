@@ -16,7 +16,7 @@ in
 
   config = mkIf cfg.enable {
     wayland.windowManager.hyprland = {
-    configType = "hyprlang";
+      configType = "hyprlang";
       enable = true;
       systemd.enable = true;
       package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;

@@ -7,8 +7,6 @@
   ...
 }:
 let
-  excludedUsers = [ "sysadmin" ];
-  filteredUsers = lib.filterAttrs (n: _: !(builtins.elem n excludedUsers)) users;
   enableServerModule =
     port:
     {
@@ -158,33 +156,4 @@ in
     micro
     smartmontools # smartd drive health monitoring
   ];
-
-  users.users = builtins.mapAttrs (name: user: {
-    home = "/home/${name}";
-    homeMode = "755";
-    isNormalUser = true;
-    description = "${name}";
-    initialPassword = "password";
-    extraGroups = [
-      "networkmanager"
-      "scanner"
-    ]
-    ++ lib.optionals user.sudo [
-      "wheel"
-      "libvirtd"
-      "lp"
-      "docker"
-    ];
-    shell = pkgs.fish;
-    ignoreShellProgramCheck = true;
-  }) filteredUsers;
-
-  home-manager.users = builtins.mapAttrs (name: _user: {
-    home = {
-      username = name;
-      homeDirectory = "/home/${name}";
-      stateVersion = "26.05";
-    };
-    programs.home-manager.enable = true;
-  }) filteredUsers;
 }

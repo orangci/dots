@@ -1,14 +1,9 @@
 {
   pkgs,
   inputs,
-  users,
   lib,
   ...
 }:
-let
-  excludedUsers = [ "sysadmin" ];
-  filteredUsers = lib.filterAttrs (n: _: !(builtins.elem n excludedUsers)) users;
-in
 {
   imports = [
     ./hardware.nix
@@ -17,6 +12,7 @@ in
   ++ lib.my.recursivelyImport [ ../../modules ];
 
   modules = {
+    core.users.home-manager.stateVersion = "25.05";
     core.boot.enable = true;
     core.networking.enable = true;
     desktop = {
@@ -57,33 +53,4 @@ in
     title = "Michaelsoft Binbows";
     efiDeviceHandle = "FS0";
   };
-
-  users.users = builtins.mapAttrs (_: user: {
-    home = "/home/${user.username}";
-    homeMode = "755";
-    isNormalUser = true;
-    description = "${user.username}";
-    initialPassword = "password";
-    extraGroups = [
-      "networkmanager"
-      "scanner"
-    ]
-    ++ lib.optionals user.sudo [
-      "wheel"
-      "libvirtd"
-      "lp"
-      "docker"
-    ];
-    shell = pkgs.fish;
-    ignoreShellProgramCheck = true;
-  }) filteredUsers;
-
-  home-manager.users = builtins.mapAttrs (_: user: {
-    home = {
-      inherit (user) username;
-      homeDirectory = "/home/${user.username}";
-      stateVersion = "25.05";
-    };
-    programs.home-manager.enable = true;
-  }) filteredUsers;
 }
