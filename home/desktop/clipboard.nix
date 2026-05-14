@@ -7,7 +7,7 @@
 
 let
   inherit (lib) mkEnableOption mkIf singleton;
-  cfg = config.hmModules.midesktopsc.clipboard;
+  cfg = config.hmModules.desktop.clipboard;
 in
 {
   options.hmModules.desktop.clipboard.enable = mkEnableOption "Enable clipboard";

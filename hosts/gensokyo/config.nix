@@ -40,6 +40,7 @@ in
     core.networking.enable = true;
     hardware.drivers.intel.enable = true;
     hardware.btrfs.enable = true;
+    security.sops.enable = true;
     security.sudo-rs.enable = true;
     security.restic = {
       enable = true;
@@ -66,61 +67,61 @@ in
       };
 
       files = {
-        copyparty = enableServerModule 8822;
-        cryptpad = enableServerModule 8803;
-        wastebin = enableServerModule 8809;
-        zipline = enableServerModule 8819;
+        copyparty = enableServerModule 8822 { };
+        cryptpad = enableServerModule 8803 { };
+        wastebin = enableServerModule 8809 { };
+        zipline = enableServerModule 8819 { };
       };
 
       media = {
-        immich = enableServerModule 8807;
-        kavita = enableServerModule 8829;
-        linkwarden = enableServerModule 8830;
+        immich = enableServerModule 8807 { };
+        kavita = enableServerModule 8829 { };
+        linkwarden = enableServerModule 8830 { };
       };
 
       misc = {
-        matrix-synapse = enableServerModule 8824 // {
+        matrix-synapse = (enableServerModule 8824 { }) // {
           serverName = flakeSettings.domains.primary;
         };
         takina.enable = true;
-        miniflux = enableServerModule 8827;
-        vaultwarden = enableServerModule 8818;
+        miniflux = enableServerModule 8827 { };
+        vaultwarden = enableServerModule 8818 { };
       };
 
       monitoring = {
         ntfy = (enableServerModule 8812 { ntfy = false; }) // {
           scripts.services.enable = true;
         };
-        changedetection = enableServerModule 8828;
+        changedetection = enableServerModule 8828 { };
         glance = enableServerModule 8806 { glance = false; };
-        scrutiny = enableServerModule 8825;
-        speedtest = enableServerModule 8816;
-        umami = enableServerModule 8820;
-        wakapi = enableServerModule 8833;
+        scrutiny = enableServerModule 8825 { };
+        speedtest = enableServerModule 8816 { };
+        umami = enableServerModule 8820 { };
+        wakapi = enableServerModule 8833 { };
       };
 
       productivity = {
-        forgejo = enableServerModule 8805 // {
+        forgejo = (enableServerModule 8805 { }) // {
           renovate.enable = true;
         };
-        davis = enableServerModule 8831;
+        davis = enableServerModule 8831 { };
         vscode = enableServerModule 8823 {
-          vscode = false;
+          glance = false;
           ntfy = false;
         };
       };
 
       tools = {
-        convertx = enableServerModule 8802;
-        it-tools = enableServerModule 8808;
-        libretranslate = enableServerModule 8832;
-        searxng = enableServerModule 8815;
+        convertx = enableServerModule 8802 { };
+        it-tools = enableServerModule 8808 { };
+        libretranslate = enableServerModule 8832 { };
+        searxng = enableServerModule 8815 { };
       };
 
       webpages = {
-        main = enableServerModule 8804;
-        notes = enableServerModule 8814;
-        ndg.enable = enableServerModule 8813;
+        main = enableServerModule 8804 { };
+        notes = enableServerModule 8814 { };
+        ndg = enableServerModule 8813 { };
       };
 
       gaming.minecraft = {

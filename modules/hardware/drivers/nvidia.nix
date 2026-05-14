@@ -13,7 +13,6 @@ in
     services.xserver.videoDrivers = [ "nvidia" ];
     hardware.graphics.enable = true;
     hardware.nvidia = {
-      enabled = true;
       modesetting.enable = true;
       open = true;
       nvidiaSettings = true;

@@ -5,9 +5,7 @@
   ...
 }:
 let
-  inherit (lib)
-    mkIf
-    ;
+  inherit (lib) singleton mkIf;
   cfg = config.modules.services.media.kavita;
 in
 {
@@ -18,7 +16,7 @@ in
 
   config = mkIf cfg.enable {
     # so kavita can access copyparty directories
-    users.users.kavita.extraGroups = mkIf config.modules.services.copyparty.enable [ "copyparty" ];
+    users.users.kavita.extraGroups = mkIf config.modules.services.files.copyparty.enable singleton "copyparty";
     modules.security.sops.secrets.kavita-token.path = "/var/secrets/kavita-token";
     services.kavita = {
       enable = true;
