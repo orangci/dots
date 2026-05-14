@@ -13,90 +13,63 @@ let
     set -euo pipefail
 
     usage() {
-      echo "Usage: screenshot --ocr|--fullscreen [--swappy]|--area [--swappy]"
+      echo "Usage: screenshot (--ocr|--fullscreen|--area) [--edit]"
       exit 1
     }
 
-    FILENAME="/tmp/screenshot.png"
-
-    OCR=0
-    FULLSCREEN=0
-    AREA=0
-    USE_SWAPPY=0
+    MODE=""
+    EDIT=0
 
     while (( $# )); do
       case "$1" in
-        --ocr) OCR=1 ;;
-        --fullscreen) FULLSCREEN=1 ;;
-        --area) AREA=1 ;;
-        --swappy) USE_SWAPPY=1 ;;
+        --ocr|--fullscreen|--area) MODE="$1" ;;
+        --edit) EDIT=1 ;;
         *) usage ;;
       esac
       shift
     done
 
-    if (( OCR )); then
-      grim -g "$(slurp)" "$FILENAME"
-      tesseract -l eng "$FILENAME" - | wl-copy
-      rm "$FILENAME"
+    [[ -n "$MODE" ]] || usage
+
+    if [[ "$MODE" == "--ocr" ]]; then
+      grim -g "$(slurp)" - | tesseract -l eng stdin - | wl-copy
       exit 0
     fi
 
-    if (( FULLSCREEN || AREA )); then
-      wayfreeze & PID=$!
-      sleep 0.1
+    wayfreeze & PID=$!
+    trap 'kill $PID 2>/dev/null || true' EXIT
+    sleep 0.1
 
-      if (( FULLSCREEN )); then
-        grim - | {
-          if (( USE_SWAPPY )); then
-            cat > "$FILENAME"
-            kill $PID
-            swappy -f "$FILENAME" || notify-send "Swappy failed" -t 1000
-          else
-            wl-copy
-            kill $PID
-            # notify-send "Screenshot copied to clipboard" -t 1000
-          fi
-        }
-      else
-        GEOM=$(slurp) || { kill $PID; exit 1; } # add this before exit 1 if you want the cancel notif: notify-send "Screenshot cancelled" -t 1000;
-        grim -g "$GEOM" - | {
-          if (( USE_SWAPPY )); then
-            cat > "$FILENAME"
-            kill $PID
-            swappy -f "$FILENAME" || notify-send "Swappy failed" -t 1000
-          else
-            wl-copy
-            kill $PID
-            # notify-send "Screenshot copied to clipboard" -t 1000
-          fi
-        }
-      fi
-      exit 0
+    if [[ "$MODE" == "--fullscreen" ]]; then
+      GRIM_ARGS=()
+    else
+      GRIM_ARGS=(-g "$(slurp)")
     fi
 
-    usage
+    if (( EDIT )); then
+      kill $PID 2>/dev/null
+      grim "''${GRIM_ARGS[@]}" - | satty --filename -
+    else
+      kill $PID 2>/dev/null
+      grim "''${GRIM_ARGS[@]}" - | wl-copy
+    fi
   '';
 in
 {
-  options.hmModules.misc.screenshot = {
-    enable = mkEnableOption "Enable screenshot script";
-  };
-
+  options.hmModules.misc.screenshot.enable = mkEnableOption "Enable screenshot script";
   config = mkIf cfg.enable {
     wayland.windowManager.hyprland.settings = {
-      bindld = [ ",Print, Fullscreen Screenshot, exec, screenshot --fullscreen --swappy" ];
+      bindld = [ ",Print, Fullscreen Screenshot, exec, screenshot --fullscreen --edit" ];
       bindd = [
         "Super+Shift,T, Copy Text From Screenshot, exec, screenshot --ocr"
         "SUPER, S, Area Screenshot, exec, screenshot --area"
-        "SUPERSHIFT, S, Area Screenshot (With Editor), exec, screenshot --area --swappy"
+        "SUPERSHIFT, S, Area Screenshot (With Editor), exec, screenshot --area --edit"
       ];
     };
     home.packages = with pkgs; [
       grim
       slurp
       tesseract
-      swappy
       wayfreeze
       (pkgs.writeShellApplication {
         name = "screenshot";
@@ -105,24 +78,33 @@ in
           slurp
           tesseract
           wl-clipboard
-          swappy
           wayfreeze
         ];
         text = screenshotScript;
       })
     ];
 
-    home.file.".config/swappy/config".text = ''
-      [Default]
-      save_dir=${config.xdg.userDirs.pictures}/screenshots
-      save_filename_format=%y-%b-%m_%H.%M.%S.png
-      show_panel=false
-      line_size=5
-      text_size=20
-      text_font=${config.stylix.fonts.sansSerif.name}
-      paint_mode=brush
-      early_exit=true
-      fill_shape=false
-    '';
+    programs.satty = {
+      enable = true;
+      settings = {
+        general = {
+          output-filename = "${config.xdg.userDirs.extraConfig.SCREENSHOTS}/%Y-%m-%d_%H:%M:%S.png";
+          initial-tool = "brush";
+          fullscreen = false;
+          floating-hack = true;
+          resize.mode = "smart";
+          corner-roundness = 12;
+          early-exit = true;
+          early-exit-save-as = true;
+        };
+        font.family = config.stylix.fonts.sansSerif.name;
+        keybinds = {
+          arrow = "a";
+          blur = "z";
+          highlight = "h";
+          line = "l";
+        };
+      };
+    };
   };
 }

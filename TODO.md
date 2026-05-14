@@ -15,7 +15,6 @@
 - add more pages to glance
 - declarative DNS!!
 - write extensive docs for the flake e.g. for restic
-- satty and zipline support for screenshot script
 - assertions
 - look into nixos containers and microvm.nix
 - use [nixos-core](https://github.com/feel-co/nixos-core)
