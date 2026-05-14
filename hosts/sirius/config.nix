@@ -17,45 +17,25 @@ in
   ++ lib.my.recursivelyImport [ ../../modules ];
 
   modules = {
-    dm.sddm.enable = true;
-    common = {
+    core.boot.enable = true;
+    core.networking.enable = true;
+    desktop = {
+      compositors.hyprland.enable = true;
+      display-managers.sddm.enable = true;
+      display-managers.sddm.theme = "stray";
+      file-managers.thunar.enable = true;
+      fonts.enable = true;
+    };
+    hardware = {
+      drivers.intel.enable = true;
       bluetooth.enable = true;
-      printing.enable = true;
+      btrfs.enable = true;
       sound.enable = true;
-      networking.enable = true;
-      virtualisation.enable = false;
-      sops.enable = false;
     };
-    programs = {
-      thunar.enable = true;
-      hyprland.enable = true;
-      appimages.enable = false;
-      sudo-rs.enable = true;
-    };
-    gaming = {
-      wine.enable = false;
-      lutris.enable = false;
-      bottles.enable = false;
-      steam.enable = false;
-      heroic.enable = false;
-      minecraft = {
-        enable = false;
-        modrinth.enable = false;
-      };
-    };
-    styles.fonts.enable = true;
+    security.sudo-rs.enable = true;
+    security.sops.enable = true;
   };
-  local.hardware-clock.enable = true;
-  drivers = {
-    intel.enable = true;
-    amdgpu.enable = false;
-    nvidia.enable = false;
-    nvidia-prime = {
-      enable = false;
-      intelBusID = "";
-      nvidiaBusID = "";
-    };
-  };
+
   services.tailscale.enable = true;
 
   time.timeZone = "Asia/Riyadh";

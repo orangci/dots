@@ -104,7 +104,10 @@ in
           renovate.enable = true;
         };
         davis = enableServerModule 8831;
-        vscode = enableServerModule 8823 { vscode = false; ntfy = false; };
+        vscode = enableServerModule 8823 {
+          vscode = false;
+          ntfy = false;
+        };
       };
 
       tools = {
