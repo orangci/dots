@@ -77,11 +77,6 @@
     theming = {
       gtk.enable = true;
       qt.enable = true;
-      walls = {
-        enable = true;
-        timeout = 20; # Time between wallpaper changes (in minutes)
-        directory = "${config.xdg.userDirs.pictures}/walls";
-      };
       stylix = {
         enable = true;
         # Choose from https://tinted-theming.github.io/tinted-gallery/

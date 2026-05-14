@@ -6,10 +6,10 @@
 }:
 let
   inherit (lib) mkEnableOption mkIf;
-  cfg = config.hmModules.programs.hypr.lock;
+  cfg = config.hmModules.desktop.hypr.lock;
 in
 {
-  options.hmModules.programs.hypr.lock = {
+  options.hmModules.desktop.hypr.lock = {
     enable = mkEnableOption "Enable hyprlock";
   };
   config = mkIf cfg.enable {

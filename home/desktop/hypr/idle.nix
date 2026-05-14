@@ -5,10 +5,10 @@
 }:
 let
   inherit (lib) mkEnableOption mkIf;
-  cfg = config.hmModules.programs.hypr.idle;
+  cfg = config.hmModules.desktop.hypr.idle;
 in
 {
-  options.hmModules.programs.hypr.idle = {
+  options.hmModules.desktop.hypr.idle = {
     enable = mkEnableOption "Enable hypridle";
   };
   config = mkIf cfg.enable {

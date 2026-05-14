@@ -7,15 +7,16 @@
 }:
 let
   inherit (lib) mkEnableOption mkIf;
-  cfg = config.hmModules.programs.hypr.land;
+  cfg = config.hmModules.desktop.hypr.land;
 in
 {
-  options.hmModules.programs.hypr.land = {
+  options.hmModules.desktop.hypr.land = {
     enable = mkEnableOption "Enable Hyprland";
   };
 
   config = mkIf cfg.enable {
     wayland.windowManager.hyprland = {
+    configType = "hyprlang";
       enable = true;
       systemd.enable = true;
       package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;

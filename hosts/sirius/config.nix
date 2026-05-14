@@ -75,7 +75,7 @@ in
     home = {
       inherit (user) username;
       homeDirectory = "/home/${user.username}";
-      stateVersion = "25.05";
+      stateVersion = "26.05";
     };
     programs.home-manager.enable = true;
   }) filteredUsers;
