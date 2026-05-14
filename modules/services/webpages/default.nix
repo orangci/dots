@@ -15,10 +15,10 @@ let
     concatStringsSep
     concatMap
     ;
-  cfg = config.modules.server.webpages.main;
+  cfg = config.modules.services.webpages.main;
 in
 {
-  options.modules.server.webpages.main =
+  options.modules.services.webpages.main =
     lib.my.mkServerModule {
       name = "Webpagc";
       subdomain = "";
@@ -44,7 +44,7 @@ in
     };
 
   config = mkIf cfg.enable {
-    modules.server.caddy.virtualHosts = mkMerge [
+    modules.services.infrastructure.caddy.virtualHosts = mkMerge [
       (lib.my.mkCaddyEntry "www" cfg.port false)
       {
         ${flakeSettings.domains.primary}.extraConfig = "reverse_proxy localhost:${toString cfg.port}";
@@ -79,14 +79,14 @@ in
         '';
       }
     ];
-    modules.server.cloudflared.ingress = mkMerge [
+    modules.services.infrastructure.cloudflared.ingress = mkMerge [
       (lib.my.mkCloudflaredIngress "www" cfg.port)
       {
         ${flakeSettings.domains.primary} = "http://localhost:${toString cfg.port}";
         ${flakeSettings.domains.secondary} = "http://localhost:${toString cfg.port}";
       }
     ];
-    modules.server.glance.monitoredSites = lib.singleton {
+    modules.services.monitoring.glance.monitoredSites = lib.singleton {
       url = "https://${flakeSettings.domains.primary}";
       title = cfg.name;
       inherit (cfg.glance) icon;

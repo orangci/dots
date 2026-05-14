@@ -13,17 +13,17 @@ let
     my
     mkMerge
     ;
-  cfg = config.modules.server.webpages.notes;
+  cfg = config.modules.services.webpages.notes;
 in
 {
-  options.modules.server.webpages.notes = lib.my.mkServerModule {
+  options.modules.services.webpages.notes = lib.my.mkServerModule {
     name = "Blog";
     subdomain = "notes";
     glanceIcon = "https://${cfg.subdomain}.${flakeSettings.domains.primary}/leaf.png";
   };
 
   config = mkIf cfg.enable {
-    modules.server = {
+    modules.services = {
       caddy.virtualHosts = mkMerge [
         (my.mkCaddyEntry "blog" cfg.port false)
         (my.mkCaddyEntry "blog" cfg.port false)
@@ -45,8 +45,8 @@ in
             @html path_regexp html ^(.+)\.html$  
             redir @html {re.html.1} 301 
             try_files {path} {path}.html {path}/index.html
-            redir /source https://${config.modules.server.forgejo.subdomain}.${flakeSettings.domains.primary}/c/notes 301
-            redir /analytics https://${config.modules.server.umami.subdomain}.${flakeSettings.domains.primary}/share/OuROCRqSGB6Qw0Ov/notes.orangc.net 301
+            redir /source https://${config.modules.services.productivity.forgejo.subdomain}.${flakeSettings.domains.primary}/c/notes 301
+            redir /analytics https://${config.modules.services.monitoring.umami.subdomain}.${flakeSettings.domains.primary}/share/OuROCRqSGB6Qw0Ov/notes.orangc.net 301
           '';
         }
       ];

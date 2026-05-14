@@ -3,7 +3,7 @@ let
   inherit (lib) singleton;
 in
 {
-  config.modules.server.webpages.main.redirects = [
+  config.modules.services.webpages.main.redirects = [
     # subdomains
     {
       sources = [

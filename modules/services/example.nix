@@ -5,10 +5,10 @@
 }:
 let
   inherit (lib) mkIf;
-  cfg = config.modules.server.example;
+  cfg = config.modules.services.category.example;
 in
 {
-  options.modules.server.example = lib.my.mkServerModule { name = "Example"; } // {
+  options.modules.services.category.example = lib.my.mkServerModule { name = "Example"; } // {
     # example = mkOption {
     #   type = types.str;
     #   default = "An example value";

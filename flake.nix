@@ -38,7 +38,7 @@
       inputs.nixpkgs.follows = "nixpkgs-small";
     };
 
-    # for modules.server.minecraft
+    # for modules.services.gaming.minecraft
     nix-minecraft = {
       url = "github:infinidoge/nix-minecraft";
       inputs.nixpkgs.follows = "nixpkgs-small";

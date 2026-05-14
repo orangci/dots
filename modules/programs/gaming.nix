@@ -8,35 +8,6 @@
 let
   inherit (lib) mkEnableOption mkIf optionals;
   cfg = config.modules.gaming;
-
-  gamingPackages =
-    with pkgs;
-    (optionals cfg.wine.enable [
-      wineWow64Packages.wayland
-      winetricks
-      protontricks
-    ])
-    ++ (optionals cfg.lutris.enable [ lutris ])
-    ++ (optionals cfg.bottles.enable [ bottles ])
-    ++ (optionals cfg.heroic.enable [ heroic ])
-    ++ (optionals cfg.osu.enable [ osu-lazer ])
-    ++ (optionals cfg.minecraft.enable [
-      packwiz
-      rconc
-      (prismlauncher.override {
-        jdks = [
-          # Before 1.17: Java 8
-          # 1.17: Java 16
-          # 1.18 to 1.20: Java 17
-          # 1.21: Java 21
-          temurin-jre-bin-8
-          temurin-jre-bin-17
-          temurin-jre-bin-25
-        ];
-      })
-    ])
-    ++ (optionals cfg.minecraft.modrinth.enable [ modrinth-app ])
-    ++ (optionals cfg.minecraft.labymod.enable [ labymod-launcher ]);
 in
 {
   imports = [ inputs.aagl.nixosModules.default ];
@@ -63,7 +34,6 @@ in
   };
 
   config = {
-    environment.systemPackages = gamingPackages;
     nix.settings = mkIf cfg.hoyoverse.enable inputs.aagl.nixConfig;
     programs = {
       anime-game-launcher.enable = cfg.hoyoverse.genshin.enable;
@@ -76,5 +46,33 @@ in
         dedicatedServer.openFirewall = true;
       };
     };
+    environment.systemPackages =
+      with pkgs;
+      (optionals cfg.wine.enable [
+        wineWow64Packages.wayland
+        winetricks
+        protontricks
+      ])
+      ++ (optionals cfg.lutris.enable [ lutris ])
+      ++ (optionals cfg.bottles.enable [ bottles ])
+      ++ (optionals cfg.heroic.enable [ heroic ])
+      ++ (optionals cfg.osu.enable [ osu-lazer ])
+      ++ (optionals cfg.minecraft.enable [
+        packwiz
+        rconc
+        (prismlauncher.override {
+          jdks = [
+            # Before 1.17: Java 8
+            # 1.17: Java 16
+            # 1.18 to 1.20: Java 17
+            # 1.21: Java 21
+            temurin-jre-bin-8
+            temurin-jre-bin-17
+            temurin-jre-bin-25
+          ];
+        })
+      ])
+      ++ (optionals cfg.minecraft.modrinth.enable [ modrinth-app ])
+      ++ (optionals cfg.minecraft.labymod.enable [ labymod-launcher ]);
   };
 }
