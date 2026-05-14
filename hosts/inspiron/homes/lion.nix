@@ -1,13 +1,16 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }:
 {
-  imports = [ ../../../home ];
+  imports = lib.my.recursivelyImport [ ../../../home ];
   nixpkgs.config.allowUnfree = true;
 
   hmModules = {
+    misc.xdg.enable = true;
+    security.gnupg.enable = true;
     cli = {
       fetch.enable = true;
       shell.program = "fish";
@@ -29,12 +32,12 @@
         github = true;
       };
     };
-    misc = {
-      xdg.enable = true;
+    desktop = {
+      hypr.land.enable = true;
+      noctalia.enable = true;
       clipboard.enable = true;
       cheatsheet.enable = true;
       screenshot.enable = true;
-      gnupg.enable = true;
       screenrec = {
         enable = true;
         fileFormat = "mov";
@@ -46,15 +49,9 @@
         codec = "auto";
       };
     };
-    dev = {
-      nix.enable = true;
-      direnv.enable = true;
-    };
     programs = {
       better-control.enable = true;
       editors.micro.enable = true;
-      hypr.land.enable = true;
-      noctalia.enable = true;
       media = {
         enable = true;
         gwenview = true;
@@ -66,14 +63,9 @@
         emulator = "kitty";
       };
     };
-    styles = {
+    theming = {
       gtk.enable = true;
       qt.enable = true;
-      walls = {
-        enable = true;
-        timeout = 20; # Time between wallpaper changes (in minutes)
-        directory = "${config.xdg.userDirs.pictures}/walls";
-      };
       stylix = {
         enable = true;
         # Choose from https://tinted-theming.github.io/tinted-gallery/

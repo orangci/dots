@@ -19,9 +19,7 @@
 - look into nixos containers and microvm.nix
 - use [nixos-core](https://github.com/feel-co/nixos-core)
 - finish nvf config
-- modules.server is way too big, divide it into subfolders
 - style ndg a bit
 - auto discover hosts
-- boilerplate bad
 - make installer iso config, disko stuff
 - mounting copyparty on local filesystem

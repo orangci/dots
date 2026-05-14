@@ -22,7 +22,10 @@ let
 in
 list:
 filter
-  # Filter out any path that doesn't look like `*.nix`
-  (elem: (!isPath elem || hasSuffix ".nix" (toString elem)))
+  # Filter out any path that doesn't look like `*.nix` or `example.nix`
+  (
+    elem:
+    (!isPath elem || (hasSuffix ".nix" (toString elem) && baseNameOf (toString elem) != "example.nix"))
+  )
   # Expand any folder to all the files within it.
   (concatMap expandIfFolder list)

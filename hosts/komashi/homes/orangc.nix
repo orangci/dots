@@ -2,13 +2,16 @@
   flakeSettings,
   config,
   pkgs,
+  lib,
   ...
 }:
 {
-  imports = [ ../../../home ];
+  imports = lib.my.recursivelyImport [ ../../../home ];
   nixpkgs.config.allowUnfree = true;
 
   hmModules = {
+    security.gnupg.enable = true;
+    misc.xdg.enable = true;
     cli = {
       fetch.enable = true;
       shell.program = "fish";
@@ -34,12 +37,12 @@
         };
       };
     };
-    misc = {
-      xdg.enable = true;
+    desktop = {
+      hypr.land.enable = true;
+      noctalia.enable = true;
       clipboard.enable = true;
       cheatsheet.enable = true;
       screenshot.enable = true;
-      gnupg.enable = true;
       screenrec = {
         enable = true;
         fileFormat = "mov";
@@ -76,23 +79,6 @@
         firefox.enable = true;
         chromium.enable = true;
       };
-      hypr = {
-        land.enable = true;
-        lock.enable = true;
-        idle.enable = true;
-      };
-      widgets = {
-        wleave = {
-          enable = true;
-          horizontal = true;
-        };
-        rofi.enable = true;
-        swaync.enable = true;
-        waybar.enable = true;
-        walker.enable = true;
-        ignis.enable = false;
-        syshud.enable = true;
-      };
       media = {
         enable = true;
         gwenview = true;
@@ -104,14 +90,9 @@
         emulator = "kitty";
       };
     };
-    styles = {
+    theming = {
       gtk.enable = true;
       qt.enable = true;
-      walls = {
-        enable = true;
-        timeout = 20; # Time between wallpaper changes (in minutes)
-        directory = "${config.xdg.userDirs.pictures}/walls";
-      };
       stylix = {
         enable = true;
         # Choose from https://tinted-theming.github.io/tinted-gallery/

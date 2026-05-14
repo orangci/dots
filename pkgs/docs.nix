@@ -17,7 +17,7 @@ inputs.ndg.packages.${system}.ndg-builder.override {
   inputDir = ../.;
   optionsDepth = 30;
   warningsAreErrors = false;
-  rawModules = lib.singleton ../modules;
+  rawModules = lib.my.recursivelyImport [ ../modules ];
   extraConfig = {
     assets_dir = ../assets;
     index.use_readme = true;

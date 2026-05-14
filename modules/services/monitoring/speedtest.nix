@@ -1,0 +1,45 @@
+{
+  config,
+  lib,
+  flakeSettings,
+  ...
+}:
+let
+  inherit (lib)
+    mkIf
+    ;
+  cfg = config.modules.services.monitoring.speedtest;
+in
+{
+  options.modules.services.monitoring.speedtest = lib.my.mkServerModule {
+    name = "Speedtest Tracker";
+    subdomain = "speedtest";
+  };
+
+  config = mkIf cfg.enable {
+    # Default user and pass is "admin" and "password"
+    modules.security.sops.secrets.speedtest-app-key.path = "/var/secrets/speedtest-app-key";
+    systemd.tmpfiles.rules = [ "d /var/lib/speedtest-tracker 0755 root root" ];
+    virtualisation.oci-containers.containers.speedtest-tracker = {
+      image = "lscr.io/linuxserver/speedtest-tracker:latest";
+      volumes = [ "/var/lib/speedtest-tracker:/config" ];
+      ports = [ "127.0.0.1:${toString cfg.port}:80" ];
+      environmentFiles = [ "/var/secrets/speedtest-app-key" ];
+      environment = {
+        PUID = "1000";
+        PGID = "1000";
+        DB_CONNECTION = "sqlite";
+        APP_NAME = "Speedtest";
+        APP_URL = "https://${cfg.subdomain}.${flakeSettings.domains.primary}";
+        ASSET_URL = "https://${cfg.subdomain}.${flakeSettings.domains.primary}";
+        APP_TIMEZONE = config.time.timeZone;
+        CHART_DATETIME_FORMAT = "m/j G.i";
+        DATETIME_FORMAT = "j M Y, G.i.s";
+        DISPLAY_TIMEZONE = config.time.timeZone;
+        PUBLIC_DASHBOARD = "true";
+        SPEEDTEST_SCHEDULE = "0 * * * *";
+        SPEEDTEST_SERVERS = "26065,24115";
+      };
+    };
+  };
+}

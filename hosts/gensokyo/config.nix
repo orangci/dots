@@ -7,123 +7,122 @@
   ...
 }:
 let
-  excludedUsers = [ "sysadmin" ];
-  filteredUsers = lib.filterAttrs (n: _: !(builtins.elem n excludedUsers)) users;
-  allThree = {
-    glance.enable = true;
-    internalTailscaleDomain.enable = true;
-    ntfyChecking.enable = true;
-  };
+  enableServerModule =
+    port:
+    {
+      cf ? true,
+      ts ? true,
+      ntfy ? true,
+      glance ? true,
+    }:
+    {
+      enable = true;
+      inherit port;
+      cloudflared.enable = cf;
+      internalTailscaleDomain.enable = ts;
+      ntfyChecking.enable = ntfy;
+      glance.enable = glance;
+    };
 
 in
 {
   imports = [
     ./hardware.nix
-    ../../modules
     inputs.home-manager.nixosModules.home-manager
-  ];
+  ]
+  ++ lib.my.recursivelyImport [ ../../modules ];
 
   modules = {
-    styles.fonts.enable = true;
-    common = {
-      bluetooth.enable = false;
-      printing.enable = false;
-      networking.enable = true;
-      sops.enable = true;
-      btrfs.enable = true;
-      ndg.enable = true;
-      restic = {
-        enable = true;
-        paths = [
-          "/home/orangc"
-          "/srv/files"
-          "/var/lib/immich"
-          "/var/lib/forgejo"
-          "/var/lib/cryptpad"
-          "/var/lib/vaultwarden"
-          "/var/lib/private/zipline"
-          "/var/lib/postgresql"
-          "/var/lib/matrix-synapse"
-          "/var/lib/davis"
-        ];
-      };
+    desktop.fonts.enable = true;
+    core.boot.enable = true;
+    core.networking.enable = true;
+    hardware.drivers.intel.enable = true;
+    hardware.btrfs.enable = true;
+    security.sops.enable = true;
+    security.sudo-rs.enable = true;
+    security.restic = {
+      enable = true;
+      paths = [
+        "/home/${users.sysadmin.username}"
+        "/srv/files"
+        "/var/lib/immich"
+        "/var/lib/forgejo"
+        "/var/lib/cryptpad"
+        "/var/lib/vaultwarden"
+        "/var/lib/private/zipline"
+        "/var/lib/postgresql"
+        "/var/lib/matrix-synapse"
+        "/var/lib/davis"
+      ];
     };
-    programs = {
-      sudo-rs.enable = true;
-      syncthing.enable = false;
-    };
-    server = {
-      caddy.enable = true;
-      cloudflared.enable = true;
-      technitium.enable = true;
-      postgresql.enable = true;
-      duckdns.enable = false;
-      tailscale.enable = true;
-      nixflix.enable = false;
-      takina.enable = true;
-
-      webpages.main = allThree // {
-        enable = true;
+    services = {
+      databases.postgresql.enable = true;
+      infrastructure = {
+        caddy.enable = true;
         cloudflared.enable = true;
-        port = 8804;
-      };
-      webpages.notes = allThree // {
-        enable = true;
-        cloudflared.enable = true;
-        port = 8814;
+        technitium.enable = true;
+        tailscale.enable = true;
       };
 
-      convertx = allThree // {
-        enable = true;
-        cloudflared.enable = true;
-        port = 8802;
+      files = {
+        copyparty = enableServerModule 8822 { };
+        cryptpad = enableServerModule 8803 { };
+        wastebin = enableServerModule 8809 { };
+        zipline = enableServerModule 8819 { };
       };
 
-      cryptpad = allThree // {
-        enable = true;
-        cloudflared.enable = true;
-        port = 8803;
+      media = {
+        immich = enableServerModule 8807 { };
+        kavita = enableServerModule 8829 { };
+        linkwarden = enableServerModule 8830 { };
       };
 
-      forgejo = allThree // {
-        enable = true;
-        cloudflared.enable = true;
-        port = 8805;
-        renovate.enable = true;
+      misc = {
+        matrix-synapse = (enableServerModule 8824 { }) // {
+          serverName = flakeSettings.domains.primary;
+        };
+        takina.enable = true;
+        miniflux = enableServerModule 8827 { };
+        vaultwarden = enableServerModule 8818 { };
       };
 
-      glance = {
-        enable = true;
-        cloudflared.enable = true;
-        internalTailscaleDomain.enable = true;
-        ntfyChecking.enable = true;
-        port = 8806;
+      monitoring = {
+        ntfy = (enableServerModule 8812 { ntfy = false; }) // {
+          scripts.services.enable = true;
+        };
+        changedetection = enableServerModule 8828 { };
+        glance = enableServerModule 8806 { glance = false; };
+        scrutiny = enableServerModule 8825 { };
+        speedtest = enableServerModule 8816 { };
+        umami = enableServerModule 8820 { };
+        wakapi = enableServerModule 8833 { };
       };
 
-      immich = allThree // {
-        enable = true;
-        cloudflared.enable = true;
-        port = 8807;
+      productivity = {
+        forgejo = (enableServerModule 8805 { }) // {
+          renovate.enable = true;
+        };
+        davis = enableServerModule 8831 { };
+        vscode = enableServerModule 8823 {
+          glance = false;
+          ntfy = false;
+        };
       };
 
-      it-tools = allThree // {
-        enable = true;
-        cloudflared.enable = true;
-        port = 8808;
+      tools = {
+        convertx = enableServerModule 8802 { };
+        it-tools = enableServerModule 8808 { };
+        libretranslate = enableServerModule 8832 { };
+        searxng = enableServerModule 8815 { };
       };
 
-      jellyfin = allThree // {
-        enable = false;
-        port = 8096; # can't be changed via the nixos module
+      webpages = {
+        main = enableServerModule 8804 { };
+        notes = enableServerModule 8814 { };
+        ndg = enableServerModule 8813 { };
       };
 
-      wastebin = allThree // {
-        enable = true;
-        cloudflared.enable = true;
-        port = 8809;
-      };
-
-      minecraft = {
+      gaming.minecraft = {
         enable = true;
         juniper-s10 = {
           enable = true;
@@ -137,134 +136,9 @@ in
           };
         };
       };
-
-      moodle = allThree // {
-        enable = false;
-        cloudflared.enable = true;
-        port = 8811;
-      };
-
-      ntfy = {
-        enable = true;
-        cloudflared.enable = true;
-        glance.enable = true;
-        internalTailscaleDomain.enable = true;
-        port = 8812;
-        scripts = {
-          services.enable = true;
-        };
-      };
-
-      ollama = allThree // {
-        enable = false;
-        port = 8813;
-      };
-
-      searxng = allThree // {
-        enable = true;
-        cloudflared.enable = true;
-        port = 8815;
-      };
-
-      speedtest = allThree // {
-        enable = true;
-        cloudflared.enable = true;
-        port = 8816;
-      };
-
-      vaultwarden = allThree // {
-        enable = true;
-        cloudflared.enable = true;
-        port = 8818;
-      };
-
-      zipline = allThree // {
-        enable = true;
-        cloudflared.enable = true;
-        port = 8819;
-      };
-
-      umami = allThree // {
-        enable = true;
-        cloudflared.enable = true;
-        port = 8820;
-      };
-
-      grafana = allThree // {
-        enable = false;
-        port = 8821;
-      };
-
-      copyparty = allThree // {
-        enable = true;
-        cloudflared.enable = true;
-        port = 8822;
-      };
-
-      vscode = {
-        enable = true;
-        cloudflared.enable = true;
-        internalTailscaleDomain.enable = true;
-        port = 8823;
-      };
-
-      matrix-synapse = allThree // {
-        enable = true;
-        cloudflared.enable = true;
-        port = 8824;
-        serverName = flakeSettings.domains.primary;
-      };
-
-      scrutiny = allThree // {
-        enable = true;
-        port = 8825;
-      };
-
-      miniflux = allThree // {
-        enable = true;
-        cloudflared.enable = true;
-        port = 8827;
-      };
-
-      changedetection = allThree // {
-        enable = true;
-        cloudflared.enable = true;
-        port = 8828;
-      };
-
-      kavita = allThree // {
-        enable = true;
-        cloudflared.enable = true;
-        port = 8829;
-      };
-
-      linkwarden = allThree // {
-        enable = true;
-        cloudflared.enable = true;
-        port = 8830;
-      };
-
-      davis = allThree // {
-        enable = true;
-        cloudflared.enable = true;
-        port = 8831;
-      };
-
-      libretranslate = allThree // {
-        enable = true;
-        cloudflared.enable = true;
-        port = 8832;
-      };
-
-      wakapi = allThree // {
-        enable = true;
-        cloudflared.enable = true;
-        port = 8833;
-      };
     };
   };
-  local.hardware-clock.enable = true;
-  drivers.intel.enable = true;
+
   services.smartd = {
     enable = true;
     devices = lib.singleton { device = "/dev/nvme0"; };
@@ -282,33 +156,4 @@ in
     micro
     smartmontools # smartd drive health monitoring
   ];
-
-  users.users = builtins.mapAttrs (name: user: {
-    home = "/home/${name}";
-    homeMode = "755";
-    isNormalUser = true;
-    description = "${name}";
-    initialPassword = "password";
-    extraGroups = [
-      "networkmanager"
-      "scanner"
-    ]
-    ++ lib.optionals user.sudo [
-      "wheel"
-      "libvirtd"
-      "lp"
-      "docker"
-    ];
-    shell = pkgs.fish;
-    ignoreShellProgramCheck = true;
-  }) filteredUsers;
-
-  home-manager.users = builtins.mapAttrs (name: _user: {
-    home = {
-      username = name;
-      homeDirectory = "/home/${name}";
-      stateVersion = "25.05";
-    };
-    programs.home-manager.enable = true;
-  }) filteredUsers;
 }

@@ -1,69 +1,39 @@
 {
   pkgs,
   inputs,
-  users,
   lib,
   ...
 }:
-let
-  excludedUsers = [ "sysadmin" ];
-  filteredUsers = lib.filterAttrs (n: _: !(builtins.elem n excludedUsers)) users;
-in
 {
   imports = [
     ./hardware.nix
-    ../../modules
     inputs.home-manager.nixosModules.home-manager
-  ];
+  ]
+  ++ lib.my.recursivelyImport [ ../../modules ];
 
   modules = {
-    dm.sddm.enable = true;
-    dm.sddm.theme = "stray";
-    common = {
+    core.users.home-manager.stateVersion = "25.05";
+    core.boot.enable = true;
+    core.networking.enable = true;
+    desktop = {
+      compositors.hyprland.enable = true;
+      display-managers.sddm.enable = true;
+      display-managers.sddm.theme = "stray";
+      file-managers.thunar.enable = true;
+      fonts.enable = true;
+    };
+    hardware = {
+      drivers.intel.enable = true;
       bluetooth.enable = true;
-      printing.enable = true;
+      btrfs.enable = true;
       sound.enable = true;
-      networking.enable = true;
-      virtualisation.enable = false;
-      sops.enable = true;
     };
-    programs = {
-      thunar.enable = true;
-      hyprland.enable = true;
-      appimages.enable = false;
-      sudo-rs.enable = true;
-    };
-    gaming = {
-      wine.enable = true;
-      lutris.enable = true;
-      bottles.enable = false;
-      steam.enable = false;
-      heroic.enable = false;
-      osu.enable = false;
-      hoyoverse = {
-        enable = false;
-        genshin.enable = false;
-        honkai.enable = false;
-        zzz.enable = false;
-      };
-      minecraft = {
-        enable = false;
-        modrinth.enable = false;
-      };
-    };
-    styles.fonts.enable = true;
+    security.sudo-rs.enable = true;
+    security.sops.enable = true;
+    gaming.wine.enable = true;
+    gaming.lutris.enable = true;
   };
-  local.hardware-clock.enable = true;
-  drivers = {
-    intel.enable = true;
-    amdgpu.enable = false;
-    nvidia.enable = false;
-    nvidia-prime = {
-      enable = false;
-      intelBusID = "";
-      nvidiaBusID = "";
-    };
-  };
+
   services.tailscale.enable = true;
 
   time.timeZone = "Asia/Riyadh";
@@ -83,33 +53,4 @@ in
     title = "Michaelsoft Binbows";
     efiDeviceHandle = "FS0";
   };
-
-  users.users = builtins.mapAttrs (_: user: {
-    home = "/home/${user.username}";
-    homeMode = "755";
-    isNormalUser = true;
-    description = "${user.username}";
-    initialPassword = "password";
-    extraGroups = [
-      "networkmanager"
-      "scanner"
-    ]
-    ++ lib.optionals user.sudo [
-      "wheel"
-      "libvirtd"
-      "lp"
-      "docker"
-    ];
-    shell = pkgs.fish;
-    ignoreShellProgramCheck = true;
-  }) filteredUsers;
-
-  home-manager.users = builtins.mapAttrs (_: user: {
-    home = {
-      inherit (user) username;
-      homeDirectory = "/home/${user.username}";
-      stateVersion = "25.05";
-    };
-    programs.home-manager.enable = true;
-  }) filteredUsers;
 }

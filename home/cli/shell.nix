@@ -40,9 +40,6 @@ let
   ];
 
   sharedInit = ''
-    if [ -f /tmp/.current_wallpaper_path ]; then
-      export WALLPAPER=$(cat /tmp/.current_wallpaper_path)
-    fi
     if [ -f ~/.config/secrets.env ]; then
       export $(grep -v '^#' ~/.config/secrets.env | xargs)
     fi
@@ -116,9 +113,6 @@ in
           enable = true;
           interactiveShellInit = ''
             set -g fish_greeting
-            if test -f /tmp/.current_wallpaper_path
-              set -x WALLPAPER (cat /tmp/.current_wallpaper_path)
-            end
             if test -f ~/.config/secrets.env
               for line in (cat ~/.config/secrets.env | grep -v '^#')
                 set -x (string split "=" $line)

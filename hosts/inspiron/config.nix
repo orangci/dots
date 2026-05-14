@@ -1,62 +1,39 @@
 {
   pkgs,
   inputs,
-  users,
   lib,
   ...
 }:
-let
-  excludedUsers = [ "sysadmin" ];
-  filteredUsers = lib.filterAttrs (n: _: !(builtins.elem n excludedUsers)) users;
-in
 {
   imports = [
     ./hardware.nix
-    ../../modules
     inputs.home-manager.nixosModules.home-manager
-  ];
+  ]
+  ++ lib.my.recursivelyImport [ ../../modules ];
 
   modules = {
-    dm.sddm.enable = true;
-    common = {
+    core.boot.enable = true;
+    core.networking.enable = true;
+    desktop = {
+      compositors.hyprland.enable = true;
+      display-managers.sddm.enable = true;
+      file-managers.thunar.enable = true;
+      fonts.enable = true;
+    };
+    hardware = {
+      drivers.intel.enable = true;
       bluetooth.enable = true;
-      printing.enable = true;
+      btrfs.enable = true;
       sound.enable = true;
-      networking.enable = true;
-      virtualisation.enable = false;
-      sops.enable = false;
     };
-    programs = {
-      thunar.enable = true;
-      hyprland.enable = true;
-      appimages.enable = false;
-      sudo-rs.enable = true;
-    };
-    gaming = {
-      wine.enable = true;
-      lutris.enable = true;
-      bottles.enable = false;
-      steam.enable = false;
-      heroic.enable = false;
-      minecraft = {
-        enable = true;
-        modrinth.enable = false;
-        labymod.enable = true;
-      };
-    };
-    styles.fonts.enable = true;
-  };
-  local.hardware-clock.enable = true;
-  drivers = {
-    intel.enable = true;
-    amdgpu.enable = false;
-    nvidia.enable = false;
-    nvidia-prime = {
-      enable = false;
-      intelBusID = "";
-      nvidiaBusID = "";
+    security.sudo-rs.enable = true;
+    gaming.minecraft = {
+      enable = true;
+      modrinth.enable = false;
+      labymod.enable = true;
     };
   };
+
   services.tailscale.enable = true;
 
   time.timeZone = "Asia/Riyadh";
@@ -72,33 +49,4 @@ in
     nix-output-monitor
     libnotify
   ];
-
-  users.users = builtins.mapAttrs (_: user: {
-    home = "/home/${user.username}";
-    homeMode = "755";
-    isNormalUser = true;
-    description = "${user.username}";
-    initialPassword = "password";
-    extraGroups = [
-      "networkmanager"
-      "scanner"
-    ]
-    ++ lib.optionals user.sudo [
-      "wheel"
-      "libvirtd"
-      "lp"
-      "docker"
-    ];
-    shell = pkgs.fish;
-    ignoreShellProgramCheck = true;
-  }) filteredUsers;
-
-  home-manager.users = builtins.mapAttrs (_: user: {
-    home = {
-      inherit (user) username;
-      homeDirectory = "/home/${user.username}";
-      stateVersion = "26.05";
-    };
-    programs.home-manager.enable = true;
-  }) filteredUsers;
 }

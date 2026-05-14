@@ -1,0 +1,78 @@
+{
+  pkgs,
+  config,
+  lib,
+  inputs,
+  ...
+}:
+let
+  inherit (lib) mkEnableOption mkIf optionals;
+  cfg = config.modules.gaming;
+in
+{
+  imports = [ inputs.aagl.nixosModules.default ];
+  options = {
+    modules.gaming = {
+      wine.enable = mkEnableOption "Wine and associated packages for gaming";
+      lutris.enable = mkEnableOption "Lutris for gaming";
+      bottles.enable = mkEnableOption "Bottles for gaming";
+      steam.enable = mkEnableOption "Steam";
+      heroic.enable = mkEnableOption "Heroic Launcher";
+      osu.enable = mkEnableOption "Osu!";
+      hoyoverse = {
+        enable = mkEnableOption "An Anime Game Launcher";
+        genshin.enable = mkEnableOption "Genshin Impact";
+        honkai.enable = mkEnableOption "Honkai Impact";
+        zzz.enable = mkEnableOption "Zenless Zone Zero";
+      };
+      minecraft = {
+        enable = mkEnableOption "PrismLauncher for Minecraft";
+        modrinth.enable = mkEnableOption "Modrinth Launcher for Minecraft";
+        labymod.enable = mkEnableOption "Labymod Launcher for Minecraft";
+      };
+    };
+  };
+
+  config = {
+    nix.settings = mkIf cfg.hoyoverse.enable inputs.aagl.nixConfig;
+    programs = {
+      anime-game-launcher.enable = cfg.hoyoverse.genshin.enable;
+      honkers-launcher.enable = cfg.hoyoverse.honkai.enable;
+      sleepy-launcher.enable = cfg.hoyoverse.zzz.enable;
+      steam = mkIf cfg.steam.enable {
+        enable = true;
+        gamescopeSession.enable = true;
+        remotePlay.openFirewall = true;
+        dedicatedServer.openFirewall = true;
+      };
+    };
+    environment.systemPackages =
+      with pkgs;
+      (optionals cfg.wine.enable [
+        wineWow64Packages.wayland
+        winetricks
+        protontricks
+      ])
+      ++ (optionals cfg.lutris.enable [ lutris ])
+      ++ (optionals cfg.bottles.enable [ bottles ])
+      ++ (optionals cfg.heroic.enable [ heroic ])
+      ++ (optionals cfg.osu.enable [ osu-lazer ])
+      ++ (optionals cfg.minecraft.enable [
+        packwiz
+        rconc
+        (prismlauncher.override {
+          jdks = [
+            # Before 1.17: Java 8
+            # 1.17: Java 16
+            # 1.18 to 1.20: Java 17
+            # 1.21: Java 21
+            temurin-jre-bin-8
+            temurin-jre-bin-17
+            temurin-jre-bin-25
+          ];
+        })
+      ])
+      ++ (optionals cfg.minecraft.modrinth.enable [ modrinth-app ])
+      ++ (optionals cfg.minecraft.labymod.enable [ labymod-launcher ]);
+  };
+}
