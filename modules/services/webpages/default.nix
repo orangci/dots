@@ -12,14 +12,12 @@ let
     mkOption
     types
     mkMerge
-    singleton
     concatStringsSep
     concatMap
     ;
   cfg = config.modules.server.webpages.main;
 in
 {
-  imports = singleton ./redirects.nix;
   options.modules.server.webpages.main =
     lib.my.mkServerModule {
       name = "Webpagc";
@@ -88,7 +86,7 @@ in
         ${flakeSettings.domains.secondary} = "http://localhost:${toString cfg.port}";
       }
     ];
-    modules.server.glance.monitoredSites = singleton {
+    modules.server.glance.monitoredSites = lib.singleton {
       url = "https://${flakeSettings.domains.primary}";
       title = cfg.name;
       inherit (cfg.glance) icon;

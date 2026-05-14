@@ -10,20 +10,13 @@ let
     mkIf
     mkEnableOption
     mkOption
+    singleton
     types
     ;
   cfg = config.modules.server.nixflix;
 in
 {
-  imports = [
-    ./jellyfin.nix
-    ./qbittorrent.nix
-    ./sonarr.nix
-    ./radarr.nix
-    ./prowlarr.nix
-    # ./seerr.nix
-    inputs.nixflix.nixosModules.default
-  ];
+  imports = singleton inputs.nixflix.nixosModules.default;
   options.modules.server.nixflix = {
     enable = mkEnableOption "Enable nixflix";
     port = mkOption {
@@ -36,7 +29,7 @@ in
   config = mkIf cfg.enable {
     nixflix = {
       enable = true;
-      mediaUsers = lib.singleton users.sysadmin.username;
+      mediaUsers = singleton users.sysadmin.username;
       #mediaDir = "/srv/media";
       #stateDir = "/srv/media/.state";
       nginx.enable = false;

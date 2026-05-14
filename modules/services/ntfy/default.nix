@@ -14,7 +14,6 @@ let
   cfg = config.modules.server.ntfy;
 in
 {
-  imports = singleton ./scripts;
   options.modules.server.ntfy = lib.my.mkServerModule { name = "Ntfy"; } // {
     acl = mkOption {
       type = types.listOf types.str;

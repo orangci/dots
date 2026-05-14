@@ -8,12 +8,11 @@
   ...
 }:
 let
-  inherit (lib) singleton mkIf;
+  inherit (lib) mkIf my;
   cfg = config.modules.server.forgejo;
 in
 {
-  imports = singleton ./renovate.nix;
-  options.modules.server.forgejo = lib.my.mkServerModule {
+  options.modules.server.forgejo = my.mkServerModule {
     name = "Forgejo";
     subdomain = "git";
   };

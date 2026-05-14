@@ -11,7 +11,6 @@ let
   waybarBottom = false; # If the waybar should be at the bottom of the screen instead of the top
 in
 {
-  imports = [ ./style.nix ];
   options.hmModules.programs.widgets.waybar = {
     enable = mkEnableOption "Enable waybar";
   };

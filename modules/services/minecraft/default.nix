@@ -6,21 +6,16 @@
   ...
 }:
 let
-  inherit (lib) mkIf mkEnableOption;
+  inherit (lib) mkIf singleton mkEnableOption;
   cfg = config.modules.server.minecraft;
 in
 {
-  imports = [
-    inputs.nix-minecraft.nixosModules.minecraft-servers
-    ./servers
-  ];
-  options.modules.server.minecraft = {
-    enable = mkEnableOption "Enable minecraft";
-  };
+  imports = singleton inputs.nix-minecraft.nixosModules.minecraft-servers;
+  options.modules.server.minecraft.enable = mkEnableOption "Enable minecraft";
 
   config = mkIf cfg.enable {
     modules.common.sops.secrets.minecraft-rcon-password.path = "/var/secrets/minecraft-rcon-password";
-    environment.systemPackages = [ pkgs.rconc ];
+    environment.systemPackages = singleton pkgs.rconc;
     services.minecraft-servers = {
       enable = true;
       eula = true;

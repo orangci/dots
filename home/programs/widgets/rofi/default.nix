@@ -10,10 +10,6 @@ let
   colours = config.stylix.base16Scheme;
 in
 {
-  imports = [
-    ./selector.nix
-    ./selector-big.nix
-  ];
   options.hmModules.programs.widgets.rofi = {
     enable = mkEnableOption "Enable rofi";
   };
