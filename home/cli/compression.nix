@@ -11,7 +11,6 @@ in
 {
   options.hmModules.cli.compression = {
     enable = mkEnableOption "Enable compression CLI utilities";
-
     zip = mkEnableOption "Include zip and unzip";
     winrar = mkEnableOption "Include unar (RAR/WinRAR support)";
     gui = mkEnableOption "Include file-roller GUI";
