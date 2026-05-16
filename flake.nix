@@ -155,7 +155,7 @@
         }
       );
 
-      customPkgs = import ./pkgs {
+      myPkgs = import ./pkgs {
         inherit
           inputs
           pkgs
@@ -164,6 +164,10 @@
           flakeSettings
           ;
       };
+
+      hosts = builtins.filter (host: (builtins.readDir ./hosts).${host} == "directory") (
+        builtins.attrNames (builtins.readDir ./hosts)
+      );
 
       mkNixosSystem =
         host:
@@ -207,13 +211,8 @@
     in
     {
       inherit lib;
-      packages.${system} = customPkgs;
+      packages.${system} = myPkgs;
       formatter.${system} = pkgs.nixfmt-tree;
-      nixosConfigurations = {
-        gensokyo = mkNixosSystem "gensokyo";
-        komashi = mkNixosSystem "komashi";
-        sirius = mkNixosSystem "sirius";
-        inspiron = mkNixosSystem "inspiron";
-      };
+      nixosConfigurations = lib.genAttrs hosts mkNixosSystem;
     };
 }

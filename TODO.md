@@ -8,7 +8,7 @@
 - hook ntfy into all the services that can be, e.g., scrutiny, matrix
 - ntfy temp script https://github.com/nickexyz/ntfy-shellscripts/blob/main/temperature.sh
 - use ntfy CLI for ntfy scripts
-- maybe use an epic shell or make my own. like noctalia or danklinux.com
+- try out danklinux
 - complete grafana/prometheus module
 - export all modules
 - look into netbird
@@ -20,6 +20,5 @@
 - use [nixos-core](https://github.com/feel-co/nixos-core)
 - finish nvf config
 - style ndg a bit
-- auto discover hosts
 - make installer iso config, disko stuff
 - mounting copyparty on local filesystem
