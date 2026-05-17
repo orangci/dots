@@ -61,6 +61,7 @@
     programs = {
       better-control.enable = true;
       editors.vscodium.enable = true;
+      editors.vscodium.webdev = true;
       editors.micro.enable = true;
       browsers.firefox.enable = true;
       media = {
