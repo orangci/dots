@@ -41,6 +41,8 @@
   # networking.nameservers = lib.mkForce [ "192.168.8.191" ];
   hardware.logitech.wireless.enable = true;
   services.libinput.touchpad.sendEventsMode = "disabled";
+  services.libinput.touchpad.dev = "/dev/null";
+  boot.kernelPackages = lib.mkForce pkgs.linuxPackages_zen;
 
   environment.systemPackages = with pkgs; [
     nh
