@@ -21,4 +21,3 @@
 - finish nvf config
 - style ndg a bit
 - make installer iso config, disko stuff
-- mounting copyparty on local filesystem
