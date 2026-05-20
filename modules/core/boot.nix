@@ -14,6 +14,7 @@ in
     boot = {
       kernelPackages = pkgs.linuxPackages_latest;
       kernelModules = singleton "v4l2loopback";
+      kernelParams = singleton "usbcore.autosuspend=-1";
       extraModulePackages = singleton config.boot.kernelPackages.v4l2loopback;
       plymouth.enable = true;
       kernel.sysctl."vm.max_map_count" = 2147483642;
