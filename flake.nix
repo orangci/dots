@@ -44,12 +44,6 @@
       inputs.nixpkgs.follows = "nixpkgs-small";
     };
 
-    # widgets framework configurable in *python*!!
-    ignis = {
-      url = "github:ignis-sh/ignis";
-      inputs.nixpkgs.follows = "nixpkgs-small";
-    };
-
     # walker (we be walkin') written by a bald man
     walker.url = "github:abenz1267/walker";
 
@@ -101,7 +95,6 @@
 
     # documentation generator. peak rafware
     ndg.url = "github:orangci/ndg";
-
     # an extremely handsome and charming man is the maintainer of this cute little bot
     # hint: it's me, i'm the handsome man
     takina = {
