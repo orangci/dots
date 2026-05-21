@@ -63,6 +63,7 @@
       editors.vscodium.enable = true;
       editors.micro.enable = true;
       browsers.firefox.enable = true;
+      typst.enable = true;
       media = {
         enable = true;
         gwenview = true;

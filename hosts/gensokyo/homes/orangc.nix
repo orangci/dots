@@ -11,6 +11,7 @@
   hmModules = {
     programs.editors.nvf.enable = true;
     programs.editors.micro.enable = true;
+    programs.typst.enable = true;
     security.gnupg.enable = true;
     dev = {
       python = {

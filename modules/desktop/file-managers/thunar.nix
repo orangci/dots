@@ -32,7 +32,10 @@ in
         inherit (pkgs) gvfs;
       };
     };
-    environment.systemPackages = with pkgs; [ tumbler rclone ];
+    environment.systemPackages = with pkgs; [
+      tumbler
+      rclone
+    ];
     services.gvfs.enable = true;
   };
 }
