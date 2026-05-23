@@ -21,3 +21,6 @@
 - finish nvf config
 - style ndg a bit
 - make installer iso config, disko stuff
+- eliminate flakeSettings
+- xcompose config
+- tpw alias
