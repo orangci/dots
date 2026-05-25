@@ -14,24 +14,17 @@ let
     mkMerge
     ;
   cfg = config.modules.services.monitoring.glance;
-  serverModules = config.modules.services;
 
-  sites = builtins.attrValues (
-    lib.filterAttrs (
-      _name: mod:
-      (mod ? enable && mod.enable)
-      && lib.hasAttrByPath [ "glance" "enable" ] mod
-      && mod.glance.enable
-      && mod ? subdomain
-      && mod.subdomain != null
-    ) serverModules
-  );
+  serverModules = lib.concatMapAttrs (
+    _: v:
+    lib.filterAttrs (_: mod: mod.autoConfiguredServiceInfra or false && mod.glance.enable or false) v
+  ) config.modules.services;
 
   dynamicMonitoredSites = builtins.map (mod: {
     title = mod.name or mod.subdomain;
     url = "https://${mod.subdomain}.${flakeSettings.domains.tailnet}";
     inherit (mod.glance) icon;
-  }) sites;
+  }) (builtins.attrValues serverModules);
 in
 {
   options.modules.services.monitoring.glance =

@@ -13,14 +13,12 @@ let
     ;
   cfg = config.modules.services.infrastructure.tailscale;
 
-  validModules = lib.filterAttrs (
-    _: mod: mod ? subdomain && mod.subdomain != null && mod ? port && mod.port != null
-  ) (config.modules.services or { });
-
-  internalTailscaleDomainModules = lib.filterAttrs (
-    _: mod:
-    lib.hasAttrByPath [ "internalTailscaleDomain" "enable" ] mod && mod.internalTailscaleDomain.enable
-  ) validModules;
+  validModules = lib.concatMapAttrs (
+    _: v:
+    lib.filterAttrs (
+      _: mod: mod.autoConfiguredServiceInfra or false && mod.internalTailscaleDomain.enable or false
+    ) v
+  ) config.modules.services;
 
   tailscaleVhosts = lib.mapAttrs' (
     _: mod:
@@ -30,7 +28,7 @@ let
         reverse_proxy localhost:${toString mod.port}
       '';
     }
-  ) internalTailscaleDomainModules;
+  ) validModules;
 in
 {
   options.modules.services.infrastructure.tailscale = {

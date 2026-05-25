@@ -16,9 +16,9 @@ let
 
   cfg = config.modules.services.infrastructure.caddy;
 
-  validModules = lib.filterAttrs (
-    _: mod: mod ? subdomain && mod.subdomain != null && mod ? port && mod.port != null
-  ) (config.modules.services or { });
+  validModules = lib.concatMapAttrs (
+    _: v: lib.filterAttrs (_: mod: mod.autoConfiguredServiceInfra or false) v
+  ) config.modules.services;
 
   mkVhostEntries =
     domain:
@@ -62,7 +62,7 @@ in
           "github.com/caddy-dns/cloudflare@v0.2.4"
           "github.com/tailscale/caddy-tailscale@v0.0.0-20260106222316-bb080c4414ac"
         ];
-        hash = "sha256-UV4B7o39/SbIujwKyYvKsxktqjJTiMiLhXZIwZ9oXrQ=";
+        hash = "sha256-ufqG0y0mTInZRJZaYHoKeNBPnJtczvq3G24hgAuwk48=";
       };
       environmentFile = config.modules.security.sops.secrets.caddy-env.path;
       globalConfig = ''

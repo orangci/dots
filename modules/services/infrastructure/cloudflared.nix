@@ -9,16 +9,12 @@ let
   inherit (lib) types;
   cfg = config.modules.services.infrastructure.cloudflared;
 
-  allModules = config.modules.services or { };
-  validModules = lib.filterAttrs (
-    _: mod:
-    (mod ? enable && mod.enable)
-    && lib.hasAttrByPath [ "cloudflared" "enable" ] mod
-    && mod.cloudflared.enable
-    && mod.subdomain != null
-    && mod ? port
-    && mod.port != null
-  ) allModules;
+  validModules = lib.concatMapAttrs (
+    _: v:
+    lib.filterAttrs (
+      _: mod: mod.autoConfiguredServiceInfra or false && mod.cloudflared.enable or false
+    ) v
+  ) config.modules.services;
 
   mkIngress =
     domain:

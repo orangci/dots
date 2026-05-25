@@ -5,6 +5,7 @@
   port ? 8800,
   subdomain ? name,
   glanceIcon ? "sh:${lib.strings.replaceStrings [ " " ] [ "-" ] (lib.strings.toLower name)}",
+  autoConfiguredServiceInfra ? true,
 }:
 
 with lib;
@@ -16,6 +17,12 @@ with lib;
   cloudflared.enable = mkEnableOption "Cloudflare Tunnelling for ${name}";
   internalTailscaleDomain.enable = mkEnableOption "an internal tailnet domain for ${name} at ${subdomain}.${flakeSettings.domains.tailnet}";
   ntfyChecking.enable = mkEnableOption "Ntfy sending notifications when this ${name} goes down";
+
+  autoConfiguredServiceInfra = mkOption {
+    type = types.bool;
+    default = autoConfiguredServiceInfra;
+    description = "Whether Caddy, Tailscale, Cloudflared, and other infrastructure are able to automatically configure this service";
+  };
 
   name = mkOption {
     type = types.str;

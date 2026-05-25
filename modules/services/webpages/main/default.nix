@@ -23,6 +23,7 @@ in
       name = "Webpagc";
       subdomain = "";
       glanceIcon = "https://${flakeSettings.domains.primary}/leaf.png";
+      autoConfiguredServiceInfra = false;
     }
     // {
       redirects = mkOption {

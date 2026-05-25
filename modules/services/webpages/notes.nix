@@ -20,6 +20,7 @@ in
     name = "Blog";
     subdomain = "notes";
     glanceIcon = "https://${cfg.subdomain}.${flakeSettings.domains.primary}/leaf.png";
+    autoConfiguredServiceInfra = false;
   };
 
   config = mkIf cfg.enable {

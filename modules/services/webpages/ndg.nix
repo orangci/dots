@@ -14,6 +14,7 @@ in
   options.modules.services.webpages.ndg = my.mkServerModule {
     name = "Flake Documentation";
     glanceIcon = "sh:nixos";
+    autoConfiguredServiceInfra = false;
   };
   config = mkIf cfg.enable {
     documentation.nixos.options.warningsAreErrors = false;
