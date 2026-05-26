@@ -57,7 +57,6 @@ in
     };
     services = {
       databases.postgresql.enable = true;
-      databases.couchdb.enable = true;
       infrastructure = {
         caddy.enable = true;
         cloudflared.enable = true;
