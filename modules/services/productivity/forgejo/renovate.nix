@@ -31,7 +31,7 @@ in
       enable = true;
       schedule = "*:0"; # run every hour
       settings = {
-        endpoint = "https://${cfg.subdomain}.${flakeSettings.domains.tailnet}";
+        endpoint = "https://${cfg.subdomain}.${flakeSettings.domains.primary}";
         gitAuthor = "renovate <renovate@${flakeSettings.domains.primary}>";
         platform = "forgejo";
         autodiscover = true;

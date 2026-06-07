@@ -72,7 +72,7 @@ in
       instances.forgejo = {
         enable = true;
         name = host;
-        url = "https://${cfg.subdomain}.${flakeSettings.domains.tailnet}";
+        url = "https://${cfg.subdomain}.${flakeSettings.domains.primary}";
         tokenFile = config.modules.security.sops.secrets.forgejo-runner-registration-token.path;
         # hostPackages =
         labels = [
