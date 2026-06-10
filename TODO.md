@@ -23,4 +23,4 @@
 - make installer iso config, disko stuff
 - eliminate flakeSettings
 - xcompose config
-- tpw alias
+- fix borked tailnet

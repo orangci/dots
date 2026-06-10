@@ -124,14 +124,14 @@ in
 
       gaming.minecraft = {
         enable = true;
-        juniper-s10 = {
+        juniper-s11 = {
           enable = true;
           port = 8810;
           minRAM = 1;
           maxRAM = 12;
-          motd = "                  Lord of the Mysteries";
+          motd = "                  Craftable fumos?!";
           automatic-backups = {
-            enable = true;
+            enable = false;
             frequency = "daily";
           };
         };

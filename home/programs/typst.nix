@@ -24,6 +24,7 @@ in
         touying # using this instead of polylux, haven't tried polylux
         codly # using this instead of zebraw, haven't tried zebraw
         cetz
+        fletcher
         unify
         equate
         quick-maths

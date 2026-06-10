@@ -15,7 +15,7 @@ let
     mkEnableOption
     singleton
     ;
-  cfg = config.modules.services.gaming.minecraft.juniper-s10.automatic-backups;
+  cfg = config.modules.services.gaming.minecraft.juniper-s11.automatic-backups;
   script = pkgs.writeShellScriptBin "juniper-rcon-backup" ''
     function rcon {
         ${lib.getExe pkgs.rconc} jp "$1"
@@ -23,7 +23,7 @@ let
 
     export PATH="$PATH:${pkgs.gzip}/bin/"
 
-    mkdir -p ~/backups/juniper-s10
+    mkdir -p ~/backups/juniper-s11
     rcon 'say [§4WARNING§r] The Server will back itself up in five minutes.'
     sleep 5m
 
@@ -38,17 +38,17 @@ let
 
     rcon "save-off"
     rcon "save-all"
-    ${lib.getExe pkgs.gnutar} -cvpzf ~/backups/juniper-s10/backup-$(date +%F).tar.gz ~/juniper/world
+    ${lib.getExe pkgs.gnutar} -cvpzf ~/backups/juniper-s11/backup-$(date +%F).tar.gz ~/juniper/world
     rcon "save-on"
 
     rcon 'say [§bNOTICE§r] The Server backup process has completed.'
 
     # Delete older backups
-    find ~/backups/juniper-s10 -type f -mtime +3 -name 'backup-*.tar.gz' -delete
+    find ~/backups/juniper-s11 -type f -mtime +3 -name 'backup-*.tar.gz' -delete
   '';
 in
 {
-  options.modules.services.gaming.minecraft.juniper-s10.automatic-backups = {
+  options.modules.services.gaming.minecraft.juniper-s11.automatic-backups = {
     enable = mkEnableOption "Automatically backup and prune the server";
     frequency = mkOption {
       type = types.str;
@@ -82,7 +82,7 @@ in
       serviceConfig = {
         Type = "oneshot";
         ExecStart = pkgs.writeShellScript "juniper-backup-publish" ''
-          latest="$(ls -t ~minecraft/backups/juniper-s10/backup-*.tar.gz | head -n1)"
+          latest="$(ls -t ~minecraft/backups/juniper-s11/backup-*.tar.gz | head -n1)"
           cp "$latest" /srv/files/juniper-backups/season-10.tar.gz
           chown copyparty:copyparty /srv/files/juniper-backups/season-10.tar.gz
           chmod 775 /srv/files/juniper-backups/season-10.tar.gz
