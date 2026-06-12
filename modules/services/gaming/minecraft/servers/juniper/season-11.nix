@@ -18,8 +18,8 @@ let
     ;
   cfg = config.modules.services.gaming.minecraft.juniper-s11;
   packwiz = pkgs.fetchPackwizModpack {
-    url = "https://git.orangc.net/c/minecraft-modpacks/raw/commit/75337aae2747c1dddc249082706481d095ee4823/juniper-s11/pack.toml";
-    packHash = "sha256-/1dS5DuciOA2aJVGKlpqyJXeHNVJfleVLc2yOI04G+k=";
+    url = "https://git.orangc.net/c/minecraft-modpacks/raw/commit/062c447d7d065851cc59884b4a35523849929db9/juniper-s11/pack.toml";
+    packHash = "sha256-LGYKPTF81wGwrsJTT/xpOaacOLUdWrhZdcDhCnTULS8=";
     # dummy: pkgs.lib.fakeHash
   };
 in
@@ -74,7 +74,7 @@ in
     modules.services.infrastructure.caddy.virtualHosts = mkMerge [
       (my.mkCaddyEntry "mc-map" (cfg.port - 2000) false)
       (my.mkCaddyEntry "mc-dash" (cfg.port - 3000) false)
-      ];
+    ];
     modules.services.infrastructure.cloudflared.ingress = lib.mkMerge [
       (my.mkCloudflaredIngress "mc-map" (cfg.port - 2000))
       (my.mkCloudflaredIngress "mc-dash" (cfg.port - 3000))
@@ -127,14 +127,10 @@ in
 
         # simple-discord-link stuff
         sdlinkConfig="config/simple-discord-link/simple-discord-link.toml"
-        webhook_url=$(cat ${
-          config.modules.security.sops.secrets."juniper/in-game-chat-webhook".path
-        })
+        webhook_url=$(cat ${config.modules.security.sops.secrets."juniper/in-game-chat-webhook".path})
         bot_token=$(cat ${config.modules.security.sops.secrets."juniper/bot-token".path})
         client_id=$(cat ${config.modules.security.sops.secrets."juniper/bot-client-id".path})
-        client_secret=$(cat ${
-          config.modules.security.sops.secrets."juniper/bot-client-secret".path
-        })
+        client_secret=$(cat ${config.modules.security.sops.secrets."juniper/bot-client-secret".path})
         webhook_url_escaped=$(printf '%s\n' "$webhook_url" | sed -e 's/[\/&|]/\\&/g')
         bot_token_escaped=$(printf '%s\n' "$bot_token" | sed -e 's/[\/&|]/\\&/g')
         client_id_escaped=$(printf '%s\n' "$client_id" | sed -e 's/[\/&|]/\\&/g')
@@ -170,12 +166,12 @@ in
       # lib.mapAttrsToList (name: value: "gamerule ${name} ${toString value}") cfg.gamerules
       # );
 
-      extraReload = ''
-        ${pkgs.rconc}/bin/rconc jp "carpet customMOTD ${
-          replaceStrings [ "\\n" ] [ "\n" ]
-            config.services.minecraft-servers.servers.juniper.serverProperties.motd
-        }"
-      '';
+    #  extraReload = ''
+     #   ${pkgs.rconc}/bin/rconc jp "carpet customMOTD ${
+      #    replaceStrings [ "\\n" ] [ "\n" ]
+       #     config.services.minecraft-servers.servers.juniper.serverProperties.motd
+      #  }"
+     # '';
 
       operators = {
         orangci.uuid = "dde112e5-25c7-4963-800c-aa23c3816dbc";
@@ -197,11 +193,11 @@ in
         enforce-secure-profile = false;
         enforce-whitelist = true;
         function-permission-level = 3;
-        gamemode = "creative";
+        gamemode = "survival";
         max-players = 20;
         log-ips = false;
         max-world-size = 50000;
-        online-mode = true;
+        online-mode = false;
         op-permission-level = 4;
         pause-when-empty-seconds = 300;
         player-idle-timeout = 0;

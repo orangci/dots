@@ -83,9 +83,9 @@ in
         Type = "oneshot";
         ExecStart = pkgs.writeShellScript "juniper-backup-publish" ''
           latest="$(ls -t ~minecraft/backups/juniper-s11/backup-*.tar.gz | head -n1)"
-          cp "$latest" /srv/files/juniper-backups/season-10.tar.gz
-          chown copyparty:copyparty /srv/files/juniper-backups/season-10.tar.gz
-          chmod 775 /srv/files/juniper-backups/season-10.tar.gz
+          cp "$latest" /srv/files/juniper-backups/season-11.tar.gz
+          chown copyparty:copyparty /srv/files/juniper-backups/season-11.tar.gz
+          chmod 775 /srv/files/juniper-backups/season-11.tar.gz
         '';
       };
     };

@@ -131,7 +131,7 @@ in
           maxRAM = 12;
           motd = "                  Craftable fumos?!";
           automatic-backups = {
-            enable = false;
+            enable = true;
             frequency = "daily";
           };
         };
