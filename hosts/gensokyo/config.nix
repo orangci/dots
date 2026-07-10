@@ -121,21 +121,6 @@ in
         notes = enableServerModule 8814 { };
         ndg = enableServerModule 8813 { };
       };
-
-      gaming.minecraft = {
-        enable = true;
-        juniper-s11 = {
-          enable = true;
-          port = 8810;
-          minRAM = 1;
-          maxRAM = 12;
-          motd = "                  Craftable fumos?!";
-          automatic-backups = {
-            enable = true;
-            frequency = "daily";
-          };
-        };
-      };
     };
   };
 

@@ -24,3 +24,4 @@
 - eliminate flakeSettings
 - xcompose config
 - fix borked tailnet
+- fix borked noctalia config

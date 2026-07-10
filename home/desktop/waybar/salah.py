@@ -24,7 +24,7 @@ prayer_times = {
     "Dhuhr": timings.get("Dhuhr"),
     "Asr": timings.get("Asr"),
     "Maghrib": timings.get("Maghrib"),
-    "Isha": timings.get("Isha")
+    "Isha": timings.get("Isha"),
 }
 
 next_prayer = None
