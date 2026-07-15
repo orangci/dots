@@ -19,6 +19,7 @@ in
     github = mkEnableOption "Enable GitHub CLI (gh)";
     gitea = mkEnableOption "Enable Gitea CLI (tea)";
     lfs = mkEnableOption "Enable GitHub Large File Storage";
+    pre-commit = mkEnableOption "Enable pre-commit";
 
     username = mkOption {
       type = types.str;
@@ -95,6 +96,13 @@ in
       gr = "git rebase";
     };
 
-    home.packages = mkIf cfg.gitea [ pkgs.tea ];
+    home.packages =
+      with pkgs;
+      [ ]
+      ++ lib.optionals cfg.gitea [ tea ]
+      ++ lib.optionals cfg.pre-commit [
+        pre-commit
+        pre-commit-hook-ensure-sops
+      ];
   };
 }

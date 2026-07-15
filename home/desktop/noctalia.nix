@@ -542,64 +542,64 @@ in
         };
       };
       # plugins = {
-        # sources = singleton {
-          # enabled = true;
-          # name = "Official Noctalia Plugins";
-          # url = "https://github.com/noctalia-dev/noctalia-plugins";
-        # };
-        # states = {
-          # tailscale = enablePlugin;
-          # currency-exchange = enablePlugin;
-          # usb-drive-manager = enablePlugin;
-          # workspace-overview = enablePlugin;
-          # file-search = mkIf config.programs.fd.enable enablePlugin;
-          # privacy-indicator = enablePlugin;
-          # mawaqit = enablePlugin;
-          # dmenu = enablePlugin;
-          # ntfy-notifications = enablePlugin;
-          # keybind-cheatsheet = enablePlugin;
-          # timer = enablePlugin;
-          # kde-connect = mkIf config.services.kdeconnect.enable enablePlugin;
-          # polkit-agent = enablePlugin;
-          # custom-commands = enablePlugin;
-          # screen-recorder = enablePlugin;
-        # };
-        # version = 2;
+      # sources = singleton {
+      # enabled = true;
+      # name = "Official Noctalia Plugins";
+      # url = "https://github.com/noctalia-dev/noctalia-plugins";
+      # };
+      # states = {
+      # tailscale = enablePlugin;
+      # currency-exchange = enablePlugin;
+      # usb-drive-manager = enablePlugin;
+      # workspace-overview = enablePlugin;
+      # file-search = mkIf config.programs.fd.enable enablePlugin;
+      # privacy-indicator = enablePlugin;
+      # mawaqit = enablePlugin;
+      # dmenu = enablePlugin;
+      # ntfy-notifications = enablePlugin;
+      # keybind-cheatsheet = enablePlugin;
+      # timer = enablePlugin;
+      # kde-connect = mkIf config.services.kdeconnect.enable enablePlugin;
+      # polkit-agent = enablePlugin;
+      # custom-commands = enablePlugin;
+      # screen-recorder = enablePlugin;
+      # };
+      # version = 2;
       # };
 
       # pluginSettings = {
-        # privacy-indicator.hideInactive = true;
-        # ntfy-notifications = {
-          # serverUrl = "https://ntfy.orangc.net";
-          # topics = [ "services" ];
-        # };
-        # mawaqit = {
-          # city = "Riyadh";
-          # country = "SA";
-          # method = 4;
-          # school = 0;
-          # playAzan = true;
-          # azanFile = "azan3.mp3";
-        # };
+      # privacy-indicator.hideInactive = true;
+      # ntfy-notifications = {
+      # serverUrl = "https://ntfy.orangc.net";
+      # topics = [ "services" ];
+      # };
+      # mawaqit = {
+      # city = "Riyadh";
+      # country = "SA";
+      # method = 4;
+      # school = 0;
+      # playAzan = true;
+      # azanFile = "azan3.mp3";
+      # };
       # };
 
       # colors = with config.lib.stylix.colors.withHashtag; {
-        # mPrimary = base0D;
-        # mOnPrimary = base00;
-        # mSecondary = base0E;
-        # mOnSecondary = base00;
-        # mTertiary = base0C;
-        # mOnTertiary = base00;
-        # mError = base08;
-        # mOnError = base00;
-        # mSurface = base00;
-        # mOnSurface = base05;
-        # mHover = base0C;
-        # mOnHover = base00;
-        # mSurfaceVariant = base01;
-        # mOnSurfaceVariant = base04;
-        # mOutline = base03;
-        # mShadow = base00;
+      # mPrimary = base0D;
+      # mOnPrimary = base00;
+      # mSecondary = base0E;
+      # mOnSecondary = base00;
+      # mTertiary = base0C;
+      # mOnTertiary = base00;
+      # mError = base08;
+      # mOnError = base00;
+      # mSurface = base00;
+      # mOnSurface = base05;
+      # mHover = base0C;
+      # mOnHover = base00;
+      # mSurfaceVariant = base01;
+      # mOnSurfaceVariant = base04;
+      # mOutline = base03;
+      # mShadow = base00;
       # };
     };
   };

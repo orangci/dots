@@ -166,12 +166,12 @@ in
       # lib.mapAttrsToList (name: value: "gamerule ${name} ${toString value}") cfg.gamerules
       # );
 
-    #  extraReload = ''
-     #   ${pkgs.rconc}/bin/rconc jp "carpet customMOTD ${
+      #  extraReload = ''
+      #   ${pkgs.rconc}/bin/rconc jp "carpet customMOTD ${
       #    replaceStrings [ "\\n" ] [ "\n" ]
-       #     config.services.minecraft-servers.servers.juniper.serverProperties.motd
+      #     config.services.minecraft-servers.servers.juniper.serverProperties.motd
       #  }"
-     # '';
+      # '';
 
       operators = {
         orangci.uuid = "dde112e5-25c7-4963-800c-aa23c3816dbc";

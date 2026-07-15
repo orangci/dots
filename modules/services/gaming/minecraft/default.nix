@@ -15,7 +15,10 @@ in
 
   config = mkIf cfg.enable {
     modules.security.sops.secrets.minecraft-rcon-password.path = "/var/secrets/minecraft-rcon-password";
-    environment.systemPackages = [pkgs.rconc pkgs.packwiz];
+    environment.systemPackages = [
+      pkgs.rconc
+      pkgs.packwiz
+    ];
     services.minecraft-servers = {
       enable = true;
       eula = true;
