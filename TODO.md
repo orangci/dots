@@ -4,7 +4,7 @@
 - modules that are broken: moodle, syncthing
 - emove hm/system split... switch to hjem
 - look into other image viewers. oculante? fix up mpv to use as my image viewer instead of gwenview? or just keep using gwenview?
-- selfhost (maybe) audiobookshelf, litexiv, invidious, redlib, jitsi, cyberchef, pairdrop, stirling pdf, pricebuddy, home-assistant, [fiche](https://github.com/solusipse/fiche)
+- selfhost (maybe) beszel, audiobookshelf, litexiv, invidious, redlib, jitsi, cyberchef, pairdrop, stirling pdf, pricebuddy, home-assistant, [fiche](https://github.com/solusipse/fiche)
 - hook ntfy into all the services that can be, e.g., scrutiny, matrix
 - ntfy temp script https://github.com/nickexyz/ntfy-shellscripts/blob/main/temperature.sh
 - use ntfy CLI for ntfy scripts
@@ -25,4 +25,3 @@
 - xcompose config
 - fix borked tailnet
 - fix borked noctalia config
-- install precommit

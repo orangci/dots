@@ -92,7 +92,7 @@ in
         };
         changedetection = enableServerModule 8828 { };
         glance = enableServerModule 8806 { glance = false; };
-        scrutiny = enableServerModule 8825 { };
+        beszel = enableServerModule 8825 { };
         speedtest = enableServerModule 8816 { };
         umami = enableServerModule 8820 { };
         wakapi = enableServerModule 8833 { };
