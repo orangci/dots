@@ -8,10 +8,6 @@
 let
   inherit (lib) mkEnableOption singleton mkIf;
   cfg = config.hmModules.desktop.noctalia;
-  enablePlugin = {
-    enabled = true;
-    sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
-  };
 in
 {
   imports = singleton inputs.noctalia.homeModules.default;

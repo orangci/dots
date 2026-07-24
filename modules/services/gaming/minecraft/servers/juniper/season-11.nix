@@ -12,7 +12,6 @@ let
     mkEnableOption
     types
     mkOption
-    replaceStrings
     mkMerge
     my
     ;

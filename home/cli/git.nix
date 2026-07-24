@@ -98,8 +98,7 @@ in
 
     home.packages =
       with pkgs;
-      [ ]
-      ++ lib.optionals cfg.gitea [ tea ]
+      lib.optionals cfg.gitea [ tea ]
       ++ lib.optionals cfg.pre-commit [
         pre-commit
         pre-commit-hook-ensure-sops

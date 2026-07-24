@@ -1,0 +1,20 @@
+repos:
+  - repo: local
+    hooks:
+      - id: nixfmt
+        name: nixfmt
+        entry: fish -c "nixfmt **.nix"
+        language: system
+        pass_filenames: false
+
+      - id: statix-fix
+        name: statix fix
+        entry: statix fix
+        language: system
+        pass_filenames: false
+
+      - id: deadnix
+        name: deadnix
+        entry: fish -c "deadnix (string match -rv '^pkgs/' **/*.nix) -e"
+        language: system
+        pass_filenames: false
