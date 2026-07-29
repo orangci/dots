@@ -84,6 +84,7 @@ in
         takina.enable = true;
         miniflux = enableServerModule 8827 { };
         vaultwarden = enableServerModule 8818 { };
+        #horsering = enableServerModule 8834 { };
       };
 
       monitoring = {
@@ -92,7 +93,7 @@ in
         };
         changedetection = enableServerModule 8828 { };
         glance = enableServerModule 8806 { glance = false; };
-        beszel = enableServerModule 8825 { };
+        #beszel = enableServerModule 8825 { };
         speedtest = enableServerModule 8816 { };
         umami = enableServerModule 8820 { };
         wakapi = enableServerModule 8833 { };
@@ -120,6 +121,7 @@ in
         main = enableServerModule 8804 { };
         notes = enableServerModule 8814 { };
         ndg = enableServerModule 8813 { };
+        fumos-net = enableServerModule 8835 { };
       };
     };
   };

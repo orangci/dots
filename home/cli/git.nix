@@ -94,6 +94,8 @@ in
       gd = "git diff | bat -p";
       gt = "git status";
       gr = "git rebase";
+      prc = "pre-commit";
+      prca = "pre-commit run --all-files";
     };
 
     home.packages =

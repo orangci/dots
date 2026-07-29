@@ -47,6 +47,7 @@ in
         pkgs.${cfg.version}
         pkgs.uv
         pkgs.ruff
+        pkgs.ty
         pkgs.virtualenv
       ]
       ++ lib.optionals cfg.mypy [ pkgs.mypy ]

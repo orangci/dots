@@ -119,6 +119,12 @@
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # a webring for horzes
+    horsering = {
+      url = "git+https://git.orangc.net/c/horsering";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
