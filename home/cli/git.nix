@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  flakeSettings,
   ...
 }:
 let
@@ -62,6 +63,7 @@ in
       git = {
         enable = true;
         lfs.enable = cfg.lfs;
+        package = pkgs.gitFull;
         signing = mkIf cfg.signing.enable {
           inherit (cfg.signing) format;
           inherit (cfg.signing) key;
@@ -73,11 +75,19 @@ in
           user.email = cfg.email;
           credential.helper = "store";
           push.autoSetupRemote = true;
+          format.signOff = true;
           alias = {
             change-commits = "!f() { VAR=$1; OLD=$2; NEW=$3; shift 3; git filter-branch --env-filter \"if [[ \\\"$`echo $VAR`\\\" = '$OLD' ]]; then export $VAR='$NEW'; fi\" \\$@; }; f";
             # example usage: `change-commits GIT_AUTHOR_NAME "old name" "new name"`
             # or even: `git change-commits GIT_AUTHOR_EMAIL "old@email.com" "new@email.com" HEAD~10..HEAD`
             # HEAD~10..HEAD makes it only select the last ten commits
+          };
+          sendemail = {
+            smtpserver = "smtp.purelymail.com";
+            smtpuser = "c@${flakeSettings.domains.email}";
+            smtpencryption = "ssl";
+            smtpserverport = 465;
+            annotate = true;
           };
         };
       };
@@ -85,7 +95,7 @@ in
 
     hmModules.cli.shell.extraAliases = {
       ga = "git add .";
-      commit = "git commit -m";
+      commit = "git commit -sm";
       gp = "git push";
       gs = "git switch";
       gpf = "git push --force";
@@ -93,7 +103,10 @@ in
       pull = "git pull";
       gd = "git diff | bat -p";
       gt = "git status";
-      gr = "git rebase";
+      gl = "git log | head -25";
+      gr = "git restore";
+      grs = "git restore --staged";
+      grb = "git rebase";
       prc = "pre-commit";
       prca = "pre-commit run --all-files";
     };
