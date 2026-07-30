@@ -91,6 +91,13 @@ in
     }
     {
       sources = [
+        "codeberg"
+        "cb"
+      ];
+      target = "https://codeberg.org/orangc";
+    }
+    {
+      sources = [
         "github"
         "gh"
       ];
