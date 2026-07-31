@@ -96,6 +96,7 @@ in
     hmModules.cli.shell.extraAliases = {
       ga = "git add .";
       commit = "git commit -sm";
+      amend = "git commit --amend --no-edit";
       gp = "git push";
       gs = "git switch";
       gpf = "git push --force";
