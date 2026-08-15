@@ -56,7 +56,11 @@ in
       ];
     };
     services = {
-      databases.postgresql.enable = true;
+      databases.postgresql = {
+        enable = true;
+        users = [ "kaju" ];
+        databases = [ "kaju" ];
+      };
       infrastructure = {
         caddy.enable = true;
         cloudflared.enable = true;
@@ -74,7 +78,6 @@ in
       media = {
         immich = enableServerModule 8807 { };
         kavita = enableServerModule 8829 { };
-        linkwarden = enableServerModule 8830 { };
       };
 
       misc = {
@@ -91,7 +94,6 @@ in
         ntfy = (enableServerModule 8812 { ntfy = false; }) // {
           scripts.services.enable = true;
         };
-        changedetection = enableServerModule 8828 { };
         glance = enableServerModule 8806 { glance = false; };
         #beszel = enableServerModule 8825 { };
         speedtest = enableServerModule 8816 { };
@@ -111,7 +113,6 @@ in
       };
 
       tools = {
-        convertx = enableServerModule 8802 { };
         it-tools = enableServerModule 8808 { };
         libretranslate = enableServerModule 8832 { };
         searxng = enableServerModule 8815 { };
@@ -133,8 +134,8 @@ in
 
   time.timeZone = "Asia/Riyadh";
   system.stateVersion = "25.05";
-  #networking.nameservers = lib.mkForce [ "127.0.0.1" ];
-  #networking.resolvconf.enable = false;
+  # networking.nameservers = lib.mkForce [ "::1" ];
+  # networking.resolvconf.enable = false;
 
   environment.systemPackages = with pkgs; [
     lxqt.lxqt-policykit

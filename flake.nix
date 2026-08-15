@@ -99,7 +99,7 @@
     # an extremely handsome and charming man is the maintainer of this cute little bot
     # hint: it's me, i'm the handsome man
     takina = {
-      url = "git+https://git.orangc.net/c/takina";
+      url = "git+https://git.orangc.net/c/takina?ref=d.py-rewrite";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

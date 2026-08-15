@@ -2,6 +2,7 @@
   config,
   lib,
   inputs,
+  flakeSettings,
   ...
 }:
 let
@@ -20,9 +21,15 @@ in
       enable = true;
       environmentFile = config.modules.security.sops.secrets.takina-env.path;
       config = {
-        prefix = ".";
-        embedColor = "#FAB387";
-        libretranslateApiUrl = "http://localhost:${toString config.modules.services.tools.libretranslate.port}";
+        PREFIX = ".";
+        EMBED_COLOUR = "#FAB387";
+        LIBRETRANSLATE_API_URL = "https://${config.modules.services.tools.libretranslate.subdomain}.${flakeSettings.domains.primary}";
+        HASDB = "yes";
+        EMOJIS_MODERATOR = "<:salute:1287038901151862795>";
+        EMOJIS_NOTE = "<:note:1289880498541297685>";
+        BOT_STATUS = "ROLLING BETA 2.0.0!!!";
+        COGS_BLACKLIST = "core.settings";
+        ENABLE_SESP_COGS = "yes";
       };
     };
   };

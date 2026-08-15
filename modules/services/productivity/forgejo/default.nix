@@ -54,12 +54,18 @@ in
           DEFAULT_UPDATE_STYLE = "rebase";
         };
         ui = {
-          DEFAULT_THEME = "catppuccin-peach-auto";
-          THEMES = "catppuccin-mocha-rosewater,catppuccin-mocha-flamingo,catppuccin-mocha-pink,catppuccin-mocha-mauve,catppuccin-mocha-red,catppuccin-mocha-maroon,catppuccin-mocha-peach,catppuccin-mocha-yellow,catppuccin-mocha-green,catppuccin-mocha-teal,catppuccin-mocha-sky,catppuccin-mocha-sapphire,catppuccin-mocha-blue,catppuccin-mocha-lavender,catppuccin-rosewater-auto,catppuccin-flamingo-auto,catppuccin-pink-auto,catppuccin-mauve-auto,catppuccin-red-auto,catppuccin-maroon-auto,catppuccin-peach-auto,catppuccin-yellow-auto,catppuccin-green-auto,catppuccin-teal-auto,catppuccin-sky-auto,catppuccin-sapphire-auto,catppuccin-blue-auto,catppuccin-lavender-auto,forgejo-auto";
+          DEFAULT_THEME = "catppuccin-mauve-auto";
+          DEFAULT_SHOW_FULL_NAME = true;
+          THEMES = "vexcited,catppuccin-mocha-rosewater,catppuccin-mocha-flamingo,catppuccin-mocha-pink,catppuccin-mocha-mauve,catppuccin-mocha-red,catppuccin-mocha-maroon,catppuccin-mocha-peach,catppuccin-mocha-yellow,catppuccin-mocha-green,catppuccin-mocha-teal,catppuccin-mocha-sky,catppuccin-mocha-sapphire,catppuccin-mocha-blue,catppuccin-mocha-lavender,catppuccin-rosewater-auto,catppuccin-flamingo-auto,catppuccin-pink-auto,catppuccin-mauve-auto,catppuccin-red-auto,catppuccin-maroon-auto,catppuccin-peach-auto,catppuccin-yellow-auto,catppuccin-green-auto,catppuccin-teal-auto,catppuccin-sky-auto,catppuccin-sapphire-auto,catppuccin-blue-auto,catppuccin-lavender-auto,forgejo-auto";
         };
         "ui.meta" = {
           AUTHOR = users.sysadmin.username;
           DESCRIPTION = "${users.sysadmin.username}'s selfhosted instance of forgejo";
+        };
+        other = {
+          SHOW_FOOTER_TEMPLATE_LOAD_TIME = false;
+          SHOW_FOOTER_POWERED_BY = false;
+          SHOW_FOOTER_VERSION = false;
         };
       };
     };
@@ -100,16 +106,21 @@ in
     };
     systemd.services.forgejo.preStart =
       let
-        theme = pkgs.fetchzip {
+        catppuccinTheme = pkgs.fetchzip {
           url = "https://github.com/catppuccin/gitea/releases/download/v1.0.2/catppuccin-gitea.tar.gz";
           sha256 = "sha256-rZHLORwLUfIFcB6K9yhrzr+UwdPNQVSadsw6rg8Q7gs=";
           stripRoot = false;
+        };
+        vexcitedTheme = builtins.fetchGit {
+          url = "https://git.orangc.net/c/vexcited-forgejo-theme";
+          rev = "a22f578b79ebd53e7d04c05abe22969381e15cf7";
         };
       in
       lib.mkAfter ''
         rm -rf ${config.services.forgejo.stateDir}/custom/public/assets
         mkdir -p ${config.services.forgejo.stateDir}/custom/public/assets/css
-        cp -r --no-preserve=mode,ownership ${theme}/* ${config.services.forgejo.stateDir}/custom/public/assets/css
+        cp -r --no-preserve=mode,ownership ${catppuccinTheme}/* ${config.services.forgejo.stateDir}/custom/public/assets/css
+        cp --no-preserve=mode,ownership ${vexcitedTheme}/src/css/theme.css ${config.services.forgejo.stateDir}/custom/public/assets/css/vexcited-theme.css
         mkdir -p ${config.services.forgejo.stateDir}/custom/public/assets/img
         cp -r --no-preserve=mode,ownership ${./public/assets/img}/* ${config.services.forgejo.stateDir}/custom/public/assets/img
       '';
