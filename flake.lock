@@ -1499,11 +1499,11 @@
         "uv2nix": "uv2nix_6"
       },
       "locked": {
-        "lastModified": 1786806675,
-        "narHash": "sha256-YkQKhOYGfcQ+wtIiQzfchyenEw2aS0Mt12eJYVIEcDI=",
+        "lastModified": 1787320568,
+        "narHash": "sha256-pSSRaBV6OI9TG6D47XR5UbpKSf/A13CND4c8QqvRVSs=",
         "ref": "d.py-rewrite",
-        "rev": "f0ff69621f2041f90c1d541692ec806b51703ad0",
-        "revCount": 797,
+        "rev": "cba43c27a0364aab16fe1b98cb2c773d6388ba5a",
+        "revCount": 802,
         "type": "git",
         "url": "https://git.orangc.net/c/takina"
       },
