@@ -39,8 +39,15 @@
       };
     };
     desktop = {
-      hypr.land.enable = true;
-      noctalia.enable = true;
+      hypr = {
+        land.enable = true;
+        lock.enable = true;
+        idle.enable = true;
+      };
+      waybar.enable = true;
+      swaync.enable = true;
+      wleave.enable = true;
+      syshud.enable = true;
       clipboard.enable = true;
       cheatsheet.enable = true;
       screenshot.enable = true;
@@ -66,6 +73,7 @@
       direnv.enable = true;
     };
     programs = {
+      browsers.firefox.enable = true;
       better-control.enable = true;
       thunderbird.enable = true;
       typst.enable = true;
@@ -76,10 +84,6 @@
           enable = true;
           webdev = true;
         };
-      };
-      browsers = {
-        firefox.enable = true;
-        chromium.enable = true;
       };
       media = {
         enable = true;

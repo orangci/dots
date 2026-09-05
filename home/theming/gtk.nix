@@ -14,7 +14,7 @@ in
   };
   config = mkIf cfg.enable {
     gtk = {
-      gtk4.theme = config.gtk.theme;
+      # gtk4.theme = config.gtk.theme;
       iconTheme = {
         name = "Papirus-Dark";
         package = pkgs.papirus-icon-theme;

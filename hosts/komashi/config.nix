@@ -47,6 +47,7 @@
     lxqt.lxqt-policykit
     nix-output-monitor
     libnotify
+    zoom-us
   ];
 
   boot.loader.systemd-boot.windows."windows10" = {

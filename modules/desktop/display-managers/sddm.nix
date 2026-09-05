@@ -62,7 +62,7 @@ in
     environment.systemPackages = [
       sddm-stray
       sddm-astronaut
-      pkgs.libsForQt5.qt5.qtgraphicaleffects
+      pkgs.qt5.qtgraphicaleffects
     ];
 
     services.displayManager.sddm = {
