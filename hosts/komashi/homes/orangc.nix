@@ -46,11 +46,15 @@
       };
       waybar.enable = true;
       swaync.enable = true;
-      wleave.enable = true;
+      walker.enable = true;
       syshud.enable = true;
       clipboard.enable = true;
       cheatsheet.enable = true;
       screenshot.enable = true;
+      wleave = {
+        enable = true;
+        horizontal = true;
+      };
       screenrec = {
         enable = true;
         fileFormat = "mov";
@@ -99,6 +103,10 @@
     theming = {
       gtk.enable = true;
       qt.enable = true;
+      walls = {
+        enable = true;
+        timeout = 20;
+      };
       stylix = {
         enable = true;
         # Choose from https://tinted-theming.github.io/tinted-gallery/

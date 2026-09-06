@@ -14,7 +14,9 @@ in
     enable = mkEnableOption "Enable firefox";
   };
   config = mkIf cfg.enable {
-    wayland.windowManager.hyprland.settings.bindd = [ "SUPER, W, Launch Firefox, exec, firefox" ];
+    wayland.windowManager.hyprland.settings.bind = lib.my.hyprlandLua.bindd [
+      "SUPER, W, Launch Firefox, exec, firefox"
+    ];
     programs.firefox = {
       enable = true;
       profiles.${config.home.username} = {

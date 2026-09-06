@@ -59,12 +59,13 @@ in
   options.hmModules.desktop.screenshot.enable = mkEnableOption "Enable screenshot script";
   config = mkIf cfg.enable {
     wayland.windowManager.hyprland.settings = {
-      bindld = [ ",Print, Fullscreen Screenshot, exec, screenshot --fullscreen --edit" ];
-      bindd = [
-        "Super+Shift,T, Copy Text From Screenshot, exec, screenshot --ocr"
-        "SUPER, S, Area Screenshot, exec, screenshot --area"
-        "SUPERSHIFT, S, Area Screenshot (With Editor), exec, screenshot --area --edit"
-      ];
+      bind =
+        lib.my.hyprlandLua.bindld [ ",Print, Fullscreen Screenshot, exec, screenshot --fullscreen --edit" ]
+        ++ lib.my.hyprlandLua.bindd [
+          "Super+Shift,T, Copy Text From Screenshot, exec, screenshot --ocr"
+          "SUPER, S, Area Screenshot, exec, screenshot --area"
+          "SUPERSHIFT, S, Area Screenshot (With Editor), exec, screenshot --area --edit"
+        ];
     };
     home.packages = with pkgs; [
       grim

@@ -13,7 +13,9 @@ in
   };
 
   config = mkIf cfg.enable {
-    wayland.windowManager.hyprland.settings.bindd = [ "SUPER, G, Launch Chromium, exec, chromium" ];
+    wayland.windowManager.hyprland.settings.bind = lib.my.hyprlandLua.bindd [
+      "SUPER, G, Launch Chromium, exec, chromium"
+    ];
     programs.chromium = {
       enable = true;
       extensions = [

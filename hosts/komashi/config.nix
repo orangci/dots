@@ -30,8 +30,11 @@
     };
     security.sudo-rs.enable = true;
     security.sops.enable = true;
-    gaming.wine.enable = true;
-    gaming.lutris.enable = true;
+    gaming = {
+      wine.enable = true;
+      lutris.enable = true;
+      steam.enable = true;
+    };
   };
 
   services.tailscale.enable = true;

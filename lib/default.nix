@@ -5,4 +5,5 @@
   mkCaddyEntry = import ./mkCaddyEntry.nix { inherit lib flakeSettings; };
   mkCloudflaredIngress = import ./mkCloudflaredIngress.nix { inherit lib flakeSettings; };
   recursivelyImport = import ./recursivelyImport.nix { inherit lib; };
+  hyprlandLua = import ./mkHyprlandLua.nix { inherit lib; };
 }

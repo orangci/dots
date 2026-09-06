@@ -21,13 +21,17 @@ in
     };
 
     wayland.windowManager.hyprland.settings = {
-      exec-once = mkIf (!config.hmModules.desktop.walker.enable) [
-        "wl-paste --type text --watch cliphist store"
-        "wl-paste --type image --watch cliphist store"
-      ];
+      on = mkIf (!config.hmModules.desktop.walker.enable) (
+        map lib.my.hyprlandLua.onStart [
+          "wl-paste --type text --watch cliphist store"
+          "wl-paste --type image --watch cliphist store"
+        ]
+      );
 
-      bindd = singleton (
-        mkIf (!config.hmModules.desktop.walker.enable) "SUPERSHIFT, V, Clear Clipboard, exec, cliphist wipe"
+      bind = mkIf (!config.hmModules.desktop.walker.enable) (
+        lib.my.hyprlandLua.bindd [
+          "SUPERSHIFT, V, Clear Clipboard, exec, cliphist wipe"
+        ]
       );
     };
   };

@@ -105,7 +105,7 @@ in
   };
 
   config = mkIf cfg.enable {
-    wayland.windowManager.hyprland.settings.bindd = [
+    wayland.windowManager.hyprland.settings.bind = lib.my.hyprlandLua.bindd [
       "SUPER, O, Start Screen Recording, exec, screenrec"
       "SUPERALT, O, Start Screen Recording (Mic), exec, screenrec --mic"
       # "SUPERCONTROL, O, Start Screen Recording (Area), exec, screenrec --portal"

@@ -2,6 +2,7 @@
   config,
   lib,
   inputs,
+  pkgs,
   ...
 }:
 let
@@ -20,11 +21,11 @@ in
 
   config = mkIf cfg.enable {
     wayland.windowManager.hyprland.settings = {
-      layerrule = [
+      layer_rule = map lib.my.hyprlandLua.layerRule [
         "match:namespace walker, blur on"
         "match:namespace walker, ignore_alpha 0.8"
       ];
-      bindd = [
+      bind = lib.my.hyprlandLua.bindd [
         "SUPER, R, Walker, exec, walker"
         "SUPER, PERIOD, Emoji Picker, exec, walker -m emojis"
         "SUPERSHIFT, PERIOD, Emoji Picker, exec, walker -m symbols"
@@ -45,6 +46,7 @@ in
     programs.walker = {
       enable = true;
       runAsService = true;
+      package = pkgs.walker;
       config = {
         theme = "nixos";
         force_keyboard_focus = true;
@@ -67,11 +69,11 @@ in
           };
         };
         keybinds = {
-          close = "Escape";
-          next = "Down";
-          previous = "Up";
-          toggle_exact = "ctrl e";
-          resume_last_query = "ctrl r";
+          close = [ "Escape" ];
+          next = [ "Down" ];
+          previous = [ "Up" ];
+          toggle_exact = [ "ctrl e" ];
+          resume_last_query = [ "ctrl r" ];
         };
         providers = {
           default = [
@@ -114,65 +116,65 @@ in
           ];
           calc = {
             click = "copy";
-            copy = "Return";
-            save = "ctrl s";
-            delete = "ctrl d";
+            copy = [ "Return" ];
+            save = [ "ctrl s" ];
+            delete = [ "ctrl d" ];
           };
           websearch = {
             click = "search";
-            search = "Return";
+            search = [ "Return" ];
           };
           providerlist = {
             click = "activate";
-            activate = "Return";
+            activate = [ "Return" ];
           };
           clipboard = {
             time_format = "%b %d ~ %H:%M";
             click = "copy";
-            copy = "Return";
-            delete = "ctrl d";
-            edit = "ctrl o";
-            toggle_images_only = "ctrl i";
+            copy = [ "Return" ];
+            delete = [ "ctrl d" ];
+            edit = [ "ctrl o" ];
+            toggle_images_only = [ "ctrl i" ];
           };
           desktopapplications = {
             click = "start";
-            start = "Return";
+            start = [ "Return" ];
           };
           files = {
             click = "open";
             open = "Return";
-            open_dir = "ctrl Return";
-            copy_path = "ctrl shift C";
-            copy_file = "ctrl c";
+            open_dir = [ "ctrl Return" ];
+            copy_path = [ "ctrl shift C" ];
+            copy_file = [ "ctrl c" ];
           };
           todo = {
             click = "save";
-            save = "Return";
-            delete = "ctrl d";
-            mark_active = "ctrl a";
-            mark_done = "ctrl f";
-            clear = "ctrl shift X";
+            save = [ "Return" ];
+            delete = [ "ctrl d" ];
+            mark_active = [ "ctrl a" ];
+            mark_done = [ "ctrl f" ];
+            clear = [ "ctrl shift X" ];
           };
           runner = {
             click = "start";
-            start = "Return";
+            start = [ "Return" ];
             start_terminal = "shift Return";
           };
           dmenu = {
             click = "select";
-            select = "Return";
+            select = [ "Return" ];
           };
           symbols = {
             click = "copy";
-            copy = "Return";
+            copy = [ "Return" ];
           };
           unicode = {
             click = "copy";
-            copy = "Return";
+            copy = [ "Return" ];
           };
           menus = {
             click = "activate";
-            activate = "Return";
+            activate = [ "Return" ];
           };
         };
       };

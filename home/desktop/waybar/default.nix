@@ -15,7 +15,7 @@ in
     enable = mkEnableOption "Enable waybar";
   };
   config = mkIf cfg.enable {
-    wayland.windowManager.hyprland.settings.exec-once = singleton "waybar &";
+    wayland.windowManager.hyprland.settings.on = singleton (lib.my.hyprlandLua.onStart "waybar");
     home.packages = [ pkgs.wttrbar ];
     programs.waybar = {
       enable = true;

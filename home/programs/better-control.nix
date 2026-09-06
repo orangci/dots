@@ -18,6 +18,8 @@ in
       better-control
       pulseaudio
     ];
-    wayland.windowManager.hyprland.settings.bindd = [ "SUPER, I, Open Settings, exec, control" ];
+    wayland.windowManager.hyprland.settings.bind = lib.my.hyprlandLua.bindd [
+      "SUPER, I, Open Settings, exec, control"
+    ];
   };
 }

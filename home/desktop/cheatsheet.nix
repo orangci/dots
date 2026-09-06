@@ -10,8 +10,6 @@ let
 
   cheatsheetScript = ''
     #!/usr/bin/env bash
-    CONFIG="${config.xdg.cacheHome}/hypr/hyprland.conf"
-
     trim() {
       echo "$1" | sed 's/^[[:space:]]*//;s/[[:space:]]*$//'
     }
@@ -56,13 +54,7 @@ let
 
     args=()
 
-    while IFS= read -r line; do
-      val="''${line#*=}"
-      IFS=',' read -ra parts <<< "$val"
-
-      mod=$(trim "''${parts[0]}")
-      key=$(trim "''${parts[1]}")
-      desc=$(trim "''${parts[2]}")
+    while IFS=$'\t' read -r mod key desc; do
 
       # Skip unwanted keybinds/descriptions
       if [[ "$desc" == Move\ To\ Workspace* ]] || \
@@ -83,7 +75,7 @@ let
       fi
 
       args+=("$keybind" "$desc")
-    done < <(grep '^bind' "$CONFIG" | grep -v '^binddm')
+    done < <(hyprctl binds -j | jq -r '.[] | select(.description != "") | [.modmask, .key, .description] | @tsv')
 
     if [[ ''${#args[@]} -eq 0 ]]; then
       yad --title="Hyprland Keybindings" --text="No keybindings found." --button=OK
@@ -108,12 +100,16 @@ in
 {
   options.hmModules.desktop.cheatsheet.enable = mkEnableOption "Enable cheatsheet script";
   config = mkIf cfg.enable {
-    wayland.windowManager.hyprland.settings.bindd =
-      singleton "SUPERSHIFT, SLASH, Open Cheatsheet, exec, cheatsheet";
+    wayland.windowManager.hyprland.settings.bind = lib.my.hyprlandLua.bindd [
+      "SUPERSHIFT, SLASH, Open Cheatsheet, exec, cheatsheet"
+    ];
     home.packages = singleton (
       pkgs.writeShellApplication {
         name = "cheatsheet";
-        runtimeInputs = with pkgs; [ yad ];
+        runtimeInputs = with pkgs; [
+          yad
+          jq
+        ];
         text = cheatsheetScript;
       }
     );

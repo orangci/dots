@@ -19,13 +19,13 @@ in
       ".config/swaync/style.css".source = ./swaync.css;
     };
     wayland.windowManager.hyprland.settings = {
-      layerrule = [
+      layer_rule = map lib.my.hyprlandLua.layerRule [
         "match:namespace swaync-control-center, blur on"
         "match:namespace swaync-notification-window, blur on"
         "match:namespace swaync-control-center, ignore_alpha 0.8"
         "match:namespace swaync-notification-window, ignore_alpha 0.8"
       ];
-      bindd = [
+      bind = lib.my.hyprlandLua.bindd [
         "SUPER, A, Open swaync Panel, exec, swaync-client -t "
         "SUPERSHIFT, A, Clear Notifications, exec, swaync-client -C"
       ];

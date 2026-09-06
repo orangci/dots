@@ -90,12 +90,14 @@ in
   };
 
   config = {
-    wayland.windowManager.hyprland.settings.bindd = mkIf cfg.discord.enable [
-      "SUPER, D, Open Discord, exec, ${cfg.discord.client}"
-    ];
+    wayland.windowManager.hyprland.settings.bind = mkIf cfg.discord.enable (
+      lib.my.hyprlandLua.bindd [
+        "SUPER, D, Open Discord, exec, ${cfg.discord.client}"
+      ]
+    );
     home.packages = mkIf cfg.discord.enable [ (getDiscordPackage cfg.discord.client) ];
-    wayland.windowManager.hyprland.settings.exec-once = mkIf cfg.arrpc.enable [
-      "sleep 3; ${pkgs.arrpc}/bin/arrpc &"
+    wayland.windowManager.hyprland.settings.on = mkIf cfg.arrpc.enable [
+      (lib.my.hyprlandLua.onStart "sleep 3; ${pkgs.arrpc}/bin/arrpc")
     ];
     home.file = lib.mkIf cfg.discord.enable (
       lib.mkMerge [

@@ -22,12 +22,12 @@ in
       wtype
     ];
     wayland.windowManager.hyprland.settings = {
-      exec-once = singleton "noctalia-shell";
-      layerrule = [
+      on = singleton (lib.my.hyprlandLua.onStart "noctalia-shell");
+      layer_rule = map lib.my.hyprlandLua.layerRule [
         "match:namespace ^noctalia-(?!.*wallpaper).*$, blur on"
         "match:namespace ^noctalia-(?!.*wallpaper).*$, ignore_alpha 0.8"
       ];
-      bindd = [
+      bind = lib.my.hyprlandLua.bindd [
         "SUPER, BACKSLASH, Open Session Menu, exec, noctalia-shell ipc call sessionMenu toggle"
         "SUPER, V, Show Clipboard, exec, noctalia-shell ipc call launcher clipboard"
         "SUPER, PERIOD, Open Emoji Picker, exec, noctalia-shell ipc call launcher emoji"
