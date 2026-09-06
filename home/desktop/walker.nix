@@ -26,7 +26,8 @@ in
         "match:namespace walker, ignore_alpha 0.8"
       ];
       bind = lib.my.hyprlandLua.bindd [
-        "SUPER, R, Walker, exec, walker"
+        "SUPER, R, Open Launcher, exec, walker"
+        "SUPER, K, Open Launcher, exec, walker"
         "SUPER, PERIOD, Emoji Picker, exec, walker -m emojis"
         "SUPERSHIFT, PERIOD, Emoji Picker, exec, walker -m symbols"
         "SUPER, M, Launch Minecraft Instance, exec, walker -m minecraft"

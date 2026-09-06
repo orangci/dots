@@ -33,7 +33,7 @@ in
             duckduckgo.metaData.hidden = true;
 
             "SearXNG" = {
-              urls = [ { template = "https://search.${flakeSettings.domains.tailnet}/search?q={searchTerms}"; } ];
+              urls = [ { template = "https://search.${flakeSettings.domains.primary}/search?q={searchTerms}"; } ];
               definedAliases = [ "@sx" ];
             };
 

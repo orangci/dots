@@ -12,7 +12,7 @@
   ++ lib.my.recursivelyImport [ ../../modules ];
 
   modules = {
-    core.users.home-manager.stateVersion = "25.05";
+    core.users.home-manager.stateVersion = "26.05";
     core.boot.enable = true;
     core.networking.enable = true;
     desktop = {
@@ -40,7 +40,7 @@
   services.tailscale.enable = true;
 
   time.timeZone = "Asia/Riyadh";
-  system.stateVersion = "25.05";
+  system.stateVersion = "26.05";
   # networking.nameservers = lib.mkForce [ "192.168.8.191" ];
   hardware.logitech.wireless.enable = true;
 

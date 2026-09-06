@@ -79,6 +79,7 @@ in
     (mkIf cfg.utilities.enable {
       programs = {
         btop.enable = true;
+        htop.enable = true;
         pay-respects.enable = true;
       };
       home.packages = with pkgs; [

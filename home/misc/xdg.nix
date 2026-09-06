@@ -60,7 +60,7 @@ in
       stateHome = "${config.home.homeDirectory}/.local/state";
 
       userDirs = {
-        enable = pkgs.stdenv.isLinux;
+        enable = pkgs.stdenv.hostPlatform.isLinux;
         createDirectories = true;
         setSessionVariables = true;
         download = "${config.home.homeDirectory}/dl";
