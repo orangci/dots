@@ -30,10 +30,12 @@
     };
     security.sudo-rs.enable = true;
     security.sops.enable = true;
+    programs.syncthing.enable = true;
     gaming = {
       wine.enable = true;
       lutris.enable = true;
       steam.enable = true;
+      minecraft.enable = true;
     };
   };
 
@@ -43,6 +45,7 @@
   system.stateVersion = "26.05";
   # networking.nameservers = lib.mkForce [ "192.168.8.191" ];
   hardware.logitech.wireless.enable = true;
+  programs.kdeconnect.enable = true;
 
   environment.systemPackages = with pkgs; [
     nh

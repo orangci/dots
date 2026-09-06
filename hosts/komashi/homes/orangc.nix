@@ -25,6 +25,7 @@
       compression = {
         enable = true;
         zip = true;
+        winrar = true;
       };
       git = {
         enable = true;
@@ -42,7 +43,6 @@
       hypr = {
         land.enable = true;
         lock.enable = true;
-        idle.enable = true;
       };
       waybar.enable = true;
       swaync.enable = true;

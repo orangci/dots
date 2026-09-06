@@ -38,6 +38,7 @@ in
     core.networking.enable = true;
     hardware.drivers.intel.enable = true;
     hardware.btrfs.enable = true;
+    programs.syncthing.enable = true;
     security.sops.enable = true;
     security.sudo-rs.enable = true;
     security.restic = {

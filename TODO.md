@@ -1,7 +1,7 @@
 - full disk encryption and secure boot
 - use impermanence / make garbage collection actually good
 - nixify firefox extensions settings
-- modules that are broken: moodle, syncthing
+- modules that are broken: moodle
 - emove hm/system split... switch to hjem
 - look into other image viewers. oculante? fix up mpv to use as my image viewer instead of gwenview? or just keep using gwenview?
 - selfhost (maybe) beszel, audiobookshelf, litexiv, invidious, redlib, jitsi, cyberchef, pairdrop, stirling pdf, pricebuddy, home-assistant, [fiche](https://github.com/solusipse/fiche)
