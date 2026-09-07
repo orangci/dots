@@ -2,6 +2,7 @@
   config,
   lib,
   flakeSettings,
+  pkgs,
   ...
 }:
 
