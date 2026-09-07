@@ -26,7 +26,6 @@
 - pocketid orwhatever it is called + do better security with selfhosted things
 
 higher priority
-- add thunderbird shortcut
 - fix borked tailnet
 - hyprland.startup = []
 - fix the godawful hyprland lua setup
