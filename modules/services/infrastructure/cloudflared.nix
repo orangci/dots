@@ -52,5 +52,27 @@ in
         ingress = lib.mkMerge ((map mkIngress domains) ++ lib.singleton cfg.ingress);
       };
     };
+    # important note:
+    # this systemd service is from
+    # https://git.satr14.my.id/satr14/nix-flake/src/commit/8745a66a2a00828c358a3899f9247751dd8a0c4b/modules/system/homelab/tunnels.nix
+    # it is licensed under the MIT license by satr14
+    # https://git.satr14.my.id/satr14/nix-flake/src/commit/8745a66a2a00828c358a3899f9247751dd8a0c4b/LICENSE
+    systemd.services.cloudflared-dns-route = {
+      description = "Sync Cloudflare Tunnel DNS routes";
+      after = [ "network-online.target" ];
+      wants = [ "network-online.target" ];
+      wantedBy = [ "multi-user.target" ];
+
+      serviceConfig = {
+        RemainAfterExit = true;
+        Type = "oneshot";
+        User = "root";
+      };
+
+      script = lib.concatMapStringsSep "\n" (domain: ''
+        echo "Ensuring DNS route for ${domain}..."
+        ${pkgs.cloudflared}/bin/cloudflared tunnel --origincert /mnt/data/apps/cloudflared/cert.pem route dns --overwrite-dns $(cat /mnt/data/apps/cloudflared/homelab.json | ${pkgs.jq}/bin/jq -r .TunnelID) ${domain} || true
+      '') (builtins.attrNames config.services.cloudflared.tunnels.homelab.ingress);
+    };
   };
 }

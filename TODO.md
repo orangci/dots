@@ -2,7 +2,7 @@
 - use impermanence / make garbage collection actually good
 - nixify firefox extensions settings
 - modules that are broken: moodle
-- emove hm/system split... switch to hjem
+- remove hm/system split... switch to hjem
 - look into other image viewers. oculante? fix up mpv to use as my image viewer instead of gwenview? or just keep using gwenview?
 - selfhost (maybe) beszel, audiobookshelf, litexiv, invidious, redlib, jitsi, cyberchef, pairdrop, stirling pdf, pricebuddy, home-assistant, [fiche](https://github.com/solusipse/fiche)
 - hook ntfy into all the services that can be, e.g., scrutiny, matrix
@@ -10,10 +10,8 @@
 - use ntfy CLI for ntfy scripts
 - try out danklinux
 - complete grafana/prometheus module
-- export all modules
 - look into netbird
 - add more pages to glance
-- declarative DNS!!
 - write extensive docs for the flake e.g. for restic
 - assertions
 - look into nixos containers and microvm.nix
@@ -23,5 +21,13 @@
 - make installer iso config, disko stuff
 - eliminate flakeSettings
 - xcompose config
-- fix borked tailnet
 - fix borked noctalia config
+- try out niri
+- pocketid orwhatever it is called + do better security with selfhosted things
+
+higher priority
+- add thunderbird shortcut
+- fix borked tailnet
+- hyprland.startup = []
+- fix the godawful hyprland lua setup
+- export all modules
