@@ -63,6 +63,8 @@ in
           "editor.formatOnSave" = true;
           "editor.defaultFormatter" = "charliermarsh.ruff";
         };
+        "nix.enableLanguageServer" = true;
+        "nix.serverPath" = "nil";
       };
 
       profiles.default.extensions =
