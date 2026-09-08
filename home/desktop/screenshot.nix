@@ -96,7 +96,6 @@ in
           resize.mode = "smart";
           corner-roundness = 12;
           early-exit = true;
-          early-exit-save-as = true;
         };
         font.family = config.stylix.fonts.sansSerif.name;
         keybinds = {
