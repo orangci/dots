@@ -65,6 +65,7 @@ in
         };
         "nix.enableLanguageServer" = true;
         "nix.serverPath" = "nil";
+        "explorer.excludeGitIgnore" = true;
       };
 
       profiles.default.extensions =

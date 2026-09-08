@@ -30,3 +30,5 @@ higher priority
 - hyprland.startup = []
 - fix the godawful hyprland lua setup
 - export all modules
+- whatsapp
+- blur keybind

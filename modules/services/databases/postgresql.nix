@@ -57,7 +57,18 @@ in
         )}
         ${concatStringsSep "\n" (
           concatMap (db: map (user: "host ${db} ${user} 10.88.0.0/16 trust") cfg.users) cfg.databases
-        )}''; # 10.88.x is for podman containers
+        )}
+        ${concatStringsSep "\n" (
+          concatMap (db: map (user: "host ${db} ${user} 100.64.0.0/10 trust") cfg.users) cfg.databases
+        )}
+        ${concatStringsSep "\n" (
+          concatMap (db: map (user: "host ${db} ${user} fd7a:115c:a1e0::/48 trust") cfg.users) cfg.databases
+        )}
+        ${concatStringsSep "\n" (
+          concatMap (db: map (user: "host ${db} ${user} 192.168.0.0/16 trust") cfg.users) cfg.databases
+        )}
+      ''; # 10.88.x is for podman containers, 10.64.x.x is for tailscale, and 192.168.x.x is LAN
+
     };
   };
 }
