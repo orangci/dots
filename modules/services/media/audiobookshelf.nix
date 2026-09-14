@@ -4,7 +4,7 @@
   ...
 }:
 let
-  inherit (lib) mkIf;
+  inherit (lib) mkIf singleton;
   cfg = config.modules.services.media.audiobookshelf;
 in
 {
@@ -14,6 +14,10 @@ in
   };
 
   config = mkIf cfg.enable {
+    # so audiobookshelf can access copyparty directories
+    users.users.audiobookshelf.extraGroups = mkIf config.modules.services.files.copyparty.enable (
+      singleton "copyparty"
+    );
     services.audiobookshelf = {
       enable = true;
       inherit (cfg) port;
