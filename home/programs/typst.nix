@@ -16,6 +16,7 @@ in
     hmModules.cli.shell.extraAliases = {
       "tp" = "typst";
       "tpf" = "typstyle -i .";
+      "tpl" = "typst-live";
     };
     home.packages =
       with pkgs.typstPackages;

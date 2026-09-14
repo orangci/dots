@@ -22,7 +22,7 @@ let
           owner = "imbypass";
           repo = "base16-discord";
           rev = "main";
-          sha256 = "sha256-KKJEorqX/Xs9ybayDL1wBA827zghw6Xathjn0j9X+Fc=";
+          sha256 = "sha256-aucLPmi4mkmIRMvaFrD9dNamYEQsox3hrTzwQZVUziE=";
         }
       }/base16.css"
       (builtins.toFile "base16.css" ''
@@ -102,11 +102,9 @@ in
     home.file = lib.mkIf cfg.discord.enable (
       lib.mkMerge [
         (mkIf (cfg.discord.client != "equibop") {
-          ".config/Vencord/themes/orangetweaks.css".source = ./vencordthemes/orangetweaks.css;
           ".config/Vencord/themes/base16.css".source = base16-discord;
         })
         (mkIf (cfg.discord.client == "equibop") {
-          ".config/equibop/themes/orangetweaks.css".source = ./vencordthemes/orangetweaks.css;
           ".config/equibop/themes/base16.css".source = base16-discord;
         })
       ]

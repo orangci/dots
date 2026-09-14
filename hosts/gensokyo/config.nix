@@ -77,6 +77,7 @@ in
       };
 
       media = {
+        audiobookshelf = enableServerModule 8826 { };
         immich = enableServerModule 8807 { };
         kavita = enableServerModule 8829 { };
       };

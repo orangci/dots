@@ -93,7 +93,7 @@
         enable = true;
         gwenview = true;
       };
-      discord.enable = false;
+      discord.enable = true;
       arrpc.enable = true;
       terminal = {
         enable = true;
@@ -117,10 +117,15 @@
     };
   };
 
+  wayland.windowManager.hyprland.settings.on = map lib.my.hyprlandLua.onStart [
+    "kdeconnect-indicator"
+    "blueman-applet"
+    "obsidian"
+  ];
+
   home = {
     file.".face.icon".source = ../../../assets/face.png;
     packages = with pkgs; [
-      hyprpicker
       obsidian
       pinta
     ];

@@ -6,7 +6,12 @@
   ...
 }:
 let
-  inherit (lib) mkEnableOption mkIf singleton;
+  inherit (lib)
+    mkEnableOption
+    mkIf
+    getExe
+    singleton
+    ;
   cfg = config.hmModules.desktop.hypr.land;
   hypr = lib.my.hyprlandLua;
 in
@@ -48,14 +53,12 @@ in
           "dbus-update-activation-environment --systemd --all"
           "systemctl --user import-environment QT_QPA_PLATFORMTHEME WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
           "lxqt-policykit-agent"
-          "kdeconnect-indicator"
-          "sleep 10; cd ~/code/pyminaret; python3 main.py --city Riyadh --country \"Saudi Arabia\" -g 10 -n"
         ];
 
         bind =
           hypr.bindd [
             "SUPER, E, Open File Manager, exec, thunar"
-            "SUPERALT, C, Colour Picker, exec, hyprpicker -a"
+            "SUPERALT, C, Colour Picker, exec, ${getExe pkgs.hyprpicker} -a"
             "SUPER, PERIOD, Select Emoji, exec, emoji-select a"
             "SUPERSHIFT, PERIOD, Select Emoji To Clipboard, exec, emoji-select"
             "SUPERSHIFT, M, Mute Microphone, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
@@ -78,7 +81,7 @@ in
             "SUPERSHIFT, down, Move Window Down, movewindow,d"
             ",mouse:275, Scroll Workspace Forward, workspace, e+1"
             ",mouse:276,Scroll Workspace Backward, workspace, e-1"
-            "ALT,Tab, Cycle To Next Window, cyclenext"
+            # "ALT,Tab, Cycle To Next Window, cycle-next"
             "ALT,Tab, Cycle To Next Window, bringactivetotop"
             ",XF86AudioMute, Mute Microphone, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
             ",XF86AudioPlay, Play Media, exec, playerctl play-pause"
@@ -173,7 +176,7 @@ in
               xray = true;
             };
             inactive_opacity = 0.85;
-            active_opacity = 0.965;
+            active_opacity = 1; # 0.965 previously, but
             fullscreen_opacity = 0.965;
           };
 

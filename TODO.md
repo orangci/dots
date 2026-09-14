@@ -27,8 +27,11 @@
 
 higher priority
 - fix borked tailnet
-- hyprland.startup = []
 - fix the godawful hyprland lua setup
 - export all modules
 - whatsapp
 - blur keybind
+- make popup windows etc popup instead of tile
+- fix alt tab
+- dark reader
+- firefox @define

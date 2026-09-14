@@ -27,6 +27,7 @@
       bluetooth.enable = true;
       btrfs.enable = true;
       sound.enable = true;
+      printing.enable = true;
     };
     security.sudo-rs.enable = true;
     security.sops.enable = true;
