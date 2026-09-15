@@ -24,6 +24,7 @@
 - fix borked noctalia config
 - try out niri
 - pocketid orwhatever it is called + do better security with selfhosted things
+- abbreiviatons instead of aliases maybe
 
 higher priority
 - fix borked tailnet
