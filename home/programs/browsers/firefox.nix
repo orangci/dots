@@ -75,6 +75,15 @@ in
               urls = [ { template = "https://www.urbandictionary.com/define.php?term={searchTerms}"; } ];
             };
 
+            "Cambridge Dictionary" = {
+              definedAliases = [
+                "@def"
+                "@define"
+                "@dict"
+              ];
+              urls = [ { template = "https://dictionary.cambridge.org/dictionary/english/{searchTerms}"; } ];
+            };
+
             "Youtube" = {
               definedAliases = [ "@yt" ];
               urls = [ { template = "https://youtube.com/search?q={searchTerms}"; } ];
@@ -256,7 +265,7 @@ in
           "webgl.renderer-string-override" = "";
           "webgl.vendor-string-override" = "";
           "browser.download.always_ask_before_handling_new_types" = true;
-          "browser.download.dir" = "${config.xdg.userDirs.download}";
+          "browser.download.dir" = config.xdg.userDirs.download;
           "browser.startup.page" = 3; # this is the settings that makes it so that you always open with the tabs you had open when you closed firefox. change to 1 for normalcy
           # below options are for theme thing
           "toolkit.legacyUserProfileCustomizations.stylesheets" = true; # to make the userChrome below work
@@ -432,9 +441,9 @@ in
             installation_mode = "force_installed";
           };
 
-          # consumer rights wiki:
-          "@crw-extension-firefox" = {
-            install_url = "https://addons.mozilla.org/firefox/downloads/latest/consumer-rights-wiki/latest.xpi";
+          # dark reader:
+          "addon@darkreader.org" = {
+            install_url = "https://addons.mozilla.org/firefox/downloads/latest/darkreader/latest.xpi";
             installation_mode = "force_installed";
           };
 

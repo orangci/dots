@@ -33,5 +33,3 @@ higher priority
 - blur keybind
 - make popup windows etc popup instead of tile
 - fix alt tab
-- dark reader
-- firefox @define
