@@ -21,6 +21,7 @@ in
         APP_URL = "https://${cfg.subdomain}.${flakeSettings.domains.primary}";
         TRUST_PROXY = true;
         PORT = cfg.port;
+        ALLOW_USER_SIGNUPS = "withToken";
         VERSION_CHECK_DISABLED = true;
         UI_CONFIG_DISABLED = true;
 
@@ -29,7 +30,7 @@ in
         SMTP_PORT = 587;
         SMTP_FROM = "pocket-id@${flakeSettings.domains.email}";
         SMTP_USER = "automation@${flakeSettings.domains.email}";
-        SMTP_TLS = "tls";
+        SMTP_TLS = "starttls";
 
         # email config. if this is all off, you don't need the SMTP config
         EMAIL_LOGIN_NOTIFICATION_ENABLED = true;
