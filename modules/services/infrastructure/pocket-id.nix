@@ -10,7 +10,7 @@ in
 {
   options.modules.services.infrastructure.pocket-id = lib.my.mkServerModule {
     name = "Pocket ID";
-    subdomain = "auth";
+    subdomain = "id";
   };
   config = lib.mkIf cfg.enable {
     modules.security.sops.secrets."pocket-id-env".path = "/var/secrets/pocket-id-env";

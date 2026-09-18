@@ -39,6 +39,7 @@ in
     modules.security.sops.secrets.ntfy-access-token = {
       path = "/var/secrets/ntfy-access-token";
       owner = "ntfy-sh";
+      group = "ntfy-sh";
     };
 
     services.ntfy-sh = {
