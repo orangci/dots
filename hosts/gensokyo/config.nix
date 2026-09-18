@@ -67,6 +67,7 @@ in
         cloudflared.enable = true;
         technitium.enable = true;
         tailscale.enable = true;
+        pocket-id = enableServerModule 8801 { };
       };
 
       files = {

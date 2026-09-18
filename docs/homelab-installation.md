@@ -26,6 +26,7 @@ https://nixos.org/manual/nixos/stable/#sec-installation-manual
     - `reboot`
 - [ ] Reserve `192.168.1.42` in my router’s DHCP settings using gensokyo's MAC address.
 - [ ] To get the MAC address, run `ip link` or `ip link show | grep -A1 'state UP' | grep ether`.
+- [x] Create an account on the Pocket ID instance and then disable registration.
 - [x] Create an account on the Forgejo instance, then disable registration. Set up mirroring with GitHub repositories.
 - [x] Create an account on the immich instance, then disable registration.
 - [x] Create an account on the vaultwarden instance
