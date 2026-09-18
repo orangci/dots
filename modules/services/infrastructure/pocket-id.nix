@@ -29,7 +29,7 @@ in
         SMTP_PORT = 587;
         SMTP_FROM = "pocket-id@${flakeSettings.domains.email}";
         SMTP_USER = "automation@${flakeSettings.domains.email}";
-        SMTP_TLS = true;
+        SMTP_TLS = "tls";
 
         # email config. if this is all off, you don't need the SMTP config
         EMAIL_LOGIN_NOTIFICATION_ENABLED = true;
