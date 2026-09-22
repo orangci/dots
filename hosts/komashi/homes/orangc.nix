@@ -73,6 +73,7 @@
       };
       rust.enable = true;
       nix.enable = true;
+      go.enable = true;
       misc.enable = true;
       direnv.enable = true;
     };

@@ -37,7 +37,6 @@ in
         EMAIL_ONE_TIME_ACCESS_AS_ADMIN_ENABLED = true;
         EMAIL_API_KEY_EXPIRATION_ENABLED = true;
         EMAIL_VERIFICATION_ENABLED = true;
-
       };
     };
   };

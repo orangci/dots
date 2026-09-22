@@ -6,6 +6,8 @@ _: {
     })
   ];
 
+  programs.nix-ld.enable = true;
+
   nix = {
     settings = {
       warn-dirty = false;
