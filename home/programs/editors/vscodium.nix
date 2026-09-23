@@ -81,6 +81,7 @@ in
           nixExtensions = lib.optionals config.hmModules.dev.nix.enable [ jnoortheen.nix-ide ];
           rustExtensions = lib.optionals config.hmModules.dev.rust.enable [ rust-lang.rust-analyzer ];
           pythonExtensions = lib.optionals config.hmModules.dev.python.enable [ ms-python.python ];
+          goExtensions = lib.optionals config.hmModules.dev.go.enable [ golang.go ];
           webdevExtensions = lib.optionals cfg.webdev [
             bradgashler.htmltagwrap
             ecmel.vscode-html-css
@@ -89,7 +90,12 @@ in
             svelte.svelte-vscode
           ];
         in
-        extensions ++ webdevExtensions ++ nixExtensions ++ rustExtensions ++ pythonExtensions;
+        extensions
+        ++ webdevExtensions
+        ++ nixExtensions
+        ++ rustExtensions
+        ++ pythonExtensions
+        ++ goExtensions;
     };
   };
 }
