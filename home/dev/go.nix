@@ -19,6 +19,7 @@ in
       golangci-lint # linting
       delve # debugger
       air # live reload for webservers
+      gore # go repl
     ];
 
     hmModules.cli.shell.extraAliases = {
