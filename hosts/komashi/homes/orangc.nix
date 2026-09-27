@@ -82,6 +82,7 @@
       better-control.enable = true;
       thunderbird.enable = true;
       typst.enable = true;
+      office.enable = true;
       editors = {
         nvf.enable = false;
         micro.enable = true;
