@@ -129,11 +129,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1790536321,
-        "narHash": "sha256-tbOxtdLL/5mbqPRWUDaiMHnUvS6X0DxRdkEw0I30VNk=",
+        "lastModified": 1790726702,
+        "narHash": "sha256-DnUbfYQsdkOc+eeNk5ZwV05/ZoC3CBFPFMabeQ0jOoY=",
         "owner": "9001",
         "repo": "copyparty",
-        "rev": "ab2299e3db705fad1cde78cc979b44fa833bc264",
+        "rev": "080935788b1730320696f102412e1c1964007fd4",
         "type": "github"
       },
       "original": {
@@ -150,11 +150,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1789333639,
-        "narHash": "sha256-E/ojzsAe4lHhgJH9ztPBd4/UWBYkFf9BsNhoobU99Bc=",
+        "lastModified": 1789938216,
+        "narHash": "sha256-9igxzW9oA64aBC9WjR5CtSBF7U9MJXr8rCNjmSQQVJg=",
         "ref": "refs/heads/master",
-        "rev": "8900617052b1771d1e5f749c4e385f7ca6a5f925",
-        "revCount": 124,
+        "rev": "3c5ad5cfce33a2950202210dc7ef10fe36e8052d",
+        "revCount": 125,
         "type": "git",
         "url": "https://git.orangc.net/c/dns.nix"
       },
@@ -407,11 +407,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1790365885,
-        "narHash": "sha256-iQ0ebhiVo64NktTnwft9hNxlFu4j5cvljVxyJaEVIP4=",
+        "lastModified": 1790742230,
+        "narHash": "sha256-5399J1/O3DyLSsYGVa950JtOUDB9Reqvy7FhfDuTVzk=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "7b4c5ec4bedaf1e062bbc1bcaeddbc6bd242aa1b",
+        "rev": "0aefa652eb6fd8b7396af25e8c81cb0790f12cc2",
         "type": "github"
       },
       "original": {
@@ -519,11 +519,11 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1790542952,
-        "narHash": "sha256-8YsbPw1Bxzy9DmOlFosi+WofkVl9io8I9OVs6qQfUTA=",
+        "lastModified": 1790702893,
+        "narHash": "sha256-OubcjK/otumYvXZr/mbTf/5aMVa5/h+OKCQJbb9HV6s=",
         "owner": "hyprwm",
         "repo": "Hyprland",
-        "rev": "4bb6844b0351e4fbf2e3d4e46ae71b551a0e0a42",
+        "rev": "7d3a817ffbf1d2df9ef6cf44d0795874a46ace3d",
         "type": "github"
       },
       "original": {
@@ -841,11 +841,11 @@
         "systems": "systems_3"
       },
       "locked": {
-        "lastModified": 1790659482,
-        "narHash": "sha256-UGgta5ubiUH7NQbxVepOoNV6gkYGqzH/SG1ad+UJquw=",
+        "lastModified": 1790745166,
+        "narHash": "sha256-5xu1JcJVsmVx2ArcOlJQdHEaetHQ4N2MPcXy4+5X3M0=",
         "owner": "infinidoge",
         "repo": "nix-minecraft",
-        "rev": "98f82b785d71191ebf53fc3ec13a669bd5e183bc",
+        "rev": "c18255b31425a0e4529a65b25b3cc1ac40241c32",
         "type": "github"
       },
       "original": {
@@ -864,11 +864,11 @@
         "vpn-confinement": "vpn-confinement"
       },
       "locked": {
-        "lastModified": 1790625601,
-        "narHash": "sha256-DPF4ARHl8wL4P7+i1Dwbyz0oXZjjjf2JW5CGLB9Gqus=",
+        "lastModified": 1790699261,
+        "narHash": "sha256-gYE5kZ2MisHsole0z/MnjU3JvyAEJeI8oGQpKPEUZ2w=",
         "owner": "kiriwalawren",
         "repo": "nixflix",
-        "rev": "1d6bd02feb780ca73a5db407f4ea1afa9fc053a2",
+        "rev": "e37d712dfba3b1d9d09686346e802f0f579c06f2",
         "type": "github"
       },
       "original": {
@@ -895,11 +895,11 @@
     },
     "nixpkgs-small": {
       "locked": {
-        "lastModified": 1790664192,
-        "narHash": "sha256-3W7Uy881uHVqB5ajSWAs+ByyOYR8EaiCRGHTR+YjGqk=",
+        "lastModified": 1790743781,
+        "narHash": "sha256-dMarZs350USRUc+hiLPff4zBT+gafuuMlup3iaCrpag=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "ec0e444270216d88ac687ddce709c7655d3a5205",
+        "rev": "a6b7c86f6694b4faafcced57f64dff1c991a6148",
         "type": "github"
       },
       "original": {
@@ -1008,11 +1008,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1790649611,
-        "narHash": "sha256-9o6CDjNhdU7SlzZwuw1Cftwv77Lik7PUj/ADTqKZ2j8=",
+        "lastModified": 1790718664,
+        "narHash": "sha256-LWil4xgSyqIFZ9sydvL1glFOoiqAOknWUwykC4sqxuY=",
         "owner": "noctalia-dev",
         "repo": "noctalia-shell",
-        "rev": "9287a782f3422aa8868f71498d8b70f1644a52f2",
+        "rev": "fd9759c892fe5034b682c185695f1bee121cd5b3",
         "type": "github"
       },
       "original": {
