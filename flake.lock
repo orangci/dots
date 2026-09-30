@@ -1031,11 +1031,11 @@
         "uv2nix": "uv2nix_4"
       },
       "locked": {
-        "lastModified": 1790754399,
-        "narHash": "sha256-hCu8ocdzMBaLL7ackRJhjDuwfM7CDuX1HEqz3+k+T8Y=",
+        "lastModified": 1790757418,
+        "narHash": "sha256-EfEfvAsxCPmL86LEDQQptg29iKRq/fYOJxiBqLvpeQA=",
         "ref": "refs/heads/master",
-        "rev": "549a7087f249c3a2cc398fdfccddf2edbe1eac7f",
-        "revCount": 122,
+        "rev": "2679e410df2542aee769ed808f5ca6e26dc6645c",
+        "revCount": 123,
         "type": "git",
         "url": "https://git.orangc.net/c/notes"
       },
@@ -1796,11 +1796,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1790754099,
-        "narHash": "sha256-IaZWw0jL0XSgrUgi5z5YBa/cDJcdAIzQWVIlZCuZcek=",
+        "lastModified": 1790757598,
+        "narHash": "sha256-AbXe+ufdoDIjIUGFxpL2eqCCa9GZMrM/ktwossSPgZA=",
         "ref": "refs/heads/v4",
-        "rev": "53a6e5c54007168e3d87543038a31334dc9f862a",
-        "revCount": 334,
+        "rev": "127cf5b1cb3cb19526b59d58f89d9802c72524c2",
+        "revCount": 335,
         "type": "git",
         "url": "https://git.orangc.net/c/webpage"
       },
