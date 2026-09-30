@@ -71,6 +71,9 @@ in
         ui-nolbar = true;
         ui-norepl = true;
         ui-noctxb = true;
+
+        # database location for .hist
+        hist = "~/.cache/copyparty";
       };
       openFilesLimit = 4096;
       accounts.${users.sysadmin.username}.passwordFile =
