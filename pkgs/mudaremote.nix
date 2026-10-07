@@ -1,7 +1,24 @@
 { pkgs, lib, ... }:
 
 let
-  discord-py-self = pkgs.python314Packages.buildPythonPackage rec {
+  discord-protos = pkgs.python314Packages.buildPythonPackage {
+    pname = "discord-protos";
+    version = "1.2.367";
+
+    pyproject = true;
+    doCheck = false;
+
+    src = pkgs.fetchurl {
+      url = "https://files.pythonhosted.org/packages/4f/39/67bc98d66993903ee95bd0c1ded0671d2064b87a48ce4eb08068f29ee478/discord_protos-1.2.367.tar.gz";
+      hash = lib.fakeHash;
+    };
+
+    build-system = [
+      pkgs.python314Packages.setuptools
+    ];
+  };
+
+  discord-py-self = pkgs.python314Packages.buildPythonPackage {
     pname = "discord.py-self";
     version = "2.1.0";
     pyproject = true;
@@ -19,6 +36,9 @@ let
       aiodns
       brotli
       orjson
+      curl-cffi
+      tzlocal
+      discord-protos
     ];
   };
 
@@ -50,5 +70,4 @@ pkgs.stdenv.mkDerivation {
 
     install -Dm644 ${../modules/services/misc/mudaremote/presets.json} $out/presets.json
   '';
-
 }
