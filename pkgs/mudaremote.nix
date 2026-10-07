@@ -9,7 +9,7 @@ let
 
     src = pkgs.fetchurl {
       url = "https://files.pythonhosted.org/packages/c7/37/0a319b6465183a01d245ecdae99d59503bad41ed1176cd7e6943306a5949/discord_py_self-2.1.0.tar.gz";
-      hash = lib.fakeHash;
+      hash = "sha256-m8bYdxHpNFeE8u0jyrvmPrqWcwCOW0YKol41RlcLzQc=";
     };
 
     build-system = [ pkgs.python314Packages.setuptools ];
