@@ -2,13 +2,15 @@
   config,
   lib,
   pkgs,
-  myPkgs,
+  inputs,
+  system,
   ...
 }:
 
 let
   inherit (lib) mkIf mkEnableOption;
   cfg = config.modules.services.misc.mudaremote;
+  inherit (inputs.self.packages.${system}) mudaremote;
 in
 {
   options.modules.services.misc.mudaremote = {
@@ -29,10 +31,10 @@ in
 
       serviceConfig = {
         Type = "simple";
-        WorkingDirectory = myPkgs.mudaremote;
+        WorkingDirectory = mudaremote;
         ExecStart = pkgs.writeShellScript "mudaremote-run" ''
           set -eu
-          exec ${myPkgs.mudaremote.python}/bin/python ${myPkgs.mudaremote}/mudae_preset_editor.py --preset "Main"
+          exec ${mudaremote.python}/bin/python ${mudaremote}/mudae_preset_editor.py --preset "Main"
         '';
         EnvironmentFile = config.modules.security.sops.secrets."mudaremote/main-account-token".path;
         Restart = "on-failure";
@@ -51,10 +53,10 @@ in
 
       serviceConfig = {
         Type = "simple";
-        WorkingDirectory = myPkgs.mudaremote;
+        WorkingDirectory = mudaremote;
         ExecStart = pkgs.writeShellScript "mudaremote-run-alt" ''
           set -eu
-          exec ${myPkgs.mudaremote.python}/bin/python ${myPkgs.mudaremote}/mudae_preset_editor.py --preset "Main"
+          exec ${mudaremote.python}/bin/python ${mudaremote}/mudae_preset_editor.py --preset "Main"
         '';
         EnvironmentFile = config.modules.security.sops.secrets."mudaremote/alt-account-token".path;
         Restart = "on-failure";
