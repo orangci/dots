@@ -1,19 +1,45 @@
 { pkgs, lib, ... }:
 
 let
+  discord-protos = pkgs.python3Packages.buildPythonPackage {
+    pname = "discord-protos";
+    version = "0.0.2";
+    pyproject = true;
+
+    src = pkgs.fetchPypi {
+      pname = "discord-protos";
+      version = "0.0.2";
+      hash = "sha256-I5U6BfMr7ttAtwjsS0V1MKYZaknI110zeukoKipByZc=";
+    };
+
+    build-system = [ pkgs.python3Packages.setuptools ];
+    dependencies = [ pkgs.protobuf ];
+    doCheck = false;
+  };
+
   discord-py-self = pkgs.python3Packages.buildPythonPackage {
     pname = "discord.py-self";
     version = "2.1.0";
     pyproject = true;
 
-    src = pkgs.fetchPypi {
-      pname = "discord.py-self";
-      version = "2.1.0";
-      hash = "sha256-I5U6BfMr7ttAtwjsS0V1MKYZaknI110zeukoKipByZc=";
+    src = pkgs.fetchFromGitHub {
+      owner = "dolfies";
+      repo = "discord.py-self";
+      tag = "v2.1.0";
+      hash = "sha256-jVz3uGU+4E5Awbk6ZYAsXvEpClNHm2QN1RpBTIiQTpE=";
     };
 
     build-system = [ pkgs.python3Packages.setuptools ];
+    dependencies = [
+      pkgs.python314Packages.aiohttp
+      pkgs.python314Packages.curl-cffi
+      pkgs.python314Packages.tzlocal
+      pkgs.python314Packages.audioop-lts
+      discord-protos
+    ];
     doCheck = false;
+    pythonImportsCheck = [ "discord" ];
+
   };
 
   python = pkgs.python314.withPackages (ps: [
