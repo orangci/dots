@@ -7,8 +7,8 @@ let
     pyproject = true;
     doCheck = false;
 
-    src = pkgs.fetchPypi {
-      inherit pname version;
+    src = pkgs.fetchurl {
+      url = "https://files.pythonhosted.org/packages/c7/37/0a319b6465183a01d245ecdae99d59503bad41ed1176cd7e6943306a5949/discord_py_self-2.1.0.tar.gz";
       hash = lib.fakeHash;
     };
 
