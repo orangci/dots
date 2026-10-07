@@ -13,7 +13,8 @@ let
     };
 
     build-system = [ pkgs.python3Packages.setuptools ];
-    dependencies = [ pkgs.protobuf ];
+    dependencies = [ pkgs.python3Packages.protobuf ];
+    pythonImportsCheck = [ "discord_protos" ];
     doCheck = false;
   };
 
@@ -39,7 +40,6 @@ let
     ];
     doCheck = false;
     pythonImportsCheck = [ "discord" ];
-
   };
 
   python = pkgs.python314.withPackages (ps: [
