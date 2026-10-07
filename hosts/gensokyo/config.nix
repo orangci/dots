@@ -87,10 +87,11 @@ in
         matrix-synapse = (enableServerModule 8824 { }) // {
           serverName = flakeSettings.domains.primary;
         };
-        takina.enable = true;
         miniflux = enableServerModule 8827 { };
         vaultwarden = enableServerModule 8818 { };
         #horsering = enableServerModule 8834 { };
+        takina.enable = true;
+        mudaremote.enable = true;
       };
 
       monitoring = {
