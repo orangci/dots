@@ -8,4 +8,5 @@ args@{
 }:
 {
   docs = import ./docs.nix args;
+  mudaremote = import ./mudaremote.nix args;
 }
