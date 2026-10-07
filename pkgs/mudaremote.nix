@@ -12,7 +12,7 @@ let
       hash = "sha256-I5U6BfMr7ttAtwjsS0V1MKYZaknI110zeukoKipByZc=";
     };
 
-    build-system = [ pkgs.setuptools ];
+    build-system = [ pkgs.python3Packages.setuptools ];
     doCheck = false;
   };
 
