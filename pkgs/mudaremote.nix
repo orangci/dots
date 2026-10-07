@@ -1,28 +1,19 @@
 { pkgs, lib, ... }:
 
 let
-  discord-py-self = pkgs.python314Packages.buildPythonPackage {
+  discord-py-self = pkgs.python3Packages.buildPythonPackage {
     pname = "discord.py-self";
     version = "2.1.0";
     pyproject = true;
-    doCheck = false;
-    dontCheckRuntimeDeps = true;
 
-    src = pkgs.fetchurl {
-      url = "https://files.pythonhosted.org/packages/c7/37/0a319b6465183a01d245ecdae99d59503bad41ed1176cd7e6943306a5949/discord_py_self-2.1.0.tar.gz";
-      hash = "sha256-m8bYdxHpNFeE8u0jyrvmPrqWcwCOW0YKol41RlcLzQc=";
+    src = pkgs.fetchPypi {
+      pname = "discord.py-self";
+      version = "2.1.0";
+      hash = "sha256-I5U6BfMr7ttAtwjsS0V1MKYZaknI110zeukoKipByZc=";
     };
 
-    build-system = [ pkgs.python314Packages.setuptools ];
-    propagatedBuildInputs = with pkgs.python314Packages; [
-      aiohttp
-      audioop-lts
-      aiodns
-      brotli
-      orjson
-      curl-cffi
-      tzlocal
-    ];
+    build-system = [ pkgs.setuptools ];
+    doCheck = false;
   };
 
   python = pkgs.python314.withPackages (ps: [
