@@ -25,7 +25,10 @@ in
       settings.Port = cfg.port;
       tokenKeyFile = config.modules.security.sops.secrets.kavita-token.path;
     };
-    # for downloading manga
-    environment.systemPackages = lib.singleton pkgs.mangal;
+    # for downloading manga and for ebook-meta
+    environment.systemPackages = [
+      pkgs.mangal
+      pkgs.calibre
+    ];
   };
 }
