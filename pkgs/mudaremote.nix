@@ -10,7 +10,7 @@ let
 
     src = pkgs.fetchurl {
       url = "https://files.pythonhosted.org/packages/4f/39/67bc98d66993903ee95bd0c1ded0671d2064b87a48ce4eb08068f29ee478/discord_protos-1.2.367.tar.gz";
-      hash = lib.fakeHash;
+      hash = "sha256-2i4i+uftAOK5z0elyj4brL2tblX2eVYTj728Bzs/OpA=";
     };
 
     build-system = [
