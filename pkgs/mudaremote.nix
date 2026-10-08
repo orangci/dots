@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 
 let
   discord-protos = pkgs.python3Packages.buildPythonPackage {
