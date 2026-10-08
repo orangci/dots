@@ -9,9 +9,9 @@
         "main_account_id": "961063229168164864",
         "webhook_url": "",
         "scrap_target_id": "",
-        "slash_claim_target": "",
+        "slash_claim_target": "Zero Two",
         "dk_schedule_time": "",
-        "min_kakera": 100,
+        "min_kakera": 200,
         "delay_seconds": 0.0,
         "start_delay": 0,
         "roll_speed": 0.5,
@@ -48,10 +48,10 @@
         "use_slash_rolls": true,
         "pause_on_key_limit": true,
         "snipe_mode": true,
-        "snipe_ignore_min_kakera_reset": false,
+        "snipe_ignore_min_kakera_reset": true,
         "series_snipe_mode": true,
         "series_snipe_only_self_rolls": true,
-        "kakera_snipe_mode": false,
+        "kakera_snipe_mode": true,
         "kakera_reaction_snipe_mode": true,
         "reactive_snipe_on_own_rolls": true,
         "key_mode": true,
@@ -59,12 +59,12 @@
         "perk_eight_only": false,
         "shop_perk_7_only": false,
         "auto_free_claim": true,
-        "humanization_enabled": false,
+        "humanization_enabled": true,
         "dk_power_management": true,
         "skip_initial_commands": false,
-        "time_rolls_to_claim_reset": false,
+        "time_rolls_to_claim_reset": true,
         "rt_ignore_min_kakera_for_wishlist": true,
-        "rt_only_self_rolls": false,
+        "rt_only_self_rolls": true,
         "rt_in_command_channel": true,
         "auto_us_enabled": true,
         "auto_us_stop_on_claim": false,
@@ -77,7 +77,7 @@
         "auto_mk_enabled": false,
         "auto_mk_full_power_only": false,
         "lurker_mode": false,
-        "auto_rt_after_claim": false,
+        "auto_rt_after_claim": true,
         "mk_only": false,
         "auto_dk_enabled": true,
         "enable_snipe_chat_reactions": false,
@@ -134,9 +134,7 @@
             "wuaow money!!"
         ],
         "farm_characters": [
-            "Hatsune Miku",
-            "Zero Two",
-            "Nico Robin"
+            "Zero Two"
         ],
         "auto_divorce_series": [],
         "auto_divorce_blacklist": [],
@@ -166,11 +164,11 @@
             "all"
         ],
         "character_snipe_targets": [],
-        "farm_character": "Hatsune Miku",
+        "farm_character": "Zero Two",
         "inactive_hours": [
             [
-                "23:00",
-                "05:00"
+                "00:00",
+                "06:00"
             ]
         ],
         "reactive_kakera_delay_range": [
@@ -182,14 +180,17 @@
         "claim_rounds_thresholds": [
             {
                 "round": 1,
+                "min_kakera": 200,
                 "max_claim_rank": 500
             },
             {
                 "round": 2,
+                "min_kakera": 200,
                 "max_claim_rank": 1000
             },
             {
                 "round": 3,
+                "min_kakera": 200,
                 "max_claim_rank": 2000
             }
         ],
