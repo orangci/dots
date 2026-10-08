@@ -133,9 +133,7 @@
             "woah money",
             "wuaow money!!"
         ],
-        "farm_characters": [
-            "Zero Two"
-        ],
+        "farm_characters": [],
         "auto_divorce_series": [],
         "auto_divorce_blacklist": [],
         "auto_divorce_blacklist_series": [],
@@ -164,7 +162,7 @@
             "all"
         ],
         "character_snipe_targets": [],
-        "farm_character": "Zero Two",
+        "farm_character": "",
         "inactive_hours": [
             [
                 "00:00",
@@ -180,17 +178,17 @@
         "claim_rounds_thresholds": [
             {
                 "round": 1,
-                "min_kakera": 200,
+                "min_kakera": 300,
                 "max_claim_rank": 500
             },
             {
                 "round": 2,
                 "min_kakera": 200,
-                "max_claim_rank": 1000
+                "max_claim_rank": 1500
             },
             {
                 "round": 3,
-                "min_kakera": 200,
+                "min_kakera": 150,
                 "max_claim_rank": 2000
             }
         ],
