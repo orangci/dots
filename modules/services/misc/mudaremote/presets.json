@@ -30,7 +30,7 @@
         "max_dk_power": 100,
         "auto_dk_min_power": 0,
         "auto_divorce_max_kakera": 50,
-        "max_claim_rank": 1000,
+        "max_claim_rank": 0,
         "max_like_rank": 0,
         "hybrid_panic_instant_claim_min_kakera": 300,
         "hybrid_panic_instant_claim_max_rank": 200,
@@ -48,12 +48,12 @@
         "use_slash_rolls": true,
         "pause_on_key_limit": true,
         "snipe_mode": true,
-        "snipe_ignore_min_kakera_reset": true,
+        "snipe_ignore_min_kakera_reset": false,
         "series_snipe_mode": true,
         "series_snipe_only_self_rolls": true,
         "kakera_snipe_mode": true,
         "kakera_reaction_snipe_mode": true,
-        "reactive_snipe_on_own_rolls": true,
+        "reactive_snipe_on_own_rolls": false,
         "key_mode": true,
         "only_chaos": false,
         "perk_eight_only": false,
@@ -178,18 +178,15 @@
         "claim_rounds_thresholds": [
             {
                 "round": 1,
-                "min_kakera": 300,
-                "max_claim_rank": 500
+                "min_kakera": 300
             },
             {
                 "round": 2,
-                "min_kakera": 200,
-                "max_claim_rank": 1500
+                "min_kakera": 200
             },
             {
                 "round": 3,
-                "min_kakera": 150,
-                "max_claim_rank": 2000
+                "min_kakera": 150
             }
         ],
         "token": ""
