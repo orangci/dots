@@ -84,6 +84,7 @@
       typst.enable = true;
       office.enable = true;
       opencode.enable = true;
+      ani-cli.enable = true;
       editors = {
         nvf.enable = false;
         micro.enable = true;
