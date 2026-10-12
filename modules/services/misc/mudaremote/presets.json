@@ -19,7 +19,7 @@
         "series_snipe_delay": 3.0,
         "kakera_snipe_threshold": 0,
         "kakera_reaction_snipe_delay": 0.75,
-        "humanization_window_minutes": 15,
+        "humanization_window_minutes": 2,
         "humanization_inactivity_seconds": 2,
         "reactive_snipe_delay": 0.0,
         "claim_interval": 180,
@@ -46,7 +46,7 @@
         "loot_mode": "off",
         "rolling": true,
         "use_slash_rolls": true,
-        "pause_on_key_limit": true,
+        "pause_on_key_limit": false,
         "snipe_mode": true,
         "snipe_ignore_min_kakera_reset": false,
         "series_snipe_mode": true,
@@ -66,7 +66,7 @@
         "rt_ignore_min_kakera_for_wishlist": true,
         "rt_only_self_rolls": true,
         "rt_in_command_channel": true,
-        "auto_us_enabled": true,
+        "auto_us_enabled": false,
         "auto_us_stop_on_claim": false,
         "bulk_us_enabled": false,
         "auto_rolls_enabled": false,
@@ -77,6 +77,7 @@
         "auto_mk_enabled": false,
         "auto_mk_full_power_only": false,
         "lurker_mode": false,
+        "lurker_final_round_only": false,
         "auto_rt_after_claim": true,
         "mk_only": false,
         "auto_dk_enabled": true,
@@ -104,7 +105,7 @@
         "wish_starwish_kakera_only": false,
         "wishlist": [],
         "series_wishlist": [
-            "Reverse: 1999"
+            "Reverse:1999"
         ],
         "avoid_list": [],
         "kakera_reaction_snipe_targets": [],
@@ -163,10 +164,20 @@
         ],
         "character_snipe_targets": [],
         "farm_character": "",
+        "kakera_emojis": [
+            "kakeraY",
+            "kakeraO",
+            "kakeraR",
+            "kakeraW",
+            "kakeraL",
+            "kakeraP",
+            "kakeraD",
+            "kakeraC"
+        ],
         "inactive_hours": [
             [
-                "00:00",
-                "06:00"
+                "23:30",
+                "05:00"
             ]
         ],
         "reactive_kakera_delay_range": [
@@ -186,7 +197,7 @@
             },
             {
                 "round": 3,
-                "min_kakera": 150
+                "min_kakera": 100
             }
         ],
         "token": ""
