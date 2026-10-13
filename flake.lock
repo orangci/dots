@@ -1825,11 +1825,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1791893349,
-        "narHash": "sha256-Ny0RB4vTFAjs8P8jibFg0Zs65uFXer1r92fTryJoPic=",
+        "lastModified": 1791904969,
+        "narHash": "sha256-ttMgroMDCm2AdhonSGSl+4p1WtUxOwQZaCMkO+1e+vA=",
         "ref": "refs/heads/v5",
-        "rev": "e5a622347895dbfa032f99e4af0c9b29e30d76d0",
-        "revCount": 346,
+        "rev": "e0d4e7c1e1dac6f9fb6d74c36f872f8dabf59653",
+        "revCount": 347,
         "type": "git",
         "url": "https://git.orangc.net/c/webpage"
       },
