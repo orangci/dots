@@ -5,11 +5,9 @@ in
 {
   config.modules.services.webpages.main.redirects = [
     # subdomains
+    # /notes itself is a real page now, so only the old alias redirects to it
     {
-      sources = [
-        "blog"
-        "notes"
-      ];
+      sources = singleton "blog";
       target = "https://${flakeSettings.domains.primary}/notes";
     }
     {
