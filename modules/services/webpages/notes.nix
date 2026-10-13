@@ -2,14 +2,11 @@
   config,
   lib,
   flakeSettings,
-  inputs,
-  system,
   ...
 }:
 let
   inherit (lib)
     mkIf
-    singleton
     my
     mkMerge
     ;
@@ -19,7 +16,6 @@ in
   options.modules.services.webpages.notes = lib.my.mkServerModule {
     name = "Blog";
     subdomain = "notes";
-    glanceIcon = "https://${cfg.subdomain}.${flakeSettings.domains.primary}/leaf.png";
     autoConfiguredServiceInfra = false;
   };
 
@@ -27,27 +23,13 @@ in
     modules.services = {
       infrastructure.caddy.virtualHosts = mkMerge [
         (my.mkCaddyEntry "blog" cfg.port false)
-        (my.mkCaddyEntry "blog" cfg.port false)
+        (my.mkCaddyEntry "notes" cfg.port false)
         {
           ":${toString cfg.port}".extraConfig = ''
-            root * /srv/notes
-            header ?Cache-Control "max-age=1800"
-            file_server
-
-            handle_errors {
-              @404 expression {http.error.status_code} == 404
-              redir @404 /404.html 301
-            }
-
-            @rootIndex path /index.html 
-            redir @rootIndex / 301  
-            @subIndex path */index.html
-            redir @subIndex {path}/.. 301  
-            @html path_regexp html ^(.+)\.html$  
-            redir @html {re.html.1} 301 
-            try_files {path} {path}.html {path}/index.html
-            redir /source https://${config.modules.services.productivity.forgejo.subdomain}.${flakeSettings.domains.primary}/c/notes 301
-            redir /analytics https://${config.modules.services.monitoring.umami.subdomain}.${flakeSettings.domains.primary}/share/OuROCRqSGB6Qw0Ov/notes.orangc.net 301
+            redir /rss.xml https://${flakeSettings.domains.primary}/rss.xml 301
+            @post path_regexp post ^/notes/([^/]+?)(\.html)?/?$
+            redir @post https://${flakeSettings.domains.primary}/notes/{re.post.1} 301
+            redir https://${flakeSettings.domains.primary}/notes 301
           '';
         }
       ];
@@ -55,16 +37,6 @@ in
         (my.mkCloudflaredIngress "blog" cfg.port)
         (my.mkCloudflaredIngress "notes" cfg.port)
       ];
-      monitoring.glance.monitoredSites = singleton {
-        url = "https://${cfg.subdomain}.${flakeSettings.domains.primary}";
-        title = cfg.name;
-        inherit (cfg.glance) icon;
-      };
-    };
-    systemd.tmpfiles.settings."10-webpages.notes"."/srv/notes"."L+" = {
-      argument = inputs.notes-webpage.packages.${system}.default.outPath;
-      user = "root";
-      mode = "0755";
     };
   };
 }

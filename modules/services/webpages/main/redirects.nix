@@ -10,11 +10,7 @@ in
         "blog"
         "notes"
       ];
-      target = "https://notes.${flakeSettings.domains.primary}";
-    }
-    {
-      sources = singleton "n";
-      target = "https://notes.${flakeSettings.domains.primary}/notes";
+      target = "https://${flakeSettings.domains.primary}/notes";
     }
     {
       sources = singleton "p";
@@ -199,24 +195,16 @@ in
 
     # other
     {
-      sources = singleton "license";
-      target = "https://www.gnu.org/licenses/agpl-3.0.en.html";
-    }
-    {
-      sources = singleton "source";
-      target = "https://git.${flakeSettings.domains.primary}/c/webpage";
-    }
-    {
       sources = singleton "analytics";
       target = "https://umami.${flakeSettings.domains.primary}/share/TnoNTAvEwjDueE7F/orangc.net";
     }
     {
       sources = singleton "nohello";
-      target = "https://notes.${flakeSettings.domains.primary}/notes/internet-etiquette#no-quothelloquot";
+      target = "https://${flakeSettings.domains.primary}/notes/internet-etiquette#no-quothelloquot";
     }
     {
       sources = singleton "uses";
-      target = "https://notes.${flakeSettings.domains.primary}/notes/uses";
+      target = "https://${flakeSettings.domains.primary}/notes/uses";
     }
     {
       sources = [
