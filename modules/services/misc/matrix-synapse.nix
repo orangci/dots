@@ -26,7 +26,8 @@ in
       serverName = mkOption {
         type = types.str;
         default = "orangc.net";
-        description = "Matrix server name (used in MXIDs)";
+        example = "example.com";
+        description = "The name of the Matrix server, which is the part after the colon in user IDs (`@user:serverName`). **This cannot be changed once the database has been created**, unless the database is wiped. Federation also requires `/.well-known/matrix/*` to be served on this domain, see `docs/server.md`.";
       };
     };
 

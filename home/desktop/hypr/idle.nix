@@ -9,7 +9,7 @@ let
 in
 {
   options.hmModules.desktop.hypr.idle = {
-    enable = mkEnableOption "Enable hypridle";
+    enable = mkEnableOption "hypridle";
   };
   config = mkIf cfg.enable {
     services.hypridle = {

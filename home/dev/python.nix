@@ -21,23 +21,25 @@ let
 in
 {
   options.hmModules.dev.python = {
-    enable = mkEnableOption "Enable Python development environment";
+    enable = mkEnableOption "Python development environment";
 
     version = mkOption {
       type = types.str;
       default = "python314";
-      description = "Python version to use (e.g. 'python314', 'python312')";
+      example = "python312";
+      description = "The attribute name of the Python interpreter in nixpkgs to install.";
     };
 
-    mypy = mkEnableOption "Include mypy (type checker)";
-    pyright = mkEnableOption "Include pyright (LSP)";
-    ipython = mkEnableOption "Include IPython for enhanced REPL";
-    enableStartupFile = mkEnableOption "Include a default PYTHONSTARTUP file";
+    mypy = mkEnableOption "mypy (type checker)";
+    pyright = mkEnableOption "pyright (language server)";
+    ipython = mkEnableOption "IPython for an enhanced REPL";
+    enableStartupFile = mkEnableOption "a default PYTHONSTARTUP file";
 
     defaultVenvDir = mkOption {
       type = types.nullOr types.str;
       default = null;
-      description = "Path to default virtualenv to set up (no automatic activation)";
+      example = "~/.venvs/default";
+      description = "Directory of a default virtualenv to create. It is never activated automatically. Leave it null to not create one.";
     };
   };
 

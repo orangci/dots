@@ -22,10 +22,11 @@ let
 in
 {
   options.modules.services.monitoring.ntfy.scripts.example = {
-    enable = mkEnableOption "Enable example script for Ntfy";
+    enable = mkEnableOption "example script for Ntfy";
     topic = mkOption {
       type = types.str;
       default = "example";
+      description = "The ntfy topic the script publishes to.";
     };
   };
 

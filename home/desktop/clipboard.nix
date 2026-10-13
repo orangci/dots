@@ -10,7 +10,7 @@ let
   cfg = config.hmModules.desktop.clipboard;
 in
 {
-  options.hmModules.desktop.clipboard.enable = mkEnableOption "Enable clipboard";
+  options.hmModules.desktop.clipboard.enable = mkEnableOption "clipboard";
 
   config = mkIf cfg.enable {
     services.cliphist.enable = !config.hmModules.desktop.walker.enable;

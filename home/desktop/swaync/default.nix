@@ -10,7 +10,7 @@ let
 in
 {
   options.hmModules.desktop.swaync = {
-    enable = mkEnableOption "Enable swaync";
+    enable = mkEnableOption "swaync";
   };
   config = mkIf cfg.enable {
     home.packages = [ pkgs.swaynotificationcenter ];

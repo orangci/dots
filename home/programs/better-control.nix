@@ -10,7 +10,7 @@ let
 in
 {
   options.hmModules.programs.better-control = {
-    enable = mkEnableOption "Enable better-control";
+    enable = mkEnableOption "better-control";
   };
 
   config = mkIf cfg.enable {

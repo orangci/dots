@@ -23,8 +23,6 @@ let
     (mod ? enable && mod.enable)
     && lib.hasAttrByPath [ "ntfyChecking" "enable" ] mod
     && mod.ntfyChecking.enable
-    && mod ? domain
-    && mod.domain != null
     && mod ? port
     && mod.port != null
   ) servers;
@@ -95,10 +93,11 @@ let
 in
 {
   options.modules.services.monitoring.ntfy.scripts.services = {
-    enable = mkEnableOption "Enable services script for Ntfy";
+    enable = mkEnableOption "services script for Ntfy";
     topic = mkOption {
       type = types.str;
       default = "services";
+      description = "The ntfy topic that down and back-online notifications are published to. It is readable by everyone, see the `acl` option of the ntfy module.";
     };
   };
 

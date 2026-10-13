@@ -9,7 +9,7 @@ let
   cfg = config.modules.desktop.fonts;
 in
 {
-  options.modules.desktop.fonts.enable = mkEnableOption "Enable fonts";
+  options.modules.desktop.fonts.enable = mkEnableOption "fonts";
   config = lib.mkIf cfg.enable {
     fonts.packages = with pkgs; [
       noto-fonts-cjk-sans

@@ -9,7 +9,7 @@ let
 in
 {
   options.hmModules.cli.starship = {
-    enable = mkEnableOption "Enable starship";
+    enable = mkEnableOption "starship";
   };
   config = mkIf cfg.enable {
     programs.starship = {

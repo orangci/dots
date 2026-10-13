@@ -23,7 +23,7 @@ in
         "reimu:touhou:read"
         "cirno:frogs:read-write"
       ];
-      description = "Access control rules for individual topics.";
+      description = "Access control rules for individual topics, in the form `user:topic:permission`. The user and topic may be `*`, and the permission is one of `read-write`, `read-only`, `write-only` or `deny`.";
     };
   };
 

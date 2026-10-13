@@ -12,7 +12,7 @@ let
 in
 {
   imports = singleton inputs.nvf.homeManagerModules.default;
-  options.hmModules.programs.editors.nvf.enable = mkEnableOption "Enable neovim with nvf";
+  options.hmModules.programs.editors.nvf.enable = mkEnableOption "neovim with nvf";
 
   config = mkIf cfg.enable {
     hmModules.programs.editors.xdg = "nvim";

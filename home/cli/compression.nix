@@ -10,10 +10,10 @@ let
 in
 {
   options.hmModules.cli.compression = {
-    enable = mkEnableOption "Enable compression CLI utilities";
-    zip = mkEnableOption "Include zip and unzip";
-    winrar = mkEnableOption "Include unar (RAR/WinRAR support)";
-    gui = mkEnableOption "Include file-roller GUI";
+    enable = mkEnableOption "compression CLI utilities";
+    zip = mkEnableOption "zip and unzip";
+    winrar = mkEnableOption "unar, for extracting RAR archives";
+    gui = mkEnableOption "the file-roller archive manager GUI";
   };
 
   config = mkIf cfg.enable (

@@ -18,11 +18,11 @@ in
 {
   imports = singleton inputs.nixflix.nixosModules.default;
   options.modules.services.media.nixflix = {
-    enable = mkEnableOption "Enable nixflix";
+    enable = mkEnableOption "nixflix";
     port = mkOption {
       type = types.port;
       default = 4520;
-      description = "The port 'range' to use. Services in nixflix will use a port starting from here and adding +1";
+      description = "The first port of the range nixflix uses. Each service listens on a fixed offset above it, e.g. Jellyfin on `port + 1`, qBittorrent on `port + 3`, Radarr on `port + 4` and Sonarr on `port + 7`.";
     };
   };
 

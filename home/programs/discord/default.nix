@@ -78,15 +78,14 @@ in
         ];
         default = "discord";
         description = ''
-          Which Discord client to install:
-          - discord (with OpenASAR, TTS, and Vencord)
-          - equibop
-          - vesktop
-          - webcord
+          Which Discord client to install.
+          - `discord` is the official client, patched with OpenASAR, TTS and Vencord
+          - `equibop` and `vesktop` are Equicord's and Vencord's standalone clients respectively
+          - `webcord` is an Electron wrapper around the Discord web app
         '';
       };
     };
-    arrpc.enable = mkEnableOption "Enable Discord RPC via arrpc";
+    arrpc.enable = mkEnableOption "Discord RPC via arrpc";
   };
 
   config = {

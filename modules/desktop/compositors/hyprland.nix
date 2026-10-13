@@ -11,7 +11,7 @@ let
 in
 {
   options.modules.desktop.compositors.hyprland = {
-    enable = mkEnableOption "Enable hyprland";
+    enable = mkEnableOption "hyprland";
   };
 
   config = lib.mkIf cfg.enable {

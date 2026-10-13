@@ -10,7 +10,7 @@ let
 in
 {
   options.modules.hardware.drivers.intel = {
-    enable = mkEnableOption "Enable Intel Graphics Drivers";
+    enable = mkEnableOption "Intel Graphics Drivers";
   };
 
   config = mkIf cfg.enable {

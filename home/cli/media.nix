@@ -9,7 +9,7 @@ let
   cfg = config.hmModules.cli.media;
 in
 {
-  options.hmModules.cli.media.enable = mkEnableOption "Enable the media module";
+  options.hmModules.cli.media.enable = mkEnableOption "the media module";
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
       imagemagick

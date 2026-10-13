@@ -9,7 +9,7 @@ let
 in
 {
   options.modules.desktop.compositors.niri = {
-    enable = mkEnableOption "Enable niri";
+    enable = mkEnableOption "niri";
   };
 
   config = lib.mkIf cfg.enable {

@@ -55,7 +55,7 @@ let
 in
 {
   options.hmModules.cli.disk-usage = {
-    enable = mkEnableOption "Enable disk usage analysis tools";
+    enable = mkEnableOption "disk usage analysis tools";
   };
 
   config = mkIf cfg.enable {

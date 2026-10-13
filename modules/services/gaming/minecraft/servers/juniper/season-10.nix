@@ -24,35 +24,40 @@ let
 in
 {
   options.modules.services.gaming.minecraft.juniper-s10 = {
-    enable = mkEnableOption "Enable Juniper SMP server";
+    enable = mkEnableOption "Juniper SMP server";
 
     port = mkOption {
       type = types.port;
       default = 8800;
-      description = "The port for Juniper to be hosted at";
+      description = "The port the Minecraft server listens on. Several other ports are derived from it: rcon at `port - 1000`, the squaremap web map at `port - 2000`.";
     };
 
     minRAM = mkOption {
       type = types.int;
       default = 4;
-      description = "Minimum amount of RAM for Juniper to use in gigabytes";
+      description = "The amount of RAM the server starts with (`-Xms`), in gigabytes.";
     };
 
     maxRAM = mkOption {
       type = types.int;
       default = 8;
-      description = "Maximum amount of RAM for Juniper to use in gigabytes";
+      description = "The most RAM the server may use (`-Xmx`), in gigabytes.";
     };
 
     motd = mkOption {
       type = types.str;
       default = "Powered by NixOS!";
-      description = "The message displayed in the server list of the client";
+      example = "Welcome to Juniper!";
+      description = "The message of the day, shown under the server's name in the client's server list.";
     };
 
     gamerules = mkOption {
       type = types.attrs;
-      description = "Server gamerules";
+      example = {
+        doDaylightCycle = false;
+        keepInventory = true;
+      };
+      description = "The gamerules to set on the server, as an attribute set of rule name to value.";
       default = {
         commandBlockOutput = false;
         commandModificationBlockLimit = 1000;

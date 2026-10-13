@@ -10,7 +10,7 @@ let
 in
 {
   options.hmModules.programs.office = {
-    enable = mkEnableOption "Enable LibreOffice";
+    enable = mkEnableOption "LibreOffice";
   };
 
   config = mkIf cfg.enable {

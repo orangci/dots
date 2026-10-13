@@ -13,7 +13,7 @@ let
 in
 {
   options.hmModules.desktop.niri = {
-    enable = mkEnableOption "Enable the Niri module";
+    enable = mkEnableOption "the Niri module";
   };
 
   config = mkIf cfg.enable {

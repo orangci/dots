@@ -16,15 +16,18 @@ let
 in
 {
   options.hmModules.theming.walls = {
-    enable = mkEnableOption "Enable the wallpapers module";
+    enable = mkEnableOption "the wallpapers module";
     timeout = mkOption {
       type = types.ints.positive;
       default = 20;
-      description = "Time between wallpaper changes (in minutes)";
+      example = 5;
+      description = "How often the wallpaper changes, in minutes.";
     };
     directory = mkOption {
       type = types.str;
       default = "${config.xdg.userDirs.pictures}/walls";
+      example = "/home/orangc/media/walls";
+      description = "The directory to pick random wallpapers from. Only `.jpg`, `.jpeg` and `.png` files directly inside it are used.";
     };
   };
 

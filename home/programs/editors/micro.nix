@@ -34,7 +34,7 @@ let
   };
 in
 {
-  options.hmModules.programs.editors.micro.enable = mkEnableOption "Enable micro";
+  options.hmModules.programs.editors.micro.enable = mkEnableOption "micro";
 
   config = mkIf cfg.enable {
     home.sessionVariables.EDITOR = "micro";

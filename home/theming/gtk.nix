@@ -10,7 +10,7 @@ let
 in
 {
   options.hmModules.theming.gtk = {
-    enable = mkEnableOption "Enable GTK theming";
+    enable = mkEnableOption "GTK theming";
   };
   config = mkIf cfg.enable {
     gtk = {

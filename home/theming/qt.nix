@@ -9,7 +9,7 @@ let
 in
 {
   options.hmModules.theming.qt = {
-    enable = mkEnableOption "Enable QT styling";
+    enable = mkEnableOption "QT styling";
   };
   config = mkIf cfg.enable {
     qt = {

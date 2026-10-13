@@ -16,7 +16,10 @@ let
   validModules = lib.concatMapAttrs (
     _: v:
     lib.filterAttrs (
-      _: mod: mod.autoConfiguredServiceInfra or false && mod.internalTailscaleDomain.enable or false
+      _: mod:
+      mod.enable or false
+      && mod.autoConfiguredServiceInfra or false
+      && mod.internalTailscaleDomain.enable or false
     ) v
   ) config.modules.services;
 
@@ -32,10 +35,11 @@ let
 in
 {
   options.modules.services.infrastructure.tailscale = {
-    enable = mkEnableOption "Enable tailscale";
+    enable = mkEnableOption "tailscale";
     name = mkOption {
       type = types.str;
       default = "Tailscale";
+      description = "The display name of Tailscale, mirroring the `name` option of server modules.";
     };
   };
 

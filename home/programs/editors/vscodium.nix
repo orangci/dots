@@ -15,11 +15,11 @@ let
 in
 {
   options.hmModules.programs.editors.vscodium = {
-    enable = mkEnableOption "Enable VSCodium";
+    enable = mkEnableOption "VSCodium";
     webdev = mkOption {
       type = types.bool;
       default = false;
-      description = "Enable web development extensions.";
+      description = "Whether to install extensions for web development.";
     };
   };
 

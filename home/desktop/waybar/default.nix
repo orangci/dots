@@ -12,7 +12,7 @@ let
 in
 {
   options.hmModules.desktop.waybar = {
-    enable = mkEnableOption "Enable waybar";
+    enable = mkEnableOption "waybar";
   };
   config = mkIf cfg.enable {
     wayland.windowManager.hyprland.settings.on = singleton (lib.my.hyprlandLua.onStart "waybar");

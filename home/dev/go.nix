@@ -10,7 +10,7 @@ let
   cfg = config.hmModules.dev.go;
 in
 {
-  options.hmModules.dev.go.enable = mkEnableOption "Enable Go development environment";
+  options.hmModules.dev.go.enable = mkEnableOption "Go development environment";
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
       go # i wonder what this could possibly be bro

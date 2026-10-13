@@ -56,7 +56,7 @@ let
   '';
 in
 {
-  options.hmModules.desktop.screenshot.enable = mkEnableOption "Enable screenshot script";
+  options.hmModules.desktop.screenshot.enable = mkEnableOption "screenshot script";
   config = mkIf cfg.enable {
     wayland.windowManager.hyprland.settings = {
       bind =

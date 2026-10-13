@@ -9,7 +9,7 @@ let
   cfg = config.hmModules.dev.misc;
 in
 {
-  options.hmModules.dev.misc.enable = mkEnableOption "Enable the misc dev module";
+  options.hmModules.dev.misc.enable = mkEnableOption "the misc dev module";
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
       gcc

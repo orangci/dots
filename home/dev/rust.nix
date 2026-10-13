@@ -14,7 +14,7 @@ let
 in
 {
   options.hmModules.dev.rust = {
-    enable = mkEnableOption "Enable Rust development environment";
+    enable = mkEnableOption "Rust development environment";
   };
 
   config = mkIf cfg.enable {

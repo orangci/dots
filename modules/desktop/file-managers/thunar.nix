@@ -10,8 +10,8 @@ let
 in
 {
   options.modules.desktop.file-managers.thunar = {
-    enable = mkEnableOption "Enable thunar";
-    archive-plugin.enable = mkEnableOption "Enable thunar's archive plugin";
+    enable = mkEnableOption "thunar";
+    archive-plugin.enable = mkEnableOption "thunar's archive plugin";
   };
 
   config = lib.mkIf cfg.enable {

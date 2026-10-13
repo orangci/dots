@@ -9,7 +9,7 @@ let
 in
 {
   options.modules.category.name = {
-    enable = mkEnableOption "Enable name";
+    enable = mkEnableOption "name";
 
     exampleOption = lib.mkOption {
       type = lib.types.str;

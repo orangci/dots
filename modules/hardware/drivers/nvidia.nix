@@ -8,7 +8,7 @@ let
   cfg = config.modules.hardware.drivers.nvidia;
 in
 {
-  options.modules.hardware.drivers.nvidia.enable = mkEnableOption "Enable Nvidia Drivers";
+  options.modules.hardware.drivers.nvidia.enable = mkEnableOption "Nvidia Drivers";
   config = mkIf cfg.enable {
     services.xserver.videoDrivers = [ "nvidia" ];
     hardware.graphics.enable = true;

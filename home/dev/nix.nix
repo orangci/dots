@@ -13,7 +13,7 @@ in
 {
   imports = lib.singleton inputs.nix-index-database.homeModules.default;
   options.hmModules.dev.nix = {
-    enable = mkEnableOption "Enable Nix development environment";
+    enable = mkEnableOption "Nix development environment";
   };
 
   config = mkIf cfg.enable {

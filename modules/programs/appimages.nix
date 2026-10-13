@@ -10,7 +10,7 @@ let
 in
 {
   options.modules.programs.appimages = {
-    enable = mkEnableOption "Enable AppImages";
+    enable = mkEnableOption "AppImages";
   };
 
   config = lib.mkIf cfg.enable {

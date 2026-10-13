@@ -10,7 +10,7 @@ let
 in
 {
   options.modules.hardware.bluetooth = {
-    enable = mkEnableOption "Enable bluetooth";
+    enable = mkEnableOption "bluetooth";
   };
 
   config = lib.mkIf cfg.enable {

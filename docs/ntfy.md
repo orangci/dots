@@ -1,4 +1,4 @@
-## Ntfy usage
+# Ntfy usage
 
 See the [documentation](https://ntfy.orangc.net/docs/publish).
 

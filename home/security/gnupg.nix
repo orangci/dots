@@ -8,7 +8,7 @@ let
   cfg = config.hmModules.security.gnupg;
 in
 {
-  options.hmModules.security.gnupg.enable = mkEnableOption "gnupg module";
+  options.hmModules.security.gnupg.enable = mkEnableOption "the gnupg module";
   config = mkIf cfg.enable {
     programs.gpg.enable = true;
     services.gpg-agent = {

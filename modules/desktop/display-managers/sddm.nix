@@ -41,7 +41,7 @@ let
 in
 {
   options.modules.desktop.display-managers.sddm = {
-    enable = mkEnableOption "Enable SDDM";
+    enable = mkEnableOption "SDDM";
     wallpaper = lib.mkOption {
       type = lib.types.path;
       default = pkgs.fetchurl {
@@ -49,12 +49,14 @@ in
         name = "misty-boat";
         hash = "sha256-o+SYyAObIcUpzpXkoNa7HGbdc5u4jcN8tnA5Aulp8rM=";
       };
-      description = "Wallpaper to use for the SDDM Astronaut theme";
+      example = lib.literalExpression "./wallpaper.png";
+      description = "The background image of the login screen. Only used by the SDDM Astronaut theme.";
     };
     theme = lib.mkOption {
       type = lib.types.str;
       default = "sddm-astronaut-theme";
-      description = "The SDDM theme to use";
+      example = "stray";
+      description = "The name of the SDDM theme to use. The themes available are the ones this module builds, `sddm-astronaut-theme` and `stray`.";
     };
   };
 

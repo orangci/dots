@@ -9,7 +9,7 @@ let
 in
 {
   options.hmModules.programs.browsers.chromium = {
-    enable = mkEnableOption "Enable Chromium";
+    enable = mkEnableOption "Chromium";
   };
 
   config = mkIf cfg.enable {

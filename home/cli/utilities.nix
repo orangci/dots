@@ -11,11 +11,11 @@ let
 in
 {
   options.hmModules.cli = {
-    fetch.enable = mkEnableOption "Enable fetch programs";
-    fun.enable = mkEnableOption "Enable fun CLI programs";
-    benchmarking.enable = mkEnableOption "Enable benchmarking tools";
-    utilities.enable = mkEnableOption "Enable misc utilities";
-    oxidisation.enable = mkEnableOption "Enable drop-in Rust replacements for common CLI tools";
+    fetch.enable = mkEnableOption "fetch programs";
+    fun.enable = mkEnableOption "fun CLI programs";
+    benchmarking.enable = mkEnableOption "benchmarking tools";
+    utilities.enable = mkEnableOption "misc utilities";
+    oxidisation.enable = mkEnableOption "drop-in Rust replacements for common CLI tools";
   };
 
   config = lib.mkMerge [

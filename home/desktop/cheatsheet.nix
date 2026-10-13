@@ -98,7 +98,7 @@ let
   '';
 in
 {
-  options.hmModules.desktop.cheatsheet.enable = mkEnableOption "Enable cheatsheet script";
+  options.hmModules.desktop.cheatsheet.enable = mkEnableOption "cheatsheet script";
   config = mkIf cfg.enable {
     wayland.windowManager.hyprland.settings.bind = lib.my.hyprlandLua.bindd [
       "SUPERSHIFT, SLASH, Open Cheatsheet, exec, cheatsheet"

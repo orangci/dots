@@ -10,7 +10,7 @@ let
 in
 {
   options.modules.hardware.drivers.amd = {
-    enable = mkEnableOption "Enable AMD Drivers";
+    enable = mkEnableOption "AMD Drivers";
   };
 
   config = mkIf cfg.enable {

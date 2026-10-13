@@ -13,7 +13,8 @@ let
   validModules = lib.concatMapAttrs (
     _: v:
     lib.filterAttrs (
-      _: mod: mod.autoConfiguredServiceInfra or false && mod.cloudflared.enable or false
+      _: mod:
+      mod.enable or false && mod.autoConfiguredServiceInfra or false && mod.cloudflared.enable or false
     ) v
   ) config.modules.services;
 
@@ -31,11 +32,12 @@ let
 in
 {
   options.modules.services.infrastructure.cloudflared = {
-    enable = lib.mkEnableOption "Enable Cloudflared";
+    enable = lib.mkEnableOption "Cloudflared";
     ingress = lib.mkOption {
       type = types.attrsOf types.str;
       default = { };
-      description = "Collect ingress entries from other modules";
+      example = lib.literalExpression ''lib.my.mkCloudflaredIngress "example" 8800'';
+      description = "Extra hostnames to route through the Cloudflare Tunnel, as hostname to origin URL. Modules use this for services that `mkServerModule` can't configure automatically, usually via `lib.my.mkCloudflaredIngress`.";
     };
   };
 
@@ -72,7 +74,11 @@ in
 
       script = lib.concatMapStringsSep "\n" (domain: ''
         echo "Ensuring DNS route for ${domain}..."
-        ${pkgs.cloudflared}/bin/cloudflared tunnel --origincert /mnt/data/apps/cloudflared/cert.pem route dns --overwrite-dns $(cat /mnt/data/apps/cloudflared/homelab.json | ${pkgs.jq}/bin/jq -r .TunnelID) ${domain} || true
+        ${pkgs.cloudflared}/bin/cloudflared tunnel --origincert ${
+          config.modules.security.sops.secrets."cloudflared/cert.pem".path
+        } route dns --overwrite-dns $(${pkgs.jq}/bin/jq -r .TunnelID ${
+          config.modules.security.sops.secrets."cloudflared/credentials.json".path
+        }) ${domain} || true
       '') (builtins.attrNames config.services.cloudflared.tunnels.homelab.ingress);
     };
   };

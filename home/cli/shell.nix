@@ -56,12 +56,16 @@ in
         ]
       );
       default = null;
-      description = "Shell to use and configure (bash, zsh, fish). Leave null to disable.";
+      example = "fish";
+      description = "The shell to configure for the user. Leave it null to not configure any shell.";
     };
     extraAliases = mkOption {
       type = types.attrsOf types.str;
       default = { };
-      description = "Extra shell aliases collected from modules.";
+      example = {
+        ll = "ls -l";
+      };
+      description = "Aliases contributed by other modules. They get applied to whichever shell is set in `program`.";
     };
   };
 

@@ -17,24 +17,29 @@ let
 in
 {
   options.modules.security.restic = {
-    enable = mkEnableOption "Enable restic backups";
+    enable = mkEnableOption "restic backups";
 
     paths = mkOption {
       type = types.listOf types.str;
       default = [ ];
-      description = "Paths to files/folders to backup";
+      example = [
+        "/var/lib/forgejo"
+        "/srv/files"
+      ];
+      description = "The files and directories to back up. Nothing is added automatically, so remember to add a service's data directory here when you enable it.";
     };
 
     repository = mkOption {
       type = types.str;
       default = "/mnt/backup";
-      description = "Location of the restic repository to backup to";
+      example = "/mnt/backup";
+      description = "The restic repository to back up to. For a local repository, mount the drive before enabling this module or restic will create the repository on the root drive.";
     };
 
     keepLast = mkOption {
       type = types.int;
       default = 5;
-      description = "Number of snapshots (of backups) to keep";
+      description = "How many of the most recent snapshots to keep when pruning. Older snapshots are deleted.";
     };
   };
 

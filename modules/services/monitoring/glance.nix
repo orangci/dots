@@ -17,7 +17,9 @@ let
 
   serverModules = lib.concatMapAttrs (
     _: v:
-    lib.filterAttrs (_: mod: mod.autoConfiguredServiceInfra or false && mod.glance.enable or false) v
+    lib.filterAttrs (
+      _: mod: mod.enable or false && mod.autoConfiguredServiceInfra or false && mod.glance.enable or false
+    ) v
   ) config.modules.services;
 
   dynamicMonitoredSites = builtins.map (mod: {
@@ -35,7 +37,14 @@ in
       monitoredSites = mkOption {
         type = types.listOf types.attrs;
         default = [ ];
-        description = "Collect services definitions from different modules";
+        example = lib.literalExpression ''
+          lib.singleton {
+            title = "Example";
+            url = "https://example.orangc.net";
+            icon = "sh:example";
+          }
+        '';
+        description = "Extra sites to show in the dashboard's monitor widget. Modules use this for services that `mkServerModule` can't configure automatically. Icons take a prefix (`si:`, `sh:`, `di:` or `mdi:`) that selects the icon set.";
       };
     };
   # maybe in the future https://github.com/glanceapp/community-widgets/blob/main/widgets/google-calendar-list-by-anant-j/README.md

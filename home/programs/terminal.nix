@@ -14,7 +14,7 @@ let
 in
 {
   options.hmModules.programs.terminal = {
-    enable = mkEnableOption "Enable terminal emulator";
+    enable = mkEnableOption "terminal emulator";
 
     emulator = mkOption {
       type = types.enum [
@@ -23,7 +23,7 @@ in
         "alacritty"
       ];
       default = "kitty";
-      description = "Which terminal emulator to enable.";
+      description = "The terminal emulator to install and configure. It is also what the terminal keybind launches.";
     };
   };
 

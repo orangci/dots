@@ -10,7 +10,7 @@ let
 in
 {
   options.hmModules.programs.opencode = {
-    enable = mkEnableOption "Enable OpenCode";
+    enable = mkEnableOption "OpenCode";
 
   };
 

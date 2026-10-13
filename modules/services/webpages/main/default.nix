@@ -30,17 +30,30 @@ in
         type = types.listOf (
           types.submodule {
             options = {
-              sources = mkOption { type = types.listOf types.str; };
-              target = mkOption { type = types.str; };
+              sources = mkOption {
+                type = types.listOf types.str;
+                example = [
+                  "g"
+                  "git"
+                ];
+                description = "Paths, without the leading slash, that redirect to `target`. Anything below a path is redirected too, with the rest of the path appended to the target.";
+              };
+              target = mkOption {
+                type = types.str;
+                example = "https://git.orangc.net/c";
+                description = "The URL to redirect to.";
+              };
               code = mkOption {
                 type = types.int;
                 default = 301;
+                description = "The HTTP status code of the redirect. Use 302 or 307 for a temporary redirect.";
               };
             };
           }
         );
 
         default = [ ];
+        description = "Redirects served from the main domains. Other modules add to this, see `redirects.nix`.";
       };
     };
 

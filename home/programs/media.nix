@@ -15,16 +15,17 @@ let
 in
 {
   options.hmModules.programs.media = {
-    enable = mkEnableOption "Enable MPV media player with scripts";
+    enable = mkEnableOption "MPV media player with scripts";
 
-    gwenview = mkEnableOption "Enable Gwenview image viewer";
-    imv = mkEnableOption "Enable imv image viewer";
-    feh = mkEnableOption "Enable feh image viewer";
-    qimgv = mkEnableOption "Enable qimgv image viewer";
+    gwenview = mkEnableOption "Gwenview image viewer";
+    imv = mkEnableOption "imv image viewer";
+    feh = mkEnableOption "feh image viewer";
+    qimgv = mkEnableOption "qimgv image viewer";
 
     xdg = lib.mkOption {
       type = lib.types.str;
-      description = "The .desktop filename to use for XDG";
+      example = "imv.desktop";
+      description = "The `.desktop` file of the default image viewer, used for XDG mime associations. The image viewer options above set this themselves.";
     };
   };
 

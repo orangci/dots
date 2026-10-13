@@ -16,7 +16,7 @@ in
 {
   imports = [ inputs.walker.homeManagerModules.default ];
   options.hmModules.desktop.walker = {
-    enable = mkEnableOption "Enable the walker module";
+    enable = mkEnableOption "the walker module";
   };
 
   config = mkIf cfg.enable {

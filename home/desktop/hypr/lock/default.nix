@@ -10,7 +10,7 @@ let
 in
 {
   options.hmModules.desktop.hypr.lock = {
-    enable = mkEnableOption "Enable hyprlock";
+    enable = mkEnableOption "hyprlock";
   };
   config = mkIf cfg.enable {
     home.packages = [ pkgs.hyprlock ];

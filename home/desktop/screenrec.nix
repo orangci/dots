@@ -53,17 +53,20 @@ in
 {
   options.hmModules.desktop.screenrec = {
     # For more information about gpu-screen-recorder, see https://git.dec05eba.com/gpu-screen-recorder/about/.
-    enable = mkEnableOption "Enable screenrec script";
+    enable = mkEnableOption "screenrec script";
 
     timestampFormat = mkOption {
       type = types.str;
       default = "%y-%b-%m_%H.%M.%S";
-      description = "Timestamp format for filenames";
+      example = "%Y-%m-%d_%H.%M.%S";
+      description = "The `date` format string used to name recordings.";
     };
 
     fileFormat = mkOption {
       type = types.str;
       default = "mkv";
+      example = "mp4";
+      description = "The container format of the recording. This is also used as the file extension.";
     };
 
     quality = mkOption {
@@ -74,6 +77,7 @@ in
         "ultra"
       ];
       default = "very_high";
+      description = "Recording quality, as understood by gpu-screen-recorder's `-q` flag. Higher qualities make larger files.";
     };
 
     encoder = mkOption {
@@ -82,6 +86,7 @@ in
         "cpu"
       ];
       default = "gpu";
+      description = "Whether to encode the video on the GPU or the CPU.";
     };
 
     showCursor = mkOption {
@@ -90,17 +95,21 @@ in
         "no"
       ];
       default = "yes";
+      description = "Whether the mouse cursor is visible in recordings.";
     };
 
     framerate = mkOption {
       type = types.int;
       default = 60;
-      description = "Framerate to record at";
+      example = 30;
+      description = "The framerate to record at, in frames per second.";
     };
 
     codec = mkOption {
       type = types.str;
       default = "auto";
+      example = "h264";
+      description = "The video codec to encode with, as understood by gpu-screen-recorder's `-k` flag. `auto` lets it pick one.";
     };
   };
 

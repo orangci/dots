@@ -15,7 +15,7 @@ let
 in
 {
   options.hmModules.category.example = {
-    enable = mkEnableOption "Enable the example module";
+    enable = mkEnableOption "the example module";
 
     hiThere = mkOption {
       type = types.str;

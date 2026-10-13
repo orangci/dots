@@ -26,11 +26,11 @@ let
 in
 {
   options.hmModules.desktop.wleave = {
-    enable = mkEnableOption "Enable wleave";
+    enable = mkEnableOption "wleave";
     horizontal = mkOption {
       type = types.bool;
       default = false;
-      description = "Use horizontal layout and style for wleave";
+      description = "Whether to lay the logout menu out as a horizontal bar rather than a vertical stack.";
     };
   };
 

@@ -9,7 +9,7 @@ let
   cfg = config.modules.hardware.printing;
 in
 {
-  options.modules.hardware.printing.enable = mkEnableOption "Enable printing";
+  options.modules.hardware.printing.enable = mkEnableOption "printing";
   config = lib.mkIf cfg.enable {
     hardware.sane.enable = true; # for scanners
     services = {

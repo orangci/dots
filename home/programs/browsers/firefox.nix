@@ -11,7 +11,7 @@ let
 in
 {
   options.hmModules.programs.browsers.firefox = {
-    enable = mkEnableOption "Enable firefox";
+    enable = mkEnableOption "firefox";
   };
   config = mkIf cfg.enable {
     wayland.windowManager.hyprland.settings.bind = lib.my.hyprlandLua.bindd [

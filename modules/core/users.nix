@@ -17,17 +17,18 @@ in
     autoDeclare = mkOption {
       type = types.bool;
       default = true;
-      description = "automatic declaration of user accounts";
+      description = "Whether to declare a normal user account for every user listed in the host's `users.nix`.";
     };
     home-manager.autoDeclare = mkOption {
       type = types.bool;
       default = true;
-      description = "automatic declaration of home-manager users";
+      description = "Whether to declare a home-manager configuration for every user listed in the host's `users.nix`, from `homes/USERNAME.nix`.";
     };
     home-manager.stateVersion = mkOption {
       type = types.str;
       default = "26.05";
-      description = "The state version of home-manager to use for all automatically declared users on this machine";
+      example = "25.11";
+      description = "The `home.stateVersion` given to every automatically declared home-manager user on this machine. Like `system.stateVersion`, set it to the release you first installed with and leave it be.";
     };
   };
 

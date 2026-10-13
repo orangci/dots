@@ -1,5 +1,5 @@
 # Secrets
-Secrets in this flakes are managed with sops-nix in the [modules.common.sops](/modules/common/sops.nix) module.
+Secrets in this flake are managed with sops-nix in the [modules.security.sops](/modules/security/sops.nix) module. The encrypted secrets all live in [`secrets/secrets.yaml`](../secrets/secrets.yaml).
 
 ## Keys
 ### How to make a key with your personal SSH key
@@ -43,8 +43,8 @@ nested:
 Example module usage:
 
 ```nix
-modules.common.secrets.my-secret = {};
-modules.common.secrets."nested/secret" = {
+modules.security.sops.secrets.my-secret = {};
+modules.security.sops.secrets."nested/secret" = {
     # All below options are optional.
     path = "/home/orangc/secret";
     owner = "orangc";
@@ -52,6 +52,20 @@ modules.common.secrets."nested/secret" = {
     mode = "0440";
 };
 ```
+
+## Everyday use
+Edit the secrets (opens `$EDITOR`, re-encrypts on save):
+
+`sops secrets/secrets.yaml`
+
+Secrets are conventionally placed under `/var/secrets/` on the machine, e.g. `modules.security.sops.secrets.ntfy-env.path = "/var/secrets/ntfy-env";`. Modules that need a secret declare it themselves, so you only have to add the value to `secrets.yaml`.
+
+### Adding a new machine
+1. Generate its keys as described above.
+2. Add them to [`.sops.yaml`](../.sops.yaml) (both the `keys` list and the `creation_rules`).
+3. Re-encrypt the file so the new machine can read it: `sops updatekeys secrets/secrets.yaml`
+
+The same applies when you remove a machine or rotate a key.
 
 ## Conclusion
 Remember to refer back to the [`sops-nix`](https://github.com/Mic92/sops-nix) documentation when confused.

@@ -13,24 +13,26 @@ let
 in
 {
   options.modules.services.databases.postgresql = {
-    enable = mkEnableOption "Enable postgresql";
+    enable = mkEnableOption "postgresql";
 
     port = mkOption {
       type = types.port;
       default = 5432;
-      description = "The port for postgresql to be hosted at";
+      description = "The port PostgreSQL listens on.";
     };
 
     databases = mkOption {
       type = types.listOf types.str;
       default = [ ];
-      description = "Names of database to ensure exist in PostgreSQL.";
+      example = [ "kaju" ];
+      description = "The databases to create if they do not exist yet. Each one is accessible without a password, over the local socket, to every user in `users`.";
     };
 
     users = mkOption {
       type = types.listOf types.str;
       default = [ ];
-      description = "Names of users to ensure exist in PostgreSQL.";
+      example = [ "kaju" ];
+      description = "The users to create if they do not exist yet. A user becomes the owner of the database with the same name, if there is one.";
     };
   };
 

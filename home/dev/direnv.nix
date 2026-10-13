@@ -8,7 +8,7 @@ let
   cfg = config.hmModules.dev.direnv;
 in
 {
-  options.hmModules.dev.direnv.enable = mkEnableOption "Enable the direnv module";
+  options.hmModules.dev.direnv.enable = mkEnableOption "the direnv module";
   config = mkIf cfg.enable {
     programs.direnv = {
       enable = true;

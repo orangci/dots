@@ -16,7 +16,7 @@ in
     (mkAliasOptionModule [ "modules" "security" "sops" "secrets" ] [ "sops" "secrets" ])
   ];
 
-  options.modules.security.sops.enable = mkEnableOption "Enable sops-nix secret management";
+  options.modules.security.sops.enable = mkEnableOption "sops-nix secret management";
 
   config = lib.mkIf cfg.enable {
     environment.systemPackages = with pkgs; [

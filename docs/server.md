@@ -1,20 +1,20 @@
 # Server Modules
 
-[Server modules](../search?q=modules.server) are modules meant to run on a server/homelab, such as Forgejo or Immich.
+Server modules are the ones under `modules.services.*` ([`modules/services`](../modules/services)). They're meant to run on a server/homelab, such as Forgejo or Immich, and are sorted into categories like `media`, `files` and `monitoring`.
 
 
 ## Working With mkServerModule
 Here's a minimal example of a server module with mkServerModule:
 
 ```nix
-# modules/server/example.nix
+# modules/services/category/example.nix
 { config, lib, ... }:
 let
   inherit (lib) mkIf;
-  cfg = config.modules.server.example;
+  cfg = config.modules.services.category.example;
 in
 {
-  options.modules.server.example = lib.my.mkServerModule { name = "Example"; };
+  options.modules.services.category.example = lib.my.mkServerModule { name = "Example"; };
   config = mkIf cfg.enable {
     services.example = {
         enable = true;
@@ -29,30 +29,40 @@ Enabling it:
 ```nix
 # hosts/hostname/config.nix
 {
-    modules.server.example = {
+    modules.services.category.example = {
         enable = true;
         glance.enable = true;
         cloudflared.enable = true;
         internalTailscaleDomain.enable = true;
         ntfyChecking.enable = true;
         port = 8804;
-        # a few more options are available for mkServerModule modules which you can see at lib/options/mkServerModule.nix
+        # a few more options are available for mkServerModule modules which you can see at lib/mkServerModule.nix
     };
 }
 ```
 
+## What mkServerModule gives you
+- `enable`, `port`, `subdomain` (defaults to the lowercased name), and `name` (for display purposes).
+- `cloudflared.enable` ~ exposes the service publicly through the Cloudflare Tunnel on `subdomain.<primary and secondary domain>`.
+- `internalTailscaleDomain.enable` ~ serves it on `subdomain.<tailnet domain>`, reachable from the tailnet only.
+- `glance.enable` (and `glance.icon`) ~ shows it on the Glance dashboard.
+- `ntfyChecking.enable` ~ gets a notification on [ntfy](./ntfy.md) if the service stops responding.
+- `autoConfiguredServiceInfra` ~ set it to `false` in the `mkServerModule` call if Caddy and friends shouldn't touch the service at all.
+
+Caddy, Cloudflared, Glance and the ntfy checker each go through every `modules.services.category.name` module and read these options, so the module itself never has to mention them. Ports are in the 88xx range; check [gensokyo's config](../hosts/gensokyo/config.nix) for what's taken before picking one.
+
 ## Working Without mkServerModule
-Note that automatic cloudflared/glance/caddy/ntfy integration for mkServerModule modules only works for modules.server.x modules, and not modules.server.x.y modules.
+Note that automatic cloudflared/glance/caddy/ntfy integration for mkServerModule modules only works for `modules.services.category.name` modules, and not anything nested deeper (e.g. `modules.services.media.nixflix.radarr`).
 
 If you want to integrate these into your modules manually:
 ```nix
 # example.nix
 { lib, ... }: {
-    modules.server = {
-        caddy.virtualHosts = lib.my.mkCaddyEntry "subdomain-name" 8804 true;
+    modules.services = {
+        infrastructure.caddy.virtualHosts = lib.my.mkCaddyEntry "subdomain-name" 8804 true;
         # 8804 is the port to serve on, and true/false is for enabling or disabling internal tailnet domains at subdomain-name.${flakeSettings.domains.tailnet}
-        cloudflared.ingress = lib.my.mkCloudflaredIngress "subdomain-name" 8804;
-        glance.monitoredSites = lib.singleton {
+        infrastructure.cloudflared.ingress = lib.my.mkCloudflaredIngress "subdomain-name" 8804;
+        monitoring.glance.monitoredSites = lib.singleton {
             url = "https://${cfg.subdomain}.${flakeSettings.domains.primary}";
             title = cfg.name;
             icon = "sh:example";
@@ -87,7 +97,7 @@ To obtain a Forgejo token for your Renovate bot, first create a user account for
 To obtain a GitHub token, simply visit [this page](https://github.com/settings/tokens) and click "Generate new token". You may use either type; there is no need to give the token any permissions, as it is needed for read-only operations alone.
 
 ### Matrix
-Keep in mind that once you set `modules.server.matrix.serverName`, you *cannot* change it unless you wipe the database.
+Keep in mind that once you set `modules.services.misc.matrix-synapse.serverName`, you *cannot* change it unless you wipe the database.
 To make a new Matrix user, simply run `matrix-synapse-register_new_matrix_user` without any arguments.
 ```yaml
 matrix-synapse-registration-shared: any randomly generated string, try openssl rand -hex 32

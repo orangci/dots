@@ -14,7 +14,7 @@ in
 {
   imports = [ inputs.stevenBlackHosts.nixosModule ];
   options.modules.core.networking = {
-    enable = mkEnableOption "Enable networking";
+    enable = mkEnableOption "networking";
   };
 
   config = lib.mkIf cfg.enable {

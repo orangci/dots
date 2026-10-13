@@ -17,7 +17,7 @@ let
 in
 {
   options.hmModules.desktop.hypr.land = {
-    enable = mkEnableOption "Enable Hyprland";
+    enable = mkEnableOption "Hyprland";
   };
 
   config = mkIf cfg.enable {

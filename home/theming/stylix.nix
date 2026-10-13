@@ -17,11 +17,12 @@ in
 {
   imports = [ inputs.stylix.homeModules.stylix ];
   options.hmModules.theming.stylix = {
-    enable = mkEnableOption "Enable Stylix";
+    enable = mkEnableOption "Stylix";
     theme = mkOption {
       type = types.str;
       default = "catppuccin-mocha";
-      description = "The name of the theme to set Stylix too. Choose from https://github.com/tinted-theming/schemes";
+      example = "rose-pine";
+      description = "The base16 scheme Stylix should use. This is the name of a file in <https://github.com/tinted-theming/schemes>, without the extension.";
     };
   };
   config = mkIf cfg.enable {

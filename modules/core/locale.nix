@@ -10,7 +10,8 @@ in
   options.modules.core.locale = lib.mkOption {
     type = lib.types.str;
     default = "en_GB.UTF-8";
-    description = "The system locale";
+    example = "en_US.UTF-8";
+    description = "The locale used for the system language and for every `LC_*` category (dates, currency, measurements and so on).";
   };
 
   config = {

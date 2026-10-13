@@ -15,7 +15,7 @@ Prerequisites:
 
 3. What depends on a package?
 
-`nix why-depends /run/current-system nixpkgs#package-name'
+`nix why-depends /run/current-system nixpkgs#package-name`
 
 4. Only update a specific flake input
 

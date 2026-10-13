@@ -17,7 +17,7 @@ let
   cfg = config.modules.services.infrastructure.caddy;
 
   validModules = lib.concatMapAttrs (
-    _: v: lib.filterAttrs (_: mod: mod.autoConfiguredServiceInfra or false) v
+    _: v: lib.filterAttrs (_: mod: mod.enable or false && mod.autoConfiguredServiceInfra or false) v
   ) config.modules.services;
 
   mkVhostEntries =
@@ -37,7 +37,7 @@ let
 in
 {
   options.modules.services.infrastructure.caddy = {
-    enable = mkEnableOption "Enable Caddy";
+    enable = mkEnableOption "Caddy";
     virtualHosts = mkOption {
       type = types.attrsOf (
         types.submodule {
@@ -45,7 +45,8 @@ in
         }
       );
       default = { };
-      description = "Collect virtual host entries from other modules";
+      example = lib.literalExpression ''lib.my.mkCaddyEntry "example" 8800 true'';
+      description = "Extra virtual hosts to add to Caddy. Modules use this for services that `mkServerModule` can't configure automatically, usually via `lib.my.mkCaddyEntry`.";
     };
   };
 

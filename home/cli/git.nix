@@ -16,39 +16,42 @@ let
 in
 {
   options.hmModules.cli.git = {
-    enable = mkEnableOption "Enable Git CLI configuration";
-    github = mkEnableOption "Enable GitHub CLI (gh)";
-    gitea = mkEnableOption "Enable Gitea CLI (tea)";
-    lfs = mkEnableOption "Enable GitHub Large File Storage";
-    pre-commit = mkEnableOption "Enable pre-commit";
+    enable = mkEnableOption "Git CLI configuration";
+    github = mkEnableOption "GitHub CLI (gh)";
+    gitea = mkEnableOption "Gitea CLI (tea)";
+    lfs = mkEnableOption "GitHub Large File Storage";
+    pre-commit = mkEnableOption "pre-commit";
 
     username = mkOption {
       type = types.str;
       default = "";
-      description = "Git user.name";
+      example = "orangc";
+      description = "The name Git attaches to your commits (`user.name`).";
     };
 
     email = mkOption {
       type = types.str;
       default = "";
-      description = "Git user.email";
+      example = "you@example.com";
+      description = "The email address Git attaches to your commits (`user.email`).";
     };
 
     signing = {
-      enable = mkEnableOption "Sign Git commits";
+      enable = mkEnableOption "signing of Git commits";
       format = mkOption {
         type = types.enum [
           "openpgp"
           "ssh"
         ];
         default = "openpgp";
-        description = "Git signing format";
+        description = "The kind of key used to sign commits. `openpgp` uses a GPG key, `ssh` uses an SSH key.";
       };
 
       key = mkOption {
         type = types.str;
         default = null;
-        description = "Git Signing Key";
+        example = "ABCDEF0123456789ABCDEF0123456789ABCDEF01";
+        description = "The key to sign commits with. For `openpgp` this is a GPG key ID or fingerprint, for `ssh` it is the path to a public key.";
       };
     };
   };

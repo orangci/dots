@@ -9,7 +9,7 @@ let
   cfg = config.hmModules.desktop.syshud;
 in
 {
-  options.hmModules.desktop.syshud.enable = mkEnableOption "Enable the syshud module";
+  options.hmModules.desktop.syshud.enable = mkEnableOption "the syshud module";
   config = mkIf cfg.enable {
     home.packages = singleton pkgs.syshud;
     wayland.windowManager.hyprland.settings.on = singleton (

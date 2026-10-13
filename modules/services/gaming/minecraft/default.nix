@@ -11,7 +11,7 @@ let
 in
 {
   imports = singleton inputs.nix-minecraft.nixosModules.minecraft-servers;
-  options.modules.services.gaming.minecraft.enable = mkEnableOption "Enable minecraft";
+  options.modules.services.gaming.minecraft.enable = mkEnableOption "minecraft";
 
   config = mkIf cfg.enable {
     modules.security.sops.secrets.minecraft-rcon-password.path = "/var/secrets/minecraft-rcon-password";

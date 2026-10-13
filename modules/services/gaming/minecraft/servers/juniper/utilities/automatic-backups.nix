@@ -49,11 +49,12 @@ let
 in
 {
   options.modules.services.gaming.minecraft.juniper-s11.automatic-backups = {
-    enable = mkEnableOption "Automatically backup and prune the server";
+    enable = mkEnableOption "automatic backups and pruning of the server";
     frequency = mkOption {
       type = types.str;
       default = "daily";
-      description = "The frequency of which to perform backups and prunes";
+      example = "*-*-* 04:00:00";
+      description = "How often to back up the world, as a systemd calendar expression (see `man systemd.time`). The backup warns players five minutes before it starts.";
     };
   };
   config = mkIf cfg.enable {
