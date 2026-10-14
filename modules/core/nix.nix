@@ -1,4 +1,5 @@
-_: {
+{ pkgs, ... }:
+{
   nixpkgs.config.allowUnfree = true;
   nixpkgs.overlays = [
     (_: prev: {
@@ -7,6 +8,7 @@ _: {
   ];
 
   programs.nix-ld.enable = true;
+  environment.systemPackages = [ pkgs.nix-output-monitor ];
 
   nix = {
     settings = {

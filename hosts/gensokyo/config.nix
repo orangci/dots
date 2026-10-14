@@ -146,8 +146,6 @@ in
   # networking.resolvconf.enable = false;
 
   environment.systemPackages = with pkgs; [
-    nix-output-monitor
-    nh
     micro
     smartmontools # smartd drive health monitoring
   ];

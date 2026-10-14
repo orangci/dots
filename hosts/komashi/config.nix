@@ -50,9 +50,7 @@
   programs.kdeconnect.enable = true;
 
   environment.systemPackages = with pkgs; [
-    nh
     micro
-    nix-output-monitor
     libnotify
     zoom-us
   ];

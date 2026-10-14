@@ -28,8 +28,8 @@ let
     syscheck = "systemctl list-units --type=service --state=inactive,failed,activating,deactivating --no-pager";
 
     # nix stuff
-    fr = "nh os switch --hostname ${host} $FLAKE";
-    fu = "nh os switch --hostname ${host} --update $FLAKE";
+    fr = "nh os switch --hostname ${host}";
+    fu = "nh os switch --hostname ${host} --update";
     fe = "nix eval .#nixosConfigurations.${host}.config.system.build.toplevel";
     gcnix = "sudo nh clean all --no-gcroots && sudo journalctl --vacuum-time=1s";
   };

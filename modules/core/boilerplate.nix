@@ -7,12 +7,11 @@
   # modules/desktop/common.nix instead
   time.hardwareClockInLocalTime = true;
   users.mutableUsers = true;
-  environment.sessionVariables = {
-    NH_FLAKE = "/home/${users.sysadmin.username}/dots";
-    FLAKE = "/home/${users.sysadmin.username}/dots";
-  };
-
   programs = {
+    nh = {
+      enable = true;
+      flake = "/home/${users.sysadmin.username}/dots"; # sets NH_FLAKE
+    };
     fuse.userAllowOther = true;
     gnupg.agent = {
       enable = true;
