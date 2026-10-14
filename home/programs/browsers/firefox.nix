@@ -358,7 +358,7 @@ in
           };
 
           # mailvelope:
-          "	jid1-AQqSMBYb0a8ADg@jetpack" = {
+          "jid1-AQqSMBYb0a8ADg@jetpack" = {
             install_url = "https://addons.mozilla.org/firefox/downloads/latest/mailvelope/latest.xpi";
             installation_mode = "force_installed";
           };
