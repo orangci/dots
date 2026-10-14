@@ -12,6 +12,12 @@ let
     types
     ;
   cfg = config.modules.services.infrastructure.tailscale;
+  flags = [
+    "--advertise-routes=192.168.100.0/24"
+    "--advertise-exit-node"
+    "--accept-dns"
+    "--ssh=false"
+  ];
 
   validModules = lib.concatMapAttrs (
     _: v:
@@ -51,18 +57,9 @@ in
       permitCertUid = "caddy";
       useRoutingFeatures = "server";
       disableUpstreamLogging = true;
-      extraUpFlags = [
-        "--advertise-routes=192.168.100.0/24"
-        "--advertise-exit-node"
-        "--accept-dns"
-        "--ssh=false"
-      ];
-      extraSetFlags = [
-        "--advertise-routes=192.168.100.0/24"
-        "--advertise-exit-node"
-        "--accept-dns"
-        "--ssh=false"
-      ];
+      # `up` flags are used when logging in, `set` flags on every start after that
+      extraUpFlags = flags;
+      extraSetFlags = flags;
     };
   };
 }
