@@ -119,7 +119,7 @@ in
             set -g fish_greeting
             if test -f ~/.config/secrets.env
               for line in (cat ~/.config/secrets.env | grep -v '^#')
-                set -x (string split "=" $line)
+                set -x (string split -m1 "=" $line)
               end
             end
           '';
