@@ -2,7 +2,6 @@
   pkgs,
   lib,
   flakeSettings,
-  inputs,
   users,
   ...
 }:
@@ -28,7 +27,6 @@ in
 {
   imports = [
     ./hardware.nix
-    inputs.home-manager.nixosModules.home-manager
   ]
   ++ lib.my.recursivelyImport [ ../../modules ];
 

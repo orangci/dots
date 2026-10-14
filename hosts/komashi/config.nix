@@ -1,13 +1,11 @@
 {
   pkgs,
-  inputs,
   lib,
   ...
 }:
 {
   imports = [
     ./hardware.nix
-    inputs.home-manager.nixosModules.home-manager
   ]
   ++ lib.my.recursivelyImport [ ../../modules ];
 
