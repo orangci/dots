@@ -57,7 +57,7 @@ in
 
     timestampFormat = mkOption {
       type = types.str;
-      default = "%y-%b-%m_%H.%M.%S";
+      default = "%y-%b-%d_%H.%M.%S";
       example = "%Y-%m-%d_%H.%M.%S";
       description = "The `date` format string used to name recordings.";
     };
