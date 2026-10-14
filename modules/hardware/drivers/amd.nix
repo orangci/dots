@@ -16,11 +16,10 @@ in
   config = mkIf cfg.enable {
     systemd.tmpfiles.rules = [ "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}" ];
     services.xserver.videoDrivers = [ "amdgpu" ];
-    hardware.graphics.enable = true;
-    hardware.opengl = {
-      ## amdvlk: an open-source Vulkan driver from AMD
-      extraPackages = [ pkgs.amdvlk ];
-      extraPackages32 = [ pkgs.driversi686Linux.amdvlk ];
+    # vulkan comes from mesa's RADV, which is on by default (amdvlk was removed)
+    hardware.graphics = {
+      enable = true;
+      enable32Bit = true;
     };
   };
 }
