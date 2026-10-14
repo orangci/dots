@@ -14,7 +14,7 @@ modules.security.restic = {
 };
 ```
 
-The repository defaults to `/mnt/backup`, which is a separate HDD. **Mount it before enabling the module**, otherwise restic will happily initialise a repository on the root drive and fill it up.
+The repository defaults to `/mnt/backup`, which is a separate HDD. It's mounted with `nofail` so a dead drive doesn't stop gensokyo booting, which is why the backup service has `RequiresMountsFor` on the repository: if the drive isn't there, the backup fails instead of quietly initialising a new repository on the root drive.
 
 When adding a new service that keeps state, remember to add its data directory to `paths`. Nothing does this automatically.
 
@@ -46,4 +46,5 @@ Browse a snapshot without restoring anything:
 
 ## Other backups
 - The Minecraft server has its own backup script, see [`automatic-backups.nix`](../modules/services/gaming/minecraft/servers/juniper/utilities/automatic-backups.nix). It tars the world daily into the `minecraft` user's `~/backups` and keeps about three days' worth. Those tarballs are **not** in the restic `paths`, so they only protect against a corrupted world, not a dead drive.
-- Postgres is covered only by backing up `/var/lib/postgresql` as files. That's fine while the databases are idle and less fine otherwise. A proper `pg_dump` would be better.
+- Postgres is mostly covered by backing up `/var/lib/postgresql` as files. That's fine while the databases are idle and less fine otherwise. Takina's database is the exception: it gets a daily `pg_dump` into `/var/backups/takina` (last seven kept), and that directory is in `paths`, so restore from those dumps rather than the raw files.
+- Vaultwarden keeps its own consistent copy of its database in `/var/backup/vaultwarden`, which is also in `paths`.

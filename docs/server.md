@@ -49,7 +49,7 @@ Enabling it:
 - `ntfyChecking.enable` ~ gets a notification on [ntfy](./ntfy.md) if the service stops responding.
 - `autoConfiguredServiceInfra` ~ set it to `false` in the `mkServerModule` call if Caddy and friends shouldn't touch the service at all.
 
-Caddy, Cloudflared, Glance and the ntfy checker each go through every `modules.services.category.name` module and read these options, so the module itself never has to mention them. Ports are in the 88xx range; check [gensokyo's config](../hosts/gensokyo/config.nix) for what's taken before picking one.
+Caddy, Cloudflared, Glance and the ntfy checker each go through every `modules.services.category.name` module and read these options, so the module itself never has to mention them. Ports are in the 88xx range; check [gensokyo's config](../hosts/gensokyo/config.nix) for what's taken before picking one. If two enabled services end up with the same port or subdomain, evaluation fails and tells you which ones ([`assertions.nix`](../modules/services/assertions.nix)). Ports a module derives itself (like `port - 1000` for rcon) aren't checked.
 
 ## Working Without mkServerModule
 Note that automatic cloudflared/glance/caddy/ntfy integration for mkServerModule modules only works for `modules.services.category.name` modules, and not anything nested deeper (e.g. `modules.services.media.nixflix.radarr`).
