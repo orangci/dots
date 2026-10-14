@@ -19,7 +19,10 @@ in
   config = mkIf cfg.enable {
     modules.security.sops.secrets = {
       grafana-to-ntfy-bauth-pass.path = "/var/secrets/grafana-to-ntfy-bauth-pass";
-      grafana-secret-key.path = "/var/secrets/grafana-secret-key";
+      grafana-secret-key = {
+        path = "/var/secrets/grafana-secret-key";
+        owner = "grafana";
+      };
       speedtest-api-key.path = "/var/secrets/speedtest-api-key";
     };
     services.prometheus = {
@@ -60,11 +63,13 @@ in
         server = {
           http_port = cfg.port;
           enable_gzip = true;
-          inherit (cfg) domain;
+          domain = "${cfg.subdomain}.${flakeSettings.domains.primary}";
+          root_url = "https://${cfg.subdomain}.${flakeSettings.domains.primary}/";
         };
         security = {
           cookie_secure = true;
-          secret_key = config.modules.security.sops.secrets.grafana-secret-key.path;
+          # grafana reads the file itself with $__file{}
+          secret_key = "$__file{${config.modules.security.sops.secrets.grafana-secret-key.path}}";
           admin_email = "grafana@${flakeSettings.domains.email}";
         };
         users.default_language = "en-GB";
@@ -95,7 +100,7 @@ in
     services.grafana-to-ntfy = mkIf config.modules.services.monitoring.ntfy.enable {
       enable = true;
       settings = {
-        ntfyUrl = "https://${config.modules.services.monitoring.ntfy.subdomain}/grafana";
+        ntfyUrl = "https://${config.modules.services.monitoring.ntfy.subdomain}.${flakeSettings.domains.primary}/grafana";
         bauthUser = "grafana";
         bauthPass = config.modules.security.sops.secrets.grafana-to-ntfy-bauth-pass.path;
         ntfyBAuthUser = "grafana";
