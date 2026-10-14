@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  flakeSettings,
   pkgs,
   ...
 }:
@@ -14,25 +15,16 @@ let
     ;
   cfg = config.modules.services.monitoring.ntfy.scripts.services;
 
-  servers = builtins.attrNames config.modules.services;
-  monitoredModules = builtins.filter (
-    srv:
-    let
-      mod = config.modules.services.${srv};
-    in
-    (mod ? enable && mod.enable)
-    && lib.hasAttrByPath [ "ntfyChecking" "enable" ] mod
-    && mod.ntfyChecking.enable
-    && mod ? port
-    && mod.port != null
-  ) servers;
+  ntfyUrl = "https://${ntfy.subdomain}.${flakeSettings.domains.primary}/${cfg.topic}";
+  ntfy = config.modules.services.monitoring.ntfy;
 
-  pairs = builtins.map (
-    srv:
-    let
-      mod = config.modules.services.${srv};
-    in
-    "\"${mod.name}|http://localhost:${toString mod.port}\""
+  # modules live at modules.services.<category>.<name>
+  monitoredModules = lib.concatMapAttrs (
+    _: lib.filterAttrs (_: mod: mod.enable or false && mod.ntfyChecking.enable or false && mod ? port)
+  ) config.modules.services;
+
+  pairs = lib.mapAttrsToList (
+    _: mod: lib.escapeShellArg "${mod.name}|http://localhost:${toString mod.port}"
   ) monitoredModules;
 
   pairsString = builtins.concatStringsSep " " pairs;
@@ -41,26 +33,30 @@ let
     name = "ntfy-script-services";
     runtimeInputs = with pkgs; [ curl ];
     text = ''
-      #!/usr/bin/env bash
-      set -euo pipefail
-
       pairs=(${pairsString})
       declare -A failure_counts
       declare -A notified_flags
 
+      # the ntfy-access-token secret holds NTFY_ACCESS_TOKEN=...
+      token="''${NTFY_ACCESS_TOKEN:-''${NTFY_TOKEN:-}}"
+
+      # a failed notification shouldn't kill the loop and lose its state
+      notify() {
+        curl -sS -d "$1" -H "p: low" -u :"$token" ${ntfyUrl} > /dev/null || true
+      }
+
       notify_down() {
-        local name="$1"
-        curl -d "$name is down!" -H "p: low" -u :"$NTFY_TOKEN" https://${config.modules.services.monitoring.ntfy.subdomain}/${cfg.topic}
+        notify "$1 is down!"
       }
 
       notify_up() {
-        local name="$1"
-        curl -d "$name is back online!" -H "p: low" -u :"$NTFY_TOKEN" https://${config.modules.services.monitoring.ntfy.subdomain}/${cfg.topic}
+        notify "$1 is back online!"
       }
 
       check_domain() {
         local domain="$1"
-        if curl -sf --connect-timeout 5 "$domain" > /dev/null; then
+        # any HTTP answer counts as up, some services reply 401/404 at /
+        if curl -s -o /dev/null --connect-timeout 5 --max-time 15 "$domain"; then
           return 0
         else
           return 1
