@@ -15,5 +15,5 @@ creation_rules:
           - *komashi_server
           - *gensokyo_admin
           - *gensokyo_server
-      - pgp:
+        pgp:
           - *master_pgp
