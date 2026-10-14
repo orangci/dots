@@ -32,18 +32,6 @@ in
       firewall = {
         enable = true;
         trustedInterfaces = lib.singleton "podman0";
-        allowedTCPPortRanges = [
-          {
-            from = 1714;
-            to = 1764;
-          }
-        ]; # KDE Connect
-        allowedUDPPortRanges = [
-          {
-            from = 1714;
-            to = 1764;
-          }
-        ]; # KDE Connect
       };
     };
 
