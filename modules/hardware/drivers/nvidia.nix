@@ -18,9 +18,9 @@ in
       nvidiaSettings = true;
       prime = {
         offload.enable = true;
-        intelBusId = mkIf config.modules.drivers.intel.enable "PCI:0@0:2:0";
+        intelBusId = mkIf config.modules.hardware.drivers.intel.enable "PCI:0@0:2:0";
         nvidiaBusId = "PCI:1@0:0:0";
-        amdgpuBusId = mkIf config.modules.drivers.amd.enable "PCI:5@0:0:0";
+        amdgpuBusId = mkIf config.modules.hardware.drivers.amd.enable "PCI:5@0:0:0";
       };
     };
   };
