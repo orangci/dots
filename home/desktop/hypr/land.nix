@@ -59,8 +59,6 @@ in
           hypr.bindd [
             "SUPER, E, Open File Manager, exec, thunar"
             "SUPERALT, C, Colour Picker, exec, ${getExe pkgs.hyprpicker} -a"
-            "SUPER, PERIOD, Select Emoji, exec, emoji-select a"
-            "SUPERSHIFT, PERIOD, Select Emoji To Clipboard, exec, emoji-select"
             "SUPERSHIFT, M, Mute Microphone, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
             "SUPER, P, Pause Media, exec, playerctl play-pause"
             "SUPERSHIFT, P, Next Media, exec, playerctl next"
