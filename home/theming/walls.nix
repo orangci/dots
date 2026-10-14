@@ -35,13 +35,15 @@ in
     wayland.windowManager.hyprland.settings.on = singleton (lib.my.hyprlandLua.onStart "walls");
     home.packages = [
       (pkgs.writeShellScriptBin "walls" ''
-        awww-daemon
+        # the daemon runs in the foreground, so background it and wait until it answers
+        awww-daemon &
+        until awww query > /dev/null 2>&1; do sleep 0.2; done
         cd ${cfg.directory}
         while : ; do
             export CURRENT_WALLPAPER="$(ls *.jpg *.png *.jpeg 2>/dev/null | sort -R | tail -1)"
             awww img "$CURRENT_WALLPAPER" --transition-type random --transition-fps 60 --transition-duration 1
-            echo "\$WALLPAPER=$HOME/media/walls/$CURRENT_WALLPAPER" > /tmp/.current_wallpaper_path_hyprlock
-            export WALLPAPER="$HOME/media/walls/$CURRENT_WALLPAPER"
+            export WALLPAPER="${cfg.directory}/$CURRENT_WALLPAPER"
+            echo "\$WALLPAPER=$WALLPAPER" > /tmp/.current_wallpaper_path_hyprlock
             echo "$WALLPAPER" > /tmp/.current_wallpaper_path
             sleep $(( ${toString (cfg.timeout * 60)} ))
         done
