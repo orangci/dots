@@ -32,6 +32,9 @@ in
         ENABLE_SESP_COGS = "yes";
       };
     };
+    # the backup runs as postgres, which can't create directories in /var/backups
+    systemd.tmpfiles.rules = singleton "d /var/backups/takina 0750 postgres postgres -";
+
     systemd.services.takina-postgres-backup = {
       description = "Backup Takina PostgreSQL database";
       after = [ "postgresql.service" ];
@@ -47,8 +50,6 @@ in
           backup_dir="/var/backups/takina"
           timestamp="$(date '+%Y-%m-%d_%H-%M-%S')"
           backup="$backup_dir/takina-$timestamp.dump"
-
-          mkdir -p "$backup_dir"
 
           ${pkgs.postgresql}/bin/pg_dump \
             --format=custom \
