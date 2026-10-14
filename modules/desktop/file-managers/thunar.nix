@@ -27,11 +27,6 @@ in
           thunar-archive-plugin
         ]);
     };
-    nixpkgs.config.packageOverrides = pkgs: {
-      xfce = pkgs.xfce // {
-        inherit (pkgs) gvfs;
-      };
-    };
     environment.systemPackages = with pkgs; [
       tumbler
       rclone
