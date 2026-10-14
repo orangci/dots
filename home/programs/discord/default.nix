@@ -21,7 +21,7 @@ let
         pkgs.fetchFromGitHub {
           owner = "imbypass";
           repo = "base16-discord";
-          rev = "main";
+          rev = "c98a7a19371e085a441d257ced50e52e923d4160";
           sha256 = "sha256-aucLPmi4mkmIRMvaFrD9dNamYEQsox3hrTzwQZVUziE=";
         }
       }/base16.css"
