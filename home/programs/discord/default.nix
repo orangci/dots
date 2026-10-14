@@ -68,7 +68,7 @@ in
 {
   options.hmModules.programs = {
     discord = {
-      enable = mkEnableOption "Install and configure a Discord client";
+      enable = mkEnableOption "a Discord client";
       client = mkOption {
         type = types.enum [
           "discord"
