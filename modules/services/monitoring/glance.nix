@@ -104,10 +104,10 @@ in
               {
                 size = "small";
                 widgets = [
-                  {
+                  (mkIf config.modules.services.tools.searxng.enable {
                     type = "search";
                     search-engine = "https://${config.modules.services.tools.searxng.subdomain}.${flakeSettings.domains.tailnet}/search?q={QUERY}";
-                  }
+                  })
                   (mkIf config.modules.services.infrastructure.technitium.enable {
                     type = "dns-stats";
                     url = "http://localhost:5380";

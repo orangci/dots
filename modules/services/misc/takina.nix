@@ -9,6 +9,7 @@
 let
   inherit (lib) mkIf singleton mkEnableOption;
   cfg = config.modules.services.misc.takina;
+  inherit (config.modules.services.tools) libretranslate;
 in
 {
   imports = singleton inputs.takina.nixosModules.default;
@@ -24,12 +25,14 @@ in
       config = {
         PREFIX = ".";
         EMBED_COLOUR = "#FAB387";
-        LIBRETRANSLATE_API_URL = "https://${config.modules.services.tools.libretranslate.subdomain}.${flakeSettings.domains.primary}";
         EMOJIS_MODERATOR = "<:salute:1293115316506722365>";
         EMOJIS_NOTE = "<:note:1293115357220831294>";
         BOT_STATUS = "ROLLING BETA 2.0.0!!!";
         COGS_BLACKLIST = "core.settings";
         ENABLE_SESP_COGS = "yes";
+      }
+      // lib.optionalAttrs libretranslate.enable {
+        LIBRETRANSLATE_API_URL = "https://${libretranslate.subdomain}.${flakeSettings.domains.primary}";
       };
     };
     # the backup runs as postgres, which can't create directories in /var/backups
