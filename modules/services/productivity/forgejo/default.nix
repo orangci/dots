@@ -38,7 +38,7 @@ in
         badges.GENERATOR_URL_TEMPLATE = "https://img.shields.io/badge/{{.label}}-{{.text}}-{{.color}}?style=for-the-badge";
         server = {
           ROOT_URL = "https://${cfg.subdomain}.${flakeSettings.domains.primary}/";
-          DOMAIN = "https://${cfg.subdomain}.${flakeSettings.domains.primary}/";
+          DOMAIN = "${cfg.subdomain}.${flakeSettings.domains.primary}";
           HTTP_PORT = cfg.port;
           PROTOCOL = "http";
           LANDING_PAGE = "explore";
