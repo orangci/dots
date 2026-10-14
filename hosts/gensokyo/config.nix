@@ -133,6 +133,8 @@ in
     };
   };
 
+  programs.dconf.enable = true;
+
   services.smartd = {
     enable = true;
     devices = lib.singleton { device = "/dev/nvme0"; };
