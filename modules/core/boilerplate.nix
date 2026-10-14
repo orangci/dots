@@ -48,8 +48,12 @@
     };
     openssh = {
       enable = true;
-      settings.PasswordAuthentication = true;
-      settings.PermitRootLogin = "yes";
+      settings.PasswordAuthentication = false;
+      settings.PermitRootLogin = "no";
+      extraConfig = ''
+        Match Address 127.0.0.0/8,::1,192.168.0.0/16,100.64.0.0/10,fd7a:115c:a1e0::/48
+          PasswordAuthentication yes
+      '';
     };
     power-profiles-daemon.enable = true;
     upower.enable = true;
