@@ -23,7 +23,6 @@ in
         openFirewall = true;
       };
       ipp-usb.enable = true;
-      samba.enable = true;
     };
   };
 }
