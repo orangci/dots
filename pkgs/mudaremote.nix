@@ -1,7 +1,11 @@
 { pkgs, ... }:
 
 let
-  discord-protos = pkgs.python3Packages.buildPythonPackage {
+  # everything has to come from one python package set, or the wrong interpreter's
+  # modules end up in the env
+  ps = pkgs.python314Packages;
+
+  discord-protos = ps.buildPythonPackage {
     pname = "discord-protos";
     version = "0.0.2";
     pyproject = true;
@@ -12,13 +16,13 @@ let
       hash = "sha256-I5U6BfMr7ttAtwjsS0V1MKYZaknI110zeukoKipByZc=";
     };
 
-    build-system = [ pkgs.python3Packages.setuptools ];
-    dependencies = [ pkgs.python3Packages.protobuf ];
+    build-system = [ ps.setuptools ];
+    dependencies = [ ps.protobuf ];
     pythonImportsCheck = [ "discord_protos" ];
     doCheck = false;
   };
 
-  discord-py-self = pkgs.python3Packages.buildPythonPackage {
+  discord-py-self = ps.buildPythonPackage {
     pname = "discord.py-self";
     version = "2.1.0";
     pyproject = true;
@@ -30,24 +34,24 @@ let
       hash = "sha256-jVz3uGU+4E5Awbk6ZYAsXvEpClNHm2QN1RpBTIiQTpE=";
     };
 
-    build-system = [ pkgs.python3Packages.setuptools ];
+    build-system = [ ps.setuptools ];
     dependencies = [
-      pkgs.python314Packages.aiohttp
-      pkgs.python314Packages.curl-cffi
-      pkgs.python314Packages.tzlocal
-      pkgs.python314Packages.audioop-lts
+      ps.aiohttp
+      ps.curl-cffi
+      ps.tzlocal
+      ps.audioop-lts
       discord-protos
     ];
     doCheck = false;
     pythonImportsCheck = [ "discord" ];
   };
 
-  python = pkgs.python314.withPackages (ps: [
+  python = ps.python.withPackages (p: [
     discord-py-self
-    ps.inquirer
-    ps.keyring
-    ps.requests
-    ps.tkinter
+    p.inquirer
+    p.keyring
+    p.requests
+    p.tkinter
   ]);
 
 in
