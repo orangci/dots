@@ -48,7 +48,7 @@ in
       };
 
       key = mkOption {
-        type = types.str;
+        type = types.nullOr types.str;
         default = null;
         example = "ABCDEF0123456789ABCDEF0123456789ABCDEF01";
         description = "The key to sign commits with. For `openpgp` this is a GPG key ID or fingerprint, for `ssh` it is the path to a public key.";
