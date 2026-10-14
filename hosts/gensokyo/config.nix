@@ -2,7 +2,7 @@
   pkgs,
   lib,
   flakeSettings,
-  users,
+  sysadmin,
   ...
 }:
 let
@@ -42,7 +42,7 @@ in
     security.restic = {
       enable = true;
       paths = [
-        "/home/${users.sysadmin.username}"
+        "/home/${sysadmin.username}"
         "/srv/files"
         "/var/lib/immich"
         "/var/lib/forgejo"

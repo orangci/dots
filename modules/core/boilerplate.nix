@@ -1,5 +1,5 @@
 {
-  users,
+  sysadmin,
   ...
 }:
 {
@@ -10,7 +10,7 @@
   programs = {
     nh = {
       enable = true;
-      flake = "/home/${users.sysadmin.username}/dots"; # sets NH_FLAKE
+      flake = "/home/${sysadmin.username}/dots"; # sets NH_FLAKE
     };
     fuse.userAllowOther = true;
     gnupg.agent = {

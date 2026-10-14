@@ -1,10 +1,7 @@
-let
+{
   orangc = {
     username = "orangc";
     sudo = true;
+    sysadmin = true;
   };
-in
-{
-  inherit orangc;
-  sysadmin = orangc;
 }

@@ -171,8 +171,11 @@
         host:
         let
           users = import ./hosts/${host}/users.nix;
-          excludedUsers = [ "sysadmin" ];
-          filteredUsers = lib.filterAttrs (n: _: !(builtins.elem n excludedUsers)) users;
+          # the user that owns the flake checkout, runs syncthing, administers services and so on
+          sysadmin =
+            lib.findFirst (user: user.sysadmin or false)
+              (throw "hosts/${host}/users.nix: mark one user with `sysadmin = true;`")
+              (builtins.attrValues users);
         in
         lib.nixosSystem {
           specialArgs = {
@@ -182,6 +185,7 @@
               host
               flakeSettings
               users
+              sysadmin
               ;
           };
           modules = [
@@ -197,11 +201,12 @@
                     host
                     flakeSettings
                     users
+                    sysadmin
                     ;
                 };
                 useUserPackages = true;
                 backupFileExtension = "backup";
-                users = builtins.mapAttrs (name: _: import ./hosts/${host}/homes/${name}.nix) filteredUsers;
+                # each user's homes/USERNAME.nix is imported by modules/core/users.nix
               };
             }
           ];

@@ -2,7 +2,7 @@
   config,
   lib,
   inputs,
-  users,
+  sysadmin,
   ...
 }:
 let
@@ -29,7 +29,7 @@ in
   config = mkIf cfg.enable {
     nixflix = {
       enable = true;
-      mediaUsers = singleton users.sysadmin.username;
+      mediaUsers = singleton sysadmin.username;
       #mediaDir = "/srv/media";
       #stateDir = "/srv/media/.state";
       nginx.enable = false;

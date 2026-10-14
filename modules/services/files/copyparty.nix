@@ -3,7 +3,7 @@
   lib,
   inputs,
   flakeSettings,
-  users,
+  sysadmin,
   ...
 }:
 let
@@ -15,7 +15,7 @@ let
   commonPerms = {
     access = {
       r = "*";
-      A = users.sysadmin.username;
+      A = sysadmin.username;
     };
     flags = {
       scan = 30;
@@ -32,7 +32,7 @@ in
 
   config = mkIf cfg.enable {
     nixpkgs.overlays = singleton inputs.copyparty.overlays.default;
-    users.users.${users.sysadmin.username}.extraGroups = singleton "copyparty";
+    users.users.${sysadmin.username}.extraGroups = singleton "copyparty";
     modules.security.sops.secrets.copyparty-password = {
       path = "/var/secrets/copyparty-password";
       owner = "copyparty";
@@ -76,12 +76,12 @@ in
         hist = "~/.cache/copyparty";
       };
       openFilesLimit = 4096;
-      accounts.${users.sysadmin.username}.passwordFile =
+      accounts.${sysadmin.username}.passwordFile =
         config.modules.security.sops.secrets.copyparty-password.path;
       volumes = {
         "/" = {
           path = "/srv/files";
-          access.A = users.sysadmin.username;
+          access.A = sysadmin.username;
           flags = {
             scan = 60;
             fk = 4; # enable filekeys

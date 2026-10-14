@@ -2,7 +2,7 @@
   config,
   lib,
   flakeSettings,
-  users,
+  sysadmin,
   ...
 }:
 let
@@ -24,14 +24,14 @@ in
     nixflix = {
       torrentClients.qbittorrent = {
         enable = true;
-        serverConfig.Preferences.WebUI.Username = users.sysadmin.username;
+        serverConfig.Preferences.WebUI.Username = sysadmin.username;
         serverConfig.Preferences.WebUI.Password_PBKDF2 = "VBkxweoqIQkqk/wdJM+zZQ==:Ym+BMMq1wSzVWsZnRRdN7wtzo9g4f13O53dSZcyNUPZcjToM0lr1AnFBavuxcxVZyOUSIY/sVd/CAyfiJkL9Lg==";
         password._secret = config.modules.security.sops.secrets."nixflix/qbittorent/password".path;
         webuiPort = mkForce (cfg.port + 3);
       };
       downloadarr.qbittorrent = {
         enable = true;
-        inherit (users.sysadmin) username;
+        inherit (sysadmin) username;
         password._secret = config.modules.security.sops.secrets."nixflix/qbittorent/password".path;
         port = mkForce (cfg.port + 3);
       };

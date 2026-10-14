@@ -1,7 +1,7 @@
 {
   config,
   lib,
-  users,
+  sysadmin,
   ...
 }:
 let
@@ -20,8 +20,8 @@ in
       # i don't actually want this to be declarative lol
       overrideFolders = false;
       overrideDevices = false;
-      user = users.sysadmin.username;
-      dataDir = "/home/${users.sysadmin.username}/.local/share/syncthing";
+      user = sysadmin.username;
+      dataDir = "/home/${sysadmin.username}/.local/share/syncthing";
     };
   };
 }

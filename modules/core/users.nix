@@ -2,6 +2,7 @@
   config,
   lib,
   users,
+  host,
   pkgs,
   ...
 }:
@@ -9,8 +10,6 @@ let
   inherit (lib) mkIf mkOption types;
   inherit (builtins) mapAttrs;
   cfg = config.modules.core.users;
-  excludedUsers = [ "sysadmin" ];
-  filteredUsers = lib.filterAttrs (n: _: !(builtins.elem n excludedUsers)) users;
 in
 {
   options.modules.core.users = {
@@ -38,7 +37,7 @@ in
         home = "/home/${name}";
         homeMode = "755";
         isNormalUser = true;
-        description = "${name}";
+        description = name;
         initialPassword = "password";
         extraGroups = [
           "networkmanager"
@@ -52,17 +51,18 @@ in
         ];
         shell = pkgs.fish;
         ignoreShellProgramCheck = true;
-      }) filteredUsers
+      }) users
     );
     home-manager.users = mkIf cfg.home-manager.autoDeclare (
       mapAttrs (name: _user: {
+        imports = [ ../../hosts/${host}/homes/${name}.nix ];
         home = {
           username = name;
           homeDirectory = "/home/${name}";
           inherit (cfg.home-manager) stateVersion;
         };
         programs.home-manager.enable = true;
-      }) filteredUsers
+      }) users
     );
   };
 }

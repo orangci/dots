@@ -1,7 +1,7 @@
 {
   config,
   lib,
-  users,
+  sysadmin,
   ...
 }:
 let
@@ -24,7 +24,7 @@ in
         config = {
           apiKey._secret = config.modules.security.sops.secrets."nixflix/sonarr-anime/apiKey".path;
           hostConfig = {
-            inherit (users.sysadmin) username;
+            inherit (sysadmin) username;
             password._secret = config.modules.security.sops.secrets."nixflix/sonarr-anime/password".path;
             authenticationRequired = "disabledForLocalAddresses";
             port = mkForce (cfg.port + 6);

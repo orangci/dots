@@ -2,7 +2,7 @@
   config,
   lib,
   flakeSettings,
-  users,
+  sysadmin,
   ...
 }:
 let
@@ -23,7 +23,7 @@ in
     };
     services.davis = {
       enable = true;
-      adminLogin = users.sysadmin.username;
+      adminLogin = sysadmin.username;
       hostname = "${cfg.subdomain}.${flakeSettings.domains.primary}";
       adminPasswordFile = config.modules.security.sops.secrets."davis/admin-password".path;
       appSecretFile = config.modules.security.sops.secrets."davis/app-secret".path;

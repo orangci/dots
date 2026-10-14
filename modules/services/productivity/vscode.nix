@@ -2,7 +2,7 @@
   config,
   lib,
   pkgs,
-  users,
+  sysadmin,
   ...
 }:
 
@@ -23,7 +23,7 @@ in
   config = mkIf cfg.enable {
     modules.security.sops.secrets.vscode-server-connection-token = {
       path = "/var/secrets/vscode-server-connection-token";
-      owner = users.sysadmin.username;
+      owner = sysadmin.username;
     };
 
     services.openvscode-server = {
@@ -31,9 +31,9 @@ in
       inherit (cfg) port;
 
       # use your user home
-      user = users.sysadmin.username;
-      serverDataDir = "/home/${users.sysadmin.username}/.vscode-server";
-      extensionsDir = "/home/${users.sysadmin.username}/.vscode-server/extensions";
+      user = sysadmin.username;
+      serverDataDir = "/home/${sysadmin.username}/.vscode-server";
+      extensionsDir = "/home/${sysadmin.username}/.vscode-server/extensions";
 
       telemetryLevel = "crash";
       connectionTokenFile = config.modules.security.sops.secrets.vscode-server-connection-token.path;
