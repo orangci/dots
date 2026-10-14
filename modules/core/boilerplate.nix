@@ -55,13 +55,9 @@
           PasswordAuthentication yes
       '';
     };
-    power-profiles-daemon.enable = true;
     upower.enable = true;
     libinput.enable = true;
     gnome.gnome-keyring.enable = true;
   };
-  powerManagement = {
-    cpuFreqGovernor = "performance";
-    powertop.enable = true;
-  };
+  powerManagement.cpuFreqGovernor = "performance";
 }
