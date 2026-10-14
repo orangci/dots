@@ -16,7 +16,7 @@ in
       "/var/secrets/nixflix-qbittorent-password";
 
     modules.services.monitoring.glance.monitoredSites = lib.singleton {
-      url = "https://qbittorrent.${flakeSettings.domains.tailnet}";
+      url = "https://qb.${flakeSettings.domains.tailnet}";
       title = "Qbittorrent";
       icon = "sh:qbittorrent";
     };

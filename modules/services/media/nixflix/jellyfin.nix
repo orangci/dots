@@ -9,6 +9,7 @@
 let
   inherit (lib) mkIf mkForce my;
   cfg = config.modules.services.media.nixflix;
+  inherit (config.modules.hardware) drivers;
   inherit (inputs.nixflix.lib.jellyfinPlugins) fromRepo;
 in
 {
@@ -32,13 +33,12 @@ in
       branding.customCss = ''@import url("https://cdn.jsdelivr.net/gh/lscambo13/ElegantFin@main/Theme/ElegantFin-jellyfin-theme-build-latest-minified.css"); @import url("https://cdn.jsdelivr.net/gh/lscambo13/ElegantFin@main/Theme/assets/add-ons/media-bar-plugin-support-latest-min.css");'';
       system.uiCulture = "en-GB";
 
+      # amf is windows-only, jellyfin uses vaapi for amd gpus on linux
       encoding.hardwareAccelerationType =
-        if config.drivers.intel.enable then
-          "vaapi"
-        else if config.drivers.intel.amdgpu.enable then
-          "amf"
-        else if config.drivers.nvidia.enable then
+        if drivers.nvidia.enable then
           "nvenc"
+        else if drivers.intel.enable || drivers.amd.enable then
+          "vaapi"
         else
           "none";
 
@@ -100,7 +100,7 @@ in
         "Media Bar" = {
           package = fromRepo {
             version = "2.4.10.0";
-            hash = "sha256-2VUH1kn4v1VZ9jpHzOxzSVJJgGWVTn2vIOXBWelriyE=";
+            hash = "sha256-HQD7SNlBLNKHMXLh+ruJmfCnkEPt58u+30T4bmN1Ee8=";
           };
         };
       };
