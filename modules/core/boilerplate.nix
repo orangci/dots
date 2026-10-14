@@ -3,6 +3,8 @@
   ...
 }:
 {
+  # applies to every host. anything only a machine with a screen needs goes in
+  # modules/desktop/common.nix instead
   time.hardwareClockInLocalTime = true;
   users.mutableUsers = true;
   environment.sessionVariables = {
@@ -11,8 +13,6 @@
   };
 
   programs = {
-    dconf.enable = true;
-    seahorse.enable = true;
     fuse.userAllowOther = true;
     gnupg.agent = {
       enable = true;
@@ -20,44 +20,17 @@
     };
   };
 
-  security = {
-    rtkit.enable = true;
-    polkit.enable = true;
-    polkit.extraConfig = ''
-      polkit.addRule(function(action, subject) {
-        if (
-          subject.isInGroup("users")
-            && (
-              action.id == "org.freedesktop.login1.reboot" ||
-              action.id == "org.freedesktop.login1.reboot-multiple-sessions" ||
-              action.id == "org.freedesktop.login1.power-off" ||
-              action.id == "org.freedesktop.login1.power-off-multiple-sessions"
-            )
-          )
-        {
-          return polkit.Result.YES;
-        }
-      })
+  security.polkit.enable = true;
+
+  services.openssh = {
+    enable = true;
+    settings.PasswordAuthentication = false;
+    settings.PermitRootLogin = "no";
+    extraConfig = ''
+      Match Address 127.0.0.0/8,::1,192.168.0.0/16,100.64.0.0/10,fd7a:115c:a1e0::/48
+        PasswordAuthentication yes
     '';
   };
 
-  services = {
-    xserver = {
-      enable = false;
-      xkb.layout = "us";
-    };
-    openssh = {
-      enable = true;
-      settings.PasswordAuthentication = false;
-      settings.PermitRootLogin = "no";
-      extraConfig = ''
-        Match Address 127.0.0.0/8,::1,192.168.0.0/16,100.64.0.0/10,fd7a:115c:a1e0::/48
-          PasswordAuthentication yes
-      '';
-    };
-    upower.enable = true;
-    libinput.enable = true;
-    gnome.gnome-keyring.enable = true;
-  };
   powerManagement.cpuFreqGovernor = "performance";
 }

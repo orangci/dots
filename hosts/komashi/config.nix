@@ -16,6 +16,7 @@
     core.boot.enable = true;
     core.networking.enable = true;
     desktop = {
+      common.enable = true;
       compositors.hyprland.enable = true;
       display-managers.sddm.enable = true;
       display-managers.sddm.theme = "stray";
@@ -51,7 +52,6 @@
   environment.systemPackages = with pkgs; [
     nh
     micro
-    lxqt.lxqt-policykit
     nix-output-monitor
     libnotify
     zoom-us

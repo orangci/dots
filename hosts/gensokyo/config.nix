@@ -146,7 +146,6 @@ in
   # networking.resolvconf.enable = false;
 
   environment.systemPackages = with pkgs; [
-    lxqt.lxqt-policykit
     nix-output-monitor
     nh
     micro
