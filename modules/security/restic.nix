@@ -33,7 +33,7 @@ in
       type = types.str;
       default = "/mnt/backup";
       example = "/mnt/backup";
-      description = "The restic repository to back up to. For a local repository, mount the drive before enabling this module or restic will create the repository on the root drive.";
+      description = "The restic repository to back up to. For a local repository, the backup only runs while the path is mounted.";
     };
 
     keepLast = mkOption {
@@ -44,8 +44,11 @@ in
   };
 
   config = mkIf cfg.enable {
-    # important: before enabling this module, mount the HDD first!!
     modules.security.sops.secrets.restic-password.path = "/var/secrets/restic-password";
+    # the backup drive is mounted with nofail, so without this a missing drive
+    # means restic quietly initialises a new repository on the root drive
+    systemd.services.restic-backups-grand-backup.unitConfig.RequiresMountsFor =
+      mkIf (lib.hasPrefix "/" cfg.repository) cfg.repository;
     services.restic.backups.grand-backup = {
       passwordFile = config.modules.security.sops.secrets.restic-password.path;
       inherit (cfg) repository paths;
