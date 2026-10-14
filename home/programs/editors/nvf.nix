@@ -81,7 +81,13 @@ in
           indent-blankline.enable = true;
         };
 
-        statusline.lualine.enable = true;
+        statusline.lualine = {
+          enable = true;
+          integrations.breadcrumbs = {
+            nvim-navic.enable = true;
+            navbuddy.enable = true;
+          };
+        };
 
         theme = {
           enable = true;
@@ -117,10 +123,6 @@ in
           noice.enable = true;
           colorizer.enable = true;
           illuminate.enable = true;
-          breadcrumbs = {
-            enable = true;
-            navbuddy.enable = true;
-          };
           fastaction.enable = true;
         };
 
