@@ -27,7 +27,7 @@ in
       # pkgs.bacon # background rust code checker
     ];
 
-    home.sessionPath = [ "$HOME/.cargo/bin:$PATH" ];
+    home.sessionPath = [ "$HOME/.cargo/bin" ];
 
     hmModules.cli.shell.extraAliases = {
       cr = "cargo";
