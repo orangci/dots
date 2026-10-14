@@ -35,15 +35,6 @@ in
         "SUPERSHIFT, V, Clear Clipboard, exec, walker --clear-clipboard"
       ];
     };
-    home.file."${config.xdg.configHome}/hypr/xdph.conf".text = ''
-      screencopy {
-          custom_picker_binary=${config.xdg.configHome}/hypr/walker_xdph_picker
-      }
-    '';
-    home.file."${config.xdg.configHome}/hypr/walker_xdph_picker" = {
-      text = "walker -n --modules xdphpicker";
-      executable = true;
-    };
     programs.walker = {
       enable = true;
       runAsService = true;
