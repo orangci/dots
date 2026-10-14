@@ -13,7 +13,7 @@ in
     programs.gpg.enable = true;
     services.gpg-agent = {
       enable = true;
-      defaultCacheTtl = 31536000; # 6 years
+      defaultCacheTtl = 31536000; # 1 year
       defaultCacheTtlSsh = 31536000;
       maxCacheTtl = 31536000;
     };
