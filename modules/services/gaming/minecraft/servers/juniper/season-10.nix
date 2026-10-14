@@ -51,19 +51,6 @@ in
       description = "The message of the day, shown under the server's name in the client's server list.";
     };
 
-    gamerules = mkOption {
-      type = types.attrs;
-      example = {
-        doDaylightCycle = false;
-        keepInventory = true;
-      };
-      description = "The gamerules to set on the server, as an attribute set of rule name to value.";
-      default = {
-        commandBlockOutput = false;
-        commandModificationBlockLimit = 1000;
-        keepInventory = true;
-      };
-    };
   };
 
   imports = [
@@ -72,6 +59,12 @@ in
   ];
 
   config = mkIf cfg.enable {
+    assertions = [
+      {
+        assertion = config.modules.services.gaming.minecraft.enable;
+        message = "juniper-s10 needs modules.services.gaming.minecraft.enable, which accepts the EULA and provides the rcon password.";
+      }
+    ];
     nixpkgs.overlays = [ inputs.nix-minecraft.overlay ];
 
     # reverse proxying & cloudflared
@@ -150,10 +143,6 @@ in
           sed -i "s|REPLACE_POLYMER_PORT|${toString (cfg.port - 3000)}|g" "$polymerConfig"
         fi
       '';
-
-      # extraStartPost = concatStringsSep "\n" (
-      # lib.mapAttrsToList (name: value: "gamerule ${name} ${toString value}") cfg.gamerules
-      # );
 
       extraReload = ''
         ${pkgs.rconc}/bin/rconc jp "carpet customMOTD ${
