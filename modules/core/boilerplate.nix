@@ -1,4 +1,5 @@
 {
+  lib,
   sysadmin,
   ...
 }:
@@ -30,6 +31,7 @@
         PasswordAuthentication yes
     '';
   };
+  security.pam.services.sshd.unixAuth = lib.mkForce true;
 
   powerManagement.cpuFreqGovernor = "performance";
 }
