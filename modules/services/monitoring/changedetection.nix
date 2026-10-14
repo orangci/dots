@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  flakeSettings,
   pkgs,
   ...
 }:
@@ -22,7 +23,7 @@ in
       behindProxy = true;
       inherit (cfg) port;
       listenAddress = "0.0.0.0";
-      baseURL = "https://${cfg.subdomain}";
+      baseURL = "https://${cfg.subdomain}.${flakeSettings.domains.primary}";
       environmentFile = pkgs.writeText "changedetection-io.env" "DISABLE_VERSION_CHECK=true";
     };
   };
