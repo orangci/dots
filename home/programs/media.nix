@@ -8,8 +8,6 @@ let
   inherit (lib)
     mkEnableOption
     mkIf
-    mkForce
-    mkDefault
     ;
   cfg = config.hmModules.programs.media;
 in
@@ -25,7 +23,7 @@ in
     xdg = lib.mkOption {
       type = lib.types.str;
       example = "imv.desktop";
-      description = "The `.desktop` file of the default image viewer, used for XDG mime associations. The image viewer options above set this themselves.";
+      description = "The `.desktop` file of the default image viewer, used for XDG mime associations. The image viewer options above set this themselves, so enable only one of them.";
     };
   };
 
@@ -46,13 +44,18 @@ in
       }
 
       (mkIf cfg.gwenview {
-        hmModules.programs.media.xdg = mkForce "org.kde.kdegraphics.gwenview.lib";
+        hmModules.programs.media.xdg = "org.kde.gwenview.desktop";
         home.packages = [ pkgs.kdePackages.gwenview ];
       })
 
       (mkIf cfg.imv {
         programs.imv.enable = true;
-        hmModules.programs.media.xdg = mkDefault "imv.desktop";
+        hmModules.programs.media.xdg = "imv.desktop";
+      })
+
+      (mkIf cfg.feh {
+        programs.feh.enable = true;
+        hmModules.programs.media.xdg = "feh.desktop";
       })
 
       (mkIf cfg.qimgv {
