@@ -45,7 +45,7 @@ in
         public_baseurl = "https://${cfg.subdomain}.${flakeSettings.domains.primary}/";
         enable_registration = false;
         report_stats = false;
-        registration_shared_secret =
+        registration_shared_secret_path =
           config.modules.security.sops.secrets.matrix-synapse-registration-shared.path;
         database = {
           name = "sqlite3";
