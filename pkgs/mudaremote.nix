@@ -65,7 +65,7 @@ pkgs.stdenv.mkDerivation {
     owner = "misutesu-desu";
     repo = "MudaRemote";
     rev = "main";
-    hash = "sha256-Bo1YSZjAvglesCT+kZsUOtDQBh8jbxco0wsZqD74PnQ=";
+    hash = "sha256-c0PEADFOrtMeKAm4qOzgX0DUa5x6F8Wh5Hw9b98OMKM=";
   };
 
   installPhase = ''
