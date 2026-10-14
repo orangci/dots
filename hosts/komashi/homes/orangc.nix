@@ -104,6 +104,7 @@
       };
     };
     theming = {
+      fonts.enable = true;
       gtk.enable = true;
       qt.enable = true;
       walls = {
