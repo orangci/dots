@@ -104,10 +104,8 @@
     };
 
     # webpagc
-    webpagc = {
-      url = "git+https://git.orangc.net/c/webpage";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # no nixpkgs.follows: the site's pnpm deps hash depends on its own pinned nixpkgs
+    webpagc.url = "git+https://git.orangc.net/c/webpage";
 
     # bro just keeps on yapping 🥀🥀
     notes-webpage = {

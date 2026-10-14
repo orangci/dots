@@ -1030,6 +1030,22 @@
         "type": "github"
       }
     },
+    "nixpkgs_8": {
+      "locked": {
+        "lastModified": 1785454630,
+        "narHash": "sha256-LQy14TZp77TwbQf40gg1V3jo8FwJG0jGDkAH+zRHqg8=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "1559d3daa3ecc813a650b79375ea61b6741b8746",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "noctalia": {
       "inputs": {
         "nixpkgs": [
@@ -1820,16 +1836,14 @@
     },
     "webpagc": {
       "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
+        "nixpkgs": "nixpkgs_8"
       },
       "locked": {
-        "lastModified": 1791906009,
-        "narHash": "sha256-Tyj45r/vnJV83kMnhxYMdAb8BppZ2wPoAWI44f3PCEY=",
+        "lastModified": 1791969427,
+        "narHash": "sha256-vdNi9AYKCIwZJ0gY88tFgNlTmdgGv4PCqQuK9EBgqiE=",
         "ref": "refs/heads/v5",
-        "rev": "f155e961d43f5e47865322b74d60f37600c3d704",
-        "revCount": 348,
+        "rev": "d2a4639adad5cb13cb3df049184bacd488ac4ff9",
+        "revCount": 352,
         "type": "git",
         "url": "https://git.orangc.net/c/webpage"
       },

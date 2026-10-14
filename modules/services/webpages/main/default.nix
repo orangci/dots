@@ -65,12 +65,22 @@ in
         ${flakeSettings.domains.secondary}.extraConfig = "reverse_proxy localhost:${toString cfg.port}";
         ":${toString cfg.port}".extraConfig = ''
           root * /srv/webpagc
-          file_server
+          # the build writes .br/.gz copies of every page, so serve those instead of compressing on the fly
+          file_server {
+              precompressed br gzip
+          }
           header ?Cache-Control "max-age=1800"
+          # these filenames contain a hash of their contents, so they can be cached forever
+          @immutable path /_app/immutable/*
+          header @immutable Cache-Control "public, max-age=31536000, immutable"
 
-          handle_errors {
-              @404 expression {http.error.status_code} == 404
-              redir @404 /404.html 301
+          # show the 404 page at the missing URL, with a real 404 status
+          handle_errors 404 {
+              rewrite * /404.html
+              file_server {
+                  precompressed br gzip
+                  status 404
+              }
           }
 
           @rootIndex path /index.html 
@@ -87,7 +97,8 @@ in
           )}
           ${concatStringsSep "\n" (
             concatMap (
-              r: map (source: "handle_path /${source}/* { redir ${r.target}{path} ${toString r.code} }") r.sources
+              r:
+              map (source: "handle_path /${source}/* { redir * ${r.target}{path} ${toString r.code} }") r.sources
             ) cfg.redirects
           )}
         '';
