@@ -55,16 +55,16 @@ in
       system.pluginRepositories = {
         "Ani-Sync" = {
           url = "https://raw.githubusercontent.com/vosmiic/jellyfin-ani-sync/master/manifest.json";
-          hash = "sha256-uGyZbX1HVl19eSCjb/TKr3Cblqi8EMy5rCvcbKGbwPs=";
+          hash = "sha256-1iksIdj18kAS1OYuP3IGHwtdmVYs7itzl65Dvmev47s=";
         };
         "AnimeMultiSource" = {
           url = "https://raw.githubusercontent.com/webbster64/jellyfin-plugin-AnimeMultiSource/main/manifest.json";
-          hash = "sha256-b/sWwmkAgj5ZR8C8jvk2QdrkjxKHWScSPmwGMIlpChc=";
+          hash = "sha256-RgFtOyGv61THaW6/bjpPxZV4Mh2YXi8Sp/csizs2lt4=";
         };
         "MediaBar" = {
           # also File Transformation
           url = "https://www.iamparadox.dev/jellyfin/plugins/manifest.json";
-          hash = "sha256-4s6h+GbXF3UB5ES3gL+dGNisTPFGvViWvr/14d8E304=";
+          hash = "sha256-93n3Ehh6hWts8ONd6Dp/GYZd0g1Wb2lbHz4Kn6fhrwg=";
         };
         "letterboxd-sync" = {
           url = "https://raw.githubusercontent.com/hrqmonteiro/jellyfin-plugin-letterboxd-sync/master/manifest.json";
