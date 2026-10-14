@@ -46,6 +46,7 @@
   # networking.nameservers = lib.mkForce [ "192.168.8.191" ];
   hardware.logitech.wireless.enable = true;
   programs.kdeconnect.enable = true;
+  programs.gpu-screen-recorder.enable = true;
 
   environment.systemPackages = with pkgs; [
     micro
