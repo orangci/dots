@@ -1,6 +1,7 @@
 {
   pkgs,
   config,
+  options,
   lib,
   ...
 }:
@@ -31,7 +32,6 @@ let
 
     "audio/*" = [ "mpv.desktop" ];
     "video/*" = [ "mpv.desktop" ];
-    "image/*" = [ config.hmModules.programs.media.xdg ];
 
     "application/json" = editor;
     "application/pdf" = browser;
@@ -40,6 +40,10 @@ let
     "x-scheme-handler/discord" =
       if config.hmModules.programs.discord.enable then [ "discord.desktop" ] else browser;
     "x-scheme-handler/mailto" = browser;
+  }
+  # media.xdg has no default, only set it once an image viewer has been picked
+  // lib.optionalAttrs options.hmModules.programs.media.xdg.isDefined {
+    "image/*" = [ config.hmModules.programs.media.xdg ];
   };
 
   removedAssociations = {
