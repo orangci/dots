@@ -54,6 +54,8 @@ in
         "/var/lib/postgresql"
         "/var/lib/matrix-synapse"
         "/var/lib/davis"
+        "/var/backup/vaultwarden"
+        "/var/backups/takina"
       ];
     };
     services = {
