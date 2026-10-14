@@ -14,42 +14,21 @@ let
       echo "$1" | sed 's/^[[:space:]]*//;s/[[:space:]]*$//'
     }
 
+    # hyprctl gives the modifiers as a bitmask: 1 shift, 4 ctrl, 8 alt, 64 super
     format_mod() {
-      local mod="$1"
+      local mask="$1"
       local formatted=()
 
-      mod_upper=$(echo "$mod" | tr '[:lower:]' '[:upper:]')
+      (( mask & 64 )) && formatted+=("")
+      (( mask & 1 )) && formatted+=("SHIFT")
+      (( mask & 4 )) && formatted+=("CONTROL")
+      (( mask & 8 )) && formatted+=("ALT")
 
-      if [[ "$mod_upper" == *SUPER* ]]; then
-        formatted+=("")
-        mod_upper=''${mod_upper//SUPER/}
-      fi
-
-      if [[ "$mod_upper" == *SHIFT* ]]; then
-        formatted+=("SHIFT")
-        mod_upper=''${mod_upper//SHIFT/}
-      fi
-
-      if [[ "$mod_upper" == *CONTROL* ]]; then
-        formatted+=("CONTROL")
-        mod_upper=''${mod_upper//CONTROL/}
-      elif [[ "$mod_upper" == *CTRL* ]]; then
-        formatted+=("CONTROL")
-        mod_upper=''${mod_upper//CTRL/}
-      fi
-
-      if [[ "$mod_upper" == *ALT* ]]; then
-        formatted+=("ALT")
-        mod_upper=''${mod_upper//ALT/}
-      fi
-
-      if [[ -n "$mod_upper" ]]; then
-        # Append any leftover modifiers just in case
-        formatted+=("$mod_upper")
-      fi
-
-      local IFS=" + "
-      echo "''${formatted[*]}"
+      local out=""
+      for m in "''${formatted[@]}"; do
+        out+="''${out:+ + }$m"
+      done
+      echo "$out"
     }
 
     args=()
@@ -93,7 +72,7 @@ let
       --column=Key: \
       --column=Description: \
       --timeout=90 \
-      --timeout-indicat \
+      --timeout-indicator=bottom \
       "''${args[@]}"
   '';
 in
