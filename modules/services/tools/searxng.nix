@@ -25,7 +25,7 @@ in
     services.searx = {
       enable = true;
       package = pkgs.searxng;
-      environmentFile = "/var/secrets/searx-env";
+      environmentFile = config.modules.security.sops.secrets.searx.path;
 
       settings = {
         # TODO: engines configuration

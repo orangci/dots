@@ -20,7 +20,7 @@ in
     modules.security.sops.secrets.microbin-env.path = "/var/secrets/microbin-env";
     services.microbin = {
       enable = true;
-      passwordFile = "/var/secrets/microbin-env";
+      passwordFile = config.modules.security.sops.secrets.microbin-env.path;
       settings = {
         MICROBIN_HIDE_HEADER = true;
         MICROBIN_HIDE_FOOTER = true;

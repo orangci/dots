@@ -22,7 +22,7 @@ in
     services.vaultwarden = {
       enable = true;
       backupDir = "/var/backup/vaultwarden";
-      environmentFile = "/var/lib/vaultwarden.env";
+      environmentFile = config.modules.security.sops.secrets.vaultwarden_admin_token.path;
       config = {
         domain = "https://${cfg.subdomain}.${flakeSettings.domains.primary}/";
         signupsAllowed = false;

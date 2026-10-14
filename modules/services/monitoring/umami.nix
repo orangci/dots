@@ -30,7 +30,7 @@ in
     virtualisation.oci-containers.containers.umami = {
       image = "ghcr.io/umami-software/umami:postgresql-latest";
       ports = [ "127.0.0.1:${toString cfg.port}:3000" ];
-      environmentFiles = [ "/var/secrets/umami-app-secret" ];
+      environmentFiles = [ config.modules.security.sops.secrets.umami-app-secret.path ];
       volumes = [ "/run/postgresql:/run/postgresql:ro" ];
       environment = {
         DATABASE_URL = "postgresql://umami@localhost/umami?host=/run/postgresql";

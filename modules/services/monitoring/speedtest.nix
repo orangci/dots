@@ -24,7 +24,7 @@ in
       image = "lscr.io/linuxserver/speedtest-tracker:latest";
       volumes = [ "/var/lib/speedtest-tracker:/config" ];
       ports = [ "127.0.0.1:${toString cfg.port}:80" ];
-      environmentFiles = [ "/var/secrets/speedtest-app-key" ];
+      environmentFiles = [ config.modules.security.sops.secrets.speedtest-app-key.path ];
       environment = {
         PUID = "1000";
         PGID = "1000";

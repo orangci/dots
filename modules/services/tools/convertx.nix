@@ -26,7 +26,7 @@ in
       image = "ghcr.io/c4illin/convertx";
       ports = singleton "127.0.0.1:${toString cfg.port}:3000";
       volumes = singleton "/var/lib/convertx:/app/data";
-      environmentFiles = singleton "/var/secrets/convertx-env";
+      environmentFiles = singleton config.modules.security.sops.secrets.convertx-env.path;
     };
   };
 }
