@@ -25,7 +25,7 @@ in
       type = types.listOf types.str;
       default = [ ];
       example = [ "kaju" ];
-      description = "The databases to create if they do not exist yet. Each one is accessible without a password, over the local socket, to every user in `users`.";
+      description = "The databases to create if they do not exist yet. Every user in `users` can reach each one without a password over the local socket or loopback, and with a password from podman containers, the tailnet and the LAN.";
     };
 
     users = mkOption {
@@ -47,29 +47,22 @@ in
         ensureDBOwnership = true;
       }) cfg.users;
 
-      authentication = ''
-        ${concatStringsSep "\n" (
-          concatMap (db: map (user: "local ${db} ${user} trust") cfg.users) cfg.databases
-        )}
-        ${concatStringsSep "\n" (
-          concatMap (db: map (user: "host ${db} ${user} 127.0.0.1/32 trust") cfg.users) cfg.databases
-        )}
-        ${concatStringsSep "\n" (
-          concatMap (db: map (user: "host ${db} ${user} ::1/128 trust") cfg.users) cfg.databases
-        )}
-        ${concatStringsSep "\n" (
-          concatMap (db: map (user: "host ${db} ${user} 10.88.0.0/16 trust") cfg.users) cfg.databases
-        )}
-        ${concatStringsSep "\n" (
-          concatMap (db: map (user: "host ${db} ${user} 100.64.0.0/10 trust") cfg.users) cfg.databases
-        )}
-        ${concatStringsSep "\n" (
-          concatMap (db: map (user: "host ${db} ${user} fd7a:115c:a1e0::/48 trust") cfg.users) cfg.databases
-        )}
-        ${concatStringsSep "\n" (
-          concatMap (db: map (user: "host ${db} ${user} 192.168.0.0/16 trust") cfg.users) cfg.databases
-        )}
-      ''; # 10.88.x is for podman containers, 10.64.x.x is for tailscale, and 192.168.x.x is LAN
+      # local connections are trusted, anything over the network needs a password
+      # 10.88.x.x is podman, 100.64.x.x and fd7a:115c:a1e0:: are tailscale, 192.168.x.x is LAN
+      authentication = concatStringsSep "\n" (
+        concatMap (
+          db:
+          concatMap (user: [
+            "local ${db} ${user} trust"
+            "host ${db} ${user} 127.0.0.1/32 trust"
+            "host ${db} ${user} ::1/128 trust"
+            "host ${db} ${user} 10.88.0.0/16 scram-sha-256"
+            "host ${db} ${user} 100.64.0.0/10 scram-sha-256"
+            "host ${db} ${user} fd7a:115c:a1e0::/48 scram-sha-256"
+            "host ${db} ${user} 192.168.0.0/16 scram-sha-256"
+          ]) cfg.users
+        ) cfg.databases
+      );
 
     };
   };
