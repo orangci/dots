@@ -29,18 +29,7 @@ in
     stylix = {
       enable = true;
       image = ../../assets/face.png;
-      base16Scheme = lib.importJSON (
-        pkgs.runCommand "base16-scheme.json"
-          {
-            buildInputs = [
-              pkgs.yq
-              pkgs.jq
-            ];
-          }
-          ''
-            yq '.palette' ${pkgs.base16-schemes}/share/themes/${cfg.theme}.yaml | \
-              jq '.' > $out''
-      );
+      base16Scheme = "${pkgs.base16-schemes}/share/themes/${cfg.theme}.yaml";
 
       polarity = "dark";
       cursor = {

@@ -11,7 +11,7 @@ let
     mkIf
     ;
   cfg = config.hmModules.desktop.walker;
-  colours = config.stylix.base16Scheme;
+  colours = config.lib.stylix.colors.withHashtag;
 in
 {
   imports = [ inputs.walker.homeManagerModules.default ];
