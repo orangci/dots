@@ -2,6 +2,7 @@
   flakeSettings,
   config,
   lib,
+  pkgs,
   ...
 }:
 {
@@ -47,6 +48,8 @@
       };
     };
   };
+
+  home.packages = with pkgs; [ claude-code ];
 
   dconf.settings."org/virt-manager/virt-manager/connections" = {
     autoconnect = [ "qemu:///system" ];

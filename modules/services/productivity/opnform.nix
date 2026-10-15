@@ -37,7 +37,7 @@ let
   '';
 
   apiContainer = {
-    image = "jhumanj/opnform-api:latest";
+    image = "docker.io/jhumanj/opnform-api:latest";
     networks = singleton network;
     environmentFiles = singleton config.modules.security.sops.secrets.opnform-env.path;
     volumes = [
@@ -147,7 +147,7 @@ in
 
     virtualisation.oci-containers.containers = {
       opnform-redis = {
-        image = "redis:7";
+        image = "docker.io/library/redis:7";
         networks = singleton network;
         volumes = singleton "/var/lib/opnform/redis:/data";
       };
@@ -182,7 +182,7 @@ in
       };
 
       opnform-client = {
-        image = "jhumanj/opnform-client:latest";
+        image = "docker.io/jhumanj/opnform-client:latest";
         networks = singleton network;
         dependsOn = singleton "opnform-api";
         ports = singleton "127.0.0.1:${toString clientPort}:3000";
