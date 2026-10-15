@@ -110,6 +110,7 @@ in
           renovate.enable = true;
         };
         davis = enableServerModule 8831 { };
+        opnform = enableServerModule 8836 { };
         # tailnet only: it's a shell as a wheel user behind a single token
         vscode = enableServerModule 8823 {
           cf = false;
