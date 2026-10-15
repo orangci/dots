@@ -46,7 +46,6 @@ in
         "/srv/files"
         "/var/lib/immich"
         "/var/lib/forgejo"
-        "/var/lib/cryptpad"
         "/var/lib/vaultwarden"
         "/var/lib/private/zipline"
         "/var/lib/postgresql"
@@ -72,7 +71,6 @@ in
 
       files = {
         copyparty = enableServerModule 8822 { };
-        cryptpad = enableServerModule 8803 { };
         wastebin = enableServerModule 8809 { };
         zipline = enableServerModule 8819 { };
       };
