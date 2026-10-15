@@ -39,6 +39,23 @@ in
       bind = lib.my.hyprlandLua.bindd [ "SUPER, BACKSLASH, Open Logout Menu, exec, logout-exit" ];
       layer_rule = [ (lib.my.hyprlandLua.layerRule "match:namespace wleave, blur on") ];
     };
+    wayland.windowManager.niri.settings = {
+      binds."Mod+Backslash" = {
+        _props.hotkey-overlay-title = "Open Logout Menu";
+        spawn = [ "logout-exit" ];
+      };
+      _children = [
+        {
+          layer-rule = {
+            match._props.namespace = "^wleave$";
+            background-effect = {
+              blur = true;
+              xray = false;
+            };
+          };
+        }
+      ];
+    };
     home = {
       packages = [
         logoutScript

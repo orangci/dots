@@ -19,5 +19,12 @@ in
       "SUPER, l, Lock Screen, exec, hyprlock"
       ",XF86HomePage, Lock Screen, exec, hyprlock"
     ];
+    wayland.windowManager.niri.settings.binds = {
+      "Mod+L" = {
+        _props.hotkey-overlay-title = "Lock Screen";
+        spawn = [ "hyprlock" ];
+      };
+      "XF86HomePage".spawn = [ "hyprlock" ];
+    };
   };
 }

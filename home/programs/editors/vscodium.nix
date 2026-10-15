@@ -28,6 +28,10 @@ in
     wayland.windowManager.hyprland.settings.bind = lib.my.hyprlandLua.bindd [
       "SUPERSHIFT, C, Launch VSCodium, exec, codium"
     ];
+    wayland.windowManager.niri.settings.binds."Mod+Shift+C" = {
+      _props.hotkey-overlay-title = "Launch VSCodium";
+      spawn = [ "codium" ];
+    };
     programs.vscodium = {
       enable = true;
 

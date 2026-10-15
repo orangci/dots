@@ -17,6 +17,10 @@ in
     wayland.windowManager.hyprland.settings.bind = lib.my.hyprlandLua.bindd [
       "SUPER, W, Launch Firefox, exec, firefox"
     ];
+    wayland.windowManager.niri.settings.binds."Mod+W" = {
+      _props.hotkey-overlay-title = "Launch Firefox";
+      spawn = [ "firefox" ];
+    };
     programs.firefox = {
       enable = true;
       profiles.${config.home.username} = {

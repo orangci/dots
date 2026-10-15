@@ -98,6 +98,17 @@ in
     wayland.windowManager.hyprland.settings.on = mkIf cfg.arrpc.enable [
       (lib.my.hyprlandLua.onStart "sleep 3; ${pkgs.arrpc}/bin/arrpc")
     ];
+    wayland.windowManager.niri.settings = lib.mkMerge [
+      (mkIf cfg.discord.enable {
+        binds."Mod+D" = {
+          _props.hotkey-overlay-title = "Open Discord";
+          spawn = [ cfg.discord.client ];
+        };
+      })
+      (mkIf cfg.arrpc.enable {
+        _children = [ { spawn-sh-at-startup = "sleep 3; ${pkgs.arrpc}/bin/arrpc"; } ];
+      })
+    ];
     home.file = lib.mkIf cfg.discord.enable (
       lib.mkMerge [
         (mkIf (cfg.discord.client != "equibop") {

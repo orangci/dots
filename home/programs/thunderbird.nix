@@ -13,6 +13,10 @@ in
     wayland.windowManager.hyprland.settings.bind = lib.my.hyprlandLua.bindd [
       "SUPER, T, Open Thunderbird, exec, thunderbird"
     ];
+    wayland.windowManager.niri.settings.binds."Mod+T" = {
+      _props.hotkey-overlay-title = "Open Thunderbird";
+      spawn = [ "thunderbird" ];
+    };
     programs.thunderbird = {
       # https://home-manager-options.extranix.com/?query=programs.thunderbird.&release=master
       enable = true;

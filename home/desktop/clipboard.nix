@@ -34,5 +34,18 @@ in
         ]
       );
     };
+    wayland.windowManager.niri.settings = mkIf (!config.hmModules.desktop.walker.enable) {
+      _children = [
+        { spawn-sh-at-startup = "wl-paste --type text --watch cliphist store"; }
+        { spawn-sh-at-startup = "wl-paste --type image --watch cliphist store"; }
+      ];
+      binds."Mod+Shift+V" = {
+        _props.hotkey-overlay-title = "Clear Clipboard";
+        spawn = [
+          "cliphist"
+          "wipe"
+        ];
+      };
+    };
   };
 }

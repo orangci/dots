@@ -21,5 +21,9 @@ in
     wayland.windowManager.hyprland.settings.bind = lib.my.hyprlandLua.bindd [
       "SUPER, I, Open Settings, exec, control"
     ];
+    wayland.windowManager.niri.settings.binds."Mod+I" = {
+      _props.hotkey-overlay-title = "Open Settings";
+      spawn = [ "control" ];
+    };
   };
 }

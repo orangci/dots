@@ -6,7 +6,7 @@
   ...
 }:
 let
-  inherit (lib) mkEnableOption singleton mkIf;
+  inherit (lib) mkEnableOption mkIf;
   cfg = config.hmModules.desktop.waybar;
   waybarBottom = false; # If the waybar should be at the bottom of the screen instead of the top
 in
@@ -15,11 +15,12 @@ in
     enable = mkEnableOption "waybar";
   };
   config = mkIf cfg.enable {
-    wayland.windowManager.hyprland.settings.on = singleton (lib.my.hyprlandLua.onStart "waybar");
     home.packages = [ pkgs.wttrbar ];
     programs.waybar = {
       enable = true;
       package = pkgs.waybar;
+      # a service rather than a compositor autostart, so it comes back if it dies at login
+      systemd.enable = true;
       settings = [
         {
           layer = if waybarBottom then "bottom" else "top";
@@ -27,10 +28,12 @@ in
 
           modules-center = [
             "hyprland/window"
+            "niri/window#niri"
             "clock"
           ];
           modules-left = [
             "hyprland/workspaces"
+            "niri/workspaces"
             "custom/salah"
           ];
           modules-right = [
@@ -51,6 +54,9 @@ in
             on-scroll-up = "hyprctl dispatch workspace e+1";
             on-scroll-down = "hyprctl dispatch workspace e-1";
           };
+          "niri/workspaces" = {
+            format = "{index}";
+          };
           "clock" = {
             format = " {:%H:%M • %A, %B %d}";
             tooltip = true;
@@ -62,6 +68,11 @@ in
             rewrite = {
               "" = "Empty Desktop";
             };
+          };
+          # named so style.nix can hide its empty pill; niri hides the label instead of rewriting ""
+          "niri/window#niri" = {
+            max-length = 25;
+            separate-outputs = false;
           };
           "memory" = {
             interval = 5;

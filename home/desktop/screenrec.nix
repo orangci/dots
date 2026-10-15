@@ -121,6 +121,27 @@ in
       "SUPERCONTROL, O, Pause Screen Recording, exec, pkill -SIGUSR2 -f gpu-screen-recorder; notify-send 'Paused screen recording.' -t 1000 -a gpu-screen-recorder"
       "SUPERSHIFT, O, Stop Screen Recording, exec, pkill -SIGINT -f gpu-screen-recorder; notify-send 'Stopped screen recording.' 'Saved to ${config.xdg.userDirs.videos}' -t 1000 -a gpu-screen-recorder"
     ];
+    wayland.windowManager.niri.settings.binds = {
+      "Mod+O" = {
+        _props.hotkey-overlay-title = "Start Screen Recording";
+        spawn = [ "screenrec" ];
+      };
+      "Mod+Alt+O" = {
+        _props.hotkey-overlay-title = "Start Screen Recording (Mic)";
+        spawn = [
+          "screenrec"
+          "--mic"
+        ];
+      };
+      "Mod+Ctrl+O" = {
+        _props.hotkey-overlay-title = "Pause Screen Recording";
+        spawn-sh = "pkill -SIGUSR2 -f gpu-screen-recorder; notify-send 'Paused screen recording.' -t 1000 -a gpu-screen-recorder";
+      };
+      "Mod+Shift+O" = {
+        _props.hotkey-overlay-title = "Stop Screen Recording";
+        spawn-sh = "pkill -SIGINT -f gpu-screen-recorder; notify-send 'Stopped screen recording.' 'Saved to ${config.xdg.userDirs.videos}' -t 1000 -a gpu-screen-recorder";
+      };
+    };
     home.packages = [
       screenrecPackage
       pkgs.gpu-screen-recorder

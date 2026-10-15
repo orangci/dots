@@ -33,6 +33,7 @@ in
 
   config = mkIf cfg.enable {
     wayland.windowManager.hyprland.settings.on = singleton (lib.my.hyprlandLua.onStart "walls");
+    wayland.windowManager.niri.settings._children = singleton { spawn-at-startup = [ "walls" ]; };
     home.packages = [
       (pkgs.writeShellScriptBin "walls" ''
         # the daemon runs in the foreground, so background it and wait until it answers

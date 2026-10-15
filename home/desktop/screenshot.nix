@@ -67,6 +67,27 @@ in
           "SUPERSHIFT, S, Area Screenshot (With Editor), exec, screenshot --area --edit"
         ];
     };
+    wayland.windowManager.niri.settings.binds = {
+      "Print" = {
+        _props = {
+          hotkey-overlay-title = "Fullscreen Screenshot";
+          allow-when-locked = true;
+        };
+        spawn-sh = "screenshot --fullscreen --edit";
+      };
+      "Mod+Shift+T" = {
+        _props.hotkey-overlay-title = "Copy Text From Screenshot";
+        spawn-sh = "screenshot --ocr";
+      };
+      "Mod+S" = {
+        _props.hotkey-overlay-title = "Area Screenshot";
+        spawn-sh = "screenshot --area";
+      };
+      "Mod+Shift+S" = {
+        _props.hotkey-overlay-title = "Area Screenshot (With Editor)";
+        spawn-sh = "screenshot --area --edit";
+      };
+    };
     home.packages = with pkgs; [
       grim
       slurp

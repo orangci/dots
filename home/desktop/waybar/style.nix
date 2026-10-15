@@ -93,6 +93,7 @@ with lib;
 
         /* >>> CENTER MODULES <<< */
         #window * {color: ${colours.base0C};}
+        window#waybar.empty #window.niri {background: transparent; padding: 0; margin: 0;}
         #clock {color: ${colours.base0B};}
 
         /* >>> RIGHT MODULES <<< */

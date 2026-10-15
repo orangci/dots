@@ -30,5 +30,34 @@ in
         "SUPERSHIFT, A, Clear Notifications, exec, swaync-client -C"
       ];
     };
+    wayland.windowManager.niri.settings = {
+      _children = [
+        {
+          layer-rule = {
+            match._props.namespace = "^swaync-(control-center|notification-window)$";
+            background-effect = {
+              blur = true;
+              xray = false;
+            };
+          };
+        }
+      ];
+      binds = {
+        "Mod+A" = {
+          _props.hotkey-overlay-title = "Open swaync Panel";
+          spawn = [
+            "swaync-client"
+            "-t"
+          ];
+        };
+        "Mod+Shift+A" = {
+          _props.hotkey-overlay-title = "Clear Notifications";
+          spawn = [
+            "swaync-client"
+            "-C"
+          ];
+        };
+      };
+    };
   };
 }

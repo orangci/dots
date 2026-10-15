@@ -33,6 +33,10 @@ in
         wayland.windowManager.hyprland.settings.bind = lib.my.hyprlandLua.bindd [
           "SUPER, Return, Launch Terminal, exec, kitty"
         ];
+        wayland.windowManager.niri.settings.binds."Mod+Return" = {
+          _props.hotkey-overlay-title = "Launch Terminal";
+          spawn = [ "kitty" ];
+        };
         programs.kitty = {
           enable = true;
           settings = {
@@ -48,6 +52,10 @@ in
         wayland.windowManager.hyprland.settings.bind = lib.my.hyprlandLua.bindd [
           "SUPER, Return, Launch Terminal, exec, foot"
         ];
+        wayland.windowManager.niri.settings.binds."Mod+Return" = {
+          _props.hotkey-overlay-title = "Launch Terminal";
+          spawn = [ "foot" ];
+        };
         programs.foot.enable = true;
       })
 
@@ -55,6 +63,10 @@ in
         wayland.windowManager.hyprland.settings.bind = lib.my.hyprlandLua.bindd [
           "SUPER, Return, Launch Terminal, exec, alacritty"
         ];
+        wayland.windowManager.niri.settings.binds."Mod+Return" = {
+          _props.hotkey-overlay-title = "Launch Terminal";
+          spawn = [ "alacritty" ];
+        };
         programs.alacritty.enable = true;
       })
     ]

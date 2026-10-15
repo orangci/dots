@@ -15,5 +15,14 @@ in
     wayland.windowManager.hyprland.settings.on = singleton (
       lib.my.hyprlandLua.onStart "${pkgs.syshud}/bin/syshud -p right -o v"
     );
+    wayland.windowManager.niri.settings._children = singleton {
+      spawn-at-startup = [
+        "${pkgs.syshud}/bin/syshud"
+        "-p"
+        "right"
+        "-o"
+        "v"
+      ];
+    };
   };
 }

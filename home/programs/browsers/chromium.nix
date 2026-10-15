@@ -16,6 +16,10 @@ in
     wayland.windowManager.hyprland.settings.bind = lib.my.hyprlandLua.bindd [
       "SUPER, G, Launch Chromium, exec, chromium"
     ];
+    wayland.windowManager.niri.settings.binds."Mod+G" = {
+      _props.hotkey-overlay-title = "Launch Chromium";
+      spawn = [ "chromium" ];
+    };
     programs.chromium = {
       enable = true;
       extensions = [

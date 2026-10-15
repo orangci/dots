@@ -35,6 +35,68 @@ in
         "SUPERSHIFT, V, Clear Clipboard, exec, walker --clear-clipboard"
       ];
     };
+    wayland.windowManager.niri.settings = {
+      _children = [
+        {
+          layer-rule = {
+            match._props.namespace = "^walker$";
+            background-effect = {
+              blur = true;
+              xray = false;
+            };
+          };
+        }
+      ];
+      binds = {
+        "Mod+R" = {
+          _props.hotkey-overlay-title = "Open Launcher";
+          spawn = [ "walker" ];
+        };
+        "Mod+K" = {
+          _props.hotkey-overlay-title = "Open Launcher";
+          spawn = [ "walker" ];
+        };
+        "Mod+Period" = {
+          _props.hotkey-overlay-title = "Emoji Picker";
+          spawn = [
+            "walker"
+            "-m"
+            "emojis"
+          ];
+        };
+        "Mod+Shift+Period" = {
+          _props.hotkey-overlay-title = "Symbol Picker";
+          spawn = [
+            "walker"
+            "-m"
+            "symbols"
+          ];
+        };
+        "Mod+M" = {
+          _props.hotkey-overlay-title = "Launch Minecraft Instance";
+          spawn = [
+            "walker"
+            "-m"
+            "minecraft"
+          ];
+        };
+        "Mod+V" = {
+          _props.hotkey-overlay-title = "Open Clipboard";
+          spawn = [
+            "walker"
+            "-m"
+            "clipboard"
+          ];
+        };
+        "Mod+Shift+V" = {
+          _props.hotkey-overlay-title = "Clear Clipboard";
+          spawn = [
+            "walker"
+            "--clear-clipboard"
+          ];
+        };
+      };
+    };
     programs.walker = {
       enable = true;
       runAsService = true;

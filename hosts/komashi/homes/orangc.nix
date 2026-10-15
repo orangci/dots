@@ -126,6 +126,11 @@
     "blueman-applet"
     "obsidian"
   ];
+  wayland.windowManager.niri.settings._children = map (app: { spawn-at-startup = [ app ]; }) [
+    "kdeconnect-indicator"
+    "blueman-applet"
+    "obsidian"
+  ];
 
   home = {
     file.".face.icon".source = ../../../assets/face.png;
