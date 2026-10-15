@@ -107,7 +107,8 @@ in
         uri strip_prefix /api
         ${fpm}
       }
-      handle /open/* /local/temp/* /forms/assets/* {
+      @fpm path /open/* /local/temp/* /forms/assets/*
+      handle @fpm {
         ${fpm}
       }
       handle {
