@@ -31,7 +31,7 @@ let
       owner = "dolfies";
       repo = "discord.py-self";
       tag = "v2.1.0";
-      hash = "sha256-jDLv0Fyx4qocEc4YeqbGSiIZN7PMOSZZWgcufeCdm18=";
+      hash = "sha256-jVz3uGU+4E5Awbk6ZYAsXvEpClNHm2QN1RpBTIiQTpE=";
     };
 
     build-system = [ ps.setuptools ];
@@ -65,7 +65,7 @@ pkgs.stdenv.mkDerivation {
     owner = "misutesu-desu";
     repo = "MudaRemote";
     rev = "main";
-    hash = "sha256-c0PEADFOrtMeKAm4qOzgX0DUa5x6F8Wh5Hw9b98OMKM=";
+    hash = "sha256-jDLv0Fyx4qocEc4YeqbGSiIZN7PMOSZZWgcufeCdm18=";
   };
 
   installPhase = ''
