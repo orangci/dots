@@ -37,7 +37,6 @@ in
         EnvironmentFile = config.modules.security.sops.secrets.mudaremote-account-tokens.path;
         Restart = "on-failure";
         RestartSec = 10;
-        # no reason for it to be root. the env file is still read by systemd as root
         DynamicUser = true;
         StateDirectory = "mudaremote";
         Environment = "HOME=%S/mudaremote";

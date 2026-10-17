@@ -31,7 +31,7 @@ let
       owner = "dolfies";
       repo = "discord.py-self";
       tag = "v2.1.0";
-      hash = "sha256-jVz3uGU+4E5Awbk6ZYAsXvEpClNHm2QN1RpBTIiQTpE=";
+      hash = "sha256-jDLv0Fyx4qocEc4YeqbGSiIZN7PMOSZZWgcufeCdm18=";
     };
 
     build-system = [ ps.setuptools ];
