@@ -51,6 +51,10 @@ in
         ];
         shell = pkgs.fish;
         ignoreShellProgramCheck = true;
+        openssh.authorizedKeys.keys = [
+          # master key
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFlETPBkRp5q3E5+oAL9KfO0DTtvfx85m/Dq124Fyqyx c@orangc.net"
+        ];
       }) users
     );
     home-manager.users = mkIf cfg.home-manager.autoDeclare (
