@@ -83,6 +83,7 @@ in
         pay-respects.enable = true;
       };
       home.packages = with pkgs; [
+        tmux
         tokei
         killall
         tree
