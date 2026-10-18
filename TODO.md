@@ -25,7 +25,6 @@
 - abbreiviatons instead of aliases maybe
 
 higher priority
-- fix borked tailnet
 - fix the godawful hyprland lua setup
 - export all modules
 - whatsapp

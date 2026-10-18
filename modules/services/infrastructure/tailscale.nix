@@ -32,8 +32,12 @@ let
   tailscaleVhosts = lib.mapAttrs' (
     _: mod:
     lib.nameValuePair "https://${mod.subdomain}.${flakeSettings.domains.tailnet}" {
+      # the global acme_dns makes caddy skip its implicit tailscale cert manager
       extraConfig = lib.mkDefault ''
         bind tailscale/${mod.subdomain}
+        tls {
+          get_certificate tailscale
+        }
         reverse_proxy localhost:${toString mod.port}
       '';
     }

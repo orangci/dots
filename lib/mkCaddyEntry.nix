@@ -21,8 +21,12 @@ let
     then
       {
         "https://${subdomain}.${flakeSettings.domains.tailnet}" = {
+          # the global acme_dns makes caddy skip its implicit tailscale cert manager
           extraConfig = ''
             bind tailscale/${subdomain}
+            tls {
+              get_certificate tailscale
+            }
             reverse_proxy localhost:${toString port}
           '';
         };
