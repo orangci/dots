@@ -32,6 +32,7 @@
         inherit (config.home) username;
         email = "c@${flakeSettings.domains.email}";
         github = true;
+        forgejo = true;
         pre-commit = true;
         signing = {
           enable = true;

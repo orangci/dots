@@ -18,7 +18,7 @@ in
   options.hmModules.cli.git = {
     enable = mkEnableOption "Git CLI configuration";
     github = mkEnableOption "GitHub CLI (gh)";
-    gitea = mkEnableOption "Gitea CLI (tea)";
+    forgejo = mkEnableOption "Forgejo CLI (fj)";
     lfs = mkEnableOption "GitHub Large File Storage";
     pre-commit = mkEnableOption "pre-commit";
 
@@ -117,7 +117,7 @@ in
 
     home.packages =
       with pkgs;
-      lib.optionals cfg.gitea [ tea ]
+      lib.optionals cfg.forgejo [ forgejo-cli ]
       ++ lib.optionals cfg.pre-commit [
         pre-commit
         pre-commit-hook-ensure-sops
