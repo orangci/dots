@@ -68,7 +68,7 @@ in
             "SUPERALT, P, Previous Media, exec, playerctl previous"
             "SUPERSHIFT, SPACE, Move To Special Workspace, movetoworkspace,special"
             "SUPER, SPACE, Open Special Workspace, togglespecialworkspace"
-            "SUPER, B, Blur/Unblur Current Window, exec, hyprctl setprop active opaque toggle # toggle transparency for le active window"
+            "SUPER, B, Blur/Unblur Current Window, exec, hyprctl dispatch 'hl.dsp.window.set_prop({ prop = \"no_blur\", value = \"toggle\" })'"
             "SUPERSHIFT, F, Float Current Window, togglefloating"
             "SUPER, Q, Close Window, killactive"
             "SUPER, F, Make Window Fullscreen, fullscreen,"
