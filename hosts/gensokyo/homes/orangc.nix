@@ -2,7 +2,6 @@
   flakeSettings,
   config,
   lib,
-  pkgs,
   ...
 }:
 {
@@ -13,6 +12,7 @@
     programs.editors.nvf.enable = true;
     programs.editors.micro.enable = true;
     programs.typst.enable = true;
+    programs.claude.enable = true;
     security.gnupg.enable = true;
     dev = {
       python = {
@@ -48,8 +48,6 @@
       };
     };
   };
-
-  home.packages = with pkgs; [ claude-code ];
 
   dconf.settings."org/virt-manager/virt-manager/connections" = {
     autoconnect = [ "qemu:///system" ];

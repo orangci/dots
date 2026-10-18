@@ -78,6 +78,7 @@
       direnv.enable = true;
     };
     programs = {
+      claude.enable = true;
       browsers.firefox.enable = true;
       better-control.enable = true;
       thunderbird.enable = true;
@@ -137,7 +138,6 @@
     packages = with pkgs; [
       obsidian
       pinta
-      claude-code
     ];
   };
 
