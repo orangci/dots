@@ -17,7 +17,6 @@
 - look into nixos containers and microvm.nix
 - use [nixos-core](https://github.com/feel-co/nixos-core)
 - finish nvf config
-- style ndg a bit
 - make installer iso config, disko stuff
 - eliminate flakeSettings
 - xcompose config

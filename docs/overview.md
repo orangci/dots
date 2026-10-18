@@ -39,7 +39,7 @@ A small attrset in `flake.nix` that gets passed to everything as `flakeSettings`
 The hooks in `.pre-commit-config.yaml` run `nixfmt`, `statix fix` and `deadnix`. If a commit fails, the hooks have probably just reformatted something, so stage it and try again.
 
 ## Docs site
-The documentation page is built with [ndg](https://github.com/feel-co/ndg) in `pkgs/docs.nix`. It renders the README, these docs and the options of every module. Build it with `nix build .#docs`.
+The documentation page is built with [ndg](https://github.com/feel-co/ndg) in `pkgs/docs`. It renders the README, these docs and the options of every module. Build it with `nix build .#docs`.
 
 ## Other docs
 - [Installation](./installation.md) and [homelab installation](./homelab-installation.md)

@@ -1,0 +1,192 @@
+/* SPDX-License-Identifier: AGPL-3.0-or-later */
+/* SPDX-FileCopyrightText: orangc */
+
+@font-face {
+  font-family: "Lexend";
+  font-weight: 400;
+  src: url("fonts/Lexend-Regular.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Lexend";
+  font-weight: 600;
+  src: url("fonts/Lexend-SemiBold.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Martian Mono";
+  font-weight: 400;
+  src: url("fonts/MartianMono-Regular.otf") format("opentype");
+  font-display: swap;
+}
+
+html:root:root:root {
+  --bg-color: #191724;
+  --bg-surface: #1f1d2e;
+  --bg-surface-2: #26233a;
+  --text-color: #e0def4;
+  --text-muted: #e0def4b3;
+  --heading-color: #ebbcba;
+  --link-color: #f6c177;
+  --link-hover-color: #ebbcba;
+  --brand: var(--link-color);
+  --brand-hover: var(--link-hover-color);
+  --focus-ring: rgba(246, 193, 119, 0.4);
+  --border-strong: #e0def433;
+  --border-color: #e0def433;
+  --table-border-color: #e0def433;
+  --code-bg: #26233a;
+  --code-border: #26233a;
+  --header-bg: rgba(25, 23, 36, 0.8);
+  --header-text: #e0def4;
+  --header-muted: #e0def4b3;
+  --header-border: #26233a;
+  --sidebar-bg: #1f1d2e;
+  --sidebar-hover: #26233a;
+  --sidebar-active: #26233a;
+  --footer-bg: #1f1d2e;
+  --shadow-color: rgba(0, 0, 0, 0.25);
+  --shadow-color-darker: rgba(0, 0, 0, 0.35);
+
+  --admonition-note-color: #9ccfd8;
+  --admonition-tip-color: #31748f;
+  --admonition-warning-color: #f6c177;
+  --admonition-danger-color: #eb6f92;
+  --admonition-info-color: #c4a7e7;
+  --admonition-important-color: #c4a7e7;
+  --admonition-example-color: #9ccfd8;
+  --admonition-caution-color: #ebbcba;
+
+  --radius-sm: 0.5rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 1rem;
+  --font-mono: "Martian Mono", monospace;
+
+  color-scheme: dark;
+}
+
+html:root:root:root[data-theme="light"] {
+  --bg-color: #eeeeee;
+  --bg-surface: #dddddd;
+  --bg-surface-2: #eeeeff;
+  --text-color: #444444;
+  --text-muted: #444444b3;
+  --heading-color: #444444;
+  --link-color: #209fb5;
+  --link-hover-color: #444444;
+  --focus-ring: rgba(32, 159, 181, 0.4);
+  --border-strong: #44444433;
+  --border-color: #44444433;
+  --table-border-color: #44444433;
+  --code-bg: #eeeeff;
+  --code-border: #eeeeff;
+  --header-bg: rgba(238, 238, 238, 0.8);
+  --header-text: #444444;
+  --header-muted: #444444b3;
+  --header-border: #dddddd;
+  --sidebar-bg: #dddddd;
+  --sidebar-hover: #eeeeff;
+  --sidebar-active: #eeeeff;
+  --footer-bg: #dddddd;
+  --shadow-color: rgba(68, 68, 68, 0.1);
+  --shadow-color-darker: rgba(68, 68, 68, 0.15);
+
+  --admonition-note-color: #209fb5;
+  --admonition-tip-color: #40a02b;
+  --admonition-warning-color: #df8e1d;
+  --admonition-danger-color: #d20f39;
+  --admonition-info-color: #444444;
+  --admonition-important-color: #444444;
+  --admonition-example-color: #209fb5;
+  --admonition-caution-color: #df8e1d;
+
+  --radius-sm: 0;
+  --radius-md: 0;
+  --radius-lg: 0;
+  --radius-xl: 0;
+
+  color-scheme: light;
+}
+
+body {
+  font-family: "Lexend", sans-serif;
+  font-size: 1.125rem;
+}
+
+:root[data-theme="light"] body {
+  font-family: "Serrif", serif;
+}
+
+/* headings follow the site's posts: primary, accent, info */
+h1 {
+  color: var(--heading-color);
+}
+
+h2,
+h3 {
+  color: #f6c177;
+}
+
+h4,
+h5,
+h6 {
+  color: #c4a7e7;
+}
+
+:root[data-theme="light"] :is(h2, h3) {
+  color: #209fb5;
+}
+
+:root[data-theme="light"] :is(h4, h5, h6) {
+  color: #444444;
+}
+
+a {
+  text-decoration: underline;
+  text-decoration-color: #f6c177;
+  text-decoration-thickness: 2px;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+:root[data-theme="light"] a {
+  text-decoration-color: #209fb5;
+}
+
+pre {
+  border-radius: 0.5rem;
+  border: 0;
+}
+
+th {
+  color: #f6c177;
+  font-weight: 600;
+  background: var(--bg-surface);
+}
+
+:root[data-theme="light"] th {
+  color: #209fb5;
+}
+
+tbody tr:nth-child(even) {
+  background: color-mix(in srgb, var(--bg-surface) 50%, transparent);
+}
+
+blockquote {
+  border-left: 4px solid #9ccfd8;
+  padding-left: 0.5rem;
+}
+
+img {
+  border-radius: 1rem;
+}
+
+::selection {
+  background: #ebbcba;
+  color: #26233a;
+}
