@@ -117,7 +117,17 @@ in
 
     home.packages =
       with pkgs;
-      lib.optionals cfg.forgejo [ forgejo-cli ]
+      [
+        (writeShellScriptBin "glc" ''
+          # glc shows HEAD, glc 2 shows HEAD~2, glc <hash> shows that commit
+          case "''${1:-}" in
+            "") git show HEAD ;;
+            *[!0-9]*) git show "$1" ;;
+            *) git show "HEAD~$1" ;;
+          esac
+        '')
+      ]
+      ++ lib.optionals cfg.forgejo [ forgejo-cli ]
       ++ lib.optionals cfg.pre-commit [
         pre-commit
         pre-commit-hook-ensure-sops
