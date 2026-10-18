@@ -32,20 +32,34 @@ in
   };
 
   config = mkIf cfg.enable {
-    wayland.windowManager.hyprland.settings.on = singleton (lib.my.hyprlandLua.onStart "walls");
-    wayland.windowManager.niri.settings._children = singleton { spawn-at-startup = [ "walls" ]; };
+    wayland.windowManager.hyprland.settings = {
+      on = singleton (lib.my.hyprlandLua.onStart "walls");
+      bind = lib.my.hyprlandLua.bindd [
+        "SUPER, APOSTROPHE, Randomise Wallpaper, exec, walls-random"
+      ];
+    };
+    wayland.windowManager.niri.settings = {
+      _children = singleton { spawn-at-startup = [ "walls" ]; };
+      binds."Mod+Apostrophe" = {
+        _props.hotkey-overlay-title = "Randomise Wallpaper";
+        spawn = [ "walls-random" ];
+      };
+    };
     home.packages = [
+      (pkgs.writeShellScriptBin "walls-random" ''
+        cd ${cfg.directory}
+        CURRENT_WALLPAPER="$(ls *.jpg *.png *.jpeg 2>/dev/null | sort -R | tail -1)"
+        awww img "$CURRENT_WALLPAPER" --transition-type random --transition-fps 60 --transition-duration 1
+        WALLPAPER="${cfg.directory}/$CURRENT_WALLPAPER"
+        echo "\$WALLPAPER=$WALLPAPER" > /tmp/.current_wallpaper_path_hyprlock
+        echo "$WALLPAPER" > /tmp/.current_wallpaper_path
+      '')
       (pkgs.writeShellScriptBin "walls" ''
         # the daemon runs in the foreground, so background it and wait until it answers
         awww-daemon &
         until awww query > /dev/null 2>&1; do sleep 0.2; done
-        cd ${cfg.directory}
         while : ; do
-            export CURRENT_WALLPAPER="$(ls *.jpg *.png *.jpeg 2>/dev/null | sort -R | tail -1)"
-            awww img "$CURRENT_WALLPAPER" --transition-type random --transition-fps 60 --transition-duration 1
-            export WALLPAPER="${cfg.directory}/$CURRENT_WALLPAPER"
-            echo "\$WALLPAPER=$WALLPAPER" > /tmp/.current_wallpaper_path_hyprlock
-            echo "$WALLPAPER" > /tmp/.current_wallpaper_path
+            walls-random
             sleep $(( ${toString (cfg.timeout * 60)} ))
         done
       '')

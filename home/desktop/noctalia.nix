@@ -34,7 +34,6 @@ in
         "SUPER, K, Open App Launcher, exec, noctalia-shell ipc call launcher toggle"
         "SUPER, A, Open Notifications Panel, exec, noctalia-shell ipc call notifications toggleHistory"
         "SUPERSHIFT, A, Clear Notification History, exec, noctalia-shell ipc call notifications dismissAll && noctalia-shell ipc call notifications clear"
-        "SUPER, APOSTROPHE, Set Random Wallpaper, exec, noctalia-shell ipc call wallpaper random"
         "SUPERSHIFT, APOSTROPHE, Pick Wallpaper, exec, noctalia-shell ipc call wallpaper toggle"
         "SUPER, L, Lock Screen, exec, noctalia-shell ipc call lockScreen lock"
         "SUPER, TAB, Toggle Workspace Overview, exec, noctalia-shell ipc call plugin:workspace-overview toggle"
