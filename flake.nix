@@ -118,6 +118,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # prayer time notifications
+    pyminaret = {
+      url = "git+https://git.orangc.net/c/pyminaret";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # a webring for horzes
     horsering = {
       url = "git+https://git.orangc.net/c/horsering";

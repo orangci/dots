@@ -1158,6 +1158,26 @@
         "type": "github"
       }
     },
+    "pyminaret": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1792306491,
+        "narHash": "sha256-iwsCQ438lFECm0+c9/HzlAWKsdumT7gKKrds5eNM4Xk=",
+        "ref": "refs/heads/main",
+        "rev": "20f55c68dce105e7e664dc7176b58b17dc9dc1f4",
+        "revCount": 26,
+        "type": "git",
+        "url": "https://git.orangc.net/c/pyminaret"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://git.orangc.net/c/pyminaret"
+      }
+    },
     "pyproject-build-systems": {
       "inputs": {
         "nixpkgs": [
@@ -1336,6 +1356,7 @@
         "noctalia": "noctalia",
         "notes-webpage": "notes-webpage",
         "nvf": "nvf",
+        "pyminaret": "pyminaret",
         "quickshell": "quickshell",
         "rust-overlay": "rust-overlay_2",
         "sops-nix": "sops-nix",
