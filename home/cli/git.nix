@@ -113,6 +113,8 @@ in
       grb = "git rebase";
       prc = "pre-commit";
       prca = "pre-commit run --all-files";
+      cl = "claude";
+      clc = "claude -p /commit";
     };
 
     home.packages =
