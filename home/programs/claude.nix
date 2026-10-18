@@ -21,6 +21,12 @@ in
       clc = "claude -p /commit";
       clr = "claude --resume";
       clp = "claude --permission-mode auto -p";
+      clb = "claude --bg";
+      cls = "claude agents";
+      cla = "claude attach";
+      clk = "claude stop";
+      clrm = "claude rm";
+      clrs = "claude respawn";
     };
   };
 }
