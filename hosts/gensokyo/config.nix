@@ -133,6 +133,11 @@ in
   };
 
   programs.dconf.enable = true;
+  # root evaluates the flake under sudo and needs to fetch private inputs
+  programs.git = {
+    enable = true;
+    config.credential.helper = "store --file /home/${sysadmin.username}/.git-credentials";
+  };
 
   services.smartd = {
     enable = true;
