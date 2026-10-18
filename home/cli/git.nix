@@ -107,7 +107,7 @@ in
       pull = "git pull";
       gd = "git diff | bat -p";
       gt = "git status";
-      gl = "git log | head -25";
+      gl = "git log --oneline -50";
       gr = "git restore";
       grs = "git restore --staged";
       grb = "git rebase";
