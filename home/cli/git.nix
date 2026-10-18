@@ -102,7 +102,7 @@ in
       amend = "git commit --amend --no-edit";
       gp = "git push";
       gs = "git switch";
-      gpf = "git push --force";
+      gpf = "git push --force-with-lease";
       push = "git push";
       pull = "git pull";
       gd = "git diff | bat -p";
