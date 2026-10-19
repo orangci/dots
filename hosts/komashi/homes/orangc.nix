@@ -50,6 +50,7 @@
       walker.enable = true;
       syshud.enable = true;
       clipboard.enable = true;
+      xcompose.enable = true;
       cheatsheet.enable = true;
       screenshot.enable = true;
       wleave = {
