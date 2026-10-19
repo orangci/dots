@@ -6,8 +6,6 @@
 - look into other image viewers. oculante? fix up mpv to use as my image viewer instead of gwenview? or just keep using gwenview?
 - selfhost (maybe) beszel, jitsi, cyberchef, pairdrop, stirling pdf, pricebuddy, home-assistant, [fiche](https://github.com/solusipse/fiche), pgadmin, dawarich, wallos, opkssh, yuvomi
 - hook ntfy into all the services that can be, e.g., scrutiny, matrix
-- ntfy temp script https://github.com/nickexyz/ntfy-shellscripts/blob/main/temperature.sh
-- use ntfy CLI for ntfy scripts
 - try out danklinux
 - complete grafana/prometheus module
 - look into netbird
@@ -19,14 +17,9 @@
 - finish nvf config
 - make installer iso config, disko stuff
 - eliminate flakeSettings
-- xcompose config
 - fix borked noctalia config
 - try out niri
-- abbreiviatons instead of aliases maybe
 
 higher priority
 - fix the godawful hyprland lua setup
-- export all modules
 - whatsapp
-- make popup windows etc popup instead of tile
-- fix alt tab
