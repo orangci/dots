@@ -20,6 +20,9 @@ let
     "<Multi_key> <t> <f> <l> <i> <p>" = "(╯°□°)╯︵ ┻━┻";
     "<Multi_key> <s> <a> <l> <a> <m>" = "السلام عليكم ورحمة الله وبركاته";
     "<Multi_key> <w> <s> <a> <l> <a> <m>" = "وعليكم السلام ورحمة الله وبركاته";
+    "<Multi_key> <i> <n> <s> <h> <a> <l> <l> <a> <h>" = "إن شاء الله";
+    "<Multi_key> <m> <a> <s> <h> <a> <l> <l> <a> <h>" = "ما شاء الله";
+    "<Multi_key> <a> <l> <h> <a> <m> <d>" = "الحمد لله";
   };
 
   mkLine = keys: result: "${keys} : \"${result}\"";
