@@ -31,7 +31,10 @@ let
 
   script = pkgs.writeShellApplication {
     name = "ntfy-script-services";
-    runtimeInputs = with pkgs; [ curl ];
+    runtimeInputs = with pkgs; [
+      curl
+      ntfy-sh
+    ];
     text = ''
       pairs=(${pairsString})
       declare -A failure_counts
@@ -42,7 +45,7 @@ let
 
       # a failed notification shouldn't kill the loop and lose its state
       notify() {
-        curl -sS -d "$1" -H "p: low" -u :"$token" ${ntfyUrl} > /dev/null || true
+        ntfy publish --quiet --priority low --token "$token" ${ntfyUrl} "$1" || true
       }
 
       notify_down() {
