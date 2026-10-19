@@ -63,7 +63,9 @@ in
           ]) cfg.users
         ) cfg.databases
       );
-
     };
+
+    # tailscale0 is already trusted, this opens the LAN. pg_hba still limits who may log in
+    networking.firewall.allowedTCPPorts = [ cfg.port ];
   };
 }
