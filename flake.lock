@@ -1860,11 +1860,11 @@
         "nixpkgs": "nixpkgs_8"
       },
       "locked": {
-        "lastModified": 1792395583,
-        "narHash": "sha256-sazL8KESQL0Up7ovAnoBTZNfjiJVDgFqplMdpnlhV0g=",
+        "lastModified": 1792423621,
+        "narHash": "sha256-iWcfulrIBuf8AvI/7GS4aj9ltKKVSswAubYiBMtmMU8=",
         "ref": "refs/heads/v5",
-        "rev": "d95bdc65c0dddda442d8e0d337b42055f8d3b69a",
-        "revCount": 353,
+        "rev": "1534f75f5c25342f9e60dd6729524f019f732951",
+        "revCount": 355,
         "type": "git",
         "url": "https://git.orangc.net/c/webpage"
       },
