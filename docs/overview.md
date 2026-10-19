@@ -26,6 +26,15 @@ Every host imports `lib.my.recursivelyImport [ ../../modules ]`, which pulls in 
 
 That means importing a module does nothing by itself: each module declares an `enable` option and only does anything when it's switched on. Adding a file is enough for it to exist, you never need to touch an imports list. See [adding modules](./adding-modules.md).
 
+## Using my modules in your flake
+Every module is also a flake output: `nixosModules` for `modules/` and `homeModules` for `home/`, named after their option path. `modules/services/media/immich.nix` is `nixosModules."services.media.immich"`, and `home/cli/git.nix` is `homeModules."cli.git"`. `default` pulls in all of them.
+
+```nix
+modules = [ inputs.dots.nixosModules."services.tools.it-tools" ];
+```
+
+The exports bring their own `lib.my`, `flakeSettings` (mine, so your domains won't be in there) and `inputs`. Modules that lean on others, such as `security.sops` for secrets, need those exported too, or just use `default`. The `host`, `users` and `sysadmin` arguments only make sense on my own hosts, so modules that want `sysadmin` will throw elsewhere.
+
 ## flakeSettings
 A small attrset in `flake.nix` that gets passed to everything as `flakeSettings`: the username, and my domains (`primary`, `secondary`, `email`, `tailnet`). Use it instead of hardcoding domains. (I do want to get rid of it eventually, it's in the [TODO](../TODO.md).)
 

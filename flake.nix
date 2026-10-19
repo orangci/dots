@@ -169,6 +169,16 @@
           ;
       };
 
+      exports = import ./lib/exportModules.nix {
+        inherit lib inputs flakeSettings;
+        mkMyLib =
+          lib': flakeSettings':
+          import ./lib {
+            lib = lib';
+            flakeSettings = flakeSettings';
+          };
+      };
+
       hosts = builtins.filter (host: (builtins.readDir ./hosts).${host} == "directory") (
         builtins.attrNames (builtins.readDir ./hosts)
       );
@@ -220,6 +230,7 @@
     in
     {
       inherit lib;
+      inherit (exports) nixosModules homeModules;
       packages.${system} = myPkgs;
       formatter.${system} = pkgs.nixfmt-tree;
       nixosConfigurations = lib.genAttrs hosts mkNixosSystem;
