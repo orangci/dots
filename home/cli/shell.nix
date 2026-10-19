@@ -123,7 +123,8 @@ in
               end
             end
           '';
-          shellAliases = mergedAliases; # shellAbbrs = mergedAliases to use abbrs instead of aliases (untested)
+          # abbreviations expand in place, so history and screenshots show the real command
+          shellAbbrs = mergedAliases;
           plugins = [
             {
               name = "puffer";
