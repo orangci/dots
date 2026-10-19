@@ -95,6 +95,7 @@ in
       monitoring = {
         ntfy = (enableServerModule 8812 { ntfy = false; }) // {
           scripts.services.enable = true;
+          scripts.temperature.enable = true;
         };
         glance = enableServerModule 8806 { glance = false; };
         #beszel = enableServerModule 8825 { };
