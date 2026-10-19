@@ -19,8 +19,8 @@ in
     programs.waybar = {
       enable = true;
       package = pkgs.waybar;
-      # a service rather than a compositor autostart, so it comes back if it dies at login
-      systemd.enable = true;
+      # started by each compositor at login; a service got restarted on every activation
+      systemd.enable = false;
       settings = [
         {
           layer = if waybarBottom then "bottom" else "top";

@@ -209,6 +209,7 @@ in
             };
           }
           { spawn-at-startup = [ "lxqt-policykit-agent" ]; }
+          { spawn-at-startup = [ "waybar" ]; }
           {
             window-rule = {
               geometry-corner-radius = 15;

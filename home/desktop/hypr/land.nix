@@ -53,6 +53,7 @@ in
           "dbus-update-activation-environment --systemd --all"
           "systemctl --user import-environment QT_QPA_PLATFORMTHEME WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
           "lxqt-policykit-agent"
+          "waybar"
           "${
             getExe inputs.pyminaret.packages.${pkgs.stdenv.hostPlatform.system}.default
           } --city Riyadh --country SA"
