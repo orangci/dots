@@ -64,8 +64,8 @@ pkgs.stdenv.mkDerivation {
   src = pkgs.fetchFromGitHub {
     owner = "misutesu-desu";
     repo = "MudaRemote";
-    rev = "main";
-    hash = "sha256-jDLv0Fyx4qocEc4YeqbGSiIZN7PMOSZZWgcufeCdm18=";
+    rev = "c410d5e188648784f44788cd6fd3a9c9896d3afa";
+    hash = "sha256-nLSPuc2DxOBeqZwYffN3hNdY9PtSkm6qToWYFaw+L6A=";
   };
 
   installPhase = ''
