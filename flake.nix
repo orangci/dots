@@ -129,6 +129,12 @@
       url = "git+https://git.orangc.net/c/horsering";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # daily school agenda and statistics from the LMS (private repo)
+    buzz-agenda = {
+      url = "git+https://git.orangc.net/c/buzz-agenda";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =

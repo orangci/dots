@@ -121,6 +121,26 @@
         "type": "github"
       }
     },
+    "buzz-agenda": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1792566854,
+        "narHash": "sha256-Tu14xX3XC5H9VuRweScoOAisCegmnh+MxzXPw5XFJJQ=",
+        "ref": "refs/heads/master",
+        "rev": "3082feda63b919a4264671478bd00c039aa28bea",
+        "revCount": 9,
+        "type": "git",
+        "url": "https://git.orangc.net/c/buzz-agenda"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://git.orangc.net/c/buzz-agenda"
+      }
+    },
     "copyparty": {
       "inputs": {
         "flake-utils": "flake-utils",
@@ -1340,6 +1360,7 @@
     "root": {
       "inputs": {
         "aagl": "aagl",
+        "buzz-agenda": "buzz-agenda",
         "copyparty": "copyparty",
         "dns-nix": "dns-nix",
         "hjem": "hjem",
