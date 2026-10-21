@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  host,
   pkgs,
   flakeSettings,
   sysadmin,
@@ -12,10 +11,18 @@ let
   cfg = config.modules.services.productivity.forgejo;
 in
 {
-  options.modules.services.productivity.forgejo = my.mkServerModule {
-    name = "Forgejo";
-    subdomain = "git";
-  };
+  options.modules.services.productivity.forgejo =
+    my.mkServerModule {
+      name = "Forgejo";
+      subdomain = "git";
+    }
+    // {
+      runner.uuid = lib.mkOption {
+        type = lib.types.str;
+        example = "c9e50be9-a7c3-4aee-ba35-624c4ff8c519";
+        description = "UUID of the Forgejo runner, from the `uuid` field of its `.runner` file (`/var/lib/gitea-runner/forgejo/.runner` on hosts migrated from gitea-actions-runner). Not secret; the token is.";
+      };
+    };
 
   config = mkIf cfg.enable {
     services.forgejo = {
@@ -73,21 +80,17 @@ in
       "/var/secrets/forgejo-runner-registration-token";
 
     virtualisation.docker.enable = true;
-    services.gitea-actions-runner = {
+    services.forgejo-runner = {
       package = pkgs.forgejo-runner;
       instances.forgejo = {
         enable = true;
-        name = host;
-        url = "https://${cfg.subdomain}.${flakeSettings.domains.primary}";
-        tokenFile = config.modules.security.sops.secrets.forgejo-runner-registration-token.path;
-        # hostPackages =
-        labels = [
-          "ubuntu-latest:docker://william/action-runners:ubuntu-24.04"
-          "ubuntu-24.04:docker://william/action-runners:ubuntu-24.04"
-          "ubuntu-22.04:docker://william/action-runners:ubuntu-22.04"
-          "nixos-latest:docker://nixos/nix"
-        ];
+        secrets.server.connections.default.token_url =
+          config.modules.security.sops.secrets.forgejo-runner-registration-token.path;
         settings = {
+          server.connections.default = {
+            url = "https://${cfg.subdomain}.${flakeSettings.domains.primary}";
+            inherit (cfg.runner) uuid;
+          };
           container = {
             network = "host";
             docker_host = "unix:///run/docker.sock";

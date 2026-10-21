@@ -107,6 +107,7 @@ in
       productivity = {
         buzz-agenda.enable = true;
         forgejo = (enableServerModule 8805 { }) // {
+          runner.uuid = "0fb6e3b5-9778-4cda-af22-0ef67ceb66f8";
           renovate.enable = true;
         };
         davis = enableServerModule 8831 { };

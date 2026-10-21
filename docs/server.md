@@ -82,9 +82,9 @@ Guides to invidual server modules where necessary. Please assume that any YAML s
 
 ### Forgejo
 ```yaml
-forgejo-runner-registration-token: your-registration-token
+forgejo-runner-registration-token: the-runner-token
 ```
-This secret is for allowing the Forgejo runner for Forgejo actions to authenticate with your Forgejo instance. If it is the first time you are running Forgejo, make a placeholder secret for now. Find your token by navigating to Site Administration > Actions > Show Registration Token.
+Despite the name, this is the runner's token, not a registration token: the bare value, with no `TOKEN=` prefix. The runner also needs its UUID, set as `modules.services.productivity.forgejo.runner.uuid`. Both come from the `.runner` file of a registered runner (`/var/lib/gitea-runner/forgejo/.runner` if you migrated from `gitea-actions-runner`), or from registering one with `forgejo-runner register`. The option has no default, so evaluation fails until it's set.
 
 If you have Renovate enabled, you'll need two secrets:
 ```yaml
