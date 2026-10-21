@@ -128,11 +128,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1792566854,
-        "narHash": "sha256-Tu14xX3XC5H9VuRweScoOAisCegmnh+MxzXPw5XFJJQ=",
+        "lastModified": 1792571758,
+        "narHash": "sha256-a+/iSmX97/Ss4AeZaJm14WY9uxKGlbhWO2Kk4Qynkbo=",
         "ref": "refs/heads/master",
-        "rev": "3082feda63b919a4264671478bd00c039aa28bea",
-        "revCount": 9,
+        "rev": "f28e5cc2e474d46d527d1a7a5a887c7340f9a0c4",
+        "revCount": 11,
         "type": "git",
         "url": "https://git.orangc.net/c/buzz-agenda"
       },
