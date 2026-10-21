@@ -105,6 +105,7 @@ in
       };
 
       productivity = {
+        buzz-agenda.enable = true;
         forgejo = (enableServerModule 8805 { }) // {
           renovate.enable = true;
         };
