@@ -96,6 +96,16 @@ To obtain a Forgejo token for your Renovate bot, first create a user account for
 
 To obtain a GitHub token, simply visit [this page](https://github.com/settings/tokens) and click "Generate new token". You may use either type; there is no need to give the token any permissions, as it is needed for read-only operations alone.
 
+### Buzz agenda
+Writes the daily school agenda and statistics (PDF) from [buzz-agenda](https://git.orangc.net/c/buzz-agenda), a private repo, so root needs git credentials for it (see the `programs.git` credential helper in gensokyo's config). Served by Caddy at `school.<tailnet domain>` and nowhere else: no public domain and no Cloudflare tunnel, since it holds grades. Files land in `/srv/buzz_agenda`, readable by the `buzz-agenda` group, which Caddy and the sysadmin are in.
+
+```yaml
+buzz-agenda-env: |
+    USER=your-school-username
+    PASS=your-school-password
+```
+It runs daily at 05:30, or `systemctl start buzz-agenda` to run it now.
+
 ### Matrix
 Keep in mind that once you set `modules.services.misc.matrix-synapse.serverName`, you *cannot* change it unless you wipe the database.
 To make a new Matrix user, simply run `matrix-synapse-register_new_matrix_user` without any arguments.
