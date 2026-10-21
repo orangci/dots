@@ -99,7 +99,8 @@ in
         };
         glance = enableServerModule 8806 { glance = false; };
         #beszel = enableServerModule 8825 { };
-        speedtest = enableServerModule 8816 { };
+        # php: no public ingress while the php vulnerabilities are unpatched
+        speedtest = enableServerModule 8816 { cf = false; };
         umami = enableServerModule 8820 { };
         wakapi = enableServerModule 8833 { };
       };
@@ -110,8 +111,9 @@ in
           runner.uuid = "0fb6e3b5-9778-4cda-af22-0ef67ceb66f8";
           renovate.enable = true;
         };
-        davis = enableServerModule 8831 { };
-        opnform = enableServerModule 8836 { };
+        # php: no public ingress while the php vulnerabilities are unpatched
+        davis = enableServerModule 8831 { cf = false; };
+        opnform = enableServerModule 8836 { cf = false; };
         # tailnet only: it's a shell as a wheel user behind a single token
         vscode = enableServerModule 8823 {
           cf = false;
