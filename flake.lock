@@ -1849,11 +1849,11 @@
         "nixpkgs": "nixpkgs_8"
       },
       "locked": {
-        "lastModified": 1792423621,
-        "narHash": "sha256-iWcfulrIBuf8AvI/7GS4aj9ltKKVSswAubYiBMtmMU8=",
+        "lastModified": 1792694524,
+        "narHash": "sha256-h5R6dyIB4tPqRPGb94IlDNsM4HFW8vMwQr+i1xMzSoU=",
         "ref": "refs/heads/v5",
-        "rev": "1534f75f5c25342f9e60dd6729524f019f732951",
-        "revCount": 355,
+        "rev": "3c4dc0055b1acfc06150f6f81d1718c245161bd7",
+        "revCount": 357,
         "type": "git",
         "url": "https://git.orangc.net/c/webpage"
       },
