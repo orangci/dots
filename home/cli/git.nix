@@ -106,7 +106,6 @@ in
       push = "git push";
       pull = "git pull";
       gd = "git diff | bat -p";
-      gt = "git status";
       gl = "git log --oneline -50";
       gr = "git restore";
       grs = "git restore --staged";
@@ -118,6 +117,15 @@ in
     home.packages =
       with pkgs;
       [
+        (writeShellScriptBin "gt" ''
+          # gt shows the short status, gt "message" then commits what is staged and pushes
+          set -e
+          git status -s
+          if [ $# -gt 0 ]; then
+            git commit -sm "$*"
+            git push
+          fi
+        '')
         (writeShellScriptBin "glc" ''
           # glc shows HEAD, glc 2 shows HEAD~2, glc <hash> shows that commit
           case "''${1:-}" in
