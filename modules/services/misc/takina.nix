@@ -3,6 +3,7 @@
   lib,
   inputs,
   flakeSettings,
+  sysadmin,
   pkgs,
   ...
 }:
@@ -22,13 +23,14 @@ in
     services.takina = {
       enable = true;
       environmentFile = config.modules.security.sops.secrets.takina-env.path;
+      # so the sysadmin can `psql -U takina takina` over the socket
+      database.peerUsers = singleton sysadmin.username;
       config = {
         PREFIX = ".";
         EMBED_COLOUR = "#FAB387";
         EMOJIS_MODERATOR = "<:salute:1293115316506722365>";
         EMOJIS_NOTE = "<:note:1293115357220831294>";
         BOT_STATUS = "ROLLING BETA 2.0.0!!!";
-        COGS_BLACKLIST = "core.settings";
         ENABLE_SESP_COGS = "yes";
       }
       // lib.optionalAttrs libretranslate.enable {
