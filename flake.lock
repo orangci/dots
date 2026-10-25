@@ -1347,6 +1347,7 @@
         "nvf": "nvf",
         "pyminaret": "pyminaret",
         "quickshell": "quickshell",
+        "rose-pine-forgejo": "rose-pine-forgejo",
         "rust-overlay": "rust-overlay_2",
         "sops-nix": "sops-nix",
         "stevenBlackHosts": "stevenBlackHosts",
@@ -1354,6 +1355,22 @@
         "takina": "takina",
         "walker": "walker",
         "webpagc": "webpagc"
+      }
+    },
+    "rose-pine-forgejo": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1792933876,
+        "narHash": "sha256-rmpxRmKDpUQaPJR2oItQc6k9zi1NQ0Aj+jIh2UVZi6s=",
+        "ref": "refs/heads/master",
+        "rev": "1c4a8f009d756e8b7b3b6cbf2bf061dcf25e9f3d",
+        "revCount": 3,
+        "type": "git",
+        "url": "https://git.orangc.net/c/rose-pine-forgejo"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://git.orangc.net/c/rose-pine-forgejo"
       }
     },
     "rust-overlay": {

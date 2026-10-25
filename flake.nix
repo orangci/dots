@@ -130,6 +130,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # rosé pine themes for forgejo
+    rose-pine-forgejo = {
+      url = "git+https://git.orangc.net/c/rose-pine-forgejo";
+      flake = false;
+    };
+
     # daily school agenda and statistics from the LMS (private repo)
     buzz-agenda = {
       url = "git+https://git.orangc.net/c/buzz-agenda";
