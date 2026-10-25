@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  inputs,
   flakeSettings,
   sysadmin,
   ...
@@ -61,9 +62,9 @@ in
           DEFAULT_UPDATE_STYLE = "rebase";
         };
         ui = {
-          DEFAULT_THEME = "catppuccin-mauve-auto";
+          DEFAULT_THEME = "rose-pine-rose";
           DEFAULT_SHOW_FULL_NAME = true;
-          THEMES = "catppuccin-mocha-rosewater,catppuccin-mocha-flamingo,catppuccin-mocha-pink,catppuccin-mocha-mauve,catppuccin-mocha-red,catppuccin-mocha-maroon,catppuccin-mocha-peach,catppuccin-mocha-yellow,catppuccin-mocha-green,catppuccin-mocha-teal,catppuccin-mocha-sky,catppuccin-mocha-sapphire,catppuccin-mocha-blue,catppuccin-mocha-lavender,catppuccin-rosewater-auto,catppuccin-flamingo-auto,catppuccin-pink-auto,catppuccin-mauve-auto,catppuccin-red-auto,catppuccin-maroon-auto,catppuccin-peach-auto,catppuccin-yellow-auto,catppuccin-green-auto,catppuccin-teal-auto,catppuccin-sky-auto,catppuccin-sapphire-auto,catppuccin-blue-auto,catppuccin-lavender-auto,forgejo-auto";
+          THEMES = "rose-pine-auto-foam,rose-pine-auto-gold,rose-pine-auto-iris,rose-pine-auto-love,rose-pine-auto-pine,rose-pine-auto-rose,rose-pine-dawn-foam,rose-pine-dawn-gold,rose-pine-dawn-iris,rose-pine-dawn-love,rose-pine-dawn-pine,rose-pine-dawn-rose,rose-pine-foam,rose-pine-gold,rose-pine-iris,rose-pine-love,rose-pine-moon-foam,rose-pine-moon-gold,rose-pine-moon-iris,rose-pine-moon-love,rose-pine-moon-pine,rose-pine-moon-rose,rose-pine-pine,rose-pine-rose,catppuccin-mocha-rosewater,catppuccin-mocha-flamingo,catppuccin-mocha-pink,catppuccin-mocha-mauve,catppuccin-mocha-red,catppuccin-mocha-maroon,catppuccin-mocha-peach,catppuccin-mocha-yellow,catppuccin-mocha-green,catppuccin-mocha-teal,catppuccin-mocha-sky,catppuccin-mocha-sapphire,catppuccin-mocha-blue,catppuccin-mocha-lavender,catppuccin-rosewater-auto,catppuccin-flamingo-auto,catppuccin-pink-auto,catppuccin-mauve-auto,catppuccin-red-auto,catppuccin-maroon-auto,catppuccin-peach-auto,catppuccin-yellow-auto,catppuccin-green-auto,catppuccin-teal-auto,catppuccin-sky-auto,catppuccin-sapphire-auto,catppuccin-blue-auto,catppuccin-lavender-auto,forgejo-auto";
         };
         "ui.meta" = {
           AUTHOR = sysadmin.username;
@@ -119,6 +120,7 @@ in
         rm -rf ${config.services.forgejo.stateDir}/custom/public/assets
         mkdir -p ${config.services.forgejo.stateDir}/custom/public/assets/css
         cp -r --no-preserve=mode,ownership ${catppuccinTheme}/* ${config.services.forgejo.stateDir}/custom/public/assets/css
+        cp -r --no-preserve=mode,ownership ${inputs.rose-pine-forgejo}/dist/* ${config.services.forgejo.stateDir}/custom/public/assets/css
         mkdir -p ${config.services.forgejo.stateDir}/custom/public/assets/img
         cp -r --no-preserve=mode,ownership ${./public/assets/img}/* ${config.services.forgejo.stateDir}/custom/public/assets/img
       '';
