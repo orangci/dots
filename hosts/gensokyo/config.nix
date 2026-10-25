@@ -89,6 +89,10 @@ in
         vaultwarden = enableServerModule 8818 { };
         #horsering = enableServerModule 8834 { };
         takina.enable = true;
+        reviewbot = {
+          enable = true;
+          webhook.expose = true;
+        };
         mudaremote.enable = true;
       };
 
