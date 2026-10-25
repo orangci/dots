@@ -20,7 +20,7 @@ in
 
     port = mkOption {
       type = types.port;
-      default = 8801;
+      default = 8837;
       description = "The local port the bot's webhook listener is published on.";
     };
 
