@@ -1902,11 +1902,11 @@
         "nixpkgs": "nixpkgs_9"
       },
       "locked": {
-        "lastModified": 1792694524,
-        "narHash": "sha256-h5R6dyIB4tPqRPGb94IlDNsM4HFW8vMwQr+i1xMzSoU=",
+        "lastModified": 1792982836,
+        "narHash": "sha256-NI1XN7Q/aP8+C5+eENm+rZohDnnlORsNEmuFbHfgJTs=",
         "ref": "refs/heads/v5",
-        "rev": "3c4dc0055b1acfc06150f6f81d1718c245161bd7",
-        "revCount": 357,
+        "rev": "3ae8b67173b889aebaf5383565e692ee5368fdb3",
+        "revCount": 358,
         "type": "git",
         "url": "https://git.orangc.net/c/webpage"
       },
