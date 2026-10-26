@@ -94,6 +94,11 @@ in
           webhook.expose = true;
         };
         mudaremote.enable = true;
+        patchu = enableServerModule 8838 {
+          # caddy and cloudflared are wired by the module itself
+          cf = false;
+          ts = false;
+        };
       };
 
       monitoring = {
