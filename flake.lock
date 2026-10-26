@@ -1145,11 +1145,11 @@
         "nixpkgs": "nixpkgs_5"
       },
       "locked": {
-        "lastModified": 1793015126,
-        "narHash": "sha256-SHo0kuXJKlYmq26xk9VYNG4zcBy0ofwZh4gjqrrMgJA=",
+        "lastModified": 1793016511,
+        "narHash": "sha256-eoiK8LMfhZ4h9Nbcr/AvshWRYwtWhfCRnHs9K5gSMN8=",
         "ref": "master",
-        "rev": "5dc725cb9a410b5f17c07198b1b0aa711b05e20a",
-        "revCount": 79,
+        "rev": "a635c57db135c5ba3c4ace37407080e4d2ddbe6d",
+        "revCount": 82,
         "type": "git",
         "url": "https://git.orangc.net/c/patchu"
       },
