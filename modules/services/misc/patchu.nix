@@ -56,7 +56,8 @@ in
       message = "patchu: the prefixes ${toString (intersectLists prefixes redirectSources)} are also short links in the webpage's redirects.toml.";
     };
 
-    # PATCHU_OIDC_{ISSUER,CLIENT_ID,CLIENT_SECRET,SUBJECT}, PATCHU_CF_{ZONE_ID,API_TOKEN}
+    # PATCHU_OIDC_{ISSUER,CLIENT_ID,CLIENT_SECRET}, PATCHU_CF_{ZONE_ID,API_TOKEN}. who may log in
+    # is set on pocket-id's side, with the allowed groups on patchu's client
     modules.security.sops.secrets.patchu-env.path = "/var/secrets/patchu-env";
 
     services.patchu = {
