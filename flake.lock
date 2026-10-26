@@ -973,6 +973,22 @@
     },
     "nixpkgs_5": {
       "locked": {
+        "lastModified": 1792773339,
+        "narHash": "sha256-rZLrzrC6i+jnTAlvPZHogKDulY7WWDEv9hJeHieO7Zw=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "3ec636362e1816bc2f0888fa0fa2c69f1bc9e504",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_6": {
+      "locked": {
         "lastModified": 1768127708,
         "narHash": "sha256-1Sm77VfZh3mU0F5OqKABNLWxOuDeHIlcFjsXeeiPazs=",
         "owner": "NixOS",
@@ -986,7 +1002,7 @@
         "type": "indirect"
       }
     },
-    "nixpkgs_6": {
+    "nixpkgs_7": {
       "locked": {
         "lastModified": 1785454630,
         "narHash": "sha256-LQy14TZp77TwbQf40gg1V3jo8FwJG0jGDkAH+zRHqg8=",
@@ -1002,7 +1018,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_7": {
+    "nixpkgs_8": {
       "locked": {
         "lastModified": 1790185690,
         "narHash": "sha256-xJ+X4hBtOcAFGBOe5nAMyMUeF9foJBmIOu3NjBqBycU=",
@@ -1018,7 +1034,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_8": {
+    "nixpkgs_9": {
       "locked": {
         "lastModified": 1785454630,
         "narHash": "sha256-LQy14TZp77TwbQf40gg1V3jo8FwJG0jGDkAH+zRHqg8=",
@@ -1122,6 +1138,25 @@
         "owner": "notashelf",
         "repo": "nvf",
         "type": "github"
+      }
+    },
+    "patchu": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_5"
+      },
+      "locked": {
+        "lastModified": 1792982823,
+        "narHash": "sha256-Y2BWAsMtjH2w0wqcBW8BfvqRlUEqVqh8ihMXfmgGxzE=",
+        "ref": "master",
+        "rev": "30c7d1d12a48ef706a426622d1b2b139810b5bcf",
+        "revCount": 44,
+        "type": "git",
+        "url": "https://git.orangc.net/c/patchu"
+      },
+      "original": {
+        "ref": "master",
+        "type": "git",
+        "url": "https://git.orangc.net/c/patchu"
       }
     },
     "pre-commit-hooks": {
@@ -1309,7 +1344,7 @@
     },
     "quickshell": {
       "inputs": {
-        "nixpkgs": "nixpkgs_5"
+        "nixpkgs": "nixpkgs_6"
       },
       "locked": {
         "lastModified": 1792214446,
@@ -1345,6 +1380,7 @@
         "noctalia": "noctalia",
         "notes-webpage": "notes-webpage",
         "nvf": "nvf",
+        "patchu": "patchu",
         "pyminaret": "pyminaret",
         "quickshell": "quickshell",
         "rose-pine-forgejo": "rose-pine-forgejo",
@@ -1463,7 +1499,7 @@
         "firefox-gnome-theme": "firefox-gnome-theme",
         "flake-parts": "flake-parts",
         "gnome-shell": "gnome-shell",
-        "nixpkgs": "nixpkgs_6",
+        "nixpkgs": "nixpkgs_7",
         "nur": "nur",
         "systems": "systems_4",
         "tinted-kitty": "tinted-kitty",
@@ -1844,7 +1880,7 @@
     "walker": {
       "inputs": {
         "elephant": "elephant",
-        "nixpkgs": "nixpkgs_7",
+        "nixpkgs": "nixpkgs_8",
         "systems": "systems_5"
       },
       "locked": {
@@ -1863,7 +1899,7 @@
     },
     "webpagc": {
       "inputs": {
-        "nixpkgs": "nixpkgs_8"
+        "nixpkgs": "nixpkgs_9"
       },
       "locked": {
         "lastModified": 1792694524,

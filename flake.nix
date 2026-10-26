@@ -103,6 +103,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # no nixpkgs.follows, for the same reason as webpagc below
+    patchu.url = "git+https://git.orangc.net/c/patchu?ref=master";
+
     # webpagc
     # no nixpkgs.follows: the site's pnpm deps hash depends on its own pinned nixpkgs
     webpagc.url = "git+https://git.orangc.net/c/webpage";
