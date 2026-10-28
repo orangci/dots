@@ -41,6 +41,9 @@
 
   services.tailscale.enable = true;
 
+  # read by the patchu-search script in the walker module
+  modules.security.sops.secrets.patchu-api-key.owner = "orangc";
+
   time.timeZone = "Asia/Riyadh";
   system.stateVersion = "26.05";
   # networking.nameservers = lib.mkForce [ "192.168.8.191" ];

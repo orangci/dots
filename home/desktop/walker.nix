@@ -1,5 +1,6 @@
 {
   config,
+  flakeSettings,
   lib,
   inputs,
   pkgs,
@@ -12,6 +13,45 @@ let
     ;
   cfg = config.hmModules.desktop.walker;
   colours = config.lib.stylix.colors.withHashtag;
+  # the key is a sops secret owned by orangc (see hosts/komashi/config.nix)
+  patchuSearch = pkgs.writeShellApplication {
+    name = "patchu-search";
+    runtimeInputs = with pkgs; [
+      curl
+      jq
+      wl-clipboard
+      libnotify
+      walker
+    ];
+    text = ''
+      host=https://patchu.${flakeSettings.domains.primary}
+      query=$(walker --dmenu --inputonly --placeholder "patchu search") || exit 0
+      [ -n "$query" ] || exit 0
+      # memes unless the query names a collection itself
+      case $query in
+        *collection:*) ;;
+        *) query="collection:memes $query" ;;
+      esac
+
+      key=$(< /run/secrets/patchu-api-key)
+      # same grammar as the app, defaults and all, since the server parses it
+      link=$(curl -fsS -G "$host/api/search" \
+        -H "Authorization: Bearer $key" \
+        --data-urlencode "q=$query" \
+        --data-urlencode "limit=1" \
+        | jq -r --arg host "$host" '.items[0] | if . == null then empty else (.public // ($host + .file)) end') || {
+        notify-send -a patchu "Search failed" "$query"
+        exit 1
+      }
+
+      if [ -z "$link" ]; then
+        notify-send -a patchu "No results" "$query"
+        exit 0
+      fi
+      wl-copy "$link"
+      notify-send -a patchu "Copied link" "$link"
+    '';
+  };
 in
 {
   imports = [ inputs.walker.homeManagerModules.default ];
@@ -33,6 +73,7 @@ in
         "SUPER, M, Launch Minecraft Instance, exec, walker -m minecraft"
         "SUPER, V, Open Clipboard, exec, walker -m clipboard"
         "SUPERSHIFT, V, Clear Clipboard, exec, walker --clear-clipboard"
+        "SUPERSHIFT, B, Patchu Search, exec, patchu-search"
       ];
     };
     wayland.windowManager.niri.settings = {
@@ -88,6 +129,10 @@ in
             "clipboard"
           ];
         };
+        "Mod+Shift+B" = {
+          _props.hotkey-overlay-title = "Patchu Search";
+          spawn = [ "patchu-search" ];
+        };
         "Mod+Shift+V" = {
           _props.hotkey-overlay-title = "Clear Clipboard";
           spawn = [
@@ -97,6 +142,7 @@ in
         };
       };
     };
+    home.packages = [ patchuSearch ];
     programs.walker = {
       enable = true;
       runAsService = true;
