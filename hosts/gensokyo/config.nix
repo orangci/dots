@@ -51,6 +51,7 @@ in
         "/var/lib/postgresql"
         "/var/lib/matrix-synapse"
         "/var/lib/davis"
+        "/var/lib/patchu"
         "/var/backup/vaultwarden"
         "/var/backups/takina"
       ];
