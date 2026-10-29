@@ -91,7 +91,7 @@ in
         ExecStart = "${script}/bin/ntfy-script-temperature";
         Restart = "always";
         RestartSec = 5;
-        User = "ntfy-sh";
+        DynamicUser = true;
         EnvironmentFile = config.modules.security.sops.secrets.ntfy-access-token.path;
       };
     };

@@ -36,11 +36,8 @@ in
     modules.security.sops.secrets.ntfy-env.path = "/var/secrets/ntfy-env";
     # This secret should contain
     # NTFY_ACCESS_TOKEN=abc123
-    modules.security.sops.secrets.ntfy-access-token = {
-      path = "/var/secrets/ntfy-access-token";
-      owner = "ntfy-sh";
-      group = "ntfy-sh";
-    };
+    # only read via EnvironmentFile, so it can stay root-owned
+    modules.security.sops.secrets.ntfy-access-token.path = "/var/secrets/ntfy-access-token";
 
     services.ntfy-sh = {
       enable = true;
