@@ -23,7 +23,7 @@ in
     services.kavita = {
       enable = true;
       settings.Port = cfg.port;
-      tokenKeyFile = config.modules.security.sops.secrets.kavita-token.path;
+      credentials.token_key = config.modules.security.sops.secrets.kavita-token.path;
     };
     # for downloading manga and for ebook-meta
     environment.systemPackages = [
