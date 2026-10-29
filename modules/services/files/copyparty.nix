@@ -107,12 +107,6 @@ in
         "/media/walls-catppuccin-mocha" = commonPerms // {
           path = "/srv/files/media/walls-catppuccin-mocha";
         };
-        "/media/memes" = commonPerms // {
-          path = "/srv/files/media/memes";
-        };
-        "/media/art" = commonPerms // {
-          path = "/srv/files/media/art";
-        };
       };
     };
   };
