@@ -22,6 +22,8 @@ in
     systemd.tmpfiles.rules = [ "d /var/lib/speedtest-tracker 0755 root root" ];
     virtualisation.oci-containers.containers.speedtest-tracker = {
       image = "lscr.io/linuxserver/speedtest-tracker:latest";
+      # pick up security fixes in :latest on restart instead of reusing a stale cached image
+      pull = "newer";
       volumes = [ "/var/lib/speedtest-tracker:/config" ];
       ports = [ "127.0.0.1:${toString cfg.port}:80" ];
       environmentFiles = [ config.modules.security.sops.secrets.speedtest-app-key.path ];

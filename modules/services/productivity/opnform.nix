@@ -38,6 +38,8 @@ let
 
   apiContainer = {
     image = "docker.io/jhumanj/opnform-api:latest";
+    # pick up security fixes in :latest on restart instead of reusing a stale cached image
+    pull = "newer";
     networks = singleton network;
     environmentFiles = singleton config.modules.security.sops.secrets.opnform-env.path;
     volumes = [
