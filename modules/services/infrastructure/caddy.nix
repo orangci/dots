@@ -63,7 +63,7 @@ in
           "github.com/caddy-dns/cloudflare@v0.2.4"
           "github.com/tailscale/caddy-tailscale@v0.0.0-20260106222316-bb080c4414ac"
         ];
-        hash = "sha256-xMj9CFM4BU+Ewwnt3sqvpRIAC1pJQDCVwfc+5EMDYKQ=";
+        hash = "sha256-K8nMnSWuwISv4rS8dDBz4mH91tVt6hq+xUc1t5n01nA=";
       };
       environmentFile = config.modules.security.sops.secrets.caddy-env.path;
       globalConfig = ''
