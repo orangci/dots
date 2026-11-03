@@ -147,8 +147,8 @@ in
         enable = true;
         feysac = {
           enable = true;
-          packCommit = "ac6c9436e849a04ac2d4dcb1fe3653a7ee4c95f2";
-          packHash = "sha256-5VhNX8UtIKBxBD9Iko4HBBsfQjEvgWDULS5TBSmqko0=";
+          packCommit = "8e22c3323b5f0939fc262ae03f4d63d369547879";
+          packHash = "sha256-xwwvKnxYHoLMludy2DcAvU0l3wLA89nbyDSfmZpy1wo=";
           maxRAM = 8;
           motd = "Mind the creepers (they're harmless now).";
           automatic-backups.enable = true;
