@@ -54,7 +54,7 @@ in
     motd = mkOption {
       type = types.str;
       default = "Powered by NixOS!";
-      example = "Mind the creepers (they're harmless now).";
+      example = "Lord of Mysteries";
       description = "The message of the day, shown under the server's name in the client's server list.";
     };
   };
@@ -120,6 +120,7 @@ in
       serverProperties = {
         motd = "§a§lFeysac§r\\n§b§o${cfg.motd}";
         server-name = "Feysac";
+        level-seed = "Feysac Empire";
         server-port = cfg.port;
         difficulty = "normal";
         gamemode = "survival";
