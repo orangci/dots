@@ -95,6 +95,11 @@ in
       '';
 
       operators.orangci.uuid = "dde112e5-25c7-4963-800c-aa23c3816dbc";
+      whitelist = {
+        orangci = "dde112e5-25c7-4963-800c-aa23c3816dbc";
+        Mrlion87 = "50772de2-2341-4dc7-9ef8-708742f6ffc1";
+        mythicalpengu = "9c054573-866c-4b09-89ab-f40c936a9ebd";
+      };
 
       serverProperties = {
         motd = "§a§lFeysac§r\\n§b§o${cfg.motd}";
@@ -104,7 +109,8 @@ in
         gamemode = "survival";
         max-players = 8;
         online-mode = true;
-        white-list = false;
+        white-list = true;
+        enforce-whitelist = true;
         enforce-secure-profile = false;
         spawn-protection = 0;
         pause-when-empty-seconds = 300;
