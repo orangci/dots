@@ -142,6 +142,18 @@ in
         ndg = enableServerModule 8813 { };
         fumos-net = enableServerModule 8835 { };
       };
+
+      gaming.minecraft = {
+        enable = true;
+        feysac = {
+          enable = true;
+          packCommit = "ac6c9436e849a04ac2d4dcb1fe3653a7ee4c95f2";
+          packHash = "sha256-5VhNX8UtIKBxBD9Iko4HBBsfQjEvgWDULS5TBSmqko0=";
+          maxRAM = 8;
+          motd = "Mind the creepers (they're harmless now).";
+          automatic-backups.enable = true;
+        };
+      };
     };
   };
 
