@@ -79,7 +79,11 @@ in
       autoStart = true;
       restart = "always";
       jvmOpts = "-Xms${toString cfg.minRAM}G -Xmx${toString cfg.maxRAM}G";
-      package = pkgs.fabricServers.fabric-26_3.override { loaderVersion = "0.20.1"; };
+      # nix-minecraft still wraps 26.x in java 21, which 26.x refuses
+      package = pkgs.fabricServers.fabric-26_3.override {
+        loaderVersion = "0.20.1";
+        jre_headless = pkgs.jdk25_headless;
+      };
 
       symlinks = {
         "mods" = "${packwiz}/mods";
