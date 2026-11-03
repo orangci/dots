@@ -91,6 +91,18 @@ in
         "resources/datapack/required" = "${packwiz}/resources/datapack/required";
       };
 
+      # carpet reads its rules from the world folder, not config/
+      files."world/carpet.conf" = pkgs.writeText "carpet.conf" ''
+        xpNoCooldown true
+        renewableSponges true
+        renewableCoral true
+        renewableDeepslate true
+        renewableBlackstone true
+        persistentParrots true
+        lightningKillsDropsFix true
+        desertShrubs true
+      '';
+
       extraStartPre = ''
         mkdir -p config
         if [ -d ${packwiz}/config ]; then
