@@ -53,7 +53,7 @@ in
 
     maxCPU = mkOption {
       type = types.int;
-      default = 4;
+      default = 5;
       description = "How many CPU threads' worth of time the server may use, enforced with systemd's `CPUQuota`. It keeps world generation from cooking the host.";
     };
 
@@ -118,13 +118,6 @@ in
         mkdir -p config
         if [ -d ${packwiz}/config ]; then
           cp -r --no-preserve=mode,ownership ${packwiz}/config/* config
-        fi
-        # distant horizons' lod generation otherwise pins every core it gets
-        if [ -f config/DistantHorizons.toml ]; then
-          ${pkgs.gnused}/bin/sed -i -E \
-            -e 's/^(\s*numberOfThreads = ).*/\12/' \
-            -e 's/^(\s*threadRunTimeRatio = ).*/\1"0.5"/' \
-            config/DistantHorizons.toml
         fi
       '';
 
