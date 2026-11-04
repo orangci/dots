@@ -147,8 +147,8 @@ in
         enable = true;
         feysac = {
           enable = true;
-          packCommit = "baa78b78faa1767918cca4a1abb86771d47bb090";
-          packHash = "sha256-acnJVCZFxLvcRmc4eCc0n7q3BWSmTF1frTe+d7SXs9k=";
+          packCommit = "72c447ee20b6b19533ee9be73c34e9b526c64e2f";
+          packHash = "sha256-dRsNlpFZH58pD6bLFEhMUN+kNTDMJK1SyaSofbWFaWQ=";
           maxRAM = 8;
           motd = "Lord of Mysteries";
           automatic-backups.enable = true;
