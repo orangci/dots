@@ -51,6 +51,12 @@ in
       description = "The most RAM the server may use (`-Xmx`), in gigabytes.";
     };
 
+    maxCPU = mkOption {
+      type = types.int;
+      default = 4;
+      description = "How many CPU threads' worth of time the server may use, enforced with systemd's `CPUQuota`. It keeps world generation from cooking the host.";
+    };
+
     motd = mkOption {
       type = types.str;
       default = "Powered by NixOS!";
@@ -72,6 +78,11 @@ in
       }
     ];
     nixpkgs.overlays = [ inputs.nix-minecraft.overlay ];
+
+    systemd.services.minecraft-server-feysac.serviceConfig = {
+      CPUQuota = "${toString (cfg.maxCPU * 100)}%";
+      Nice = 5;
+    };
 
     services.minecraft-servers.servers.feysac = {
       enable = true;
@@ -107,6 +118,13 @@ in
         mkdir -p config
         if [ -d ${packwiz}/config ]; then
           cp -r --no-preserve=mode,ownership ${packwiz}/config/* config
+        fi
+        # distant horizons' lod generation otherwise pins every core it gets
+        if [ -f config/DistantHorizons.toml ]; then
+          ${pkgs.gnused}/bin/sed -i -E \
+            -e 's/^(\s*numberOfThreads = ).*/\12/' \
+            -e 's/^(\s*threadRunTimeRatio = ).*/\1"0.5"/' \
+            config/DistantHorizons.toml
         fi
       '';
 
