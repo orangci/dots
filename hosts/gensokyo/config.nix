@@ -159,6 +159,9 @@ in
     };
   };
 
+  # the i7-6700 hits 100 °C under sustained load at its 4 ghz turbo
+  powerManagement.cpufreq.max = 3000000;
+
   programs.dconf.enable = true;
   # root evaluates the flake under sudo and needs to fetch private inputs
   programs.git = {
