@@ -151,7 +151,7 @@ in
           packHash = "sha256-rvtGf1G5S+V0Vfd9TasczDzmb882QNpymng7aUGTZVs=";
           maxRAM = 8;
           # pregen cooks the 4-core cpu at 5; raise it again once chunky is done
-          maxCPU = 3;
+          maxCPU = 4;
           motd = "Lord of Mysteries";
           automatic-backups.enable = true;
         };
@@ -160,7 +160,7 @@ in
   };
 
   # the i7-6700 hits 100 °C under sustained load at its 4 ghz turbo
-  powerManagement.cpufreq.max = 3000000;
+  powerManagement.cpufreq.max = 3200000;
 
   programs.dconf.enable = true;
   # root evaluates the flake under sudo and needs to fetch private inputs
