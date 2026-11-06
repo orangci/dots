@@ -150,6 +150,8 @@ in
           packCommit = "92967bf096479dddc2573d8aa2d7b63287a5d533";
           packHash = "sha256-rvtGf1G5S+V0Vfd9TasczDzmb882QNpymng7aUGTZVs=";
           maxRAM = 8;
+          # pregen cooks the 4-core cpu at 5; raise it again once chunky is done
+          maxCPU = 3;
           motd = "Lord of Mysteries";
           automatic-backups.enable = true;
         };
