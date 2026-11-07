@@ -134,6 +134,8 @@ in
         "resources/datapack/required" = "${packwiz}/resources/datapack/required";
       };
 
+      files."server-icon.png" = ./server-icon.png;
+
       # carpet reads its rules from the world folder, not config/
       files."world/carpet.conf" = pkgs.writeText "carpet.conf" ''
         xpNoCooldown true
