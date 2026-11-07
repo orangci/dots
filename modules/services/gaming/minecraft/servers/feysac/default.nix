@@ -111,6 +111,9 @@ in
     modules.services.infrastructure.cloudflared.ingress."${cfg.map.subdomain}.${flakeSettings.domains.primary}" =
       "http://localhost:${toString cfg.map.port}";
 
+    # simple voice chat, which audioplayer plays its discs and horns through
+    networking.firewall.allowedUDPPorts = [ 24454 ];
+
     systemd.services.minecraft-server-feysac.serviceConfig = {
       CPUQuota = "${toString (cfg.maxCPU * 100)}%";
       Nice = 5;
