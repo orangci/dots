@@ -147,8 +147,8 @@ in
         enable = true;
         feysac = {
           enable = true;
-          packCommit = "92967bf096479dddc2573d8aa2d7b63287a5d533";
-          packHash = "sha256-rvtGf1G5S+V0Vfd9TasczDzmb882QNpymng7aUGTZVs=";
+          packCommit = "b31361a25fd99b8314f023e762cb4326c55daa00";
+          packHash = "sha256-2XhJBs09OsASfo4QBI4Pp6ZWl+sruZDzAMQiAga2OLI=";
           maxRAM = 8;
           # pregen cooks the 4-core cpu at 5; raise it again once chunky is done
           maxCPU = 4;
