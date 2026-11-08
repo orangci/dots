@@ -82,7 +82,8 @@
     programs = {
       claude.enable = true;
       browsers.firefox.enable = true;
-      better-control.enable = true;
+      # off until nixpkgs fixes its wrapper (makeCWrapper chokes on gappsWrapperArgs)
+      better-control.enable = false;
       thunderbird.enable = true;
       typst.enable = true;
       office.enable = true;
