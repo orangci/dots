@@ -1188,11 +1188,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1792306491,
-        "narHash": "sha256-iwsCQ438lFECm0+c9/HzlAWKsdumT7gKKrds5eNM4Xk=",
+        "lastModified": 1794155101,
+        "narHash": "sha256-dfm/e2+5gk+HnCvVdAMjXLB22wUC/elBXd9HrJkvosU=",
         "ref": "refs/heads/main",
-        "rev": "20f55c68dce105e7e664dc7176b58b17dc9dc1f4",
-        "revCount": 26,
+        "rev": "93a73d68c82e0e6ada3a6fc95a65f1bf125b3d17",
+        "revCount": 27,
         "type": "git",
         "url": "https://git.orangc.net/c/pyminaret"
       },
