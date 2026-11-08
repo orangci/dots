@@ -44,6 +44,9 @@
   # read by the patchu-search script in the walker module
   modules.security.sops.secrets.patchu-api-key.owner = "orangc";
 
+  # compressed swap in ram, so a busy firefox and minecraft squeeze instead of the oom killer stepping in
+  zramSwap.enable = true;
+
   time.timeZone = "Asia/Riyadh";
   system.stateVersion = "26.05";
   # networking.nameservers = lib.mkForce [ "192.168.8.191" ];
