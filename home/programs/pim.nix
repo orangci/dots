@@ -211,7 +211,7 @@ in
         type = discover
 
         [default]
-        default_calendar = default
+        default_calendar = Personal
         highlight_event_days = True
 
         [locale]
@@ -229,6 +229,7 @@ in
         time_format = "%H:%M"
         humanize = False
         default_due = 0
+        default_list = "Personal"
       '';
     };
 
