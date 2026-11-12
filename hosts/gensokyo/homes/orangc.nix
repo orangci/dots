@@ -13,6 +13,10 @@
     programs.editors.micro.enable = true;
     programs.typst.enable = true;
     programs.claude.enable = true;
+    programs.pim = {
+      enable = true;
+      brief.enable = true;
+    };
     security.gnupg.enable = true;
     dev = {
       python = {

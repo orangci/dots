@@ -31,6 +31,7 @@
     security.sudo-rs.enable = true;
     security.sops.enable = true;
     programs.syncthing.enable = true;
+    programs.pim.enable = true;
     gaming = {
       wine.enable = true;
       lutris.enable = true;

@@ -81,6 +81,7 @@
     };
     programs = {
       claude.enable = true;
+      pim.enable = true;
       browsers.firefox.enable = true;
       # off until nixpkgs fixes its wrapper (makeCWrapper chokes on gappsWrapperArgs)
       better-control.enable = false;

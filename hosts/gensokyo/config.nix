@@ -37,6 +37,10 @@ in
     hardware.drivers.intel.enable = true;
     hardware.btrfs.enable = true;
     programs.syncthing.enable = true;
+    programs.pim = {
+      enable = true;
+      linger = true;
+    };
     security.sops.enable = true;
     security.sudo-rs.enable = true;
     security.restic = {
