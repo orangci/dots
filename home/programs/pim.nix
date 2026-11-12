@@ -67,7 +67,8 @@ let
       todo --porcelain list --sort due 2>/dev/null | jq -r '
         .[:60][] | "- [\(.list)] \(.summary)"
           + (if .due then " (due \(.due | strflocaltime("%Y-%m-%d %H:%M")))" else "" end)
-          + (if (.priority // 0) > 0 then " (priority \(.priority))" else "" end)
+          # icalendar priorities run backwards: 1 is the highest, 9 the lowest
+          + ({"1":" (high)","2":" (high)","3":" (high)","4":" (high)","5":" (medium)"}[(.priority // 0) | tostring] // "")
       ' || echo "(unavailable)"
 
       # headers only: bodies stay home
