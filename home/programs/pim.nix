@@ -153,8 +153,8 @@ let
       systemd
     ];
     text = ''
-      # the ntfy-access-token secret holds NTFY_ACCESS_TOKEN=...
-      token=$(sed -n 's/^NTFY_ACCESS_TOKEN=//p' ${secrets}/ntfy-token)
+      # the ntfy-access-token secret holds NTFY_TOKEN=... (or NTFY_ACCESS_TOKEN=...)
+      token=$(sed -nE 's/^NTFY_(ACCESS_)?TOKEN=//p' ${secrets}/ntfy-token)
       curl -fsS -u ":$token" -H "t: Morning brief failed" -H "p: high" -H "ta: newspaper" \
         --data-binary "$(journalctl --user -u pim-brief -n 6 -o cat --no-pager)" \
         "https://ntfy.${flakeSettings.domains.primary}/${cfg.brief.ntfyTopic}" >/dev/null
