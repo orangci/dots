@@ -145,6 +145,22 @@ let
     Style: terse, British English, 24-hour time, no closing summary, no preamble. Output only the document.
   '';
 
+  pimBriefFailed = pkgs.writeShellApplication {
+    name = "pim-brief-failed";
+    runtimeInputs = with pkgs; [
+      curl
+      gnused
+      systemd
+    ];
+    text = ''
+      # the ntfy-access-token secret holds NTFY_ACCESS_TOKEN=...
+      token=$(sed -n 's/^NTFY_ACCESS_TOKEN=//p' ${secrets}/ntfy-token)
+      curl -fsS -u ":$token" -H "t: Morning brief failed" -H "p: high" -H "ta: newspaper" \
+        --data-binary "$(journalctl --user -u pim-brief -n 6 -o cat --no-pager)" \
+        "https://ntfy.${flakeSettings.domains.primary}/${cfg.brief.ntfyTopic}" >/dev/null
+    '';
+  };
+
   pimBrief = pkgs.writeShellApplication {
     name = "pim-brief";
     runtimeInputs = [
@@ -164,12 +180,16 @@ let
       pim-sync || echo "pim-sync had trouble, carrying on with what's local" >&2
 
       # no tools and no mcp: the model only reads the gathered text, so a cheeky mail can't make it do anything
-      pim-gather | claude -p "$(cat ${briefPrompt})" \
+      if ! pim-gather | claude -p "$(cat ${briefPrompt})" \
         --model ${cfg.brief.model} \
         --tools "" \
         --strict-mcp-config \
         --no-session-persistence \
-        > "$tmp"
+        > "$tmp"; then
+        # claude reports errors on stdout, which would otherwise vanish with $tmp
+        cat "$tmp" >&2
+        exit 1
+      fi
 
       [ -s "$tmp" ] || { echo "empty brief, leaving the old one be" >&2; exit 1; }
       cp "$tmp" "${briefDir}/briefs/$today.md"
@@ -195,6 +215,12 @@ in
         default = "06:30";
         example = "07:15";
         description = "When the brief is written each day, in systemd's `OnCalendar` time format.";
+      };
+      ntfyTopic = mkOption {
+        type = types.str;
+        default = "services";
+        example = "brief";
+        description = "The ntfy topic told when the brief fails to be written. Needs `modules.programs.pim.ntfy` on the host.";
       };
       model = mkOption {
         type = types.str;
@@ -306,6 +332,13 @@ in
 
     systemd.user = {
       services = {
+        pim-brief-failed = mkIf cfg.brief.enable {
+          Unit.Description = "Tell ntfy the morning brief failed";
+          Service = {
+            Type = "oneshot";
+            ExecStart = "${pimBriefFailed}/bin/pim-brief-failed";
+          };
+        };
         pim-sync = {
           Unit.Description = "Sync calendars, todos and mail";
           Service = {
@@ -314,7 +347,10 @@ in
           };
         };
         pim-brief = mkIf cfg.brief.enable {
-          Unit.Description = "Write the morning brief";
+          Unit = {
+            Description = "Write the morning brief";
+            OnFailure = [ "pim-brief-failed.service" ];
+          };
           Service = {
             Type = "oneshot";
             ExecStart = "${pimBrief}/bin/pim-brief";

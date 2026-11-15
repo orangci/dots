@@ -40,6 +40,7 @@ in
     programs.pim = {
       enable = true;
       linger = true;
+      ntfy = true;
     };
     security.sops.enable = true;
     security.sudo-rs.enable = true;
