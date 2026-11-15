@@ -61,9 +61,12 @@ let
       echo "now: $(date '+%A %Y-%m-%d %H:%M %Z')"
 
       echo; echo "## calendar (today and the next 7 days)"
-      khal list --day-format '### {name} {date}' \
-        --format '{start-end-time-style} {title}{repeat-symbol} {location}' today 8d \
-        || echo "(unavailable)"
+      if events=$(khal list --day-format '### {name} {date}' \
+        --format '{start-end-time-style} {title}{repeat-symbol} {location}' today 8d); then
+        echo "''${events:-(no events)}"
+      else
+        echo "(unavailable)"
+      fi
 
       echo; echo "## todos (all incomplete)"
       todo --porcelain list --sort due 2>/dev/null | jq -r '
@@ -88,19 +91,20 @@ let
         news=$(miniflux categories | jq -r '.[] | select(.title == "${newsCategory}") | .id')
 
         echo; echo "## feeds (unread miniflux entries, news excluded)"
+        # per category, so a flood of unread news can't crowd the blogs out
         {
-          news_unread=$(miniflux "categories/$news/entries?status=unread&limit=1" | jq .total)
-          miniflux "entries?status=unread&order=published_at&direction=desc&limit=150" \
-            | jq -r --argjson news_unread "$news_unread" '
-              "unread: \(.total - $news_unread)",
-              ([.entries[] | select(.feed.category.title != "${newsCategory}")][:80][] | "- [\(.feed.title)] \(.title) <\(.url)>")
-            '
+          for id in $(miniflux categories | jq -r '.[] | select(.title != "${newsCategory}") | .id'); do
+            miniflux "categories/$id/entries?status=unread&order=published_at&direction=desc&limit=80"
+          done | jq -rs '
+            "unread: \(map(.total) | add // 0)",
+            (map(.entries) | add // [] | sort_by(.published_at) | reverse | .[:80][] | "- [\(.feed.title)] \(.title) <\(.url)>")
+          '
         } || echo "(unavailable)"
 
         # by date rather than read status, so a missed morning doesn't pile up
         echo; echo "## news (published in the last 24 hours)"
         miniflux "categories/$news/entries?published_after=$(date -d '24 hours ago' +%s)&order=published_at&direction=desc&limit=300" \
-          | jq -r '.entries | unique_by(.url) | sort_by(.published_at) | reverse | .[] | "- [\(.feed.title)] \(.title) <\(.url)>\n  \(.content | gsub("<[^>]*>"; "") | gsub("\\s+"; " ") | .[:280])"' \
+          | jq -r '.entries | unique_by(.url) | sort_by(.published_at) | reverse | .[] | "- [\(.feed.title)] \(.title) <\(.url | sub("\\?.*$"; ""))>\n  \(.content | gsub("<[^>]*>"; "") | gsub("\\s+"; " ") | .[:280])"' \
           || echo "(unavailable)"
       else
         echo; echo "## feeds and news"
@@ -111,7 +115,7 @@ let
       if token=$(secret forgejo-token) && [ -n "$token" ]; then
         curl -fsS -H "Authorization: token $token" \
           "https://git.${flakeSettings.domains.primary}/api/v1/notifications?status-types=unread&limit=50" \
-          | jq -r '.[] | "- [\(.repository.full_name)] \(.subject.type) \(.subject.state // ""): \(.subject.title) <\(.subject.html_url)>"' \
+          | jq -r 'if length == 0 then "(none)" else .[] | "- [\(.repository.full_name)] \(.subject.type) \(.subject.state // ""): \(.subject.title) <\(.subject.html_url)>" end' \
           || echo "(unavailable)"
       else
         echo "(no token)"
