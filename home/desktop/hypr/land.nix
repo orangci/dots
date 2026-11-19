@@ -11,8 +11,13 @@ let
     mkIf
     getExe
     singleton
+    optional
+    optionals
     ;
   cfg = config.hmModules.desktop.hypr.land;
+  # perucia brings its own media, volume and brightness keys, alt-tab, colour picker and
+  # polkit agent
+  perucia = config.hmModules.desktop.perucia.enable;
   hypr = lib.my.hyprlandLua;
 in
 {
@@ -49,24 +54,21 @@ in
           "MOZ_ENABLE_WAYLAND,1"
         ];
 
-        on = map hypr.onStart [
-          "dbus-update-activation-environment --systemd --all"
-          "systemctl --user import-environment QT_QPA_PLATFORMTHEME WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
-          "lxqt-policykit-agent"
-          "waybar"
-          "${
-            getExe inputs.pyminaret.packages.${pkgs.stdenv.hostPlatform.system}.default
-          } --city Riyadh --country SA"
-        ];
+        on = map hypr.onStart (
+          [
+            "dbus-update-activation-environment --systemd --all"
+            "systemctl --user import-environment QT_QPA_PLATFORMTHEME WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
+            "${
+              getExe inputs.pyminaret.packages.${pkgs.stdenv.hostPlatform.system}.default
+            } --city Riyadh --country SA"
+          ]
+          ++ optional config.hmModules.desktop.waybar.enable "waybar"
+          ++ optional (!perucia) "lxqt-policykit-agent"
+        );
 
         bind =
           hypr.bindd [
             "SUPER, E, Open File Manager, exec, thunar"
-            "SUPERALT, C, Colour Picker, exec, ${getExe pkgs.hyprpicker} -a"
-            "SUPERSHIFT, M, Mute Microphone, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
-            "SUPER, P, Pause Media, exec, playerctl play-pause"
-            "SUPERSHIFT, P, Next Media, exec, playerctl next"
-            "SUPERALT, P, Previous Media, exec, playerctl previous"
             "SUPERSHIFT, SPACE, Move To Special Workspace, movetoworkspace,special"
             "SUPER, SPACE, Open Special Workspace, togglespecialworkspace"
             "SUPER, B, Blur/Unblur Current Window, exec, hyprctl dispatch 'hl.dsp.window.set_prop({ prop = \"no_blur\", value = \"toggle\" })'"
@@ -83,14 +85,29 @@ in
             "SUPERSHIFT, down, Move Window Down, movewindow,d"
             ",mouse:275, Scroll Workspace Forward, workspace, e+1"
             ",mouse:276,Scroll Workspace Backward, workspace, e-1"
-            "ALT,Tab, Cycle To Next Window, cyclenext"
-            ",XF86AudioMute, Mute Microphone, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
-            ",XF86AudioPlay, Play Media, exec, playerctl play-pause"
-            ",XF86AudioPause, Pause Media, exec, playerctl play-pause"
-            ",XF86AudioNext, Next Media, exec, playerctl next"
-            ",XF86AudioPrev, Previous Media, exec, playerctl previous"
             ",XF86Mail, Open Special Workspace, togglespecialworkspace"
           ]
+          ++ optionals (!perucia) (
+            hypr.bindd [
+              "SUPERALT, C, Colour Picker, exec, ${getExe pkgs.hyprpicker} -a"
+              "ALT, Tab, Cycle To Next Window, cyclenext"
+              "SUPERSHIFT, M, Mute Microphone, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+              "SUPER, P, Pause Media, exec, playerctl play-pause"
+              "SUPERSHIFT, P, Next Media, exec, playerctl next"
+              "SUPERALT, P, Previous Media, exec, playerctl previous"
+              ",XF86AudioMute, Mute Microphone, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+              ",XF86AudioPlay, Play Media, exec, playerctl play-pause"
+              ",XF86AudioPause, Pause Media, exec, playerctl play-pause"
+              ",XF86AudioNext, Next Media, exec, playerctl next"
+              ",XF86AudioPrev, Previous Media, exec, playerctl previous"
+            ]
+            ++ hypr.bindde [
+              ",XF86AudioRaiseVolume, Raise Volume, exec,  wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
+              ",XF86AudioLowerVolume, Lower Volume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+              ",XF86MonBrightnessDown, Raise Brightness, exec, brightnessctl set 5%-"
+              ",XF86MonBrightnessUp, Lower Brightness, exec, brightnessctl set +5%"
+            ]
+          )
           ++
             # workspaces: binds SUPER + [shift +] {1..9} to [move to] workspace {1..9}
             (hypr.bindd (
@@ -116,10 +133,6 @@ in
             "SUPERCONTROL,left, Switch To Left Workspace, workspace,e-1"
             "SUPER, mouse_down, Switch To Right Workspace, workspace, e+1"
             "SUPER, mouse_up, Switch To Left Workspace, workspace, e-1"
-            ",XF86AudioRaiseVolume, Raise Volume, exec,  wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
-            ",XF86AudioLowerVolume, Lower Volume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
-            ",XF86MonBrightnessDown, Raise Brightness, exec, brightnessctl set 5%-"
-            ",XF86MonBrightnessUp, Lower Brightness, exec, brightnessctl set +5%"
           ];
 
         monitor = [

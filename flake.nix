@@ -121,6 +121,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # the desktop shell, by yours truly
+    perucia = {
+      url = "git+https://git.orangc.net/c/perucia";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # prayer time notifications
     pyminaret = {
       url = "git+https://git.orangc.net/c/pyminaret";

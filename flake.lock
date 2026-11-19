@@ -1159,6 +1159,26 @@
         "url": "https://git.orangc.net/c/patchu"
       }
     },
+    "perucia": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1795093010,
+        "narHash": "sha256-f7dCy7CUjEZwJEG9epuSKcQdlKhbnO99YmH1vetEGHo=",
+        "ref": "refs/heads/master",
+        "rev": "6b84204af2422f1d40a1a5ee39df3d09ebebd8cc",
+        "revCount": 168,
+        "type": "git",
+        "url": "https://git.orangc.net/c/perucia"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://git.orangc.net/c/perucia"
+      }
+    },
     "pre-commit-hooks": {
       "inputs": {
         "flake-compat": "flake-compat_2",
@@ -1381,6 +1401,7 @@
         "notes-webpage": "notes-webpage",
         "nvf": "nvf",
         "patchu": "patchu",
+        "perucia": "perucia",
         "pyminaret": "pyminaret",
         "quickshell": "quickshell",
         "rose-pine-forgejo": "rose-pine-forgejo",

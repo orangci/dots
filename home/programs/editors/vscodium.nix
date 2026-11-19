@@ -61,7 +61,7 @@ in
         "ruff.lineLength" = 150;
         "ruff.configurationPreference" = "filesystemFirst";
         "workbench.iconTheme" = "material-icon-theme";
-        "workbench.colorTheme" = "Rosé Pine";
+        "workbench.colorTheme" = if config.hmModules.desktop.perucia.enable then "perucia" else "Rosé Pine";
         "workbench.startupEditor" = "none";
         "[python]" = {
           "editor.formatOnSave" = true;
