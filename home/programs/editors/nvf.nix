@@ -11,7 +11,7 @@ let
   cfg = config.hmModules.programs.editors.nvf;
 in
 {
-  imports = singleton inputs.nvf.homeManagerModules.default;
+  imports = singleton inputs.nvf.homeModules.default;
   options.hmModules.programs.editors.nvf.enable = mkEnableOption "neovim with nvf";
 
   config = mkIf cfg.enable {
