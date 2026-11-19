@@ -41,33 +41,12 @@
       };
     };
     desktop = {
-      hypr = {
-        land.enable = true;
-        lock.enable = true;
-      };
-      waybar.enable = true;
-      swaync.enable = true;
-      walker.enable = true;
-      syshud.enable = true;
-      clipboard.enable = true;
-      xcompose.enable = true;
+      hypr.land.enable = true;
+      # in place of waybar, swaync, walker, syshud, cliphist, hyprlock, wleave, walls and
+      # the screenshot, screenrec and cheatsheet scripts
+      perucia.enable = true;
       patchuSearch.enable = true;
-      cheatsheet.enable = true;
-      screenshot.enable = true;
-      wleave = {
-        enable = true;
-        horizontal = true;
-      };
-      screenrec = {
-        enable = true;
-        fileFormat = "mov";
-        timestampFormat = "%y-%b-%d_%H.%M.%S";
-        quality = "very_high";
-        encoder = "gpu";
-        showCursor = "yes";
-        framerate = 60;
-        codec = "auto";
-      };
+      xcompose.enable = true;
     };
     dev = {
       python = {
@@ -113,10 +92,6 @@
       fonts.enable = true;
       gtk.enable = true;
       qt.enable = true;
-      walls = {
-        enable = true;
-        timeout = 20;
-      };
       stylix = {
         enable = true;
         # Choose from https://tinted-theming.github.io/tinted-gallery/
