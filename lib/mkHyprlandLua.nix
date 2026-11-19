@@ -13,6 +13,7 @@ let
     SUPERALT = "SUPER + ALT";
     SUPERSHIFT = "SUPER + SHIFT";
     SUPERCONTROL = "SUPER + CTRL";
+    ALTSHIFT = "ALT + SHIFT";
     "SUPER SHIFT" = "SUPER + SHIFT";
   };
 
@@ -54,6 +55,8 @@ let
         "hl.dsp.window.alter_zorder({ mode = \"top\" })"
       else if dispatcher == "togglefloating" then
         "hl.dsp.window.float({ action = \"toggle\" })"
+      else if dispatcher == "global" then
+        "hl.dsp.global(${json argument})"
       else
         throw "Unsupported legacy Hyprland dispatcher: ${dispatcher}"
     );
