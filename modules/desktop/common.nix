@@ -20,6 +20,8 @@ in
 
     security = {
       rtkit.enable = true;
+      # setuid pkexec, for a polkit agent's (perucia's, say) "run as root" dialogs
+      polkit.enablePkexecWrapper = true;
       # let logged in users reboot and power off without a password
       polkit.extraConfig = ''
         polkit.addRule(function(action, subject) {
