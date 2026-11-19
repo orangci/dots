@@ -61,9 +61,9 @@ in
       package = pkgs.caddy.withPlugins {
         plugins = [
           "github.com/caddy-dns/cloudflare@v0.2.4"
-          "github.com/tailscale/caddy-tailscale@v0.0.0-20260106222316-bb080c4414ac"
+          "github.com/tailscale/caddy-tailscale@v0.0.0-20260826180304-de41b249af4f"
         ];
-        hash = "sha256-fd6pRjAcUPkNejYc2miZotzq1VQcRwI2rOI7x6kkSRQ=";
+        hash = "sha256-Wi8ZqTvfF7wHlQIAtbf8idQablS5TDEvtpjOc+s8LMw=";
       };
       environmentFile = config.modules.security.sops.secrets.caddy-env.path;
       globalConfig = ''
