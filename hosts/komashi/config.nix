@@ -42,7 +42,7 @@
 
   services.tailscale.enable = true;
 
-  # read by the patchu-search script in the walker module
+  # read by patchu-search (home/desktop/patchu-search.nix)
   modules.security.sops.secrets.patchu-api-key.owner = "orangc";
 
   # compressed swap in ram, so a busy firefox and minecraft squeeze instead of the oom killer stepping in

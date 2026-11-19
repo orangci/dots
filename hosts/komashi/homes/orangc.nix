@@ -51,6 +51,7 @@
       syshud.enable = true;
       clipboard.enable = true;
       xcompose.enable = true;
+      patchuSearch.enable = true;
       cheatsheet.enable = true;
       screenshot.enable = true;
       wleave = {
