@@ -323,7 +323,7 @@ in
       mbsync.enable = true;
       notmuch = {
         enable = true;
-        new.tags = [
+        settings.new.tags = [
           "unread"
           "inbox"
         ];
