@@ -45,6 +45,8 @@
       # in place of waybar, swaync, walker, syshud, cliphist, hyprlock, wleave, walls and
       # the screenshot, screenrec and cheatsheet scripts
       perucia.enable = true;
+      # copy and paste for the shell; perucia keeps the history
+      clipboard.enable = true;
       patchuSearch.enable = true;
       xcompose.enable = true;
     };
