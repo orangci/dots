@@ -277,7 +277,8 @@ in
           "gfx.webrender.all" = true;
           "svg.context-properties.content.enabled" = true;
         };
-        userChrome = ''
+        # perucia writes userChrome.css itself when it's on
+        userChrome = mkIf (!config.hmModules.desktop.perucia.enable) ''
           #firefox-view-button,
           #alltabs-button,
           .titlebar-close,

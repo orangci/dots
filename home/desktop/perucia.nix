@@ -31,6 +31,35 @@ in
         };
         # pyminaret already announces each prayer; perucia's reminders before it stay
         prayer.notify = false;
+        # firefox's clutter, which perucia's userChrome hides
+        apps.firefoxHide = [
+          "#firefox-view-button"
+          "#alltabs-button"
+          ".titlebar-spacer"
+          ".titlebar-close"
+          "#reader-mode-button"
+          ".tab-close-button"
+          "#tracking-protection-icon-container"
+          "#tabs-newtab-button"
+          ".bookmark-item .toolbarbutton-icon"
+          "#context-navigation"
+          "#context-sep-navigation"
+          "#context-savepage"
+          "#context-bookmarklink"
+          "#context-savelink"
+          "#context-inspect-a11y"
+          "#context-undo"
+          "#context-redo"
+          "#context-sep-redo"
+          "#context-cut"
+          "#context-copy"
+          "#context-paste"
+          "#context-delete"
+          "#context-selectall"
+          "#context-sep-selectall"
+          "#spell-check-enabled"
+          "#context-sep-bidi"
+        ];
         # what the old cheatsheet left off
         cheatsheet.hide = [
           "Move Focus"
