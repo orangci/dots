@@ -1166,11 +1166,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1795093010,
-        "narHash": "sha256-f7dCy7CUjEZwJEG9epuSKcQdlKhbnO99YmH1vetEGHo=",
+        "lastModified": 1795179933,
+        "narHash": "sha256-NHELTVpqwWtAeYbM/upY3zC7RWFK/NLLfY8gBHJHSpU=",
         "ref": "refs/heads/master",
-        "rev": "6b84204af2422f1d40a1a5ee39df3d09ebebd8cc",
-        "revCount": 168,
+        "rev": "4c426592bf3be147b27bcbf5564df9e10f8ea982",
+        "revCount": 175,
         "type": "git",
         "url": "https://git.orangc.net/c/perucia"
       },
