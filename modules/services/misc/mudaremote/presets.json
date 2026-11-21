@@ -236,7 +236,7 @@
         "kakera_filter_match_mode": "any",
         "loot_mode": "off",
         "rolling": true,
-        "use_slash_rolls": false,
+        "use_slash_rolls": true,
         "pause_on_key_limit": true,
         "snipe_mode": true,
         "snipe_ignore_min_kakera_reset": false,
