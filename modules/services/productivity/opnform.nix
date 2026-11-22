@@ -121,7 +121,8 @@ in
     systemd.tmpfiles.rules = [
       "d /var/lib/opnform 0755 root root -"
       "d /var/lib/opnform/storage 0777 root root -"
-      "d /var/lib/opnform/redis 0755 root root -"
+      # 999 is the redis user inside the image; tmpfiles re-asserts this, so root here undoes the entrypoint's chown
+      "d /var/lib/opnform/redis 0750 999 999 -"
     ];
 
     systemd.services = {
