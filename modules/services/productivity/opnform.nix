@@ -32,6 +32,7 @@ let
         env SCRIPT_NAME /index.php
         env REQUEST_URI {http.request.uri}
         env HTTPS on
+        env REMOTE_ADDR {client_ip}
       }
     }
   '';
@@ -102,6 +103,15 @@ in
       assertion = config.modules.services.databases.postgresql.enable;
       message = "OpnForm requires modules.services.databases.postgresql.enable to be set to true.";
     };
+
+    # every way in reaches this port from localhost, so caddy resolves the real client ip and hands it
+    # to php-fpm as REMOTE_ADDR. opnform itself only trusts X-Forwarded-For with TRUSTED_PROXIES set
+    services.caddy.globalConfig = ''
+      servers :${toString cfg.port} {
+        trusted_proxies static 127.0.0.1/8 ::1
+        client_ip_headers CF-Connecting-IP X-Forwarded-For
+      }
+    '';
 
     # cloudflared, tailscale and the main domains all point at this port, so the routing lives here
     modules.services.infrastructure.caddy.virtualHosts.":${toString cfg.port}".extraConfig = ''
