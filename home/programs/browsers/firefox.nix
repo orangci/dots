@@ -173,7 +173,7 @@ in
           "app.normandy.enabled" = false;
           "app.shield.optoutstudies.enabled" = false;
           "app.update.auto" = false;
-          "beacon.enabled" = false;
+          "beacon.enabled" = true;
           "breakpad.reportURL" = "";
           "browser.aboutConfig.showWarning" = false;
           "browser.crashReports.unsubmittedCheck.autoSubmit" = false;
@@ -224,21 +224,24 @@ in
           "extensions.shield-recipe-client.enabled" = false;
           "media.autoplay.default" = 0;
           "media.autoplay.enabled" = true;
-          "media.eme.enabled" = false;
-          "media.gmp-widevinecdm.enabled" = false;
-          "media.navigator.enabled" = false;
+          "media.eme.enabled" = true;
+          "media.gmp-widevinecdm.enabled" = true;
+          "media.navigator.enabled" = true;
           "media.video_stats.enabled" = false;
           "network.allow-experiments" = false;
           "network.captive-portal-service.enabled" = false;
-          "network.cookie.cookieBehavior" = 1;
+          "network.cookie.cookieBehavior" = 5; # total cookie protection
           "network.dns.disablePrefetch" = true;
           "network.dns.disablePrefetchFromHTTPS" = true;
-          "network.http.referer.spoofSource" = true;
+          "network.http.referer.spoofSource" = false;
           "network.http.speculative-parallel-limit" = 0;
           "network.predictor.enable-prefetch" = false;
           "network.predictor.enabled" = false;
           "network.prefetch-next" = false;
           "network.trr.mode" = 5;
+          # firefox's own fingerprinting protection, canvas noise and all, in normal windows too
+          "privacy.fingerprintingProtection" = true;
+          "privacy.fingerprintingProtection.overrides" = "+CanvasRandomization";
           "privacy.donottrackheader.enabled" = true;
           "privacy.donottrackheader.value" = 1;
           "privacy.query_stripping" = true;
@@ -247,7 +250,7 @@ in
           "privacy.trackingprotection.fingerprinting.enabled" = true;
           "privacy.trackingprotection.pbmode.enabled" = true;
           "privacy.usercontext.about_newtab_segregation.enabled" = true;
-          "security.ssl.disable_session_identifiers" = true;
+          "security.ssl.disable_session_identifiers" = false;
           "services.sync.prefs.sync.browser.newtabpage.activity-stream.showSponsoredTopSite" = false;
           "signon.autofillForms" = false;
           "toolkit.telemetry.archive.enabled" = false;
@@ -265,9 +268,7 @@ in
           "toolkit.telemetry.unified" = false;
           "toolkit.telemetry.unifiedIsOptIn" = false;
           "toolkit.telemetry.updatePing.enabled" = false;
-          "webgl.disabled" = true;
-          "webgl.renderer-string-override" = "";
-          "webgl.vendor-string-override" = "";
+          "webgl.disabled" = false;
           "browser.download.always_ask_before_handling_new_types" = true;
           "browser.download.dir" = config.xdg.userDirs.download;
           "browser.startup.page" = 3; # this is the settings that makes it so that you always open with the tabs you had open when you closed firefox. change to 1 for normalcy
@@ -413,12 +414,6 @@ in
           # tampermonkey:
           "firefox@tampermonkey.net" = {
             install_url = "https://addons.mozilla.org/firefox/downloads/latest/tampermonkey/latest.xpi";
-            installation_mode = "force_installed";
-          };
-
-          # canvasblocker:
-          "CanvasBlocker@kkapsner.de" = {
-            install_url = "https://addons.mozilla.org/firefox/downloads/latest/canvasblocker/latest.xpi";
             installation_mode = "force_installed";
           };
 
