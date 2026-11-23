@@ -66,6 +66,8 @@ in
         rofi.enable = false;
         hyprland.enable = false;
         kde.enable = false;
+        # stylix still themes it but nixpkgs removed the module
+        wayprompt.enable = false;
         firefox.colorTheme.enable = true;
         # firefox.enable = false;
         firefox.profileNames = [ config.home.username ];
