@@ -32,7 +32,7 @@ in
         WorkingDirectory = mudaremote;
         ExecStart = pkgs.writeShellScript "mudaremote-run" ''
           set -eu
-          exec ${mudaremote.python}/bin/python ${mudaremote}/mudae_preset_editor.py --preset "Main" "Brick1" "Brick2" "CCP" "Makeine" "Mud" "drugs" "drugs loots"
+          exec ${mudaremote.python}/bin/python ${mudaremote}/mudae_preset_editor.py --preset "Main" "Brick1" "Brick2" "CCP" "Makeine" "Mud" "drugs"
         '';
         EnvironmentFile = config.modules.security.sops.secrets.mudaremote-account-tokens.path;
         Restart = "on-failure";
